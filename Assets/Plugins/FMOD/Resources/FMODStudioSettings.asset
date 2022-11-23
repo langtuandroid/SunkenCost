@@ -426,8 +426,8 @@ MonoBehaviour:
   switchSettingsMigration: 1
   HasSourceProject: 1
   HasPlatforms: 1
-  sourceProjectPath: ../../../../Documents/FMOD Studio/FMOD Projects/DBTD/DBTD.fspro
-  sourceBankPath: ../../../../Documents/FMOD Studio/FMOD Projects/DBTD/Build
+  sourceProjectPath: DBTD/DBTD.fspro
+  sourceBankPath: DBTD/Build
   sourceBankPathUnformatted: 
   BankRefreshCooldown: 5
   ShowBankRefreshWindow: 1
