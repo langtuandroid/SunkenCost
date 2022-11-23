@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<objects serializationModel="Studio.02.02.00">
+	<object class="AudioFile" id="{1e29da7f-0ffc-4d42-9bd7-45bb2468efdd}">
+		<property name="assetPath">
+			<value>Next Turn Button.wav</value>
+		</property>
+		<property name="frequencyInKHz">
+			<value>48</value>
+		</property>
+		<property name="channelCount">
+			<value>2</value>
+		</property>
+		<property name="length">
+			<value>2.2682916666666668</value>
+		</property>
+		<relationship name="masterAssetFolder">
+			<destination>{d3e353a8-2f46-423b-a281-58215ce5fc73}</destination>
+		</relationship>
+	</object>
+</objects>
