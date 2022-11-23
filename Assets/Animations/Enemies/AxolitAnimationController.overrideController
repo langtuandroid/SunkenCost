@@ -1,0 +1,13 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!221 &22100000
+AnimatorOverrideController:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_Name: AxolitAnimationController
+  m_Controller: {fileID: 9100000, guid: 618ba848a187d534fa3b9205eadbc5b4, type: 2}
+  m_Clips:
+  - m_OriginalClip: {fileID: 7400000, guid: a1e30dbb977c7f64f9cc7add5012e033, type: 2}
+    m_OverrideClip: {fileID: 7400000, guid: 9f1e58eead4dfbb469ae8ca262975772, type: 2}

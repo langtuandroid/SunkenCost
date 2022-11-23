@@ -1,0 +1,268 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="AutoImportSettings">
+    <option name="autoReloadType" value="SELECTIVE" />
+  </component>
+  <component name="ChangeListManager">
+    <list default="true" id="2562eeeb-13ac-4651-b0cc-56299d8748f0" name="Default Changelist" comment="" />
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="HighlightingSettingsPerFile">
+    <setting file="file://$PROJECT_DIR$/Assets/Scripts/ReorderableListNoEdges/EnemyTooltipTrigger.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/Scripts/GlobalEvents.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/Scripts/Deck/DesignOffers/DesignOfferManager.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/Scripts/EnemyRelated/EnemyAnimationController.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/Scripts/UI/MoveText.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/Scripts/Deck/Deck.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/Scripts/UI/QuitButton.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/Scripts/UI/MainMenu.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/Scripts/UI/NextRoundButton.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/Scripts/UI/EnemyTurnFrame.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/Scripts/UI/GoldText.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/Scripts/EnemyRelated/Enemies/BossEnemy.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/Scripts/PlayerLevelController.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/Scripts/UI/QuitButtonFilm.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/Scripts/UI/RedrawButton.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/Scripts/UI/Tutorial/TimerFinishedButton.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/Scripts/Etchings/ActiveEtching.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/Scripts/UI/VolumeSlider.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/Scripts/Deck/DesignCategory.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/Scripts/UI/WhoseTurnText.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/Scripts/EnemyRelated/EnemyUI/EnemyHealthText.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/Scripts/UI/InGameButton.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/Scripts/Deck/Design.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Library/PackageCache/com.unity.ugui@1.0.0/Runtime/UI/Core/Button.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/Scripts/EnemyRelated/EnemyUI/EnemyUIText.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/Scripts/UI/Heart.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/Scripts/Deck/ListExtensions.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/Scripts/EnemyRelated/EnemyUI/EnemyTurnOrderText.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/Scripts/ReorderableListNoEdges/ReorderableListContentNoEdges.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/Scripts/ReorderableListNoEdges/ReorderableListElementNoEdges.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/Scripts/ReorderableListNoEdges/ReorderableListNoEdges.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/Scripts/Etchings/CharPreMovementActivatedEffect.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/Scripts/UI/Tutorial/TutorialDimmerPanel.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/Scripts/UI/Tutorial/TutorialButton.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/Scripts/Audio/InGameSfxManager.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/Scripts/Deck/Designs.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/Scripts/Audio/MusicManager.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/Scripts/Audio/Music.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/Scripts/Deck/DesignCard.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/Scripts/Deck/Bench.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/Scripts/Etchings/HopEtching.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/Scripts/UI/LoseLifeShaderController.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/Scripts/UI/Tutorial/TutorialUIObject.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/Scripts/Deck/DesignCardInfo.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/Scripts/Etchings/PoisonEtching.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/Scripts/Etchings/ReverseEtching.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/Scripts/Etchings/StickUpdateActivatedEtching.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/Scripts/Etchings/IndicatorController.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/../../../../../../Program Files/Unity/Hub/Editor/2020.1.4f1/Editor/Data/Resources/PackageManager/BuiltInPackages/com.unity.ugui/Runtime/UI/Core/Button.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/Scripts/EditorInit.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/Scripts/UI/PlayGameButton.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/Scripts/EtchingManager.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/Scripts/UI/StickboardScaler.cs" root0="FORCE_HIGHLIGHTING" />
+  </component>
+  <component name="IdeDocumentHistory">
+    <option name="CHANGED_PATHS">
+      <list>
+        <option value="$PROJECT_DIR$/Assets/Scripts/Etchings/RangedEtching.cs" />
+        <option value="$PROJECT_DIR$/Assets/Scripts/Deck/MasterDesign.cs" />
+        <option value="$PROJECT_DIR$/Assets/Scripts/Etchings/EtchingOffers/BlockEtchingOffer.cs" />
+        <option value="$PROJECT_DIR$/Assets/Scripts/UI/StickboardScaler.cs" />
+        <option value="$PROJECT_DIR$/Assets/Scripts/InventoryManager.cs" />
+        <option value="$PROJECT_DIR$/Assets/Scripts/UI/RedrawButton.cs" />
+        <option value="$PROJECT_DIR$/Assets/Scripts/Etchings/PoisonEtching.cs" />
+        <option value="$PROJECT_DIR$/Assets/Scripts/Etchings/HopEtching.cs" />
+        <option value="$PROJECT_DIR$/Assets/Scripts/Etchings/EtchingOffers/HopEtchingOffer.cs" />
+        <option value="$PROJECT_DIR$/Assets/Scripts/EnemyRelated/EnemySpawner.cs" />
+        <option value="$PROJECT_DIR$/Assets/Scripts/Deck/ListExtensions.cs" />
+        <option value="$PROJECT_DIR$/Assets/Scripts/HUDManager.cs" />
+        <option value="$PROJECT_DIR$/Assets/Scripts/Etchings/DummyEtching.cs" />
+        <option value="$PROJECT_DIR$/Assets/Scripts/Stick.cs" />
+        <option value="$PROJECT_DIR$/Assets/Scripts/StickManager.cs" />
+        <option value="$PROJECT_DIR$/Assets/Scripts/Deck/DesignCardOffer.cs" />
+        <option value="$PROJECT_DIR$/Assets/Scripts/Deck/DesignOfferPanel.cs" />
+        <option value="$PROJECT_DIR$/Assets/Scripts/Deck/Bench.cs" />
+        <option value="$PROJECT_DIR$/Assets/Scripts/GameEvents.cs" />
+        <option value="$PROJECT_DIR$/Assets/Scripts/UI/Tutorial/TutorialManager.cs" />
+        <option value="$PROJECT_DIR$/Assets/Scripts/Audio/InGameSfxManager.cs" />
+        <option value="$PROJECT_DIR$/Assets/Scripts/Deck/InHandDesignCard.cs" />
+        <option value="$PROJECT_DIR$/Assets/Scripts/Etchings/BufferEtching.cs" />
+        <option value="$PROJECT_DIR$/Assets/Scripts/Etchings/BoostEtching.cs" />
+        <option value="$PROJECT_DIR$/Assets/Scripts/Etchings/Etching.cs" />
+        <option value="$PROJECT_DIR$/Assets/Scripts/Deck/DesignOffers/DesignCardOffer.cs" />
+        <option value="$PROJECT_DIR$/Assets/Scripts/UI/WhoseTurnText.cs" />
+        <option value="$PROJECT_DIR$/Assets/Scripts/EnemyRelated/Enemy.cs" />
+        <option value="$PROJECT_DIR$/Assets/Scripts/Etchings/EtchingOffers/EtchingOfferController.cs" />
+        <option value="$PROJECT_DIR$/Assets/Scripts/Deck/DesignOffers/DesignOfferPanel.cs" />
+        <option value="$PROJECT_DIR$/Assets/Scripts/Deck/Design.cs" />
+        <option value="$PROJECT_DIR$/Assets/Scripts/Deck/DesignCard.cs" />
+        <option value="$PROJECT_DIR$/Assets/Scripts/Deck/DesignCardInfo.cs" />
+        <option value="$PROJECT_DIR$/Assets/Scripts/DesignManager.cs" />
+        <option value="$PROJECT_DIR$/Assets/Scripts/EnemyRelated/Enemies/GrouldEnemy.cs" />
+        <option value="$PROJECT_DIR$/Assets/Scripts/Deck/Deck.cs" />
+        <option value="$PROJECT_DIR$/Assets/Scripts/Deck/DesignOffers/DesignOfferManager.cs" />
+        <option value="$PROJECT_DIR$/Assets/Scripts/PlayerLevelController.cs" />
+        <option value="$PROJECT_DIR$/Assets/Scripts/EnemyRelated/Enemies/AxolitlEnemy.cs" />
+        <option value="$PROJECT_DIR$/Assets/Scripts/EnemyRelated/Enemies/ClausEnemy.cs" />
+        <option value="$PROJECT_DIR$/Assets/Scripts/Etchings/EtchingOffers/StompEtchingOffer.cs" />
+        <option value="$PROJECT_DIR$/Assets/Scripts/Deck/Designs.cs" />
+        <option value="$PROJECT_DIR$/Assets/Scripts/EtchingManager.cs" />
+        <option value="$PROJECT_DIR$/Assets/Scripts/PlayerController.cs" />
+        <option value="$PROJECT_DIR$/Assets/Scripts/GameManager.cs" />
+        <option value="$PROJECT_DIR$/Assets/Scripts/Etchings/StickUpdateActivatedEtching.cs" />
+        <option value="$PROJECT_DIR$/Assets/Scripts/Etchings/CharMovementActivatedEtching.cs" />
+        <option value="$PROJECT_DIR$/Assets/Scripts/Etchings/CharPreMovementActivatedEffect.cs" />
+        <option value="$PROJECT_DIR$/Assets/Scripts/Etchings/DamageEtching.cs" />
+        <option value="$PROJECT_DIR$/Assets/Scripts/Etchings/ActiveEtching.cs" />
+        <option value="$PROJECT_DIR$/Assets/Scripts/Deck/DesignInfo.cs" />
+      </list>
+    </option>
+  </component>
+  <component name="ProjectId" id="2D94BW8tSe5j0XJbtvg1QqbJWdw" />
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
+  <component name="PropertiesComponent">
+    <property name="Discover.Launch.Via.Unity" value="true" />
+    <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
+    <property name="WebServerToolWindowFactoryState" value="false" />
+    <property name="nodejs_package_manager_path" value="npm" />
+    <property name="settings.editor.selected.configurable" value="editor.preferences.folding" />
+    <property name="vue.rearranger.settings.migration" value="true" />
+  </component>
+  <component name="RunManager" selected="Attach to Unity Editor.Attach to Unity Editor">
+    <configuration name="Standalone Player" type="RunUnityExe" factoryName="Unity Executable">
+      <option name="EXE_PATH" value="$PROJECT_DIR$/Builds/New\SticksAndEtchings.exe" />
+      <option name="PROGRAM_PARAMETERS" value="" />
+      <option name="WORKING_DIRECTORY" value="C:\Users\bensa\Dropbox\Ben\Unity\Deck Builder TD\Builds\New" />
+      <option name="PASS_PARENT_ENVS" value="1" />
+      <option name="USE_EXTERNAL_CONSOLE" value="0" />
+      <method v="2" />
+    </configuration>
+    <configuration name="Attach to Unity Editor &amp; Play" type="UNITY_DEBUG_RUN_CONFIGURATION" factoryName="UNITY_ATTACH_AND_PLAY" show_console_on_std_err="false" show_console_on_std_out="false" port="50000" address="localhost">
+      <option name="allowRunningInParallel" value="false" />
+      <option name="listenPortForConnections" value="false" />
+      <option name="pid" />
+      <option name="selectedOptions">
+        <set />
+      </option>
+      <method v="2" />
+    </configuration>
+    <configuration name="Attach to Unity Editor" type="UNITY_DEBUG_RUN_CONFIGURATION" factoryName="Unity Debug" show_console_on_std_err="false" show_console_on_std_out="false" port="50000" address="localhost">
+      <option name="allowRunningInParallel" value="false" />
+      <option name="listenPortForConnections" value="false" />
+      <option name="pid" />
+      <option name="selectedOptions">
+        <set />
+      </option>
+      <method v="2" />
+    </configuration>
+  </component>
+  <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="2562eeeb-13ac-4651-b0cc-56299d8748f0" name="Default Changelist" comment="" />
+      <created>1660097834889</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1660097834889</updated>
+      <workItem from="1660097840817" duration="612000" />
+      <workItem from="1660104486679" duration="16660000" />
+      <workItem from="1660233488957" duration="4013000" />
+      <workItem from="1662350968086" duration="1652000" />
+      <workItem from="1664176405615" duration="642000" />
+      <workItem from="1664587237175" duration="3226000" />
+      <workItem from="1664755724899" duration="4868000" />
+      <workItem from="1664939114608" duration="600000" />
+      <workItem from="1665010552878" duration="16362000" />
+      <workItem from="1665217207045" duration="38248000" />
+      <workItem from="1665608976783" duration="7149000" />
+      <workItem from="1666215797892" duration="60610000" />
+      <workItem from="1666909725686" duration="12909000" />
+      <workItem from="1666929696756" duration="9648000" />
+      <workItem from="1667174525170" duration="2263000" />
+      <workItem from="1667179850001" duration="489000" />
+      <workItem from="1667180363923" duration="8376000" />
+      <workItem from="1667352329257" duration="700000" />
+      <workItem from="1667774712136" duration="33050000" />
+      <workItem from="1667947021599" duration="35901000" />
+      <workItem from="1668056274971" duration="12573000" />
+      <workItem from="1668073803821" duration="295000" />
+      <workItem from="1668125254967" duration="964000" />
+      <workItem from="1668468871076" duration="17737000" />
+      <workItem from="1668553332609" duration="42937000" />
+      <workItem from="1668807177568" duration="4917000" />
+      <workItem from="1668983547608" duration="25790000" />
+    </task>
+    <servers />
+  </component>
+  <component name="TypeScriptGeneratedFilesManager">
+    <option name="version" value="3" />
+  </component>
+  <component name="UnityProjectConfiguration" hasMinimizedUI="true" />
+  <component name="UnityUnitTestConfiguration" currentTestLauncher="EditMode" />
+  <component name="VcsManagerConfiguration">
+    <option name="CLEAR_INITIAL_COMMIT_MESSAGE" value="true" />
+  </component>
+  <component name="WindowStateProjectService">
+    <state x="648" y="1381" key="#Notifications" timestamp="1668056228967">
+      <screen x="0" y="1080" width="1920" height="1040" />
+    </state>
+    <state x="648" y="1381" key="#Notifications/0.1080.1920.1040/0.0.1920.1040@0.1080.1920.1040" timestamp="1668056228967" />
+    <state x="452" y="1153" key="#Plugins" timestamp="1668056233067">
+      <screen x="0" y="1080" width="1920" height="1040" />
+    </state>
+    <state x="452" y="1153" key="#Plugins/0.1080.1920.1040/0.0.1920.1040@0.1080.1920.1040" timestamp="1668056233067" />
+    <state x="410" y="1245" key="#com.intellij.execution.impl.EditConfigurationsDialog" timestamp="1668056222800">
+      <screen x="0" y="1080" width="1920" height="1040" />
+    </state>
+    <state x="410" y="1245" key="#com.intellij.execution.impl.EditConfigurationsDialog/0.1080.1920.1040/0.0.1920.1040@0.1080.1920.1040" timestamp="1668056222800" />
+    <state x="623" y="301" key="#com.intellij.fileTypes.FileTypeChooser" timestamp="1667941862260">
+      <screen x="0" y="0" width="1920" height="1040" />
+    </state>
+    <state x="623" y="301" key="#com.intellij.fileTypes.FileTypeChooser/0.1080.1920.1040/0.0.1920.1040@0.0.1920.1040" timestamp="1667941862260" />
+    <state x="743" y="1246" key="RiderGenerateDialog" timestamp="1668577956875">
+      <screen x="0" y="1080" width="1920" height="1040" />
+    </state>
+    <state x="743" y="166" key="RiderGenerateDialog/0.0.1920.1040/6.-1080.1920.1040@0.0.1920.1040" timestamp="1667184712655" />
+    <state x="743" y="166" key="RiderGenerateDialog/0.1080.1920.1040/0.0.1920.1040@0.0.1920.1040" timestamp="1667954183464" />
+    <state x="743" y="1246" key="RiderGenerateDialog/0.1080.1920.1040/0.0.1920.1040@0.1080.1920.1040" timestamp="1668577956875" />
+    <state x="344" y="1158" key="SettingsEditor" timestamp="1668043615633">
+      <screen x="0" y="1080" width="1920" height="1040" />
+    </state>
+    <state x="344" y="1158" key="SettingsEditor/0.1080.1920.1040/0.0.1920.1040@0.1080.1920.1040" timestamp="1668043615633" />
+    <state width="623" height="512" key="SwitcherDM" timestamp="1666750443745">
+      <screen x="0" y="0" width="1920" height="1040" />
+    </state>
+    <state width="623" height="512" key="SwitcherDM/0.0.1920.1040/6.-1080.1920.1040@0.0.1920.1040" timestamp="1666750443745" />
+    <state x="975" y="450" width="933" height="1006" key="dock-window-1" timestamp="1668648661813">
+      <screen x="0" y="0" width="1920" height="1040" />
+    </state>
+    <state x="975" y="450" width="933" height="1006" key="dock-window-1/0.1080.1920.1040/0.0.1920.1040@0.0.1920.1040" timestamp="1668648661813" />
+    <state x="475" y="1214" width="933" height="1006" maximized="true" key="dock-window-2" timestamp="1668648661813">
+      <screen x="0" y="1080" width="1920" height="1040" />
+    </state>
+    <state x="475" y="1214" width="933" height="1006" maximized="true" key="dock-window-2/0.1080.1920.1040/0.0.1920.1040@0.0.1920.1040" timestamp="1668648661813" />
+    <state x="547" y="151" width="825" height="738" key="find.popup" timestamp="1665459592651">
+      <screen x="0" y="0" width="1920" height="1040" />
+    </state>
+    <state x="547" y="151" width="825" height="738" key="find.popup/0.0.1920.1040/6.-1080.1920.1040@0.0.1920.1040" timestamp="1665459592651" />
+    <state x="532" y="237" key="run.anything.popup" timestamp="1669078827766">
+      <screen x="0" y="0" width="1920" height="1040" />
+    </state>
+    <state x="532" y="237" key="run.anything.popup/0.0.1920.1040/6.-1080.1920.1040@0.0.1920.1040" timestamp="1666921582397" />
+    <state x="532" y="237" key="run.anything.popup/0.1080.1920.1040/0.0.1920.1040@0.0.1920.1040" timestamp="1669078827766" />
+    <state x="532" y="1317" key="run.anything.popup/0.1080.1920.1040/0.0.1920.1040@0.1080.1920.1040" timestamp="1668935193775" />
+    <state x="539" y="5" width="840" height="1034" key="search.everywhere.popup" timestamp="1668984923042">
+      <screen x="0" y="0" width="1920" height="1040" />
+    </state>
+    <state x="539" y="5" width="840" height="1034" key="search.everywhere.popup/0.0.1920.1040/6.-1080.1920.1040@0.0.1920.1040" timestamp="1667271533549" />
+    <state x="539" y="5" width="840" height="1034" key="search.everywhere.popup/0.1080.1920.1040/0.0.1920.1040@0.0.1920.1040" timestamp="1668984923042" />
+    <state x="539" y="1085" width="840" height="1034" key="search.everywhere.popup/0.1080.1920.1040/0.0.1920.1040@0.1080.1920.1040" timestamp="1668070906080" />
+  </component>
+</project>
