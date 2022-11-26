@@ -28,13 +28,13 @@ public class WhoseTurnText : MonoBehaviour
 
     public void PlayersTurn()
     {
-        _textMeshProUGUI.text = "YOUR TURN";
+        //_textMeshProUGUI.text = "YOUR TURN";
         _textMeshProUGUI.colorGradientPreset = yourColor;
     }
 
     public void EnemiesTurn()
     {
-        _textMeshProUGUI.text = "ENEMY TURN";
+        //_textMeshProUGUI.text = "ENEMY TURN";
         _textMeshProUGUI.colorGradientPreset = enemyColor;
     }
 

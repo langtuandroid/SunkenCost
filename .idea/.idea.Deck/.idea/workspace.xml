@@ -17,6 +17,8 @@
     <option name="CHANGED_PATHS">
       <list>
         <option value="$PROJECT_DIR$/Assets/Scripts/Deck/OfferPanel/OfferPanel.cs" />
+        <option value="$PROJECT_DIR$/Assets/Scripts/UI/WhoseTurnText.cs" />
+        <option value="$PROJECT_DIR$/Assets/Scripts/HUDManager.cs" />
       </list>
     </option>
   </component>
@@ -59,7 +61,7 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1669504008927</updated>
-      <workItem from="1669504015205" duration="605000" />
+      <workItem from="1669504015205" duration="2196000" />
     </task>
     <servers />
   </component>

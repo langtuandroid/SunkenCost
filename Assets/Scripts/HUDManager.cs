@@ -17,6 +17,8 @@ public class HUDManager : MonoBehaviour
     [SerializeField] private Image _xpFillBar;
     [SerializeField] private TextMeshProUGUI _levelText;
 
+    [SerializeField] private Transform heartsParentTransform;
+
     private void Awake()
     {
         // One instance of static objects only
@@ -31,11 +33,9 @@ public class HUDManager : MonoBehaviour
 
     private void Start()
     {
-        var heartsParent = transform.GetChild(1);
-
-        for (var i = 0; i < heartsParent.childCount; i++)
+        for (var i = 0; i < heartsParentTransform.childCount; i++)
         {
-            _hearts.Add(heartsParent.GetChild(i).GetComponent<Heart>());
+            _hearts.Add(heartsParentTransform.GetChild(i).GetComponent<Heart>());
         }
     }
 
