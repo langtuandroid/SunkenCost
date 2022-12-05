@@ -25,7 +25,5 @@ public class PlayerLevelController
             if (Level % 3 == 0)
                 StickManager.current.CreateStick();
         }
-
-        HUDManager.current.UpdateXp();
     }
 }

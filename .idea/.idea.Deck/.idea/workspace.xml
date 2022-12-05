@@ -10,14 +10,28 @@
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
-  <component name="HighlightingSettingsPerFile">
-    <setting file="file://$PROJECT_DIR$/Assets/Scripts/Deck/OfferPanel/OfferPanel.cs" root0="FORCE_HIGHLIGHTING" />
-  </component>
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
         <option value="$PROJECT_DIR$/Assets/Scripts/Deck/OfferPanel/OfferPanel.cs" />
         <option value="$PROJECT_DIR$/Assets/Scripts/UI/WhoseTurnText.cs" />
+        <option value="$PROJECT_DIR$/Assets/Scripts/UI/Tutorial/TutorialManager.cs" />
+        <option value="$PROJECT_DIR$/Assets/Scripts/InventoryManager.cs" />
+        <option value="$PROJECT_DIR$/Assets/Scripts/UI/StickboardScaler.cs" />
+        <option value="$PROJECT_DIR$/Assets/Scripts/EtchingManager.cs" />
+        <option value="$PROJECT_DIR$/Assets/Scripts/PlayerLevelController.cs" />
+        <option value="$PROJECT_DIR$/Assets/Scripts/GameManager.cs" />
+        <option value="$PROJECT_DIR$/Assets/Scripts/EnemyRelated/Enemy.cs" />
+        <option value="$PROJECT_DIR$/Assets/Scripts/Etchings/ReverseEtching.cs" />
+        <option value="$PROJECT_DIR$/Assets/Scripts/Etchings/ImpedeEtching.cs" />
+        <option value="$PROJECT_DIR$/Assets/Scripts/Etchings/BufferEtching.cs" />
+        <option value="$PROJECT_DIR$/Assets/Scripts/Etchings/BlockEtching.cs" />
+        <option value="$PROJECT_DIR$/Assets/Scripts/Deck/Designs.cs" />
+        <option value="$PROJECT_DIR$/Assets/Scripts/DesignManager.cs" />
+        <option value="$PROJECT_DIR$/Assets/Scripts/EnemyRelated/ActiveEnemiesManager.cs" />
+        <option value="$PROJECT_DIR$/Assets/Scripts/PlayerController.cs" />
+        <option value="$PROJECT_DIR$/Assets/Scripts/StickManager.cs" />
+        <option value="$PROJECT_DIR$/Assets/Scripts/UI/MoveText.cs" />
         <option value="$PROJECT_DIR$/Assets/Scripts/HUDManager.cs" />
       </list>
     </option>
@@ -62,6 +76,7 @@
       <option name="presentableId" value="Default" />
       <updated>1669504008927</updated>
       <workItem from="1669504015205" duration="2196000" />
+      <workItem from="1670197005602" duration="5570000" />
     </task>
     <servers />
   </component>

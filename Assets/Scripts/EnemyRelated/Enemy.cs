@@ -288,7 +288,6 @@ public abstract class Enemy : MonoBehaviour
     {
         InGameSfxManager.current.Death();
         InventoryManager.current.AlterGold(Gold, "Enemy");
-        PlayerController.current.playerLevel.AddXp(1);
         IsDestroyed = true;
         Moving = false;
         Log.current.AddEvent("E" + _turnOrder + " has been killed");

@@ -35,9 +35,12 @@ public class StickManager : MonoBehaviour
 
         //_sticks.Add(_stickGridController.GetComponentInChildren<Stick>());
 
-        CreateStick();
-        CreateStick();
-        CreateStick();
+        var stick = CreateStick();
+        EtchingManager.current.CreateEtching(stick.GetComponent<Stick>(), new Stab());
+        stick = CreateStick();
+        EtchingManager.current.CreateEtching(stick.GetComponent<Stick>(), new Slinger());
+        stick = CreateStick();
+        EtchingManager.current.CreateEtching(stick.GetComponent<Stick>(), new Impede());
     }
 
     private void Update()

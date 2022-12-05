@@ -47,7 +47,6 @@ public class GameManager : MonoBehaviour
         
         GameEvents.current.BeginGame();
         Round = 1;
-        Deck.current.DrawNewHand();
     }
 
     // Update is called once per frame
@@ -61,7 +60,6 @@ public class GameManager : MonoBehaviour
         {
             ItemManager.current.EquipItem("ExtraTurn");
             InventoryManager.current.AlterGold(50);
-            PlayerController.current.playerLevel.AddXp(1);
         }
 
         if (Input.GetKeyDown(KeyCode.D))
@@ -84,12 +82,7 @@ public class GameManager : MonoBehaviour
         if (gameState == GameState.EnemyTurn && EtchingManager.current.finishedProcessingEnemyMove && ActiveEnemiesManager.current.finishedProcessingEnemyTurn)
         {
             GameEvents.current.EndEnemyTurn();
-            if (DesignOfferManager.current.isOffering)
-                gameState = GameState.OfferingDesigns;
-            else
-            {
-                BeginPlayerTurn();
-            }
+            BeginPlayerTurn();
         }
 
     }
@@ -100,24 +93,11 @@ public class GameManager : MonoBehaviour
         Music.current.SelectSong(0);
     }
 
-    public bool TryRedraw()
-    {
-        if (!PlayerController.current.IsOutOfMoves)
-        {
-            Deck.current.Redraw();
-            GameEvents.current.Redrew();
-            return true;
-        }
-
-        return false;
-    }
-
     public bool TryNextTurn()
     {
         // LATER - chane to just NoTurn
         if (gameState == GameState.PlayerTurn)
         {
-            Deck.current.DiscardHand();
             GameEvents.current.EndPlayerTurn();
             WhoseTurnText.current.EnemiesTurn();
             NextRoundButton.current.CanClick(false);
@@ -141,11 +121,8 @@ public class GameManager : MonoBehaviour
         GameEvents.current.BeginPlayerTurn();
             
         NextRoundButton.current.CanClick(true);
-        RedrawButton.current.CanClick(true);
             
         Round++;
-        
-        Deck.current.DrawNewHand();
     }
 
     private void OfferingDesigns()
@@ -155,7 +132,6 @@ public class GameManager : MonoBehaviour
 
     private void DesignOfferAccepted()
     {
-        if (DesignOfferManager.current.isOffering) return;
         gameState = GameState.PlayerTurn;
         BeginPlayerTurn();
     }

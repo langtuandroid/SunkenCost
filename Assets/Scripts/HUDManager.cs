@@ -10,6 +10,7 @@ public class HUDManager : MonoBehaviour
     public static HUDManager current;
     
     [SerializeField] private TextMeshProUGUI _movesText;
+    [SerializeField] private TextMeshProUGUI _totalMovesText;
     [SerializeField] private TextMeshProUGUI _roundText;
 
     private List<Heart> _hearts = new List<Heart>();
@@ -41,12 +42,11 @@ public class HUDManager : MonoBehaviour
 
     private void Update()
     {
-        _movesText.text = "(" + (PlayerController.current.MovesPerTurn - PlayerController.current.MovesUsedThisTurn) +
-                          "/" +
-                          PlayerController.current.MovesPerTurn + ") moves left";
+        _movesText.text = (PlayerController.current.MovesPerTurn - PlayerController.current.MovesUsedThisTurn).ToString();
+        _totalMovesText.text = PlayerController.current.MovesPerTurn.ToString();
 
         if (GameManager.current.Round < 16)
-            _roundText.text = "TURNS 'TIL BOSS: " + (16 - GameManager.current.Round);
+            _roundText.text = "TURNS LEFT: " + (5 - GameManager.current.Round);
         else
         {
             _roundText.text = "GOOD LUCK!";
@@ -61,11 +61,5 @@ public class HUDManager : MonoBehaviour
         {
             _hearts[i].SetHeart(lives > i);
         }
-    }
-
-    public void UpdateXp()
-    {
-        _levelText.text = "Level " + PlayerController.current.playerLevel.Level;
-        _xpFillBar.fillAmount = (float)PlayerController.current.playerLevel.Xp / PlayerController.current.playerLevel.XpNeededForNextLevel;
     }
 }

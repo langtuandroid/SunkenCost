@@ -49,7 +49,7 @@ public class EtchingManager : MonoBehaviour
     public void CreateEtching(Stick stick, Design design)
     {
         // Destroy the dummy
-        DestroyDummyEtching(stick);
+        //DestroyDummyEtching(stick);
         
         var etchingSlot = stick.transform.GetChild(1);
         
@@ -60,10 +60,6 @@ public class EtchingManager : MonoBehaviour
             var occupyingEtchingTransform = etchingSlot.GetChild(0);
             var occupyingEtching = occupyingEtchingTransform.GetComponent<ActiveEtching>();
             etchingOrder.Remove(occupyingEtching);
-
-            // Add to the discard pile
-            // TODO: ADD EXHAUSTING CARDS
-            Deck.current.AddDesignToDiscardPile(occupyingEtching.design);
 
             Destroy(occupyingEtchingTransform.gameObject);
         }

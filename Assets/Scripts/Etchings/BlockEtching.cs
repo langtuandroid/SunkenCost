@@ -1,9 +1,8 @@
-﻿using System;
-using UnityEngine;
+﻿using UnityEngine;
 
 namespace Etchings
 {
-    public class ReverseEtching : CharPreMovementActivatedEffect
+    public class BlockEtching : CharPreMovementActivatedEffect
     {
         protected override bool TestCharAboutToMoveActivatedEffect()
         {
@@ -12,13 +11,8 @@ namespace Etchings
             var currentEnemyStickNum = currentEnemy.StickNum;
 
             if (currentEnemyStickNum != stickNum || currentEnemy.NextMove == 0) return false;
-
-            // Set the new goal stick as the opposite direction
-            currentEnemy.NextMove *= -1;
-            currentEnemy.UpdateMovementText();
-
-            if (currentEnemy.NextMove <= -currentEnemyStickNum) currentEnemy.NextMove = -currentEnemyStickNum;
-
+            
+            currentEnemy.Block();
             UsesUsedThisTurn += 1;
             return true;
 

@@ -153,7 +153,7 @@ public class Impede : Design
         Category = DesignCategory.Block;
         Color = new Color(0.54f, 0.54f, 0.67f);
         AddStat(St.Cost, 1);
-        AddStat(St.UsesPerTurn, 2);
+        AddStat(St.UsesPerTurn, 1);
         AddStat(St.MinRange, 0);
         AddStat(St.MaxRange, 0);
 

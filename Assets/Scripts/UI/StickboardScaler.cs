@@ -29,8 +29,8 @@ public class StickboardScaler : MonoBehaviour
 
     private void SetScale()
     {
-        var scale = (16f / 11f) / (_resolution.x / _resolution.y);
-        if (scale > 0.9f) scale = 0.9f;
+        var scale = (16f / 9f) / (_resolution.x / _resolution.y);
+        if (scale > 1f) scale = 1f;
         _rectTransform.localScale = new Vector3(scale, scale, 1);
     }
 }

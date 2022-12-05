@@ -195,7 +195,7 @@ public class DesignManager : MonoBehaviour
                 description = "Attacks every enemy landing within " + distance + " away for\n" + damage?.Value + " damage "+ usesPerTurn?.Value + "x per turn";
                 break;
             case DesignCategory.Block: 
-                description = "Removes movement of an enemy landing on this plank "+ usesPerTurn?.Value + "x per turn";
+                description = "Stops an enemy leaving this plank "+ usesPerTurn?.Value + "x per turn";
                 break;
             case DesignCategory.Boost: 
                 description = "Boosts damage of adjacent Attack planks by " + boost?.Value;

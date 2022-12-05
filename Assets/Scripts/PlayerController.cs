@@ -6,12 +6,10 @@ using UnityEngine;
 public class PlayerController : MonoBehaviour
 {
     public static PlayerController current;
-    
-    public PlayerLevelController playerLevel= new PlayerLevelController();
-    
+
     public int MovesUsedThisTurn { get; private set; } = 0;
     public int MovesPerTurn { get; set; }
-    private int _baseMovesPerTurn = 4;
+    private int _baseMovesPerTurn = 1;
 
     public int Lives { get; private set; } = 3;
     
@@ -73,10 +71,6 @@ public class PlayerController : MonoBehaviour
     private void UsedMove()
     {
         MovesUsedThisTurn += 1;
-        if (IsOutOfMoves)
-        {
-            RedrawButton.current.CanClick(false);
-        }
     }
 
     public void PlayCard(int cost)

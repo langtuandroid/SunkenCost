@@ -146,6 +146,9 @@ public class ActiveEnemiesManager : MonoBehaviour
                 while (!EtchingManager.current.finishedProcessingEnemyMove)
                     yield return 0;
                 
+                // If the planks have stopped it moving break
+                if (enemy.NextMove == 0) break;
+                
                 StartCoroutine(enemy.ExecuteMoveStep());
 
                 // Wait for the enemy to finish moving

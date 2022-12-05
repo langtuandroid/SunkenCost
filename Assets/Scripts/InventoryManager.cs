@@ -37,8 +37,6 @@ public class InventoryManager : MonoBehaviour
     public void AlterGold(int amount, string reason = "")
     {
         gold += amount;
-
-        RedrawButton.current.CanClick(CanBuyStick);
     }
 
     public bool CanBuyStick => gold >= StickCost;

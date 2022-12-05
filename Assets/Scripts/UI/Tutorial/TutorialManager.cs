@@ -234,8 +234,6 @@ public class TutorialManager : MonoBehaviour
 
 
         _arrow.Move(-250, 0, - 1);
-        
-        RedrawButton.current.CanClick(true);
     }
 
     private void AskToDragPlankOffer()
@@ -243,7 +241,6 @@ public class TutorialManager : MonoBehaviour
         UnHighlight();
         _popupWithButton.Move(0, 0);
         _popupWithButtonText.text = "Drag one of these planks between the beach and your boat.";
-        RedrawButton.current.CanClick(false);
     }
 
     private void WaitForDraggedPlankOffer()
@@ -298,9 +295,6 @@ public class TutorialManager : MonoBehaviour
         _popupText.text = "Let's buy another plank. The first 3 planks are free - you'll have to defeat enemies to buy more.";
         
         _arrow.Move(-250, 0, -1);
-
-        
-        RedrawButton.current.CanClick(true);
     }
     
     private void AskToDragAnotherPlankOffer()
@@ -330,8 +324,6 @@ public class TutorialManager : MonoBehaviour
         
         SetVisibility(false);
         GameEvents.current.OnOfferDesigns += HidePopup;
-        
-        RedrawButton.current.CanClick(true);
         NextRoundButton.current.CanClick(false);
     }
 
@@ -387,7 +379,6 @@ public class TutorialManager : MonoBehaviour
     {
         Music.current.SelectSong(1);
         SetVisibility(false);
-        RedrawButton.current.CanClick(true);
         InLockedTutorial = false;
     }
 
