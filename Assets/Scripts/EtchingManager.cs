@@ -1,6 +1,7 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
 using Etchings;
 using UnityEngine;
 
@@ -141,10 +142,8 @@ public class EtchingManager : MonoBehaviour
     private void OnSticksUpdated()
     {
         // Test left to right
-        foreach (var etching in etchingOrder)
+        foreach (var stickUpdateActivatedEtching in etchingOrder.Select(etching => etching as StickUpdateActivatedEtching))
         {
-            // Only character activated etchings
-            var stickUpdateActivatedEtching = etching as StickUpdateActivatedEtching;
             stickUpdateActivatedEtching?.DetectStickMovement();
         }
     }
@@ -162,7 +161,7 @@ public class EtchingManager : MonoBehaviour
             
             if (characterActivatedEtching.DetectCharacterAboutToMove())
             {
-                yield return new WaitForSeconds(GameManager.AttackTime);
+                yield return new WaitForSeconds(BattleManager.AttackTime);
             }
 
             // Only continue if there are enemies and etchings
@@ -187,7 +186,7 @@ public class EtchingManager : MonoBehaviour
             
             if (characterActivatedEtching.DetectCharacterMovement())
             {
-                yield return new WaitForSeconds(GameManager.AttackTime);
+                yield return new WaitForSeconds(BattleManager.AttackTime);
             }
 
             // Only continue if there are enemies and etchings

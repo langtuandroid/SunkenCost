@@ -350,10 +350,12 @@
             <e p="MusicManager.cs" t="Include" />
           </e>
           <e p="BackgroundColorController.cs" t="Include" />
+          <e p="BattleManager.cs" t="Include" />
           <e p="Debug" t="Include">
             <e p="ScreenToWorldPoint.cs" t="Include" />
           </e>
           <e p="Deck" t="Include">
+            <e p="Deck.cs" t="Include" />
             <e p="Design.cs" t="Include" />
             <e p="DesignCardInfo.cs" t="Include" />
             <e p="DesignCategory.cs" t="Include" />
@@ -407,7 +409,6 @@
             <e p="StickUpdateActivatedEtching.cs" t="Include" />
           </e>
           <e p="GameEvents.cs" t="Include" />
-          <e p="GameManager.cs" t="Include" />
           <e p="GlobalEvents.cs" t="Include" />
           <e p="HUDManager.cs" t="Include" />
           <e p="InventoryManager.cs" t="Include" />
@@ -417,6 +418,13 @@
             <e p="Item.cs" t="Include" />
           </e>
           <e p="Log.cs" t="Include" />
+          <e p="MainManager.cs" t="Include" />
+          <e p="OfferScreen" t="Include">
+            <e p="DesignCard.cs" t="Include" />
+            <e p="NextBattleButton.cs" t="Include" />
+            <e p="OfferManager.cs" t="Include" />
+            <e p="OfferRow.cs" t="Include" />
+          </e>
           <e p="PlayerController.cs" t="Include" />
           <e p="PlayerLevelController.cs" t="Include" />
           <e p="ReorderableListNoEdges" t="Include">

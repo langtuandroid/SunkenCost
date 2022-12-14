@@ -27,7 +27,7 @@ public class EnemySpeechBubble : MonoBehaviour
         _text.enabled = true;
         _image.enabled = true;
         
-        yield return new WaitForSeconds(GameManager.AttackTime * 1.5f);
+        yield return new WaitForSeconds(BattleManager.AttackTime * 1.5f);
 
         _text.enabled = false;
         _image.enabled = false;

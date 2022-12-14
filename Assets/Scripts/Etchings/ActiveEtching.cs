@@ -39,7 +39,7 @@ public abstract class ActiveEtching : Etching
     protected IEnumerator ColorForActivate()
     {
         designInfo.TitleText.color = Color.green;
-        yield return new WaitForSeconds(GameManager.AttackTime);
+        yield return new WaitForSeconds(BattleManager.AttackTime);
         designInfo.TitleText.color = _normalColor;
     }
 

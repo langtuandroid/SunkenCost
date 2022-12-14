@@ -41,7 +41,7 @@ public class TimerFinishedButton : MonoBehaviour
     {
         _firstPopup.SetActive(true);
         _tutorialDimmerPanel.SetVisible(true);
-        _text.text = "The first song has finished - since this is a folio presentation you can choose to spawn the Boss next turn, or keep playing (Boss arrives in "+ (16 - GameManager.current.Round) +" turns). I'll give you free sticks to help out if you skip :)\n\n\n\n";
+        _text.text = "The first song has finished - since this is a folio presentation you can choose to spawn the Boss next turn, or keep playing (Boss arrives in "+ (16 - BattleManager.Current.Round) +" turns). I'll give you free sticks to help out if you skip :)\n\n\n\n";
     }
     
     public void SecondTimerFinished()
@@ -61,7 +61,7 @@ public class TimerFinishedButton : MonoBehaviour
         InGameSfxManager.current.GoodClick();
         _tutorialDimmerPanel.SetVisible(false);
         _firstPopup.SetActive(false);
-        GameManager.current.SkipToBoss();
+        BattleManager.Current.SkipToBoss();
     }
 
     public void ClickedKeepPlayingFirst()
@@ -74,7 +74,7 @@ public class TimerFinishedButton : MonoBehaviour
     public void ClickedQuit()
     {
         InGameSfxManager.current.GoodClick();
-        GameManager.current.Quit();
+        BattleManager.Current.Quit();
     }
     
     public void ClickedKeepPlayingSecond()

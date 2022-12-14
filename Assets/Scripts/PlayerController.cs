@@ -60,7 +60,7 @@ public class PlayerController : MonoBehaviour
         Lives -= 1;
         GameEvents.current.LostLife();
         HUDManager.current.UpdateLives();
-        if (Lives <= 0) GameManager.current.OutOfLives();
+        if (Lives <= 0) BattleManager.Current.OutOfLives();
     }
 
     private void OnRedraw()

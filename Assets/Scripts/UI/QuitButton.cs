@@ -21,7 +21,7 @@ public class QuitButton : InGameButton
 
     protected override bool TestForSuccess()
     {
-        GameManager.current.Quit();
+        BattleManager.Current.Quit();
         return true;
     }
 }

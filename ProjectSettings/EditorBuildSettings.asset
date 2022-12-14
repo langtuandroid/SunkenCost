@@ -9,9 +9,9 @@ EditorBuildSettings:
     path: Assets/Scenes/Menu.unity
     guid: b4671e208611a3b40890e93df34c422e
   - enabled: 1
+    path: Assets/Scenes/OfferPanel.unity
+    guid: af37b57eca1861c48b2896ddd4d498e3
+  - enabled: 1
     path: Assets/Scenes/Level.unity
     guid: 976352dede4ea584d8a7f1751d33b5ea
-  - enabled: 0
-    path: Assets/Scenes/Film.unity
-    guid: 24667e1586403d042830dd36277a7d5d
   m_configObjects: {}

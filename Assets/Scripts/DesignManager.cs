@@ -64,12 +64,14 @@ public class DesignManager : MonoBehaviour
             Destroy(gameObject);
             return;
         }
+        
+        current = this;
+        DontDestroyOnLoad(gameObject);
     }
 
     private void Start()
     {
-        current = this;
-        
+
         // If reloading
         if (EtchingTypes.Count > 0) return;
         

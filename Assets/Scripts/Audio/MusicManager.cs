@@ -6,8 +6,8 @@ using UnityEngine.UI;
 
 public class MusicManager : MonoBehaviour
 {
-    public float MusicVolume { get; private set; } = 0.5f;
-    public float SfxVolume { get; private set; } = 0.5f;
+    public float MusicVolume { get; private set; } = 0f;
+    public float SfxVolume { get; private set; } = 0f;
 
     public static MusicManager current;
 

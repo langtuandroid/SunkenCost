@@ -26,7 +26,7 @@ public class EnemySpawner : MonoBehaviour
 
     private void SpawnNewRound()
     {
-        _round = GameManager.current.Round + 1;
+        _round = BattleManager.Current.Round + 1;
         
         var newEnemies = GetNewRound();
 

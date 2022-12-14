@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
 using UnityEngine.UI;
 using Random = System.Random;
@@ -14,9 +15,9 @@ public enum GameState
     OfferingDesigns
 }
 
-public class GameManager : MonoBehaviour
+public class BattleManager : MonoBehaviour
 {
-    public static GameManager current;
+    public static BattleManager Current;
     
     public GameState gameState = GameState.PlayerTurn;
     public const float AttackTime = 0.6f;
@@ -28,13 +29,13 @@ public class GameManager : MonoBehaviour
     private void Awake()
     {
         // One instance of static objects only
-        if (current)
+        if (Current)
         {
             Destroy(gameObject);
             return;
         }
         
-        current = this;
+        Current = this;
     }
 
     private void Start()
@@ -44,6 +45,12 @@ public class GameManager : MonoBehaviour
         GameEvents.current.OnDesignOfferAccepted += DesignOfferAccepted;
         GameEvents.current.OnOfferDesigns += OfferingDesigns;
         GameEvents.current.OnBossKilled += BossKilled;
+        
+        foreach (var design in Deck.Designs)
+        {
+            StickManager.current.CreateStick();
+            EtchingManager.current.CreateEtching(StickManager.current.GetStick(StickManager.current.stickCount-1), design);
+        }
         
         GameEvents.current.BeginGame();
         Round = 1;
@@ -98,6 +105,13 @@ public class GameManager : MonoBehaviour
         // LATER - chane to just NoTurn
         if (gameState == GameState.PlayerTurn)
         {
+            if (Round == 2)
+            {
+                Deck.Designs = EtchingManager.current.etchingOrder.Select(etching => etching.design).ToList();
+
+                MainManager.Current.LoadNextOfferScreen();
+            }
+            
             GameEvents.current.EndPlayerTurn();
             WhoseTurnText.current.EnemiesTurn();
             NextRoundButton.current.CanClick(false);

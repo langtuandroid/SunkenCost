@@ -96,7 +96,7 @@ public abstract class Enemy : MonoBehaviour
 
         if (Health <= 0 && transform.localPosition == roundPosition)
         {
-            DestroySelf();
+            DestroySelf(true);
         }
     }
 
@@ -121,7 +121,7 @@ public abstract class Enemy : MonoBehaviour
     {
         var newMove = Random.Range(MoveMin, MoveMax + 1);
 
-        if (newMove >= 3 && GameManager.current.Round == 0) newMove = 1;
+        if (newMove >= 3 && BattleManager.Current.Round == 0) newMove = 1;
         /*
         if (justMade)
         {
@@ -172,13 +172,13 @@ public abstract class Enemy : MonoBehaviour
             
             InGameSfxManager.current.EnemyMoved();
 
-            yield return new WaitForSeconds(GameManager.AttackTime / 2);
+            yield return new WaitForSeconds(BattleManager.AttackTime / 2);
 
             // TEMPORARY Destroy if at end
             if (StickNum >= StickManager.current.stickCount)
             {
                 GameEvents.current.EnemyReachedEnd();
-                DestroySelf();
+                DestroySelf(true);
                 yield return 0;
                 yield break;
             }
@@ -284,10 +284,10 @@ public abstract class Enemy : MonoBehaviour
         _movementText.text = NextMove.ToString();
     }
 
-    public virtual void DestroySelf()
+    public virtual void DestroySelf(bool killedByPlayer)
     {
         InGameSfxManager.current.Death();
-        InventoryManager.current.AlterGold(Gold, "Enemy");
+        if (killedByPlayer) InventoryManager.current.AlterGold(Gold, "Enemy");
         IsDestroyed = true;
         Moving = false;
         Log.current.AddEvent("E" + _turnOrder + " has been killed");

@@ -75,9 +75,9 @@ public class BossEnemy : Enemy
         return true;
     }
 
-    public override void DestroySelf()
+    public override void DestroySelf(bool killedByPlayer)
     {
         GameEvents.current.BossKilled();
-        base.DestroySelf();
+        base.DestroySelf(killedByPlayer);
     }
 }

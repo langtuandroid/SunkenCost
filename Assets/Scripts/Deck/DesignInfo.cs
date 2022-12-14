@@ -6,6 +6,7 @@ using Unity.Mathematics;
 using UnityEngine;
 using UnityEngine.EventSystems;
 using UnityEngine.UI;
+using Random = UnityEngine.Random;
 
 public class DesignInfo : MonoBehaviour
 {
@@ -39,6 +40,23 @@ public class DesignInfo : MonoBehaviour
 
     protected virtual void Init()
     {
+        
+        // TODO: Remove this TEST TEST TEST
+        if (design == null)
+        {
+            var randomList = new List<Design>()
+            {
+                new Archer(),
+                new Stab(),
+                new Stomp(),
+                new Slinger(),
+                new Impede(),
+                new Poison()
+            };
+            
+            design = randomList[Random.Range(0, randomList.Count)];
+        }
+        
         TitleText.text = design.Title;
         RefreshCard();
         image.sprite = DesignManager.GetEtchingSprite(design.Category);

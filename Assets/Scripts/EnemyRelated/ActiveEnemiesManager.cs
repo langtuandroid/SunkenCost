@@ -58,7 +58,7 @@ public class ActiveEnemiesManager : MonoBehaviour
         }*/
 
         if (_activeEnemies.Count > 0 &&
-            GameManager.current.gameState == GameState.EnemyTurn && _canMove && EtchingManager.current.finishedProcessingEnemyMove)
+            BattleManager.Current.gameState == GameState.EnemyTurn && _canMove && EtchingManager.current.finishedProcessingEnemyMove)
         {
            StartCoroutine(MoveNextEnemy());
         }
@@ -127,14 +127,14 @@ public class ActiveEnemiesManager : MonoBehaviour
         foreach (var action in enemy.PreMovingEffects)
         {
             action.Invoke();
-            yield return new WaitForSeconds(GameManager.AttackTime);
+            yield return new WaitForSeconds(BattleManager.AttackTime);
             if (enemy.IsDestroyed) break;
         }
 
         // If the enemy is not moving, wait for a moment then continue
         if (enemy.NextMove == 0 && enemy.PreMovingEffects.Count == 0)
         {
-            yield return new WaitForSeconds(GameManager.AttackTime);
+            yield return new WaitForSeconds(BattleManager.AttackTime);
         }
         else
         {

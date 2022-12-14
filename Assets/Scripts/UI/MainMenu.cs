@@ -9,10 +9,4 @@ public class MainMenu : MonoBehaviour
     {
         SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
     }
-
-    public static void PlayFilm()
-    {
-        Music.current.SelectSong(3);
-        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 2);
-    }
 }

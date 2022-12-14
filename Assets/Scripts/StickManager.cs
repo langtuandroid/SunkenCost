@@ -34,19 +34,22 @@ public class StickManager : MonoBehaviour
         _stickGridController = stickGrid.parent.GetComponent<UnityEngine.UI.Extensions.ReorderableListNoEdges>();
 
         //_sticks.Add(_stickGridController.GetComponentInChildren<Stick>());
-
+        if (stickCount > 1) return;
+        
+        /*
         var stick = CreateStick();
         EtchingManager.current.CreateEtching(stick.GetComponent<Stick>(), new Stab());
         stick = CreateStick();
         EtchingManager.current.CreateEtching(stick.GetComponent<Stick>(), new Slinger());
         stick = CreateStick();
         EtchingManager.current.CreateEtching(stick.GetComponent<Stick>(), new Impede());
+        */
     }
 
     private void Update()
     {
         // Can't move or add if it's not the player's turn
-        if (GameManager.current.gameState != GameState.PlayerTurn) // || (PlayerController.current.IsOutOfMoves))
+        if (BattleManager.Current.gameState != GameState.PlayerTurn) // || (PlayerController.current.IsOutOfMoves))
         {
             _stickGridController.IsDraggable = false;
             return;

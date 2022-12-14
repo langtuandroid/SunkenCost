@@ -90,7 +90,7 @@ public class Stick : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDragHan
     {
         var oldColor = _image.color;
         _image.color = color;
-        yield return new WaitForSeconds(GameManager.AttackTime);
+        yield return new WaitForSeconds(BattleManager.AttackTime);
         _image.color = oldColor;
     }
 
@@ -105,7 +105,7 @@ public class Stick : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDragHan
 
         foreach (var enemy in enemies)
         {
-            enemy.DestroySelf();
+            enemy.DestroySelf(false);
         }
         
         InGameSfxManager.current.DestroyedPlank();

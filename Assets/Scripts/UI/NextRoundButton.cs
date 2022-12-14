@@ -21,6 +21,6 @@ public class NextRoundButton : InGameButton
 
     protected override bool TestForSuccess()
     {
-        return GameManager.current.TryNextTurn();
+        return BattleManager.Current.TryNextTurn();
     }
 }
