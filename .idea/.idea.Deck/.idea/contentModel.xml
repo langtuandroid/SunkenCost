@@ -350,6 +350,7 @@
             <e p="MusicManager.cs" t="Include" />
           </e>
           <e p="BackgroundColorController.cs" t="Include" />
+          <e p="BattleEvents.cs" t="Include" />
           <e p="BattleManager.cs" t="Include" />
           <e p="Debug" t="Include">
             <e p="ScreenToWorldPoint.cs" t="Include" />
@@ -365,7 +366,7 @@
           </e>
           <e p="DesignManager.cs" t="Include" />
           <e p="EditorInit.cs" t="Include" />
-          <e p="EnemyRelated" t="Include">
+          <e p="Enemies" t="Include">
             <e p="ActiveEnemiesManager.cs" t="Include" />
             <e p="Enemies" t="Include">
               <e p="AxolitlEnemy.cs" t="Include" />
@@ -408,7 +409,7 @@
             <e p="ReverseEtching.cs" t="Include" />
             <e p="StickUpdateActivatedEtching.cs" t="Include" />
           </e>
-          <e p="GameEvents.cs" t="Include" />
+          <e p="GameProgress.cs" t="Include" />
           <e p="GlobalEvents.cs" t="Include" />
           <e p="HUDManager.cs" t="Include" />
           <e p="InventoryManager.cs" t="Include" />
@@ -424,11 +425,11 @@
             <e p="NextBattleButton.cs" t="Include" />
             <e p="OfferManager.cs" t="Include" />
             <e p="OfferRow.cs" t="Include" />
+            <e p="OfferScreenEvents.cs" t="Include" />
           </e>
           <e p="PlayerController.cs" t="Include" />
           <e p="PlayerLevelController.cs" t="Include" />
           <e p="ReorderableListNoEdges" t="Include">
-            <e p="EnemyTooltipTrigger.cs" t="Include" />
             <e p="ReorderableListContentNoEdges.cs" t="Include" />
             <e p="ReorderableListDebugNoEdges.cs" t="Include" />
             <e p="ReorderableListElementNoEdges.cs" t="Include" />
@@ -446,12 +447,13 @@
             <e p="LoseLifeShaderController.cs" t="Include" />
             <e p="MainMenu.cs" t="Include" />
             <e p="MoveText.cs" t="Include" />
-            <e p="NextRoundButton.cs" t="Include" />
+            <e p="NextTurnButton.cs" t="Include" />
             <e p="PlayGameButton.cs" t="Include" />
             <e p="QuitButton.cs" t="Include" />
             <e p="QuitButtonFilm.cs" t="Include" />
             <e p="StickboardScaler.cs" t="Include" />
             <e p="Tooltip" t="Include">
+              <e p="EnemyTooltipTrigger.cs" t="Include" />
               <e p="ToolTip.cs" t="Include" />
               <e p="TooltipSystem.cs" t="Include" />
               <e p="TooltipTrigger.cs" t="Include" />

@@ -23,7 +23,7 @@ public class BossEnemy : Enemy
 
     protected override void Start()
     {
-        GameEvents.current.BossSpawned();
+        BattleEvents.Current.BossSpawned();
         
         base.Start();
     }
@@ -77,7 +77,7 @@ public class BossEnemy : Enemy
 
     public override void DestroySelf(bool killedByPlayer)
     {
-        GameEvents.current.BossKilled();
+        BattleEvents.Current.BossKilled();
         base.DestroySelf(killedByPlayer);
     }
 }

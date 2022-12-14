@@ -11,7 +11,7 @@ public class LoseLifeShaderController : MonoBehaviour
     
     private void Start()
     {
-        GameEvents.current.OnLostLife += LostLife;
+        BattleEvents.Current.OnLostLife += LostLife;
         _image = GetComponent<Image>();
         _image.enabled = false;
         _material = _image.material;

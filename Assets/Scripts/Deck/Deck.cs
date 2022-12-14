@@ -9,15 +9,7 @@ public static class Deck
 
     public static List<Design> Designs
     {
-        get
-        {
-            foreach (var design in _designs)
-            {
-                Debug.Log(design.Title);
-            }
-
-            return _designs;
-        }
+        get => _designs;
         set => _designs = value;
     }
 }

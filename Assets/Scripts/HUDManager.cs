@@ -45,11 +45,11 @@ public class HUDManager : MonoBehaviour
         _movesText.text = (PlayerController.current.MovesPerTurn - PlayerController.current.MovesUsedThisTurn).ToString();
         _totalMovesText.text = PlayerController.current.MovesPerTurn.ToString();
 
-        if (BattleManager.Current.Round < 16)
-            _roundText.text = "TURNS LEFT: " + (5 - BattleManager.Current.Round);
+        if (BattleManager.Current.Turn < BattleManager.NumberOfTurns)
+            _roundText.text = "TURNS LEFT: " + (BattleManager.NumberOfTurns - BattleManager.Current.Turn);
         else
         {
-            _roundText.text = "GOOD LUCK!";
+            _roundText.text = "LAST TURN!";
         }
     }
 

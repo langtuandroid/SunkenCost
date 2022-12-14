@@ -21,7 +21,7 @@ public class Indicator : MonoBehaviour
 
     private void Start()
     {
-        GameEvents.current.OnSticksUpdated += SticksUpdated;
+        BattleEvents.Current.OnSticksUpdated += SticksUpdated;
     }
 
     public void SetColor(Color color)
@@ -86,6 +86,6 @@ public class Indicator : MonoBehaviour
     
     private void OnDestroy()
     {
-        GameEvents.current.OnSticksUpdated -= SticksUpdated;
+        BattleEvents.Current.OnSticksUpdated -= SticksUpdated;
     }
 }

@@ -30,12 +30,12 @@ public class EtchingManager : MonoBehaviour
 
     private void Start()
     {
-        GameEvents.current.OnPlayerMovedStick += RefreshEtchingOrder;
-        GameEvents.current.OnPlayerBoughtStick += RefreshEtchingOrder;
-        GameEvents.current.OnBeginEnemyTurn += BeginEnemyTurn;
-        GameEvents.current.OnBeginEnemyMove += BeginEnemyMovement;
-        GameEvents.current.OnEnemyMoved += EnemyMoved;
-        GameEvents.current.OnSticksUpdated += OnSticksUpdated;
+        BattleEvents.Current.OnPlayerMovedStick += RefreshEtchingOrder;
+        BattleEvents.Current.OnPlayerBoughtStick += RefreshEtchingOrder;
+        BattleEvents.Current.OnBeginEnemyTurn += BeginEnemyTurn;
+        BattleEvents.Current.OnBeginEnemyMove += BeginEnemyMovement;
+        BattleEvents.Current.OnEnemyMoved += EnemyMoved;
+        BattleEvents.Current.OnSticksUpdated += OnSticksUpdated;
     }
 
     private void Update()
@@ -121,7 +121,7 @@ public class EtchingManager : MonoBehaviour
         }
 
         etchingOrder = newEtchingOrder;
-        GameEvents.current.EtchingsUpdated();
+        BattleEvents.Current.EtchingsUpdated();
     }
 
     private void BeginEnemyTurn()

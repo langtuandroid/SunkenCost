@@ -20,7 +20,7 @@ public class PlayerLevelController
             XpNeededForNextLevel++;
             if (XpNeededForNextLevel > Level / 2) XpNeededForNextLevel = Level / 2;
             
-            GameEvents.current.LevelUp();
+            BattleEvents.Current.LevelUp();
             
             if (Level % 3 == 0)
                 StickManager.current.CreateStick();

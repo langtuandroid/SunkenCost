@@ -13,8 +13,8 @@ public abstract class ActiveEtching : Etching
     {
         _canvasGroup = GetComponent<CanvasGroup>();
         
-        GameEvents.current.OnEndEnemyTurn += EndEnemyTurn;
-        GameEvents.current.OnSticksUpdated += designInfo.RefreshCard;
+        BattleEvents.Current.OnEndEnemyTurn += EndEnemyTurn;
+        BattleEvents.Current.OnSticksUpdated += designInfo.RefreshCard;
         
         base.Start();
         _normalColor = designInfo.TitleText.color;
@@ -57,7 +57,7 @@ public abstract class ActiveEtching : Etching
 
     private void OnDestroy()
     {
-        GameEvents.current.OnEndEnemyTurn -= EndEnemyTurn;
-        GameEvents.current.OnSticksUpdated -= designInfo.RefreshCard;
+        BattleEvents.Current.OnEndEnemyTurn -= EndEnemyTurn;
+        BattleEvents.Current.OnSticksUpdated -= designInfo.RefreshCard;
     }
 }

@@ -1,17 +1,28 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
 using UnityEngine.EventSystems;
 
-public class DesignCard : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler
+public class DesignCard : MonoBehaviour
 {
-    public void OnPointerEnter(PointerEventData eventData)
+    [SerializeField] private Transform plusButton;
+    private Design _design;
+
+    private void Awake()
     {
-        //transform.parent.parent.GetComponent<OfferRow>().HoveredOver(transform.GetSiblingIndex());
+        _design = GetComponentInChildren<DesignInfo>().design;
     }
 
-    public void OnPointerExit(PointerEventData eventData)
+    private void Start()
     {
-        //throw new System.NotImplementedException();
+        OfferScreenEvents.Current.OnGridsUpdated += CardsUpdated;
+    }
+
+    private void CardsUpdated()
+    {
+        var duplicates = OfferManager.Current.Designs.Where(d => d.Title == _design.Title).ToList();
+        plusButton.gameObject.SetActive(duplicates.Count > 1);
     }
 }

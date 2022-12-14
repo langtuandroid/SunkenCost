@@ -3,20 +3,20 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class GameEvents : MonoBehaviour
+public class BattleEvents : MonoBehaviour
 {
-    public static GameEvents current;
+    public static BattleEvents Current;
 
     private void Awake()
     {
         // One instance of static objects only
-        if (current)
+        if (Current)
         {
             Destroy(gameObject);
             return;
         }
 
-        current = this;
+        Current = this;
     }
 
     public event Action OnBeginGame;

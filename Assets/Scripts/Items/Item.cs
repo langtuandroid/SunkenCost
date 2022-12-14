@@ -7,10 +7,10 @@ namespace Items
     {
         protected void Awake()
         {
-            GameEvents.current.OnBeginPlayerTurn += OnBeginPlayerTurn;
-            GameEvents.current.OnEndPlayerTurn += OnEndPlayerTurn;
-            GameEvents.current.OnBeginEnemyTurn += OnBeginEnemyTurn;
-            GameEvents.current.OnEndEnemyTurn += OnEndEnemyTurn;
+            BattleEvents.Current.OnBeginPlayerTurn += OnBeginPlayerTurn;
+            BattleEvents.Current.OnEndPlayerTurn += OnEndPlayerTurn;
+            BattleEvents.Current.OnBeginEnemyTurn += OnBeginEnemyTurn;
+            BattleEvents.Current.OnEndEnemyTurn += OnEndEnemyTurn;
 
             Activate();
         }
@@ -37,10 +37,10 @@ namespace Items
 
         protected void OnDestroy()
         {
-            GameEvents.current.OnBeginPlayerTurn -= OnBeginPlayerTurn;
-            GameEvents.current.OnEndPlayerTurn -= OnEndPlayerTurn;
-            GameEvents.current.OnBeginEnemyTurn -= OnBeginEnemyTurn;
-            GameEvents.current.OnEndEnemyTurn -= OnEndEnemyTurn;
+            BattleEvents.Current.OnBeginPlayerTurn -= OnBeginPlayerTurn;
+            BattleEvents.Current.OnEndPlayerTurn -= OnEndPlayerTurn;
+            BattleEvents.Current.OnBeginEnemyTurn -= OnBeginEnemyTurn;
+            BattleEvents.Current.OnEndEnemyTurn -= OnEndEnemyTurn;
         }
     }
 }

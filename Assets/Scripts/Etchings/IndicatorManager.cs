@@ -7,7 +7,7 @@ public class IndicatorManager : MonoBehaviour
 {
     private void Start()
     {
-        GameEvents.current.OnSticksUpdated += SticksUpdated;
+        BattleEvents.Current.OnSticksUpdated += SticksUpdated;
     }
 
     private void SticksUpdated()

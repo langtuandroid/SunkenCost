@@ -85,7 +85,7 @@ public abstract class Enemy : MonoBehaviour
         ChangeHealth(MaxHealth);
         SetNextMoveSequence();
         
-        GameEvents.current.OnEndEnemyTurn += OnEndEnemyTurn;
+        BattleEvents.Current.OnEndEnemyTurn += OnEndEnemyTurn;
 
         _tooltipTrigger.header = Name;
     }
@@ -121,7 +121,7 @@ public abstract class Enemy : MonoBehaviour
     {
         var newMove = Random.Range(MoveMin, MoveMax + 1);
 
-        if (newMove >= 3 && BattleManager.Current.Round == 0) newMove = 1;
+        if (newMove >= 3 && BattleManager.Current.Turn == 0) newMove = 1;
         /*
         if (justMade)
         {
@@ -177,7 +177,7 @@ public abstract class Enemy : MonoBehaviour
             // TEMPORARY Destroy if at end
             if (StickNum >= StickManager.current.stickCount)
             {
-                GameEvents.current.EnemyReachedEnd();
+                BattleEvents.Current.EnemyReachedEnd();
                 DestroySelf(true);
                 yield return 0;
                 yield break;
@@ -291,7 +291,7 @@ public abstract class Enemy : MonoBehaviour
         IsDestroyed = true;
         Moving = false;
         Log.current.AddEvent("E" + _turnOrder + " has been killed");
-        GameEvents.current.OnEndEnemyTurn -= OnEndEnemyTurn;
+        BattleEvents.Current.OnEndEnemyTurn -= OnEndEnemyTurn;
         ActiveEnemiesManager.current.DestroyEnemy(this);
     }
 }

@@ -39,10 +39,10 @@ public class ActiveEnemiesManager : MonoBehaviour
     private void Start()
     {
         _stickManager = StickManager.current;
-        GameEvents.current.OnEnemyMoved += EnemyMoved;
-        GameEvents.current.OnBeginEnemyTurn += BeginEnemyTurn;
-        GameEvents.current.OnEndEnemyTurn += EndEnemyTurn;
-        GameEvents.current.OnEndPlayerTurn += EndPlayerTurn;
+        BattleEvents.Current.OnEnemyMoved += EnemyMoved;
+        BattleEvents.Current.OnBeginEnemyTurn += BeginEnemyTurn;
+        BattleEvents.Current.OnEndEnemyTurn += EndEnemyTurn;
+        BattleEvents.Current.OnEndPlayerTurn += EndPlayerTurn;
     }
 
     private void Update()
@@ -140,7 +140,7 @@ public class ActiveEnemiesManager : MonoBehaviour
         {
             while (enemy.NextMove != 0 && !enemy.IsDestroyed)
             {
-                GameEvents.current.BegunEnemyMovement();
+                BattleEvents.Current.BegunEnemyMovement();
                 
                 // Wait for any planks to execute
                 while (!EtchingManager.current.finishedProcessingEnemyMove)
@@ -164,7 +164,7 @@ public class ActiveEnemiesManager : MonoBehaviour
                 */
                 
                 // Tell everyone about the move
-                GameEvents.current.CharacterMoved();
+                BattleEvents.Current.CharacterMoved();
 
                 // Wait for any planks to execute
                 while (!EtchingManager.current.finishedProcessingEnemyMove)
@@ -244,7 +244,7 @@ public class ActiveEnemiesManager : MonoBehaviour
                 yield return 0;
 
             // Tell everyone about the move
-            GameEvents.current.CharacterMoved();
+            BattleEvents.Current.CharacterMoved();
 
             // Wait for any attacks to execute
             while (!EtchingManager.current.finishedProcessingEnemyMove)

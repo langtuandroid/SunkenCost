@@ -13,8 +13,8 @@ public class DesignCardInfo : DesignInfo
 
     protected override void Start()
     {
-        GameEvents.current.OnPlayerMovedStick += UpdateCostText;
-        GameEvents.current.OnPlayerMovedStick += UpdateCostText;
+        BattleEvents.Current.OnPlayerMovedStick += UpdateCostText;
+        BattleEvents.Current.OnPlayerMovedStick += UpdateCostText;
         base.Start();
     }
     
@@ -37,7 +37,7 @@ public class DesignCardInfo : DesignInfo
 
     private void OnDestroy()
     {
-        GameEvents.current.OnPlayerMovedStick -= UpdateCostText;
-        GameEvents.current.OnPlayerMovedStick -= UpdateCostText;
+        BattleEvents.Current.OnPlayerMovedStick -= UpdateCostText;
+        BattleEvents.Current.OnPlayerMovedStick -= UpdateCostText;
     }
 }

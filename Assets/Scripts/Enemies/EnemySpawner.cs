@@ -12,7 +12,7 @@ public class EnemySpawner : MonoBehaviour
     private Dictionary<string, GameObject> enemyDictionary = new Dictionary<string, GameObject>();
     public Transform startStick;
 
-    private int _round;
+    private int _turn;
     private void Start()
     {
         for (var i = 0; i < enemyNames.Count; i++)
@@ -20,18 +20,18 @@ public class EnemySpawner : MonoBehaviour
             enemyDictionary.Add(enemyNames[i], enemyPrefabs[i]);
         }
 
-        GameEvents.current.OnEndEnemyTurn += SpawnNewRound;
-        GameEvents.current.OnBeginGame += SpawnNewRound;
+        BattleEvents.Current.OnEndEnemyTurn += SpawnNewRound;
+        BattleEvents.Current.OnBeginGame += SpawnNewRound;
     }
 
     private void SpawnNewRound()
     {
-        _round = BattleManager.Current.Round + 1;
+        _turn = BattleManager.Current.Turn + 1;
         
         var newEnemies = GetNewRound();
 
         // Spawn boss every 16 rounds
-        if (_round % 16 == 0)
+        if (_turn % 16 == 0)
         {
             newEnemies = new List<string>();
             newEnemies.Add("Boss");
@@ -55,7 +55,7 @@ public class EnemySpawner : MonoBehaviour
         // For now
         var newEnemies = new List<string>();
 
-            var amountToSpawn = Mathf.Floor(_round / 10f) + 1;
+            var amountToSpawn = Mathf.Floor((_turn + (GameProgress.BattleNumber * BattleManager.NumberOfTurns)) / (BattleManager.NumberOfTurns * 2f)) + 1;
             for (var i = 0; i < amountToSpawn; i++)
             {
                 // Count -1 to not include boss

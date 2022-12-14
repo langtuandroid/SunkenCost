@@ -99,14 +99,14 @@ public class TutorialManager : MonoBehaviour
 
     private void Start()
     {
-        GameEvents.current.OnOfferDesigns += ExecuteNextTutorialStep;
-        GameEvents.current.OnPlayerBoughtStick += ExecuteNextTutorialStep;
-        GameEvents.current.OnBeginEnemyTurn += ExecuteNextTutorialStep;
-        GameEvents.current.OnPlayerMovedStick += ExecuteNextTutorialStep;
-        GameEvents.current.OnBeginPlayerTurn += ExecuteNextTutorialStep;
+        BattleEvents.Current.OnOfferDesigns += ExecuteNextTutorialStep;
+        BattleEvents.Current.OnPlayerBoughtStick += ExecuteNextTutorialStep;
+        BattleEvents.Current.OnBeginEnemyTurn += ExecuteNextTutorialStep;
+        BattleEvents.Current.OnPlayerMovedStick += ExecuteNextTutorialStep;
+        BattleEvents.Current.OnBeginPlayerTurn += ExecuteNextTutorialStep;
         SetVisibility(true);
         
-        NextRoundButton.current.CanClick(false);
+        NextTurnButton.Current.CanClick(false);
         
         // Start the sequence
         _placeInTutorialSequence = -1;
@@ -192,13 +192,13 @@ public class TutorialManager : MonoBehaviour
 
     public void SkipTutorial()
     {
-        GameEvents.current.OnOfferDesigns -= ExecuteNextTutorialStep;
-        GameEvents.current.OnPlayerBoughtStick -= ExecuteNextTutorialStep;
-        GameEvents.current.OnBeginEnemyTurn -= ExecuteNextTutorialStep;
-        GameEvents.current.OnPlayerMovedStick -= ExecuteNextTutorialStep;
-        GameEvents.current.OnBeginPlayerTurn -= ExecuteNextTutorialStep;
+        BattleEvents.Current.OnOfferDesigns -= ExecuteNextTutorialStep;
+        BattleEvents.Current.OnPlayerBoughtStick -= ExecuteNextTutorialStep;
+        BattleEvents.Current.OnBeginEnemyTurn -= ExecuteNextTutorialStep;
+        BattleEvents.Current.OnPlayerMovedStick -= ExecuteNextTutorialStep;
+        BattleEvents.Current.OnBeginPlayerTurn -= ExecuteNextTutorialStep;
         
-        NextRoundButton.current.CanClick(true);
+        NextTurnButton.Current.CanClick(true);
 
         Music.current.SelectSong(1);
 
@@ -300,7 +300,7 @@ public class TutorialManager : MonoBehaviour
     private void AskToDragAnotherPlankOffer()
     {
         UnHighlight();
-        GameEvents.current.OnOfferDesigns -= ExecuteNextTutorialStep;
+        BattleEvents.Current.OnOfferDesigns -= ExecuteNextTutorialStep;
         
         _popupWithButton.Move(0, 0);
         _popupWithButtonText.text = "Drag this plank to either side of your first.";
@@ -323,20 +323,20 @@ public class TutorialManager : MonoBehaviour
         
         
         SetVisibility(false);
-        GameEvents.current.OnOfferDesigns += HidePopup;
-        NextRoundButton.current.CanClick(false);
+        BattleEvents.Current.OnOfferDesigns += HidePopup;
+        NextTurnButton.Current.CanClick(false);
     }
 
     private void HidePopup()
     {
-        GameEvents.current.OnOfferDesigns -= HidePopup;
+        BattleEvents.Current.OnOfferDesigns -= HidePopup;
     }
 
     private void PlayerMoves()
     {
         SetVisibility(true);
-        GameEvents.current.OnPlayerMovedStick -= ExecuteNextTutorialStep;
-        GameEvents.current.OnPlayerBoughtStick -= ExecuteNextTutorialStep;
+        BattleEvents.Current.OnPlayerMovedStick -= ExecuteNextTutorialStep;
+        BattleEvents.Current.OnPlayerBoughtStick -= ExecuteNextTutorialStep;
         UnHighlight();
         
         _popupWithButton.Move(0, 0);
@@ -353,20 +353,20 @@ public class TutorialManager : MonoBehaviour
         
         _arrow.Move(-250, 0, -1);
         
-        NextRoundButton.current.CanClick(true);
+        NextTurnButton.Current.CanClick(true);
     }
 
     private void WaitForPlayerMove()
     {
         UnHighlight();
         SetVisibility(false);
-        GameEvents.current.OnBeginEnemyTurn -= ExecuteNextTutorialStep;
+        BattleEvents.Current.OnBeginEnemyTurn -= ExecuteNextTutorialStep;
     }
 
     private void FinalMessage()
     {
-        GameEvents.current.OnBeginPlayerTurn -= ExecuteNextTutorialStep;
-        GameEvents.current.OnBeginPlayerTurn += CheckForEnemyOnLastStick;
+        BattleEvents.Current.OnBeginPlayerTurn -= ExecuteNextTutorialStep;
+        BattleEvents.Current.OnBeginPlayerTurn += CheckForEnemyOnLastStick;
         _subscribedToOnBeingPlayerTurn = true;
         SetVisibility(true);
         
@@ -415,12 +415,12 @@ public class TutorialManager : MonoBehaviour
     private void WaitForBoss()
     {
         SetVisibility(false);
-        GameEvents.current.OnBossSpawned += ExecuteNextTutorialStep;
+        BattleEvents.Current.OnBossSpawned += ExecuteNextTutorialStep;
     }
 
     private void PointOutBoss()
     {
-        GameEvents.current.OnBossSpawned -= ExecuteNextTutorialStep;
+        BattleEvents.Current.OnBossSpawned -= ExecuteNextTutorialStep;
         SetVisibility(true);
 
         _popupWithButton.Move(0, 0);
@@ -447,17 +447,17 @@ public class TutorialManager : MonoBehaviour
         
         _firstEnemy = enemiesOnStick[0];
         ExecuteNextTutorialStep();
-        GameEvents.current.OnBeginPlayerTurn -= CheckForEnemyOnLastStick;
+        BattleEvents.Current.OnBeginPlayerTurn -= CheckForEnemyOnLastStick;
         _subscribedToOnBeingPlayerTurn = false;
         _subscribedToOnSticksUpdated = true;
-        GameEvents.current.OnSticksUpdated += CheckForZoomOut;
+        BattleEvents.Current.OnSticksUpdated += CheckForZoomOut;
     }
 
     private void CheckForZoomOut()
     {
         if (StickManager.current.stickCount < 5) return;
             
-        GameEvents.current.OnSticksUpdated -= CheckForZoomOut;
+        BattleEvents.Current.OnSticksUpdated -= CheckForZoomOut;
         _subscribedToOnSticksUpdated = false;
         
         ExecuteNextTutorialStep();
@@ -465,7 +465,7 @@ public class TutorialManager : MonoBehaviour
 
     private void OnDestroy()
     {
-        if (_subscribedToOnBeingPlayerTurn) GameEvents.current.OnBeginPlayerTurn -= CheckForEnemyOnLastStick;
-        if (_subscribedToOnSticksUpdated) GameEvents.current.OnSticksUpdated -= CheckForZoomOut;
+        if (_subscribedToOnBeingPlayerTurn) BattleEvents.Current.OnBeginPlayerTurn -= CheckForEnemyOnLastStick;
+        if (_subscribedToOnSticksUpdated) BattleEvents.Current.OnSticksUpdated -= CheckForZoomOut;
     }
 }

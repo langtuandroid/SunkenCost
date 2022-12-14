@@ -21,10 +21,11 @@ public class BattleManager : MonoBehaviour
     
     public GameState gameState = GameState.PlayerTurn;
     public const float AttackTime = 0.6f;
+    public static readonly int NumberOfTurns = 6;
     
     private Random _random = new Random();
 
-    public int Round { get; private set; } = 0;
+    public int Turn { get; private set; } = 0;
 
     private void Awake()
     {
@@ -42,9 +43,9 @@ public class BattleManager : MonoBehaviour
     {
         GlobalEvents.current.LoadedLevel();
         
-        GameEvents.current.OnDesignOfferAccepted += DesignOfferAccepted;
-        GameEvents.current.OnOfferDesigns += OfferingDesigns;
-        GameEvents.current.OnBossKilled += BossKilled;
+        BattleEvents.Current.OnDesignOfferAccepted += DesignOfferAccepted;
+        BattleEvents.Current.OnOfferDesigns += OfferingDesigns;
+        BattleEvents.Current.OnBossKilled += BossKilled;
         
         foreach (var design in Deck.Designs)
         {
@@ -52,8 +53,8 @@ public class BattleManager : MonoBehaviour
             EtchingManager.current.CreateEtching(StickManager.current.GetStick(StickManager.current.stickCount-1), design);
         }
         
-        GameEvents.current.BeginGame();
-        Round = 1;
+        BattleEvents.Current.BeginGame();
+        Turn = 1;
     }
 
     // Update is called once per frame
@@ -88,7 +89,7 @@ public class BattleManager : MonoBehaviour
 
         if (gameState == GameState.EnemyTurn && EtchingManager.current.finishedProcessingEnemyMove && ActiveEnemiesManager.current.finishedProcessingEnemyTurn)
         {
-            GameEvents.current.EndEnemyTurn();
+            BattleEvents.Current.EndEnemyTurn();
             BeginPlayerTurn();
         }
 
@@ -105,20 +106,22 @@ public class BattleManager : MonoBehaviour
         // LATER - chane to just NoTurn
         if (gameState == GameState.PlayerTurn)
         {
-            if (Round == 2)
+            if (Turn > NumberOfTurns)
             {
-                Deck.Designs = EtchingManager.current.etchingOrder.Select(etching => etching.design).ToList();
-
+                //Deck.Designs = EtchingManager.current.etchingOrder.Select(etching => etching.design).ToList();
+                GameProgress.BattleNumber++;
                 MainManager.Current.LoadNextOfferScreen();
             }
-            
-            GameEvents.current.EndPlayerTurn();
-            WhoseTurnText.current.EnemiesTurn();
-            NextRoundButton.current.CanClick(false);
-            InGameSfxManager.current.NextTurn();
+            else
+            {
+                BattleEvents.Current.EndPlayerTurn();
+                WhoseTurnText.current.EnemiesTurn();
+                NextTurnButton.Current.CanClick(false);
+                InGameSfxManager.current.NextTurn();
 
-            // Give the game a frame to catch up
-            StartCoroutine(ProcessTurnChangeover());
+                // Give the game a frame to catch up
+                StartCoroutine(ProcessTurnChangeover());
+            }
 
             return true;
         }
@@ -132,11 +135,11 @@ public class BattleManager : MonoBehaviour
         InGameSfxManager.current.BeginTurn();
         WhoseTurnText.current.PlayersTurn();
             
-        GameEvents.current.BeginPlayerTurn();
+        BattleEvents.Current.BeginPlayerTurn();
             
-        NextRoundButton.current.CanClick(true);
+        NextTurnButton.Current.CanClick(true);
             
-        Round++;
+        Turn++;
     }
 
     private void OfferingDesigns()
@@ -157,10 +160,10 @@ public class BattleManager : MonoBehaviour
 
     public void SkipToBoss()
     {
-        var alterAmount = 16 / Round;
+        var alterAmount = 16 / Turn;
         if (alterAmount > 10) alterAmount = 10;
         InventoryManager.current.AlterGold(alterAmount);
-        Round = 15;
+        Turn = 15;
     }
 
     public void OutOfLives()
@@ -173,6 +176,6 @@ public class BattleManager : MonoBehaviour
     {
         yield return new WaitForSeconds(0.3f);
         gameState = GameState.EnemyTurn;
-        GameEvents.current.BeginEnemyTurn();
+        BattleEvents.Current.BeginEnemyTurn();
     }
 }

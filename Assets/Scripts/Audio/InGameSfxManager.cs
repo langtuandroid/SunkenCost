@@ -46,10 +46,10 @@ public class InGameSfxManager : MonoBehaviour
 
     private void LoadedLevel()
     {
-        GameEvents.current.OnPlayerBoughtStick += MovedStick;
-        GameEvents.current.OnPlayerMovedStick += MovedStick;
+        BattleEvents.Current.OnPlayerBoughtStick += MovedStick;
+        BattleEvents.Current.OnPlayerMovedStick += MovedStick;
 
-        GameEvents.current.OnOfferDesigns += OfferedDesigns;
+        BattleEvents.Current.OnOfferDesigns += OfferedDesigns;
     }
 
     private void OfferedDesigns()
@@ -125,9 +125,9 @@ public class InGameSfxManager : MonoBehaviour
 
     private void OnDestroy()
     {
-        if (!GameEvents.current) return;
+        if (!BattleEvents.Current) return;
         
-        GameEvents.current.OnPlayerBoughtStick -= MovedStick;
-        GameEvents.current.OnPlayerMovedStick -= MovedStick;
+        BattleEvents.Current.OnPlayerBoughtStick -= MovedStick;
+        BattleEvents.Current.OnPlayerMovedStick -= MovedStick;
     }
 }

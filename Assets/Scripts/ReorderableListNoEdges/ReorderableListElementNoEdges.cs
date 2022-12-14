@@ -417,7 +417,7 @@ namespace UnityEngine.UI.Extensions
                     // I DID THIS - Tell Event that we've moved something
                     if (_fromIndex != _fakeElement.GetSiblingIndex() - 1)
                     {
-                        GameEvents.current.PlayerMovedStick();
+                        BattleEvents.Current.PlayerMovedStick();
                     }
 
                     //If the item is transferable, it can be dragged out again
