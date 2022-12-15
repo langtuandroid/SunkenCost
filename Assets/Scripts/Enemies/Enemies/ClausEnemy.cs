@@ -8,8 +8,8 @@ public class ClausEnemy : Enemy
     protected override void Awake()
     {
         Name = "C'laus";
-        MoveMax = 3;
-        MoveMin = 2;
+        MoveSet.Add(2);
+        MoveSet.Add(3);
         MaxHealth = 10;
         Gold = 1;
 

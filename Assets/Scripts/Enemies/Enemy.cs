@@ -20,7 +20,8 @@ public abstract class Enemy : MonoBehaviour
     protected int Health;
     public float Size { get; protected set; } = 1;
 
-    private Queue<int> moves = new Queue<int>();
+    protected List<int> MoveSet = new List<int>();
+    private Queue<int> _moves = new Queue<int>();
 
     public EnemyStats stats;
     private EnemyAnimationController _animationController;
@@ -83,6 +84,11 @@ public abstract class Enemy : MonoBehaviour
     protected virtual void Start()
     {
         ChangeHealth(MaxHealth);
+        
+        foreach (var move in MoveSet)
+        {
+            _moves.Enqueue(move);
+        }
         SetNextMoveSequence();
         
         BattleEvents.Current.OnEndEnemyTurn += OnEndEnemyTurn;
@@ -119,7 +125,8 @@ public abstract class Enemy : MonoBehaviour
 
     private void SetNextMoveSequence()
     {
-        var newMove = Random.Range(MoveMin, MoveMax + 1);
+        var newMove = _moves.Dequeue();
+        _moves.Enqueue(newMove);
 
         if (newMove >= 3 && BattleManager.Current.Turn == 0) newMove = 1;
         /*
@@ -236,9 +243,19 @@ public abstract class Enemy : MonoBehaviour
         return false;
     }
 
-    public void Block()
+    public void Block(int blockAmount)
     {
-        NextMove = 0;
+        if (NextMove > 0)
+        {
+            NextMove -= blockAmount;
+            if (NextMove < 0) NextMove = 0;
+        }
+        else
+        {
+            NextMove += blockAmount;
+            if (NextMove > 0) NextMove = 0;
+        }
+
         UpdateMovementText();
     }
 

@@ -358,7 +358,6 @@
           <e p="Deck" t="Include">
             <e p="Deck.cs" t="Include" />
             <e p="Design.cs" t="Include" />
-            <e p="DesignCardInfo.cs" t="Include" />
             <e p="DesignCategory.cs" t="Include" />
             <e p="DesignInfo.cs" t="Include" />
             <e p="Designs.cs" t="Include" />
@@ -422,6 +421,7 @@
           <e p="MainManager.cs" t="Include" />
           <e p="OfferScreen" t="Include">
             <e p="DesignCard.cs" t="Include" />
+            <e p="DesignCardInfo.cs" t="Include" />
             <e p="NextBattleButton.cs" t="Include" />
             <e p="OfferManager.cs" t="Include" />
             <e p="OfferRow.cs" t="Include" />
@@ -451,7 +451,7 @@
             <e p="PlayGameButton.cs" t="Include" />
             <e p="QuitButton.cs" t="Include" />
             <e p="QuitButtonFilm.cs" t="Include" />
-            <e p="StickboardScaler.cs" t="Include" />
+            <e p="ScaleWithScreen.cs" t="Include" />
             <e p="Tooltip" t="Include">
               <e p="EnemyTooltipTrigger.cs" t="Include" />
               <e p="ToolTip.cs" t="Include" />

@@ -31,16 +31,15 @@ public class DesignManager : MonoBehaviour
     public static Dictionary<string, int> Rarities { get; } = new Dictionary<string, int>()
     {
         // Melee
-        //{"Strike", 0},
-        {"DoubleStrike", 0},
+        {"Stab", 0},
         
         // Ranged
-        //{"Slinger", 0},
+        {"Slinger", 0},
         {"Archer", 0},
         {"Marksman", 1},
         
         // Area
-        //{"Stomp", 0},
+        {"Stomp", 0},
         {"Splatter", 1},
         
         // Block
@@ -52,7 +51,7 @@ public class DesignManager : MonoBehaviour
         /* Hop
         {"Hop", 0}, */
         
-        {"Reverse", 0},
+        {"Reverse", 1},
         {"Poison", 0}
     };
 
@@ -197,7 +196,7 @@ public class DesignManager : MonoBehaviour
                 description = "Attacks every enemy landing within " + distance + " away for\n" + damage?.Value + " damage "+ usesPerTurn?.Value + "x per turn";
                 break;
             case DesignCategory.Block: 
-                description = "Stops an enemy leaving this plank "+ usesPerTurn?.Value + "x per turn";
+                description = "Removes " + stats[St.Block].Value + " movement from an enemy leaving this plank "+ usesPerTurn?.Value + "x per turn";
                 break;
             case DesignCategory.Boost: 
                 description = "Boosts damage of adjacent Attack planks by " + boost?.Value;
@@ -206,7 +205,7 @@ public class DesignManager : MonoBehaviour
                 description = "Enemies leaving this plank skip the next plank";
                 break;
             case DesignCategory.Reverse:
-                description = "Reverses the direction of an enemy leaving this plank " + usesPerTurn?.Value + "x per turn";
+                description = "Reverses the direction of an enemy leaving this plank " + usesPerTurn?.Value + "x per turn. No upgrades.";
                 break;
             case DesignCategory.Poison:
                 description = "Applies " + poison?.Value + " poison to an enemy landing on this plank " + usesPerTurn?.Value + "x per turn";

@@ -16,7 +16,7 @@ namespace Etchings
             
             if (!TestStickMovementActivatedEffect()) return;
             
-            designInfo.RefreshCard();
+            designInfo.Refresh();
             if (colorWhenActivated) StartCoroutine(ColorForActivate());
         }
         

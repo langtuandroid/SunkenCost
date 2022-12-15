@@ -12,7 +12,8 @@ public enum St
     MaxRange,
     Boost,
     Poison,
-    Hop
+    Hop,
+    Block
 }
 
 public abstract class Design
@@ -22,6 +23,8 @@ public abstract class Design
     
     public Color Color { get; protected set; }
     public bool Limitless { get; private set; }
+    public int Level { get; private set; }
+    public bool Upgradeable { get; protected set; } = true;
 
     public int UsesUsedThisTurn;
 
@@ -46,10 +49,27 @@ public abstract class Design
         Stats.Add(st, new Stat(value));
     }
 
+    protected void ModifyStat(St st, int value)
+    {
+        Stats[st].AddModifier(new StatModifier(value, StatModType.Flat));
+    }
+
     public int GetStat(St st)
     {
         Stats.TryGetValue(st, out var stat);
         if (stat != null) return stat.Value;
         return -1;
     }
+
+    public void LevelUp()
+    {
+        if (!Upgradeable) return;
+        Level++;
+
+        if (Level % 2 == 0) EvenLevelUp();
+        else OddLevelUp();
+    }
+
+    protected abstract void OddLevelUp();
+    protected abstract void EvenLevelUp();
 }

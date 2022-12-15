@@ -22,7 +22,7 @@ namespace Etchings
                 Log.current.AddEvent(design.Title + " on S" + Stick.GetStickNumber() + " activates against E" + enemy.name +
                                      " on S" + enemy.StickNum);
                 
-                designInfo.RefreshCard();
+                designInfo.Refresh();
                 return true;
             }
 

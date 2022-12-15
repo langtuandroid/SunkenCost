@@ -3,8 +3,10 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class StickboardScaler : MonoBehaviour
+public class ScaleWithScreen : MonoBehaviour
 {
+    [SerializeField] private float maxScale = 1f;
+    
     private Vector2 _resolution;
 
     private RectTransform _rectTransform;
@@ -30,7 +32,7 @@ public class StickboardScaler : MonoBehaviour
     private void SetScale()
     {
         var scale = (16f / 9f) / (_resolution.x / _resolution.y);
-        if (scale > 1f) scale = 1f;
+        if (scale > maxScale) scale = maxScale;
         _rectTransform.localScale = new Vector3(scale, scale, 1);
     }
 }

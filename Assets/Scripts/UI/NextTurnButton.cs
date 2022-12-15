@@ -34,7 +34,7 @@ public class NextTurnButton : InGameButton
 
     private void UpdateText()
     {
-        if (BattleManager.Current.Turn >= BattleManager.NumberOfTurns)
+        if (BattleManager.Current.Turn == BattleManager.NumberOfTurns + 1)
         {
             _textMeshProUGUI.text = "END BATTLE";
         }

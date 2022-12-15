@@ -22,7 +22,7 @@ public abstract class CharPreMovementActivatedEffect : ActiveEtching
                                  " on S" + enemy.StickNum);
             
             enemy.Stick.SetTempColour(design.Color);
-            designInfo.RefreshCard();
+            designInfo.Refresh();
             return true;
         }
 

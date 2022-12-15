@@ -16,20 +16,15 @@ public class Stab : Design
         
         base.Init();
     }
-}
 
-public class DoubleStrike : Design
-{
-    protected override void Init()
+    protected override void OddLevelUp()
     {
-        Title = "Double Strike";
-        Category = DesignCategory.Melee;
-        Color = Color.cyan;
-        AddStat(St.Cost, 2);
-        AddStat(St.UsesPerTurn, 2);
-        AddStat(St.Damage, 4);
-        
-        base.Init();
+        ModifyStat(St.Damage, 1);
+    }
+
+    protected override void EvenLevelUp()
+    {
+        ModifyStat(St.UsesPerTurn, 1);
     }
 }
 #endregion
@@ -50,6 +45,16 @@ public class Slinger : Design
 
         base.Init();
     }
+    
+    protected override void OddLevelUp()
+    {
+        ModifyStat(St.Damage, 1);
+    }
+
+    protected override void EvenLevelUp()
+    {
+        ModifyStat(St.UsesPerTurn, 1);
+    }
 }
 
 public class Archer : Design
@@ -67,6 +72,16 @@ public class Archer : Design
 
         base.Init();
     }
+    
+    protected override void OddLevelUp()
+    {
+        ModifyStat(St.Damage, 1);
+    }
+
+    protected override void EvenLevelUp()
+    {
+        ModifyStat(St.UsesPerTurn, 1);
+    }
 }
 
 public class Marksman : Design
@@ -78,11 +93,21 @@ public class Marksman : Design
         Color = Color.red;
         AddStat(St.Cost, 3);
         AddStat(St.UsesPerTurn, 1);
-        AddStat(St.Damage, 10);
+        AddStat(St.Damage, 6);
         AddStat(St.MinRange, 3);
         AddStat(St.MaxRange, 3);
 
         base.Init();
+    }
+    
+    protected override void OddLevelUp()
+    {
+        ModifyStat(St.Damage, 1);
+    }
+
+    protected override void EvenLevelUp()
+    {
+        ModifyStat(St.UsesPerTurn, 1);
     }
 }
 
@@ -103,6 +128,16 @@ public class Stomp : Design
 
         base.Init();
     }
+    
+    protected override void OddLevelUp()
+    {
+        ModifyStat(St.Damage, 1);
+    }
+
+    protected override void EvenLevelUp()
+    {
+        ModifyStat(St.UsesPerTurn, 1);
+    }
 }
 
 public class Splatter : Design
@@ -118,6 +153,16 @@ public class Splatter : Design
         AddStat(St.MaxRange, 2);
 
         base.Init();
+    }
+    
+    protected override void OddLevelUp()
+    {
+        ModifyStat(St.Damage, 1);
+    }
+
+    protected override void EvenLevelUp()
+    {
+        ModifyStat(St.UsesPerTurn, 1);
     }
 }
 #endregion
@@ -139,6 +184,16 @@ public class Boost : Design
 
         base.Init();
     }
+    
+    protected override void OddLevelUp()
+    {
+        ModifyStat(St.Boost, 1);
+    }
+
+    protected override void EvenLevelUp()
+    {
+        ModifyStat(St.Boost, 1);
+    }
 }
 
 #endregion
@@ -156,8 +211,18 @@ public class Impede : Design
         AddStat(St.UsesPerTurn, 1);
         AddStat(St.MinRange, 0);
         AddStat(St.MaxRange, 0);
-
+        AddStat(St.Block, 1);
         base.Init();
+    }
+    
+    protected override void OddLevelUp()
+    {
+        ModifyStat(St.Block, 1);
+    }
+
+    protected override void EvenLevelUp()
+    {
+        ModifyStat(St.UsesPerTurn, 1);
     }
 }
 
@@ -168,10 +233,21 @@ public class Reverse : Design
         Title = "Reverse";
         Category = DesignCategory.Reverse;
         Color = new Color(0f, 0.72f, 0.55f);
+        Upgradeable = false;
         AddStat(St.Cost, 3);
         AddStat(St.UsesPerTurn, 1);
 
         base.Init();
+    }
+
+    protected override void OddLevelUp()
+    {
+        throw new System.NotImplementedException();
+    }
+
+    protected override void EvenLevelUp()
+    {
+        throw new System.NotImplementedException();
     }
 }
 
@@ -186,6 +262,14 @@ public class Hop : Design
         AddStat(St.Hop, 1);
 
         base.Init();
+    }
+    
+    protected override void OddLevelUp()
+    {
+    }
+
+    protected override void EvenLevelUp()
+    {
     }
 }
 
@@ -206,6 +290,16 @@ public class Poison : Design
         AddStat(St.Poison, 3);
 
         base.Init();
+    }
+    
+    protected override void OddLevelUp()
+    {
+        ModifyStat(St.Poison, 1);
+    }
+
+    protected override void EvenLevelUp()
+    {
+        ModifyStat(St.UsesPerTurn, 1);
     }
 }
 

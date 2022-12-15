@@ -12,7 +12,7 @@ namespace Etchings
 
             if (currentEnemyStickNum != stickNum || currentEnemy.NextMove == 0) return false;
             
-            currentEnemy.Block();
+            currentEnemy.Block(design.GetStat(St.Block));
             UsesUsedThisTurn += 1;
             return true;
 

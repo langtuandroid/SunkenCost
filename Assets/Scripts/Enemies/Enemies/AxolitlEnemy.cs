@@ -5,14 +5,15 @@ using UnityEngine;
 
 public class AxolitlEnemy : Enemy
 {
-    private int _healingAmount = 2;
+    private int _healingAmount = 5;
     
     protected override void Awake()
     {
         Name = "Axolitl";
-        MoveMax = 2;
-        MoveMin = 0;
-        MaxHealth = 18;
+        MoveSet.Add(1);
+        MoveSet.Add(0);
+        MoveSet.Add(2);
+        MaxHealth = 15;
         Gold = 1;
 
         base.Awake();

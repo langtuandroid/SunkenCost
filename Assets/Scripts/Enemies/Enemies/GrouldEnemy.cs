@@ -8,9 +8,9 @@ public class GrouldEnemy : Enemy
     protected override void Awake()
     {
         Name = "Grould";
-        MoveMax = 1;
-        MoveMin = 0;
-        MaxHealth = 14;
+        MoveSet.Add(1);
+        MoveSet.Add(0);
+        MaxHealth = 12;
         Gold = 1;
 
         base.Awake();

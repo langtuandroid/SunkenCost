@@ -8,11 +8,15 @@ using UnityEngine.EventSystems;
 public class DesignCard : MonoBehaviour
 {
     [SerializeField] private Transform plusButton;
-    private Design _design;
+
+    private DesignInfo _designInfo;
+    public Design Design => _designInfo.design;
+
+    private List<DesignCard> _duplicates;
 
     private void Awake()
     {
-        _design = GetComponentInChildren<DesignInfo>().design;
+        _designInfo = GetComponentInChildren<DesignInfo>();
     }
 
     private void Start()
@@ -22,7 +26,20 @@ public class DesignCard : MonoBehaviour
 
     private void CardsUpdated()
     {
-        var duplicates = OfferManager.Current.Designs.Where(d => d.Title == _design.Title).ToList();
-        plusButton.gameObject.SetActive(duplicates.Count > 1);
+        if (!Design.Upgradeable) return;
+        
+        _duplicates = OfferManager.Current.DesignCards.Where(d => d.Design.Title == Design.Title).Where(d => d != this).ToList();
+        plusButton.gameObject.SetActive(_duplicates.Count > 0);
+        _designInfo.Refresh();
+    }
+
+    public void Merge()
+    {
+        OfferManager.Current.Merge(this, _duplicates[0]);
+    }
+
+    private void OnDestroy()
+    {
+        OfferScreenEvents.Current.OnGridsUpdated -= CardsUpdated;
     }
 }

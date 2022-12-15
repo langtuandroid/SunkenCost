@@ -19,6 +19,6 @@ public abstract class DamageEtching : CharMovementActivatedEtching
         if (!design.Stats.ContainsKey(stat)) return;
         
         design.Stats[stat].AddModifier(new StatModifier(amount, StatModType.Flat));
-        designInfo.RefreshCard();
+        designInfo.Refresh();
     }
 }

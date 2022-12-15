@@ -21,7 +21,7 @@ public class BattleManager : MonoBehaviour
     
     public GameState gameState = GameState.PlayerTurn;
     public const float AttackTime = 0.6f;
-    public static readonly int NumberOfTurns = 6;
+    public static readonly int NumberOfTurns = 5;
     
     private Random _random = new Random();
 

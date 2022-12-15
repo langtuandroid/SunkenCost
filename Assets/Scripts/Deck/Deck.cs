@@ -12,4 +12,11 @@ public static class Deck
         get => _designs;
         set => _designs = value;
     }
+
+    static Deck()
+    {
+        _designs.Add(new Stab());
+        _designs.Add(new Slinger());
+        _designs.Add(new Impede());
+    }
 }
