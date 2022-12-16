@@ -63,13 +63,13 @@ public abstract class Design
 
     public void LevelUp()
     {
-        if (!Upgradeable) return;
+        if (!Upgradeable || Level >= 2) return;
         Level++;
 
-        if (Level % 2 == 0) EvenLevelUp();
-        else OddLevelUp();
+        if (Level % 2 == 0) SecondLevelUp();
+        else FirstLevelUp();
     }
 
-    protected abstract void OddLevelUp();
-    protected abstract void EvenLevelUp();
+    protected abstract void FirstLevelUp();
+    protected abstract void SecondLevelUp();
 }

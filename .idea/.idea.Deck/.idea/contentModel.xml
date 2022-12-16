@@ -416,6 +416,7 @@
           <e p="Items" t="Include">
             <e p="ExtraTurnItem.cs" t="Include" />
             <e p="Item.cs" t="Include" />
+            <e p="PoisonTipsItem.cs" t="Include" />
           </e>
           <e p="Log.cs" t="Include" />
           <e p="MainManager.cs" t="Include" />

@@ -28,7 +28,9 @@ public class DesignCard : MonoBehaviour
     {
         if (!Design.Upgradeable) return;
         
-        _duplicates = OfferManager.Current.DesignCards.Where(d => d.Design.Title == Design.Title).Where(d => d != this).ToList();
+        _duplicates = OfferManager.Current.DesignCards.Where(d => d.Design.Title == Design.Title)
+            .Where(d => d != this)
+            .Where(d => d.Design.Level < 2).ToList();
         plusButton.gameObject.SetActive(_duplicates.Count > 0);
         _designInfo.Refresh();
     }

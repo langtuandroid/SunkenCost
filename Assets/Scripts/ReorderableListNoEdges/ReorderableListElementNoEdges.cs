@@ -73,7 +73,7 @@ namespace UnityEngine.UI.Extensions
                 return;
 
             //Can't drag, return...
-            if (!_reorderableList.IsDraggable || !this.IsGrabbable)
+            if (!_reorderableList.IsDraggable || !this.IsGrabbable || PlayerController.current.IsOutOfMoves)
             {
                 _draggingObject = null;
                 return;

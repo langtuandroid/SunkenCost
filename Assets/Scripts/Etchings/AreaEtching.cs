@@ -28,7 +28,7 @@ namespace Etchings
             
             foreach (var enemy in enemies)
             {
-                enemy.Damage(Damage);
+                DamageEnemy(enemy);
             }
             UsesUsedThisTurn++;
             return true;

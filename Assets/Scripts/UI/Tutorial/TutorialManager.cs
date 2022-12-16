@@ -100,7 +100,7 @@ public class TutorialManager : MonoBehaviour
     private void Start()
     {
         BattleEvents.Current.OnOfferDesigns += ExecuteNextTutorialStep;
-        BattleEvents.Current.OnPlayerBoughtStick += ExecuteNextTutorialStep;
+        BattleEvents.Current.OnStickAdded += ExecuteNextTutorialStep;
         BattleEvents.Current.OnBeginEnemyTurn += ExecuteNextTutorialStep;
         BattleEvents.Current.OnPlayerMovedStick += ExecuteNextTutorialStep;
         BattleEvents.Current.OnBeginPlayerTurn += ExecuteNextTutorialStep;
@@ -193,7 +193,7 @@ public class TutorialManager : MonoBehaviour
     public void SkipTutorial()
     {
         BattleEvents.Current.OnOfferDesigns -= ExecuteNextTutorialStep;
-        BattleEvents.Current.OnPlayerBoughtStick -= ExecuteNextTutorialStep;
+        BattleEvents.Current.OnStickAdded -= ExecuteNextTutorialStep;
         BattleEvents.Current.OnBeginEnemyTurn -= ExecuteNextTutorialStep;
         BattleEvents.Current.OnPlayerMovedStick -= ExecuteNextTutorialStep;
         BattleEvents.Current.OnBeginPlayerTurn -= ExecuteNextTutorialStep;
@@ -336,7 +336,7 @@ public class TutorialManager : MonoBehaviour
     {
         SetVisibility(true);
         BattleEvents.Current.OnPlayerMovedStick -= ExecuteNextTutorialStep;
-        BattleEvents.Current.OnPlayerBoughtStick -= ExecuteNextTutorialStep;
+        BattleEvents.Current.OnStickAdded -= ExecuteNextTutorialStep;
         UnHighlight();
         
         _popupWithButton.Move(0, 0);

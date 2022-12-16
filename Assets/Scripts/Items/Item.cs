@@ -5,6 +5,9 @@ namespace Items
 {
     public abstract class Item : MonoBehaviour
     {
+        public string Title { get; protected set; }
+        public string Description { get; protected set; }
+        
         protected void Awake()
         {
             BattleEvents.Current.OnBeginPlayerTurn += OnBeginPlayerTurn;
@@ -15,9 +18,7 @@ namespace Items
             Activate();
         }
 
-        protected virtual void Activate()
-        {
-        }
+        protected abstract void Activate();
 
         protected virtual void OnBeginPlayerTurn()
         {
@@ -35,7 +36,7 @@ namespace Items
         {
         }
 
-        protected void OnDestroy()
+        protected virtual void OnDestroy()
         {
             BattleEvents.Current.OnBeginPlayerTurn -= OnBeginPlayerTurn;
             BattleEvents.Current.OnEndPlayerTurn -= OnEndPlayerTurn;

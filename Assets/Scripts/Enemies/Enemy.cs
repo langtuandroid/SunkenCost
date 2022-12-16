@@ -6,6 +6,13 @@ using UnityEngine;
 using UnityEngine.UI;
 using Random = UnityEngine.Random;
 
+public enum DamageSource
+{
+    Plank,
+    Poison,
+    Self
+}
+
 public abstract class Enemy : MonoBehaviour
 {
     public const int EnemyOffset = 100;
@@ -229,7 +236,7 @@ public abstract class Enemy : MonoBehaviour
 
     private void Poison()
     {
-        Damage(stats.Poison);
+        Damage(stats.Poison, DamageSource.Poison);
         InGameSfxManager.current.Poisoned();
         stats.RemovePoison(1);
     }
@@ -264,10 +271,15 @@ public abstract class Enemy : MonoBehaviour
         _aimPosition = newPosition;
     }
 
-    public void Damage(int damage)
+    public void Damage(int damage, DamageSource source)
     {
         ChangeHealth(-damage);
         _animationController.Damage();
+
+        if (source == DamageSource.Plank)
+        {
+            BattleEvents.Current.EnemyAttacked(this);
+        }
     }
     
     protected void Heal(int amount)

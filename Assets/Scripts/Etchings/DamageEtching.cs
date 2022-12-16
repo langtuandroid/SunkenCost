@@ -11,7 +11,7 @@ public abstract class DamageEtching : CharMovementActivatedEtching
 
     protected virtual void DamageEnemy(Enemy enemy)
     {
-        enemy.Damage(Damage);
+        enemy.Damage(Damage, DamageSource.Plank);
     }
 
     public void ModifyStat(St stat, int amount)

@@ -31,7 +31,7 @@ public class EtchingManager : MonoBehaviour
     private void Start()
     {
         BattleEvents.Current.OnPlayerMovedStick += RefreshEtchingOrder;
-        BattleEvents.Current.OnPlayerBoughtStick += RefreshEtchingOrder;
+        BattleEvents.Current.OnStickAdded += RefreshEtchingOrder;
         BattleEvents.Current.OnBeginEnemyTurn += BeginEnemyTurn;
         BattleEvents.Current.OnBeginEnemyMove += BeginEnemyMovement;
         BattleEvents.Current.OnEnemyMoved += EnemyMoved;

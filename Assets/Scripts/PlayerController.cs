@@ -33,7 +33,6 @@ public class PlayerController : MonoBehaviour
     {
         BattleEvents.Current.OnEndEnemyTurn += OnEndEnemyTurn;
         BattleEvents.Current.OnPlayerMovedStick += OnPlayerMovedStick;
-        BattleEvents.Current.OnPlayerBoughtStick += OnPlayerBoughtStick;
         BattleEvents.Current.OnEnemyReachedEnd += OnEnemyReachedEnd;
         BattleEvents.Current.OnRedraw += OnRedraw;
         
@@ -46,11 +45,6 @@ public class PlayerController : MonoBehaviour
     }
 
     private void OnPlayerMovedStick()
-    {
-        UsedMove();
-    }
-    
-    private void OnPlayerBoughtStick()
     {
         UsedMove();
     }
@@ -71,6 +65,7 @@ public class PlayerController : MonoBehaviour
     private void UsedMove()
     {
         MovesUsedThisTurn += 1;
+        HUDManager.current.UpdateMovesText();
     }
 
     public void PlayCard(int cost)

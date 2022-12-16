@@ -28,6 +28,11 @@ public class OfferManager : MonoBehaviour
 
     private void Start()
     {
+        
+    }
+
+    private void CreateCardOfferGrids()
+    {
         var upperGridContent = _upperGrid.GetChild(0);
         foreach (var design in Deck.Designs)
         {

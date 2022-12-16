@@ -17,12 +17,12 @@ public class Stab : Design
         base.Init();
     }
 
-    protected override void OddLevelUp()
+    protected override void FirstLevelUp()
     {
         ModifyStat(St.Damage, 1);
     }
 
-    protected override void EvenLevelUp()
+    protected override void SecondLevelUp()
     {
         ModifyStat(St.UsesPerTurn, 1);
     }
@@ -46,12 +46,12 @@ public class Slinger : Design
         base.Init();
     }
     
-    protected override void OddLevelUp()
+    protected override void FirstLevelUp()
     {
         ModifyStat(St.Damage, 1);
     }
 
-    protected override void EvenLevelUp()
+    protected override void SecondLevelUp()
     {
         ModifyStat(St.UsesPerTurn, 1);
     }
@@ -73,12 +73,12 @@ public class Archer : Design
         base.Init();
     }
     
-    protected override void OddLevelUp()
+    protected override void FirstLevelUp()
     {
         ModifyStat(St.Damage, 1);
     }
 
-    protected override void EvenLevelUp()
+    protected override void SecondLevelUp()
     {
         ModifyStat(St.UsesPerTurn, 1);
     }
@@ -100,12 +100,12 @@ public class Marksman : Design
         base.Init();
     }
     
-    protected override void OddLevelUp()
+    protected override void FirstLevelUp()
     {
         ModifyStat(St.Damage, 1);
     }
 
-    protected override void EvenLevelUp()
+    protected override void SecondLevelUp()
     {
         ModifyStat(St.UsesPerTurn, 1);
     }
@@ -129,12 +129,12 @@ public class Stomp : Design
         base.Init();
     }
     
-    protected override void OddLevelUp()
+    protected override void FirstLevelUp()
     {
         ModifyStat(St.Damage, 1);
     }
 
-    protected override void EvenLevelUp()
+    protected override void SecondLevelUp()
     {
         ModifyStat(St.UsesPerTurn, 1);
     }
@@ -155,12 +155,12 @@ public class Splatter : Design
         base.Init();
     }
     
-    protected override void OddLevelUp()
+    protected override void FirstLevelUp()
     {
         ModifyStat(St.Damage, 1);
     }
 
-    protected override void EvenLevelUp()
+    protected override void SecondLevelUp()
     {
         ModifyStat(St.UsesPerTurn, 1);
     }
@@ -185,12 +185,12 @@ public class Boost : Design
         base.Init();
     }
     
-    protected override void OddLevelUp()
+    protected override void FirstLevelUp()
     {
         ModifyStat(St.Boost, 1);
     }
 
-    protected override void EvenLevelUp()
+    protected override void SecondLevelUp()
     {
         ModifyStat(St.Boost, 1);
     }
@@ -215,12 +215,12 @@ public class Impede : Design
         base.Init();
     }
     
-    protected override void OddLevelUp()
+    protected override void FirstLevelUp()
     {
         ModifyStat(St.Block, 1);
     }
 
-    protected override void EvenLevelUp()
+    protected override void SecondLevelUp()
     {
         ModifyStat(St.UsesPerTurn, 1);
     }
@@ -240,12 +240,12 @@ public class Reverse : Design
         base.Init();
     }
 
-    protected override void OddLevelUp()
+    protected override void FirstLevelUp()
     {
         throw new System.NotImplementedException();
     }
 
-    protected override void EvenLevelUp()
+    protected override void SecondLevelUp()
     {
         throw new System.NotImplementedException();
     }
@@ -264,11 +264,11 @@ public class Hop : Design
         base.Init();
     }
     
-    protected override void OddLevelUp()
+    protected override void FirstLevelUp()
     {
     }
 
-    protected override void EvenLevelUp()
+    protected override void SecondLevelUp()
     {
     }
 }
@@ -292,12 +292,12 @@ public class Poison : Design
         base.Init();
     }
     
-    protected override void OddLevelUp()
+    protected override void FirstLevelUp()
     {
         ModifyStat(St.Poison, 1);
     }
 
-    protected override void EvenLevelUp()
+    protected override void SecondLevelUp()
     {
         ModifyStat(St.UsesPerTurn, 1);
     }

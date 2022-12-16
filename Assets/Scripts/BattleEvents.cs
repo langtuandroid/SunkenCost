@@ -20,23 +20,31 @@ public class BattleEvents : MonoBehaviour
     }
 
     public event Action OnBeginGame;
-    public event Action OnBeginEnemyMove;
-    public event Action OnEnemyMoved;
+    
     public event Action OnEndEnemyTurn;
     public event Action OnEndPlayerTurn;
     public event Action OnBeginPlayerTurn;
     public event Action OnPlayerMovedStick;
-    public event Action OnPlayerBoughtStick;
+    public event Action OnStickAdded;
     public event Action OnBeginEnemyTurn;
     public event Action OnOfferDesigns;
     public event Action OnDesignOfferAccepted;
     public event Action OnSticksUpdated;
-    public event Action OnEnemyReachedEnd;
-    public event Action OnBossSpawned;
-    public event Action OnBossKilled;
+    
+    
     public event Action OnLostLife;
     public event Action OnRedraw;
     public event Action OnLevelUp;
+    
+    
+    public event Action OnBossSpawned;
+    public event Action OnBossKilled;
+    public event Action OnEnemyReachedEnd;
+    public event Action OnBeginEnemyMove;
+    public event Action OnEnemyMoved;
+    public event Action OnEnemyAttacked;
+    
+    public Enemy LastEnemyAttacked { get; private set; }
 
     public void BeginGame()
     {
@@ -89,10 +97,10 @@ public class BattleEvents : MonoBehaviour
         EtchingsUpdated();
     }
     
-    public void PlayerBoughtStick()
+    public void StickAdded()
     {
-        Log.current.AddEvent("PLAYER BOUGHT STICK");
-        OnPlayerBoughtStick?.Invoke();
+        Log.current.AddEvent("STICK ADDED");
+        OnStickAdded?.Invoke();
     }
 
     public void OfferDesigns()
@@ -144,6 +152,12 @@ public class BattleEvents : MonoBehaviour
     public void LevelUp()
     {
         OnLevelUp?.Invoke();
+    }
+
+    public void EnemyAttacked(Enemy enemy)
+    {
+        LastEnemyAttacked = enemy;
+        OnEnemyAttacked?.Invoke();
     }
 
     private IEnumerator GiveSticksTimeToLoad()

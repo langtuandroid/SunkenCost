@@ -82,7 +82,7 @@ public class StickManager : MonoBehaviour
         stickCount++;
         _stickGridController.Refresh();
         _sticks.Add(newStick.GetComponent<Stick>());
-        BattleEvents.Current.PlayerBoughtStick();
+        BattleEvents.Current.StickAdded();
         return newStick;
     }
 

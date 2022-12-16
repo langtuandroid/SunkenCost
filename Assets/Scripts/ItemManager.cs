@@ -36,6 +36,8 @@ public class ItemManager : MonoBehaviour
             var itemName = type.FullName.Remove(type.FullName.Length - 4, 4).Remove(0, 6);
             Items.Add(itemName, type);
         }
+        
+        EquipItem("PoisonTips");
     }
 
     public void EquipItem(string itemName)

@@ -10,7 +10,6 @@ public class HUDManager : MonoBehaviour
     public static HUDManager current;
     
     [SerializeField] private TextMeshProUGUI _movesText;
-    [SerializeField] private TextMeshProUGUI _totalMovesText;
     [SerializeField] private TextMeshProUGUI _roundText;
 
     private List<Heart> _hearts = new List<Heart>();
@@ -38,12 +37,12 @@ public class HUDManager : MonoBehaviour
         {
             _hearts.Add(heartsParentTransform.GetChild(i).GetComponent<Heart>());
         }
+        
+        UpdateMovesText();
     }
 
     private void Update()
     {
-        _movesText.text = (PlayerController.current.MovesPerTurn - PlayerController.current.MovesUsedThisTurn).ToString();
-        _totalMovesText.text = PlayerController.current.MovesPerTurn.ToString();
 
         if (BattleManager.Current.Turn < BattleManager.NumberOfTurns + 1)
             _roundText.text = "TURNS LEFT: " + (BattleManager.NumberOfTurns + 1 - BattleManager.Current.Turn);
@@ -51,6 +50,11 @@ public class HUDManager : MonoBehaviour
         {
             _roundText.text = "LAST TURN!";
         }
+    }
+
+    public void UpdateMovesText()
+    {
+        _movesText.text = (PlayerController.current.MovesPerTurn - PlayerController.current.MovesUsedThisTurn).ToString();
     }
 
     public void UpdateLives()
