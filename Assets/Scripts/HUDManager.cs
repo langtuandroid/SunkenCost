@@ -33,6 +33,8 @@ public class HUDManager : MonoBehaviour
 
     private void Start()
     {
+        BattleEvents.Current.OnBeginPlayerTurn += UpdateTurnText;
+        
         for (var i = 0; i < heartsParentTransform.childCount; i++)
         {
             _hearts.Add(heartsParentTransform.GetChild(i).GetComponent<Heart>());
@@ -41,16 +43,22 @@ public class HUDManager : MonoBehaviour
         UpdateMovesText();
     }
 
-    private void Update()
+    private void UpdateTurnText()
     {
-
-        if (BattleManager.Current.Turn < BattleManager.NumberOfTurns + 1)
+        if (BattleManager.Current.Turn < BattleManager.NumberOfTurns)
+        {
             _roundText.text = "TURNS LEFT: " + (BattleManager.NumberOfTurns + 1 - BattleManager.Current.Turn);
-        else
+        }
+        else if (BattleManager.Current.Turn == BattleManager.NumberOfTurns)
         {
             _roundText.text = "LAST TURN!";
         }
+        else
+        {
+            _roundText.text = "EXTRACTION COMPLETE!";
+        }
     }
+    
 
     public void UpdateMovesText()
     {
@@ -65,5 +73,10 @@ public class HUDManager : MonoBehaviour
         {
             _hearts[i].SetHeart(lives > i);
         }
+    }
+
+    private void OnDestroy()
+    {
+        BattleEvents.Current.OnBeginPlayerTurn -= UpdateTurnText;
     }
 }

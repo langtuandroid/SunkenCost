@@ -1,5 +1,6 @@
 ﻿using System;
 using UnityEngine;
+using UnityEngine.UI;
 
 namespace Items
 {
@@ -7,7 +8,7 @@ namespace Items
     {
         public string Title { get; protected set; }
         public string Description { get; protected set; }
-        
+
         protected void Awake()
         {
             BattleEvents.Current.OnBeginPlayerTurn += OnBeginPlayerTurn;
@@ -17,7 +18,7 @@ namespace Items
 
             Activate();
         }
-
+        
         protected abstract void Activate();
 
         protected virtual void OnBeginPlayerTurn()

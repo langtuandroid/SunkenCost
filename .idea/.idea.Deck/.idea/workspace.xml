@@ -13,26 +13,20 @@
   <component name="HighlightingSettingsPerFile">
     <setting file="file://$PROJECT_DIR$/Assets/Scripts/OfferScreen/OfferManager.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Scripts/GameProgress.cs" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/Assets/Scripts/OfferScreen/OfferScreenEvents.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Scripts/OfferScreen/DesignCard.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Scripts/MainManager.cs" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/Assets/Scripts/Items/PoisonTipsItem.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Scripts/OfferScreen/OfferRow.cs" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/Assets/Scripts/Deck/Deck.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/Scripts/Deck/PlayerInventory.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Scripts/OfferScreen/NextBattleButton.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/Scripts/OfferScreen/OfferScreenEvents.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/Scripts/Items/PoisonTipsItem.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/Scripts/Enemies/Enemies/StrongClausEnemy.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/Scripts/OfferScreen/StickOffer.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/Scripts/BattleItemManager.cs" root0="FORCE_HIGHLIGHTING" />
   </component>
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/Assets/Scripts/Deck/OfferPanel/OfferPanel.cs" />
-        <option value="$PROJECT_DIR$/Assets/Scripts/UI/WhoseTurnText.cs" />
-        <option value="$PROJECT_DIR$/Assets/Scripts/UI/Tutorial/TutorialManager.cs" />
-        <option value="$PROJECT_DIR$/Assets/Scripts/InventoryManager.cs" />
-        <option value="$PROJECT_DIR$/Assets/Scripts/PlayerLevelController.cs" />
-        <option value="$PROJECT_DIR$/Assets/Scripts/GameManager.cs" />
-        <option value="$PROJECT_DIR$/Assets/Scripts/Etchings/ReverseEtching.cs" />
-        <option value="$PROJECT_DIR$/Assets/Scripts/Etchings/ImpedeEtching.cs" />
-        <option value="$PROJECT_DIR$/Assets/Scripts/Etchings/BufferEtching.cs" />
         <option value="$PROJECT_DIR$/Assets/Scripts/EnemyRelated/ActiveEnemiesManager.cs" />
         <option value="$PROJECT_DIR$/Assets/Scripts/UI/MoveText.cs" />
         <option value="$PROJECT_DIR$/Assets/Scripts/EnemyRelated/Enemy.cs" />
@@ -44,9 +38,7 @@
         <option value="$PROJECT_DIR$/Assets/Scripts/Audio/MusicManager.cs" />
         <option value="$PROJECT_DIR$/Assets/Scripts/EtchingManager.cs" />
         <option value="$PROJECT_DIR$/Assets/Scripts/MainManager.cs" />
-        <option value="$PROJECT_DIR$/Assets/Scripts/OfferScreen/NextBattleButton.cs" />
         <option value="$PROJECT_DIR$/Assets/Scripts/StickManager.cs" />
-        <option value="$PROJECT_DIR$/Assets/Scripts/GameProgress.cs" />
         <option value="$PROJECT_DIR$/Assets/Scripts/Enemies/EnemySpawner.cs" />
         <option value="$PROJECT_DIR$/Assets/Scripts/OfferScreen/OfferScreenEvents.cs" />
         <option value="$PROJECT_DIR$/Assets/Scripts/OfferScreen/OfferRow.cs" />
@@ -58,23 +50,34 @@
         <option value="$PROJECT_DIR$/Assets/Scripts/Enemies/Enemies/GrouldEnemy.cs" />
         <option value="$PROJECT_DIR$/Assets/Scripts/UI/MainMenu.cs" />
         <option value="$PROJECT_DIR$/Assets/Scripts/UI/NextTurnButton.cs" />
-        <option value="$PROJECT_DIR$/Assets/Scripts/BattleManager.cs" />
         <option value="$PROJECT_DIR$/Assets/Scripts/Deck/Designs.cs" />
-        <option value="$PROJECT_DIR$/Assets/Scripts/DesignManager.cs" />
         <option value="$PROJECT_DIR$/Assets/Scripts/Enemies/Enemies/AxolitlEnemy.cs" />
         <option value="$PROJECT_DIR$/Assets/Scripts/Deck/Design.cs" />
         <option value="$PROJECT_DIR$/Assets/Scripts/OfferScreen/DesignCard.cs" />
-        <option value="$PROJECT_DIR$/Assets/Scripts/HUDManager.cs" />
         <option value="$PROJECT_DIR$/Assets/Scripts/PlayerController.cs" />
         <option value="$PROJECT_DIR$/Assets/Scripts/ReorderableListNoEdges/ReorderableListElementNoEdges.cs" />
         <option value="$PROJECT_DIR$/Assets/Scripts/Deck/DesignInfo.cs" />
-        <option value="$PROJECT_DIR$/Assets/Scripts/OfferScreen/OfferManager.cs" />
         <option value="$PROJECT_DIR$/Assets/Scripts/Etchings/DamageEtching.cs" />
         <option value="$PROJECT_DIR$/Assets/Scripts/Etchings/AreaEtching.cs" />
         <option value="$PROJECT_DIR$/Assets/Scripts/BattleEvents.cs" />
         <option value="$PROJECT_DIR$/Assets/Scripts/Enemies/Enemy.cs" />
         <option value="$PROJECT_DIR$/Assets/Scripts/Items/PoisonTipsItem.cs" />
+        <option value="$PROJECT_DIR$/Assets/Scripts/DesignManager.cs" />
+        <option value="$PROJECT_DIR$/Assets/Scripts/StickOffer.cs" />
+        <option value="$PROJECT_DIR$/Assets/Scripts/GameProgress.cs" />
         <option value="$PROJECT_DIR$/Assets/Scripts/Items/Item.cs" />
+        <option value="$PROJECT_DIR$/Assets/Scripts/BattleItemManager.cs" />
+        <option value="$PROJECT_DIR$/Assets/Scripts/Deck/PlayerInventory.cs" />
+        <option value="$PROJECT_DIR$/Assets/Scripts/OfferScreen/ItemOffer.cs" />
+        <option value="$PROJECT_DIR$/Assets/Scripts/OfferScreen/NextBattleButton.cs" />
+        <option value="$PROJECT_DIR$/Assets/Scripts/ItemManager.cs" />
+        <option value="$PROJECT_DIR$/Assets/Scripts/OfferScreen/OfferManager.cs" />
+        <option value="$PROJECT_DIR$/Assets/Scripts/BattleManager.cs" />
+        <option value="$PROJECT_DIR$/Assets/Scripts/HUDManager.cs" />
+        <option value="$PROJECT_DIR$/Assets/Scripts/Enemies/Enemies/StrongClausEnemy.cs" />
+        <option value="$PROJECT_DIR$/Assets/Scripts/Enemies/EnemyManager.cs" />
+        <option value="$PROJECT_DIR$/Assets/Scripts/Enemies/Scenario.cs" />
+        <option value="$PROJECT_DIR$/Assets/Scripts/Enemies/Scenarios/Scenario.cs" />
       </list>
     </option>
   </component>
@@ -121,7 +124,7 @@
       <workItem from="1670197005602" duration="5570000" />
       <workItem from="1670216773638" duration="7973000" />
       <workItem from="1670920520353" duration="25664000" />
-      <workItem from="1671162203361" duration="5145000" />
+      <workItem from="1671162203361" duration="17493000" />
     </task>
     <servers />
   </component>
@@ -134,9 +137,9 @@
     <option name="CLEAR_INITIAL_COMMIT_MESSAGE" value="true" />
   </component>
   <component name="WindowStateProjectService">
-    <state x="539" y="5" width="840" height="1034" key="search.everywhere.popup" timestamp="1671065000108">
+    <state x="539" y="5" width="840" height="1034" key="search.everywhere.popup" timestamp="1671237903401">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state x="539" y="5" width="840" height="1034" key="search.everywhere.popup/0.1080.1920.1040/0.0.1920.1040@0.0.1920.1040" timestamp="1671065000108" />
+    <state x="539" y="5" width="840" height="1034" key="search.everywhere.popup/0.1080.1920.1040/0.0.1920.1040@0.0.1920.1040" timestamp="1671237903401" />
   </component>
 </project>

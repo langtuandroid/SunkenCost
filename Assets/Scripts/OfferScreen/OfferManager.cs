@@ -8,9 +8,11 @@ using Random = UnityEngine.Random;
 public class OfferManager : MonoBehaviour
 {
     public static OfferManager Current;
-    [SerializeField] private Transform _upperGrid;
-    [SerializeField] private Transform _lowerGrid;
-    [SerializeField] private GameObject _designCardPrefab;
+
+    [SerializeField] private Transform cardGrid;
+    [SerializeField] private GameObject designCardPrefab;
+
+    [SerializeField] private Transform bootyGrid;
 
     public List<DesignCard> DesignCards { get; private set; } = new List<DesignCard>();
 
@@ -28,26 +30,32 @@ public class OfferManager : MonoBehaviour
 
     private void Start()
     {
-        
+        if (GameProgress.BattleNumber % 3 == 0)
+        {
+            bootyGrid.gameObject.SetActive(false);
+            CreateCardOfferGrids();
+        }
     }
 
     private void CreateCardOfferGrids()
     {
-        var upperGridContent = _upperGrid.GetChild(0);
-        foreach (var design in Deck.Designs)
+        cardGrid.gameObject.SetActive(true);
+        
+        var upperGridContent = cardGrid.GetChild(0).GetChild(0);
+        foreach (var design in PlayerInventory.Deck)
         {
             //Debug.Log(design.Title);
-            var newCardObject = Instantiate(_designCardPrefab, upperGridContent);
+            var newCardObject = Instantiate(designCardPrefab, upperGridContent);
             var info = newCardObject.GetComponentInChildren<DesignInfo>();
             info.design = design;
             
             DesignCards.Add(newCardObject.GetComponent<DesignCard>());
         }
         
-        var lowerGridContent = _lowerGrid.GetChild(0);
+        var lowerGridContent = cardGrid.GetChild(1).GetChild(0);
         for (var i = 0; i < 3; i++)
         {
-            var newCardObject = Instantiate(_designCardPrefab, lowerGridContent);
+            var newCardObject = Instantiate(designCardPrefab, lowerGridContent);
             var info = newCardObject.GetComponentInChildren<DesignInfo>();
             
             var zeroRarityDesigns = DesignManager.Rarities.Where(r => r.Value == 0).ToList();
@@ -67,6 +75,22 @@ public class OfferManager : MonoBehaviour
         Destroy(cardBeingMerged.gameObject);
         cardBeingMergedInto.Design.LevelUp();
         OfferScreenEvents.Current.GridsUpdated();
+    }
+
+    public void AcceptOffer(string offerAccepted)
+    {
+        bootyGrid.gameObject.SetActive(false);
+
+        if (offerAccepted == "Plank")
+        {
+            GameProgress.MaxPlanks++;
+        }
+        else
+        {
+            PlayerInventory.Items.Add(offerAccepted);
+        }
+        
+        CreateCardOfferGrids();
     }
 
     private IEnumerator WaitForDesignCardsToInitialise()

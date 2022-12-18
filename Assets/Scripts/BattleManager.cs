@@ -47,12 +47,12 @@ public class BattleManager : MonoBehaviour
         BattleEvents.Current.OnOfferDesigns += OfferingDesigns;
         BattleEvents.Current.OnBossKilled += BossKilled;
         
-        foreach (var design in Deck.Designs)
+        foreach (var design in PlayerInventory.Deck)
         {
             StickManager.current.CreateStick();
             EtchingManager.current.CreateEtching(StickManager.current.GetStick(StickManager.current.stickCount-1), design);
         }
-        
+
         BattleEvents.Current.BeginGame();
         Turn = 1;
     }
@@ -66,7 +66,7 @@ public class BattleManager : MonoBehaviour
         //
         if (Input.GetKeyDown(KeyCode.X))
         {
-            ItemManager.current.EquipItem("ExtraTurn");
+            BattleItemManager.EquipItem("ExtraTurn");
             InventoryManager.current.AlterGold(50);
         }
 
@@ -94,7 +94,7 @@ public class BattleManager : MonoBehaviour
         }
 
     }
-
+    
     public void Quit()
     {
         SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex - 1);

@@ -9,4 +9,10 @@ public static class GameProgress
         get;
         set;
     }
+
+    public static int MaxPlanks
+    {
+        get;
+        set;
+    } = 3;
 }

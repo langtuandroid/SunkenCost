@@ -336,6 +336,7 @@
         </e>
         <e p="Prefabs" t="Include">
           <e p="Enemies" t="Include" />
+          <e p="OfferScreen" t="Include" />
           <e p="UI" t="Include">
             <e p="OfferPanel" t="Include" />
             <e p="Tutorial" t="Include" />
@@ -351,17 +352,18 @@
           </e>
           <e p="BackgroundColorController.cs" t="Include" />
           <e p="BattleEvents.cs" t="Include" />
+          <e p="BattleItemManager.cs" t="Include" />
           <e p="BattleManager.cs" t="Include" />
           <e p="Debug" t="Include">
             <e p="ScreenToWorldPoint.cs" t="Include" />
           </e>
           <e p="Deck" t="Include">
-            <e p="Deck.cs" t="Include" />
             <e p="Design.cs" t="Include" />
             <e p="DesignCategory.cs" t="Include" />
             <e p="DesignInfo.cs" t="Include" />
             <e p="Designs.cs" t="Include" />
             <e p="ListExtensions.cs" t="Include" />
+            <e p="PlayerInventory.cs" t="Include" />
           </e>
           <e p="DesignManager.cs" t="Include" />
           <e p="EditorInit.cs" t="Include" />
@@ -372,6 +374,7 @@
               <e p="BossEnemy.cs" t="Include" />
               <e p="ClausEnemy.cs" t="Include" />
               <e p="GrouldEnemy.cs" t="Include" />
+              <e p="StrongClausEnemy.cs" t="Include" />
             </e>
             <e p="Enemy.cs" t="Include" />
             <e p="EnemyAnimationController.cs" t="Include" />
@@ -384,6 +387,10 @@
               <e p="EnemySpeechBubble.cs" t="Include" />
               <e p="EnemyTurnOrderText.cs" t="Include" />
               <e p="EnemyUIText.cs" t="Include" />
+            </e>
+            <e p="Scenarios" t="Include">
+              <e p="Scenario.cs" t="Include" />
+              <e p="ScenarioManager.cs" t="Include" />
             </e>
           </e>
           <e p="EtchingManager.cs" t="Include" />
@@ -423,10 +430,12 @@
           <e p="OfferScreen" t="Include">
             <e p="DesignCard.cs" t="Include" />
             <e p="DesignCardInfo.cs" t="Include" />
+            <e p="ItemOffer.cs" t="Include" />
             <e p="NextBattleButton.cs" t="Include" />
             <e p="OfferManager.cs" t="Include" />
             <e p="OfferRow.cs" t="Include" />
             <e p="OfferScreenEvents.cs" t="Include" />
+            <e p="StickOffer.cs" t="Include" />
           </e>
           <e p="PlayerController.cs" t="Include" />
           <e p="PlayerLevelController.cs" t="Include" />
@@ -475,6 +484,7 @@
           <e p="Effects" t="Include" />
           <e p="Enemies" t="Include" />
           <e p="EtchingClasses" t="Include" />
+          <e p="Items" t="Include" />
           <e p="Plank" t="Include">
             <e p="Indicators" t="Include" />
           </e>
