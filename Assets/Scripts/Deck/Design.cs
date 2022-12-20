@@ -13,7 +13,8 @@ public enum St
     Boost,
     Poison,
     Hop,
-    Block
+    Block,
+    StatMultiplier
 }
 
 public abstract class Design

@@ -10,7 +10,7 @@ public class ClausEnemy : Enemy
         Name = "C'laus";
         MoveSet.Add(2);
         MoveSet.Add(3);
-        MaxHealth = 10;
+        MaxHealth = 16;
         Gold = 1;
 
         base.Awake();

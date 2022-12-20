@@ -10,7 +10,7 @@ public class GrouldEnemy : Enemy
         Name = "Grould";
         MoveSet.Add(1);
         MoveSet.Add(0);
-        MaxHealth = 12;
+        MaxHealth = 25;
         Gold = 1;
 
         base.Awake();

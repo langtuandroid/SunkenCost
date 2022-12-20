@@ -25,7 +25,7 @@ public class BattleManager : MonoBehaviour
     
     private Random _random = new Random();
 
-    public int Turn { get; private set; } = 0;
+    public int Turn { get; private set; } = 1;
 
     private void Awake()
     {
@@ -52,9 +52,8 @@ public class BattleManager : MonoBehaviour
             StickManager.current.CreateStick();
             EtchingManager.current.CreateEtching(StickManager.current.GetStick(StickManager.current.stickCount-1), design);
         }
-
+        
         BattleEvents.Current.BeginGame();
-        Turn = 1;
     }
 
     // Update is called once per frame
@@ -135,11 +134,10 @@ public class BattleManager : MonoBehaviour
         InGameSfxManager.current.BeginTurn();
         WhoseTurnText.current.PlayersTurn();
             
-        BattleEvents.Current.BeginPlayerTurn();
-            
-        NextTurnButton.Current.CanClick(true);
-            
         Turn++;
+        BattleEvents.Current.BeginPlayerTurn();
+
+        NextTurnButton.Current.CanClick(true);
     }
 
     private void OfferingDesigns()

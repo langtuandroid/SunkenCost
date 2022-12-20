@@ -12,7 +12,7 @@ public class EnemySpawner : MonoBehaviour
     private Dictionary<string, GameObject> enemyDictionary = new Dictionary<string, GameObject>();
     public Transform startStick;
 
-    private int _turn;
+    private Scenario _scenario;
     private void Start()
     {
         for (var i = 0; i < enemyNames.Count; i++)
@@ -22,16 +22,16 @@ public class EnemySpawner : MonoBehaviour
 
         BattleEvents.Current.OnEndEnemyTurn += SpawnNewRound;
         BattleEvents.Current.OnBeginGame += SpawnNewRound;
+
+        _scenario = ScenarioManager.GetScenario(GameProgress.BattleNumber);
     }
 
     private void SpawnNewRound()
     {
-        _turn = BattleManager.Current.Turn + 1;
-        
-        var newEnemies = GetNewRound();
+        var newEnemies = GetNewRound();//_scenario.GetRound(BattleManager.Current.Turn + 1);
 
         // Spawn boss every 16 rounds
-        if (_turn % 16 == 0)
+        if (BattleManager.Current.Turn % 16 == 0 && BattleManager.Current.Turn != 0)
         {
             newEnemies = new List<string>();
             newEnemies.Add("Boss");
@@ -40,6 +40,8 @@ public class EnemySpawner : MonoBehaviour
         }
         // Only spawn every second round otherwise
         //else if (_round % 2 == 0) return;
+
+        if (newEnemies.Count == 0) return;
 
         foreach (var enemyName in newEnemies)
         {
@@ -55,7 +57,7 @@ public class EnemySpawner : MonoBehaviour
         // For now
         var newEnemies = new List<string>();
 
-            var amountToSpawn = Mathf.Floor((_turn + (GameProgress.BattleNumber * BattleManager.NumberOfTurns)) / (BattleManager.NumberOfTurns * 2f)) + 1;
+            var amountToSpawn = Mathf.Floor((BattleManager.Current.Turn + (GameProgress.BattleNumber * BattleManager.NumberOfTurns)) / (BattleManager.NumberOfTurns * 2f)) + 1;
             for (var i = 0; i < amountToSpawn; i++)
             {
                 // Count -1 to not include boss

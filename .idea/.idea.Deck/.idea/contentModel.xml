@@ -414,7 +414,9 @@
             <e p="RangedEtching.cs" t="Include" />
             <e p="ReverseEtching.cs" t="Include" />
             <e p="StickUpdateActivatedEtching.cs" t="Include" />
+            <e p="StrikeZoneEtching.cs" t="Include" />
           </e>
+          <e p="EtchingTurnProcess.cs" t="Include" />
           <e p="GameProgress.cs" t="Include" />
           <e p="GlobalEvents.cs" t="Include" />
           <e p="HUDManager.cs" t="Include" />

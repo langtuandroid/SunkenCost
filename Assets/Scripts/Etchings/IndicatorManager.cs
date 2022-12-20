@@ -1,20 +1,20 @@
-using System;
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
-public class IndicatorManager : MonoBehaviour
+namespace Etchings
 {
-    private void Start()
+    public class IndicatorManager : MonoBehaviour
     {
-        BattleEvents.Current.OnSticksUpdated += SticksUpdated;
-    }
-
-    private void SticksUpdated()
-    {
-        foreach (var etching in EtchingManager.current.etchingOrder)
+        private void Start()
         {
-            etching.UpdateIndicators();
+            BattleEvents.Current.OnSticksUpdated += SticksUpdated;
+        }
+
+        private void SticksUpdated()
+        {
+            foreach (var etching in EtchingManager.current.etchingOrder)
+            {
+                etching.UpdateIndicators();
+            }
         }
     }
 }

@@ -30,7 +30,7 @@ public class OfferManager : MonoBehaviour
 
     private void Start()
     {
-        if (GameProgress.BattleNumber % 3 == 0)
+        if (GameProgress.BattleNumber % 3 != 0)
         {
             bootyGrid.gameObject.SetActive(false);
             CreateCardOfferGrids();

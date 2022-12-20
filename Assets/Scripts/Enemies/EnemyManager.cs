@@ -7,7 +7,7 @@ using UnityEngine;
 
 public class EnemyManager : MonoBehaviour
 {
-    public static List<string> EnemiesList = new List<string>();
+    public static readonly List<string> EnemiesList = new List<string>();
     void Start()
     {
         // Get the enemies

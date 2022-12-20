@@ -7,11 +7,10 @@ public class Stab : Design
 {
     protected override void Init()
     {
-        Title = "Stab";
+        Title = "Swordsman";
         Category = DesignCategory.Melee;
         Color = Color.cyan;
         AddStat(St.Cost, 1);
-        AddStat(St.UsesPerTurn, 1);
         AddStat(St.Damage, 6);
         
         base.Init();
@@ -19,12 +18,12 @@ public class Stab : Design
 
     protected override void FirstLevelUp()
     {
-        ModifyStat(St.Damage, 1);
+        ModifyStat(St.Damage, 2);
     }
 
     protected override void SecondLevelUp()
     {
-        ModifyStat(St.UsesPerTurn, 1);
+        ModifyStat(St.Damage, 3);
     }
 }
 #endregion
@@ -38,7 +37,6 @@ public class Slinger : Design
         Category = DesignCategory.Ranged;
         Color = Color.red;
         AddStat(St.Cost, 2);
-        AddStat(St.UsesPerTurn, 2);
         AddStat(St.Damage, 4);
         AddStat(St.MinRange, 1);
         AddStat(St.MaxRange, 1);
@@ -53,7 +51,7 @@ public class Slinger : Design
 
     protected override void SecondLevelUp()
     {
-        ModifyStat(St.UsesPerTurn, 1);
+        ModifyStat(St.Damage, 2);
     }
 }
 
@@ -65,7 +63,6 @@ public class Archer : Design
         Category = DesignCategory.Ranged;
         Color = Color.red;
         AddStat(St.Cost, 2);
-        AddStat(St.UsesPerTurn, 2);
         AddStat(St.Damage, 3);
         AddStat(St.MinRange, 1);
         AddStat(St.MaxRange, 2);
@@ -80,7 +77,7 @@ public class Archer : Design
 
     protected override void SecondLevelUp()
     {
-        ModifyStat(St.UsesPerTurn, 1);
+        ModifyStat(St.Damage, 2);
     }
 }
 
@@ -92,7 +89,6 @@ public class Marksman : Design
         Category = DesignCategory.Ranged;
         Color = Color.red;
         AddStat(St.Cost, 3);
-        AddStat(St.UsesPerTurn, 1);
         AddStat(St.Damage, 6);
         AddStat(St.MinRange, 3);
         AddStat(St.MaxRange, 3);
@@ -102,12 +98,12 @@ public class Marksman : Design
     
     protected override void FirstLevelUp()
     {
-        ModifyStat(St.Damage, 1);
+        ModifyStat(St.Damage, 2);
     }
 
     protected override void SecondLevelUp()
     {
-        ModifyStat(St.UsesPerTurn, 1);
+        ModifyStat(St.Damage, 3);
     }
 }
 
@@ -122,8 +118,7 @@ public class Stomp : Design
         Category = DesignCategory.Area;
         Color = Color.yellow;
         AddStat(St.Cost, 1);
-        AddStat(St.UsesPerTurn, 1);
-        AddStat(St.Damage, 2);
+        AddStat(St.Damage, 1);
         AddStat(St.MaxRange, 1);
 
         base.Init();
@@ -149,7 +144,7 @@ public class Splatter : Design
         Color = Color.yellow;
         AddStat(St.Cost, 3);
         AddStat(St.UsesPerTurn, 1);
-        AddStat(St.Damage, 1);
+        AddStat(St.Damage, 3);
         AddStat(St.MaxRange, 2);
 
         base.Init();
@@ -196,6 +191,30 @@ public class Boost : Design
     }
 }
 
+public class StrikeZone : Design
+{
+    protected override void Init()
+    {
+        Title = "StrikeZone";
+        Category = DesignCategory.StrikeZone;
+        Color = new Color(0f, 0.59f, 0.71f);
+        AddStat(St.Cost, 2);
+        AddStat(St.StatMultiplier, 2);
+
+        base.Init();
+    }
+    
+    protected override void FirstLevelUp()
+    {
+        ModifyStat(St.StatMultiplier, 1);
+    }
+
+    protected override void SecondLevelUp()
+    {
+        ModifyStat(St.StatMultiplier, 1);
+    }
+}
+
 #endregion
 
 #region Movement Modifiers
@@ -211,7 +230,7 @@ public class Impede : Design
         AddStat(St.UsesPerTurn, 1);
         AddStat(St.MinRange, 0);
         AddStat(St.MaxRange, 0);
-        AddStat(St.Block, 1);
+        AddStat(St.Block, 2);
         base.Init();
     }
     
@@ -286,7 +305,6 @@ public class Poison : Design
         Category = DesignCategory.Poison;
         Color = new Color(0.41f, 0.67f, 0f);
         AddStat(St.Cost, 1);
-        AddStat(St.UsesPerTurn, 1);
         AddStat(St.Poison, 3);
 
         base.Init();
@@ -299,7 +317,7 @@ public class Poison : Design
 
     protected override void SecondLevelUp()
     {
-        ModifyStat(St.UsesPerTurn, 1);
+        ModifyStat(St.Poison, 2);
     }
 }
 

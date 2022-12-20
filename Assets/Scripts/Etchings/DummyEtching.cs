@@ -1,14 +1,10 @@
-using System.Collections;
-using System.Collections.Generic;
-using Etchings;
-using TMPro;
-using UnityEngine;
-using UnityEngine.UI;
-
-public class DummyEtching : Etching
+namespace Etchings
 {
-    protected override bool CheckInfluence(int stickNum)
+    public class DummyEtching : Etching
     {
-        throw new System.NotImplementedException();
+        protected override bool CheckInfluence(int stickNum)
+        {
+            throw new System.NotImplementedException();
+        }
     }
 }

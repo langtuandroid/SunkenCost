@@ -15,7 +15,8 @@ public enum DesignCategory
     Boost,
     Hop,
     Reverse,
-    Poison
+    Poison,
+    StrikeZone
 }
 
 public class DesignManager : MonoBehaviour

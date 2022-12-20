@@ -1,50 +1,47 @@
-using System;
-using System.Collections;
-using System.Collections.Generic;
-using System.Linq;
-using Etchings;
 using UnityEngine;
 using UnityEngine.EventSystems;
 
-public class IndicatorController : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler
+namespace Etchings
 {
-    private Indicator _indicator;
-    private Stick _stick;
-
-    private LTDescr _delay;
-
-    private void Awake()
+    public class IndicatorController : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler
     {
-        _stick = transform.parent.GetComponent<Stick>();
-        _indicator = transform.GetChild(0).GetComponent<Indicator>();
-    }
-    
-    public void OnPointerEnter(PointerEventData eventData)
-    {
-        _stick.etching?.UpdateIndicators();
-    }
+        private Indicator _indicator;
+        private Stick _stick;
 
-    public void OnPointerExit(PointerEventData eventData)
-    {
-        for (var i = 1; i < StickManager.current.stickCount; i++)
+        private LTDescr _delay;
+
+        private void Awake()
         {
-            var stick = StickManager.current.GetStick(i);
-            stick?.IndicatorController.Hide();
+            _stick = transform.parent.GetComponent<Stick>();
+            _indicator = transform.GetChild(0).GetComponent<Indicator>();
         }
+    
+        public void OnPointerEnter(PointerEventData eventData)
+        {
+            _stick.etching?.UpdateIndicators();
+        }
+
+        public void OnPointerExit(PointerEventData eventData)
+        {
+            for (var i = 1; i < StickManager.current.stickCount; i++)
+            {
+                var stick = StickManager.current.GetStick(i);
+                stick?.IndicatorController.Hide();
+            }
         
-    }
+        }
 
-    public void Show(Color color)
-    {
-        _indicator.SetColor(color);
-    }
+        public void Show(Color color)
+        {
+            _indicator.SetColor(color);
+        }
 
-    public void Hide()
-    {
-        _indicator.Hide();
-    }
+        public void Hide()
+        {
+            _indicator.Hide();
+        }
 
-    /*
+        /*
     private List<Indicator> _indicators = new List<Indicator>();
     private List<Color> _colors = new List<Color>();
 
@@ -91,4 +88,5 @@ public class IndicatorController : MonoBehaviour, IPointerEnterHandler, IPointer
     
     */
     
+    }
 }

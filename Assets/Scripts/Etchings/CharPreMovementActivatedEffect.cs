@@ -1,33 +1,31 @@
-using System.Collections;
-using System.Collections.Generic;
-using Etchings;
-using UnityEngine;
-
-public abstract class CharPreMovementActivatedEffect : ActiveEtching
+namespace Etchings
 {
-    public bool DetectCharacterAboutToMove()
+    public abstract class CharPreMovementActivatedEffect : ActiveEtching
     {
-        var enemy = ActiveEnemiesManager.current.CurrentEnemy;
-            
-        // Deactivated
-        if (deactivationTurns > 0) return false;
-            
-        // GAMEOVER?
-        if (enemy.StickNum >= StickManager.current.stickCount + 1) return false;
-            
-        if ((UsesUsedThisTurn < UsesPerTurn || design.Limitless) && TestCharAboutToMoveActivatedEffect())
+        public bool DetectCharacterAboutToMove()
         {
-            StartCoroutine(ColorForActivate());
-            Log.current.AddEvent(design.Title + " on S" + Stick.GetStickNumber() + " activates against E" + enemy.name +
-                                 " on S" + enemy.StickNum);
+            var enemy = ActiveEnemiesManager.current.CurrentEnemy;
             
-            enemy.Stick.SetTempColour(design.Color);
-            designInfo.Refresh();
-            return true;
+            // Deactivated
+            if (deactivationTurns > 0) return false;
+            
+            // GAMEOVER?
+            if (enemy.StickNum >= StickManager.current.stickCount + 1) return false;
+            
+            if ((UsesUsedThisTurn < UsesPerTurn || design.Limitless) && TestCharAboutToMoveActivatedEffect())
+            {
+                StartCoroutine(ColorForActivate());
+                Log.current.AddEvent(design.Title + " on S" + Stick.GetStickNumber() + " activates against E" + enemy.name +
+                                     " on S" + enemy.StickNum);
+            
+                enemy.Stick.SetTempColour(design.Color);
+                designInfo.Refresh();
+                return true;
+            }
+
+            return false;
         }
 
-        return false;
+        protected abstract bool TestCharAboutToMoveActivatedEffect();
     }
-
-    protected abstract bool TestCharAboutToMoveActivatedEffect();
 }

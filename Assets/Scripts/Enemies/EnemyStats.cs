@@ -34,4 +34,9 @@ public class EnemyStats
             _poisonStat = new Stat();
         }
     }
+
+    public void AddVulnerable(int damageMultiplyer)
+    {
+        
+    }
 }
