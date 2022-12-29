@@ -45,10 +45,11 @@ public class ScenarioManager : MonoBehaviour
     {
         var difficulty = (int)Math.Floor(battle / 5f);
         var scenarioOptions = Current.scenarios.Where(p => p.Key == difficulty).Select(p => p.Value).FirstOrDefault();
-        Debug.Log(scenarioOptions?.Count);
         if (scenarioOptions != null)
         {
-            return scenarioOptions[Random.Range(0, scenarioOptions.Count)];
+            var scenario = Random.Range(0, scenarioOptions.Count);
+            Debug.Log(scenarioOptions[scenario].name);
+            return scenarioOptions[scenario];
         }
         
         Debug.Log("Battle No. " + battle + ", difficulty " + difficulty +": No scenario found");

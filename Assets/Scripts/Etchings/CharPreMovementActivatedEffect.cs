@@ -4,7 +4,7 @@ namespace Etchings
     {
         public bool DetectCharacterAboutToMove()
         {
-            var enemy = ActiveEnemiesManager.current.CurrentEnemy;
+            var enemy = ActiveEnemiesManager.CurrentEnemy;
             
             // Deactivated
             if (deactivationTurns > 0) return false;

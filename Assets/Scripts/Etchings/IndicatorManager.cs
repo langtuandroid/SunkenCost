@@ -11,7 +11,7 @@ namespace Etchings
 
         private void SticksUpdated()
         {
-            foreach (var etching in EtchingManager.current.etchingOrder)
+            foreach (var etching in EtchingManager.Current.etchingOrder)
             {
                 etching.UpdateIndicators();
             }

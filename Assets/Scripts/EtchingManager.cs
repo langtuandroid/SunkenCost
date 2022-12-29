@@ -7,7 +7,7 @@ using UnityEngine;
 
 public class EtchingManager : MonoBehaviour
 {
-    public static EtchingManager current;
+    public static EtchingManager Current;
     
     public GameObject etchingPrefab;
     
@@ -19,13 +19,13 @@ public class EtchingManager : MonoBehaviour
     private void Awake()
     {
         // One instance of static objects only
-        if (current)
+        if (Current)
         {
             Destroy(gameObject);
             return;
         }
         
-        current = this;
+        Current = this;
     }
 
     private void Start()
@@ -40,8 +40,8 @@ public class EtchingManager : MonoBehaviour
 
     private void Update()
     {
-        if (ActiveEnemiesManager.current.finishedProcessingEnemyTurn && !finishedProcessingEnemyMove &&
-            ActiveEnemiesManager.current.NumberOfActiveEnemies == 0)
+        if (ActiveEnemiesManager.Current.finishedProcessingEnemyTurn && !finishedProcessingEnemyMove &&
+            ActiveEnemiesManager.NumberOfActiveEnemies == 0)
         {
             finishedProcessingEnemyMove = true;
         }
@@ -147,7 +147,7 @@ public class EtchingManager : MonoBehaviour
             stickUpdateActivatedEtching?.DetectStickMovement();
         }
     }
-    
+
     private IEnumerator TestCharPreMovementActivatedEtchings()
     {
         finishedProcessingEnemyMove = false;
@@ -165,7 +165,7 @@ public class EtchingManager : MonoBehaviour
             }
 
             // Only continue if there are enemies and etchings
-            if (ActiveEnemiesManager.current.NumberOfActiveEnemies == 0 || ActiveEnemiesManager.current.CurrentEnemy.IsDestroyed) break;
+            if (ActiveEnemiesManager.NumberOfActiveEnemies == 0 || ActiveEnemiesManager.CurrentEnemy.IsDestroyed) break;
         }
         
         // TODO FIX THIS
@@ -190,13 +190,11 @@ public class EtchingManager : MonoBehaviour
             }
 
             // Only continue if there are enemies and etchings
-            if (ActiveEnemiesManager.current.NumberOfActiveEnemies == 0 || ActiveEnemiesManager.current.CurrentEnemy.IsDestroyed) break;
+            if (ActiveEnemiesManager.NumberOfActiveEnemies == 0 || ActiveEnemiesManager.CurrentEnemy.IsDestroyed) break;
         }
         
         // TODO FIX THIS
         yield return new WaitForSeconds(0.2f);
         finishedProcessingEnemyMove = true;
     }
-    
-    
 }

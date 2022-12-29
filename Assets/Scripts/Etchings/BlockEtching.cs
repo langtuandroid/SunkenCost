@@ -6,7 +6,7 @@ namespace Etchings
     {
         protected override bool TestCharAboutToMoveActivatedEffect()
         {
-            var currentEnemy = ActiveEnemiesManager.current.CurrentEnemy;
+            var currentEnemy = ActiveEnemiesManager.CurrentEnemy;
             var stickNum = Stick.GetStickNumber();
             var currentEnemyStickNum = currentEnemy.StickNum;
 

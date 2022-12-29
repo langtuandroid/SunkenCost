@@ -10,16 +10,19 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: e88836627efa4444288b773536f04a36, type: 3}
-  m_Name: AllClaus
+  m_Name: Easy0
   m_EditorClassIdentifier: 
   difficulty: 0
   round1:
   - Claus
-  round2:
-  - Claus
+  round2: []
   round3:
   - Claus
   round4:
   - Claus
   round5:
   - Claus
+  round6: []
+  round7:
+  - 
+  round8: []

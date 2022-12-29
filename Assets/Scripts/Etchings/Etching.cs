@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections;
 using System.Collections.Generic;
+using Enemies;
 using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
@@ -14,8 +15,8 @@ namespace Etchings
         
         protected bool colorWhenActivated = false;
 
-        protected Stick Stick;
-        protected int deactivationTurns = 0;
+        public Stick Stick { get; protected set; }
+        protected int deactivationTurns;
 
         protected int UsesPerTurn => design.GetStat(St.UsesPerTurn);
 
@@ -34,6 +35,7 @@ namespace Etchings
         protected virtual void Start()
         {
             designInfo.design = design;
+            BattleEvents.Current.OnBeginPlayerTurn += designInfo.Refresh;
         }
 
         protected int GetStatValue(St st)
@@ -65,6 +67,11 @@ namespace Etchings
                     stick.IndicatorController.Hide();
                 }
             }
+        }
+
+        private void OnDestroy()
+        {
+            BattleEvents.Current.OnBeginPlayerTurn -= designInfo.Refresh;
         }
     }
 }

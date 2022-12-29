@@ -1,4 +1,6 @@
-﻿namespace Etchings
+﻿using Enemies;
+
+namespace Etchings
 {
     public abstract class DamageEtching : CharMovementActivatedEtching
     {
@@ -8,7 +10,7 @@
 
         protected virtual void DamageEnemy(Enemy enemy)
         {
-            enemy.Damage(Damage, DamageSource.Plank);
+            DamageHandler.DamageEnemy(Damage, enemy, DamageSource.Plank);
         }
 
         public void ModifyStat(St stat, int amount)

@@ -2,6 +2,7 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
+using Enemies;
 using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
@@ -252,7 +253,7 @@ public class TutorialManager : MonoBehaviour
     {
         SetVisibility(true);
         
-        var currentEnemy = ActiveEnemiesManager.current.CurrentEnemy;
+        var currentEnemy = ActiveEnemiesManager.CurrentEnemy;
         HighlightEnemy(currentEnemy.transform);
         
         _popupWithButton.Move(570, 0);
@@ -442,7 +443,7 @@ public class TutorialManager : MonoBehaviour
     private void CheckForEnemyOnLastStick()
     {
         // If an enemy has made it to the last stick
-        var enemiesOnStick = ActiveEnemiesManager.current.GetEnemiesOnStick(StickManager.current.stickCount - 1).Where(e => e.NextMove > 0).ToList();
+        var enemiesOnStick = ActiveEnemiesManager.Current.GetEnemiesOnStick(StickManager.current.stickCount - 1).Where(e => e.NextMove > 0).ToList();
         if (enemiesOnStick.Count <= 0) return;
         
         _firstEnemy = enemiesOnStick[0];

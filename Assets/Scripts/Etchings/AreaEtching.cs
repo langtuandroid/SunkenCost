@@ -9,7 +9,7 @@ namespace Etchings
         protected override bool TestCharMovementActivatedEffect()
         {
             var stickNum = Stick.GetStickNumber();
-            if (Math.Abs(ActiveEnemiesManager.current.CurrentEnemy.StickNum - stickNum) > MaxRange) return false;
+            if (Math.Abs(ActiveEnemiesManager.CurrentEnemy.StickNum - stickNum) > MaxRange) return false;
             
             var stickNums = new List<int>();
             for (var i = stickNum - MaxRange; i <= stickNum + MaxRange && i < StickManager.current.stickCount; i++)
@@ -20,7 +20,7 @@ namespace Etchings
                 stickNums.Add(i);
             }
 
-            var enemies = ActiveEnemiesManager.current.GetEnemiesOnSticks(stickNums);
+            var enemies = ActiveEnemiesManager.Current.GetEnemiesOnSticks(stickNums);
             
             if (enemies.Count == 0) return false;
             

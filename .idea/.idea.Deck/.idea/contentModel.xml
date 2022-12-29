@@ -361,14 +361,15 @@
             <e p="Design.cs" t="Include" />
             <e p="DesignCategory.cs" t="Include" />
             <e p="DesignInfo.cs" t="Include" />
+            <e p="DesignManager.cs" t="Include" />
             <e p="Designs.cs" t="Include" />
             <e p="ListExtensions.cs" t="Include" />
             <e p="PlayerInventory.cs" t="Include" />
           </e>
-          <e p="DesignManager.cs" t="Include" />
           <e p="EditorInit.cs" t="Include" />
           <e p="Enemies" t="Include">
             <e p="ActiveEnemiesManager.cs" t="Include" />
+            <e p="DamageHandler.cs" t="Include" />
             <e p="Enemies" t="Include">
               <e p="AxolitlEnemy.cs" t="Include" />
               <e p="BossEnemy.cs" t="Include" />

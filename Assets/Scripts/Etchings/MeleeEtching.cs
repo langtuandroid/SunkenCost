@@ -1,4 +1,5 @@
-﻿using UnityEngine;
+﻿using Enemies;
+using UnityEngine;
 
 namespace Etchings
 {
@@ -6,7 +7,7 @@ namespace Etchings
     {
         protected override bool TestCharMovementActivatedEffect()
         {
-            var enemy = ActiveEnemiesManager.current.CurrentEnemy;
+            var enemy = ActiveEnemiesManager.CurrentEnemy;
 
             if (!CheckInfluence(enemy.StickNum)) return false;
             

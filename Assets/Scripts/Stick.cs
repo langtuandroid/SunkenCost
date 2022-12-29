@@ -101,7 +101,7 @@ public class Stick : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDragHan
 
     public void DestroyStick()
     {
-        var enemies = ActiveEnemiesManager.current.GetEnemiesOnStick(GetStickNumber());
+        var enemies = ActiveEnemiesManager.Current.GetEnemiesOnStick(GetStickNumber());
 
         foreach (var enemy in enemies)
         {

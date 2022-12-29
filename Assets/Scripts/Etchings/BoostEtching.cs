@@ -8,7 +8,6 @@ namespace Etchings
     public class BoostEtching : StickUpdateActivatedEtching
     {
         private readonly List<DamageEtching> _boostedEtchings = new List<DamageEtching>();
-        public int initialBoostAmount;
         private Stat _boostAmountStat;
         private int _boostAmount => _boostAmountStat.Value;
 

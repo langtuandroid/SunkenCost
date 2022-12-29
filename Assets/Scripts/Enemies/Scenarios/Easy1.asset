@@ -10,15 +10,18 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: e88836627efa4444288b773536f04a36, type: 3}
-  m_Name: GrouldClausClaus
+  m_Name: Easy1
   m_EditorClassIdentifier: 
   difficulty: 0
   round1:
-  - Grould
+  - Axolitl
   round2:
   - Claus
-  round3:
+  round3: []
+  round4: []
+  round5:
+  - Axolitl
+  round6:
   - Claus
-  round4:
-  - Claus
-  round5: []
+  round7: []
+  round8: []

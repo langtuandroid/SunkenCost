@@ -11,7 +11,7 @@ namespace Items
 
         private void AddPoison()
         {
-            var enemy = BattleEvents.Current.LastEnemyAttacked;
+            var enemy = BattleEvents.LastEnemyAttacked;
             enemy.stats.AddPoison(_poisonAmount);
         }
 

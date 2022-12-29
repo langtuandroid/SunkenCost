@@ -7,7 +7,7 @@ namespace Etchings
     {
         protected override bool TestCharAboutToMoveActivatedEffect()
         {
-            var currentEnemy = ActiveEnemiesManager.current.CurrentEnemy;
+            var currentEnemy = ActiveEnemiesManager.CurrentEnemy;
             var stickNum = Stick.GetStickNumber();
             var currentEnemyStickNum = currentEnemy.StickNum;
 
@@ -15,6 +15,9 @@ namespace Etchings
 
             // Set the new goal stick as the opposite direction
             currentEnemy.NextMove *= -1;
+
+            if (design.Level >= 2) currentEnemy.NextMove += 1 * currentEnemy.Direction;
+            
             currentEnemy.UpdateMovementText();
 
             if (currentEnemy.NextMove <= -currentEnemyStickNum) currentEnemy.NextMove = -currentEnemyStickNum;

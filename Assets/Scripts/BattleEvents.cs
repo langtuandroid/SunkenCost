@@ -1,6 +1,8 @@
 ﻿using System;
 using System.Collections;
 using System.Collections.Generic;
+using Enemies;
+using Etchings;
 using UnityEngine;
 
 public class BattleEvents : MonoBehaviour
@@ -43,8 +45,11 @@ public class BattleEvents : MonoBehaviour
     public event Action OnBeginEnemyMove;
     public event Action OnEnemyMoved;
     public event Action OnEnemyAttacked;
-    
-    public Enemy LastEnemyAttacked { get; private set; }
+
+    private Enemy _lastEnemyAttacked;
+    private Etching _lastEtchingToAttack;
+    public static Enemy LastEnemyAttacked => Current._lastEnemyAttacked;
+    public static Etching LastEtchingToAttack => Current._lastEtchingToAttack;
 
     public void BeginGame()
     {
@@ -154,9 +159,10 @@ public class BattleEvents : MonoBehaviour
         OnLevelUp?.Invoke();
     }
 
-    public void EnemyAttacked(Enemy enemy)
+    public void EnemyAttacked(Enemy enemy, Etching etching)
     {
-        LastEnemyAttacked = enemy;
+        Current._lastEnemyAttacked = enemy;
+        Current._lastEtchingToAttack = etching;
         OnEnemyAttacked?.Invoke();
     }
 

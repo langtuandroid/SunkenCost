@@ -1,26 +1,36 @@
 ﻿using System.Collections.Generic;
+using Enemies;
+using UnityEngine;
 
 namespace Etchings
 {
-    public class StrikeZoneEtching : CharPreMovementActivatedEffect
+    public class StrikeZoneEtching : ActiveEtching, IDamageMultiplierModifier
     {
-        private Dictionary<ActiveEtching, StatModifier> _appliedModifiers =
-            new Dictionary<ActiveEtching, StatModifier>();
+        private Stat _boostAmountStat;
         
-        protected override bool CheckInfluence(int stickNum)
+        protected override void Start()
         {
-            throw new System.NotImplementedException();
+            _boostAmountStat = new Stat(design.GetStat(St.Boost));
+            Debug.Log(_boostAmountStat.Value);
+            colorWhenActivated = true;
+            base.Start();
         }
         
-        protected override bool TestCharAboutToMoveActivatedEffect()
+        public int GetDamageModification(int damage, Enemy enemy, DamageSource source, Etching etching = null)
         {
-            var currentEnemy = ActiveEnemiesManager.current.CurrentEnemy;
-            var stickNum = Stick.GetStickNumber();
+            if ((source != DamageSource.Plank && design.Level < 1) || deactivationTurns > 0) return damage;
+            
+            if (enemy.Stick == Stick)
+            {
+                return damage *= _boostAmountStat.Value;
+            }
 
-            if (currentEnemy.StickNum + currentEnemy.NextMove != stickNum) return false;
+            return damage;
+        }
 
-            currentEnemy.stats.AddVulnerable(2);
-            return true;
+        protected override bool CheckInfluence(int stickNum)
+        {
+            return stickNum == Stick.GetStickNumber();
         }
     }
 }

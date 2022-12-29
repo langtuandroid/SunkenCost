@@ -17,7 +17,7 @@ public static class PlayerInventory
 
     static PlayerInventory()
     {
-        _deck.Add(new Stab());
+        _deck.Add(new Swordsman());
         _deck.Add(new Slinger());
         _deck.Add(new Impede());
     }

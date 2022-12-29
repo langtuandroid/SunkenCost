@@ -21,7 +21,7 @@ public class BattleManager : MonoBehaviour
     
     public GameState gameState = GameState.PlayerTurn;
     public const float AttackTime = 0.6f;
-    public static readonly int NumberOfTurns = 5;
+    public static readonly int NumberOfTurns = 7;
     
     private Random _random = new Random();
 
@@ -46,14 +46,20 @@ public class BattleManager : MonoBehaviour
         BattleEvents.Current.OnDesignOfferAccepted += DesignOfferAccepted;
         BattleEvents.Current.OnOfferDesigns += OfferingDesigns;
         BattleEvents.Current.OnBossKilled += BossKilled;
-        
+
+        BattleEvents.Current.BeginGame();
+
+        StartCoroutine(Init());
+    }
+
+    private IEnumerator Init()
+    {
+        yield return 0;
         foreach (var design in PlayerInventory.Deck)
         {
             StickManager.current.CreateStick();
-            EtchingManager.current.CreateEtching(StickManager.current.GetStick(StickManager.current.stickCount-1), design);
+            EtchingManager.Current.CreateEtching(StickManager.current.GetStick(StickManager.current.stickCount-1), design);
         }
-        
-        BattleEvents.Current.BeginGame();
     }
 
     // Update is called once per frame
@@ -86,7 +92,7 @@ public class BattleManager : MonoBehaviour
         }
         //
 
-        if (gameState == GameState.EnemyTurn && EtchingManager.current.finishedProcessingEnemyMove && ActiveEnemiesManager.current.finishedProcessingEnemyTurn)
+        if (gameState == GameState.EnemyTurn && EtchingManager.Current.finishedProcessingEnemyMove && ActiveEnemiesManager.Current.finishedProcessingEnemyTurn)
         {
             BattleEvents.Current.EndEnemyTurn();
             BeginPlayerTurn();
@@ -109,6 +115,7 @@ public class BattleManager : MonoBehaviour
             {
                 //Deck.Designs = EtchingManager.current.etchingOrder.Select(etching => etching.design).ToList();
                 GameProgress.BattleNumber++;
+                GameProgress.Lives = PlayerController.current.Lives;
                 MainManager.Current.LoadNextOfferScreen();
             }
             else

@@ -52,7 +52,7 @@ public class DesignInfo : MonoBehaviour
         if (design.Level == 1) titleText.text += " +";
         else if (design.Level == 2) titleText.text += " X";
         
-        descriptionText.text = DesignManager.GetDescription(design.Category, design.Stats);
+        descriptionText.text = DesignManager.GetDescription(design.Category, design.Stats, design.Level);
         
         usesText.text = design.Limitless ? "" : design.Stats[St.UsesPerTurn].Value - design.UsesUsedThisTurn + "/" + design.Stats[St.UsesPerTurn].Value;
     }

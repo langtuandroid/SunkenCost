@@ -3,6 +3,7 @@ using System.Configuration.Assemblies;
 using System.Collections.Generic;
 using System.Linq;
 using System.Reflection;
+using Enemies;
 using UnityEngine;
 
 public class EnemyManager : MonoBehaviour

@@ -32,7 +32,7 @@ public class DesignManager : MonoBehaviour
     public static Dictionary<string, int> Rarities { get; } = new Dictionary<string, int>()
     {
         // Melee
-        {"Stab", 0},
+        {"Swordsman", 0},
         
         // Ranged
         {"Slinger", 0},
@@ -48,6 +48,7 @@ public class DesignManager : MonoBehaviour
         
         // Boost
         {"Boost", 0},
+        {"StrikeZone", 0},
         
         /* Hop
         {"Hop", 0}, */
@@ -114,58 +115,9 @@ public class DesignManager : MonoBehaviour
         return current.etchingSprites[index];
     }
 
-    public static string GetDescription(DesignCategory designCategory, int timesPerTurn = -1, int minDistance = -1, int maxDistance = -1, int amount = -1)
+    public static string GetDescription(DesignCategory designCategory, Dictionary<St, Stat> stats, int level = 0)
     {
         var description = "";
-
-        switch (designCategory)
-        {
-            case DesignCategory.Melee: 
-                description = "Attacks an enemy landing on this plank for\n" + amount + " damage "+ timesPerTurn + "x per turn";
-                break;
-            case DesignCategory.Ranged:
-                var range = "";
-                if (minDistance == maxDistance)
-                {
-                    range = minDistance.ToString() + " plank";
-                    if (minDistance != 1) range += "s";
-                }
-                else
-                {
-                    range = minDistance + "-" + maxDistance + " planks";
-                }
-                
-                description = "Attacks an enemy landing " + range + " away for\n" + amount + " damage "+ timesPerTurn + "x per turn";
-                break;
-            case DesignCategory.Area:
-                var distance = maxDistance + " plank";
-                if (maxDistance != 1) distance += "s";
-                description = "Attacks every enemy landing within " + distance + " away for\n" + amount + " damage "+ timesPerTurn + "x per turn";
-                break;
-            case DesignCategory.Block: 
-                description = "Removes movement of an enemy landing on this plank "+ timesPerTurn + "x per turn";
-                break;
-            case DesignCategory.Boost: 
-                description = "Boosts damage of adjacent Attack planks by " + amount;
-                break;
-            case DesignCategory.Hop:
-                description = "Enemies leaving this plank skip the next plank";
-                break;
-            case DesignCategory.Reverse:
-                description = "Reverses the direction of an enemy leaving this plank " + timesPerTurn + "x per turn";
-                break;
-            case DesignCategory.Poison:
-                description = "Applies " + amount + " poison to an enemy landing on this plank " + timesPerTurn + "x per turn";
-                break;
-        }
-
-        return description;
-    }
-
-    public static string GetDescription(DesignCategory designCategory, Dictionary<St, Stat> stats)
-    {
-        var description = "";
-        stats.TryGetValue(St.UsesPerTurn, out var usesPerTurn);
         stats.TryGetValue(St.MinRange, out var minRange);
         stats.TryGetValue(St.MaxRange, out var maxRange);
         stats.TryGetValue(St.Damage, out var damage);
@@ -175,7 +127,7 @@ public class DesignManager : MonoBehaviour
         switch (designCategory)
         {
             case DesignCategory.Melee: 
-                description = "Attacks an enemy landing on this plank for\n" + damage?.Value + " damage "+ usesPerTurn?.Value + "x per turn";
+                description = "Attacks an enemy landing on this plank for\n" + damage?.Value + " damage";
                 break;
             case DesignCategory.Ranged:
                 var range = "";
@@ -189,15 +141,15 @@ public class DesignManager : MonoBehaviour
                     range = minRange?.Value + "-" + maxRange?.Value + " planks";
                 }
                 
-                description = "Attacks an enemy landing " + range + " away for\n" + damage?.Value + " damage "+ usesPerTurn?.Value + "x per turn";
+                description = "Attacks an enemy landing " + range + " away for\n" + damage?.Value + " damage";
                 break;
             case DesignCategory.Area:
                 var distance = maxRange?.Value + " plank";
                 if (maxRange?.Value != 1) distance += "s";
-                description = "Attacks every enemy landing within " + distance + " away for\n" + damage?.Value + " damage "+ usesPerTurn?.Value + "x per turn";
+                description = "Attacks every enemy landing within " + distance + " away for\n" + damage?.Value + " damage";
                 break;
             case DesignCategory.Block: 
-                description = "Removes " + stats[St.Block].Value + " movement from an enemy leaving this plank "+ usesPerTurn?.Value + "x per turn";
+                description = "Removes " + stats[St.Block].Value + " movement from an enemy leaving this plank";
                 break;
             case DesignCategory.Boost: 
                 description = "Boosts damage of adjacent Attack planks by " + boost?.Value;
@@ -206,11 +158,35 @@ public class DesignManager : MonoBehaviour
                 description = "Enemies leaving this plank skip the next plank";
                 break;
             case DesignCategory.Reverse:
-                description = "Reverses the direction of an enemy leaving this plank " + usesPerTurn?.Value + "x per turn. No upgrades.";
+                description = "Reverses the direction ";
+                if (level == 0) description += "of ";
+                else description += " and adds 1 movement to ";
+                description += " an enemy leaving this plank";
                 break;
             case DesignCategory.Poison:
-                description = "Applies " + poison?.Value + " poison to an enemy landing on this plank " + usesPerTurn?.Value + "x per turn";
+                description = "Applies " + poison?.Value + " poison to an enemy landing on this plank";
                 break;
+            case DesignCategory.StrikeZone:
+                description = "Enemies on this plank take ";
+                switch (level)
+                {
+                    case 0:
+                        description += "double damage from Attacks";
+                        break;
+                    case 1:
+                        description += "double damage";
+                        break;
+                    case 2:
+                        description += "triple damage";
+                        break;
+                }
+
+                break;
+        }
+
+        if (stats.TryGetValue(St.UsesPerTurn, out var usesPerTurn))
+        {
+            description += " " + usesPerTurn?.Value + "x per turn";
         }
 
         return description;

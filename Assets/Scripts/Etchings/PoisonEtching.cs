@@ -16,7 +16,7 @@
 
         protected override bool TestCharMovementActivatedEffect()
         {
-            var enemy = ActiveEnemiesManager.current.CurrentEnemy;
+            var enemy = ActiveEnemiesManager.CurrentEnemy;
 
             if (!CheckInfluence(enemy.StickNum)) return false;
             

@@ -11,7 +11,7 @@ public class PlayerController : MonoBehaviour
     public int MovesPerTurn { get; set; }
     private int _baseMovesPerTurn = 1;
 
-    public int Lives { get; private set; } = 3;
+    public int Lives { get; private set; }
     
     public bool IsOutOfMoves => MovesUsedThisTurn >= MovesPerTurn;
     public int MovesRemaining => MovesPerTurn - MovesUsedThisTurn;
@@ -35,6 +35,8 @@ public class PlayerController : MonoBehaviour
         BattleEvents.Current.OnPlayerMovedStick += OnPlayerMovedStick;
         BattleEvents.Current.OnEnemyReachedEnd += OnEnemyReachedEnd;
         BattleEvents.Current.OnRedraw += OnRedraw;
+
+        Lives = GameProgress.Lives;
         
         HUDManager.current.UpdateLives();
     }

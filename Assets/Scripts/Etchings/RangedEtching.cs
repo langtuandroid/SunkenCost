@@ -7,7 +7,7 @@ namespace Etchings
     {
         protected override bool TestCharMovementActivatedEffect()
         {
-            var enemy = ActiveEnemiesManager.current.CurrentEnemy;
+            var enemy = ActiveEnemiesManager.CurrentEnemy;
 
             // Not in play
             if (enemy.StickNum == 0 || enemy.StickNum >= StickManager.current.stickCount) return false;

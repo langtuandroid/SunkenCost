@@ -15,4 +15,10 @@ public static class GameProgress
         get;
         set;
     } = 3;
+
+    public static int Lives
+    {
+        get;
+        set;
+    } = 3;
 }

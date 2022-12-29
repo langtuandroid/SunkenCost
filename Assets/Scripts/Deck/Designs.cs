@@ -3,7 +3,7 @@ using UnityEngine;
 #region Damage
 
 #region Melee
-public class Stab : Design
+public class Swordsman : Design
 {
     protected override void Init()
     {
@@ -195,23 +195,22 @@ public class StrikeZone : Design
 {
     protected override void Init()
     {
-        Title = "StrikeZone";
+        Title = "Strike Zone";
         Category = DesignCategory.StrikeZone;
         Color = new Color(0f, 0.59f, 0.71f);
         AddStat(St.Cost, 2);
-        AddStat(St.StatMultiplier, 2);
+        AddStat(St.Boost, 2);
 
         base.Init();
     }
     
     protected override void FirstLevelUp()
     {
-        ModifyStat(St.StatMultiplier, 1);
     }
 
     protected override void SecondLevelUp()
     {
-        ModifyStat(St.StatMultiplier, 1);
+        ModifyStat(St.Boost, 1);
     }
 }
 

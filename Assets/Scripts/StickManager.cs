@@ -98,7 +98,7 @@ public class StickManager : MonoBehaviour
         }
 
         _sticks.Remove(stick);
-        if (stick.etching) EtchingManager.current.RemoveEtching(stick.etching);
+        if (stick.etching) EtchingManager.Current.RemoveEtching(stick.etching);
         stickCount--;
         stick.DestroyStick();
         
@@ -109,7 +109,7 @@ public class StickManager : MonoBehaviour
     {
         yield return 0;
         _stickGridController.Refresh();
-        EtchingManager.current.StickDestroyed();
+        EtchingManager.Current.StickDestroyed();
     }
 
     public Stick MouseOver => _sticks.FirstOrDefault(stick => stick.mouseIsOver);

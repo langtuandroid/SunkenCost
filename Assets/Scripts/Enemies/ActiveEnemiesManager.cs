@@ -3,11 +3,12 @@ using System.Collections;
 using System.Linq;
 using System.Linq.Expressions;
 using System.Collections.Generic;
+using Enemies;
 using UnityEngine;
 
 public class ActiveEnemiesManager : MonoBehaviour
 {
-    public static ActiveEnemiesManager current;
+    public static ActiveEnemiesManager Current { get; private set; }
 
     private const int EnemiesAllowedOnStick = 3;
 
@@ -27,13 +28,13 @@ public class ActiveEnemiesManager : MonoBehaviour
     private void Awake()
     {
         // One instance of static objects only
-        if (current)
+        if (Current)
         {
             Destroy(gameObject);
             return;
         }
         
-        current = this;
+        Current = this;
     }
 
     private void Start()
@@ -58,7 +59,7 @@ public class ActiveEnemiesManager : MonoBehaviour
         }*/
 
         if (_activeEnemies.Count > 0 &&
-            BattleManager.Current.gameState == GameState.EnemyTurn && _canMove && EtchingManager.current.finishedProcessingEnemyMove)
+            BattleManager.Current.gameState == GameState.EnemyTurn && _canMove && EtchingManager.Current.finishedProcessingEnemyMove)
         {
            StartCoroutine(MoveNextEnemy());
         }
@@ -143,7 +144,7 @@ public class ActiveEnemiesManager : MonoBehaviour
                 BattleEvents.Current.BegunEnemyMovement();
                 
                 // Wait for any planks to execute
-                while (!EtchingManager.current.finishedProcessingEnemyMove)
+                while (!EtchingManager.Current.finishedProcessingEnemyMove)
                     yield return 0;
                 
                 // If the planks have stopped it moving break
@@ -167,7 +168,7 @@ public class ActiveEnemiesManager : MonoBehaviour
                 BattleEvents.Current.CharacterMoved();
 
                 // Wait for any planks to execute
-                while (!EtchingManager.current.finishedProcessingEnemyMove)
+                while (!EtchingManager.Current.finishedProcessingEnemyMove)
                     yield return 0;
             }
         }
@@ -247,7 +248,7 @@ public class ActiveEnemiesManager : MonoBehaviour
             BattleEvents.Current.CharacterMoved();
 
             // Wait for any attacks to execute
-            while (!EtchingManager.current.finishedProcessingEnemyMove)
+            while (!EtchingManager.Current.finishedProcessingEnemyMove)
                 yield return 0;
         }
         yield break;
@@ -322,7 +323,7 @@ public class ActiveEnemiesManager : MonoBehaviour
         }
     }
 
-    public Enemy CurrentEnemy => _enemyTurnOrder[_currentEnemy];
+    public static Enemy CurrentEnemy => Current._enemyTurnOrder[Current._currentEnemy];
 
     private void RefreshEnemyTurnOrder()
     {
@@ -373,6 +374,6 @@ public class ActiveEnemiesManager : MonoBehaviour
         Destroy(enemy.gameObject);
     }
 
-    public int NumberOfActiveEnemies => _activeEnemies.Count;
-    public int NumberOfTotalEnemies => _allEnemies.Count;
+    public static int NumberOfActiveEnemies => Current._activeEnemies.Count;
+    public int NumberOfTotalEnemies => Current._allEnemies.Count;
 }

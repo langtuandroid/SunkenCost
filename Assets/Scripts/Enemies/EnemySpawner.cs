@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections;
 using System.Collections.Generic;
+using Enemies;
 using UnityEngine;
 using Random = UnityEngine.Random;
 
@@ -20,7 +21,7 @@ public class EnemySpawner : MonoBehaviour
             enemyDictionary.Add(enemyNames[i], enemyPrefabs[i]);
         }
 
-        BattleEvents.Current.OnEndEnemyTurn += SpawnNewRound;
+        BattleEvents.Current.OnBeginPlayerTurn += SpawnNewRound;
         BattleEvents.Current.OnBeginGame += SpawnNewRound;
 
         _scenario = ScenarioManager.GetScenario(GameProgress.BattleNumber);
@@ -28,7 +29,8 @@ public class EnemySpawner : MonoBehaviour
 
     private void SpawnNewRound()
     {
-        var newEnemies = GetNewRound();//_scenario.GetRound(BattleManager.Current.Turn + 1);
+        var newEnemies = _scenario.GetRound(BattleManager.Current.Turn);
+        newEnemies = GetNewRound();
 
         // Spawn boss every 16 rounds
         if (BattleManager.Current.Turn % 16 == 0 && BattleManager.Current.Turn != 0)
@@ -48,7 +50,7 @@ public class EnemySpawner : MonoBehaviour
             var newEnemy = Instantiate(enemyDictionary[enemyName], startStick, true);
             newEnemy.transform.localPosition = Vector3.zero;
             newEnemy.transform.localScale = new Vector3(1, 1, 1);
-            ActiveEnemiesManager.current.AddEnemy(newEnemy.GetComponent<Enemy>());
+            ActiveEnemiesManager.Current.AddEnemy(newEnemy.GetComponent<Enemy>());
         }
     }
 
@@ -57,7 +59,7 @@ public class EnemySpawner : MonoBehaviour
         // For now
         var newEnemies = new List<string>();
 
-            var amountToSpawn = Mathf.Floor((BattleManager.Current.Turn + (GameProgress.BattleNumber * BattleManager.NumberOfTurns)) / (BattleManager.NumberOfTurns * 2f)) + 1;
+            var amountToSpawn = Mathf.Floor((BattleManager.Current.Turn + (GameProgress.BattleNumber / 3 * BattleManager.NumberOfTurns)) / (BattleManager.NumberOfTurns * 2f)) + 1;
             for (var i = 0; i < amountToSpawn; i++)
             {
                 // Count -1 to not include boss
