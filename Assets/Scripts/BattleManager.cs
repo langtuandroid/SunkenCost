@@ -47,7 +47,7 @@ public class BattleManager : MonoBehaviour
         BattleEvents.Current.OnOfferDesigns += OfferingDesigns;
         BattleEvents.Current.OnBossKilled += BossKilled;
 
-        BattleEvents.Current.BeginGame();
+        BattleEvents.Current.BeginBattle();
 
         StartCoroutine(Init());
     }
@@ -115,6 +115,7 @@ public class BattleManager : MonoBehaviour
             {
                 //Deck.Designs = EtchingManager.current.etchingOrder.Select(etching => etching.design).ToList();
                 GameProgress.BattleNumber++;
+                BattleEvents.Current.EndBattle();
                 GameProgress.Lives = PlayerController.current.Lives;
                 MainManager.Current.LoadNextOfferScreen();
             }

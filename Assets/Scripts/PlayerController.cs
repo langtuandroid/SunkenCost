@@ -12,6 +12,7 @@ public class PlayerController : MonoBehaviour
     private int _baseMovesPerTurn = 1;
 
     public int Lives { get; private set; }
+    private int MaxLives { get; set; }
     
     public bool IsOutOfMoves => MovesUsedThisTurn >= MovesPerTurn;
     public int MovesRemaining => MovesPerTurn - MovesUsedThisTurn;
@@ -37,6 +38,7 @@ public class PlayerController : MonoBehaviour
         BattleEvents.Current.OnRedraw += OnRedraw;
 
         Lives = GameProgress.Lives;
+        MaxLives = GameProgress.MaxLives;
         
         HUDManager.current.UpdateLives();
     }
@@ -53,10 +55,21 @@ public class PlayerController : MonoBehaviour
 
     private void OnEnemyReachedEnd()
     {
+        TakeLife();
+    }
+
+    public void TakeLife()
+    {
         Lives -= 1;
         BattleEvents.Current.LostLife();
         HUDManager.current.UpdateLives();
         if (Lives <= 0) BattleManager.Current.OutOfLives();
+    }
+
+    public void AddLife(int amount)
+    {
+        Lives += amount;
+        if (Lives > MaxLives) Lives = MaxLives;
     }
 
     private void OnRedraw()

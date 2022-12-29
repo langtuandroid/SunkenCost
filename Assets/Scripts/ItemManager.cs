@@ -6,11 +6,13 @@ using System.Reflection;
 using System.Linq;
 using Items;
 using UnityEngine;
+using Random = UnityEngine.Random;
+
 public class ItemManager : MonoBehaviour
 {
     public static ItemManager Current;
     public readonly static Dictionary<string, Type> Items = new Dictionary<string, Type>();
-    
+
     [SerializeField] private List<string> itemTypes = new List<string>();
     [SerializeField] private List<Sprite> itemSprites = new List<Sprite>();
 
@@ -21,13 +23,14 @@ public class ItemManager : MonoBehaviour
             Destroy(this.gameObject);
             return;
         }
-        
+
         Current = this;
         DontDestroyOnLoad(gameObject);
-        
+
         // Get the Etching Offers
         var itemsEnumerable =
-            Assembly.GetAssembly(typeof(Item)).GetTypes().Where(t => t.IsSubclassOf(typeof(Item))).Where(ty => !ty.IsAbstract);
+            Assembly.GetAssembly(typeof(InGameItem)).GetTypes().Where(t => t.IsSubclassOf(typeof(InGameItem)))
+                .Where(ty => !ty.IsAbstract);
 
         foreach (var type in itemsEnumerable)
         {
@@ -43,10 +46,36 @@ public class ItemManager : MonoBehaviour
             }
         }
     }
-    
+
     public static Sprite GetItemSprite(string item)
     {
         var index = Current.itemTypes.IndexOf(item);
         return Current.itemSprites[index];
+    }
+
+    public static string[] GetItemTitleAndDescription(string item)
+    {
+        var title = "";
+        var desc = "";
+
+        switch (item)
+        {
+            case "PoisonTips":
+                title = "Poison Tips";
+                desc = "Apply 1 poison every time an enemy is attacked";
+                break;
+            
+            case "ExpiredMedicine":
+                title = "Expired Medicine";
+                desc = "Whenever an enemy heals, it takes 2 damage";
+                break;
+        }
+
+        return new string[2] {title, desc};
+    }
+
+    public static string GetRandomItem()
+    {
+        return Current.itemTypes[Random.Range(0, Current.itemTypes.Count)];
     }
 }

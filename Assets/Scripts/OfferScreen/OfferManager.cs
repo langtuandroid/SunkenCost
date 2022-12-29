@@ -11,6 +11,7 @@ public class OfferManager : MonoBehaviour
 
     [SerializeField] private Transform cardGrid;
     [SerializeField] private GameObject designCardPrefab;
+    [SerializeField] private GameObject itemOfferPrefab;
 
     [SerializeField] private Transform bootyGrid;
 
@@ -30,10 +31,33 @@ public class OfferManager : MonoBehaviour
 
     private void Start()
     {
+        /*
         if (GameProgress.BattleNumber % 3 != 0)
         {
             bootyGrid.gameObject.SetActive(false);
             CreateCardOfferGrids();
+        }
+        */
+        
+        SpawnItem();
+    }
+
+    private void SpawnItem()
+    {
+        var itemOffer = Instantiate(itemOfferPrefab, bootyGrid.GetChild(0)).GetComponent<ItemOffer>();
+
+        if (itemOffer is null)
+        {
+            Debug.Log("Null Item!");
+        }
+        else
+        {
+            var itemId = ItemManager.GetRandomItem();
+            var titleDesc = ItemManager.GetItemTitleAndDescription(itemId);
+            itemOffer.ItemId = itemId;
+            itemOffer.Sprite = ItemManager.GetItemSprite(itemId);
+            itemOffer.Title = titleDesc[0];
+            itemOffer.Desc = titleDesc[1];
         }
     }
 

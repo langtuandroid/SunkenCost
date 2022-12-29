@@ -364,7 +364,6 @@
             <e p="DesignManager.cs" t="Include" />
             <e p="Designs.cs" t="Include" />
             <e p="ListExtensions.cs" t="Include" />
-            <e p="PlayerInventory.cs" t="Include" />
           </e>
           <e p="EditorInit.cs" t="Include" />
           <e p="Enemies" t="Include">
@@ -410,6 +409,7 @@
             <e p="Indicator.cs" t="Include" />
             <e p="IndicatorController.cs" t="Include" />
             <e p="IndicatorManager.cs" t="Include" />
+            <e p="InfirmaryEtching.cs" t="Include" />
             <e p="MeleeEtching.cs" t="Include" />
             <e p="PoisonEtching.cs" t="Include" />
             <e p="RangedEtching.cs" t="Include" />
@@ -424,7 +424,9 @@
           <e p="InventoryManager.cs" t="Include" />
           <e p="ItemManager.cs" t="Include" />
           <e p="Items" t="Include">
+            <e p="ExpiredMedicineItem.cs" t="Include" />
             <e p="ExtraTurnItem.cs" t="Include" />
+            <e p="InGameItem.cs" t="Include" />
             <e p="Item.cs" t="Include" />
             <e p="PoisonTipsItem.cs" t="Include" />
           </e>
@@ -441,6 +443,7 @@
             <e p="StickOffer.cs" t="Include" />
           </e>
           <e p="PlayerController.cs" t="Include" />
+          <e p="PlayerInventory.cs" t="Include" />
           <e p="PlayerLevelController.cs" t="Include" />
           <e p="ReorderableListNoEdges" t="Include">
             <e p="ReorderableListContentNoEdges.cs" t="Include" />

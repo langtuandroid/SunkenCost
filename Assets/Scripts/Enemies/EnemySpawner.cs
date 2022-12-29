@@ -22,7 +22,7 @@ public class EnemySpawner : MonoBehaviour
         }
 
         BattleEvents.Current.OnBeginPlayerTurn += SpawnNewRound;
-        BattleEvents.Current.OnBeginGame += SpawnNewRound;
+        BattleEvents.Current.OnBeginBattle += SpawnNewRound;
 
         _scenario = ScenarioManager.GetScenario(GameProgress.BattleNumber);
     }
@@ -64,6 +64,11 @@ public class EnemySpawner : MonoBehaviour
             {
                 // Count -1 to not include boss
                 newEnemies.Add(enemyNames[Random.Range(0, enemyNames.Count-1)]);
+            }
+
+            if (Random.Range(0, 3) == 1)
+            {
+                newEnemies.Clear();
             }
 
             return newEnemies;

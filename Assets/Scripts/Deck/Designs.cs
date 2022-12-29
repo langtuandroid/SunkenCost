@@ -321,3 +321,26 @@ public class Poison : Design
 }
 
 #endregion
+
+public class Infirmary : Design
+{
+    protected override void Init()
+    {
+        Title = "Infirmary";
+        Category = DesignCategory.Infirmary;
+        Color = new Color(0.67f, 0.2f, 0.27f);
+        AddStat(St.Cost, 1);
+        AddStat(St.HealPlayer, 1);
+        base.Init();
+    }
+    
+    protected override void FirstLevelUp()
+    {
+        ModifyStat(St.HealPlayer, 1);
+    }
+
+    protected override void SecondLevelUp()
+    {
+        ModifyStat(St.HealPlayer, 1);
+    }
+}

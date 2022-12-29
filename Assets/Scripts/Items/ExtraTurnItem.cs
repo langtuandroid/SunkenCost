@@ -4,7 +4,7 @@ using UnityEngine;
 
 namespace Items
 {
-    public class ExtraTurnItem : Item
+    public class ExtraTurnItem : InGameItem
     {
         protected override void Activate()
         {

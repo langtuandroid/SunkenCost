@@ -1,6 +1,6 @@
 namespace Items
 {
-    public class PoisonTipsItem : Item
+    public class PoisonTipsItem : InGameItem
     {
         private int _poisonAmount = 1;
     

@@ -271,6 +271,7 @@ namespace Enemies
             ChangeHealth(amount);
             InGameSfxManager.current.Healed();
             _animationController.Heal();
+            BattleEvents.Current.EnemyHealed(this);
         }
 
         protected void ChangeHealth(int amount)

@@ -21,4 +21,10 @@ public static class GameProgress
         get;
         set;
     } = 3;
+    
+    public static int MaxLives
+    {
+        get;
+        set;
+    } = 3;
 }

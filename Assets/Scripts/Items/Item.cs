@@ -1,48 +1,15 @@
-﻿using System;
+using System;
 using UnityEngine;
-using UnityEngine.UI;
 
 namespace Items
 {
-    public abstract class Item : MonoBehaviour
+    [CreateAssetMenu(menuName = "Items")]
+    public class Item : ScriptableObject
     {
-        public string Title { get; protected set; }
-        public string Description { get; protected set; }
+        public string title;
+        public string description;
 
-        protected void Awake()
-        {
-            BattleEvents.Current.OnBeginPlayerTurn += OnBeginPlayerTurn;
-            BattleEvents.Current.OnEndPlayerTurn += OnEndPlayerTurn;
-            BattleEvents.Current.OnBeginEnemyTurn += OnBeginEnemyTurn;
-            BattleEvents.Current.OnEndEnemyTurn += OnEndEnemyTurn;
-
-            Activate();
-        }
-        
-        protected abstract void Activate();
-
-        protected virtual void OnBeginPlayerTurn()
-        {
-        }
-        
-        protected virtual void OnEndPlayerTurn()
-        {
-        }
-        
-        protected virtual void OnBeginEnemyTurn()
-        {
-        }
-        
-        protected virtual void OnEndEnemyTurn()
-        {
-        }
-
-        protected virtual void OnDestroy()
-        {
-            BattleEvents.Current.OnBeginPlayerTurn -= OnBeginPlayerTurn;
-            BattleEvents.Current.OnEndPlayerTurn -= OnEndPlayerTurn;
-            BattleEvents.Current.OnBeginEnemyTurn -= OnBeginEnemyTurn;
-            BattleEvents.Current.OnEndEnemyTurn -= OnEndEnemyTurn;
-        }
+        public Sprite sprite;
+        public Component inGameItemScript;
     }
 }

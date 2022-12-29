@@ -14,7 +14,8 @@ public enum St
     Poison,
     Hop,
     Block,
-    StatMultiplier
+    StatMultiplier,
+    HealPlayer
 }
 
 public abstract class Design

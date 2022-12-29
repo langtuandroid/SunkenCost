@@ -16,7 +16,8 @@ public enum DesignCategory
     Hop,
     Reverse,
     Poison,
-    StrikeZone
+    StrikeZone,
+    Infirmary
 }
 
 public class DesignManager : MonoBehaviour
@@ -54,7 +55,8 @@ public class DesignManager : MonoBehaviour
         {"Hop", 0}, */
         
         {"Reverse", 1},
-        {"Poison", 0}
+        {"Poison", 0},
+        {"Infirmary", 1}
     };
 
     private void Awake()
@@ -123,6 +125,7 @@ public class DesignManager : MonoBehaviour
         stats.TryGetValue(St.Damage, out var damage);
         stats.TryGetValue(St.Boost, out var boost);
         stats.TryGetValue(St.Poison, out var poison);
+        stats.TryGetValue(St.HealPlayer, out var healPlayer);
 
         switch (designCategory)
         {
@@ -181,6 +184,9 @@ public class DesignManager : MonoBehaviour
                         break;
                 }
 
+                break;
+            case DesignCategory.Infirmary:
+                description = "At the end of the battle, recover " + healPlayer?.Value + " life";
                 break;
         }
 

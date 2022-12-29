@@ -2320,8 +2320,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   itemTypes:
   - PoisonTips
+  - ExpiredMedicine
   itemSprites:
   - {fileID: 21300000, guid: 104a6b1ac5e863f4a946ab4a6643d1df, type: 3}
+  - {fileID: 21300000, guid: 4c53e18cd9c317c45b157601331d802f, type: 3}
 --- !u!4 &1088800077
 Transform:
   m_ObjectHideFlags: 0
@@ -4272,7 +4274,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
-  m_AnchoredPosition: {x: 1966.7258, y: 2034.6904}
+  m_AnchoredPosition: {x: 1956.1062, y: 2045.3098}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 1.01, y: 1}
 --- !u!114 &2041784062
