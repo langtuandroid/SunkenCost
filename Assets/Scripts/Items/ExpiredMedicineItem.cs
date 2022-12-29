@@ -2,7 +2,7 @@ namespace Items
 {
     public class ExpiredMedicineItem : InGameItem
     {
-        private const int DamageAmount = 2;
+        public const int DamageAmount = 2;
 
         protected override void Activate()
         {
@@ -11,7 +11,7 @@ namespace Items
 
         private void EnemyHealed()
         {
-            BattleEvents.LastEnemyHealed.TakeDamage(DamageAmount);
+            DamageHandler.DamageEnemy(DamageAmount, BattleEvents.LastEnemyHealed, DamageSource.Item);
         }
     }
 }

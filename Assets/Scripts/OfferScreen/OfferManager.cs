@@ -81,9 +81,9 @@ public class OfferManager : MonoBehaviour
         {
             var newCardObject = Instantiate(designCardPrefab, lowerGridContent);
             var info = newCardObject.GetComponentInChildren<DesignInfo>();
-            
-            var zeroRarityDesigns = DesignManager.Rarities.Where(r => r.Value == 0).ToList();
-            var designName = zeroRarityDesigns.ElementAt(Random.Range(0, zeroRarityDesigns.Count)).Key;
+
+            var zeroRarityDesigns = DesignManager.Rarities[0].Concat(DesignManager.Rarities[1]).Concat(DesignManager.Rarities[2]).ToArray();
+            var designName = zeroRarityDesigns[Random.Range(0, zeroRarityDesigns.Length)];
             var designType = DesignManager.GetDesignType(designName);
             var design = (Design)Activator.CreateInstance(designType);
             info.design = design;

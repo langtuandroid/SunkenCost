@@ -410,6 +410,7 @@
             <e p="IndicatorController.cs" t="Include" />
             <e p="IndicatorManager.cs" t="Include" />
             <e p="InfirmaryEtching.cs" t="Include" />
+            <e p="LoneWolfEtching.cs" t="Include" />
             <e p="MeleeEtching.cs" t="Include" />
             <e p="PoisonEtching.cs" t="Include" />
             <e p="RangedEtching.cs" t="Include" />
@@ -427,8 +428,8 @@
             <e p="ExpiredMedicineItem.cs" t="Include" />
             <e p="ExtraTurnItem.cs" t="Include" />
             <e p="InGameItem.cs" t="Include" />
-            <e p="Item.cs" t="Include" />
             <e p="PoisonTipsItem.cs" t="Include" />
+            <e p="RedressItem.cs" t="Include" />
           </e>
           <e p="Log.cs" t="Include" />
           <e p="MainManager.cs" t="Include" />
@@ -487,9 +488,9 @@
           <e p="ZoomManager.cs" t="Include" />
         </e>
         <e p="Sprites" t="Include">
+          <e p="DesignLogos" t="Include" />
           <e p="Effects" t="Include" />
           <e p="Enemies" t="Include" />
-          <e p="EtchingClasses" t="Include" />
           <e p="Items" t="Include" />
           <e p="Plank" t="Include">
             <e p="Indicators" t="Include" />

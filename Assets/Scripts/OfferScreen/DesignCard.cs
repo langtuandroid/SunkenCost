@@ -26,7 +26,7 @@ public class DesignCard : MonoBehaviour
 
     private void CardsUpdated()
     {
-        if (!Design.Upgradeable) return;
+        if (!Design.Upgradeable || Design.Level >= 2) return;
         
         _duplicates = OfferManager.Current.DesignCards.Where(d => d.Design.Title == Design.Title)
             .Where(d => d != this)

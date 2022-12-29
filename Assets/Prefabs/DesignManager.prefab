@@ -55,6 +55,7 @@ MonoBehaviour:
   - Poison
   - StrikeZone
   - Infirmary
+  - LoneWolf
   etchingSprites:
   - {fileID: 21300000, guid: b662687ca76c9d441a3334e79945a3ed, type: 3}
   - {fileID: 21300000, guid: 04b966b030cc5f8458ac126563c2af2a, type: 3}
@@ -66,3 +67,4 @@ MonoBehaviour:
   - {fileID: 21300000, guid: 8ad2dfc81df1ced4d8efa3216f6ad7d4, type: 3}
   - {fileID: 21300000, guid: ecdd156f938fa2a4d9d2f77dc2e73510, type: 3}
   - {fileID: 21300000, guid: aebfbe60762b0ef4086c52317d594a32, type: 3}
+  - {fileID: 21300000, guid: 6f533f2fe7178644c87abb5b522243cc, type: 3}

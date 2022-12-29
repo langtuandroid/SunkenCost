@@ -18,7 +18,6 @@
     <setting file="file://$PROJECT_DIR$/Assets/Scripts/GameProgress.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Scripts/OfferScreen/DesignCard.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Scripts/MainManager.cs" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/Assets/Scripts/Items/Item.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Scripts/Enemies/Scenarios/ScenarioManager.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Scripts/OfferScreen/OfferRow.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Scripts/PlayerInventory.cs" root0="FORCE_HIGHLIGHTING" />
@@ -27,6 +26,7 @@
     <setting file="file://$PROJECT_DIR$/Assets/Scripts/EtchingTurnProcess.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Scripts/OfferScreen/OfferScreenEvents.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Scripts/Items/PoisonTipsItem.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/Scripts/Items/ReDressItem.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Scripts/Enemies/Enemies/StrongClausEnemy.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Scripts/OfferScreen/StickOffer.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Scripts/BattleItemManager.cs" root0="FORCE_HIGHLIGHTING" />
@@ -35,57 +35,57 @@
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/Assets/Scripts/Enemies/Enemies/GrouldEnemy.cs" />
-        <option value="$PROJECT_DIR$/Assets/Scripts/Etchings/ActiveEtching.cs" />
-        <option value="$PROJECT_DIR$/Assets/Scripts/Etchings/DummyEtching.cs" />
-        <option value="$PROJECT_DIR$/Assets/Scripts/Etchings/Indicator.cs" />
-        <option value="$PROJECT_DIR$/Assets/Scripts/Etchings/IndicatorController.cs" />
-        <option value="$PROJECT_DIR$/Assets/Scripts/Etchings/IndicatorManager.cs" />
-        <option value="$PROJECT_DIR$/Assets/Scripts/Enemies/EnemyStats.cs" />
-        <option value="$PROJECT_DIR$/Assets/Scripts/EtchingTurnProcess.cs" />
         <option value="$PROJECT_DIR$/Assets/Scripts/Etchings/CharMovementActivatedEtching.cs" />
         <option value="$PROJECT_DIR$/Assets/Scripts/Etchings/HopEtching.cs" />
         <option value="$PROJECT_DIR$/Assets/Scripts/Etchings/AreaEtching.cs" />
         <option value="$PROJECT_DIR$/Assets/Scripts/Etchings/BlockEtching.cs" />
-        <option value="$PROJECT_DIR$/Assets/Scripts/Etchings/MeleeEtching.cs" />
         <option value="$PROJECT_DIR$/Assets/Scripts/Etchings/PoisonEtching.cs" />
         <option value="$PROJECT_DIR$/Assets/Scripts/Etchings/RangedEtching.cs" />
         <option value="$PROJECT_DIR$/Assets/Scripts/Etchings/CharPreMovementActivatedEffect.cs" />
         <option value="$PROJECT_DIR$/Assets/Scripts/UI/Tutorial/TutorialManager.cs" />
-        <option value="$PROJECT_DIR$/Assets/Scripts/Enemies/ActiveEnemiesManager.cs" />
         <option value="$PROJECT_DIR$/Assets/Scripts/Etchings/DamageEtching.cs" />
         <option value="$PROJECT_DIR$/Assets/Scripts/Enemies/EnemyDamageHandler.cs" />
         <option value="$PROJECT_DIR$/Assets/Scripts/Enemies/Scenarios/Scenario.cs" />
         <option value="$PROJECT_DIR$/Assets/Scripts/Enemies/Scenarios/ScenarioManager.cs" />
         <option value="$PROJECT_DIR$/Assets/Scripts/Enemies/Enemies/AxolitlEnemy.cs" />
-        <option value="$PROJECT_DIR$/Assets/Scripts/Items/PoisonTipsItem.cs" />
         <option value="$PROJECT_DIR$/Assets/Scripts/EtchingManager.cs" />
         <option value="$PROJECT_DIR$/Assets/Scripts/BattleItemManager.cs" />
         <option value="$PROJECT_DIR$/Assets/Scripts/Etchings/Etching.cs" />
         <option value="$PROJECT_DIR$/Assets/Scripts/Etchings/BoostEtching.cs" />
         <option value="$PROJECT_DIR$/Assets/Scripts/DesignManager.cs" />
-        <option value="$PROJECT_DIR$/Assets/Scripts/Enemies/DamageHandler.cs" />
-        <option value="$PROJECT_DIR$/Assets/Scripts/Deck/DesignInfo.cs" />
         <option value="$PROJECT_DIR$/Assets/Scripts/Etchings/StrikeZoneEtching.cs" />
         <option value="$PROJECT_DIR$/Assets/Scripts/Etchings/ReverseEtching.cs" />
         <option value="$PROJECT_DIR$/Assets/Scripts/Deck/PlayerInventory.cs" />
         <option value="$PROJECT_DIR$/Assets/Scripts/Enemies/Enemy.cs" />
-        <option value="$PROJECT_DIR$/Assets/Scripts/Enemies/EnemySpawner.cs" />
-        <option value="$PROJECT_DIR$/Assets/Scripts/Deck/Designs.cs" />
-        <option value="$PROJECT_DIR$/Assets/Scripts/Deck/Design.cs" />
-        <option value="$PROJECT_DIR$/Assets/Scripts/PlayerInventory.cs" />
         <option value="$PROJECT_DIR$/Assets/Scripts/Etchings/InfirmaryEtching.cs" />
         <option value="$PROJECT_DIR$/Assets/Scripts/BattleEvents.cs" />
-        <option value="$PROJECT_DIR$/Assets/Scripts/BattleManager.cs" />
         <option value="$PROJECT_DIR$/Assets/Scripts/GameProgress.cs" />
         <option value="$PROJECT_DIR$/Assets/Scripts/PlayerController.cs" />
-        <option value="$PROJECT_DIR$/Assets/Scripts/Deck/DesignManager.cs" />
-        <option value="$PROJECT_DIR$/Assets/Scripts/Items/ExpiredMedicineItem.cs" />
         <option value="$PROJECT_DIR$/Assets/Scripts/Items/Item.cs" />
-        <option value="$PROJECT_DIR$/Assets/Scripts/Items/InGameItem.cs" />
-        <option value="$PROJECT_DIR$/Assets/Scripts/ItemManager.cs" />
         <option value="$PROJECT_DIR$/Assets/Scripts/OfferScreen/ItemOffer.cs" />
         <option value="$PROJECT_DIR$/Assets/Scripts/OfferScreen/OfferManager.cs" />
+        <option value="$PROJECT_DIR$/Assets/Scripts/Enemies/EnemySpawner.cs" />
+        <option value="$PROJECT_DIR$/Assets/Scripts/Items/InGameItem.cs" />
+        <option value="$PROJECT_DIR$/Assets/Scripts/Items/TemplateItem.cs" />
+        <option value="$PROJECT_DIR$/Assets/Scripts/Enemies/ActiveEnemiesManager.cs" />
+        <option value="$PROJECT_DIR$/Assets/Scripts/Enemies/DamageHandler.cs" />
+        <option value="$PROJECT_DIR$/Assets/Scripts/Items/RedressItem.cs" />
+        <option value="$PROJECT_DIR$/Assets/Scripts/Items/ReDress.cs" />
+        <option value="$PROJECT_DIR$/Assets/Scripts/Items/ReDressItem.cs" />
+        <option value="$PROJECT_DIR$/Assets/Scripts/Items/PoisonTipsItem.cs" />
+        <option value="$PROJECT_DIR$/Assets/Scripts/Items/ExpiredMedicineItem.cs" />
+        <option value="$PROJECT_DIR$/Assets/Scripts/ItemManager.cs" />
+        <option value="$PROJECT_DIR$/Assets/Scripts/BattleManager.cs" />
+        <option value="$PROJECT_DIR$/Assets/Scripts/HUDManager.cs" />
+        <option value="$PROJECT_DIR$/Assets/Scripts/Etchings/LoneWolf.cs" />
+        <option value="$PROJECT_DIR$/Assets/Scripts/Deck/Design.cs" />
+        <option value="$PROJECT_DIR$/Assets/Scripts/Deck/DesignInfo.cs" />
+        <option value="$PROJECT_DIR$/Assets/Scripts/Etchings/LoneWolfEtching.cs" />
+        <option value="$PROJECT_DIR$/Assets/Scripts/Etchings/MeleeEtching.cs" />
+        <option value="$PROJECT_DIR$/Assets/Scripts/Deck/Designs.cs" />
+        <option value="$PROJECT_DIR$/Assets/Scripts/Deck/DesignManager.cs" />
+        <option value="$PROJECT_DIR$/Assets/Scripts/PlayerInventory.cs" />
+        <option value="$PROJECT_DIR$/Assets/Scripts/OfferScreen/DesignCard.cs" />
       </list>
     </option>
   </component>
@@ -135,7 +135,8 @@
       <workItem from="1671162203361" duration="22434000" />
       <workItem from="1671493865704" duration="4014000" />
       <workItem from="1671571010333" duration="21052000" />
-      <workItem from="1672277179517" duration="7754000" />
+      <workItem from="1672277179517" duration="9902000" />
+      <workItem from="1672349702541" duration="5742000" />
     </task>
     <servers />
   </component>
@@ -148,14 +149,14 @@
     <option name="CLEAR_INITIAL_COMMIT_MESSAGE" value="true" />
   </component>
   <component name="WindowStateProjectService">
-    <state x="742" y="1246" key="RiderGenerateDialog" timestamp="1671541668834">
+    <state x="742" y="1246" key="RiderGenerateDialog" timestamp="1672353689775">
       <screen x="0" y="1080" width="1920" height="1040" />
     </state>
-    <state x="742" y="1246" key="RiderGenerateDialog/0.1080.1920.1040/0.0.1920.1040@0.1080.1920.1040" timestamp="1671541668834" />
-    <state x="532" y="777" key="run.anything.popup" timestamp="1671850100419">
+    <state x="742" y="1246" key="RiderGenerateDialog/0.1080.1920.1040/0.0.1920.1040@0.1080.1920.1040" timestamp="1672353689775" />
+    <state x="532" y="777" key="run.anything.popup" timestamp="1672356111592">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state x="532" y="777" key="run.anything.popup/0.1080.1920.1040/0.0.1920.1040@0.1080.1920.1040" timestamp="1671850100419" />
+    <state x="532" y="777" key="run.anything.popup/0.1080.1920.1040/0.0.1920.1040@0.1080.1920.1040" timestamp="1672356111592" />
     <state x="539" y="1085" width="840" height="1034" key="search.everywhere.popup" timestamp="1672281603634">
       <screen x="0" y="1080" width="1920" height="1040" />
     </state>

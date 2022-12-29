@@ -17,6 +17,9 @@ public class ActiveEnemiesManager : MonoBehaviour
     private List<Enemy> _activeEnemies = new List<Enemy>();
     private List<Enemy> _waitingEnemies = new List<Enemy>();
     private List<Enemy> _allEnemies = new List<Enemy>();
+
+    public List<Enemy> ActiveEnemies => _activeEnemies;
+    
     private Enemy[] _enemyTurnOrder = new Enemy[1] {null};
     private int _currentEnemy = 0;
     private bool _canMove = true;

@@ -5,7 +5,7 @@ using UnityEngine;
 
 public enum St
 {
-    Cost,
+    Rarity,
     UsesPerTurn,
     Damage,
     MinRange,
@@ -15,7 +15,8 @@ public enum St
     Hop,
     Block,
     StatMultiplier,
-    HealPlayer
+    HealPlayer,
+    DamageFlatModifier
 }
 
 public abstract class Design

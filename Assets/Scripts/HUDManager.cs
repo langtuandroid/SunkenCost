@@ -48,7 +48,7 @@ public class HUDManager : MonoBehaviour
     {
         if (BattleManager.Current.Turn < BattleManager.NumberOfTurns)
         {
-            _roundText.text = "TURNS LEFT: " + (BattleManager.NumberOfTurns - BattleManager.Current.Turn);
+            _roundText.text = "TURNS LEFT: " + (BattleManager.NumberOfTurns + 1 - BattleManager.Current.Turn);
         }
         else if (BattleManager.Current.Turn == BattleManager.NumberOfTurns)
         {

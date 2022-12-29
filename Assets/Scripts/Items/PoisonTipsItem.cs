@@ -2,7 +2,7 @@ namespace Items
 {
     public class PoisonTipsItem : InGameItem
     {
-        private int _poisonAmount = 1;
+        public const int PoisonAmount = 1;
     
         protected override void Activate()
         {
@@ -12,7 +12,7 @@ namespace Items
         private void AddPoison()
         {
             var enemy = BattleEvents.LastEnemyAttacked;
-            enemy.stats.AddPoison(_poisonAmount);
+            enemy.stats.AddPoison(PoisonAmount);
         }
 
         protected override void OnDestroy()

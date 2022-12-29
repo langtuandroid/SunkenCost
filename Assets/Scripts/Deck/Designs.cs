@@ -10,7 +10,7 @@ public class Swordsman : Design
         Title = "Swordsman";
         Category = DesignCategory.Melee;
         Color = Color.cyan;
-        AddStat(St.Cost, 1);
+        AddStat(St.Rarity, 1);
         AddStat(St.Damage, 6);
         
         base.Init();
@@ -26,6 +26,30 @@ public class Swordsman : Design
         ModifyStat(St.Damage, 3);
     }
 }
+
+public class LoneWolf : Design
+{
+    protected override void Init()
+    {
+        Title = "Lone Wolf";
+        Category = DesignCategory.LoneWolf;
+        Color = new Color(0.2f, 0.35f, 0.38f);
+        AddStat(St.Rarity, 2);
+        AddStat(St.Damage, 20);
+        AddStat(St.DamageFlatModifier, -3);
+        base.Init();
+    }
+
+    protected override void FirstLevelUp()
+    {
+        ModifyStat(St.Damage, 5);
+    }
+
+    protected override void SecondLevelUp()
+    {
+        ModifyStat(St.Damage, 10);
+    }
+}
 #endregion
 
 #region Ranged
@@ -36,7 +60,7 @@ public class Slinger : Design
         Title = "Slinger";
         Category = DesignCategory.Ranged;
         Color = Color.red;
-        AddStat(St.Cost, 2);
+        AddStat(St.Rarity, 2);
         AddStat(St.Damage, 4);
         AddStat(St.MinRange, 1);
         AddStat(St.MaxRange, 1);
@@ -62,7 +86,7 @@ public class Archer : Design
         Title = "Archer";
         Category = DesignCategory.Ranged;
         Color = Color.red;
-        AddStat(St.Cost, 2);
+        AddStat(St.Rarity, 2);
         AddStat(St.Damage, 3);
         AddStat(St.MinRange, 1);
         AddStat(St.MaxRange, 2);
@@ -88,7 +112,7 @@ public class Marksman : Design
         Title = "Marksman";
         Category = DesignCategory.Ranged;
         Color = Color.red;
-        AddStat(St.Cost, 3);
+        AddStat(St.Rarity, 3);
         AddStat(St.Damage, 6);
         AddStat(St.MinRange, 3);
         AddStat(St.MaxRange, 3);
@@ -117,7 +141,7 @@ public class Stomp : Design
         Title = "Stomp";
         Category = DesignCategory.Area;
         Color = Color.yellow;
-        AddStat(St.Cost, 1);
+        AddStat(St.Rarity, 1);
         AddStat(St.Damage, 1);
         AddStat(St.MaxRange, 1);
 
@@ -142,7 +166,7 @@ public class Splatter : Design
         Title = "Splatter";
         Category = DesignCategory.Area;
         Color = Color.yellow;
-        AddStat(St.Cost, 3);
+        AddStat(St.Rarity, 3);
         AddStat(St.UsesPerTurn, 1);
         AddStat(St.Damage, 3);
         AddStat(St.MaxRange, 2);
@@ -174,7 +198,7 @@ public class Boost : Design
         Title = "Boost";
         Category = DesignCategory.Boost;
         Color = Color.magenta;
-        AddStat(St.Cost, 1);
+        AddStat(St.Rarity, 1);
         AddStat(St.Boost, 2);
 
         base.Init();
@@ -198,7 +222,7 @@ public class StrikeZone : Design
         Title = "Strike Zone";
         Category = DesignCategory.StrikeZone;
         Color = new Color(0f, 0.59f, 0.71f);
-        AddStat(St.Cost, 2);
+        AddStat(St.Rarity, 2);
         AddStat(St.Boost, 2);
 
         base.Init();
@@ -225,7 +249,7 @@ public class Impede : Design
         Title = "Impede";
         Category = DesignCategory.Block;
         Color = new Color(0.54f, 0.54f, 0.67f);
-        AddStat(St.Cost, 1);
+        AddStat(St.Rarity, 1);
         AddStat(St.UsesPerTurn, 1);
         AddStat(St.MinRange, 0);
         AddStat(St.MaxRange, 0);
@@ -252,7 +276,7 @@ public class Reverse : Design
         Category = DesignCategory.Reverse;
         Color = new Color(0f, 0.72f, 0.55f);
         Upgradeable = false;
-        AddStat(St.Cost, 3);
+        AddStat(St.Rarity, 3);
         AddStat(St.UsesPerTurn, 1);
 
         base.Init();
@@ -276,7 +300,7 @@ public class Hop : Design
         Title = "Hop";
         Category = DesignCategory.Hop;
         Color = Color.green;
-        AddStat(St.Cost, 1);
+        AddStat(St.Rarity, 1);
         AddStat(St.Hop, 1);
 
         base.Init();
@@ -303,7 +327,7 @@ public class Poison : Design
         Title = "Poison";
         Category = DesignCategory.Poison;
         Color = new Color(0.41f, 0.67f, 0f);
-        AddStat(St.Cost, 1);
+        AddStat(St.Rarity, 1);
         AddStat(St.Poison, 3);
 
         base.Init();
@@ -329,7 +353,7 @@ public class Infirmary : Design
         Title = "Infirmary";
         Category = DesignCategory.Infirmary;
         Color = new Color(0.67f, 0.2f, 0.27f);
-        AddStat(St.Cost, 1);
+        AddStat(St.Rarity, 2);
         AddStat(St.HealPlayer, 1);
         base.Init();
     }

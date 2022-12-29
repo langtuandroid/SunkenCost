@@ -9,7 +9,8 @@ public enum DamageSource
 {
     Plank,
     Poison,
-    Self
+    Item,
+    Self,
 }
 
 public interface IDamageFlatModifier

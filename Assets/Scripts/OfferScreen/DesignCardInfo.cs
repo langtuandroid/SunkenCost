@@ -27,12 +27,12 @@ public class DesignCardInfo : DesignInfo
     private void UpdateCostText()
     {
         _costText.color = GetColor();
-        _costText.text = design.GetStat(St.Cost).ToString();
+        _costText.text = design.GetStat(St.Rarity).ToString();
     }
 
     private Color GetColor()
     {
-        return PlayerController.current.MovesRemaining >= design.GetStat(St.Cost) ? _goodColor : _badColor;
+        return PlayerController.current.MovesRemaining >= design.GetStat(St.Rarity) ? _goodColor : _badColor;
     }
 
     private void OnDestroy()

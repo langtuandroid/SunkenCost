@@ -62,12 +62,16 @@ public class ItemManager : MonoBehaviour
         {
             case "PoisonTips":
                 title = "Poison Tips";
-                desc = "Apply 1 poison every time an enemy is attacked";
+                desc = "Apply " + PoisonTipsItem.PoisonAmount +" poison every time an enemy is attacked";
                 break;
             
             case "ExpiredMedicine":
                 title = "Expired Medicine";
-                desc = "Whenever an enemy heals, it takes 2 damage";
+                desc = "Whenever an enemy heals, it takes " + ExpiredMedicineItem.DamageAmount + " damage";
+                break;
+            case "ReDress":
+                title = "ReDress";
+                desc = "Whenever an enemy reaches your boat, deal " + ReDressItem.DamageAmount + " damage to all enemies";
                 break;
         }
 

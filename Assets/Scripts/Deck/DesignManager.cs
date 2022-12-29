@@ -17,7 +17,8 @@ public enum DesignCategory
     Reverse,
     Poison,
     StrikeZone,
-    Infirmary
+    Infirmary,
+    LoneWolf
 }
 
 public class DesignManager : MonoBehaviour
@@ -29,34 +30,33 @@ public class DesignManager : MonoBehaviour
     
     [SerializeField] private List<string> etchingTypes = new List<string>();
     [SerializeField] private List<Sprite> etchingSprites = new List<Sprite>();
-    
-    public static Dictionary<string, int> Rarities { get; } = new Dictionary<string, int>()
+
+    public static string[][] Rarities =
     {
-        // Melee
-        {"Swordsman", 0},
+        new string[] 
+        {
+            "Swordsman",
+            "Slinger",
+            "Archer",
+            "Stomp",
+            "Impede",
+            "Boost",
+            "Poison",
+        },
         
-        // Ranged
-        {"Slinger", 0},
-        {"Archer", 0},
-        {"Marksman", 1},
+        new string[]
+        {
+            "Marksman",
+            "Splatter",
+            "StrikeZone",
+            "Infirmary",
+            "LoneWolf",
+        },
         
-        // Area
-        {"Stomp", 0},
-        {"Splatter", 1},
-        
-        // Block
-        {"Impede", 0},
-        
-        // Boost
-        {"Boost", 0},
-        {"StrikeZone", 0},
-        
-        /* Hop
-        {"Hop", 0}, */
-        
-        {"Reverse", 1},
-        {"Poison", 0},
-        {"Infirmary", 1}
+        new string[]
+        {
+            "Reverse",
+        }
     };
 
     private void Awake()
@@ -117,20 +117,23 @@ public class DesignManager : MonoBehaviour
         return current.etchingSprites[index];
     }
 
-    public static string GetDescription(DesignCategory designCategory, Dictionary<St, Stat> stats, int level = 0)
+    public static string GetDescription(Design design)
     {
         var description = "";
-        stats.TryGetValue(St.MinRange, out var minRange);
-        stats.TryGetValue(St.MaxRange, out var maxRange);
-        stats.TryGetValue(St.Damage, out var damage);
-        stats.TryGetValue(St.Boost, out var boost);
-        stats.TryGetValue(St.Poison, out var poison);
-        stats.TryGetValue(St.HealPlayer, out var healPlayer);
+        design.Stats.TryGetValue(St.MinRange, out var minRange);
+        design.Stats.TryGetValue(St.MaxRange, out var maxRange);
+        design.Stats.TryGetValue(St.Damage, out var damage);
+        design.Stats.TryGetValue(St.Boost, out var boost);
+        design.Stats.TryGetValue(St.Block, out var block);
+        design.Stats.TryGetValue(St.Poison, out var poison);
+        design.Stats.TryGetValue(St.HealPlayer, out var healPlayer);
 
-        switch (designCategory)
+        switch (design.Category)
         {
-            case DesignCategory.Melee: 
+            case DesignCategory.Melee: case DesignCategory.LoneWolf:  
                 description = "Attacks an enemy landing on this plank for\n" + damage?.Value + " damage";
+                if (design.Category == DesignCategory.LoneWolf)
+                    description += ". " + design.Stats[St.DamageFlatModifier].Value + " damage for each plank you have";
                 break;
             case DesignCategory.Ranged:
                 var range = "";
@@ -152,7 +155,7 @@ public class DesignManager : MonoBehaviour
                 description = "Attacks every enemy landing within " + distance + " away for\n" + damage?.Value + " damage";
                 break;
             case DesignCategory.Block: 
-                description = "Removes " + stats[St.Block].Value + " movement from an enemy leaving this plank";
+                description = "Removes " + block?.Value + " movement from an enemy leaving this plank";
                 break;
             case DesignCategory.Boost: 
                 description = "Boosts damage of adjacent Attack planks by " + boost?.Value;
@@ -162,7 +165,7 @@ public class DesignManager : MonoBehaviour
                 break;
             case DesignCategory.Reverse:
                 description = "Reverses the direction ";
-                if (level == 0) description += "of ";
+                if (design.Level == 0) description += "of ";
                 else description += " and adds 1 movement to ";
                 description += " an enemy leaving this plank";
                 break;
@@ -171,7 +174,7 @@ public class DesignManager : MonoBehaviour
                 break;
             case DesignCategory.StrikeZone:
                 description = "Enemies on this plank take ";
-                switch (level)
+                switch (design.Level)
                 {
                     case 0:
                         description += "double damage from Attacks";
@@ -186,11 +189,13 @@ public class DesignManager : MonoBehaviour
 
                 break;
             case DesignCategory.Infirmary:
-                description = "At the end of the battle, recover " + healPlayer?.Value + " life";
+                description = "At the end of the battle, recover " + healPlayer?.Value;
+                if (healPlayer?.Value > 1) description += " lives";
+                else description += " life";
                 break;
         }
 
-        if (stats.TryGetValue(St.UsesPerTurn, out var usesPerTurn))
+        if (design.Stats.TryGetValue(St.UsesPerTurn, out var usesPerTurn))
         {
             description += " " + usesPerTurn?.Value + "x per turn";
         }

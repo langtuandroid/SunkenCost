@@ -13,8 +13,8 @@ public static class PlayerInventory
     {
         Deck.Add(new Swordsman());
         Deck.Add(new Slinger());
-        Deck.Add(new Infirmary());
+        Deck.Add(new Impede());
         
-        Items.Add("ExpiredMedicine");
+        Items.Add("ReDress");
     }
 }
