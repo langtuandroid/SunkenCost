@@ -12,17 +12,17 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e88836627efa4444288b773536f04a36, type: 3}
   m_Name: Easy0
   m_EditorClassIdentifier: 
-  difficulty: 0
+  difficulty: 3
   round1:
   - Claus
   round2: []
   round3:
   - Claus
   round4:
-  - Claus
+  - Grould
   round5:
   - Claus
   round6: []
   round7:
-  - 
+  - Claus
   round8: []

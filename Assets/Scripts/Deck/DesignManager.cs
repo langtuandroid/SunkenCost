@@ -31,33 +31,9 @@ public class DesignManager : MonoBehaviour
     [SerializeField] private List<string> etchingTypes = new List<string>();
     [SerializeField] private List<Sprite> etchingSprites = new List<Sprite>();
 
-    public static string[][] Rarities =
-    {
-        new string[] 
-        {
-            "Swordsman",
-            "Slinger",
-            "Archer",
-            "Stomp",
-            "Impede",
-            "Boost",
-            "Poison",
-        },
-        
-        new string[]
-        {
-            "Marksman",
-            "Splatter",
-            "StrikeZone",
-            "Infirmary",
-            "LoneWolf",
-        },
-        
-        new string[]
-        {
-            "Reverse",
-        }
-    };
+    public static readonly List<string> CommonDesigns = new List<string>();
+    public static readonly List<string> UncommonDesigns = new List<string>();
+    public static readonly List<string> RareDesigns = new List<string>();
 
     private void Awake()
     {
@@ -85,9 +61,26 @@ public class DesignManager : MonoBehaviour
         foreach (var type in designs)
         {
             var designName = type.FullName;
-            DesignTypes.Add(designName ?? "WHAT?", type);
+            DesignTypes.Add(designName ?? "ERROR", type);
+
+            // Create instances of the design to create the table of rarities
+            var newDesign = (Design) Activator.CreateInstance(type);
+            var rarity = newDesign.GetStat(St.Rarity);
+
+            switch (rarity)
+            {
+                case 1:
+                    CommonDesigns.Add(designName);
+                    break;
+                case 2:
+                    UncommonDesigns.Add(designName);
+                    break;
+                case 3:
+                    RareDesigns.Add(designName);
+                    break;
+            }
         }
-        
+
         // Get the Etchings
         var etchingsEnumerable = 
             Assembly.GetAssembly(typeof(ActiveEtching)).GetTypes().Where(t => t.IsSubclassOf(typeof(ActiveEtching))).Where(ty => !ty.IsAbstract);

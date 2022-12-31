@@ -6,15 +6,13 @@ using UnityEngine;
 
 public class GrouldEnemy : Enemy
 {
-    protected override void Awake()
+    protected override void Init()
     {
         Name = "Grould";
         MoveSet.Add(1);
         MoveSet.Add(0);
-        MaxHealth = 25;
+        SetInitialHealth(25);
         Gold = 1;
-
-        base.Awake();
     }
     
     public override string GetDescription()

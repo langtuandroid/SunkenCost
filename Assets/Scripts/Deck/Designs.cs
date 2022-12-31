@@ -18,13 +18,13 @@ public class Swordsman : Design
 
     protected override void FirstLevelUp()
     {
-        ModifyStat(St.Damage, 2);
+        ModifyStat(St.Damage, 3);
     }
 
     protected override void SecondLevelUp()
     {
         ModifyStat(St.Damage, 3);
-    }
+   }
 }
 
 public class LoneWolf : Design
@@ -34,8 +34,8 @@ public class LoneWolf : Design
         Title = "Lone Wolf";
         Category = DesignCategory.LoneWolf;
         Color = new Color(0.2f, 0.35f, 0.38f);
-        AddStat(St.Rarity, 2);
-        AddStat(St.Damage, 20);
+        AddStat(St.Rarity, 3);
+        AddStat(St.Damage, 30);
         AddStat(St.DamageFlatModifier, -3);
         base.Init();
     }
@@ -47,7 +47,7 @@ public class LoneWolf : Design
 
     protected override void SecondLevelUp()
     {
-        ModifyStat(St.Damage, 10);
+        ModifyStat(St.Damage, 5);
     }
 }
 #endregion
@@ -60,7 +60,7 @@ public class Slinger : Design
         Title = "Slinger";
         Category = DesignCategory.Ranged;
         Color = Color.red;
-        AddStat(St.Rarity, 2);
+        AddStat(St.Rarity, 1);
         AddStat(St.Damage, 4);
         AddStat(St.MinRange, 1);
         AddStat(St.MaxRange, 1);
@@ -86,7 +86,7 @@ public class Archer : Design
         Title = "Archer";
         Category = DesignCategory.Ranged;
         Color = Color.red;
-        AddStat(St.Rarity, 2);
+        AddStat(St.Rarity, 1);
         AddStat(St.Damage, 3);
         AddStat(St.MinRange, 1);
         AddStat(St.MaxRange, 2);
@@ -112,7 +112,7 @@ public class Marksman : Design
         Title = "Marksman";
         Category = DesignCategory.Ranged;
         Color = Color.red;
-        AddStat(St.Rarity, 3);
+        AddStat(St.Rarity, 2);
         AddStat(St.Damage, 6);
         AddStat(St.MinRange, 3);
         AddStat(St.MaxRange, 3);
@@ -138,7 +138,7 @@ public class Stomp : Design
 {
     protected override void Init()
     {
-        Title = "Stomp";
+        Title = "Mortar";
         Category = DesignCategory.Area;
         Color = Color.yellow;
         AddStat(St.Rarity, 1);
@@ -163,12 +163,12 @@ public class Splatter : Design
 {
     protected override void Init()
     {
-        Title = "Splatter";
+        Title = "Bomber";
         Category = DesignCategory.Area;
         Color = Color.yellow;
-        AddStat(St.Rarity, 3);
+        AddStat(St.Rarity, 2);
         AddStat(St.UsesPerTurn, 1);
-        AddStat(St.Damage, 3);
+        AddStat(St.Damage, 5);
         AddStat(St.MaxRange, 2);
 
         base.Init();
@@ -176,7 +176,7 @@ public class Splatter : Design
     
     protected override void FirstLevelUp()
     {
-        ModifyStat(St.Damage, 1);
+        ModifyStat(St.Damage, 2);
     }
 
     protected override void SecondLevelUp()
@@ -195,7 +195,7 @@ public class Boost : Design
 {
     protected override void Init()
     {
-        Title = "Boost";
+        Title = "Flag Bearer";
         Category = DesignCategory.Boost;
         Color = Color.magenta;
         AddStat(St.Rarity, 1);
@@ -275,8 +275,8 @@ public class Reverse : Design
         Title = "Reverse";
         Category = DesignCategory.Reverse;
         Color = new Color(0f, 0.72f, 0.55f);
-        Upgradeable = false;
         AddStat(St.Rarity, 3);
+        AddStat(St.MovementBoost, 0);
         AddStat(St.UsesPerTurn, 1);
 
         base.Init();
@@ -284,12 +284,12 @@ public class Reverse : Design
 
     protected override void FirstLevelUp()
     {
-        throw new System.NotImplementedException();
+        ModifyStat(St.MovementBoost, 1);
     }
 
     protected override void SecondLevelUp()
     {
-        throw new System.NotImplementedException();
+        ModifyStat(St.UsesPerTurn, 1);
     }
 }
 
@@ -300,7 +300,7 @@ public class Hop : Design
         Title = "Hop";
         Category = DesignCategory.Hop;
         Color = Color.green;
-        AddStat(St.Rarity, 1);
+        AddStat(St.Rarity, 2);
         AddStat(St.Hop, 1);
 
         base.Init();

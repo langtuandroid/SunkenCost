@@ -16,7 +16,7 @@ namespace Etchings
             // GAMEOVER?
             if (enemy.StickNum >= StickManager.current.stickCount + 1) return false;
             
-            if ((UsesUsedThisTurn < UsesPerTurn || design.Limitless) && TestCharMovementActivatedEffect())
+            if ((design.Limitless || UsesUsedThisTurn < UsesPerTurn) && TestCharMovementActivatedEffect())
             {
                 StartCoroutine(ColorForActivate());
                 Log.current.AddEvent(design.Title + " on S" + Stick.GetStickNumber() + " activates against E" + enemy.name +

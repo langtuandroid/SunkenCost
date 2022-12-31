@@ -29,6 +29,7 @@ namespace Etchings
         private void OnDestroy()
         {
             BattleEvents.Current.OnSticksUpdated -= UpdateDamage;
+            design.Stats[St.Damage].RemoveModifier(_damageModifer);
         }
     }
 }

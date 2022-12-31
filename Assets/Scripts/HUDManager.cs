@@ -40,7 +40,6 @@ public class HUDManager : MonoBehaviour
             _hearts.Add(heartsParentTransform.GetChild(i).GetComponent<Heart>());
         }
         
-        UpdateMovesText();
         UpdateTurnText();
     }
 

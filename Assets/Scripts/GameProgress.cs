@@ -27,4 +27,6 @@ public static class GameProgress
         get;
         set;
     } = 3;
+
+    public static int MovesPerTurn { get; set; } = 1;
 }

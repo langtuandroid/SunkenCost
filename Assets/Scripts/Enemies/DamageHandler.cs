@@ -43,12 +43,9 @@ public static class DamageHandler
         var multiModifyingEtchings = EtchingManager.Current.etchingOrder.OfType<IDamageMultiplierModifier>();
         var flatModifyingItems = BattleItemManager.ActiveItems.OfType<IDamageFlatModifier>();
         var multiModifyingItems = BattleItemManager.ActiveItems.OfType<IDamageMultiplierModifier>();
-
-        Debug.Log(damage);
+        
         damage = flatModifyingEtchings.Aggregate(damage, (current, mod) => mod.GetDamageModification(current, enemy, source, etching));
-        Debug.Log(damage);
         damage = flatModifyingItems.Aggregate(damage, (current, mod) => mod.GetDamageModification(current, enemy, source, etching));
-        Debug.Log(damage);
         IDamageMultiplierModifier enemyStickEtching = null;
         
         foreach (var etch in multiModifyingEtchings)
@@ -63,16 +60,14 @@ public static class DamageHandler
             damage = etch.GetDamageModification(damage, enemy, source, etching);
         }
         
-        Debug.Log(damage);
         if (enemyStickEtching != null)
         {
             damage = enemyStickEtching.GetDamageModification(damage, enemy, source, etching);
         }
         
-        Debug.Log(damage);
+        
         damage = multiModifyingItems.Aggregate(damage, (current, item) => item.GetDamageModification(current, enemy, source, etching));
 
-        Debug.Log(damage);
         enemy.TakeDamage(damage);
         
         if (source == DamageSource.Plank)

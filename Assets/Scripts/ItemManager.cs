@@ -20,7 +20,7 @@ public class ItemManager : MonoBehaviour
     {
         if (Current)
         {
-            Destroy(this.gameObject);
+            Destroy(gameObject);
             return;
         }
 

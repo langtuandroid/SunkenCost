@@ -33,12 +33,24 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6499902039103880501, guid: 612507e68b4c9e94191816346f3cc3e8, type: 3}
       propertyPath: m_Name
-      value: C'lausEnemy
+      value: StrongClausEnemy
       objectReference: {fileID: 0}
     - target: {fileID: 7729284425644849085, guid: 612507e68b4c9e94191816346f3cc3e8, type: 3}
       propertyPath: m_Sprite
       value: 
       objectReference: {fileID: -816914766, guid: 70811ee9069f546499720a3c5b2bbf55, type: 3}
+    - target: {fileID: 7729284425644849085, guid: 612507e68b4c9e94191816346f3cc3e8, type: 3}
+      propertyPath: m_Color.b
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7729284425644849085, guid: 612507e68b4c9e94191816346f3cc3e8, type: 3}
+      propertyPath: m_Color.g
+      value: 0.9688196
+      objectReference: {fileID: 0}
+    - target: {fileID: 7729284425644849085, guid: 612507e68b4c9e94191816346f3cc3e8, type: 3}
+      propertyPath: m_Color.r
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 8434244612522797590, guid: 612507e68b4c9e94191816346f3cc3e8, type: 3}
       propertyPath: m_Controller
       value: 

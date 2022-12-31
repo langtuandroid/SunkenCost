@@ -10,16 +10,14 @@ public class BossEnemy : Enemy
     private static int abilityCooldown = 3;
     [SerializeField] private int cooldownCounter = 0;
 
-    protected override void Awake()
+    protected override void Init()
     {
         Size = 1.2f;
         Name = "Cucunger";
         MoveMax = 1;
         MoveMin = 1;
-        MaxHealth = 60;
+        SetInitialHealth(60);
         Gold = 5;
-
-        base.Awake();
     }
 
     protected override void Start()

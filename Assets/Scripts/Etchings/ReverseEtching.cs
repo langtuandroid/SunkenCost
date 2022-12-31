@@ -16,7 +16,7 @@ namespace Etchings
             // Set the new goal stick as the opposite direction
             currentEnemy.NextMove *= -1;
 
-            if (design.Level >= 2) currentEnemy.NextMove += 1 * currentEnemy.Direction;
+            currentEnemy.NextMove += GetStatValue(St.MovementBoost) * currentEnemy.Direction;
             
             currentEnemy.UpdateMovementText();
 

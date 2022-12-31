@@ -9,7 +9,7 @@ public class PlayerController : MonoBehaviour
 
     public int MovesUsedThisTurn { get; private set; } = 0;
     public int MovesPerTurn { get; set; }
-    private int _baseMovesPerTurn = 1;
+    private int _baseMovesPerTurn;
 
     public int Lives { get; private set; }
     private int MaxLives { get; set; }
@@ -27,7 +27,6 @@ public class PlayerController : MonoBehaviour
         }
         
         current = this;
-        MovesPerTurn = _baseMovesPerTurn;
     }
 
     private void Start()
@@ -39,8 +38,11 @@ public class PlayerController : MonoBehaviour
 
         Lives = GameProgress.Lives;
         MaxLives = GameProgress.MaxLives;
+        _baseMovesPerTurn = GameProgress.MovesPerTurn;
+        MovesPerTurn = _baseMovesPerTurn;
         
         HUDManager.current.UpdateLives();
+        HUDManager.current.UpdateMovesText();
     }
 
     private void OnEndEnemyTurn()

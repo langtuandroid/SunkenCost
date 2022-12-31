@@ -8,16 +8,14 @@ public class AxolitlEnemy : Enemy
 {
     private int _healingAmount = 5;
     
-    protected override void Awake()
+    protected override void Init()
     {
         Name = "Axolitl";
         MoveSet.Add(1);
         MoveSet.Add(0);
         MoveSet.Add(2);
-        MaxHealth = 15;
+        SetInitialHealth(15);
         Gold = 1;
-
-        base.Awake();
     }
     
     public override string GetDescription()
@@ -27,23 +25,19 @@ public class AxolitlEnemy : Enemy
 
     protected override void PreMovingAbility()
     {
-        // Heal 2 up to max heath, add to max health if not
-        if (Health < MaxHealth)
+        // Heal up to max heath
+        if (Health < MaxHealth.Value)
         {
-            if (MaxHealth - _healingAmount > _healingAmount)
+            if (MaxHealth.Value - _healingAmount > _healingAmount)
             {
                 Heal(_healingAmount);
             }
             else
             {
-                Heal(MaxHealth);
+                Heal(MaxHealth.Value - Health);
             }
         }
-        else
-        {
-            MaxHealth += _healingAmount;
-            Heal(_healingAmount);
-        }
+        
         base.PreMovingAbility();
     }
 

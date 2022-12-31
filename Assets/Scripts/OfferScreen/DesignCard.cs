@@ -12,7 +12,7 @@ public class DesignCard : MonoBehaviour
     private DesignInfo _designInfo;
     public Design Design => _designInfo.design;
 
-    private List<DesignCard> _duplicates;
+    private List<DesignCard> _duplicates = new List<DesignCard>();
 
     private void Awake()
     {
@@ -26,12 +26,19 @@ public class DesignCard : MonoBehaviour
 
     private void CardsUpdated()
     {
-        if (!Design.Upgradeable || Design.Level >= 2) return;
+        if (!Design.Upgradeable || Design.Level >= 2)
+        {
+            plusButton.gameObject.SetActive(false);
+            _duplicates.Clear();
+        }
+        else
+        {
+            _duplicates = OfferManager.Current.DesignCards.Where(d => d.Design.Title == Design.Title)
+                .Where(d => d != this)
+                .Where(d => d.Design.Level < 2).ToList();
+            plusButton.gameObject.SetActive(_duplicates.Count > 0);
+        }
         
-        _duplicates = OfferManager.Current.DesignCards.Where(d => d.Design.Title == Design.Title)
-            .Where(d => d != this)
-            .Where(d => d.Design.Level < 2).ToList();
-        plusButton.gameObject.SetActive(_duplicates.Count > 0);
         _designInfo.Refresh();
     }
 

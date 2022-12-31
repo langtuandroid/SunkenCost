@@ -6,15 +6,13 @@ using UnityEngine;
 
 public class ClausEnemy : Enemy
 {
-    protected override void Awake()
+    protected override void Init()
     {
         Name = "C'laus";
         MoveSet.Add(2);
         MoveSet.Add(3);
-        MaxHealth = 16;
+        SetInitialHealth(16);
         Gold = 1;
-
-        base.Awake();
     }
     
     public override string GetDescription()

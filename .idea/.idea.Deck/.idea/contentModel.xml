@@ -437,10 +437,12 @@
             <e p="DesignCard.cs" t="Include" />
             <e p="DesignCardInfo.cs" t="Include" />
             <e p="ItemOffer.cs" t="Include" />
+            <e p="MoveOffer.cs" t="Include" />
             <e p="NextBattleButton.cs" t="Include" />
             <e p="OfferManager.cs" t="Include" />
             <e p="OfferRow.cs" t="Include" />
             <e p="OfferScreenEvents.cs" t="Include" />
+            <e p="PlankCount.cs" t="Include" />
             <e p="StickOffer.cs" t="Include" />
           </e>
           <e p="PlayerController.cs" t="Include" />

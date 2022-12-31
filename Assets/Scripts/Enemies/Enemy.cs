@@ -17,9 +17,9 @@ namespace Enemies
 
         public int MoveMin { get; protected set; }
         public int MoveMax { get; protected set; }
-        protected int MaxHealth;
-        protected int Gold;
-        protected int Health;
+        public  Stat MaxHealth { get; private set; }
+        protected int Gold { get; set; }
+        protected int Health { get; private set; }
         public float Size { get; protected set; } = 1;
 
         protected List<int> MoveSet = new List<int>();
@@ -79,14 +79,16 @@ namespace Enemies
 
             stats = new EnemyStats(this);
             _animationController = GetComponent<EnemyAnimationController>();
-        
-        
+
+            Init();
         }
+
+        protected abstract void Init();
 
         protected virtual void Start()
         {
-            ChangeHealth(MaxHealth);
-
+            ChangeHealth(MaxHealth.Value);
+            
             foreach (var move in MoveSet)
             {
                 _moves.Enqueue(move);
@@ -131,6 +133,28 @@ namespace Enemies
             var newPositionY = Mathf.SmoothDamp(
                 localPosition.y, _aimPosition.y, ref _moveVelocityY, Smooth);
             transform.localPosition = new Vector3(newPositionX, newPositionY, 0);
+        }
+
+        protected void SetInitialHealth(int health)
+        {
+            // TODO: APPLY MODIFIERS
+            MaxHealth = new Stat(health);
+        }
+
+        public void AddMovementModifier(int amount)
+        {
+            for (var i = 0; i < MoveSet.Count; i++)
+            {
+                var move = MoveSet[i];
+                if (move < 0)
+                {
+                    MoveSet[i] -= amount;
+                }
+                else if (move > 0)
+                {
+                    MoveSet[i] += amount;
+                }
+            }
         }
 
         private void OnEndEnemyTurn()
@@ -277,7 +301,7 @@ namespace Enemies
         protected void ChangeHealth(int amount)
         {
             Health += amount;
-            _healthText.AlterHealth(Health, MaxHealth);
+            _healthText.AlterHealth(Health, MaxHealth.Value);
         }
 
         public void SetTurnOrder(int turnOrder)

@@ -2,6 +2,7 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
+using TMPro;
 using UnityEngine;
 using Random = UnityEngine.Random;
 
@@ -12,10 +13,14 @@ public class OfferManager : MonoBehaviour
     [SerializeField] private Transform cardGrid;
     [SerializeField] private GameObject designCardPrefab;
     [SerializeField] private GameObject itemOfferPrefab;
+    [SerializeField] private GameObject stickOfferPrefab;
+    [SerializeField] private GameObject moveOfferPrefab; 
 
     [SerializeField] private Transform bootyGrid;
 
     public List<DesignCard> DesignCards { get; private set; } = new List<DesignCard>();
+
+    public int CardsOnTopRow => cardGrid.GetChild(0).GetChild(0).childCount;
 
     private void Awake()
     {
@@ -31,20 +36,65 @@ public class OfferManager : MonoBehaviour
 
     private void Start()
     {
-        /*
-        if (GameProgress.BattleNumber % 3 != 0)
+        if (GameProgress.BattleNumber % 2 != 0)
         {
             bootyGrid.gameObject.SetActive(false);
             CreateCardOfferGrids();
         }
-        */
-        
-        SpawnItem();
+        else
+        {
+            
+            var used = new[] {false, false, false};
+            var optionsPlaced = 0;
+            
+            // Make two options, either in position 0 or 2
+            // This is fuckin ugly code but I cbf
+            while (optionsPlaced < 2)
+            {
+                var rand = Random.Range(0, 3);
+
+                switch (rand)
+                {
+                    case 0:
+                        if (used[0]) continue;
+                        SpawnStick(optionsPlaced * 2);
+                        optionsPlaced++;
+                        used[0] = true;
+                        break;
+                    case 1:
+                        if (used[1]) continue;
+                        SpawnMove(optionsPlaced * 2);
+                        optionsPlaced++;
+                        used[1] = true;
+                        break;
+                    case 2:
+                        if (used[2]) continue;
+                        SpawnItem(optionsPlaced * 2);
+                        optionsPlaced++;
+                        used[2] = true;
+                        break;
+                }
+            }
+        }
     }
 
-    private void SpawnItem()
+    private void SpawnStick(int position)
     {
-        var itemOffer = Instantiate(itemOfferPrefab, bootyGrid.GetChild(0)).GetComponent<ItemOffer>();
+        var stickOfferGameObject = Instantiate(stickOfferPrefab, bootyGrid.GetChild(0));
+        stickOfferGameObject.transform.SetSiblingIndex(position);
+    }
+    
+    private void SpawnMove(int position)
+    {
+        var moveOfferGameObject = Instantiate(moveOfferPrefab, bootyGrid.GetChild(0));
+        moveOfferGameObject.transform.SetSiblingIndex(position);
+    }
+
+    private void SpawnItem(int position)
+    {
+        var itemOfferGameObject = Instantiate(itemOfferPrefab, bootyGrid.GetChild(0));
+        itemOfferGameObject.transform.SetSiblingIndex(position);
+        var itemOffer = itemOfferGameObject.GetComponent<ItemOffer>();
 
         if (itemOffer is null)
         {
@@ -82,8 +132,7 @@ public class OfferManager : MonoBehaviour
             var newCardObject = Instantiate(designCardPrefab, lowerGridContent);
             var info = newCardObject.GetComponentInChildren<DesignInfo>();
 
-            var zeroRarityDesigns = DesignManager.Rarities[0].Concat(DesignManager.Rarities[1]).Concat(DesignManager.Rarities[2]).ToArray();
-            var designName = zeroRarityDesigns[Random.Range(0, zeroRarityDesigns.Length)];
+            var designName = GetDesign();
             var designType = DesignManager.GetDesignType(designName);
             var design = (Design)Activator.CreateInstance(designType);
             info.design = design;
@@ -91,6 +140,45 @@ public class OfferManager : MonoBehaviour
         }
 
         StartCoroutine(WaitForDesignCardsToInitialise());
+    }
+
+    private string GetDesign()
+    {
+        var currentProgress = GameProgress.BattleNumber;
+        var maxProgress = 50.0;
+        
+        var chancesOnFirstBattle = new[] {0.8, 0.5, 0.05};
+        var chancesOnLastPossibleBattle = new[] {0.2, 0.6, 0.2};
+
+        var percentage = currentProgress / maxProgress;
+
+        var currentChances = new double[chancesOnFirstBattle.Length];
+
+        for (var i = 0; i < currentChances.Length; i++)
+        {
+            currentChances[i] = chancesOnFirstBattle[i] +
+                                (chancesOnLastPossibleBattle[i] - chancesOnFirstBattle[i]) * percentage;
+            
+        }
+
+        var randomNum = (double)Random.value;
+        
+        // Common
+        if (randomNum <= currentChances[0])
+        {
+            return DesignManager.CommonDesigns[Random.Range(0, DesignManager.CommonDesigns.Count)];
+        }
+
+        randomNum -= currentChances[0];
+            
+        // Uncommon
+        if (randomNum <= currentChances[1])
+        {
+            return DesignManager.UncommonDesigns[Random.Range(0, DesignManager.UncommonDesigns.Count)];
+        }
+
+        // Rare
+        return DesignManager.RareDesigns[Random.Range(0, DesignManager.RareDesigns.Count)];
     }
 
     public void Merge(DesignCard cardBeingMerged, DesignCard cardBeingMergedInto)
@@ -109,8 +197,13 @@ public class OfferManager : MonoBehaviour
         {
             GameProgress.MaxPlanks++;
         }
+        else if (offerAccepted == "Move")
+        {
+            GameProgress.MovesPerTurn++;
+        }
         else
         {
+            // Item
             PlayerInventory.Items.Add(offerAccepted);
         }
         

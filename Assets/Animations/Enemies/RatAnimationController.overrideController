@@ -7,5 +7,7 @@ AnimatorOverrideController:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_Name: RatAnimationController
-  m_Controller: {fileID: 0}
-  m_Clips: []
+  m_Controller: {fileID: 9100000, guid: 618ba848a187d534fa3b9205eadbc5b4, type: 2}
+  m_Clips:
+  - m_OriginalClip: {fileID: 7400000, guid: a1e30dbb977c7f64f9cc7add5012e033, type: 2}
+    m_OverrideClip: {fileID: 7400000, guid: 53099fb162dd096469b3b8dca7d33971, type: 2}

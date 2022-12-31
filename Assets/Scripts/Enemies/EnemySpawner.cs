@@ -30,7 +30,7 @@ public class EnemySpawner : MonoBehaviour
     private void SpawnNewRound()
     {
         var newEnemies = _scenario.GetRound(BattleManager.Current.Turn);
-        newEnemies = GetNewRound();
+        //var newEnemies = GetNewRound();
 
         // Spawn boss every 16 rounds
         if (BattleManager.Current.Turn % 16 == 0 && BattleManager.Current.Turn != 0)
@@ -50,7 +50,11 @@ public class EnemySpawner : MonoBehaviour
             var newEnemy = Instantiate(enemyDictionary[enemyName], startStick, true);
             newEnemy.transform.localPosition = Vector3.zero;
             newEnemy.transform.localScale = new Vector3(1, 1, 1);
-            ActiveEnemiesManager.Current.AddEnemy(newEnemy.GetComponent<Enemy>());
+
+            var enemy = newEnemy.GetComponent<Enemy>();
+            enemy.MaxHealth.AddModifier(new StatModifier(_scenario.difficulty, StatModType.PercentMult));
+            enemy.AddMovementModifier(_scenario.difficulty);
+            ActiveEnemiesManager.Current.AddEnemy(enemy);
         }
     }
 

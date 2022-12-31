@@ -43,16 +43,18 @@ public class ScenarioManager : MonoBehaviour
 
     public static Scenario GetScenario(int battle)
     {
-        var difficulty = (int)Math.Floor(battle / 5f);
+        var difficulty = (int)Math.Floor(battle / 2f);
         var scenarioOptions = Current.scenarios.Where(p => p.Key == difficulty).Select(p => p.Value).FirstOrDefault();
         if (scenarioOptions != null)
         {
             var scenario = Random.Range(0, scenarioOptions.Count);
-            Debug.Log(scenarioOptions[scenario].name);
+            //Debug.Log(scenarioOptions[scenario].name);
             return scenarioOptions[scenario];
         }
         
         Debug.Log("Battle No. " + battle + ", difficulty " + difficulty +": No scenario found");
-        return null;
+        var scaledScenario = GetScenario(0);
+        scaledScenario.difficulty = (int)Math.Floor(battle / 2f);
+        return scaledScenario;
     }
 }

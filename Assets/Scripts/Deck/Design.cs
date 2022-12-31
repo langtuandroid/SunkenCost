@@ -16,7 +16,8 @@ public enum St
     Block,
     StatMultiplier,
     HealPlayer,
-    DamageFlatModifier
+    DamageFlatModifier,
+    MovementBoost
 }
 
 public abstract class Design
@@ -61,6 +62,8 @@ public abstract class Design
     {
         Stats.TryGetValue(st, out var stat);
         if (stat != null) return stat.Value;
+        
+        Debug.Log("Stat " + st + " not found on design " + Title);
         return -1;
     }
 
