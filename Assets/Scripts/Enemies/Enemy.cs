@@ -113,16 +113,6 @@ namespace Enemies
             _tooltipTrigger.header = Name;
         }
 
-        private void Update()
-        {
-            var roundPosition = new Vector3(Mathf.Round(_aimPosition.x), Mathf.Round(_aimPosition.y), 0);
-
-            if (Health <= 0 && transform.localPosition == roundPosition)
-            {
-                DestroySelf(true);
-            }
-        }
-
         private void LateUpdate()
         {
             if (TutorialManager.current.HighlightedEnemy) return;
@@ -200,7 +190,10 @@ namespace Enemies
             
                 InGameSfxManager.current.EnemyMoved();
 
-                yield return new WaitForSeconds(BattleManager.AttackTime / 2);
+
+                ActiveEnemiesManager.Current.EnemyMoved();
+
+                yield return new WaitForSeconds(BattleManager.AttackTime / 16);
 
                 // TEMPORARY Destroy if at end
                 if (StickNum >= StickManager.current.stickCount)
@@ -302,6 +295,11 @@ namespace Enemies
         {
             Health += amount;
             _healthText.AlterHealth(Health, MaxHealth.Value);
+
+            if (Health <= 0)
+            {
+                DestroySelf(true);
+            }
         }
 
         public void SetTurnOrder(int turnOrder)

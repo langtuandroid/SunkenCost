@@ -15,18 +15,23 @@ namespace Etchings
         {
             _boostAmountStat = new Stat(design.GetStat(St.Boost));
             colorWhenActivated = false;
+            BattleEvents.Current.OnEndBattle += ClearMods;
             base.Start();
         }
-        
-        protected override bool TestStickMovementActivatedEffect()
+
+        private void ClearMods()
         {
-            
             // Clear stored etchings
             foreach (var etching in _boostedEtchings)
             {
                 etching.ModifyStat(St.Damage, -_boostAmount);
             }
             _boostedEtchings.Clear();
+        }
+        
+        protected override bool TestStickMovementActivatedEffect()
+        {
+            ClearMods();
 
             if (deactivationTurns > 0) return false;
             

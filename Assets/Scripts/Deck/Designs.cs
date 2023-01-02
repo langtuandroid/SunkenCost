@@ -50,6 +50,31 @@ public class LoneWolf : Design
         ModifyStat(St.Damage, 5);
     }
 }
+
+public class GrandFinalist : Design
+{
+    protected override void Init()
+    {
+        Title = "Grand Finalist";
+        Category = DesignCategory.GrandFinalist;
+        Color = new Color(0.2f, 0.35f, 0.38f);
+        AddStat(St.Rarity, 2);
+        AddStat(St.Damage, 8);
+        AddStat(St.DamagePlayer, -1);
+        base.Init();
+    }
+
+    protected override void FirstLevelUp()
+    {
+        ModifyStat(St.Damage, 2);
+    }
+
+    protected override void SecondLevelUp()
+    {
+        ModifyStat(St.Damage, 5);
+    }
+}
+
 #endregion
 
 #region Ranged

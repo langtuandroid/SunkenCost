@@ -13,8 +13,6 @@ public static class PlayerInventory
     {
         Deck.Add(new Swordsman());
         Deck.Add(new Slinger());
-        Deck.Add(new Impede());
-        
-        Items.Add("ReDress");
+        Deck.Add(new GrandFinalist());
     }
 }

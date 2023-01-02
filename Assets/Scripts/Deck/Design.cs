@@ -17,7 +17,8 @@ public enum St
     StatMultiplier,
     HealPlayer,
     DamageFlatModifier,
-    MovementBoost
+    MovementBoost,
+    DamagePlayer
 }
 
 public abstract class Design

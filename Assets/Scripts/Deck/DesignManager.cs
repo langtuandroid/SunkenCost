@@ -18,7 +18,8 @@ public enum DesignCategory
     Poison,
     StrikeZone,
     Infirmary,
-    LoneWolf
+    LoneWolf,
+    GrandFinalist
 }
 
 public class DesignManager : MonoBehaviour
@@ -185,6 +186,10 @@ public class DesignManager : MonoBehaviour
                 description = "At the end of the battle, recover " + healPlayer?.Value;
                 if (healPlayer?.Value > 1) description += " lives";
                 else description += " life";
+                break;
+            case DesignCategory.GrandFinalist:
+                description = "When an enemy lands on this plank, deal " + damage?.Value +
+                              " damage to all enemies. If any enemy survives, lose a life";
                 break;
         }
 

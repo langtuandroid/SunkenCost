@@ -3,21 +3,29 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+public enum EnemyType
+{
+    Grould,
+    Claus,
+    Axolitl
+}
+
 [CreateAssetMenu(menuName = "Battles/Scenario")]
 public class Scenario : ScriptableObject
 {
-    public int difficulty;
-    public List<string> round1 = new List<string>();
-    public List<string> round2 = new List<string>();
-    public List<string> round3 = new List<string>();
-    public List<string> round4 = new List<string>();
-    public List<string> round5 = new List<string>();
-    public List<string> round6 = new List<string>();
-    public List<string> round7 = new List<string>();
-    public List<string> round8 = new List<string>();
-    
+    public int Difficulty { get; private set; }
+    public List<EnemyType> round1 = new List<EnemyType>();
+    public List<EnemyType> round2 = new List<EnemyType>();
+    public List<EnemyType> round3 = new List<EnemyType>();
+    public List<EnemyType> round4 = new List<EnemyType>();
+    public List<EnemyType> round5 = new List<EnemyType>();
+    public List<EnemyType> round6 = new List<EnemyType>();
+    public List<EnemyType> round7 = new List<EnemyType>();
 
-    public List<String> GetRound(int round)
+
+    public int scaledDifficulty;
+
+    public List<EnemyType> GetRound(int round)
     {
         switch (round)
         {
@@ -35,11 +43,9 @@ public class Scenario : ScriptableObject
                 return round6;
             case 7: 
                 return round7;
-            case 8: 
-                return round8;
             default:
                 Debug.Log("Round " + round + " not found!");
-                return new List<string>();
+                return new List<EnemyType>();
         }
     }
 }

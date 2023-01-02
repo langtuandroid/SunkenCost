@@ -49,12 +49,6 @@ public class BattleManager : MonoBehaviour
 
         BattleEvents.Current.BeginBattle();
 
-        StartCoroutine(Init());
-    }
-
-    private IEnumerator Init()
-    {
-        yield return 0;
         foreach (var design in PlayerInventory.Deck)
         {
             StickManager.current.CreateStick();

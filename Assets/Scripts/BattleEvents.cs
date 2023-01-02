@@ -14,7 +14,7 @@ public class BattleEvents : MonoBehaviour
         // One instance of static objects only
         if (Current)
         {
-            Destroy(gameObject);
+            Destroy(Current);
             return;
         }
 

@@ -22,14 +22,39 @@ public class EnemySpawner : MonoBehaviour
         }
 
         BattleEvents.Current.OnBeginPlayerTurn += SpawnNewRound;
-        BattleEvents.Current.OnBeginBattle += SpawnNewRound;
+        BattleEvents.Current.OnBeginBattle += BeginBattle;
+        
+    }
 
+    private void BeginBattle()
+    {
         _scenario = ScenarioManager.GetScenario(GameProgress.BattleNumber);
+        SpawnNewRound();
     }
 
     private void SpawnNewRound()
     {
-        var newEnemies = _scenario.GetRound(BattleManager.Current.Turn);
+        var enemyTypes = _scenario.GetRound(BattleManager.Current.Turn);
+        
+        var newEnemies = new List<string>();
+
+        foreach (var enemyType in enemyTypes)
+        {
+            switch (enemyType)
+            {
+                case EnemyType.Grould:
+                    newEnemies.Add("Grould");
+                    break;
+                case EnemyType.Claus:
+                    newEnemies.Add("Claus");
+                    break;
+                case EnemyType.Axolitl:
+                    newEnemies.Add("Axolitl");
+                    break;
+                default:
+                    throw new ArgumentOutOfRangeException();
+            }
+        }
         //var newEnemies = GetNewRound();
 
         // Spawn boss every 16 rounds
@@ -52,8 +77,8 @@ public class EnemySpawner : MonoBehaviour
             newEnemy.transform.localScale = new Vector3(1, 1, 1);
 
             var enemy = newEnemy.GetComponent<Enemy>();
-            enemy.MaxHealth.AddModifier(new StatModifier(_scenario.difficulty, StatModType.PercentMult));
-            enemy.AddMovementModifier(_scenario.difficulty);
+            enemy.MaxHealth.AddModifier(new StatModifier(_scenario.scaledDifficulty, StatModType.PercentMult));
+            enemy.AddMovementModifier(_scenario.scaledDifficulty);
             ActiveEnemiesManager.Current.AddEnemy(enemy);
         }
     }

@@ -11,7 +11,6 @@ namespace Etchings
         protected override void Start()
         {
             _boostAmountStat = new Stat(design.GetStat(St.Boost));
-            Debug.Log(_boostAmountStat.Value);
             colorWhenActivated = true;
             base.Start();
         }

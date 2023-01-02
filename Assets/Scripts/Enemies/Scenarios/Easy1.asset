@@ -12,16 +12,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e88836627efa4444288b773536f04a36, type: 3}
   m_Name: Easy1
   m_EditorClassIdentifier: 
-  difficulty: 0
-  round1:
-  - Axolitl
-  round2:
-  - Claus
-  round3: []
-  round4: []
-  round5:
-  - Axolitl
-  round6:
-  - Claus
-  round7: []
-  round8: []
+  round1: 00000000
+  round2: 01000000
+  round3: 
+  round4: 
+  round5: 02000000
+  round6: 01000000
+  round7: 
+  scaledDifficulty: 0

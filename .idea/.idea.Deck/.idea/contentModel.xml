@@ -404,6 +404,7 @@
             <e p="DamageEtching.cs" t="Include" />
             <e p="DummyEtching.cs" t="Include" />
             <e p="Etching.cs" t="Include" />
+            <e p="GrandFinalistEtching.cs" t="Include" />
             <e p="HopEtching.cs" t="Include" />
             <e p="ImpedeEtching.cs" t="Include" />
             <e p="Indicator.cs" t="Include" />

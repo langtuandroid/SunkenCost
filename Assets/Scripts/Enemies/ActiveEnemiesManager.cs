@@ -30,20 +30,12 @@ public class ActiveEnemiesManager : MonoBehaviour
 
     private void Awake()
     {
-        // One instance of static objects only
-        if (Current)
-        {
-            Destroy(gameObject);
-            return;
-        }
-        
         Current = this;
     }
 
     private void Start()
     {
         _stickManager = StickManager.current;
-        BattleEvents.Current.OnEnemyMoved += EnemyMoved;
         BattleEvents.Current.OnBeginEnemyTurn += BeginEnemyTurn;
         BattleEvents.Current.OnEndEnemyTurn += EndEnemyTurn;
         BattleEvents.Current.OnEndPlayerTurn += EndPlayerTurn;
@@ -188,7 +180,7 @@ public class ActiveEnemiesManager : MonoBehaviour
         FindNextEnemyToMove();
     }
 
-    private void EnemyMoved()
+    public void EnemyMoved()
     {
         // Rearrange the enemies to be neat on the stick
         foreach (var enemy in _allEnemies)
