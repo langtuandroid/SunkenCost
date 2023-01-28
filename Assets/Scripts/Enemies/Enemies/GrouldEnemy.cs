@@ -11,7 +11,7 @@ public class GrouldEnemy : Enemy
         Name = "Grould";
         MoveSet.Add(1);
         MoveSet.Add(0);
-        SetInitialHealth(25);
+        SetInitialHealth(20);
         Gold = 1;
     }
     

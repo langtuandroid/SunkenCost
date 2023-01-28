@@ -96,7 +96,8 @@ public class BattleManager : MonoBehaviour
     
     public void Quit()
     {
-        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex - 1);
+        GameProgress.Reset();
+        SceneManager.LoadScene(0);
         Music.current.SelectSong(0);
     }
 
@@ -169,7 +170,7 @@ public class BattleManager : MonoBehaviour
 
     public void OutOfLives()
     {
-        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex - 1);
+        SceneManager.LoadScene(0);
         Music.current.SelectSong(0);
     }
 

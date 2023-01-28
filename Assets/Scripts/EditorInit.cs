@@ -6,6 +6,7 @@ using UnityEditor;
 using UnityEditor.SceneManagement;
 
 
+
 [InitializeOnLoad]
 public class EditorInit
 {
@@ -16,4 +17,6 @@ public class EditorInit
         EditorSceneManager.playModeStartScene = sceneAsset;
     }
 }
+
+
 #endif

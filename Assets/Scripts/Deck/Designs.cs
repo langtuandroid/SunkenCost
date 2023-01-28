@@ -59,7 +59,7 @@ public class GrandFinalist : Design
         Category = DesignCategory.GrandFinalist;
         Color = new Color(0.2f, 0.35f, 0.38f);
         AddStat(St.Rarity, 2);
-        AddStat(St.Damage, 8);
+        AddStat(St.Damage, 10);
         AddStat(St.DamagePlayer, -1);
         base.Init();
     }
@@ -71,7 +71,7 @@ public class GrandFinalist : Design
 
     protected override void SecondLevelUp()
     {
-        ModifyStat(St.Damage, 5);
+        ModifyStat(St.Damage, 3);
     }
 }
 

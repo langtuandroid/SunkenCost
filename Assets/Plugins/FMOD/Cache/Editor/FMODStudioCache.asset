@@ -15,7 +15,7 @@ MonoBehaviour:
   Path: DBTD/Build/Desktop/Master.strings.bank
   Name: Master.strings
   StudioPath: bank:/Master.strings
-  lastModified: 638048840359592129
+  lastModified: 638048696359592129
   FileSizes:
   - Name: Desktop
     Value: 1718
@@ -35,7 +35,7 @@ MonoBehaviour:
   Path: DBTD/Build/Desktop/SFX.bank
   Name: SFX
   StudioPath: bank:/SFX
-  lastModified: 638048840362395475
+  lastModified: 638048696362395475
   FileSizes:
   - Name: Desktop
     Value: 810848
@@ -109,7 +109,7 @@ MonoBehaviour:
   Path: DBTD/Build/Desktop/Master.bank
   Name: Master
   StudioPath: bank:/Master
-  lastModified: 638048840359572287
+  lastModified: 638048696359572287
   FileSizes:
   - Name: Desktop
     Value: 36500672
@@ -210,7 +210,7 @@ MonoBehaviour:
   Path: DBTD/Build/Desktop/Music.bank
   Name: Music
   StudioPath: bank:/Music
-  lastModified: 638048840361052698
+  lastModified: 638048696361052698
   FileSizes:
   - Name: Desktop
     Value: 36206816
@@ -283,7 +283,7 @@ MonoBehaviour:
   - {fileID: -4458939372036730478}
   StringsBanks:
   - {fileID: -9093515747799728831}
-  cacheTime: 638048840362395475
+  cacheTime: 638048696362395475
   cacheVersion: 131593
 --- !u!114 &247265127080051342
 MonoBehaviour:

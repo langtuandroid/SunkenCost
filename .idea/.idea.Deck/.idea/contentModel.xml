@@ -101,6 +101,11 @@
             <e p="BeautifyProfile.cs" t="Include" />
           </e>
         </e>
+        <e p="Editor" t="Include">
+          <e p="Resources" t="Include">
+            <e p="OneLine" t="Include" />
+          </e>
+        </e>
         <e p="Fonts" t="Include" />
         <e p="LeanTween" t="Include">
           <e p="Documentation" t="Include">
@@ -165,6 +170,7 @@
           <e p="License.txt" t="Include" />
           <e p="ReadMe.txt" t="Include" />
         </e>
+        <e p="Materials" t="Include" />
         <e p="Plugins" t="Include">
           <e p="FMOD" t="Include">
             <e p="addons" t="Include">
@@ -336,6 +342,7 @@
         </e>
         <e p="Prefabs" t="Include">
           <e p="Enemies" t="Include" />
+          <e p="Map" t="Include" />
           <e p="OfferScreen" t="Include" />
           <e p="UI" t="Include">
             <e p="OfferPanel" t="Include" />
@@ -344,6 +351,7 @@
         </e>
         <e p="RenderTextures" t="Include" />
         <e p="Scenes" t="Include" />
+        <e p="ScriptableObjects" t="Include" />
         <e p="Scripts" t="Include">
           <e p="Audio" t="Include">
             <e p="InGameSfxManager.cs" t="Include" />
@@ -434,6 +442,10 @@
           </e>
           <e p="Log.cs" t="Include" />
           <e p="MainManager.cs" t="Include" />
+          <e p="MapScreen" t="Include">
+            <e p="Map.cs" t="Include" />
+            <e p="MapGenerator.cs" t="Include" />
+          </e>
           <e p="OfferScreen" t="Include">
             <e p="DesignCard.cs" t="Include" />
             <e p="DesignCardInfo.cs" t="Include" />

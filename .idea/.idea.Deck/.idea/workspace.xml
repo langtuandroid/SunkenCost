@@ -14,41 +14,33 @@
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
   <component name="HighlightingSettingsPerFile">
-    <setting file="file://$PROJECT_DIR$/Assets/Scripts/OfferScreen/OfferManager.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Scripts/GameProgress.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Scripts/OfferScreen/PlankCount.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/Scripts/OfferScreen/OfferRow.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/Scripts/Etchings/InfirmaryEtching.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/Scripts/OfferScreen/NextBattleButton.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/Scripts/OfferScreen/OfferScreenEvents.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/Scripts/Items/PoisonTipsItem.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/Scripts/Enemies/Enemies/StrongClausEnemy.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/Scripts/OfferScreen/StickOffer.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/Scripts/OfferScreen/MoveOffer.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Library/PackageCache/com.unity.services.core@1.6.0/Editor/Core/Build/ProjectUnlinkBuildWarning.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/Scripts/OfferScreen/OfferManager.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Scripts/OfferScreen/DesignCard.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Scripts/MainManager.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Scripts/Enemies/Scenarios/ScenarioManager.cs" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/Assets/Scripts/OfferScreen/OfferRow.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/SourcesCache/5A41D6B7-1898-42EC-A409-FD0B1C3E3DCF/0/System.Collections.Generic.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Scripts/PlayerInventory.cs" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/Assets/Scripts/Etchings/InfirmaryEtching.cs" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/Assets/Scripts/OfferScreen/NextBattleButton.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/Scripts/MapScreen/MapGenerator.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Scripts/EtchingTurnProcess.cs" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/Assets/Scripts/OfferScreen/OfferScreenEvents.cs" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/Assets/Scripts/Items/PoisonTipsItem.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Scripts/Items/ReDressItem.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Scripts/Etchings/GrandFinalistEtching.cs" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/Assets/Scripts/Enemies/Enemies/StrongClausEnemy.cs" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/Assets/Scripts/OfferScreen/StickOffer.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Scripts/BattleItemManager.cs" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/Assets/Scripts/OfferScreen/MoveOffer.cs" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/Library/PackageCache/com.unity.services.core@1.6.0/Editor/Core/Build/ProjectUnlinkBuildWarning.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Scripts/Enemies/DamageHandler.cs" root0="FORCE_HIGHLIGHTING" />
   </component>
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/Assets/Scripts/Enemies/EnemyDamageHandler.cs" />
-        <option value="$PROJECT_DIR$/Assets/Scripts/EtchingManager.cs" />
-        <option value="$PROJECT_DIR$/Assets/Scripts/BattleItemManager.cs" />
-        <option value="$PROJECT_DIR$/Assets/Scripts/Etchings/Etching.cs" />
-        <option value="$PROJECT_DIR$/Assets/Scripts/DesignManager.cs" />
-        <option value="$PROJECT_DIR$/Assets/Scripts/Deck/PlayerInventory.cs" />
-        <option value="$PROJECT_DIR$/Assets/Scripts/Etchings/InfirmaryEtching.cs" />
-        <option value="$PROJECT_DIR$/Assets/Scripts/Items/Item.cs" />
-        <option value="$PROJECT_DIR$/Assets/Scripts/OfferScreen/ItemOffer.cs" />
         <option value="$PROJECT_DIR$/Assets/Scripts/Items/InGameItem.cs" />
         <option value="$PROJECT_DIR$/Assets/Scripts/Items/TemplateItem.cs" />
         <option value="$PROJECT_DIR$/Assets/Scripts/Items/RedressItem.cs" />
@@ -66,31 +58,40 @@
         <option value="$PROJECT_DIR$/Assets/Scripts/OfferScreen/PlankCount.cs" />
         <option value="$PROJECT_DIR$/Assets/Scripts/Etchings/LoneWolfEtching.cs" />
         <option value="$PROJECT_DIR$/Assets/Scripts/OfferScreen/DesignCard.cs" />
-        <option value="$PROJECT_DIR$/Assets/Scripts/Enemies/Enemies/GrouldEnemy.cs" />
         <option value="$PROJECT_DIR$/Assets/Scripts/Enemies/Enemies/StrongClausEnemy.cs" />
         <option value="$PROJECT_DIR$/Assets/Scripts/Enemies/Enemies/ClausEnemy.cs" />
         <option value="$PROJECT_DIR$/Assets/Scripts/Enemies/Enemies/AxolitlEnemy.cs" />
         <option value="$PROJECT_DIR$/Assets/Scripts/Enemies/Enemies/BossEnemy.cs" />
         <option value="$PROJECT_DIR$/Assets/Scripts/OfferScreen/StickOffer1.cs" />
         <option value="$PROJECT_DIR$/Assets/Scripts/OfferScreen/MoveOffer.cs" />
-        <option value="$PROJECT_DIR$/Assets/Scripts/GameProgress.cs" />
         <option value="$PROJECT_DIR$/Assets/Scripts/PlayerController.cs" />
         <option value="$PROJECT_DIR$/Assets/Scripts/HUDManager.cs" />
-        <option value="$PROJECT_DIR$/Assets/Scripts/OfferScreen/OfferManager.cs" />
         <option value="$PROJECT_DIR$/Assets/Scripts/Etchings/StrikeZoneEtching.cs" />
         <option value="$PROJECT_DIR$/Assets/Scripts/BattleEvents.cs" />
-        <option value="$PROJECT_DIR$/Assets/Scripts/Enemies/ActiveEnemiesManager.cs" />
-        <option value="$PROJECT_DIR$/Assets/Scripts/BattleManager.cs" />
         <option value="$PROJECT_DIR$/Assets/Scripts/Etchings/BoostEtching.cs" />
         <option value="$PROJECT_DIR$/Assets/Scripts/Deck/Design.cs" />
-        <option value="$PROJECT_DIR$/Assets/Scripts/Deck/Designs.cs" />
         <option value="$PROJECT_DIR$/Assets/Scripts/Deck/DesignManager.cs" />
-        <option value="$PROJECT_DIR$/Assets/Scripts/PlayerInventory.cs" />
         <option value="$PROJECT_DIR$/Assets/Scripts/Enemies/Scenarios/Scenario.cs" />
         <option value="$PROJECT_DIR$/Assets/Scripts/Enemies/Scenarios/ScenarioManager.cs" />
         <option value="$PROJECT_DIR$/Assets/Scripts/Enemies/EnemySpawner.cs" />
-        <option value="$PROJECT_DIR$/Assets/Scripts/Etchings/GrandFinalistEtching.cs" />
+        <option value="$PROJECT_DIR$/Assets/Scripts/Enemies/ActiveEnemiesManager.cs" />
         <option value="$PROJECT_DIR$/Assets/Scripts/Enemies/Enemy.cs" />
+        <option value="$PROJECT_DIR$/Assets/Scripts/Etchings/GrandFinalistEtching.cs" />
+        <option value="$PROJECT_DIR$/Assets/Scripts/Deck/Designs.cs" />
+        <option value="$PROJECT_DIR$/Assets/Scripts/PlayerInventory.cs" />
+        <option value="$PROJECT_DIR$/Assets/Scripts/BattleManager.cs" />
+        <option value="$PROJECT_DIR$/Assets/Scripts/Enemies/Enemies/GrouldEnemy.cs" />
+        <option value="$PROJECT_DIR$/Assets/Scripts/OfferScreen/OfferManager.cs" />
+        <option value="$PROJECT_DIR$/Assets/Scripts/GameProgress.cs" />
+        <option value="$PROJECT_DIR$/Assets/slay-the-spire-map-in-unity-master/Assets/Scripts/MapManager.cs" />
+        <option value="$PROJECT_DIR$/Assets/slay-the-spire-map-in-unity-master/Assets/Scripts/MapPlayerTracker.cs" />
+        <option value="$PROJECT_DIR$/Assets/Scripts/EditorInit.cs" />
+        <option value="$PROJECT_DIR$/Assets/Scripts/Map/NodeBlueprint.cs" />
+        <option value="$PROJECT_DIR$/Assets/Scripts/UI/MainMenu.cs" />
+        <option value="$PROJECT_DIR$/Assets/Scripts/Map/Map.cs" />
+        <option value="$PROJECT_DIR$/Assets/Scripts/Map/MapGenerator.cs" />
+        <option value="$PROJECT_DIR$/Assets/Scripts/MapScreen/Map.cs" />
+        <option value="$PROJECT_DIR$/Assets/Scripts/MapScreen/MapGenerator.cs" />
       </list>
     </option>
   </component>
@@ -151,7 +152,9 @@
       <workItem from="1671571010333" duration="21052000" />
       <workItem from="1672277179517" duration="9902000" />
       <workItem from="1672349702541" duration="8669000" />
-      <workItem from="1672437469262" duration="21579000" />
+      <workItem from="1672437469262" duration="28557000" />
+      <workItem from="1672706710417" duration="3415000" />
+      <workItem from="1673415228645" duration="4753000" />
     </task>
     <servers />
   </component>

@@ -25,7 +25,6 @@ namespace Etchings
 
             if (ActiveEnemiesManager.Current.ActiveEnemies.Count > 0)
             {
-                Debug.Log(ActiveEnemiesManager.Current.ActiveEnemies.Count);
                 PlayerController.current.TakeLife();
             }
             

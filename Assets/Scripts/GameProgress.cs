@@ -4,6 +4,20 @@ using UnityEngine;
 
 public static class GameProgress
 {
+    static GameProgress()
+    {
+        Reset();
+    }
+    
+    public static void Reset()
+    {
+        BattleNumber = 0;
+        MaxPlanks = 3;
+        Lives = 3;
+        MovesPerTurn = 1;
+        AmountOfCardsToOffer = 2;
+    }
+    
     public static int BattleNumber
     {
         get;
@@ -14,19 +28,24 @@ public static class GameProgress
     {
         get;
         set;
-    } = 3;
+    }
 
     public static int Lives
     {
         get;
         set;
-    } = 3;
+    }
     
     public static int MaxLives
     {
         get;
         set;
-    } = 3;
-
-    public static int MovesPerTurn { get; set; } = 1;
+    }
+    public static int MovesPerTurn { get; set; }
+    
+    public static int AmountOfCardsToOffer
+    {
+        get;
+        set;
+    }
 }

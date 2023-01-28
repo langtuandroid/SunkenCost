@@ -128,28 +128,28 @@ MonoBehaviour:
   _dither: 0.043
   _ditherDepth: 0
   _sharpenMinDepth: 0
-  _sharpenMaxDepth: 0.999
+  _sharpenMaxDepth: 0.708
   _sharpenMinMaxDepthFallOff: 0
-  _sharpen: 1.9
-  _sharpenDepthThreshold: 0.035
+  _sharpen: 1.72
+  _sharpenDepthThreshold: 0.05
   _tintColor: {r: 1, g: 1, b: 1, a: 0}
-  _sharpenRelaxation: 0.2
+  _sharpenRelaxation: 0.0615
   _sharpenClamp: 0.11
   _sharpenMotionSensibility: 0.47
   _sharpenMotionRestoreSpeed: 5
-  _saturate: 1
-  _contrast: 1.02
-  _brightness: 1.05
+  _saturate: 0
+  _contrast: 1
+  _brightness: 1
   _daltonize: 0
-  _hardLightIntensity: 0.5
+  _hardLightIntensity: 0
   _hardLightBlend: 0
   _vignetting: 0
-  _vignettingColor: {r: 0.3, g: 0.3, b: 0.3, a: 0.05}
-  _vignettingFade: 0
+  _vignettingColor: {r: 1, g: 0, b: 0, a: 0.05}
+  _vignettingFade: -0.38
   _vignettingCircularShape: 0
   _vignettingAspectRatio: 1
   _vignettingBlink: 0
-  _vignettingBlinkStyle: 0
+  _vignettingBlinkStyle: 1
   _vignettingCenter: {x: 0.5, y: 0.5}
   _vignettingMask: {fileID: 0}
   _frame: 0
@@ -324,7 +324,7 @@ MonoBehaviour:
   _antialiasMaxSpread: 3
   _antialiasDepthThreshold: 0.000001
   _antialiasDepthAtten: 0
-  _chromaticAberration: 0
+  _chromaticAberration: 1
   _chromaticAberrationIntensity: 0
   _chromaticAberrationSmoothing: 0
   isDirty: 0

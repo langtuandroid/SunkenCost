@@ -127,7 +127,7 @@ public class OfferManager : MonoBehaviour
         }
         
         var lowerGridContent = cardGrid.GetChild(1).GetChild(0);
-        for (var i = 0; i < 3; i++)
+        for (var i = 0; i < GameProgress.AmountOfCardsToOffer; i++)
         {
             var newCardObject = Instantiate(designCardPrefab, lowerGridContent);
             var info = newCardObject.GetComponentInChildren<DesignInfo>();
