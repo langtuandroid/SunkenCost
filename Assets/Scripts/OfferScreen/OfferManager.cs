@@ -78,6 +78,16 @@ public class OfferManager : MonoBehaviour
         }
     }
 
+    public void CommitSticks()
+    {
+        // TODO: Get this somewhere better, make neater
+        var deck = cardGrid.GetChild(0).GetChild(0).GetComponentsInChildren<DesignInfo>().Select(d => d.design)
+            .ToList();
+        if (deck.Count >= GameProgress.MaxPlanks) deck = deck.GetRange(0, GameProgress.MaxPlanks);
+        PlayerInventory.Deck = deck;
+
+    }
+
     private void SpawnStick(int position)
     {
         var stickOfferGameObject = Instantiate(stickOfferPrefab, bootyGrid.GetChild(0));

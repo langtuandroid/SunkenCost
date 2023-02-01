@@ -44,12 +44,7 @@ public class MainManager : MonoBehaviour
 
     public void LoadNextBattle()
     {
+        OfferManager.Current.CommitSticks();
         ChangeScene(3);
     }
-    
-    public void LoadNextOfferScreen()
-    {
-        ChangeScene(2);
-    }
-
 }

@@ -443,6 +443,7 @@
           <e p="Log.cs" t="Include" />
           <e p="MainManager.cs" t="Include" />
           <e p="MapScreen" t="Include">
+            <e p="CardGrid.cs" t="Include" />
             <e p="Map.cs" t="Include" />
             <e p="MapEvent.cs" t="Include" />
             <e p="MapEventGenerator.cs" t="Include" />

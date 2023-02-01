@@ -6,14 +6,18 @@ namespace MapScreen
 
     public enum MapEventType
     {
+        None,
         Coin,
         Heart,
-        UpgradeCard
+        UpgradeCard,
+        SpecificCard
     }
 
     public class MapEvent : MonoBehaviour
     {
         private Button _button;
+
+        public MapEventType EventType { get; set; } = MapEventType.None;
 
         private void Awake()
         {
