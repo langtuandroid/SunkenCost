@@ -22,8 +22,9 @@ public class ItemManager : MonoBehaviour
         {
             Destroy(gameObject);
             return;
-        }
-
+        } 
+        
+        Debug.Log("Begin");
         Current = this;
         DontDestroyOnLoad(gameObject);
 

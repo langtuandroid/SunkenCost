@@ -1,26 +1,21 @@
 using System.Collections.Generic;
 using UnityEngine;
-
+/*
 namespace MapScreen
 {
-    public class MapGenerator : MonoBehaviour
+    public static class MapGenerator
     {
-        private static readonly Dictionary<MapEvent, float> Weightings = new Dictionary<MapEvent, float>()
+        private static readonly Dictionary<OldMapEventType, float> Weightings = new Dictionary<OldMapEventType, float>()
         {
-            {MapEvent.Battle, 0.5f},
-            {MapEvent.EliteBattle, 0.08f},
-            {MapEvent.Shop, 0.17f},
-            {MapEvent.Mystery, 0.25f}
+            {OldMapEventType.Battle, 0.5f},
+            {OldMapEventType.EliteBattle, 0.08f},
+            {OldMapEventType.Shop, 0.17f},
+            {OldMapEventType.Mystery, 0.25f}
         };
 
         private const float ChanceOfNoEvent = 0.3f;
 
-        private void Start()
-        {
-            GenerateNewMap();
-        }
-
-        public static void GenerateNewMap()
+        public static Map GenerateNewMap()
         {
             var map = new Map();
 
@@ -28,7 +23,7 @@ namespace MapScreen
             {
                 for (var y = 0; y < Map.SizeY; y++)
                 {
-                    if (map.GetMapEvent(x, y) != MapEvent.None)
+                    if (map.GetMapEvent(x, y) != OldMapEventType.None)
                     {
                         Debug.Log("Already map event on [" + x + ", " + y + "]");
                     }
@@ -40,54 +35,49 @@ namespace MapScreen
                     Debug.Log(map.GetMapEvent(x, y));
                 }
             }
-            
-            
+
+            return map;
         }
 
-        private static MapEvent GenerateEvent(Map map, int x, int y)
+        private static OldMapEventType GenerateEvent(Map map, int x, int y)
         {
             var rand = Random.value;
 
             if (rand <= ChanceOfNoEvent)
-                return MapEvent.None;
+                return OldMapEventType.None;
 
             if (
-                map.GetMapEvent(Mathf.Clamp(x - 1, 0, Map.SizeX - 1), y) != MapEvent.None ||
-                map.GetMapEvent(Mathf.Clamp(x + 1, 0, Map.SizeX - 1), y) != MapEvent.None ||
-                map.GetMapEvent(x, Mathf.Clamp(y - 1, 0, Map.SizeY - 1)) != MapEvent.None ||
-                map.GetMapEvent(x, Mathf.Clamp(y + 1, 0, Map.SizeY - 1)) != MapEvent.None
+                map.GetMapEvent(Mathf.Clamp(x - 1, 0, Map.SizeX - 1), y) != OldMapEventType.None ||
+                map.GetMapEvent(Mathf.Clamp(x + 1, 0, Map.SizeX - 1), y) != OldMapEventType.None ||
+                map.GetMapEvent(x, Mathf.Clamp(y - 1, 0, Map.SizeY - 1)) != OldMapEventType.None ||
+                map.GetMapEvent(x, Mathf.Clamp(y + 1, 0, Map.SizeY - 1)) != OldMapEventType.None
             )
             {
-                return MapEvent.None;
+                return OldMapEventType.None;
             }
 
             rand = Random.value;
 
-            if (rand <= Weightings[MapEvent.Battle])
+            var sequence = new[] {
+                OldMapEventType.Battle,
+                OldMapEventType.EliteBattle,
+                OldMapEventType.Shop,
+                OldMapEventType.Mystery
+            };
+
+            foreach (var mapEvent in sequence)
             {
-                return MapEvent.Battle;
+                var weighting = Weightings[mapEvent];
+                
+                if (rand <= weighting)
+                    return mapEvent;
+
+                rand -= weighting;
             }
-            
-            rand -= Weightings[MapEvent.Battle];
-            if (rand <= Weightings[MapEvent.EliteBattle])
-            {
-                return MapEvent.EliteBattle;
-            }
-            
-            rand -= Weightings[MapEvent.EliteBattle];
-            if (rand <= Weightings[MapEvent.Shop])
-            {
-                return MapEvent.Shop;
-            }
-            
-            rand -= Weightings[MapEvent.Shop];
-            if (rand <= Weightings[MapEvent.Mystery])
-            {
-                return MapEvent.Mystery;
-            }
-            
+
             Debug.Log("Error: no weighting found for " + rand);
-            return MapEvent.None;
+            return OldMapEventType.None;
         }
     }
 }
+*/

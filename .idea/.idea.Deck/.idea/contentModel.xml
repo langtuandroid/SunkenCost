@@ -444,7 +444,10 @@
           <e p="MainManager.cs" t="Include" />
           <e p="MapScreen" t="Include">
             <e p="Map.cs" t="Include" />
+            <e p="MapEvent.cs" t="Include" />
+            <e p="MapEventGenerator.cs" t="Include" />
             <e p="MapGenerator.cs" t="Include" />
+            <e p="MapManager.cs" t="Include" />
           </e>
           <e p="OfferScreen" t="Include">
             <e p="DesignCard.cs" t="Include" />
@@ -507,6 +510,10 @@
           <e p="Effects" t="Include" />
           <e p="Enemies" t="Include" />
           <e p="Items" t="Include" />
+          <e p="Map" t="Include">
+            <e p="Islands" t="Include" />
+            <e p="MapEvents" t="Include" />
+          </e>
           <e p="Plank" t="Include">
             <e p="Indicators" t="Include" />
           </e>

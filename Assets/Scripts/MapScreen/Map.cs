@@ -1,9 +1,10 @@
 using System.Drawing;
 using UnityEngine;
 
+/*
 namespace MapScreen
 {
-    public enum MapEvent
+    public enum OldMapEventType
     {
         None,
         Battle,
@@ -19,7 +20,7 @@ namespace MapScreen
         public const int SizeY = 6;
         
         // The map itself
-        private MapEvent[,] _map = new MapEvent[SizeX, SizeY];
+        public OldMapEventType[,] MapEventCoords { get; private set; } = new OldMapEventType[SizeX, SizeY];
 
         public Map()
         {
@@ -27,12 +28,12 @@ namespace MapScreen
             {
                 for (var y = 0; y < SizeY; y++)
                 {
-                    SetMapEvent(x, y, MapEvent.None);
+                    SetMapEvent(x, y, OldMapEventType.None);
                 }
             }
         }
         
-        public void SetMapEvent(int positionX, int positionY, MapEvent mapEvent)
+        public void SetMapEvent(int positionX, int positionY, OldMapEventType oldMapEvent)
         {
             if (positionX >= SizeX || positionY >= SizeY)
             {
@@ -40,18 +41,19 @@ namespace MapScreen
                 return;
             }
             
-            _map[positionX, positionY] = mapEvent;
+            MapEventCoords[positionX, positionY] = oldMapEvent;
         }
 
-        public MapEvent GetMapEvent(int positionX, int positionY)
+        public OldMapEventType GetMapEvent(int positionX, int positionY)
         {
             if (positionX >= SizeX || positionY >= SizeY)
             {
                 Debug.Log("Cannot get event, position is out of bounds: [" + positionX + ", " + positionY + "]");
-                return MapEvent.None;
+                return OldMapEventType.None;
             }
             
-            return _map[positionX, positionY];
+            return MapEventCoords[positionX, positionY];
         }
     }
 }
+*/

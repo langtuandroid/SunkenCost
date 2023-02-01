@@ -14,7 +14,7 @@ public class MainManager : MonoBehaviour
         DontDestroyOnLoad(gameObject);
     }
 
-    public void ChangeScene(int sceneNumber)
+    private void ChangeScene(int sceneNumber)
     {
         SceneManager.LoadScene(sceneNumber);
  
@@ -37,14 +37,19 @@ public class MainManager : MonoBehaviour
         }
     }
 
+    public void LoadMap()
+    {
+        ChangeScene(1);
+    }
+
     public void LoadNextBattle()
     {
-        ChangeScene(SceneManager.GetActiveScene().buildIndex + 1);
+        ChangeScene(3);
     }
     
     public void LoadNextOfferScreen()
     {
-        ChangeScene(SceneManager.GetActiveScene().buildIndex - 1);
+        ChangeScene(2);
     }
 
 }
