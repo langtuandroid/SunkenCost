@@ -31,37 +31,52 @@ public class MapEventGenerator : MonoBehaviour
 
     private void Start()
     {
-        for (var i = -1; i <= 1; i++)
+        var topEvent = GenerateEventType();
+
+        InstantiateEvent(topEvent, true);
+
+        MapEventType bottomEvent;
+        while (true)
         {
-            var mapEvent = Instantiate(_mapEventPrefab, _mapEventsTransform);
-            mapEvent.transform.localPosition = new Vector3(0, 350 * i, 0);
+            bottomEvent = GenerateEventType();
+            if (bottomEvent != topEvent) break;
+        }
 
-            var eventType = GenerateMapEvent();
-            mapEvent.GetComponent<MapEvent>().EventType = eventType;
+        InstantiateEvent(bottomEvent, false);
+    }
 
-            var eventImage = mapEvent.transform.GetChild(0).GetChild(0).GetComponent<Image>();
+    private void InstantiateEvent(MapEventType eventType, bool isTopEvent)
+    {
+        var mapEvent = Instantiate(_mapEventPrefab, _mapEventsTransform);
+        
+        // Place the top event up top, bottom down the bottom
+        var yOffset = isTopEvent ? -325 : 325;
+        mapEvent.transform.localPosition = new Vector3(0, yOffset, 0);
+        
+        mapEvent.GetComponent<MapEvent>().EventType = eventType;
 
-            switch (eventType)
-            {
-                case MapEventType.Coin:
-                    eventImage.sprite = _mapEventSprites[0];
-                    break;
-                case MapEventType.Heart:
-                    eventImage.sprite = _mapEventSprites[1];
-                    break;
-                case MapEventType.UpgradeCard:
-                    eventImage.sprite = _mapEventSprites[2];
-                    break;
-                case MapEventType.SpecificCard:
-                    eventImage.sprite = _mapEventSprites[3];
-                    break;
-                default:
-                    throw new ArgumentOutOfRangeException();
-            }
+        var eventImage = mapEvent.transform.GetChild(0).GetChild(0).GetComponent<Image>();
+
+        switch (eventType)
+        {
+            case MapEventType.Coin:
+                eventImage.sprite = _mapEventSprites[0];
+                break;
+            case MapEventType.Heart:
+                eventImage.sprite = _mapEventSprites[1];
+                break;
+            case MapEventType.UpgradeCard:
+                eventImage.sprite = _mapEventSprites[2];
+                break;
+            case MapEventType.SpecificCard:
+                eventImage.sprite = _mapEventSprites[3];
+                break;
+            default:
+                throw new ArgumentOutOfRangeException();
         }
     }
 
-    private MapEventType GenerateMapEvent()
+    private MapEventType GenerateEventType()
     {
         var sequence = new[] {
             MapEventType.Coin,

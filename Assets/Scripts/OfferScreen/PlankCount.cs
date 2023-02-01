@@ -8,6 +8,9 @@ public class PlankCount : MonoBehaviour
 {
     private TextMeshProUGUI _textMeshProUGUI;
 
+    [SerializeField] private TMP_ColorGradient _goodColor;
+    [SerializeField] private TMP_ColorGradient _badColor;
+
     private void Awake()
     {
         _textMeshProUGUI = GetComponentInChildren<TextMeshProUGUI>();
@@ -23,7 +26,9 @@ public class PlankCount : MonoBehaviour
         var cardsOnTop = OfferManager.Current.CardsOnTopRow;
         var maxCards = GameProgress.MaxPlanks;
 
-        _textMeshProUGUI.text = "Take (" + cardsOnTop + "/" + maxCards + ")";
+        _textMeshProUGUI.text = cardsOnTop + "/" + maxCards;
+
+        _textMeshProUGUI.colorGradientPreset = cardsOnTop <= maxCards ? _goodColor : _badColor;
     }
 
     private void OnDestroy()

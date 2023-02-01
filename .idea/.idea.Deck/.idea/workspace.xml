@@ -93,9 +93,9 @@
         <option value="$PROJECT_DIR$/Assets/Scripts/MainManager.cs" />
         <option value="$PROJECT_DIR$/Assets/Scripts/BattleManager.cs" />
         <option value="$PROJECT_DIR$/Assets/Scripts/MapScreen/MapEvent.cs" />
-        <option value="$PROJECT_DIR$/Assets/Scripts/MapScreen/MapEventGenerator.cs" />
-        <option value="$PROJECT_DIR$/Assets/Scripts/OfferScreen/PlankCount.cs" />
         <option value="$PROJECT_DIR$/Assets/Scripts/MapScreen/CardGrid.cs" />
+        <option value="$PROJECT_DIR$/Assets/Scripts/OfferScreen/PlankCount.cs" />
+        <option value="$PROJECT_DIR$/Assets/Scripts/MapScreen/MapEventGenerator.cs" />
       </list>
     </option>
   </component>
@@ -163,6 +163,7 @@
       <workItem from="1674869355832" duration="2583000" />
       <workItem from="1675178000638" duration="4031000" />
       <workItem from="1675229840216" duration="7053000" />
+      <workItem from="1675269542020" duration="4122000" />
     </task>
     <servers />
   </component>

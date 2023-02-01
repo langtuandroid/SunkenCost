@@ -32,8 +32,8 @@ public class CardGrid : MonoBehaviour
 
         if (childCount > 4)
         {
-            var totalOverflow = 1150f - (250 * childCount);
-            var spacing = totalOverflow / childCount - 30f;
+            var totalOverflow = 1000 - (250 * childCount);
+            var spacing = (float) totalOverflow / (childCount - 1);
             Debug.Log(spacing);
             _gridLayoutGroup.spacing = new Vector2(spacing, 0);
         }
