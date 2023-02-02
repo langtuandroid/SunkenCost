@@ -15,7 +15,7 @@ public static class GameProgress
         MaxPlanks = 3;
         Lives = 3;
         MovesPerTurn = 1;
-        AmountOfCardsToOffer = 2;
+        AmountOfCardsToOffer = 4;
     }
     
     public static int BattleNumber

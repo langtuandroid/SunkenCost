@@ -23,6 +23,7 @@
     <setting file="file://$PROJECT_DIR$/Assets/Scripts/OfferScreen/OfferScreenEvents.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Scripts/Items/PoisonTipsItem.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Scripts/MapScreen/MapManager.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$USER_HOME$/Dropbox/Ben/Uni/COS30019 Artificial Intelligence/AI Assignment 2/AI Assignment 2/Program.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Scripts/Enemies/Enemies/StrongClausEnemy.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Scripts/OfferScreen/StickOffer.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Scripts/MapScreen/MapEvent.cs" root0="FORCE_HIGHLIGHTING" />
@@ -39,14 +40,13 @@
     <setting file="file://$PROJECT_DIR$/Assets/Scripts/Items/ReDressItem.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Scripts/Etchings/GrandFinalistEtching.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Scripts/BattleItemManager.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/Scripts/MapScreen/TakeGrid.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Scripts/Enemies/DamageHandler.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Scripts/MapScreen/MapEventGenerator.cs" root0="FORCE_HIGHLIGHTING" />
   </component>
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/Assets/Scripts/Etchings/LoneWolf.cs" />
-        <option value="$PROJECT_DIR$/Assets/Scripts/Deck/DesignInfo.cs" />
         <option value="$PROJECT_DIR$/Assets/Scripts/Etchings/MeleeEtching.cs" />
         <option value="$PROJECT_DIR$/Assets/Scripts/Enemies/DamageHandler.cs" />
         <option value="$PROJECT_DIR$/Assets/Scripts/Etchings/ReverseEtching.cs" />
@@ -75,7 +75,6 @@
         <option value="$PROJECT_DIR$/Assets/Scripts/Deck/Designs.cs" />
         <option value="$PROJECT_DIR$/Assets/Scripts/PlayerInventory.cs" />
         <option value="$PROJECT_DIR$/Assets/Scripts/Enemies/Enemies/GrouldEnemy.cs" />
-        <option value="$PROJECT_DIR$/Assets/Scripts/GameProgress.cs" />
         <option value="$PROJECT_DIR$/Assets/slay-the-spire-map-in-unity-master/Assets/Scripts/MapManager.cs" />
         <option value="$PROJECT_DIR$/Assets/slay-the-spire-map-in-unity-master/Assets/Scripts/MapPlayerTracker.cs" />
         <option value="$PROJECT_DIR$/Assets/Scripts/EditorInit.cs" />
@@ -89,13 +88,16 @@
         <option value="$PROJECT_DIR$/Assets/Scripts/MapScreen/Map.cs" />
         <option value="$PROJECT_DIR$/Assets/Scripts/MapScreen/MapManager.cs" />
         <option value="$PROJECT_DIR$/Assets/Scripts/OfferScreen/NextBattleButton.cs" />
-        <option value="$PROJECT_DIR$/Assets/Scripts/OfferScreen/OfferManager.cs" />
         <option value="$PROJECT_DIR$/Assets/Scripts/MainManager.cs" />
         <option value="$PROJECT_DIR$/Assets/Scripts/BattleManager.cs" />
         <option value="$PROJECT_DIR$/Assets/Scripts/MapScreen/MapEvent.cs" />
-        <option value="$PROJECT_DIR$/Assets/Scripts/MapScreen/CardGrid.cs" />
         <option value="$PROJECT_DIR$/Assets/Scripts/OfferScreen/PlankCount.cs" />
         <option value="$PROJECT_DIR$/Assets/Scripts/MapScreen/MapEventGenerator.cs" />
+        <option value="$PROJECT_DIR$/Assets/Scripts/OfferScreen/OfferManager.cs" />
+        <option value="$PROJECT_DIR$/Assets/Scripts/MapScreen/MapBoat.cs" />
+        <option value="$PROJECT_DIR$/Assets/Scripts/MapScreen/CardGrid.cs" />
+        <option value="$PROJECT_DIR$/Assets/Scripts/MapScreen/TakeGrid.cs" />
+        <option value="$PROJECT_DIR$/Assets/Scripts/GameProgress.cs" />
       </list>
     </option>
   </component>
@@ -163,7 +165,7 @@
       <workItem from="1674869355832" duration="2583000" />
       <workItem from="1675178000638" duration="4031000" />
       <workItem from="1675229840216" duration="7053000" />
-      <workItem from="1675269542020" duration="4122000" />
+      <workItem from="1675269542020" duration="6562000" />
     </task>
     <servers />
   </component>

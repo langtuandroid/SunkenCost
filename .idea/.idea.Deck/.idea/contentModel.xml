@@ -449,6 +449,7 @@
             <e p="MapEventGenerator.cs" t="Include" />
             <e p="MapGenerator.cs" t="Include" />
             <e p="MapManager.cs" t="Include" />
+            <e p="TakeGrid.cs" t="Include" />
           </e>
           <e p="OfferScreen" t="Include">
             <e p="DesignCard.cs" t="Include" />
