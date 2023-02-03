@@ -16,9 +16,8 @@ public class MapEventGenerator : MonoBehaviour
      * 3: Specific Card
      */
 
-    [SerializeField] private GameObject _mapEventPrefab;
-
-    [SerializeField] private Transform _mapEventsTransform;
+    [SerializeField] private MapEvent topMapEvent;
+    [SerializeField] private MapEvent bottomMapEvent;
     
     
     private static readonly Dictionary<MapEventType, float> Weightings = new Dictionary<MapEventType, float>()
@@ -32,8 +31,7 @@ public class MapEventGenerator : MonoBehaviour
     private void Start()
     {
         var topEvent = GenerateEventType();
-
-        InstantiateEvent(topEvent, true);
+        UpdateEvent(topMapEvent, topEvent);
 
         MapEventType bottomEvent;
         while (true)
@@ -42,18 +40,12 @@ public class MapEventGenerator : MonoBehaviour
             if (bottomEvent != topEvent) break;
         }
 
-        InstantiateEvent(bottomEvent, false);
+        UpdateEvent(bottomMapEvent, bottomEvent);
     }
 
-    private void InstantiateEvent(MapEventType eventType, bool isTopEvent)
+    private void UpdateEvent(MapEvent mapEvent, MapEventType eventType)
     {
-        var mapEvent = Instantiate(_mapEventPrefab, _mapEventsTransform);
-        
-        // Place the top event up top, bottom down the bottom
-        var yOffset = isTopEvent ? -325 : 325;
-        mapEvent.transform.localPosition = new Vector3(0, yOffset, 0);
-        
-        mapEvent.GetComponent<MapEvent>().EventType = eventType;
+        mapEvent.EventType = eventType;
 
         var eventImage = mapEvent.transform.GetChild(0).GetChild(0).GetComponent<Image>();
 
@@ -61,15 +53,19 @@ public class MapEventGenerator : MonoBehaviour
         {
             case MapEventType.Coin:
                 eventImage.sprite = _mapEventSprites[0];
+                mapEvent.UpdateDescription("+3 extra coins");
                 break;
             case MapEventType.Heart:
                 eventImage.sprite = _mapEventSprites[1];
+                mapEvent.UpdateDescription("Heal 1 life");
                 break;
             case MapEventType.UpgradeCard:
                 eventImage.sprite = _mapEventSprites[2];
+                mapEvent.UpdateDescription("Upgrade a card");
                 break;
             case MapEventType.SpecificCard:
                 eventImage.sprite = _mapEventSprites[3];
+                mapEvent.UpdateDescription("Find rare card");
                 break;
             default:
                 throw new ArgumentOutOfRangeException();

@@ -1,3 +1,4 @@
+using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -19,6 +20,8 @@ namespace MapScreen
 
         public MapEventType EventType { get; set; } = MapEventType.None;
 
+        [SerializeField] private TextMeshProUGUI _descriptionText;
+
         private void Awake()
         {
             _button = GetComponentInChildren<Button>();
@@ -29,6 +32,11 @@ namespace MapScreen
         private void NextBattle()
         {
             MainManager.Current.LoadNextBattle();
+        }
+
+        public void UpdateDescription(string desc)
+        {
+            _descriptionText.text = desc;
         }
 
         private void OnDestroy()
