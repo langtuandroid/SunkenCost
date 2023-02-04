@@ -10,17 +10,16 @@ public class OfferManager : MonoBehaviour
 {
     public static OfferManager Current;
 
-    [SerializeField] private Transform cardGrid;
+    [SerializeField] private Transform takeGrid;
+    [SerializeField] private Transform leaveGrid;
     [SerializeField] private GameObject designCardPrefab;
     [SerializeField] private GameObject itemOfferPrefab;
-    [SerializeField] private GameObject stickOfferPrefab;
-    [SerializeField] private GameObject moveOfferPrefab; 
 
     [SerializeField] private Transform bootyGrid;
 
     public List<DesignCard> DesignCards { get; private set; } = new List<DesignCard>();
 
-    public int CardsOnTopRow => cardGrid.GetChild(0).GetChild(0).childCount;
+    public int CardsOnTopRow => takeGrid.childCount;
 
     private void Awake()
     {
@@ -36,114 +35,72 @@ public class OfferManager : MonoBehaviour
 
     private void Start()
     {
-        bootyGrid.gameObject.SetActive(false);
         CreateCardOfferGrids();
 
-        return;
-        
-        if (GameProgress.BattleNumber % 2 != 0)
-        {
-            
-        }
-        else
-        {
-            
-            var used = new[] {false, false, false};
-            var optionsPlaced = 0;
-            
-            // Make two options, either in position 0 or 2
-            // This is fuckin ugly code but I cbf
-            while (optionsPlaced < 2)
-            {
-                var rand = Random.Range(0, 3);
+        var items = new string[GameProgress.AmountOfItemsToOffer];
 
-                switch (rand)
-                {
-                    case 0:
-                        if (used[0]) continue;
-                        SpawnStick(optionsPlaced * 2);
-                        optionsPlaced++;
-                        used[0] = true;
-                        break;
-                    case 1:
-                        if (used[1]) continue;
-                        SpawnMove(optionsPlaced * 2);
-                        optionsPlaced++;
-                        used[1] = true;
-                        break;
-                    case 2:
-                        if (used[2]) continue;
-                        SpawnItem(optionsPlaced * 2);
-                        optionsPlaced++;
-                        used[2] = true;
-                        break;
-                }
-            }
+        for (var i = 0; i < GameProgress.AmountOfItemsToOffer; i++)
+        {
+            items[i] = SpawnItem(items);
         }
     }
 
-    public void CommitSticks()
+    public void BackToMap()
     {
         // TODO: Get this somewhere better, make neater
-        var deck = cardGrid.GetChild(0).GetChild(0).GetComponentsInChildren<DesignInfo>().Select(d => d.design)
+        var deck = takeGrid.GetComponentsInChildren<DesignInfo>().Select(d => d.design)
             .ToList();
         if (deck.Count >= GameProgress.MaxPlanks) deck = deck.GetRange(0, GameProgress.MaxPlanks);
         PlayerInventory.Deck = deck;
 
-    }
-
-    private void SpawnStick(int position)
-    {
-        var stickOfferGameObject = Instantiate(stickOfferPrefab, bootyGrid.GetChild(0));
-        stickOfferGameObject.transform.SetSiblingIndex(position);
+        MainManager.Current.LoadMap();
     }
     
-    private void SpawnMove(int position)
+    private string SpawnItem(string[] otherItems)
     {
-        var moveOfferGameObject = Instantiate(moveOfferPrefab, bootyGrid.GetChild(0));
-        moveOfferGameObject.transform.SetSiblingIndex(position);
-    }
-
-    private void SpawnItem(int position)
-    {
-        var itemOfferGameObject = Instantiate(itemOfferPrefab, bootyGrid.GetChild(0));
-        itemOfferGameObject.transform.SetSiblingIndex(position);
+        var itemOfferGameObject = Instantiate(itemOfferPrefab, bootyGrid);
         var itemOffer = itemOfferGameObject.GetComponent<ItemOffer>();
 
         if (itemOffer is null)
         {
             Debug.Log("Null Item!");
+            return null;
         }
         else
         {
-            var itemId = ItemManager.GetRandomItem();
+            string itemId;
+            while (true)
+            {
+                itemId = ItemManager.GetRandomItem();
+                if (otherItems.FirstOrDefault(id => id == itemId) == null)
+                    break;
+            }
+            
             var titleDesc = ItemManager.GetItemTitleAndDescription(itemId);
             itemOffer.ItemId = itemId;
             itemOffer.Sprite = ItemManager.GetItemSprite(itemId);
             itemOffer.Title = titleDesc[0];
             itemOffer.Desc = titleDesc[1];
+
+            return itemId;
         }
     }
 
     private void CreateCardOfferGrids()
     {
-        cardGrid.gameObject.SetActive(true);
-        
-        var upperGridContent = cardGrid.GetChild(0).GetChild(0);
         foreach (var design in PlayerInventory.Deck)
         {
             //Debug.Log(design.Title);
-            var newCardObject = Instantiate(designCardPrefab, upperGridContent);
+            var newCardObject = Instantiate(designCardPrefab, takeGrid);
             var info = newCardObject.GetComponentInChildren<DesignInfo>();
             info.design = design;
             
             DesignCards.Add(newCardObject.GetComponent<DesignCard>());
         }
         
-        var lowerGridContent = cardGrid.GetChild(1).GetChild(0);
         for (var i = 0; i < GameProgress.AmountOfCardsToOffer; i++)
         {
-            var newCardObject = Instantiate(designCardPrefab, lowerGridContent);
+            var newCardObject = Instantiate(designCardPrefab, leaveGrid);
             var info = newCardObject.GetComponentInChildren<DesignInfo>();
 
             var designName = GetDesign();
@@ -203,25 +160,9 @@ public class OfferManager : MonoBehaviour
         OfferScreenEvents.Current.GridsUpdated();
     }
 
-    public void AcceptOffer(string offerAccepted)
+    public void AcceptOffer(ItemOffer offerAccepted)
     {
-        bootyGrid.gameObject.SetActive(false);
-
-        if (offerAccepted == "Plank")
-        {
-            GameProgress.MaxPlanks++;
-        }
-        else if (offerAccepted == "Move")
-        {
-            GameProgress.MovesPerTurn++;
-        }
-        else
-        {
-            // Item
-            PlayerInventory.Items.Add(offerAccepted);
-        }
-        
-        CreateCardOfferGrids();
+        PlayerInventory.Items.Add(offerAccepted.ItemId);
     }
 
     private IEnumerator WaitForDesignCardsToInitialise()

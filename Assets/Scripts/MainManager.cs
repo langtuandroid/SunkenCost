@@ -42,9 +42,13 @@ public class MainManager : MonoBehaviour
         ChangeScene(1);
     }
 
+    public void LoadOfferScreen()
+    {
+        ChangeScene(2);
+    }
+
     public void LoadNextBattle()
     {
-        OfferManager.Current.CommitSticks();
         ChangeScene(3);
     }
 }

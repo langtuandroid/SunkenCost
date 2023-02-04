@@ -24,7 +24,6 @@ public class ItemManager : MonoBehaviour
             return;
         } 
         
-        Debug.Log("Begin");
         Current = this;
         DontDestroyOnLoad(gameObject);
 

@@ -27,6 +27,7 @@ public class ItemOffer : MonoBehaviour, IPointerClickHandler
 
     public void OnPointerClick(PointerEventData eventData)
     {
-        OfferManager.Current.AcceptOffer(ItemId);
+        OfferManager.Current.AcceptOffer(this);
+        Destroy(gameObject);
     }
 }

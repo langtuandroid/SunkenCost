@@ -16,6 +16,7 @@ public static class GameProgress
         Lives = 3;
         MovesPerTurn = 1;
         AmountOfCardsToOffer = 4;
+        AmountOfItemsToOffer = 3;
     }
     
     public static int BattleNumber
@@ -48,4 +49,6 @@ public static class GameProgress
         get;
         set;
     }
+
+    public static int AmountOfItemsToOffer { get; set; }
 }

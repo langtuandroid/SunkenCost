@@ -112,7 +112,7 @@ public class BattleManager : MonoBehaviour
                 GameProgress.BattleNumber++;
                 BattleEvents.Current.EndBattle();
                 GameProgress.Lives = PlayerController.current.Lives;
-                MainManager.Current.LoadMap();
+                MainManager.Current.LoadOfferScreen();
                 Destroy(gameObject);
             }
             else
