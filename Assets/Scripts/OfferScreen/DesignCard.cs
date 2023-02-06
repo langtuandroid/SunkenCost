@@ -8,11 +8,14 @@ using UnityEngine.EventSystems;
 public class DesignCard : MonoBehaviour
 {
     [SerializeField] private Transform plusButton;
+    [SerializeField] private Cost cost;
 
     private DesignInfo _designInfo;
     public Design Design => _designInfo.design;
 
     private List<DesignCard> _duplicates = new List<DesignCard>();
+
+    public bool CameFromDeck = false;
 
     private void Awake()
     {
@@ -22,6 +25,8 @@ public class DesignCard : MonoBehaviour
     private void Start()
     {
         OfferScreenEvents.Current.OnGridsUpdated += CardsUpdated;
+        
+        if (CameFromDeck) cost.gameObject.SetActive(false);
     }
 
     private void CardsUpdated()
@@ -40,6 +45,7 @@ public class DesignCard : MonoBehaviour
         }
         
         _designInfo.Refresh();
+        cost.UpdateCost(Design.GetStat(St.Rarity));
     }
 
     public void Merge()

@@ -75,12 +75,9 @@ public class OfferManager : MonoBehaviour
                 if (otherItems.FirstOrDefault(id => id == itemId) == null)
                     break;
             }
-            
-            var titleDesc = ItemManager.GetItemTitleAndDescription(itemId);
-            itemOffer.ItemId = itemId;
+
+            itemOffer.ItemInfo = ItemManager.GetItemInfo(itemId);
             itemOffer.Sprite = ItemManager.GetItemSprite(itemId);
-            itemOffer.Title = titleDesc[0];
-            itemOffer.Desc = titleDesc[1];
 
             return itemId;
         }
@@ -94,8 +91,10 @@ public class OfferManager : MonoBehaviour
             var newCardObject = Instantiate(designCardPrefab, takeGrid);
             var info = newCardObject.GetComponentInChildren<DesignInfo>();
             info.design = design;
-            
-            DesignCards.Add(newCardObject.GetComponent<DesignCard>());
+
+            var designCard = newCardObject.GetComponent<DesignCard>();
+            designCard.CameFromDeck = true;
+            DesignCards.Add(designCard);
         }
         
         for (var i = 0; i < GameProgress.AmountOfCardsToOffer; i++)
@@ -162,7 +161,7 @@ public class OfferManager : MonoBehaviour
 
     public void AcceptOffer(ItemOffer offerAccepted)
     {
-        PlayerInventory.Items.Add(offerAccepted.ItemId);
+        PlayerInventory.Items.Add(offerAccepted.ItemInfo.ItemId);
     }
 
     private IEnumerator WaitForDesignCardsToInitialise()

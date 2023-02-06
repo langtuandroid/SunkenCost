@@ -437,6 +437,7 @@
             <e p="ExpiredMedicineItem.cs" t="Include" />
             <e p="ExtraTurnItem.cs" t="Include" />
             <e p="InGameItem.cs" t="Include" />
+            <e p="ItemInfo.cs" t="Include" />
             <e p="PoisonTipsItem.cs" t="Include" />
             <e p="RedressItem.cs" t="Include" />
           </e>
@@ -453,6 +454,7 @@
             <e p="TakeGrid.cs" t="Include" />
           </e>
           <e p="OfferScreen" t="Include">
+            <e p="Cost.cs" t="Include" />
             <e p="DesignCard.cs" t="Include" />
             <e p="DesignCardInfo.cs" t="Include" />
             <e p="ItemOffer.cs" t="Include" />

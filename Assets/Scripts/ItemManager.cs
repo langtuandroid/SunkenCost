@@ -53,29 +53,33 @@ public class ItemManager : MonoBehaviour
         return Current.itemSprites[index];
     }
 
-    public static string[] GetItemTitleAndDescription(string item)
+    public static ItemInfo GetItemInfo(string itemID)
     {
-        var title = "";
-        var desc = "";
+        var title = "ERROR";
+        var desc = "ERROR";
+        var cost = -1;
 
-        switch (item)
+        switch (itemID)
         {
             case "PoisonTips":
                 title = "Poison Tips";
                 desc = "Apply " + PoisonTipsItem.PoisonAmount +" poison every time an enemy is attacked";
+                cost = 8;
                 break;
             
             case "ExpiredMedicine":
                 title = "Expired Medicine";
                 desc = "Whenever an enemy heals, it takes " + ExpiredMedicineItem.DamageAmount + " damage";
+                cost = 5;
                 break;
             case "ReDress":
                 title = "ReDress";
                 desc = "Whenever an enemy reaches your boat, deal " + ReDressItem.DamageAmount + " damage to all enemies";
+                cost = 7;
                 break;
         }
 
-        return new string[2] {title, desc};
+        return new ItemInfo(itemID, title, desc, cost);
     }
 
     public static string GetRandomItem()
