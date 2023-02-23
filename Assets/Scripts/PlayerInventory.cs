@@ -1,18 +1,43 @@
 using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
 using JetBrains.Annotations;
 using UnityEngine;
 
-public static class PlayerInventory
+public class PlayerInventory
 {
-    public static List<Design> Deck = new List<Design>();
+    public List<Design> Deck = new List<Design>();
 
-    public static List<string> Items { get; set; } = new List<string>();
+    public List<string> Items { get; set; } = new List<string>();
+    
+    public int MaxPlanks { get; set; }
+    public int Lives { get; set; }
+    public int MaxLives { get; set; }
+    public int Gold { get; set; }
+    public int MovesPerTurn { get; set; }
+    public int AmountOfCardsToOffer { get; set; }
+    public int AmountOfItemsToOffer { get; set; }
 
-    static PlayerInventory()
+    public PlayerInventory()
     {
         Deck.Add(new Swordsman());
         Deck.Add(new Slinger());
         Deck.Add(new Impede());
+        
+        MaxPlanks = 3;
+        Lives = 3;
+        Gold = 0;
+        MovesPerTurn = 1;
+        AmountOfCardsToOffer = 4;
+        AmountOfItemsToOffer = 3;
+    }
+
+    public void SaveDeck(IEnumerable<Design> newDeck)
+    {
+        Deck = newDeck.ToList();
+        
+        // Cut off deck if it's too big
+        if (Deck.Count >= RunProgress.PlayerInventory.MaxPlanks) 
+            Deck = Deck.GetRange(0, RunProgress.PlayerInventory.MaxPlanks);
     }
 }

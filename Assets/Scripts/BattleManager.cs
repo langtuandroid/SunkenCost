@@ -21,7 +21,7 @@ public class BattleManager : MonoBehaviour
     
     public GameState gameState = GameState.PlayerTurn;
     public const float AttackTime = 0.6f;
-    public static readonly int NumberOfTurns = 6;
+    public static readonly int NumberOfTurns = 2;
     
     private Random _random = new Random();
 
@@ -42,14 +42,14 @@ public class BattleManager : MonoBehaviour
     private void Start()
     {
         GlobalEvents.current.LoadedLevel();
-        
+
         BattleEvents.Current.OnDesignOfferAccepted += DesignOfferAccepted;
         BattleEvents.Current.OnOfferDesigns += OfferingDesigns;
         BattleEvents.Current.OnBossKilled += BossKilled;
 
         BattleEvents.Current.BeginBattle();
 
-        foreach (var design in PlayerInventory.Deck)
+        foreach (var design in RunProgress.PlayerInventory.Deck)
         {
             StickManager.current.CreateStick();
             EtchingManager.Current.CreateEtching(StickManager.current.GetStick(StickManager.current.stickCount-1), design);
@@ -66,17 +66,12 @@ public class BattleManager : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.X))
         {
             BattleItemManager.EquipItem("ExtraTurn");
-            InventoryManager.current.AlterGold(50);
+            RunProgress.PlayerInventory.Gold += 50;
         }
 
         if (Input.GetKeyDown(KeyCode.D))
         {
             StickManager.current.DestroyStick(1);
-        }
-
-        if (Input.GetKeyDown(KeyCode.S))
-        {
-            SkipToBoss();
         }
 
         // Begin Next turn
@@ -96,7 +91,7 @@ public class BattleManager : MonoBehaviour
     
     public void Quit()
     {
-        GameProgress.Reset();
+        RunProgress.Reset();
         SceneManager.LoadScene(0);
         Music.current.SelectSong(0);
     }
@@ -109,9 +104,10 @@ public class BattleManager : MonoBehaviour
             if (Turn > NumberOfTurns)
             {
                 //Deck.Designs = EtchingManager.current.etchingOrder.Select(etching => etching.design).ToList();
-                GameProgress.BattleNumber++;
+                RunProgress.BattleNumber++;
+                RunProgress.HasGeneratedMapEvents = false;
                 BattleEvents.Current.EndBattle();
-                GameProgress.Lives = PlayerController.current.Lives;
+                RunProgress.PlayerInventory.Lives = PlayerController.current.Lives;
                 MainManager.Current.LoadOfferScreen();
                 Destroy(gameObject);
             }
@@ -158,14 +154,6 @@ public class BattleManager : MonoBehaviour
     private void BossKilled()
     {
         Music.current.SelectSong(1);
-    }
-
-    public void SkipToBoss()
-    {
-        var alterAmount = 16 / Turn;
-        if (alterAmount > 10) alterAmount = 10;
-        InventoryManager.current.AlterGold(alterAmount);
-        Turn = 15;
     }
 
     public void OutOfLives()

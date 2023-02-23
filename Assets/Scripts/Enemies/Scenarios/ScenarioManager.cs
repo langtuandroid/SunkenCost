@@ -56,7 +56,6 @@ public class ScenarioManager : MonoBehaviour
             var i = Random.Range(0, scenarioOptions.Count);
             var scenario = scenarioOptions[i];
             scenario.scaledDifficulty = difficulty;
-            Debug.Log(scenario.name);
             return scenario;
         }
         

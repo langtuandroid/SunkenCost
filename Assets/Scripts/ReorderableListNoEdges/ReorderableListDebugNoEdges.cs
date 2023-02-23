@@ -3,7 +3,7 @@
 
 namespace UnityEngine.UI.Extensions
 {
-    public class ReorderableListDebug : MonoBehaviour
+    public class ReorderableListDebugNoEdges : MonoBehaviour
     {
         public Text DebugLabel;
 

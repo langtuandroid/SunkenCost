@@ -24,7 +24,7 @@ public class PlankCount : MonoBehaviour
     private void UpdateText()
     {
         var cardsOnTop = OfferManager.Current.CardsOnTopRow;
-        var maxCards = GameProgress.MaxPlanks;
+        var maxCards = RunProgress.PlayerInventory.MaxPlanks;
 
         _textMeshProUGUI.text = cardsOnTop + "/" + maxCards;
 

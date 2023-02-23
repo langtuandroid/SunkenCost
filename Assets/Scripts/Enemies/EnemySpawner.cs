@@ -28,7 +28,7 @@ public class EnemySpawner : MonoBehaviour
 
     private void BeginBattle()
     {
-        _scenario = ScenarioManager.GetScenario(GameProgress.BattleNumber);
+        _scenario = ScenarioManager.GetScenario(RunProgress.BattleNumber);
         SpawnNewRound();
     }
 
@@ -88,7 +88,7 @@ public class EnemySpawner : MonoBehaviour
         // For now
         var newEnemies = new List<string>();
 
-            var amountToSpawn = Mathf.Floor((BattleManager.Current.Turn + (GameProgress.BattleNumber / 3 * 2 * BattleManager.NumberOfTurns)) / (BattleManager.NumberOfTurns * 2f)) + 1;
+            var amountToSpawn = Mathf.Floor((BattleManager.Current.Turn + (RunProgress.BattleNumber / 3 * 2 * BattleManager.NumberOfTurns)) / (BattleManager.NumberOfTurns * 2f)) + 1;
             for (var i = 0; i < amountToSpawn; i++)
             {
                 // Count -1 to not include boss

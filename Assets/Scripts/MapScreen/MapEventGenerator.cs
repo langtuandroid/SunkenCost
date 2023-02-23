@@ -41,6 +41,8 @@ public class MapEventGenerator : MonoBehaviour
         }
 
         UpdateEvent(bottomMapEvent, bottomEvent);
+        
+        RunProgress.HasGeneratedMapEvents = true;
     }
 
     private void UpdateEvent(MapEvent mapEvent, MapEventType eventType)

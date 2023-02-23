@@ -30,7 +30,6 @@
       <Path>Library/PackageCache/com.unity.timeline@1.6.4</Path>
       <Path>Packages</Path>
       <Path>ProjectSettings</Path>
-      <Path>../../../Downloads/com.unity.uiextensions-release/com.unity.uiextensions-release</Path>
     </explicitIncludes>
     <explicitExcludes>
       <Path>.git</Path>

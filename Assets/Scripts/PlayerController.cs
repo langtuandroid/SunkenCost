@@ -36,9 +36,9 @@ public class PlayerController : MonoBehaviour
         BattleEvents.Current.OnEnemyReachedEnd += OnEnemyReachedEnd;
         BattleEvents.Current.OnRedraw += OnRedraw;
 
-        Lives = GameProgress.Lives;
-        MaxLives = GameProgress.MaxLives;
-        _baseMovesPerTurn = GameProgress.MovesPerTurn;
+        Lives = RunProgress.PlayerInventory.Lives;
+        MaxLives = RunProgress.PlayerInventory.MaxLives;
+        _baseMovesPerTurn = RunProgress.PlayerInventory.MovesPerTurn;
         MovesPerTurn = _baseMovesPerTurn;
         
         HUDManager.current.UpdateLives();

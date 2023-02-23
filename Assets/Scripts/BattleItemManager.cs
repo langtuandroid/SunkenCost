@@ -27,7 +27,7 @@ public class BattleItemManager : MonoBehaviour
 
     private void Start()
     {
-        foreach (var item in PlayerInventory.Items)
+        foreach (var item in RunProgress.PlayerInventory.Items)
         {
             EquipItem(item);
         }
@@ -36,9 +36,9 @@ public class BattleItemManager : MonoBehaviour
     public static void EquipItem(string itemName)
     {
         var newItem = Instantiate(Current.itemPrefab, Current.itemGrid);
-        var itemType = ItemManager.Items[itemName];
+        var itemType = ItemLoader.Items[itemName];
         newItem.AddComponent(itemType);
-        newItem.transform.GetChild(0).GetChild(1).GetComponent<Image>().sprite = ItemManager.GetItemSprite(itemName);
+        newItem.transform.GetChild(0).GetChild(1).GetComponent<Image>().sprite = ItemLoader.GetItemSprite(itemName);
         
         ActiveItems.Add(newItem.GetComponent<InGameItem>());
     }

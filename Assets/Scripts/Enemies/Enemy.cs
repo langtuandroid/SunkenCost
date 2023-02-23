@@ -323,7 +323,8 @@ namespace Enemies
         public virtual void DestroySelf(bool killedByPlayer)
         {
             InGameSfxManager.current.Death();
-            if (killedByPlayer) InventoryManager.current.AlterGold(Gold, "Enemy");
+            // TODO: CHANGE 
+            if (killedByPlayer) RunProgress.PlayerInventory.Gold += Gold;
             IsDestroyed = true;
             Moving = false;
             Log.current.AddEvent("E" + _turnOrder + " has been killed");

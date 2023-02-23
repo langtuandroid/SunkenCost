@@ -50,10 +50,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 86879eb1f86509a49b5ebf976c1d6c10, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  ItemId: 
   image: {fileID: 9177690706066443737}
   titleText: {fileID: 1223813987649835173}
   descText: {fileID: 3740006302483196580}
+  costDisplay: {fileID: 0}
+  isOnHold: 0
 --- !u!1 &9177690706167899970
 GameObject:
   m_ObjectHideFlags: 0
@@ -227,7 +228,7 @@ RectTransform:
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
   m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 300, y: 800}
+  m_SizeDelta: {x: 275, y: 300}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!225 &9177690706390541002
 CanvasGroup:

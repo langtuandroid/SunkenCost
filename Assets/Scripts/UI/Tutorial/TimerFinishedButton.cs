@@ -61,7 +61,6 @@ public class TimerFinishedButton : MonoBehaviour
         InGameSfxManager.current.GoodClick();
         _tutorialDimmerPanel.SetVisible(false);
         _firstPopup.SetActive(false);
-        BattleManager.Current.SkipToBoss();
     }
 
     public void ClickedKeepPlayingFirst()

@@ -2,6 +2,8 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
+using Items;
+using OfferScreen;
 using TMPro;
 using UnityEngine;
 using Random = UnityEngine.Random;
@@ -15,9 +17,9 @@ public class OfferManager : MonoBehaviour
     [SerializeField] private GameObject designCardPrefab;
     [SerializeField] private GameObject itemOfferPrefab;
 
-    [SerializeField] private Transform bootyGrid;
+    [SerializeField] private Transform itemGrid;
 
-    public List<DesignCard> DesignCards { get; private set; } = new List<DesignCard>();
+    public List<DesignCard> AllDesignCards { get; private set; } = new List<DesignCard>();
 
     public int CardsOnTopRow => takeGrid.childCount;
 
@@ -27,19 +29,17 @@ public class OfferManager : MonoBehaviour
         {
             Destroy(Current.gameObject);
         }
-        else
-        {
-            Current = this;
-        }
+
+        Current = this;
     }
 
     private void Start()
     {
-        CreateCardOfferGrids();
+        CreateDesignCards();
 
-        var items = new string[GameProgress.AmountOfItemsToOffer];
+        var items = new string[RunProgress.PlayerInventory.AmountOfItemsToOffer];
 
-        for (var i = 0; i < GameProgress.AmountOfItemsToOffer; i++)
+        for (var i = 0; i < RunProgress.PlayerInventory.AmountOfItemsToOffer; i++)
         {
             items[i] = SpawnItem(items);
         }
@@ -47,18 +47,17 @@ public class OfferManager : MonoBehaviour
 
     public void BackToMap()
     {
-        // TODO: Get this somewhere better, make neater
-        var deck = takeGrid.GetComponentsInChildren<DesignInfo>().Select(d => d.design)
-            .ToList();
-        if (deck.Count >= GameProgress.MaxPlanks) deck = deck.GetRange(0, GameProgress.MaxPlanks);
-        PlayerInventory.Deck = deck;
-
+        var deckRow = takeGrid.GetComponentsInChildren<DesignCard>();
+        var offerRow = leaveGrid.GetComponentsInChildren<DesignCard>();
+        var itemOffers = itemGrid.GetComponentsInChildren<ItemOffer>();
+        
+        RunProgress.offerStorage.StoreOffers(deckRow, offerRow, itemOffers);
         MainManager.Current.LoadMap();
     }
     
     private string SpawnItem(string[] otherItems)
     {
-        var itemOfferGameObject = Instantiate(itemOfferPrefab, bootyGrid);
+        var itemOfferGameObject = Instantiate(itemOfferPrefab, itemGrid);
         var itemOffer = itemOfferGameObject.GetComponent<ItemOffer>();
 
         if (itemOffer is null)
@@ -71,50 +70,96 @@ public class OfferManager : MonoBehaviour
             string itemId;
             while (true)
             {
-                itemId = ItemManager.GetRandomItem();
+                itemId = ItemLoader.GetRandomItem();
                 if (otherItems.FirstOrDefault(id => id == itemId) == null)
                     break;
             }
 
-            itemOffer.ItemInfo = ItemManager.GetItemInfo(itemId);
-            itemOffer.Sprite = ItemManager.GetItemSprite(itemId);
+            itemOffer.ItemInfo = ItemLoader.GetItemInfo(itemId);
+            itemOffer.Sprite = ItemLoader.GetItemSprite(itemId);
 
             return itemId;
         }
     }
 
-    private void CreateCardOfferGrids()
+    private void CreateDesignCards()
     {
-        foreach (var design in PlayerInventory.Deck)
-        {
-            //Debug.Log(design.Title);
-            var newCardObject = Instantiate(designCardPrefab, takeGrid);
-            var info = newCardObject.GetComponentInChildren<DesignInfo>();
-            info.design = design;
-
-            var designCard = newCardObject.GetComponent<DesignCard>();
-            designCard.CameFromDeck = true;
-            DesignCards.Add(designCard);
-        }
+        CreateDeckCards();
+        CreateLockedCards();
         
-        for (var i = 0; i < GameProgress.AmountOfCardsToOffer; i++)
+        if (RunProgress.HasGeneratedMapEvents)
         {
-            var newCardObject = Instantiate(designCardPrefab, leaveGrid);
-            var info = newCardObject.GetComponentInChildren<DesignInfo>();
-
-            var designName = GetDesign();
-            var designType = DesignManager.GetDesignType(designName);
-            var design = (Design)Activator.CreateInstance(designType);
-            info.design = design;
-            DesignCards.Add(newCardObject.GetComponent<DesignCard>());
+            CreateSavedUnlockedCards();
+        }
+        else
+        {
+            GenerateNewUnlockedCards();
         }
 
         StartCoroutine(WaitForDesignCardsToInitialise());
     }
 
+    private void CreateDeckCards()
+    {
+        foreach (var design in RunProgress.PlayerInventory.Deck)
+        {
+            CreateDesignCardFromDesign(design, takeGrid, lockable: false);
+        }
+    }
+
+    private void CreateLockedCards()
+    {
+        foreach (var design in RunProgress.offerStorage.LockedDesignOffers)
+        {
+            CreateDesignCardFromDesign(design, leaveGrid, locked: true);
+        }
+    }
+
+    private void CreateSavedUnlockedCards()
+    {
+        foreach (var design in RunProgress.offerStorage.UnlockedDesignOffers)
+        {
+            CreateDesignCardFromDesign(design, leaveGrid);
+        }
+    }
+
+    private void GenerateNewUnlockedCards()
+    {
+        var amountOfLockedCards = RunProgress.offerStorage.LockedDesignOffers.Count;
+        for (var i = amountOfLockedCards; i < RunProgress.PlayerInventory.AmountOfCardsToOffer; i++)
+        {
+            var designName = GetDesign();
+            var designType = DesignManager.GetDesignType(designName);
+            var design = (Design)Activator.CreateInstance(designType);
+
+            CreateDesignCardFromDesign(design, leaveGrid);
+        }
+    }
+
+    private void CreateDesignCardFromDesign(Design design, Transform row, bool locked = false, bool lockable = true)
+    {
+        var newCardObject = Instantiate(designCardPrefab, row);
+        var info = newCardObject.GetComponentInChildren<DesignInfo>();
+        info.design = design;
+
+        var designCard = newCardObject.GetComponent<DesignCard>();
+        designCard.isLocked = locked;
+
+        if (lockable)
+        {
+            designCard.AllowLocking();
+        }
+        else
+        {
+            designCard.PreventLocking();
+        }
+        
+        AllDesignCards.Add(designCard);
+    }
+
     private string GetDesign()
     {
-        var currentProgress = GameProgress.BattleNumber;
+        var currentProgress = RunProgress.BattleNumber;
         var maxProgress = 50.0;
         
         var chancesOnFirstBattle = new[] {0.8, 0.5, 0.05};
@@ -153,7 +198,7 @@ public class OfferManager : MonoBehaviour
 
     public void Merge(DesignCard cardBeingMerged, DesignCard cardBeingMergedInto)
     {
-        DesignCards.Remove(cardBeingMerged);
+        AllDesignCards.Remove(cardBeingMerged);
         Destroy(cardBeingMerged.gameObject);
         cardBeingMergedInto.Design.LevelUp();
         OfferScreenEvents.Current.GridsUpdated();
@@ -161,7 +206,7 @@ public class OfferManager : MonoBehaviour
 
     public void AcceptOffer(ItemOffer offerAccepted)
     {
-        PlayerInventory.Items.Add(offerAccepted.ItemInfo.ItemId);
+        RunProgress.PlayerInventory.Items.Add(offerAccepted.ItemInfo.ItemId);
     }
 
     private IEnumerator WaitForDesignCardsToInitialise()
