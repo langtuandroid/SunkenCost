@@ -14,7 +14,7 @@ namespace OfferScreen
         {
             RefreshCost(cost);
             
-            var color = cost <= RunProgress.PlayerInventory.Gold ? GoodColor : BadColor;
+            var color = cost <= OfferManager.Current.BuyerSeller.Gold ? GoodColor : BadColor;
             RefreshColor(color);
         }
 

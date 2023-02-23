@@ -10,10 +10,10 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 54d21f6ece3b46479f0c328f8c6007e0, type: 3}
-  m_Name: EnemyGradient
+  m_Name: YellowGradient
   m_EditorClassIdentifier: 
   colorMode: 3
-  topLeft: {r: 1, g: 0.086956516, b: 0, a: 1}
-  topRight: {r: 0.9245283, g: 0.11774653, b: 0.16961111, a: 1}
-  bottomLeft: {r: 0.8962264, g: 0.13583085, b: 0.063412234, a: 1}
-  bottomRight: {r: 0.8584906, g: 0, b: 0.05365566, a: 1}
+  topLeft: {r: 1, g: 0.9892453, b: 0.9103774, a: 1}
+  topRight: {r: 0.9528302, g: 0.940768, b: 0.79552335, a: 1}
+  bottomLeft: {r: 1, g: 0.9492172, b: 0.8915094, a: 1}
+  bottomRight: {r: 1, g: 0.9490196, b: 0.8901961, a: 1}

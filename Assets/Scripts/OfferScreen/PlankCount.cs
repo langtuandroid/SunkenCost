@@ -1,38 +1,38 @@
-using System;
-using System.Collections;
-using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
 
-public class PlankCount : MonoBehaviour
+namespace OfferScreen
 {
-    private TextMeshProUGUI _textMeshProUGUI;
-
-    [SerializeField] private TMP_ColorGradient _goodColor;
-    [SerializeField] private TMP_ColorGradient _badColor;
-
-    private void Awake()
+    public class PlankCount : MonoBehaviour
     {
-        _textMeshProUGUI = GetComponentInChildren<TextMeshProUGUI>();
-    }
+        private TextMeshProUGUI _textMeshProUGUI;
 
-    private void Start()
-    {
-        OfferScreenEvents.Current.OnGridsUpdated += UpdateText;
-    }
+        [SerializeField] private TMP_ColorGradient _goodColor;
+        [SerializeField] private TMP_ColorGradient _badColor;
 
-    private void UpdateText()
-    {
-        var cardsOnTop = OfferManager.Current.CardsOnTopRow;
-        var maxCards = RunProgress.PlayerInventory.MaxPlanks;
+        private void Awake()
+        {
+            _textMeshProUGUI = GetComponentInChildren<TextMeshProUGUI>();
+        }
 
-        _textMeshProUGUI.text = cardsOnTop + "/" + maxCards;
+        private void Start()
+        {
+            OfferScreenEvents.Current.OnGridsUpdated += UpdateText;
+        }
 
-        _textMeshProUGUI.colorGradientPreset = cardsOnTop <= maxCards ? _goodColor : _badColor;
-    }
+        private void UpdateText()
+        {
+            var cardsOnTop = OfferManager.Current.CardsOnTopRow;
+            var maxCards = RunProgress.PlayerInventory.MaxPlanks;
 
-    private void OnDestroy()
-    {
-        OfferScreenEvents.Current.OnGridsUpdated -= UpdateText;
+            _textMeshProUGUI.text = cardsOnTop + "/" + maxCards;
+
+            _textMeshProUGUI.colorGradientPreset = cardsOnTop <= maxCards ? _goodColor : _badColor;
+        }
+
+        private void OnDestroy()
+        {
+            OfferScreenEvents.Current.OnGridsUpdated -= UpdateText;
+        }
     }
 }

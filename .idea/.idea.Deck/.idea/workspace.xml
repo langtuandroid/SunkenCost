@@ -23,21 +23,26 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="50470089-3e0c-4487-973b-9d375622b070" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/Assets/Scripts/OfferScreen/BoatMover.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/Scripts/OfferScreen/BoatMover.cs.meta" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/Scripts/OfferScreen/CardLayout.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/Scripts/OfferScreen/CardLayout.cs.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Fonts/RedGradient.asset" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Fonts/RedGradient.asset.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Fonts/YellowGradient.asset" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Fonts/YellowGradient.asset.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Scripts/OfferScreen/BuyerSeller.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Scripts/OfferScreen/BuyerSeller.cs.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Scripts/OfferScreen/GoldDisplay.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Scripts/OfferScreen/GoldDisplay.cs.meta" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/.idea.Deck/.idea/contentModel.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.Deck/.idea/contentModel.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/.idea.Deck/.idea/indexLayout.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.Deck/.idea/indexLayout.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/.idea.Deck/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.Deck/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/OfferScreen/SaleItemOffer Variant.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Prefabs/OfferScreen/SaleItemOffer Variant.prefab" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/BattleManager.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/BattleManager.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Enemies/EnemySpawner.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Enemies/EnemySpawner.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/HUDManager.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/HUDManager.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/OfferScreen/DesignCard.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/OfferScreen/DesignCard.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/OfferScreen/OfferStorage.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/OfferScreen/OfferStorage.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/PlayerInventory.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/PlayerInventory.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/UI/NextTurnButton.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/UI/NextTurnButton.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Fonts/EnemyGradient.asset" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Fonts/EnemyGradient.asset.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scenes/OfferScreen.unity" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scenes/OfferScreen.unity" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/OfferScreen/CostDisplay.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/OfferScreen/CostDisplay.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/OfferScreen/DesignCardRow.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/OfferScreen/DesignCardRow.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/OfferScreen/ItemOffer.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/OfferScreen/ItemOffer.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/OfferScreen/NextBattleButton.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/OfferScreen/NextBattleButton.cs.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/OfferScreen/OfferManager.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/OfferScreen/OfferManager.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/OfferScreen/PlankCount.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/OfferScreen/PlankCount.cs" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -59,7 +64,6 @@
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/SourcesCache/5A41D6B7-1898-42EC-A409-FD0B1C3E3DCF/0/System.Collections.Generic.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Scripts/PlayerInventory.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Scripts/Etchings/InfirmaryEtching.cs" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/Assets/Scripts/OfferScreen/NextBattleButton.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Scripts/EtchingTurnProcess.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Scripts/OfferScreen/OfferScreenEvents.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Scripts/Items/PoisonTipsItem.cs" root0="FORCE_HIGHLIGHTING" />
@@ -76,10 +80,6 @@
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/Assets/Scripts/MapScreen/MapGenerator.cs" />
-        <option value="$PROJECT_DIR$/Assets/Scripts/MapScreen/Map.cs" />
-        <option value="$PROJECT_DIR$/Assets/Scripts/MapScreen/MapManager.cs" />
-        <option value="$PROJECT_DIR$/Assets/Scripts/OfferScreen/NextBattleButton.cs" />
         <option value="$PROJECT_DIR$/Assets/Scripts/MapScreen/MapBoat.cs" />
         <option value="$PROJECT_DIR$/Assets/Scripts/MapScreen/MapEvent.cs" />
         <option value="$PROJECT_DIR$/Assets/Scripts/MapScreen/ShipyardButton.cs" />
@@ -103,19 +103,14 @@
         <option value="$PROJECT_DIR$/Assets/Scripts/OfferScreen/Offer.cs" />
         <option value="$PROJECT_DIR$/Assets/Scripts/OfferScreen/IOffer.cs" />
         <option value="$PROJECT_DIR$/Assets/Scripts/OfferScreen/LockButton.cs" />
-        <option value="$PROJECT_DIR$/Assets/Scripts/OfferScreen/DesignCardRow.cs" />
-        <option value="$PROJECT_DIR$/Assets/Scripts/OfferScreen/ItemOffer.cs" />
         <option value="$PROJECT_DIR$/Assets/Scripts/PlayerRunProgress.cs" />
         <option value="$PROJECT_DIR$/Assets/Scripts/PlayerController.cs" />
-        <option value="$PROJECT_DIR$/Assets/Scripts/OfferScreen/PlankCount.cs" />
-        <option value="$PROJECT_DIR$/Assets/Scripts/OfferScreen/CostDisplay.cs" />
         <option value="$PROJECT_DIR$/Assets/Scripts/BattleItemManager.cs" />
         <option value="$PROJECT_DIR$/Assets/Scripts/Enemies/Enemy.cs" />
         <option value="$PROJECT_DIR$/Assets/Scripts/OfferScreen/OfferSaver.cs" />
         <option value="$PROJECT_DIR$/Assets/Scripts/OfferScreen/OfferRememberer.cs" />
         <option value="$PROJECT_DIR$/Assets/Scripts/RunProgress.cs" />
         <option value="$PROJECT_DIR$/Assets/Scripts/MainManager.cs" />
-        <option value="$PROJECT_DIR$/Assets/Scripts/OfferScreen/OfferManager.cs" />
         <option value="$PROJECT_DIR$/Assets/Scripts/MapScreen/MapEventGenerator.cs" />
         <option value="$PROJECT_DIR$/Assets/Scripts/Enemies/EnemySpawner.cs" />
         <option value="$PROJECT_DIR$/Assets/Scripts/BattleManager.cs" />
@@ -127,6 +122,15 @@
         <option value="$PROJECT_DIR$/Assets/Scripts/OfferScreen/BoatMover.cs" />
         <option value="$PROJECT_DIR$/Assets/Scripts/OfferScreen/CardLayout.cs" />
         <option value="$PROJECT_DIR$/Assets/Scripts/OfferScreen/DesignCard.cs" />
+        <option value="$PROJECT_DIR$/Assets/Scripts/OfferScreen/PlankCount.cs" />
+        <option value="$PROJECT_DIR$/Assets/Scripts/OfferScreen/GoldCount.cs" />
+        <option value="$PROJECT_DIR$/Assets/Scripts/ReorderableList/ReorderableListElement.cs" />
+        <option value="$PROJECT_DIR$/Assets/Scripts/OfferScreen/DesignCardRow.cs" />
+        <option value="$PROJECT_DIR$/Assets/Scripts/OfferScreen/OfferManager.cs" />
+        <option value="$PROJECT_DIR$/Assets/Scripts/OfferScreen/GoldDisplay.cs" />
+        <option value="$PROJECT_DIR$/Assets/Scripts/OfferScreen/ItemOffer.cs" />
+        <option value="$PROJECT_DIR$/Assets/Scripts/OfferScreen/CostDisplay.cs" />
+        <option value="$PROJECT_DIR$/Assets/Scripts/OfferScreen/BuyerSeller.cs" />
       </list>
     </option>
   </component>
@@ -212,7 +216,7 @@
       <workItem from="1677027757357" duration="4461000" />
       <workItem from="1677067122237" duration="335000" />
       <workItem from="1677068987658" duration="13809000" />
-      <workItem from="1677119720792" duration="1359000" />
+      <workItem from="1677119720792" duration="4102000" />
     </task>
     <servers />
   </component>

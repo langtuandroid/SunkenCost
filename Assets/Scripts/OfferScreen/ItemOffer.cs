@@ -40,6 +40,8 @@ namespace OfferScreen
 
         public void OnPointerClick(PointerEventData eventData)
         {
+            if (OfferManager.Current.BuyerSeller.Gold < ItemInfo.Cost) return;
+            
             OfferManager.Current.AcceptOffer(this);
             Destroy(gameObject);
         }

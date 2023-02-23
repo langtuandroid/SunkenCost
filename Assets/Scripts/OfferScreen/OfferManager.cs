@@ -18,8 +18,10 @@ public class OfferManager : MonoBehaviour
     [SerializeField] private GameObject itemOfferPrefab;
 
     [SerializeField] private Transform itemGrid;
+    [SerializeField] private GoldDisplay goldDisplay;
 
     public List<DesignCard> AllDesignCards { get; private set; } = new List<DesignCard>();
+    public BuyerSeller BuyerSeller { get; private set; }
 
     public int CardsOnTopRow => takeGrid.childCount;
 
@@ -31,6 +33,8 @@ public class OfferManager : MonoBehaviour
         }
 
         Current = this;
+        
+        BuyerSeller = new BuyerSeller(RunProgress.PlayerInventory.Gold, goldDisplay);
     }
 
     private void Start()
@@ -47,6 +51,9 @@ public class OfferManager : MonoBehaviour
 
     public void BackToMap()
     {
+        if (BuyerSeller.Gold < 0) return;
+        if (takeGrid.childCount > RunProgress.PlayerInventory.MaxPlanks) return;
+
         var deckRow = takeGrid.GetComponentsInChildren<DesignCard>();
         var offerRow = leaveGrid.GetComponentsInChildren<DesignCard>();
         var itemOffers = itemGrid.GetComponentsInChildren<ItemOffer>();

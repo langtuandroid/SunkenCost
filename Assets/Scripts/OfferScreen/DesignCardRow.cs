@@ -7,19 +7,23 @@ namespace OfferScreen
     public class DesignCardRow : MonoBehaviour
     {
         [SerializeField] private bool isDeckRow;
+
+        private ReorderableList _reorderableList;
+        
         private bool IsDeckRow => isDeckRow;
 
         private void Start()
         {
-            var reorderableList = GetComponent<ReorderableList>();
+            _reorderableList = GetComponent<ReorderableList>();
 
-            reorderableList.OnElementGrabbed.AddListener(ElementGrabbed);
-            reorderableList.OnElementDropped.AddListener(ElementDropped);
+            _reorderableList.OnElementGrabbed.AddListener(ElementGrabbed);
+            _reorderableList.OnElementDropped.AddListener(ElementDropped);
         }
 
         public void ElementGrabbed(ReorderableList.ReorderableListEventStruct reorderableListEventStruct)
         {
             var designCard = reorderableListEventStruct.DroppedObject.GetComponent<DesignCard>();
+
             designCard.HideButtons();
             designCard.PreventLocking();
             OfferScreenEvents.Current.GridsUpdated();
@@ -28,10 +32,23 @@ namespace OfferScreen
         public void ElementDropped(ReorderableList.ReorderableListEventStruct reorderableListEventStruct)
         {
             var designCard = reorderableListEventStruct.DroppedObject.GetComponent<DesignCard>();
-            var rowDroppedInto = reorderableListEventStruct.ToList.GetComponent<DesignCardRow>();
+            var designCardRowDroppedInto = reorderableListEventStruct.ToList.GetComponent<DesignCardRow>();
 
-            if (!rowDroppedInto.IsDeckRow)
+            if (!designCardRowDroppedInto.IsDeckRow)
                 designCard.AllowLocking();
+            
+            // Buy or sell
+            if (reorderableListEventStruct.ToList != reorderableListEventStruct.FromList)
+            {
+                if (designCardRowDroppedInto.isDeckRow)
+                {
+                    OfferManager.Current.BuyerSeller.Buy(designCard.Design.GetStat(St.Rarity));
+                }
+                else
+                {
+                    OfferManager.Current.BuyerSeller.Sell(designCard.Design.GetStat(St.Rarity));
+                }
+            }
 
             OfferScreenEvents.Current.GridsUpdated();
         }

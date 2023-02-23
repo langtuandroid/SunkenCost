@@ -713,14 +713,15 @@
           </e>
           <e p="OfferScreen" t="Include">
             <e p="BoatMover.cs" t="Include" />
+            <e p="BuyerSeller.cs" t="Include" />
             <e p="CardLayout.cs" t="Include" />
             <e p="CostDisplay.cs" t="Include" />
             <e p="DesignCard.cs" t="Include" />
             <e p="DesignCardRow.cs" t="Include" />
+            <e p="GoldDisplay.cs" t="Include" />
             <e p="IOffer.cs" t="Include" />
             <e p="ItemOffer.cs" t="Include" />
             <e p="LockButton.cs" t="Include" />
-            <e p="NextBattleButton.cs" t="Include" />
             <e p="OfferManager.cs" t="Include" />
             <e p="OfferScreenEvents.cs" t="Include" />
             <e p="OfferStorage.cs" t="Include" />
