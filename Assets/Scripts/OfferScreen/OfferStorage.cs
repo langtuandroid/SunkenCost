@@ -7,8 +7,6 @@ namespace OfferScreen
 {
     public class OfferStorage
     {
-        public List<Design> Deck { get; private set; }
-        
         public readonly List<Design> LockedDesignOffers = new List<Design>();
         public readonly List<Design> UnlockedDesignOffers = new List<Design>();
         
@@ -18,7 +16,7 @@ namespace OfferScreen
         public void StoreOffers(IEnumerable<DesignCard> deckRow,
             IEnumerable<DesignCard> designOfferRow, IEnumerable<ItemOffer> itemOffers)
         {
-            Deck = deckRow.Select(designCard => designCard.Design).ToList();
+            RunProgress.PlayerInventory.SaveDeck(deckRow.Select(designCard => designCard.Design).ToList());
             LockedDesignOffers.Clear();
             UnlockedDesignOffers.Clear();
             LockedItemOffers.Clear();
@@ -51,9 +49,6 @@ namespace OfferScreen
                     UnlockedItemOffers.Add(itemInfo);
                 }
             }
-            
-            Debug.Log(LockedDesignOffers.Count);
-            Debug.Log(UnlockedDesignOffers.Count);
         }
     }
 }

@@ -81,7 +81,7 @@ namespace OfferScreen
 
         public void Merge()
         {
-            OfferManager.Current.Merge(this, _duplicates[0]);
+            OfferManager.Current.Merge(_duplicates[0], this);
         }
 
         public void ClickedLockButton()

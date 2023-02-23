@@ -15,6 +15,7 @@ public class PlayerInventory
     public int MaxLives { get; set; }
     public int Gold { get; set; }
     public int MovesPerTurn { get; set; }
+    public int NumberOfTurns { get; set; }
     public int AmountOfCardsToOffer { get; set; }
     public int AmountOfItemsToOffer { get; set; }
 
@@ -28,6 +29,7 @@ public class PlayerInventory
         Lives = 3;
         Gold = 0;
         MovesPerTurn = 1;
+        NumberOfTurns = 6;
         AmountOfCardsToOffer = 4;
         AmountOfItemsToOffer = 3;
     }

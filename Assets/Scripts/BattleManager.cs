@@ -21,8 +21,7 @@ public class BattleManager : MonoBehaviour
     
     public GameState gameState = GameState.PlayerTurn;
     public const float AttackTime = 0.6f;
-    public static readonly int NumberOfTurns = 2;
-    
+
     private Random _random = new Random();
 
     public int Turn { get; private set; } = 1;
@@ -101,7 +100,7 @@ public class BattleManager : MonoBehaviour
         // LATER - chane to just NoTurn
         if (gameState == GameState.PlayerTurn)
         {
-            if (Turn > NumberOfTurns)
+            if (Turn > RunProgress.PlayerInventory.NumberOfTurns)
             {
                 //Deck.Designs = EtchingManager.current.etchingOrder.Select(etching => etching.design).ToList();
                 RunProgress.BattleNumber++;

@@ -712,6 +712,8 @@
             <e p="ShipyardButton.cs" t="Include" />
           </e>
           <e p="OfferScreen" t="Include">
+            <e p="BoatMover.cs" t="Include" />
+            <e p="CardLayout.cs" t="Include" />
             <e p="CostDisplay.cs" t="Include" />
             <e p="DesignCard.cs" t="Include" />
             <e p="DesignCardRow.cs" t="Include" />

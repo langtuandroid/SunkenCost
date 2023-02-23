@@ -45,11 +45,14 @@ public class HUDManager : MonoBehaviour
 
     private void UpdateTurnText()
     {
-        if (BattleManager.Current.Turn < BattleManager.NumberOfTurns)
+        var numberOfTurns = RunProgress.PlayerInventory.NumberOfTurns;
+        var currentTurn = BattleManager.Current.Turn;
+        
+        if (currentTurn < numberOfTurns)
         {
-            _roundText.text = "TURNS LEFT: " + (BattleManager.NumberOfTurns + 1 - BattleManager.Current.Turn);
+            _roundText.text = "TURNS LEFT: " + (numberOfTurns + 1 - currentTurn);
         }
-        else if (BattleManager.Current.Turn == BattleManager.NumberOfTurns)
+        else if (currentTurn == numberOfTurns)
         {
             _roundText.text = "LAST TURN!";
         }
