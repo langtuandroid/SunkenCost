@@ -19,7 +19,7 @@ public class OfferScreenEvents : MonoBehaviour
         Current = this;
     }
 
-    public void GridsUpdated()
+    public void RefreshOffers()
     {
         OnGridsUpdated?.Invoke();
     }

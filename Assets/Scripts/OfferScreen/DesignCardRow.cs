@@ -26,7 +26,7 @@ namespace OfferScreen
 
             designCard.HideButtons();
             designCard.PreventLocking();
-            OfferScreenEvents.Current.GridsUpdated();
+            OfferScreenEvents.Current.RefreshOffers();
         }
 
         public void ElementDropped(ReorderableList.ReorderableListEventStruct reorderableListEventStruct)
@@ -50,7 +50,7 @@ namespace OfferScreen
                 }
             }
 
-            OfferScreenEvents.Current.GridsUpdated();
+            OfferScreenEvents.Current.RefreshOffers();
         }
     }
 }

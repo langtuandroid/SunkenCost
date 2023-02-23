@@ -29,6 +29,8 @@ public class Stat
         }
     }
 
+    public float BaseValue => _baseValue;
+
     public Stat()
     {
         _statModifiers = new List<StatModifier>();

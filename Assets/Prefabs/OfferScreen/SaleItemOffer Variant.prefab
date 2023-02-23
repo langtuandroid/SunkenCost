@@ -16,6 +16,10 @@ PrefabInstance:
       value: 24
       objectReference: {fileID: 0}
     - target: {fileID: 1223813987649835173, guid: 323294ec7b3f99b48ad95f57da547c50, type: 3}
+      propertyPath: m_lineSpacing
+      value: -30
+      objectReference: {fileID: 0}
+    - target: {fileID: 1223813987649835173, guid: 323294ec7b3f99b48ad95f57da547c50, type: 3}
       propertyPath: m_fontSizeBase
       value: 24
       objectReference: {fileID: 0}
@@ -160,6 +164,10 @@ PrefabInstance:
       value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 9177690705828839389, guid: 323294ec7b3f99b48ad95f57da547c50, type: 3}
+      propertyPath: backgroundImage
+      value: 
+      objectReference: {fileID: 8599158763716696662}
+    - target: {fileID: 9177690705828839389, guid: 323294ec7b3f99b48ad95f57da547c50, type: 3}
       propertyPath: costAndHoldButton
       value: 
       objectReference: {fileID: 0}
@@ -181,7 +189,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 9177690706167899981, guid: 323294ec7b3f99b48ad95f57da547c50, type: 3}
       propertyPath: m_SizeDelta.x
-      value: 200
+      value: 175
       objectReference: {fileID: 0}
     - target: {fileID: 9177690706167899981, guid: 323294ec7b3f99b48ad95f57da547c50, type: 3}
       propertyPath: m_SizeDelta.y
@@ -271,6 +279,17 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 86879eb1f86509a49b5ebf976c1d6c10, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &8599158763716696662 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 9177690705437737672, guid: 323294ec7b3f99b48ad95f57da547c50, type: 3}
+  m_PrefabInstance: {fileID: 579816770534119582}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
 --- !u!1001 &3380253532314052933

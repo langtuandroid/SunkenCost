@@ -75,6 +75,8 @@ public abstract class Design
 
         if (Level % 2 == 0) SecondLevelUp();
         else FirstLevelUp();
+        
+        ModifyStat(St.Rarity, (int)Stats[St.Rarity].BaseValue);
     }
 
     protected abstract void FirstLevelUp();

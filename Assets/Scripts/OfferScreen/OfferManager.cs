@@ -203,22 +203,28 @@ public class OfferManager : MonoBehaviour
         return DesignManager.RareDesigns[Random.Range(0, DesignManager.RareDesigns.Count)];
     }
 
-    public void Merge(DesignCard cardBeingMerged, DesignCard cardBeingMergedInto)
+    public void TryMerge(DesignCard cardBeingMerged, DesignCard cardBeingMergedInto)
     {
+        var cost = cardBeingMerged.Design.GetStat(St.Rarity);
+        if (BuyerSeller.Gold < cost) return;
+        BuyerSeller.Buy(cost);
+
         AllDesignCards.Remove(cardBeingMerged);
         Destroy(cardBeingMerged.gameObject);
         cardBeingMergedInto.Design.LevelUp();
-        OfferScreenEvents.Current.GridsUpdated();
+        OfferScreenEvents.Current.RefreshOffers();
     }
 
-    public void AcceptOffer(ItemOffer offerAccepted)
+    public void BuyItem(ItemInfo itemInfo)
     {
-        RunProgress.PlayerInventory.Items.Add(offerAccepted.ItemInfo.ItemId);
+        RunProgress.PlayerInventory.Items.Add(itemInfo.ItemId);
+        BuyerSeller.Buy(itemInfo.Cost);
+        OfferScreenEvents.Current.RefreshOffers();
     }
 
     private IEnumerator WaitForDesignCardsToInitialise()
     {
         yield return 0;
-        OfferScreenEvents.Current.GridsUpdated();
+        OfferScreenEvents.Current.RefreshOffers();
     }
 }

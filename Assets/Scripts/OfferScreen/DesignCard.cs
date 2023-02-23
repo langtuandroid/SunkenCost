@@ -14,16 +14,17 @@ namespace OfferScreen
         [SerializeField] private Color lockedColor;
         [SerializeField] private Image cardBackgroundImage;
         [SerializeField] private CostDisplay costDisplay;
-        [SerializeField] private Transform mergeButton;
+        [SerializeField] private CostDisplay mergeButton;
         [SerializeField] private LockButton lockButton;
         
         private DesignInfo _designInfo;
-        private List<DesignCard> _duplicates = new List<DesignCard>();
+        private DesignCard _mergeableDesignCard;
         private IOffer _offerImplementation;
         private bool _canBeLocked = false;
         private bool _pointerInside = false;
 
         public Design Design => _designInfo.design;
+        private bool HasMergeableDesignCard => _mergeableDesignCard != null;
         
         private void Awake()
         {
@@ -81,37 +82,37 @@ namespace OfferScreen
 
         public void Merge()
         {
-            OfferManager.Current.Merge(_duplicates[0], this);
+            OfferManager.Current.TryMerge(_mergeableDesignCard, this);
         }
 
         public void ClickedLockButton()
         {
             isLocked = !isLocked;
-            OfferScreenEvents.Current.GridsUpdated();
+            OfferScreenEvents.Current.RefreshOffers();
         }
         
         private void CardsUpdated()
         {
-            // Can't upgrade if it's already level 2
-            if (!Design.Upgradeable || Design.Level >= 2)
-            {
-                mergeButton.gameObject.SetActive(false);
-                _duplicates.Clear();
-            }
-            else
-            {
-                // Check if there's more copies of this card to merge with
-                _duplicates = OfferManager.Current.AllDesignCards.Where(d => d.Design.Title == Design.Title)
-                    .Where(d => d != this)
-                    .Where(d => d.Design.Level < 2).ToList();
-                mergeButton.gameObject.SetActive(_duplicates.Count > 0);
-            }
-        
+            _mergeableDesignCard = GetAnyMergeableDesignCard();
+            mergeButton.gameObject.SetActive(HasMergeableDesignCard);
+            if (HasMergeableDesignCard)
+                mergeButton.Refresh(_mergeableDesignCard.Design.GetStat(St.Rarity));
+
             _designInfo.Refresh();
 
             costDisplay.Refresh(Design.GetStat(St.Rarity));
 
             cardBackgroundImage.color = isLocked ? lockedColor : Color.white;
+        }
+        
+        private DesignCard GetAnyMergeableDesignCard()
+        {
+            if (!Design.Upgradeable || Design.Level >= 2) return null;
+            
+            return OfferManager.Current.AllDesignCards
+                .Where(d => d != this)
+                .Where(d => d.Design.Title == Design.Title)
+                .FirstOrDefault(d => d.Design.Level < 2);
         }
     }
 }

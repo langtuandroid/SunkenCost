@@ -23,26 +23,23 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="50470089-3e0c-4487-973b-9d375622b070" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/Assets/Fonts/RedGradient.asset" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/Fonts/RedGradient.asset.meta" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/Fonts/YellowGradient.asset" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/Fonts/YellowGradient.asset.meta" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/Scripts/OfferScreen/BuyerSeller.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/Scripts/OfferScreen/BuyerSeller.cs.meta" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/Scripts/OfferScreen/GoldDisplay.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/Scripts/OfferScreen/GoldDisplay.cs.meta" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/.idea.Deck/.idea/contentModel.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.Deck/.idea/contentModel.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Prefabs/OfferScreen/GoldDisplay.prefab" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Prefabs/OfferScreen/GoldDisplay.prefab.meta" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/.idea.Deck/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.Deck/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Fonts/EnemyGradient.asset" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Fonts/EnemyGradient.asset.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Fonts/YellowGradient.asset" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Fonts/YellowGradient.asset" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/OfferScreen/DesignCard.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Prefabs/OfferScreen/DesignCard.prefab" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/OfferScreen/MergeButton.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Prefabs/OfferScreen/MergeButton.prefab" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/OfferScreen/SaleItemOffer Variant.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Prefabs/OfferScreen/SaleItemOffer Variant.prefab" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Scenes/OfferScreen.unity" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scenes/OfferScreen.unity" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/OfferScreen/CostDisplay.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/OfferScreen/CostDisplay.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Deck/Design.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Deck/Design.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/OfferScreen/DesignCard.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/OfferScreen/DesignCard.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Scripts/OfferScreen/DesignCardRow.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/OfferScreen/DesignCardRow.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Scripts/OfferScreen/ItemOffer.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/OfferScreen/ItemOffer.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/OfferScreen/NextBattleButton.cs" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/OfferScreen/NextBattleButton.cs.meta" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Scripts/OfferScreen/OfferManager.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/OfferScreen/OfferManager.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/OfferScreen/PlankCount.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/OfferScreen/PlankCount.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/OfferScreen/OfferScreenEvents.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/OfferScreen/OfferScreenEvents.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Stat.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Stat.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Sprites/Plus.png" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Sprites/Plus.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/UserSettings/Layouts/default-2021.dwlt" beforeDir="false" afterPath="$PROJECT_DIR$/UserSettings/Layouts/default-2021.dwlt" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -80,8 +77,6 @@
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/Assets/Scripts/MapScreen/MapBoat.cs" />
-        <option value="$PROJECT_DIR$/Assets/Scripts/MapScreen/MapEvent.cs" />
         <option value="$PROJECT_DIR$/Assets/Scripts/MapScreen/ShipyardButton.cs" />
         <option value="$PROJECT_DIR$/Assets/Scripts/MapScreen/TakeGrid.cs" />
         <option value="$PROJECT_DIR$/Assets/Scripts/MapScreen/CardGrid.cs" />
@@ -121,16 +116,18 @@
         <option value="$PROJECT_DIR$/Assets/Scripts/OfferScreen/DesignCardRowLayout.cs" />
         <option value="$PROJECT_DIR$/Assets/Scripts/OfferScreen/BoatMover.cs" />
         <option value="$PROJECT_DIR$/Assets/Scripts/OfferScreen/CardLayout.cs" />
-        <option value="$PROJECT_DIR$/Assets/Scripts/OfferScreen/DesignCard.cs" />
         <option value="$PROJECT_DIR$/Assets/Scripts/OfferScreen/PlankCount.cs" />
         <option value="$PROJECT_DIR$/Assets/Scripts/OfferScreen/GoldCount.cs" />
         <option value="$PROJECT_DIR$/Assets/Scripts/ReorderableList/ReorderableListElement.cs" />
         <option value="$PROJECT_DIR$/Assets/Scripts/OfferScreen/DesignCardRow.cs" />
-        <option value="$PROJECT_DIR$/Assets/Scripts/OfferScreen/OfferManager.cs" />
         <option value="$PROJECT_DIR$/Assets/Scripts/OfferScreen/GoldDisplay.cs" />
-        <option value="$PROJECT_DIR$/Assets/Scripts/OfferScreen/ItemOffer.cs" />
-        <option value="$PROJECT_DIR$/Assets/Scripts/OfferScreen/CostDisplay.cs" />
         <option value="$PROJECT_DIR$/Assets/Scripts/OfferScreen/BuyerSeller.cs" />
+        <option value="$PROJECT_DIR$/Assets/Scripts/OfferScreen/CostDisplay.cs" />
+        <option value="$PROJECT_DIR$/Assets/Scripts/OfferScreen/ItemOffer.cs" />
+        <option value="$PROJECT_DIR$/Assets/Scripts/OfferScreen/OfferManager.cs" />
+        <option value="$PROJECT_DIR$/Assets/Scripts/Stat.cs" />
+        <option value="$PROJECT_DIR$/Assets/Scripts/Deck/Design.cs" />
+        <option value="$PROJECT_DIR$/Assets/Scripts/OfferScreen/DesignCard.cs" />
       </list>
     </option>
   </component>
@@ -216,7 +213,9 @@
       <workItem from="1677027757357" duration="4461000" />
       <workItem from="1677067122237" duration="335000" />
       <workItem from="1677068987658" duration="13809000" />
-      <workItem from="1677119720792" duration="4102000" />
+      <workItem from="1677119720792" duration="4948000" />
+      <workItem from="1677165105212" duration="599000" />
+      <workItem from="1677191073030" duration="3310000" />
     </task>
     <servers />
   </component>
@@ -268,11 +267,11 @@
     </state>
     <state x="532" y="0" width="840" height="1034" key="run.anything.popup/0.0.1920.1040@0.0.1920.1040" timestamp="1675489416658" />
     <state x="532" y="777" width="840" height="1034" key="run.anything.popup/0.1080.1920.1040/0.0.1920.1040@0.1080.1920.1040" timestamp="1672456494495" />
-    <state x="1078" y="10" width="1680" height="2148" key="search.everywhere.popup" timestamp="1677119917051">
+    <state x="1078" y="10" width="1680" height="2148" key="search.everywhere.popup" timestamp="1677194468039">
       <screen x="0" y="0" width="3840" height="2160" />
     </state>
     <state x="539" y="5" width="840" height="1034" key="search.everywhere.popup/0.0.1920.1040@0.0.1920.1040" timestamp="1675255493675" />
-    <state x="1078" y="10" width="1680" height="2148" key="search.everywhere.popup/0.0.3840.2160@0.0.3840.2160" timestamp="1677119917051" />
+    <state x="1078" y="10" width="1680" height="2148" key="search.everywhere.popup/0.0.3840.2160@0.0.3840.2160" timestamp="1677194468039" />
     <state x="539" y="5" width="840" height="1034" key="search.everywhere.popup/0.1080.1920.1040/0.0.1920.1040@0.0.1920.1040" timestamp="1671410021070" />
     <state x="539" y="1085" width="840" height="1034" key="search.everywhere.popup/0.1080.1920.1040/0.0.1920.1040@0.1080.1920.1040" timestamp="1672281603634" />
   </component>
