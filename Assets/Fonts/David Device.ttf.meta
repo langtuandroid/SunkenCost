@@ -1,15 +1,15 @@
 fileFormatVersion: 2
-guid: 216429261e3d2474fa51d17f3735ca48
+guid: 5f439549e5ad77a4a9c367d3aec848f4
 TrueTypeFontImporter:
   externalObjects: {}
   serializedVersion: 4
-  fontSize: 12
+  fontSize: 11
   forceTextureCase: -2
   characterSpacing: 0
   characterPadding: 1
   includeFontData: 1
   fontNames:
-  - supernatural_10_01
+  - David Device
   fallbackFontReferences: []
   customCharacters: 
   fontRenderingMode: 0

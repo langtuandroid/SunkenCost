@@ -215,7 +215,7 @@ public class ActiveEnemiesManager : MonoBehaviour
         }
         */
 
-        var xOffset = movingEnemy.StickNum == 0 ? 50f : 0f;
+        var xOffset = movingEnemy.StickNum == 0 ? 120f : 0f;
         
         var i = 0f;
         foreach (var e in enemiesOnStick)

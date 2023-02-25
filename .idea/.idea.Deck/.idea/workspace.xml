@@ -23,112 +23,31 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="50470089-3e0c-4487-973b-9d375622b070" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/Assets/Fonts/Daydream SDF.asset" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/Fonts/Daydream SDF.asset.meta" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/Fonts/Daydream.ttf" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/Fonts/Daydream.ttf.meta" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/Fonts/MapEvent.mat" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/Fonts/MapEvent.mat.meta" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/Prefabs/Map/Island.prefab" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/Prefabs/Map/Island.prefab.meta" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/Prefabs/Map/MapEventTitle.prefab" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/Prefabs/Map/MapEventTitle.prefab.meta" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/Scripts/Editor/TMP_FontChanger.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/Scripts/Editor/TMP_FontChanger.cs.meta" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/Scripts/Editor/TMP_FontReplacementTool.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/Scripts/Editor/TMP_FontReplacementTool.cs.meta" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/Scripts/Editor/david_device.zip" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/Scripts/Editor/david_device.zip.meta" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/Sprites/Map/Islands/Island_0.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/Sprites/Map/Islands/Island_0.png.meta" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/Sprites/Map/Islands/Island_0_Wash.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/Sprites/Map/Islands/Island_0_Wash.png.meta" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/Sprites/TextMeshProSprites.meta" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/Sprites/TextMeshProSprites/DesignIcons.asset" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/Sprites/TextMeshProSprites/DesignIcons.asset.meta" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/Sprites/TextMeshProSprites/DesignIcons.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/Sprites/TextMeshProSprites/DesignIcons.png.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Fonts/David Device SDF.asset" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Fonts/David Device SDF.asset.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Fonts/David Device.ttf" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Fonts/David Device.ttf.meta" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/.idea.Deck/.idea/contentModel.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.Deck/.idea/contentModel.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/.idea.Deck/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.Deck/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Fonts/MythicalGarden-Bold SDF.asset" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Fonts/MythicalGarden-Bold SDF.asset" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Fonts/MythicalGarden-Bold SDF.asset.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Fonts/MythicalGarden-Bold SDF.asset.meta" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Fonts/MythicalGarden-Bold.ttf.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Fonts/MythicalGarden-Bold.ttf.meta" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Fonts/NoUnderlay 1.mat" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Fonts/NoUnderlay 1.mat" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Fonts/NoUnderlay.mat" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Fonts/NoUnderlay.mat" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Fonts/Outline.mat" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Fonts/Outline.mat" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Fonts/YellowGradient.asset" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Fonts/YellowGradient.asset" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/Design.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Prefabs/Design.prefab" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/AllIn1SpriteShader/Materials/InnerWash.mat" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/AllIn1SpriteShader/Materials/InnerWash.mat" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Fonts/GrapeSoda SDF.asset" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Fonts/GrapeSoda SDF.asset" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Fonts/Janyk SDF.asset" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Fonts/Janyk SDF.asset" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Fonts/SUPERNAT1001.TTF" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Fonts/SUPERNAT1001.TTF.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Fonts/SUPERNAT1002 SDF.asset" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Fonts/SUPERNAT1002 SDF.asset" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Prefabs/Enemies/Enemy.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Prefabs/Enemies/Enemy.prefab" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/MainCamera.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Prefabs/MainCamera.prefab" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/Map/Beach.prefab" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/Map/Beach.prefab.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/Map/Island.prefab" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/Map/Island.prefab.meta" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Prefabs/Map/MapEvent.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Prefabs/Map/MapEvent.prefab" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/OfferScreen/CostDisplay.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Prefabs/OfferScreen/CostDisplay.prefab" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/OfferScreen/DesignCard.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Prefabs/OfferScreen/DesignCard.prefab" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/OfferScreen/GoldDisplay.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Prefabs/OfferScreen/GoldDisplay.prefab" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/OfferScreen/ItemOffer.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Prefabs/OfferScreen/ItemOffer.prefab" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/OfferScreen/MergeButton.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Prefabs/OfferScreen/MergeButton.prefab" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/OfferScreen/MoveOffer.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Prefabs/OfferScreen/MoveOffer.prefab" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/OfferScreen/PlankCount.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Prefabs/OfferScreen/PlankCount.prefab" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/OfferScreen/SaleItemOffer Variant.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Prefabs/OfferScreen/SaleItemOffer Variant.prefab" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/UI/MenuButton.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Prefabs/UI/MenuButton.prefab" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/UI/OfferPanel/DesignOfferPanel.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Prefabs/UI/OfferPanel/DesignOfferPanel.prefab" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/UI/OfferPanel/OfferPanel.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Prefabs/UI/OfferPanel/OfferPanel.prefab" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/UI/OfferPanel/OrText.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Prefabs/UI/OfferPanel/OrText.prefab" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/UI/QuitButton.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Prefabs/UI/QuitButton.prefab" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/UI/Tutorial/TutorialNextButton.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Prefabs/UI/Tutorial/TutorialNextButton.prefab" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/UI/Tutorial/TutorialTextPopup.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Prefabs/UI/Tutorial/TutorialTextPopup.prefab" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/UI/VolumeSlider.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Prefabs/UI/VolumeSlider.prefab" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scenes/Battle.unity" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scenes/Battle.unity" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Scenes/Map.unity" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scenes/Map.unity" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Scenes/Menu.unity" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scenes/Menu.unity" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scenes/OfferScreen.unity" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scenes/OfferScreen.unity" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Deck.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Deck.meta" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Deck/DesignInfo.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Deck/DesignInfo.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Scripts/Deck/DesignManager.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Deck/DesignManager.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Sprites/Arrow.png.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Sprites/Arrow.png.meta" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Sprites/ArrowBlue.png.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Sprites/ArrowBlue.png.meta" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Sprites/ArrowBlue2.png.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Sprites/ArrowBlue2.png.meta" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Sprites/ArrowSmall.png.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Sprites/ArrowSmall.png.meta" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Sprites/BackToMapButton.png.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Sprites/BackToMapButton.png.meta" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Sprites/Background.png" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Sprites/Background.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Sprites/Blank.png.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Sprites/Blank.png.meta" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Sprites/Button.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Sprites/Button.png.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Sprites/Button2 Alight.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Sprites/Button2 Alight.png.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Sprites/Button2.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Sprites/Button2.png.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Sprites/Buy Plank.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Sprites/Buy Plank.png.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Sprites/Des Image.png.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Sprites/Des Image.png.meta" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Sprites/DesignLogos/Area.png.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Sprites/DesignLogos/Area.png.meta" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Sprites/DesignLogos/Block.png.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Sprites/DesignLogos/Block.png.meta" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Sprites/DesignLogos/Boost.png.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Sprites/DesignLogos/Boost.png.meta" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Sprites/DesignLogos/Hop.png.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Sprites/DesignLogos/Hop.png.meta" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Sprites/DesignLogos/Melee.png.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Sprites/DesignLogos/Melee.png.meta" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Sprites/DesignLogos/Poisoned.png.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Sprites/DesignLogos/Poisoned.png.meta" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Sprites/DesignLogos/Ranged.png.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Sprites/DesignLogos/Ranged.png.meta" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Sprites/DesignLogos/Research.png.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Sprites/DesignLogos/Research.png.meta" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Sprites/DesignLogos/Reverse.png.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Sprites/DesignLogos/Reverse.png.meta" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Sprites/EnemyBoat.png.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Sprites/EnemyBoat.png.meta" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Sprites/Map/BoatRoller.png.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Sprites/Map/BoatRoller.png.meta" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Sprites/Map/Map.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Sprites/Map/Map.png.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Sprites/Map/Marina.png.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Sprites/Map/Marina.png.meta" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Sprites/Map/Port.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Sprites/Map/Port.png.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Sprites/Map/Shipyard.pdn" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Sprites/Map/Shipyard.pdn.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Sprites/Map/Shipyard.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Sprites/Map/Shipyard.png.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Sprites/Map/Wharf.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Sprites/Map/Wharf.png.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Sprites/Next Round.png.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Sprites/Next Round.png.meta" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Sprites/Ocean.png.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Sprites/Ocean.png.meta" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Sprites/SlimeVolcano.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Sprites/SlimeVolcano.png.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Sprites/SpeechBubble.png.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Sprites/SpeechBubble.png.meta" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Editor/david_device.zip" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Editor/david_device.zip.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Enemies/Enemy.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Enemies/Enemy.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/MapScreen/MapEvent.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/MapScreen/MapEvent.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/MapScreen/MapEventGenerator.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/MapScreen/MapEventGenerator.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/PlayerInventory.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/PlayerInventory.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/UserSettings/EditorUserSettings.asset" beforeDir="false" afterPath="$PROJECT_DIR$/UserSettings/EditorUserSettings.asset" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/UserSettings/Layouts/CurrentMaximizeLayout.dwlt" beforeDir="false" afterPath="$PROJECT_DIR$/UserSettings/Layouts/CurrentMaximizeLayout.dwlt" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/UserSettings/Layouts/default-2021.dwlt" beforeDir="false" afterPath="$PROJECT_DIR$/UserSettings/Layouts/default-2021.dwlt" afterDir="false" />
@@ -169,8 +88,6 @@
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/Assets/Scripts/MapScreen/CardGrid.cs" />
-        <option value="$PROJECT_DIR$/Assets/Scripts/Items/ItemInfo.cs" />
         <option value="$PROJECT_DIR$/Assets/Scripts/ItemManager.cs" />
         <option value="$PROJECT_DIR$/Assets/Scripts/ReorderableListNoEdges/ReorderableListDebugNoEdges.cs" />
         <option value="$PROJECT_DIR$/Assets/Scripts/UI/MainMenu.cs" />
@@ -191,17 +108,14 @@
         <option value="$PROJECT_DIR$/Assets/Scripts/PlayerRunProgress.cs" />
         <option value="$PROJECT_DIR$/Assets/Scripts/PlayerController.cs" />
         <option value="$PROJECT_DIR$/Assets/Scripts/BattleItemManager.cs" />
-        <option value="$PROJECT_DIR$/Assets/Scripts/Enemies/Enemy.cs" />
         <option value="$PROJECT_DIR$/Assets/Scripts/OfferScreen/OfferSaver.cs" />
         <option value="$PROJECT_DIR$/Assets/Scripts/OfferScreen/OfferRememberer.cs" />
         <option value="$PROJECT_DIR$/Assets/Scripts/RunProgress.cs" />
         <option value="$PROJECT_DIR$/Assets/Scripts/MainManager.cs" />
-        <option value="$PROJECT_DIR$/Assets/Scripts/MapScreen/MapEventGenerator.cs" />
         <option value="$PROJECT_DIR$/Assets/Scripts/Enemies/EnemySpawner.cs" />
         <option value="$PROJECT_DIR$/Assets/Scripts/BattleManager.cs" />
         <option value="$PROJECT_DIR$/Assets/Scripts/HUDManager.cs" />
         <option value="$PROJECT_DIR$/Assets/Scripts/UI/NextTurnButton.cs" />
-        <option value="$PROJECT_DIR$/Assets/Scripts/PlayerInventory.cs" />
         <option value="$PROJECT_DIR$/Assets/Scripts/OfferScreen/OfferStorage.cs" />
         <option value="$PROJECT_DIR$/Assets/Scripts/OfferScreen/DesignCardRowLayout.cs" />
         <option value="$PROJECT_DIR$/Assets/Scripts/OfferScreen/BoatMover.cs" />
@@ -219,7 +133,12 @@
         <option value="$PROJECT_DIR$/Assets/Scripts/Deck/Design.cs" />
         <option value="$PROJECT_DIR$/Assets/Scripts/OfferScreen/DesignCard.cs" />
         <option value="$PROJECT_DIR$/Assets/Scripts/Deck/DesignInfo.cs" />
+        <option value="$PROJECT_DIR$/Assets/Scripts/Etchings/LoneWolfEtching.cs" />
         <option value="$PROJECT_DIR$/Assets/Scripts/Deck/DesignManager.cs" />
+        <option value="$PROJECT_DIR$/Assets/Scripts/MapScreen/MapEventGenerator.cs" />
+        <option value="$PROJECT_DIR$/Assets/Scripts/MapScreen/MapEvent.cs" />
+        <option value="$PROJECT_DIR$/Assets/Scripts/PlayerInventory.cs" />
+        <option value="$PROJECT_DIR$/Assets/Scripts/Enemies/Enemy.cs" />
       </list>
     </option>
   </component>
@@ -309,7 +228,8 @@
       <workItem from="1677165105212" duration="599000" />
       <workItem from="1677191073030" duration="3909000" />
       <workItem from="1677202357312" duration="1287000" />
-      <workItem from="1677280682908" duration="1037000" />
+      <workItem from="1677280682908" duration="6321000" />
+      <workItem from="1677363013933" duration="454000" />
     </task>
     <servers />
   </component>

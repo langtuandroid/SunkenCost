@@ -21,13 +21,13 @@ public class PlayerInventory
 
     public PlayerInventory()
     {
-        Deck.Add(new GrandFinalist());
-        Deck.Add(new GrandFinalist());
-        Deck.Add(new LoneWolf());
+        Deck.Add(new Swordsman());
+        Deck.Add(new Reverse());
+        Deck.Add(new Impede());
         
         MaxPlanks = 3;
         Lives = 3;
-        Gold = 0;
+        Gold = 2;
         MovesPerTurn = 1;
         NumberOfTurns = 6;
         AmountOfCardsToOffer = 4;

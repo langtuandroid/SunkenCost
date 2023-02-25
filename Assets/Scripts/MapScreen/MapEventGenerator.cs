@@ -49,7 +49,7 @@ public class MapEventGenerator : MonoBehaviour
     {
         mapEvent.EventType = eventType;
 
-        var eventImage = mapEvent.transform.GetChild(0).GetChild(0).GetComponent<Image>();
+        var eventImage = mapEvent.transform.GetChild(2).GetComponent<Image>();
 
         switch (eventType)
         {

@@ -21,15 +21,8 @@ namespace MapScreen
         public MapEventType EventType { get; set; } = MapEventType.None;
 
         [SerializeField] private TextMeshProUGUI _descriptionText;
-
-        private void Awake()
-        {
-            _button = GetComponentInChildren<Button>();
-
-            _button.onClick.AddListener(NextBattle);
-        }
-
-        private void NextBattle()
+        
+        public void NextBattle()
         {
             MainManager.Current.LoadNextBattle();
         }
@@ -37,11 +30,6 @@ namespace MapScreen
         public void UpdateDescription(string desc)
         {
             _descriptionText.text = desc;
-        }
-
-        private void OnDestroy()
-        {
-            _button.onClick.RemoveListener(NextBattle);
         }
     }
 }

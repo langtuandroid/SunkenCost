@@ -317,7 +317,10 @@ namespace Enemies
 
         public void UpdateMovementText()
         {
-            _movementText.text = NextMove.ToString();
+            var movement = NextMove.ToString();
+            if (NextMove == 0) movement = "-";
+
+            _movementText.text = movement;
         }
 
         public virtual void DestroySelf(bool killedByPlayer)

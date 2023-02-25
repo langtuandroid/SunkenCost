@@ -150,7 +150,7 @@ public class DesignManager : MonoBehaviour
             case DesignCategory.Area:
                 var distance = maxRange?.Value + " plank";
                 if (maxRange?.Value != 1) distance += "s";
-                description = "Attacks all enemies for " + damage?.Value + "when an enemy lands within " + distance +
+                description = "Attacks all enemies for " + damage?.Value + " damage when an enemy lands within " + distance +
                               " away ";
                 break;
             case DesignCategory.Block: 
@@ -202,6 +202,9 @@ public class DesignManager : MonoBehaviour
         {
             description += " " + usesPerTurn?.Value + "x per turn";
         }
+
+        description = description.Replace("1x", "once");
+        description = description.Replace("2x", "twice");
 
         return description;
     }
