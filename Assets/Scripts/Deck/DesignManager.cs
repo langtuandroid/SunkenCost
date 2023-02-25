@@ -125,9 +125,13 @@ public class DesignManager : MonoBehaviour
         switch (design.Category)
         {
             case DesignCategory.Melee: case DesignCategory.LoneWolf:  
-                description = "Attacks an enemy landing on this plank for\n" + damage?.Value + " damage";
+                description = "Attacks enemies landing on this plank for " + damage?.Value + " damage";
                 if (design.Category == DesignCategory.LoneWolf)
-                    description += ". " + design.Stats[St.DamageFlatModifier].Value + " damage for each plank you have";
+                {
+                    description = "<size=90%>" + description + ". " + design.Stats[St.DamageFlatModifier].Value + 
+                                  " damage for each plank you have<size=100%>";
+                }
+
                 break;
             case DesignCategory.Ranged:
                 var range = "";
@@ -141,15 +145,16 @@ public class DesignManager : MonoBehaviour
                     range = minRange?.Value + "-" + maxRange?.Value + " planks";
                 }
                 
-                description = "Attacks an enemy landing " + range + " away for\n" + damage?.Value + " damage";
+                description = "Attacks enemies landing " + range + " away for " + damage?.Value + " damage";
                 break;
             case DesignCategory.Area:
                 var distance = maxRange?.Value + " plank";
                 if (maxRange?.Value != 1) distance += "s";
-                description = "Attacks every enemy landing within " + distance + " away for\n" + damage?.Value + " damage";
+                description = "Attacks all enemies for " + damage?.Value + "when an enemy lands within " + distance +
+                              " away ";
                 break;
             case DesignCategory.Block: 
-                description = "Removes " + block?.Value + " movement from an enemy leaving this plank";
+                description = "Removes " + block?.Value + " movement from enemies leaving this plank";
                 break;
             case DesignCategory.Boost: 
                 description = "Boosts damage of adjacent Attack planks by " + boost?.Value;
@@ -164,7 +169,7 @@ public class DesignManager : MonoBehaviour
                 description += " an enemy leaving this plank";
                 break;
             case DesignCategory.Poison:
-                description = "Applies " + poison?.Value + " poison to an enemy landing on this plank";
+                description = "Applies " + poison?.Value + " poison to enemies landing on this plank";
                 break;
             case DesignCategory.StrikeZone:
                 description = "Enemies on this plank take ";
@@ -188,8 +193,8 @@ public class DesignManager : MonoBehaviour
                 else description += " life";
                 break;
             case DesignCategory.GrandFinalist:
-                description = "When an enemy lands on this plank, deal " + damage?.Value +
-                              " damage to all enemies. If any enemy survives, lose a life";
+                description = "<size=90%>When enemies land on this plank, deal " + damage?.Value +
+                              " damage to all enemies. If any survive, lose a life<size=100%>";
                 break;
         }
 

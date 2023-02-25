@@ -21,9 +21,9 @@ public class PlayerInventory
 
     public PlayerInventory()
     {
-        Deck.Add(new Swordsman());
-        Deck.Add(new Slinger());
-        Deck.Add(new Impede());
+        Deck.Add(new GrandFinalist());
+        Deck.Add(new GrandFinalist());
+        Deck.Add(new LoneWolf());
         
         MaxPlanks = 3;
         Lives = 3;

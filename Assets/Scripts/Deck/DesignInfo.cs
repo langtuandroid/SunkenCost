@@ -52,8 +52,20 @@ public class DesignInfo : MonoBehaviour
         if (design.Level == 1) titleText.text += " +";
         else if (design.Level == 2) titleText.text += " X";
         
-        descriptionText.text = DesignManager.GetDescription(design);
+        var description = DesignManager.GetDescription(design);
+
+        var descriptionWithSprites = description
+            .Replace("damage", "<sprite=0>")
+            .Replace("movement", "<sprite=1>");
+
+        var defaultColor = ColorUtility.ToHtmlStringRGB(descriptionText.color);
+        var allColor = ColorUtility.ToHtmlStringRGB(new Color(0.6f, 0.58f, 0.3f));
+
+        var descriptionWithColor = descriptionWithSprites
+            .Replace("all", "<color=#" + allColor + ">all<color=#" + defaultColor + ">");
         
+        descriptionText.text = descriptionWithColor;
+
         usesText.text = design.Limitless ? "" : design.Stats[St.UsesPerTurn].Value - design.UsesUsedThisTurn + "/" + design.Stats[St.UsesPerTurn].Value;
     }
 }

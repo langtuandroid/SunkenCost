@@ -19,8 +19,7 @@ namespace Etchings
                 design.Stats[St.Damage].RemoveModifier(_damageModifer);
 
             var penalty = design.GetStat(St.DamageFlatModifier) * (StickManager.current.stickCount - 1);
-            Debug.Log(penalty);
-            
+
             _damageModifer = new StatModifier(penalty, StatModType.Flat);
             design.Stats[St.Damage].AddModifier(_damageModifer);
             Debug.Log(design.GetStat(St.Damage));

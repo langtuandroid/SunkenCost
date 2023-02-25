@@ -638,6 +638,10 @@
             <e p="Designs.cs" t="Include" />
             <e p="ListExtensions.cs" t="Include" />
           </e>
+          <e p="Editor" t="Include">
+            <e p="TMP_FontChanger.cs" t="Include" />
+            <e p="TMP_FontReplacementTool.cs" t="Include" />
+          </e>
           <e p="EditorInit.cs" t="Include" />
           <e p="Enemies" t="Include">
             <e p="ActiveEnemiesManager.cs" t="Include" />

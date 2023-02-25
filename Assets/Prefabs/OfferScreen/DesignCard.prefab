@@ -527,10 +527,6 @@ PrefabInstance:
       value: FOFEMFE DFOKDFO
       objectReference: {fileID: 0}
     - target: {fileID: 7066286240104770247, guid: 5b45ea61aef23744bb904d7a9704fadd, type: 3}
-      propertyPath: m_fontSize
-      value: 28
-      objectReference: {fileID: 0}
-    - target: {fileID: 7066286240104770247, guid: 5b45ea61aef23744bb904d7a9704fadd, type: 3}
       propertyPath: m_fontSizeBase
       value: 28
       objectReference: {fileID: 0}

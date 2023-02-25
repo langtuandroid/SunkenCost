@@ -119,7 +119,7 @@ MonoBehaviour:
       m_Calls: []
   m_text: Grants one extra move per turn
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: ded27d9e3bd6e18438287f61367e18b5, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: b9ad7116cce90bd4299bd085f02dda22, type: 2}
   m_sharedMaterial: {fileID: 2100000, guid: 171ec6fe48a3d564a8adbc696a21293c, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
@@ -254,7 +254,7 @@ MonoBehaviour:
       m_Calls: []
   m_text: +1
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: ded27d9e3bd6e18438287f61367e18b5, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: b9ad7116cce90bd4299bd085f02dda22, type: 2}
   m_sharedMaterial: {fileID: 2100000, guid: 171ec6fe48a3d564a8adbc696a21293c, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}

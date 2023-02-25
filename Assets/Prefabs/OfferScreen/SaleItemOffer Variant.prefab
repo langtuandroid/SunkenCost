@@ -9,20 +9,28 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 1223813987649835173, guid: 323294ec7b3f99b48ad95f57da547c50, type: 3}
       propertyPath: m_text
-      value: EJIFEJ IFJE JEFIJ I
+      value: WHAT THE FUCK THE FUCK
       objectReference: {fileID: 0}
     - target: {fileID: 1223813987649835173, guid: 323294ec7b3f99b48ad95f57da547c50, type: 3}
       propertyPath: m_fontSize
-      value: 24
+      value: 23.58
       objectReference: {fileID: 0}
+    - target: {fileID: 1223813987649835173, guid: 323294ec7b3f99b48ad95f57da547c50, type: 3}
+      propertyPath: m_fontAsset
+      value: 
+      objectReference: {fileID: 11400000, guid: b9ad7116cce90bd4299bd085f02dda22, type: 2}
     - target: {fileID: 1223813987649835173, guid: 323294ec7b3f99b48ad95f57da547c50, type: 3}
       propertyPath: m_lineSpacing
       value: -30
       objectReference: {fileID: 0}
     - target: {fileID: 1223813987649835173, guid: 323294ec7b3f99b48ad95f57da547c50, type: 3}
       propertyPath: m_fontSizeBase
-      value: 24
+      value: 23.58
       objectReference: {fileID: 0}
+    - target: {fileID: 1223813987649835173, guid: 323294ec7b3f99b48ad95f57da547c50, type: 3}
+      propertyPath: m_sharedMaterial
+      value: 
+      objectReference: {fileID: -835005132341075629, guid: b9ad7116cce90bd4299bd085f02dda22, type: 2}
     - target: {fileID: 1223813987649835173, guid: 323294ec7b3f99b48ad95f57da547c50, type: 3}
       propertyPath: m_VerticalAlignment
       value: 512
