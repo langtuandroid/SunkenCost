@@ -624,9 +624,13 @@
             <e p="MusicManager.cs" t="Include" />
           </e>
           <e p="BackgroundColorController.cs" t="Include" />
-          <e p="BattleEvents.cs" t="Include" />
-          <e p="BattleItemManager.cs" t="Include" />
-          <e p="BattleManager.cs" t="Include" />
+          <e p="BattleScene" t="Include">
+            <e p="BattleEvents.cs" t="Include" />
+            <e p="BattleItemManager.cs" t="Include" />
+            <e p="BattleManager.cs" t="Include" />
+            <e p="EndOfBattlePopup.cs" t="Include" />
+            <e p="PlayerController.cs" t="Include" />
+          </e>
           <e p="Debug" t="Include">
             <e p="ScreenToWorldPoint.cs" t="Include" />
           </e>
@@ -731,7 +735,6 @@
             <e p="OfferStorage.cs" t="Include" />
             <e p="PlankCount.cs" t="Include" />
           </e>
-          <e p="PlayerController.cs" t="Include" />
           <e p="PlayerInventory.cs" t="Include" />
           <e p="PlayerLevelController.cs" t="Include" />
           <e p="ReorderableList" t="Include">

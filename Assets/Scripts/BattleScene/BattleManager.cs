@@ -2,6 +2,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
+using BattleScene;
 using UnityEngine;
 using UnityEngine.UI;
 using Random = System.Random;
@@ -17,8 +18,10 @@ public enum GameState
 
 public class BattleManager : MonoBehaviour
 {
-    public static BattleManager Current;
+    [SerializeField] private GameObject endOfBattlePopupPrefab;
     
+    public static BattleManager Current;
+
     public GameState gameState = GameState.PlayerTurn;
     public const float AttackTime = 0.6f;
 
@@ -34,7 +37,7 @@ public class BattleManager : MonoBehaviour
             Destroy(gameObject);
             return;
         }
-        
+
         Current = this;
     }
 
@@ -51,7 +54,8 @@ public class BattleManager : MonoBehaviour
         foreach (var design in RunProgress.PlayerInventory.Deck)
         {
             StickManager.current.CreateStick();
-            EtchingManager.Current.CreateEtching(StickManager.current.GetStick(StickManager.current.stickCount-1), design);
+            EtchingManager.Current.CreateEtching(StickManager.current.GetStick(StickManager.current.stickCount - 1),
+                design);
         }
     }
 
@@ -80,14 +84,15 @@ public class BattleManager : MonoBehaviour
         }
         //
 
-        if (gameState == GameState.EnemyTurn && EtchingManager.Current.finishedProcessingEnemyMove && ActiveEnemiesManager.Current.finishedProcessingEnemyTurn)
+        if (gameState == GameState.EnemyTurn && EtchingManager.Current.finishedProcessingEnemyMove &&
+            ActiveEnemiesManager.Current.finishedProcessingEnemyTurn)
         {
             BattleEvents.Current.EndEnemyTurn();
             BeginPlayerTurn();
         }
 
     }
-    
+
     public void Quit()
     {
         RunProgress.Reset();
@@ -103,12 +108,7 @@ public class BattleManager : MonoBehaviour
             if (Turn > RunProgress.PlayerInventory.NumberOfTurns)
             {
                 //Deck.Designs = EtchingManager.current.etchingOrder.Select(etching => etching.design).ToList();
-                RunProgress.BattleNumber++;
-                RunProgress.HasGeneratedMapEvents = false;
-                BattleEvents.Current.EndBattle();
-                RunProgress.PlayerInventory.Lives = PlayerController.current.Lives;
-                MainManager.Current.LoadOfferScreen();
-                Destroy(gameObject);
+
             }
             else
             {
@@ -123,7 +123,7 @@ public class BattleManager : MonoBehaviour
 
             return true;
         }
-        
+
         return false;
     }
 
@@ -132,7 +132,7 @@ public class BattleManager : MonoBehaviour
         gameState = GameState.PlayerTurn;
         InGameSfxManager.current.BeginTurn();
         WhoseTurnText.current.PlayersTurn();
-            
+
         Turn++;
         BattleEvents.Current.BeginPlayerTurn();
 
@@ -159,6 +159,24 @@ public class BattleManager : MonoBehaviour
     {
         SceneManager.LoadScene(0);
         Music.current.SelectSong(0);
+    }
+    
+
+    public void CreateEndOfBattlePopup()
+    {
+        var endOfBattlePopup = Instantiate(endOfBattlePopupPrefab, FindObjectsOfType<Canvas>()[0].transform)
+            .GetComponent<EndOfBattlePopup>();
+        // TODO: Set reward
+    }
+
+    public void EndBattle()
+    {
+        RunProgress.BattleNumber++;
+        RunProgress.HasGeneratedMapEvents = false;
+        BattleEvents.Current.EndBattle();
+        RunProgress.PlayerInventory.Lives = PlayerController.current.Lives;
+        MainManager.Current.LoadOfferScreen();
+        Destroy(gameObject);
     }
 
     private IEnumerator ProcessTurnChangeover()

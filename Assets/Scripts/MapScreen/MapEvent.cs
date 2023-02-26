@@ -24,6 +24,7 @@ namespace MapScreen
         
         public void NextBattle()
         {
+            RunProgress.currentEvent = EventType;
             MainManager.Current.LoadNextBattle();
         }
 

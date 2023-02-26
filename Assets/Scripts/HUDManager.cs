@@ -3,6 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
+using UnityEngine.Serialization;
 using UnityEngine.UI;
 
 public class HUDManager : MonoBehaviour
@@ -10,7 +11,7 @@ public class HUDManager : MonoBehaviour
     public static HUDManager current;
     
     [SerializeField] private TextMeshProUGUI _movesText;
-    [SerializeField] private TextMeshProUGUI _roundText;
+    [FormerlySerializedAs("_roundText")] [SerializeField] private TextMeshProUGUI _turnText;
 
     private List<Heart> _hearts = new List<Heart>();
 
@@ -34,6 +35,7 @@ public class HUDManager : MonoBehaviour
     private void Start()
     {
         BattleEvents.Current.OnBeginPlayerTurn += UpdateTurnText;
+        BattleEvents.Current.OnBeginPlayerTurn += UpdateMovesText;
         
         for (var i = 0; i < heartsParentTransform.childCount; i++)
         {
@@ -50,22 +52,23 @@ public class HUDManager : MonoBehaviour
         
         if (currentTurn < numberOfTurns)
         {
-            _roundText.text = "TURNS LEFT: " + (numberOfTurns + 1 - currentTurn);
+            _turnText.text = "TURNS LEFT: " + (numberOfTurns + 1 - currentTurn);
         }
         else if (currentTurn == numberOfTurns)
         {
-            _roundText.text = "LAST TURN!";
+            _turnText.text = "LAST TURN!";
         }
         else
         {
-            _roundText.text = "EXTRACTION COMPLETE!";
+            _turnText.text = "EXTRACTION COMPLETE!";
         }
     }
     
 
     public void UpdateMovesText()
     {
-        _movesText.text = (PlayerController.current.MovesPerTurn - PlayerController.current.MovesUsedThisTurn).ToString();
+        var movesLeft = (PlayerController.current.MovesPerTurn - PlayerController.current.MovesUsedThisTurn).ToString();
+        _movesText.text = movesLeft + "/" + PlayerController.current.MovesPerTurn;
     }
 
     public void UpdateLives()

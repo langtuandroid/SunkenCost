@@ -215,7 +215,8 @@ public class ActiveEnemiesManager : MonoBehaviour
         }
         */
 
-        var xOffset = movingEnemy.StickNum == 0 ? 120f : 0f;
+        var startStickOffsetX = movingEnemy.StickNum == 0 ? 25f : 0f;
+        var startStickOffsetY = movingEnemy.StickNum == 0 ? 25f : 0f;
         
         var i = 0f;
         foreach (var e in enemiesOnStick)
@@ -223,7 +224,7 @@ public class ActiveEnemiesManager : MonoBehaviour
             
             
             // Place it a bit further down if there's multiple
-            e.MoveSprite(new Vector3(0 + xOffset, (-120 * i) + Enemy.EnemyOffset));
+            e.MoveSprite(new Vector3(0 + startStickOffsetX, (-120 * i) + Enemy.EnemyOffset + startStickOffsetY));
             i+= e.Size;
         }
     }

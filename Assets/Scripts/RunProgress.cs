@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
+using MapScreen;
 using OfferScreen;
 using UnityEngine;
 
@@ -9,6 +10,8 @@ public static class RunProgress
     public static PlayerInventory PlayerInventory;
     public static OfferStorage offerStorage;
     public static int BattleNumber { get; set; }
+
+    public static MapEventType currentEvent = MapEventType.None;
     
     public static bool HasGeneratedMapEvents { get; set; }
 
