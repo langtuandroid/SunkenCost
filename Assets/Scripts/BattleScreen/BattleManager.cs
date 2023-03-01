@@ -18,7 +18,7 @@ public enum GameState
 
 public class BattleManager : MonoBehaviour
 {
-    [SerializeField] private GameObject endOfBattlePopupPrefab;
+    [SerializeField] private GameObject endOfBattlePopup;
     
     public static BattleManager Current;
 
@@ -69,7 +69,7 @@ public class BattleManager : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.X))
         {
             BattleItemManager.EquipItem("ExtraTurn");
-            RunProgress.PlayerInventory.Gold += 50;
+            RunProgress.PlayerInventory.AlterGold(50);
         }
 
         if (Input.GetKeyDown(KeyCode.D))
@@ -107,8 +107,7 @@ public class BattleManager : MonoBehaviour
         {
             if (Turn > RunProgress.PlayerInventory.NumberOfTurns)
             {
-                //Deck.Designs = EtchingManager.current.etchingOrder.Select(etching => etching.design).ToList();
-
+                CreateEndOfBattlePopup();
             }
             else
             {
@@ -164,13 +163,17 @@ public class BattleManager : MonoBehaviour
 
     public void CreateEndOfBattlePopup()
     {
-        var endOfBattlePopup = Instantiate(endOfBattlePopupPrefab, FindObjectsOfType<Canvas>()[0].transform)
-            .GetComponent<EndOfBattlePopup>();
-        // TODO: Set reward
+        endOfBattlePopup.SetActive(true);
+        var popup = endOfBattlePopup.GetComponent<EndOfBattlePopup>();
+        var disturbance = DisturbanceManager.GetDisturbance(RunProgress.currentEvent);
+        popup.SetReward(disturbance.sprite, disturbance.description);
+        endOfBattlePopup.GetComponentInChildren<Button>().onClick.AddListener(EndBattle);
     }
 
-    public void EndBattle()
+    private void EndBattle()
     {
+        DisturbanceManager.ExecuteEndOfBattleDisturbanceAction(RunProgress.currentEvent);
+        
         RunProgress.BattleNumber++;
         RunProgress.HasGeneratedMapEvents = false;
         BattleEvents.Current.EndBattle();

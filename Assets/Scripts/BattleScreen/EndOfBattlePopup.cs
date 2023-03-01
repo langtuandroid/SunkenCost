@@ -15,10 +15,5 @@ namespace BattleScene
             rewardImage.sprite = sprite;
             rewardText.text = text;
         }
-
-        public void ClickedCollect()
-        {
-            BattleManager.Current.EndBattle();
-        }
     }
 }

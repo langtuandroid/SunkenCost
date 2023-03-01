@@ -327,7 +327,7 @@ namespace Enemies
         {
             InGameSfxManager.current.Death();
             // TODO: CHANGE 
-            if (killedByPlayer) RunProgress.PlayerInventory.Gold += Gold;
+            if (killedByPlayer) RunProgress.PlayerInventory.AlterGold(Gold);
             IsDestroyed = true;
             Moving = false;
             Log.current.AddEvent("E" + _turnOrder + " has been killed");

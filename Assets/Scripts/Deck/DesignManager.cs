@@ -24,7 +24,7 @@ public enum DesignCategory
 
 public class DesignManager : MonoBehaviour
 {
-    public static DesignManager current;
+    private static DesignManager _current;
     private static readonly Dictionary<string, Type> DesignTypes = new Dictionary<string, Type>();
     
     private static readonly Dictionary<string, Type> EtchingTypes = new Dictionary<string, Type>();
@@ -35,22 +35,10 @@ public class DesignManager : MonoBehaviour
     public static readonly List<string> CommonDesigns = new List<string>();
     public static readonly List<string> UncommonDesigns = new List<string>();
     public static readonly List<string> RareDesigns = new List<string>();
-
-    private void Awake()
-    {
-        // One instance of static objects only
-        if (current)
-        {
-            Destroy(gameObject);
-            return;
-        }
-        
-        current = this;
-        DontDestroyOnLoad(gameObject);
-    }
-
+    
     private void Start()
     {
+        _current = this;
 
         // If reloading
         if (EtchingTypes.Count > 0) return;
@@ -107,8 +95,8 @@ public class DesignManager : MonoBehaviour
 
     public static Sprite GetEtchingSprite(DesignCategory designCategory)
     {
-        var index = current.etchingTypes.IndexOf(designCategory.ToString());
-        return current.etchingSprites[index];
+        var index = _current.etchingTypes.IndexOf(designCategory.ToString());
+        return _current.etchingSprites[index];
     }
 
     public static string GetDescription(Design design)
@@ -200,7 +188,7 @@ public class DesignManager : MonoBehaviour
 
         if (design.Stats.TryGetValue(St.UsesPerTurn, out var usesPerTurn))
         {
-            description += " " + usesPerTurn?.Value + "x per turn";
+            description += " (" + usesPerTurn?.Value + "x per turn)";
         }
 
         description = description.Replace("1x", "once");

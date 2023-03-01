@@ -7,7 +7,7 @@ public class Swordsman : Design
 {
     protected override void Init()
     {
-        Title = "Swordsman";
+        Title = "Stab";
         Category = DesignCategory.Melee;
         Color = Color.cyan;
         AddStat(St.Rarity, 1);
@@ -82,7 +82,7 @@ public class Slinger : Design
 {
     protected override void Init()
     {
-        Title = "Slinger";
+        Title = "Hurl";
         Category = DesignCategory.Ranged;
         Color = Color.red;
         AddStat(St.Rarity, 1);

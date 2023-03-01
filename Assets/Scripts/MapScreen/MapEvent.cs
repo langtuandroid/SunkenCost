@@ -1,36 +1,36 @@
 using TMPro;
 using UnityEngine;
+using UnityEngine.Serialization;
 using UnityEngine.UI;
 
 namespace MapScreen
 {
 
-    public enum MapEventType
-    {
-        None,
-        Coin,
-        Heart,
-        UpgradeCard,
-        SpecificCard
-    }
-
     public class MapEvent : MonoBehaviour
     {
         private Button _button;
+        public Disturbance disturbance;
 
-        public MapEventType EventType { get; set; } = MapEventType.None;
+        [SerializeField] private TextMeshProUGUI titleText;
+        [SerializeField] private TextMeshProUGUI descriptionText;
 
-        [SerializeField] private TextMeshProUGUI _descriptionText;
+        private void Start()
+        {
+            var image = transform.GetChild(2).GetComponent<Image>();
+            image.sprite = disturbance.sprite;
+            titleText.text = disturbance.title;
+            descriptionText.text = disturbance.description;
+        }
         
         public void NextBattle()
         {
-            RunProgress.currentEvent = EventType;
+            RunProgress.currentEvent = disturbance.disturbanceType;
             MainManager.Current.LoadNextBattle();
         }
 
         public void UpdateDescription(string desc)
         {
-            _descriptionText.text = desc;
+            descriptionText.text = desc;
         }
     }
 }

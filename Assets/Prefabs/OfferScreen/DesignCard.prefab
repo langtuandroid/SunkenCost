@@ -357,9 +357,17 @@ PrefabInstance:
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
       objectReference: {fileID: 5797796011412658082}
+    - target: {fileID: 5626794346968970689, guid: 99414dded1171714a804c3636c4aab23, type: 3}
+      propertyPath: m_sharedMaterial
+      value: 
+      objectReference: {fileID: 5762254661995016597, guid: b9ad7116cce90bd4299bd085f02dda22, type: 2}
     - target: {fileID: 5733871584198404838, guid: 99414dded1171714a804c3636c4aab23, type: 3}
       propertyPath: m_Name
       value: MergeButton
+      objectReference: {fileID: 0}
+    - target: {fileID: 5733871584198404838, guid: 99414dded1171714a804c3636c4aab23, type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 99414dded1171714a804c3636c4aab23, type: 3}

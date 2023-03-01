@@ -96,7 +96,9 @@ namespace OfferScreen
             _mergeableDesignCard = GetAnyMergeableDesignCard();
             mergeButton.gameObject.SetActive(HasMergeableDesignCard);
             if (HasMergeableDesignCard)
-                mergeButton.Refresh(_mergeableDesignCard.Design.GetStat(St.Rarity));
+            {
+                mergeButton.Refresh(Design.GetStat(St.Rarity));
+            }
 
             _designInfo.Refresh();
 
@@ -112,6 +114,7 @@ namespace OfferScreen
             return OfferManager.Current.AllDesignCards
                 .Where(d => d != this)
                 .Where(d => d.Design.Title == Design.Title)
+                .Where(d => !d.HasMergeableDesignCard)
                 .FirstOrDefault(d => d.Design.Level < 2);
         }
     }

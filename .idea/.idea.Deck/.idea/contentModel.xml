@@ -606,6 +606,7 @@
           </e>
         </e>
         <e p="Prefabs" t="Include">
+          <e p="BattleScene" t="Include" />
           <e p="Enemies" t="Include" />
           <e p="Map" t="Include" />
           <e p="OfferScreen" t="Include" />
@@ -616,7 +617,10 @@
         </e>
         <e p="RenderTextures" t="Include" />
         <e p="Scenes" t="Include" />
-        <e p="ScriptableObjects" t="Include" />
+        <e p="ScriptableObjects" t="Include">
+          <e p="BattleScenarios" t="Include" />
+          <e p="Disturbances" t="Include" />
+        </e>
         <e p="Scripts" t="Include">
           <e p="Audio" t="Include">
             <e p="InGameSfxManager.cs" t="Include" />
@@ -624,7 +628,7 @@
             <e p="MusicManager.cs" t="Include" />
           </e>
           <e p="BackgroundColorController.cs" t="Include" />
-          <e p="BattleScene" t="Include">
+          <e p="BattleScreen" t="Include">
             <e p="BattleEvents.cs" t="Include" />
             <e p="BattleItemManager.cs" t="Include" />
             <e p="BattleManager.cs" t="Include" />
@@ -642,6 +646,8 @@
             <e p="Designs.cs" t="Include" />
             <e p="ListExtensions.cs" t="Include" />
           </e>
+          <e p="Disturbance.cs" t="Include" />
+          <e p="DisturbanceManager.cs" t="Include" />
           <e p="Editor" t="Include">
             <e p="TMP_FontChanger.cs" t="Include" />
             <e p="TMP_FontReplacementTool.cs" t="Include" />
@@ -715,6 +721,7 @@
           <e p="Log.cs" t="Include" />
           <e p="MainManager.cs" t="Include" />
           <e p="MapScreen" t="Include">
+            <e p="DisturbanceEvent.cs" t="Include" />
             <e p="MapEvent.cs" t="Include" />
             <e p="MapEventGenerator.cs" t="Include" />
             <e p="ShipyardButton.cs" t="Include" />
@@ -735,6 +742,7 @@
             <e p="OfferStorage.cs" t="Include" />
             <e p="PlankCount.cs" t="Include" />
           </e>
+          <e p="PersistantManagers.cs" t="Include" />
           <e p="PlayerInventory.cs" t="Include" />
           <e p="PlayerLevelController.cs" t="Include" />
           <e p="ReorderableList" t="Include">

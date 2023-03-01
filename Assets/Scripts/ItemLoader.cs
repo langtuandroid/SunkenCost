@@ -10,23 +10,16 @@ using Random = UnityEngine.Random;
 
 public class ItemLoader : MonoBehaviour
 {
-    public static ItemLoader Current;
-    public readonly static Dictionary<string, Type> Items = new Dictionary<string, Type>();
+    private static ItemLoader _current;
+    public static readonly Dictionary<string, Type> Items = new Dictionary<string, Type>();
 
     [SerializeField] private List<string> itemTypes = new List<string>();
     [SerializeField] private List<Sprite> itemSprites = new List<Sprite>();
 
-    private void Awake()
+    private void Start()
     {
-        if (Current)
-        {
-            Destroy(gameObject);
-            return;
-        } 
+        _current = this;
         
-        Current = this;
-        DontDestroyOnLoad(gameObject);
-
         // Get the Etching Offers
         var itemsEnumerable =
             Assembly.GetAssembly(typeof(InGameItem)).GetTypes().Where(t => t.IsSubclassOf(typeof(InGameItem)))
@@ -49,8 +42,8 @@ public class ItemLoader : MonoBehaviour
 
     public static Sprite GetItemSprite(string item)
     {
-        var index = Current.itemTypes.IndexOf(item);
-        return Current.itemSprites[index];
+        var index = _current.itemTypes.IndexOf(item);
+        return _current.itemSprites[index];
     }
 
     public static ItemInfo GetItemInfo(string itemID)
@@ -84,6 +77,6 @@ public class ItemLoader : MonoBehaviour
 
     public static string GetRandomItem()
     {
-        return Current.itemTypes[Random.Range(0, Current.itemTypes.Count)];
+        return _current.itemTypes[Random.Range(0, _current.itemTypes.Count)];
     }
 }

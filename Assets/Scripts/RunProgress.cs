@@ -11,7 +11,7 @@ public static class RunProgress
     public static OfferStorage offerStorage;
     public static int BattleNumber { get; set; }
 
-    public static MapEventType currentEvent = MapEventType.None;
+    public static DisturbanceType currentEvent;
     
     public static bool HasGeneratedMapEvents { get; set; }
 
@@ -25,5 +25,6 @@ public static class RunProgress
         PlayerInventory = new PlayerInventory();
         offerStorage = new OfferStorage();
         BattleNumber = 0;
+        currentEvent = DisturbanceType.None;
     }
 }
