@@ -18,6 +18,8 @@ public class PlayerInventory
     public int NumberOfTurns { get; private set; }
     public int AmountOfCardsToOffer { get; private set; }
     public int AmountOfItemsToOffer { get; private set; }
+    
+    public int AmountOfChallengesToOffer { get; private set; }
 
     public PlayerInventory()
     {
@@ -30,8 +32,9 @@ public class PlayerInventory
         Gold = 2;
         MovesPerTurn = 1;
         NumberOfTurns = 2;
-        AmountOfCardsToOffer = 4;
+        AmountOfCardsToOffer = 2;
         AmountOfItemsToOffer = 3;
+        AmountOfChallengesToOffer = 2;
         
         Lives = MaxLives;
     }

@@ -619,6 +619,7 @@
         <e p="Scenes" t="Include" />
         <e p="ScriptableObjects" t="Include">
           <e p="BattleScenarios" t="Include" />
+          <e p="Challenges" t="Include" />
           <e p="Disturbances" t="Include" />
         </e>
         <e p="Scripts" t="Include">
@@ -634,6 +635,19 @@
             <e p="BattleManager.cs" t="Include" />
             <e p="EndOfBattlePopup.cs" t="Include" />
             <e p="PlayerController.cs" t="Include" />
+          </e>
+          <e p="Challenges" t="Include">
+            <e p="Challenge.cs" t="Include" />
+            <e p="ChallengeArchetypeLoader.cs" t="Include" />
+            <e p="ChallengeButton.cs" t="Include" />
+            <e p="ChallengeButtonSpawner.cs" t="Include" />
+            <e p="ChallengeOfferManager.cs" t="Include" />
+            <e p="ChallengeRewardArchetype.cs" t="Include" />
+            <e p="CleanSheetChallenge.cs" t="Include" />
+            <e p="Listeners" t="Include">
+              <e p="IEndOfBattleListener.cs" t="Include" />
+              <e p="IKillListener.cs" t="Include" />
+            </e>
           </e>
           <e p="Debug" t="Include">
             <e p="ScreenToWorldPoint.cs" t="Include" />
@@ -707,6 +721,7 @@
             <e p="StrikeZoneEtching.cs" t="Include" />
           </e>
           <e p="EtchingTurnProcess.cs" t="Include" />
+          <e p="Extensions.cs" t="Include" />
           <e p="GlobalEvents.cs" t="Include" />
           <e p="HUDManager.cs" t="Include" />
           <e p="ItemLoader.cs" t="Include" />
@@ -799,6 +814,7 @@
           <e p="Enemies" t="Include" />
           <e p="Items" t="Include" />
           <e p="Map" t="Include">
+            <e p="Challenges" t="Include" />
             <e p="Islands" t="Include" />
             <e p="MapEvents" t="Include" />
           </e>

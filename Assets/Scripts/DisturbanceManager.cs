@@ -8,23 +8,16 @@ using UnityEngine;
 public class DisturbanceManager : MonoBehaviour
 {
     private static DisturbanceManager _current;
-    private readonly Dictionary<DisturbanceType, Disturbance> Disturbances = new Dictionary<DisturbanceType, Disturbance>();
+    private readonly Dictionary<DisturbanceType, Disturbance> _disturbances = new Dictionary<DisturbanceType, Disturbance>();
     private void Start()
     {
         _current = this;
-        
-       var guids = AssetDatabase.FindAssets("t:" + nameof(Disturbance));
-       var disturbances = new Disturbance[guids.Length];
 
-       for (var i = 0; i < guids.Length; i++)
-       {
-           var path = AssetDatabase.GUIDToAssetPath(guids[i]);
-           disturbances[i] = AssetDatabase.LoadAssetAtPath<Disturbance>(path);
-       }
+        var disturbances = Extensions.GetAllInstances<Disturbance>();
 
        foreach (var disturbance in disturbances)
        {
-           Disturbances.Add(disturbance.disturbanceType, disturbance);
+           _disturbances.Add(disturbance.disturbanceType, disturbance);
            
            // Fix the @ symbol in the disturbances description
            disturbance.description = GetDisturbanceDescription(disturbance);
@@ -33,7 +26,7 @@ public class DisturbanceManager : MonoBehaviour
 
     public static Disturbance GetDisturbance(DisturbanceType disturbanceType)
     {
-        return _current.Disturbances[disturbanceType];
+        return _current._disturbances[disturbanceType];
     }
 
     public static void ExecuteEndOfBattleDisturbanceAction(DisturbanceType disturbanceType)

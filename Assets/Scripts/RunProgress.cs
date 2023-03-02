@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
+using Challenges;
 using MapScreen;
 using OfferScreen;
 using UnityEngine;
@@ -12,6 +13,7 @@ public static class RunProgress
     public static int BattleNumber { get; set; }
 
     public static DisturbanceType currentEvent;
+    public static List<Challenge> activeChallenges;
     
     public static bool HasGeneratedMapEvents { get; set; }
 
@@ -26,5 +28,9 @@ public static class RunProgress
         offerStorage = new OfferStorage();
         BattleNumber = 0;
         currentEvent = DisturbanceType.None;
+        activeChallenges = new List<Challenge>()
+        {
+            new CleanSheetChallenge(ChallengeRewardType.Plank)
+        };
     }
 }
