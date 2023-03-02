@@ -447,7 +447,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   backgroundImage: {fileID: 740852354629737540}
   iconImage: {fileID: 740852355767785299}
-  tickImage: {fileID: 6771740307237570470}
+  crossImage: {fileID: 6771740307237570470}
   title: {fileID: 740852354768459671}
   description: {fileID: 740852354707189492}
   selectedColor: {r: 0.6627451, g: 0.3529412, b: 0.2509804, a: 1}
@@ -540,7 +540,7 @@ GameObject:
   - component: {fileID: 777157163412336755}
   - component: {fileID: 6771740307237570470}
   m_Layer: 5
-  m_Name: Tick
+  m_Name: Cross
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -561,11 +561,11 @@ RectTransform:
   m_Father: {fileID: 740852355288783275}
   m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 0.5}
-  m_AnchorMax: {x: 0, y: 0.5}
-  m_AnchoredPosition: {x: -9.6, y: 0}
-  m_SizeDelta: {x: 8, y: 8}
-  m_Pivot: {x: 1, y: 0.5}
+  m_AnchorMin: {x: 0.5, y: 0.5}
+  m_AnchorMax: {x: 0.5, y: 0.5}
+  m_AnchoredPosition: {x: 0, y: 0}
+  m_SizeDelta: {x: 100, y: 20}
+  m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &777157163412336755
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -581,7 +581,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2285676031389037274}
-  m_Enabled: 0
+  m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
   m_Name: 
@@ -594,7 +594,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: ff152092b56f9d54c93e7b9e6e433a29, type: 3}
+  m_Sprite: {fileID: 21300000, guid: b6303231b5e7aff4d8f554a43484b3c4, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1

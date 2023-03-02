@@ -644,6 +644,7 @@
             <e p="ChallengeOfferManager.cs" t="Include" />
             <e p="ChallengeRewardArchetype.cs" t="Include" />
             <e p="CleanSheetChallenge.cs" t="Include" />
+            <e p="InBattleChallengeListener.cs" t="Include" />
             <e p="Listeners" t="Include">
               <e p="IEndOfBattleListener.cs" t="Include" />
               <e p="IKillListener.cs" t="Include" />

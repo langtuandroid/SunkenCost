@@ -33,4 +33,11 @@ public static class RunProgress
             new CleanSheetChallenge(ChallengeRewardType.Plank)
         };
     }
+
+    public static void SelectNextBattle(DisturbanceType disturbanceDisturbanceType)
+    {
+        currentEvent = disturbanceDisturbanceType;
+        activeChallenges = activeChallenges.Where(c => c.IsActive).ToList();
+        Debug.Log(activeChallenges.Count);
+    }
 }

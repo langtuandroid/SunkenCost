@@ -23,51 +23,22 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="50470089-3e0c-4487-973b-9d375622b070" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/Assets/Prefabs/Map/Challenge.prefab" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/Prefabs/Map/Challenge.prefab.meta" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/ScriptableObjects/Challenges.meta" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/ScriptableObjects/Challenges/Plank.asset" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/ScriptableObjects/Challenges/Plank.asset.meta" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/Scripts/Challenges.meta" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/Scripts/Challenges/Challenge.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/Scripts/Challenges/Challenge.cs.meta" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/Scripts/Challenges/ChallengeArchetypeLoader.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/Scripts/Challenges/ChallengeArchetypeLoader.cs.meta" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/Scripts/Challenges/ChallengeButton.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/Scripts/Challenges/ChallengeButton.cs.meta" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/Scripts/Challenges/ChallengeButtonSpawner.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/Scripts/Challenges/ChallengeButtonSpawner.cs.meta" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/Scripts/Challenges/ChallengeOfferManager.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/Scripts/Challenges/ChallengeOfferManager.cs.meta" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/Scripts/Challenges/ChallengeRewardArchetype.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/Scripts/Challenges/ChallengeRewardArchetype.cs.meta" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/Scripts/Challenges/CleanSheetChallenge.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/Scripts/Challenges/CleanSheetChallenge.cs.meta" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/Scripts/Challenges/Listeners.meta" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/Scripts/Challenges/Listeners/IEndOfBattleListener.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/Scripts/Challenges/Listeners/IEndOfBattleListener.cs.meta" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/Scripts/Challenges/Listeners/IKillListener.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/Scripts/Challenges/Listeners/IKillListener.cs.meta" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/Scripts/Extensions.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/Scripts/Extensions.cs.meta" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/Sprites/Map/Challenges.meta" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/Sprites/Map/Challenges/ExtraPlank.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/Sprites/Map/Challenges/ExtraPlank.png.meta" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/Sprites/Tick.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/Sprites/Tick.png.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Scripts/Challenges/InBattleChallengeListener.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Scripts/Challenges/InBattleChallengeListener.cs.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Sprites/Cross.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Sprites/Cross.png.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Sprites/Map/Cross.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Sprites/Map/Cross.png.meta" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/.idea.Deck/.idea/contentModel.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.Deck/.idea/contentModel.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/.idea.Deck/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.Deck/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/AllIn1SpriteShader/Materials/EnemyTurnFrame.mat" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/AllIn1SpriteShader/Materials/EnemyTurnFrame.mat" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Fonts/Janyk SDF.asset" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Fonts/Janyk SDF.asset" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/PersistentManagers.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Prefabs/PersistentManagers.prefab" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/Map/Challenge.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Prefabs/Map/Challenge.prefab" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scenes/Battle.unity" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scenes/Battle.unity" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Scenes/Map.unity" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scenes/Map.unity" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/ScriptableObjects/Disturbances/UpgradeDesign.asset" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/ScriptableObjects/Disturbances/UpgradeDesign.asset" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/DisturbanceManager.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/DisturbanceManager.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/PlayerInventory.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/PlayerInventory.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Challenges/Challenge.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Challenges/Challenge.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Challenges/ChallengeButton.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Challenges/ChallengeButton.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Challenges/CleanSheetChallenge.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Challenges/CleanSheetChallenge.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/MapScreen/MapEvent.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/MapScreen/MapEvent.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Scripts/RunProgress.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/RunProgress.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Sprites/Map/Challenge.png" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Sprites/Map/Challenge.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/UserSettings/Layouts/CurrentMaximizeLayout.dwlt" beforeDir="false" afterPath="$PROJECT_DIR$/UserSettings/Layouts/CurrentMaximizeLayout.dwlt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/UserSettings/Layouts/default-2021.dwlt" beforeDir="false" afterPath="$PROJECT_DIR$/UserSettings/Layouts/default-2021.dwlt" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -108,9 +79,6 @@
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/Assets/Scripts/OfferScreen/DesignCardRow.cs" />
-        <option value="$PROJECT_DIR$/Assets/Scripts/OfferScreen/GoldDisplay.cs" />
-        <option value="$PROJECT_DIR$/Assets/Scripts/OfferScreen/BuyerSeller.cs" />
         <option value="$PROJECT_DIR$/Assets/Scripts/OfferScreen/CostDisplay.cs" />
         <option value="$PROJECT_DIR$/Assets/Scripts/OfferScreen/ItemOffer.cs" />
         <option value="$PROJECT_DIR$/Assets/Scripts/OfferScreen/OfferManager.cs" />
@@ -126,7 +94,6 @@
         <option value="$PROJECT_DIR$/Assets/Scripts/BattleScene/EndOfBattlePopup.cs" />
         <option value="$PROJECT_DIR$/Assets/Scripts/BattleScene/BattleManager.cs" />
         <option value="$PROJECT_DIR$/Assets/Scripts/BattleScene/BattleTypes.cs" />
-        <option value="$PROJECT_DIR$/Assets/Scripts/MapScreen/MapEvent.cs" />
         <option value="$PROJECT_DIR$/Assets/Scripts/MapScreen/Disturbance.cs" />
         <option value="$PROJECT_DIR$/Assets/Scripts/BattleScene/BattleType.cs" />
         <option value="$PROJECT_DIR$/Assets/Scripts/PersistantManagers.cs" />
@@ -151,13 +118,17 @@
         <option value="$PROJECT_DIR$/Assets/Scripts/Challenges/InBatttle/IKillListener.cs" />
         <option value="$PROJECT_DIR$/Assets/Scripts/Challenges/Listeners/IKillListener.cs" />
         <option value="$PROJECT_DIR$/Assets/Scripts/Challenges/Listeners/IEndOfBattleListener.cs" />
-        <option value="$PROJECT_DIR$/Assets/Scripts/Challenges/CleanSheetChallenge.cs" />
         <option value="$PROJECT_DIR$/Assets/Scripts/Challenges/ChallengeButtonSpawner.cs" />
-        <option value="$PROJECT_DIR$/Assets/Scripts/RunProgress.cs" />
-        <option value="$PROJECT_DIR$/Assets/Scripts/Challenges/Challenge.cs" />
         <option value="$PROJECT_DIR$/Assets/Scripts/PlayerInventory.cs" />
         <option value="$PROJECT_DIR$/Assets/Scripts/Challenges/ChallengeRewardArchetype.cs" />
+        <option value="$PROJECT_DIR$/Assets/Scripts/MapToBattleTransitioner.cs" />
+        <option value="$PROJECT_DIR$/Assets/Scripts/MapScreen/MapEvent.cs" />
+        <option value="$PROJECT_DIR$/Assets/Scripts/BattleScreen/BattleEvents.cs" />
+        <option value="$PROJECT_DIR$/Assets/Scripts/Challenges/CleanSheetChallenge.cs" />
+        <option value="$PROJECT_DIR$/Assets/Scripts/RunProgress.cs" />
         <option value="$PROJECT_DIR$/Assets/Scripts/Challenges/ChallengeOfferManager.cs" />
+        <option value="$PROJECT_DIR$/Assets/Scripts/Challenges/InBattleChallengeListener.cs" />
+        <option value="$PROJECT_DIR$/Assets/Scripts/Challenges/Challenge.cs" />
         <option value="$PROJECT_DIR$/Assets/Scripts/Challenges/ChallengeButton.cs" />
       </list>
     </option>
@@ -256,6 +227,7 @@
       <workItem from="1677666617186" duration="1160000" />
       <workItem from="1677708531535" duration="2730000" />
       <workItem from="1677717371209" duration="4530000" />
+      <workItem from="1677735060079" duration="2112000" />
     </task>
     <servers />
   </component>

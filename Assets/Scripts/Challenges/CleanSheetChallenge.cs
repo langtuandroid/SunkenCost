@@ -1,4 +1,5 @@
 ﻿using Challenges.Listeners;
+using UnityEngine;
 
 namespace Challenges
 {
@@ -25,11 +26,13 @@ namespace Challenges
         public void EnemyKilled()
         {
             _numberOfCleanSheetsAchieved = -1;
+            Debug.Log("killed");
         }
 
         public void EndOfBattle()
         {
             _numberOfCleanSheetsAchieved++;
+            Debug.Log("ended battle");
         }
     }
 }

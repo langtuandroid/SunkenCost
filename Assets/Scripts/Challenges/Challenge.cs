@@ -2,7 +2,7 @@
 {
     public abstract class Challenge
     {
-        public bool IsActive { get; set; }
+        public bool IsActive { get; set; } = true;
         public ChallengeRewardType ChallengeRewardType { get; private set; }
 
         public Challenge(ChallengeRewardType challengeRewardType)

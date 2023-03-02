@@ -24,7 +24,7 @@ namespace MapScreen
         
         public void NextBattle()
         {
-            RunProgress.currentEvent = disturbance.disturbanceType;
+            RunProgress.SelectNextBattle(disturbance.disturbanceType);
             MainManager.Current.LoadNextBattle();
         }
 

@@ -10,7 +10,7 @@ namespace Challenges
     {
         [SerializeField] private Image backgroundImage;
         [SerializeField] private Image iconImage;
-        [SerializeField] private Image tickImage;
+        [SerializeField] private Image crossImage;
         [SerializeField] private TextMeshProUGUI title;
         [SerializeField] private TextMeshProUGUI description;
         [SerializeField] private Color selectedColor;
@@ -31,14 +31,20 @@ namespace Challenges
             
             description.text = challenge.GetDescription();
             _challenge = challenge;
+
+            SetAppearance();
         }
 
         private void Clicked()
         {
             _challenge.IsActive = !_challenge.IsActive;
-            backgroundImage.color = _challenge.IsActive ? selectedColor : notSelectedColor;
+            SetAppearance();
+        }
 
-            tickImage.enabled = _challenge.IsActive;
+        private void SetAppearance()
+        {
+            backgroundImage.color = _challenge.IsActive ? selectedColor : notSelectedColor;
+            crossImage.enabled = !_challenge.IsActive;
         }
     }
 }
