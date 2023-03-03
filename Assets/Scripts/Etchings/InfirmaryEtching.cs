@@ -11,7 +11,6 @@ namespace Etchings
         protected override void Start()
         {
             _healAmountStat = new Stat(design.GetStat(St.HealPlayer));
-            Debug.Log(_healAmountStat.Value);
             colorWhenActivated = true;
 
             BattleEvents.Current.OnEndBattle += HealPlayer;

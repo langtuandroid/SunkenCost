@@ -11,12 +11,8 @@ public class HUDManager : MonoBehaviour
     public static HUDManager current;
     
     [SerializeField] private TextMeshProUGUI _movesText;
-    [FormerlySerializedAs("_roundText")] [SerializeField] private TextMeshProUGUI _turnText;
 
     private List<Heart> _hearts = new List<Heart>();
-
-    [SerializeField] private Image _xpFillBar;
-    [SerializeField] private TextMeshProUGUI _levelText;
 
     [SerializeField] private Transform heartsParentTransform;
 
@@ -34,36 +30,14 @@ public class HUDManager : MonoBehaviour
 
     private void Start()
     {
-        BattleEvents.Current.OnBeginPlayerTurn += UpdateTurnText;
         BattleEvents.Current.OnBeginPlayerTurn += UpdateMovesText;
         
         for (var i = 0; i < heartsParentTransform.childCount; i++)
         {
             _hearts.Add(heartsParentTransform.GetChild(i).GetComponent<Heart>());
         }
-        
-        UpdateTurnText();
     }
 
-    private void UpdateTurnText()
-    {
-        var numberOfTurns = RunProgress.PlayerInventory.NumberOfTurns;
-        var currentTurn = BattleManager.Current.Turn;
-        
-        if (currentTurn < numberOfTurns)
-        {
-            _turnText.text = "TURNS LEFT: " + (numberOfTurns + 1 - currentTurn);
-        }
-        else if (currentTurn == numberOfTurns)
-        {
-            _turnText.text = "LAST TURN!";
-        }
-        else
-        {
-            _turnText.text = "EXTRACTION COMPLETE!";
-        }
-    }
-    
 
     public void UpdateMovesText()
     {
@@ -79,10 +53,5 @@ public class HUDManager : MonoBehaviour
         {
             _hearts[i].SetHeart(lives > i);
         }
-    }
-
-    private void OnDestroy()
-    {
-        BattleEvents.Current.OnBeginPlayerTurn -= UpdateTurnText;
     }
 }

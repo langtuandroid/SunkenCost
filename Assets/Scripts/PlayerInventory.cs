@@ -1,6 +1,8 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
+using Challenges;
 using JetBrains.Annotations;
 using UnityEngine;
 
@@ -51,5 +53,28 @@ public class PlayerInventory
     public void AlterGold(int amount)
     {
         Gold += amount;
+    }
+
+    public void AcceptChallengeReward(ChallengeRewardType challengeRewardType)
+    {
+        switch (challengeRewardType)
+        {
+            case ChallengeRewardType.None:
+                break;
+            case ChallengeRewardType.Plank:
+                MaxPlanks++;
+                break;
+            case ChallengeRewardType.Move:
+                MovesPerTurn++;
+                break;
+            case ChallengeRewardType.DesignOffer:
+                break;
+            case ChallengeRewardType.ItemOffer:
+                break;
+            case ChallengeRewardType.ChallengeOffer:
+                break;
+            default:
+                throw new ArgumentOutOfRangeException();
+        }
     }
 }

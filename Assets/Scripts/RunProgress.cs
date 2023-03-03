@@ -28,16 +28,24 @@ public static class RunProgress
         offerStorage = new OfferStorage();
         BattleNumber = 0;
         currentEvent = DisturbanceType.None;
-        activeChallenges = new List<Challenge>()
-        {
-            new CleanSheetChallenge(ChallengeRewardType.Plank)
-        };
+        activeChallenges = new List<Challenge>();
     }
 
     public static void SelectNextBattle(DisturbanceType disturbanceDisturbanceType)
     {
         currentEvent = disturbanceDisturbanceType;
         activeChallenges = activeChallenges.Where(c => c.IsActive).ToList();
-        Debug.Log(activeChallenges.Count);
+    }
+
+    public static Challenge[] ExtractCompletedChallenges()
+    {
+        var completedChallenges = activeChallenges.Where(c => c.HasAchievedCondition()).ToArray();
+
+        foreach (var challenge in completedChallenges)
+        {
+            activeChallenges.Remove(challenge);
+        }
+
+        return completedChallenges;
     }
 }

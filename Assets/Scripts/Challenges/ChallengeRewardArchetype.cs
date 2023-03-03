@@ -6,7 +6,7 @@ namespace Challenges
     {
         None,
         Plank,
-        Action,
+        Move,
         DesignOffer,
         ItemOffer,
         ChallengeOffer

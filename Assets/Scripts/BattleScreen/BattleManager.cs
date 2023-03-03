@@ -3,6 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using BattleScene;
+using Challenges;
 using UnityEngine;
 using UnityEngine.UI;
 using Random = System.Random;
@@ -18,7 +19,8 @@ public enum GameState
 
 public class BattleManager : MonoBehaviour
 {
-    [SerializeField] private GameObject endOfBattlePopup;
+    private Challenge[] _completedChallenges;
+    [SerializeField] private EndOfBattlePopup endOfBattlePopup;
     
     public static BattleManager Current;
 
@@ -112,7 +114,6 @@ public class BattleManager : MonoBehaviour
             else
             {
                 BattleEvents.Current.EndPlayerTurn();
-                WhoseTurnText.current.EnemiesTurn();
                 NextTurnButton.Current.CanClick(false);
                 InGameSfxManager.current.NextTurn();
 
@@ -130,7 +131,6 @@ public class BattleManager : MonoBehaviour
     {
         gameState = GameState.PlayerTurn;
         InGameSfxManager.current.BeginTurn();
-        WhoseTurnText.current.PlayersTurn();
 
         Turn++;
         BattleEvents.Current.BeginPlayerTurn();
@@ -160,14 +160,44 @@ public class BattleManager : MonoBehaviour
         Music.current.SelectSong(0);
     }
     
-
     public void CreateEndOfBattlePopup()
     {
-        endOfBattlePopup.SetActive(true);
-        var popup = endOfBattlePopup.GetComponent<EndOfBattlePopup>();
+        endOfBattlePopup.gameObject.SetActive(true);
         var disturbance = DisturbanceManager.GetDisturbance(RunProgress.currentEvent);
-        popup.SetReward(disturbance.sprite, disturbance.description);
-        endOfBattlePopup.GetComponentInChildren<Button>().onClick.AddListener(EndBattle);
+        endOfBattlePopup.SetReward(disturbance.sprite, disturbance.description);
+        endOfBattlePopup.SetButtonAction(SwapToChallengeRewardsOrEndBattle);
+        
+    }
+
+    private void SwapToChallengeRewardsOrEndBattle()
+    {
+        
+        
+        BattleEvents.Current.EndBattle();
+        
+        _completedChallenges = RunProgress.ExtractCompletedChallenges();
+
+        if (_completedChallenges.Length > 0)
+        {
+            endOfBattlePopup.SwapToChallengeRewards(_completedChallenges);
+            endOfBattlePopup.SetButtonAction(AcceptChallengeRewards);
+        }
+        else
+        {
+            EndBattle();
+        }
+    }
+
+    private void AcceptChallengeRewards()
+    {
+        Debug.Log(_completedChallenges.Length);
+        foreach (var challenge in _completedChallenges)
+        {
+            RunProgress.PlayerInventory.AcceptChallengeReward(challenge.ChallengeRewardType);
+            Debug.Log("x");
+        }
+        
+        EndBattle();
     }
 
     private void EndBattle()
@@ -176,7 +206,6 @@ public class BattleManager : MonoBehaviour
         
         RunProgress.BattleNumber++;
         RunProgress.HasGeneratedMapEvents = false;
-        BattleEvents.Current.EndBattle();
         RunProgress.PlayerInventory.Lives = PlayerController.current.Lives;
         MainManager.Current.LoadOfferScreen();
         Destroy(gameObject);

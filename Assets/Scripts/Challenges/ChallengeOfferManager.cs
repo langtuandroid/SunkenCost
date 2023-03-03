@@ -36,7 +36,7 @@ namespace Challenges
 
         private Challenge GenerateChallenge(List<Challenge> listOfOfferedChallenges)
         {
-            return new CleanSheetChallenge(ChallengeRewardType.Plank);
+            return new CleanSheetChallenge(ChallengeRewardType.Move, -2);
         }
     }
 }

@@ -5,22 +5,25 @@ namespace Challenges
 {
     public class CleanSheetChallenge : Challenge, IKillListener, IEndOfBattleListener
     {
-        private int _numberOfCleanSheetsRequired = 3;
+        private readonly int _numberOfCleanSheetsRequired;
         private int _numberOfCleanSheetsAchieved = 0;
         
-        public CleanSheetChallenge(ChallengeRewardType challengeRewardType) : base(challengeRewardType)
+        public CleanSheetChallenge(ChallengeRewardType challengeRewardType, int level) : base(challengeRewardType, level)
         {
+            _numberOfCleanSheetsRequired = 3 + level;
         }
 
         public override bool HasAchievedCondition()
         {
             return _numberOfCleanSheetsAchieved >= _numberOfCleanSheetsRequired;
         }
-        
         public override string GetDescription()
         {
-            return "Kill no enemies in " + (_numberOfCleanSheetsRequired - _numberOfCleanSheetsAchieved)
-                                         + " consecutive battles";
+            var numLeft = _numberOfCleanSheetsRequired - _numberOfCleanSheetsAchieved;
+            if (HasAchievedCondition()) numLeft = _numberOfCleanSheetsRequired;
+            
+            return "Kill no enemies in " + 
+                   numLeft + " consecutive battles";
         }
 
         public void EnemyKilled()
@@ -32,7 +35,6 @@ namespace Challenges
         public void EndOfBattle()
         {
             _numberOfCleanSheetsAchieved++;
-            Debug.Log("ended battle");
         }
     }
 }

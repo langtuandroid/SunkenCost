@@ -1354,20 +1354,23 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _movesText: {fileID: 215973059}
-  _turnText: {fileID: 1845736592}
-  _xpFillBar: {fileID: 0}
-  _levelText: {fileID: 0}
   heartsParentTransform: {fileID: 294024264}
 --- !u!20 &519420031 stripped
 Camera:
   m_CorrespondingSourceObject: {fileID: 2969082296994940521, guid: 2a4706dcc81855544b586c44db24c662, type: 3}
   m_PrefabInstance: {fileID: 2969082297371688470}
   m_PrefabAsset: {fileID: 0}
---- !u!1 &539446513 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 5945401329578316671, guid: 66d916e65295dd44993cd57821471e34, type: 3}
+--- !u!114 &539446514 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 8532267413028863192, guid: 66d916e65295dd44993cd57821471e34, type: 3}
   m_PrefabInstance: {fileID: 56493659}
   m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3de60cfa032014c4d922909103aa80d9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &660714302
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -2735,7 +2738,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b7b9d43041299344a9698822a87c0284, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  endOfBattlePopup: {fileID: 539446513}
+  endOfBattlePopup: {fileID: 539446514}
   gameState: 0
 --- !u!4 &1647991289
 Transform:
@@ -3098,7 +3101,7 @@ RectTransform:
   m_AnchorMin: {x: 0.5, y: 1}
   m_AnchorMax: {x: 0.5, y: 1}
   m_AnchoredPosition: {x: 0, y: -30}
-  m_SizeDelta: {x: 500, y: 50}
+  m_SizeDelta: {x: 617.89, y: 50}
   m_Pivot: {x: 0.5, y: 1}
 --- !u!114 &1845736591
 MonoBehaviour:
@@ -3134,10 +3137,10 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: YOUR TURN
+  m_text: YOUR TURN!
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: b9ad7116cce90bd4299bd085f02dda22, type: 2}
-  m_sharedMaterial: {fileID: 5762254661995016597, guid: b9ad7116cce90bd4299bd085f02dda22, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: 4499a74f09eb89d46b9ef11cf627fe67, type: 2}
+  m_sharedMaterial: {fileID: -206832898088371101, guid: 4499a74f09eb89d46b9ef11cf627fe67, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
@@ -3161,8 +3164,8 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 58.88
-  m_fontSizeBase: 58.88
+  m_fontSize: 28.2
+  m_fontSizeBase: 28.2
   m_fontWeight: 400
   m_enableAutoSizing: 0
   m_fontSizeMin: 18
@@ -3387,7 +3390,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
-  m_AnchoredPosition: {x: 1114.6194, y: 1174.0884}
+  m_AnchoredPosition: {x: 1097.6283, y: 1167.292}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: -0.1, y: 1}
 --- !u!114 &2041784062

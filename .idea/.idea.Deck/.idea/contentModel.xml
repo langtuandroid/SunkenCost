@@ -619,7 +619,7 @@
         <e p="Scenes" t="Include" />
         <e p="ScriptableObjects" t="Include">
           <e p="BattleScenarios" t="Include" />
-          <e p="Challenges" t="Include" />
+          <e p="ChallengeRewards" t="Include" />
           <e p="Disturbances" t="Include" />
         </e>
         <e p="Scripts" t="Include">
@@ -643,7 +643,9 @@
             <e p="ChallengeButtonSpawner.cs" t="Include" />
             <e p="ChallengeOfferManager.cs" t="Include" />
             <e p="ChallengeRewardArchetype.cs" t="Include" />
-            <e p="CleanSheetChallenge.cs" t="Include" />
+            <e p="Challenges" t="Include">
+              <e p="CleanSheetChallenge.cs" t="Include" />
+            </e>
             <e p="InBattleChallengeListener.cs" t="Include" />
             <e p="Listeners" t="Include">
               <e p="IEndOfBattleListener.cs" t="Include" />

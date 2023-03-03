@@ -26,21 +26,46 @@ public class WhoseTurnText : MonoBehaviour
         _textMeshProUGUI = GetComponent<TextMeshProUGUI>();
     }
 
-    public void PlayersTurn()
+    private void Start()
     {
-        //_textMeshProUGUI.text = "YOUR TURN";
+        BattleEvents.Current.OnBeginPlayerTurn += UpdateText;
+        BattleEvents.Current.OnBeginPlayerTurn += SetToPlayerColor;
+        BattleEvents.Current.OnBeginEnemyTurn += SetToEnemyColor;
+    }
+    
+    private void OnDestroy()
+    {
+        BattleEvents.Current.OnBeginPlayerTurn -= UpdateText;
+        BattleEvents.Current.OnBeginPlayerTurn -= SetToPlayerColor;
+        BattleEvents.Current.OnBeginEnemyTurn -= SetToEnemyColor;
+    }
+
+    public void SetToPlayerColor()
+    {
         _textMeshProUGUI.colorGradientPreset = yourColor;
     }
 
-    public void EnemiesTurn()
+    public void SetToEnemyColor()
     {
-        //_textMeshProUGUI.text = "ENEMY TURN";
         _textMeshProUGUI.colorGradientPreset = enemyColor;
     }
 
-    public void Paused()
+    private void UpdateText()
     {
-        _textMeshProUGUI.text = "PAUSED";
-        _textMeshProUGUI.colorGradientPreset = enemyColor;
+        var numberOfTurns = RunProgress.PlayerInventory.NumberOfTurns;
+        var currentTurn = BattleManager.Current.Turn;
+        
+        if (currentTurn < numberOfTurns)
+        {
+            _textMeshProUGUI.text = "TURNS LEFT: " + (numberOfTurns + 1 - currentTurn);
+        }
+        else if (currentTurn == numberOfTurns)
+        {
+            _textMeshProUGUI.text = "LAST TURN!";
+        }
+        else
+        {
+            _textMeshProUGUI.text = "";
+        }
     }
 }

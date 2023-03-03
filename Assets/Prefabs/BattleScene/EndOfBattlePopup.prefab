@@ -397,7 +397,7 @@ GameObject:
   - component: {fileID: 429299386694596790}
   - component: {fileID: 5940455533130749661}
   m_Layer: 5
-  m_Name: BattleComplete
+  m_Name: Header
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -421,7 +421,7 @@ RectTransform:
   m_AnchorMin: {x: 0.5, y: 1}
   m_AnchorMax: {x: 0.5, y: 1}
   m_AnchoredPosition: {x: 0, y: -50}
-  m_SizeDelta: {x: 856, y: 50}
+  m_SizeDelta: {x: 955.1, y: 50}
   m_Pivot: {x: 0.5, y: 1}
 --- !u!222 &429299386694596790
 CanvasRenderer:
@@ -451,7 +451,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: Battle Complete
+  m_text: CHALLENGES COMPLETE!
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 4499a74f09eb89d46b9ef11cf627fe67, type: 2}
   m_sharedMaterial: {fileID: -206832898088371101, guid: 4499a74f09eb89d46b9ef11cf627fe67, type: 2}
@@ -551,6 +551,7 @@ RectTransform:
   - {fileID: 5013106638195694055}
   - {fileID: 8261171832848409774}
   - {fileID: 3312087419851799547}
+  - {fileID: 5159434766126742510}
   m_Father: {fileID: 8140922427427391366}
   m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -906,6 +907,69 @@ MonoBehaviour:
   m_hasFontAssetChanged: 0
   m_baseMaterial: {fileID: 0}
   m_maskOffset: {x: 0, y: 0, z: 0, w: 0}
+--- !u!1 &5073380352201760118
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 5159434766126742510}
+  - component: {fileID: 5139963143304424432}
+  m_Layer: 5
+  m_Name: Complete Challenges Grid
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!224 &5159434766126742510
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5073380352201760118}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 2415973023722329943}
+  m_RootOrder: 3
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 0.5, y: 0.5}
+  m_AnchorMax: {x: 0.5, y: 0.5}
+  m_AnchoredPosition: {x: 0, y: 15}
+  m_SizeDelta: {x: 800, y: 300}
+  m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &5139963143304424432
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5073380352201760118}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 59f8146938fff824cb5fd77236b75775, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Padding:
+    m_Left: 0
+    m_Right: 0
+    m_Top: 0
+    m_Bottom: 0
+  m_ChildAlignment: 4
+  m_Spacing: 0
+  m_ChildForceExpandWidth: 1
+  m_ChildForceExpandHeight: 1
+  m_ChildControlWidth: 0
+  m_ChildControlHeight: 0
+  m_ChildScaleWidth: 0
+  m_ChildScaleHeight: 0
+  m_ReverseArrangement: 0
 --- !u!1 &5509747722099860396
 GameObject:
   m_ObjectHideFlags: 0
@@ -1034,8 +1098,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3de60cfa032014c4d922909103aa80d9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  headerText: {fileID: 5940455533130749661}
+  reward: {fileID: 6641686358393159025}
   rewardImage: {fileID: 971304702119730035}
   rewardText: {fileID: 69243218784290827}
+  challengeRewardsGrid: {fileID: 5159434766126742510}
+  challengeRewardPrefab: {fileID: 7242604950329091112, guid: 18b46924c8c6b854c841242dc73c9eac, type: 3}
+  button: {fileID: 5297508613613189222}
 --- !u!1 &6641686358393159025
 GameObject:
   m_ObjectHideFlags: 0

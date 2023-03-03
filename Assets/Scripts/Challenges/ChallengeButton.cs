@@ -17,11 +17,6 @@ namespace Challenges
         [SerializeField] private Color notSelectedColor;
 
         private Challenge _challenge;
-        private void Awake()
-        {
-            var button = GetComponent<Button>();
-            button.onClick.AddListener(Clicked);
-        }
 
         public void Init(Challenge challenge)
         {
@@ -35,7 +30,7 @@ namespace Challenges
             SetAppearance();
         }
 
-        private void Clicked()
+        public void Clicked()
         {
             _challenge.IsActive = !_challenge.IsActive;
             SetAppearance();
