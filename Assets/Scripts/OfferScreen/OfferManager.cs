@@ -34,16 +34,16 @@ public class OfferManager : MonoBehaviour
 
         Current = this;
         
-        BuyerSeller = new BuyerSeller(RunProgress.PlayerInventory.Gold, goldDisplay);
+        BuyerSeller = new BuyerSeller(RunProgress.PlayerProgress.Gold, goldDisplay);
     }
 
     private void Start()
     {
         CreateDesignCards();
 
-        var items = new string[RunProgress.PlayerInventory.AmountOfItemsToOffer];
+        var items = new string[RunProgress.PlayerProgress.NumberOfItemsToOffer];
 
-        for (var i = 0; i < RunProgress.PlayerInventory.AmountOfItemsToOffer; i++)
+        for (var i = 0; i < RunProgress.PlayerProgress.NumberOfItemsToOffer; i++)
         {
             items[i] = SpawnItem(items);
         }
@@ -52,20 +52,20 @@ public class OfferManager : MonoBehaviour
     public void BackToMap()
     {
         if (BuyerSeller.Gold < 0) return;
-        if (takeGrid.childCount > RunProgress.PlayerInventory.MaxPlanks) return;
+        if (takeGrid.childCount > RunProgress.PlayerProgress.MaxPlanks) return;
 
         var deckRow = takeGrid.GetComponentsInChildren<DesignCard>();
         var offerRow = leaveGrid.GetComponentsInChildren<DesignCard>();
-        var itemOffers = itemGrid.GetComponentsInChildren<ItemOffer>();
+        var itemOffers = itemGrid.GetComponentsInChildren<ItemOfferDisplay>();
         
-        RunProgress.offerStorage.StoreOffers(deckRow, offerRow, itemOffers);
+        RunProgress.OfferStorage.StoreOffers(deckRow, offerRow, itemOffers);
         MainManager.Current.LoadMap();
     }
     
     private string SpawnItem(string[] otherItems)
     {
         var itemOfferGameObject = Instantiate(itemOfferPrefab, itemGrid);
-        var itemOffer = itemOfferGameObject.GetComponent<ItemOffer>();
+        var itemOffer = itemOfferGameObject.GetComponent<ItemOfferDisplay>();
 
         if (itemOffer is null)
         {
@@ -82,7 +82,7 @@ public class OfferManager : MonoBehaviour
                     break;
             }
 
-            itemOffer.ItemInfo = ItemLoader.GetItemInfo(itemId);
+            itemOffer.ItemOffer = ItemLoader.CreateItemOffer(itemId);
             itemOffer.Sprite = ItemLoader.GetItemSprite(itemId);
 
             return itemId;
@@ -108,7 +108,7 @@ public class OfferManager : MonoBehaviour
 
     private void CreateDeckCards()
     {
-        foreach (var design in RunProgress.PlayerInventory.Deck)
+        foreach (var design in RunProgress.PlayerProgress.Deck)
         {
             CreateDesignCardFromDesign(design, takeGrid, lockable: false);
         }
@@ -116,7 +116,7 @@ public class OfferManager : MonoBehaviour
 
     private void CreateLockedCards()
     {
-        foreach (var design in RunProgress.offerStorage.LockedDesignOffers)
+        foreach (var design in RunProgress.OfferStorage.LockedDesignOffers)
         {
             CreateDesignCardFromDesign(design, leaveGrid, locked: true);
         }
@@ -124,7 +124,7 @@ public class OfferManager : MonoBehaviour
 
     private void CreateSavedUnlockedCards()
     {
-        foreach (var design in RunProgress.offerStorage.UnlockedDesignOffers)
+        foreach (var design in RunProgress.OfferStorage.UnlockedDesignOffers)
         {
             CreateDesignCardFromDesign(design, leaveGrid);
         }
@@ -132,8 +132,8 @@ public class OfferManager : MonoBehaviour
 
     private void GenerateNewUnlockedCards()
     {
-        var amountOfLockedCards = RunProgress.offerStorage.LockedDesignOffers.Count;
-        for (var i = amountOfLockedCards; i < RunProgress.PlayerInventory.AmountOfCardsToOffer; i++)
+        var amountOfLockedCards = RunProgress.OfferStorage.LockedDesignOffers.Count;
+        for (var i = amountOfLockedCards; i < RunProgress.PlayerProgress.NumberOfCardsToOffer; i++)
         {
             var designName = GetDesign();
             var designType = DesignManager.GetDesignType(designName);
@@ -146,7 +146,7 @@ public class OfferManager : MonoBehaviour
     private void CreateDesignCardFromDesign(Design design, Transform row, bool locked = false, bool lockable = true)
     {
         var newCardObject = Instantiate(designCardPrefab, row);
-        var info = newCardObject.GetComponentInChildren<DesignInfo>();
+        var info = newCardObject.GetComponentInChildren<DesignDisplay>();
         info.design = design;
 
         var designCard = newCardObject.GetComponent<DesignCard>();
@@ -205,7 +205,7 @@ public class OfferManager : MonoBehaviour
 
     public void TryMerge(DesignCard cardBeingMerged, DesignCard cardBeingMergedInto)
     {
-        var cost = cardBeingMerged.Design.GetStat(St.Rarity);
+        var cost = cardBeingMergedInto.Design.Cost;
         if (BuyerSeller.Gold < cost) return;
         BuyerSeller.Buy(cost);
 
@@ -215,10 +215,10 @@ public class OfferManager : MonoBehaviour
         OfferScreenEvents.Current.RefreshOffers();
     }
 
-    public void BuyItem(ItemInfo itemInfo)
+    public void BuyItem(ItemOffer itemOffer)
     {
-        RunProgress.PlayerInventory.Items.Add(itemInfo.ItemId);
-        BuyerSeller.Buy(itemInfo.Cost);
+        RunProgress.PlayerProgress.Items.Add(itemOffer.ItemId);
+        BuyerSeller.Buy(itemOffer.Cost);
         OfferScreenEvents.Current.RefreshOffers();
     }
 

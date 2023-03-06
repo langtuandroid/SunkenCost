@@ -13,7 +13,7 @@ public class EnemyManager : MonoBehaviour
     {
         // Get the enemies
         var enemiesEnumerable =
-            Assembly.GetAssembly(typeof(Enemy)).GetTypes().Where(t => t.IsSubclassOf(typeof(Enemy)));
+            Extensions.GetAllChildrenOfClassOrNull<Enemy>();
 
         foreach (var type in enemiesEnumerable)
         {

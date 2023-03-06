@@ -7,6 +7,6 @@ public class MainMenu : MonoBehaviour
 {
     public static void PlayGame()
     {
-        MainManager.Current.LoadOfferScreen();
+        MainManager.Current.StartRun();
     }
 }

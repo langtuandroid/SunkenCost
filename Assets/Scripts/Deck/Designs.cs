@@ -1,19 +1,17 @@
+using Deck;
 using UnityEngine;
 
 #region Damage
 
 #region Melee
-public class Swordsman : Design
+public class Swordsman : CommonDesign
 {
     protected override void Init()
     {
         Title = "Stab";
         Category = DesignCategory.Melee;
         Color = Color.cyan;
-        AddStat(St.Rarity, 1);
         AddStat(St.Damage, 6);
-        
-        base.Init();
     }
 
     protected override void FirstLevelUp()
@@ -27,17 +25,15 @@ public class Swordsman : Design
    }
 }
 
-public class LoneWolf : Design
+public class LoneWolf : RareDesign
 {
     protected override void Init()
     {
         Title = "Lone Wolf";
         Category = DesignCategory.LoneWolf;
         Color = new Color(0.2f, 0.35f, 0.38f);
-        AddStat(St.Rarity, 3);
         AddStat(St.Damage, 30);
         AddStat(St.DamageFlatModifier, -3);
-        base.Init();
     }
 
     protected override void FirstLevelUp()
@@ -51,17 +47,15 @@ public class LoneWolf : Design
     }
 }
 
-public class GrandFinalist : Design
+public class GrandFinalist : UncommonDesign
 {
     protected override void Init()
     {
         Title = "Grand Finalist";
         Category = DesignCategory.GrandFinalist;
         Color = new Color(0.2f, 0.35f, 0.38f);
-        AddStat(St.Rarity, 2);
         AddStat(St.Damage, 10);
         AddStat(St.DamagePlayer, -1);
-        base.Init();
     }
 
     protected override void FirstLevelUp()
@@ -78,19 +72,16 @@ public class GrandFinalist : Design
 #endregion
 
 #region Ranged
-public class Slinger : Design
+public class Slinger : CommonDesign
 {
     protected override void Init()
     {
         Title = "Hurl";
         Category = DesignCategory.Ranged;
         Color = Color.red;
-        AddStat(St.Rarity, 1);
         AddStat(St.Damage, 4);
         AddStat(St.MinRange, 1);
         AddStat(St.MaxRange, 1);
-
-        base.Init();
     }
     
     protected override void FirstLevelUp()
@@ -104,19 +95,16 @@ public class Slinger : Design
     }
 }
 
-public class Archer : Design
+public class Archer : CommonDesign
 {
     protected override void Init()
     {
         Title = "Archer";
         Category = DesignCategory.Ranged;
         Color = Color.red;
-        AddStat(St.Rarity, 1);
         AddStat(St.Damage, 3);
         AddStat(St.MinRange, 1);
         AddStat(St.MaxRange, 2);
-
-        base.Init();
     }
     
     protected override void FirstLevelUp()
@@ -130,19 +118,16 @@ public class Archer : Design
     }
 }
 
-public class Marksman : Design
+public class Marksman : UncommonDesign
 {
     protected override void Init()
     {
         Title = "Marksman";
         Category = DesignCategory.Ranged;
         Color = Color.red;
-        AddStat(St.Rarity, 2);
         AddStat(St.Damage, 6);
         AddStat(St.MinRange, 3);
         AddStat(St.MaxRange, 3);
-
-        base.Init();
     }
     
     protected override void FirstLevelUp()
@@ -159,18 +144,15 @@ public class Marksman : Design
 #endregion
 
 #region Area
-public class Stomp : Design
+public class Stomp : CommonDesign
 {
     protected override void Init()
     {
         Title = "Mortar";
         Category = DesignCategory.Area;
         Color = Color.yellow;
-        AddStat(St.Rarity, 1);
         AddStat(St.Damage, 1);
         AddStat(St.MaxRange, 1);
-
-        base.Init();
     }
     
     protected override void FirstLevelUp()
@@ -184,19 +166,16 @@ public class Stomp : Design
     }
 }
 
-public class Splatter : Design
+public class Splatter : UncommonDesign
 {
     protected override void Init()
     {
         Title = "Bomber";
         Category = DesignCategory.Area;
         Color = Color.yellow;
-        AddStat(St.Rarity, 2);
         AddStat(St.UsesPerTurn, 1);
         AddStat(St.Damage, 5);
         AddStat(St.MaxRange, 2);
-
-        base.Init();
     }
     
     protected override void FirstLevelUp()
@@ -216,17 +195,14 @@ public class Splatter : Design
 
 #region Boost
 
-public class Boost : Design
+public class Boost : CommonDesign
 {
     protected override void Init()
     {
         Title = "Flag Bearer";
         Category = DesignCategory.Boost;
         Color = Color.magenta;
-        AddStat(St.Rarity, 1);
         AddStat(St.Boost, 2);
-
-        base.Init();
     }
     
     protected override void FirstLevelUp()
@@ -240,17 +216,14 @@ public class Boost : Design
     }
 }
 
-public class StrikeZone : Design
+public class StrikeZone : UncommonDesign
 {
     protected override void Init()
     {
         Title = "Strike Zone";
         Category = DesignCategory.StrikeZone;
         Color = new Color(0f, 0.59f, 0.71f);
-        AddStat(St.Rarity, 2);
         AddStat(St.Boost, 2);
-
-        base.Init();
     }
     
     protected override void FirstLevelUp()
@@ -267,19 +240,17 @@ public class StrikeZone : Design
 
 #region Movement Modifiers
 
-public class Impede : Design
+public class Impede : CommonDesign
 {
     protected override void Init()
     {
         Title = "Impede";
         Category = DesignCategory.Block;
         Color = new Color(0.54f, 0.54f, 0.67f);
-        AddStat(St.Rarity, 1);
         AddStat(St.UsesPerTurn, 1);
         AddStat(St.MinRange, 0);
         AddStat(St.MaxRange, 0);
         AddStat(St.Block, 2);
-        base.Init();
     }
     
     protected override void FirstLevelUp()
@@ -293,18 +264,15 @@ public class Impede : Design
     }
 }
 
-public class Reverse : Design
+public class Reverse : RareDesign
 {
     protected override void Init()
     {
         Title = "Reverse";
         Category = DesignCategory.Reverse;
         Color = new Color(0f, 0.72f, 0.55f);
-        AddStat(St.Rarity, 3);
         AddStat(St.MovementBoost, 0);
         AddStat(St.UsesPerTurn, 1);
-
-        base.Init();
     }
 
     protected override void FirstLevelUp()
@@ -318,17 +286,14 @@ public class Reverse : Design
     }
 }
 
-public class Hop : Design
+public class Hop : UncommonDesign
 {
     protected override void Init()
     {
         Title = "Hop";
         Category = DesignCategory.Hop;
         Color = Color.green;
-        AddStat(St.Rarity, 2);
         AddStat(St.Hop, 1);
-
-        base.Init();
     }
     
     protected override void FirstLevelUp()
@@ -345,17 +310,14 @@ public class Hop : Design
 
 #region Debuffs
 
-public class Poison : Design
+public class Poison : CommonDesign
 {
     protected override void Init()
     {
         Title = "Poison";
         Category = DesignCategory.Poison;
         Color = new Color(0.41f, 0.67f, 0f);
-        AddStat(St.Rarity, 1);
         AddStat(St.Poison, 3);
-
-        base.Init();
     }
     
     protected override void FirstLevelUp()
@@ -371,16 +333,14 @@ public class Poison : Design
 
 #endregion
 
-public class Infirmary : Design
+public class Infirmary : UncommonDesign
 {
     protected override void Init()
     {
         Title = "Infirmary";
         Category = DesignCategory.Infirmary;
         Color = new Color(0.67f, 0.2f, 0.27f);
-        AddStat(St.Rarity, 2);
         AddStat(St.HealPlayer, 1);
-        base.Init();
     }
     
     protected override void FirstLevelUp()

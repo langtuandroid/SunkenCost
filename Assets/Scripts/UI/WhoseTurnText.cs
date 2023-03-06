@@ -52,7 +52,7 @@ public class WhoseTurnText : MonoBehaviour
 
     private void UpdateText()
     {
-        var numberOfTurns = RunProgress.PlayerInventory.NumberOfTurns;
+        var numberOfTurns = RunProgress.PlayerProgress.NumberOfTurns;
         var currentTurn = BattleManager.Current.Turn;
         
         if (currentTurn < numberOfTurns)

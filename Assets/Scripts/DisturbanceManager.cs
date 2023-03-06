@@ -13,7 +13,7 @@ public class DisturbanceManager : MonoBehaviour
     {
         _current = this;
 
-        var disturbances = Extensions.GetAllInstances<Disturbance>();
+        var disturbances = Extensions.GetAllInstancesOrNull<Disturbance>();
 
        foreach (var disturbance in disturbances)
        {
@@ -34,7 +34,7 @@ public class DisturbanceManager : MonoBehaviour
         var disturbance = GetDisturbance(disturbanceType);
 
         if (disturbance.disturbanceType == DisturbanceType.GoldRush)
-            RunProgress.PlayerInventory.AlterGold(disturbance.amount);
+            RunProgress.PlayerProgress.AlterGold(disturbance.amount);
         else if (disturbance.disturbanceType == DisturbanceType.Heart)
             PlayerController.current.AddLife(disturbance.amount);
     }

@@ -165,6 +165,8 @@ public class ActiveEnemiesManager : MonoBehaviour
                 // Wait for any planks to execute
                 while (!EtchingManager.Current.finishedProcessingEnemyMove)
                     yield return 0;
+                
+                
             }
         }
 

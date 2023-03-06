@@ -6,17 +6,29 @@ namespace Challenges
     {
         public bool IsActive { get; set; } = true;
         public ChallengeRewardType ChallengeRewardType { get; private set; }
-        
-        protected int Level { get; private set; }
 
-        public Challenge(ChallengeRewardType challengeRewardType, int level)
+        protected int Progress { get; set; }
+        protected int RequiredProgress { get; set; }
+
+        protected Challenge(ChallengeRewardType challengeRewardType)
         {
             ChallengeRewardType = challengeRewardType;
-            Level = level;
         }
 
-        public abstract bool HasAchievedCondition();
+        public bool HasAchievedCondition()
+        {
+            return Progress >= RequiredProgress;
+        }
 
-        public abstract string GetDescription();
+        public string GetDescriptionWithProgress()
+        {
+            var desc = GetDescription();
+
+            if (HasAchievedCondition()) return desc;
+            
+            return desc + " (" + Progress + "/" + RequiredProgress + ")";
+        }
+
+        protected abstract string GetDescription();
     }
 }

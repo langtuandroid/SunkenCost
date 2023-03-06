@@ -13,10 +13,10 @@ namespace Etchings
             _canvasGroup = GetComponent<CanvasGroup>();
         
             BattleEvents.Current.OnEndEnemyTurn += EndEnemyTurn;
-            BattleEvents.Current.OnSticksUpdated += designInfo.Refresh;
+            BattleEvents.Current.OnSticksUpdated += designDisplay.Refresh;
         
             base.Start();
-            _normalColor = designInfo.TitleText.color;
+            _normalColor = designDisplay.TitleText.color;
         }
     
         protected void EndEnemyTurn()
@@ -37,9 +37,9 @@ namespace Etchings
     
         protected IEnumerator ColorForActivate()
         {
-            designInfo.TitleText.color = Color.green;
+            designDisplay.TitleText.color = Color.green;
             yield return new WaitForSeconds(BattleManager.AttackTime);
-            designInfo.TitleText.color = _normalColor;
+            designDisplay.TitleText.color = _normalColor;
         }
 
         public void SetVisible(bool visible)
@@ -57,7 +57,7 @@ namespace Etchings
         private void OnDestroy()
         {
             BattleEvents.Current.OnEndEnemyTurn -= EndEnemyTurn;
-            BattleEvents.Current.OnSticksUpdated -= designInfo.Refresh;
+            BattleEvents.Current.OnSticksUpdated -= designDisplay.Refresh;
         }
     }
 }

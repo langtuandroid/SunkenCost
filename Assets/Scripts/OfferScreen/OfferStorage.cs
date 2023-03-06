@@ -10,13 +10,13 @@ namespace OfferScreen
         public readonly List<Design> LockedDesignOffers = new List<Design>();
         public readonly List<Design> UnlockedDesignOffers = new List<Design>();
         
-        public readonly List<ItemInfo> LockedItemOffers = new List<ItemInfo>();
-        public readonly List<ItemInfo> UnlockedItemOffers = new List<ItemInfo>();
+        public readonly List<ItemOffer> LockedItemOffers = new List<ItemOffer>();
+        public readonly List<ItemOffer> UnlockedItemOffers = new List<ItemOffer>();
         
         public void StoreOffers(IEnumerable<DesignCard> deckRow,
-            IEnumerable<DesignCard> designOfferRow, IEnumerable<ItemOffer> itemOffers)
+            IEnumerable<DesignCard> designOfferRow, IEnumerable<ItemOfferDisplay> itemOffers)
         {
-            RunProgress.PlayerInventory.SaveDeck(deckRow.Select(designCard => designCard.Design).ToList());
+            RunProgress.PlayerProgress.SaveDeck(deckRow.Select(designCard => designCard.Design).ToList());
             LockedDesignOffers.Clear();
             UnlockedDesignOffers.Clear();
             LockedItemOffers.Clear();
@@ -38,7 +38,7 @@ namespace OfferScreen
             
             foreach (var itemOffer in itemOffers)
             {
-                var itemInfo = itemOffer.ItemInfo;
+                var itemInfo = itemOffer.ItemOffer;
                 
                 if (itemOffer.isLocked)
                 {

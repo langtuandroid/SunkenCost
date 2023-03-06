@@ -3,6 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using System.Reflection;
+using Deck;
 using Etchings;
 using UnityEngine;
 
@@ -44,29 +45,29 @@ public class DesignManager : MonoBehaviour
         if (EtchingTypes.Count > 0) return;
         
         // Get the Designs
-        var designs =
-            Assembly.GetAssembly(typeof(Design)).GetTypes().Where(t => t.IsSubclassOf(typeof(Design)));
+        var designs = Extensions.GetAllChildrenOfClassOrNull<Design>();
 
         foreach (var type in designs)
         {
             var designName = type.FullName;
             DesignTypes.Add(designName ?? "ERROR", type);
 
-            // Create instances of the design to create the table of rarities
-            var newDesign = (Design) Activator.CreateInstance(type);
-            var rarity = newDesign.GetStat(St.Rarity);
-
-            switch (rarity)
+            if (type.IsSubclassOf(typeof(CommonDesign)))
             {
-                case 1:
-                    CommonDesigns.Add(designName);
-                    break;
-                case 2:
-                    UncommonDesigns.Add(designName);
-                    break;
-                case 3:
-                    RareDesigns.Add(designName);
-                    break;
+                CommonDesigns.Add(designName);
+            }
+            else if (type.IsSubclassOf(typeof(UncommonDesign)))
+            {
+                UncommonDesigns.Add(designName);
+            }
+            else if (type.IsSubclassOf(typeof(RareDesign)))
+            {
+                RareDesigns.Add(designName);
+            }
+            else
+            {
+                Debug.Log("ERROR: NOT OF ANY RARITY??");
+                Debug.Log(designName);
             }
         }
 

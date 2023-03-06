@@ -14,7 +14,8 @@ public enum GameState
 {
     PlayerTurn,
     EnemyTurn,
-    OfferingDesigns
+    OfferingDesigns,
+    Rewards
 }
 
 public class BattleManager : MonoBehaviour
@@ -53,7 +54,7 @@ public class BattleManager : MonoBehaviour
 
         BattleEvents.Current.BeginBattle();
 
-        foreach (var design in RunProgress.PlayerInventory.Deck)
+        foreach (var design in RunProgress.PlayerProgress.Deck)
         {
             StickManager.current.CreateStick();
             EtchingManager.Current.CreateEtching(StickManager.current.GetStick(StickManager.current.stickCount - 1),
@@ -71,7 +72,7 @@ public class BattleManager : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.X))
         {
             BattleItemManager.EquipItem("ExtraTurn");
-            RunProgress.PlayerInventory.AlterGold(50);
+            RunProgress.PlayerProgress.AlterGold(50);
         }
 
         if (Input.GetKeyDown(KeyCode.D))
@@ -90,14 +91,22 @@ public class BattleManager : MonoBehaviour
             ActiveEnemiesManager.Current.finishedProcessingEnemyTurn)
         {
             BattleEvents.Current.EndEnemyTurn();
-            BeginPlayerTurn();
+            
+            if (Turn >= RunProgress.PlayerProgress.NumberOfTurns)
+            {
+                gameState = GameState.Rewards;
+                CreateEndOfBattlePopup();
+            }
+            else
+            {
+                BeginPlayerTurn();
+            }
         }
 
     }
 
     public void Quit()
     {
-        RunProgress.Reset();
         SceneManager.LoadScene(0);
         Music.current.SelectSong(0);
     }
@@ -107,19 +116,12 @@ public class BattleManager : MonoBehaviour
         // LATER - chane to just NoTurn
         if (gameState == GameState.PlayerTurn)
         {
-            if (Turn > RunProgress.PlayerInventory.NumberOfTurns)
-            {
-                CreateEndOfBattlePopup();
-            }
-            else
-            {
-                BattleEvents.Current.EndPlayerTurn();
-                NextTurnButton.Current.CanClick(false);
-                InGameSfxManager.current.NextTurn();
-
-                // Give the game a frame to catch up
-                StartCoroutine(ProcessTurnChangeover());
-            }
+            BattleEvents.Current.EndPlayerTurn();
+            NextTurnButton.Current.CanClick(false);
+            InGameSfxManager.current.NextTurn();
+            
+            // Give the game a frame to catch up
+            StartCoroutine(ProcessTurnChangeover());
 
             return true;
         }
@@ -163,7 +165,7 @@ public class BattleManager : MonoBehaviour
     public void CreateEndOfBattlePopup()
     {
         endOfBattlePopup.gameObject.SetActive(true);
-        var disturbance = DisturbanceManager.GetDisturbance(RunProgress.currentEvent);
+        var disturbance = DisturbanceManager.GetDisturbance(RunProgress.CurrentEvent);
         endOfBattlePopup.SetReward(disturbance.sprite, disturbance.description);
         endOfBattlePopup.SetButtonAction(SwapToChallengeRewardsOrEndBattle);
         
@@ -190,11 +192,9 @@ public class BattleManager : MonoBehaviour
 
     private void AcceptChallengeRewards()
     {
-        Debug.Log(_completedChallenges.Length);
         foreach (var challenge in _completedChallenges)
         {
-            RunProgress.PlayerInventory.AcceptChallengeReward(challenge.ChallengeRewardType);
-            Debug.Log("x");
+            RunProgress.PlayerProgress.AcceptChallengeReward(challenge.ChallengeRewardType);
         }
         
         EndBattle();
@@ -202,11 +202,9 @@ public class BattleManager : MonoBehaviour
 
     private void EndBattle()
     {
-        DisturbanceManager.ExecuteEndOfBattleDisturbanceAction(RunProgress.currentEvent);
+        DisturbanceManager.ExecuteEndOfBattleDisturbanceAction(RunProgress.CurrentEvent);
         
-        RunProgress.BattleNumber++;
-        RunProgress.HasGeneratedMapEvents = false;
-        RunProgress.PlayerInventory.Lives = PlayerController.current.Lives;
+        RunProgress.PlayerProgress.Lives = PlayerController.current.Lives;
         MainManager.Current.LoadOfferScreen();
         Destroy(gameObject);
     }

@@ -33,21 +33,26 @@ public abstract class Design
 
     public int UsesUsedThisTurn;
 
+    public int Cost { get; private set; }
+
     public Dictionary<St, Stat> Stats { get; private set; } = new Dictionary<St, Stat>();
 
     protected Design()
     {
         Init();
-    }
-
-    protected virtual void Init()
-    {
+        Stats.Add(St.Rarity, new Stat(GetRarity()));
+        
         // Limitless
         if (!Stats.ContainsKey(St.UsesPerTurn))
         {
             Limitless = true;
         }
+        
+        Cost = RunProgress.PlayerProgress.PriceHandler.GetCardCost(GetStat(St.Rarity));
     }
+
+    protected abstract void Init();
+    protected abstract int GetRarity();
 
     protected void AddStat(St st, int value)
     {

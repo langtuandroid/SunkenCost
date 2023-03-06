@@ -42,11 +42,11 @@ namespace OfferScreen
             {
                 if (designCardRowDroppedInto.isDeckRow)
                 {
-                    OfferManager.Current.BuyerSeller.Buy(designCard.Design.GetStat(St.Rarity));
+                    OfferManager.Current.BuyerSeller.Buy(designCard.Design.Cost);
                 }
                 else
                 {
-                    OfferManager.Current.BuyerSeller.Sell(designCard.Design.GetStat(St.Rarity));
+                    OfferManager.Current.BuyerSeller.Sell(designCard.Design.Cost);
                 }
             }
 

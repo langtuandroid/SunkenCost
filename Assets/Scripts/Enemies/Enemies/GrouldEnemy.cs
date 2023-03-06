@@ -10,14 +10,13 @@ public class GrouldEnemy : Enemy
     {
         Name = "Grould";
         MoveSet.Add(1);
-        MoveSet.Add(0);
         SetInitialHealth(20);
         Gold = 1;
     }
     
     public override string GetDescription()
     {
-        return "Disables the plank it's on when it doesn't move";
+        return "Disables the plank it starts each turn on";
     }
 
     protected override void PreMovingAbility()
@@ -28,7 +27,6 @@ public class GrouldEnemy : Enemy
 
     protected override bool TestForPreMovingAbility()
     {
-        // Only if not moving and not on startstick
-        return (NextMove == 0 && StickNum != 0);
+        return (StickNum != 0);
     }
 }

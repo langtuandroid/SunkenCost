@@ -11,7 +11,7 @@ namespace Etchings
     public abstract class Etching : MonoBehaviour
     {
         public Design design;
-        protected DesignInfo designInfo;
+        protected DesignDisplay designDisplay;
         
         protected bool colorWhenActivated = false;
 
@@ -29,13 +29,13 @@ namespace Etchings
         protected void Awake()
         {
             Stick = transform.parent.parent.GetComponent<Stick>();
-            designInfo = GetComponent<DesignInfo>();
+            designDisplay = GetComponent<DesignDisplay>();
         }
 
         protected virtual void Start()
         {
-            designInfo.design = design;
-            BattleEvents.Current.OnBeginPlayerTurn += designInfo.Refresh;
+            designDisplay.design = design;
+            BattleEvents.Current.OnBeginPlayerTurn += designDisplay.Refresh;
         }
 
         protected int GetStatValue(St st)
@@ -71,7 +71,7 @@ namespace Etchings
 
         private void OnDestroy()
         {
-            BattleEvents.Current.OnBeginPlayerTurn -= designInfo.Refresh;
+            BattleEvents.Current.OnBeginPlayerTurn -= designDisplay.Refresh;
         }
     }
 }

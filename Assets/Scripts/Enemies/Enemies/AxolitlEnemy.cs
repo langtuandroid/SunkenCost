@@ -6,13 +6,12 @@ using UnityEngine;
 
 public class AxolitlEnemy : Enemy
 {
-    private int _healingAmount = 5;
+    private int _healingAmount = 3;
     
     protected override void Init()
     {
         Name = "Axolitl";
         MoveSet.Add(1);
-        MoveSet.Add(0);
         MoveSet.Add(2);
         SetInitialHealth(15);
         Gold = 1;
@@ -20,7 +19,7 @@ public class AxolitlEnemy : Enemy
     
     public override string GetDescription()
     {
-        return "Gains health when it doesn't move";
+        return "Gains health each turn";
     }
 
     protected override void PreMovingAbility()
@@ -43,7 +42,6 @@ public class AxolitlEnemy : Enemy
 
     protected override bool TestForPreMovingAbility()
     {
-        // Only if not moving
-        return NextMove == 0;
+        return true;
     }
 }

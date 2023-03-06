@@ -27,7 +27,7 @@ public class BattleItemManager : MonoBehaviour
 
     private void Start()
     {
-        foreach (var item in RunProgress.PlayerInventory.Items)
+        foreach (var item in RunProgress.PlayerProgress.Items)
         {
             EquipItem(item);
         }

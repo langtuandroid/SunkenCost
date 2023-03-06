@@ -256,6 +256,11 @@ namespace Enemies
             return false;
         }
 
+        protected virtual bool TestForPostMovingAbility()
+        {
+            return false;
+        }
+
         public void Block(int blockAmount)
         {
             if (NextMove > 0)
@@ -327,7 +332,7 @@ namespace Enemies
         {
             InGameSfxManager.current.Death();
             // TODO: CHANGE 
-            if (killedByPlayer) RunProgress.PlayerInventory.AlterGold(Gold);
+            if (killedByPlayer) RunProgress.PlayerProgress.AlterGold(Gold);
             IsDestroyed = true;
             Moving = false;
             Log.current.AddEvent("E" + _turnOrder + " has been killed");

@@ -2,50 +2,81 @@ using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using Challenges;
+using Challenges.Challenges;
 using MapScreen;
 using OfferScreen;
 using UnityEngine;
 
-public static class RunProgress
+public class RunProgress : MonoBehaviour
 {
-    public static PlayerInventory PlayerInventory;
-    public static OfferStorage offerStorage;
-    public static int BattleNumber { get; set; }
+    private static RunProgress _current;
+    private PlayerProgress _playerProgress;
+    private OfferStorage _offerStorage;
 
-    public static DisturbanceType currentEvent;
-    public static List<Challenge> activeChallenges;
+    private int _battleNumber;
+
+    private DisturbanceType _currentEvent;
+    private List<Challenge> _activeChallenges;
+
+    private bool _hasGeneratedMapEvents;
+
+    public static PlayerProgress PlayerProgress => _current._playerProgress;
+    public static OfferStorage OfferStorage => _current._offerStorage;
     
-    public static bool HasGeneratedMapEvents { get; set; }
+    public static int BattleNumber => _current._battleNumber;
 
-    static RunProgress()
+    public static DisturbanceType CurrentEvent => _current._currentEvent;
+    
+    public static List<Challenge> ActiveChallenges => _current._activeChallenges;
+
+    public static bool HasGeneratedMapEvents => _current._hasGeneratedMapEvents;
+
+    public void Awake()
     {
-        Reset();
+        _current = this;
     }
-    
-    public static void Reset()
+
+    public static void Initialise()
     {
-        PlayerInventory = new PlayerInventory();
-        offerStorage = new OfferStorage();
-        BattleNumber = 0;
-        currentEvent = DisturbanceType.None;
-        activeChallenges = new List<Challenge>();
+        _current.InitialiseRun();
     }
 
     public static void SelectNextBattle(DisturbanceType disturbanceDisturbanceType)
     {
-        currentEvent = disturbanceDisturbanceType;
-        activeChallenges = activeChallenges.Where(c => c.IsActive).ToList();
+        _current._currentEvent = disturbanceDisturbanceType;
+        _current._activeChallenges = ActiveChallenges.Where(c => c.IsActive).ToList();
+        _current._battleNumber++;
+        _current._hasGeneratedMapEvents = false;
+    }
+
+    public static void HaveGeneratedMapEvents()
+    {
+        _current._hasGeneratedMapEvents = true;
     }
 
     public static Challenge[] ExtractCompletedChallenges()
     {
-        var completedChallenges = activeChallenges.Where(c => c.HasAchievedCondition()).ToArray();
+        var completedChallenges = ActiveChallenges.Where(c => c.HasAchievedCondition()).ToArray();
 
         foreach (var challenge in completedChallenges)
         {
-            activeChallenges.Remove(challenge);
+            ActiveChallenges.Remove(challenge);
         }
 
         return completedChallenges;
+    }
+    
+    private void InitialiseRun()
+    {
+        _playerProgress = new PlayerProgress();
+        _playerProgress.InitialiseDeck();
+        _offerStorage = new OfferStorage();
+        _battleNumber = 0;
+        _currentEvent = DisturbanceType.None;
+        _activeChallenges = new List<Challenge>()
+        {
+            new UntouchableChallenge(ChallengeRewardType.Move, 0),
+            new WipeoutChallenge(ChallengeRewardType.Plank, 0)
+        };
     }
 }

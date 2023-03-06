@@ -14,7 +14,7 @@ namespace Challenges
         {
             _current = this;
 
-            var challengeArchetypes = Extensions.GetAllInstances<ChallengeRewardArchetype>();
+            var challengeArchetypes = Extensions.GetAllInstancesOrNull<ChallengeRewardArchetype>();
 
             foreach (var challengeArchetype in challengeArchetypes)
             {

@@ -17,18 +17,18 @@ namespace OfferScreen
         [SerializeField] private CostDisplay mergeButton;
         [SerializeField] private LockButton lockButton;
         
-        private DesignInfo _designInfo;
+        private DesignDisplay _designDisplay;
         private DesignCard _mergeableDesignCard;
         private IOffer _offerImplementation;
         private bool _canBeLocked = false;
         private bool _pointerInside = false;
 
-        public Design Design => _designInfo.design;
+        public Design Design => _designDisplay.design;
         private bool HasMergeableDesignCard => _mergeableDesignCard != null;
         
         private void Awake()
         {
-            _designInfo = GetComponentInChildren<DesignInfo>();
+            _designDisplay = GetComponentInChildren<DesignDisplay>();
         }
 
         private void Start()
@@ -97,12 +97,12 @@ namespace OfferScreen
             mergeButton.gameObject.SetActive(HasMergeableDesignCard);
             if (HasMergeableDesignCard)
             {
-                mergeButton.Refresh(Design.GetStat(St.Rarity));
+                mergeButton.Refresh(Design.Cost);
             }
 
-            _designInfo.Refresh();
+            _designDisplay.Refresh();
 
-            costDisplay.Refresh(Design.GetStat(St.Rarity));
+            costDisplay.Refresh(Design.Cost);
 
             cardBackgroundImage.color = isLocked ? lockedColor : Color.white;
         }

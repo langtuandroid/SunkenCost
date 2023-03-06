@@ -19,7 +19,7 @@ namespace Etchings
                                      " on S" + enemy.StickNum);
             
                 enemy.Stick.SetTempColour(design.Color);
-                designInfo.Refresh();
+                designDisplay.Refresh();
                 return true;
             }
 

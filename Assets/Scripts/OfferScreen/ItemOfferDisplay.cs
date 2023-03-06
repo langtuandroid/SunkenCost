@@ -6,9 +6,9 @@ using UnityEngine.UI;
 
 namespace OfferScreen
 {
-    public class ItemOffer : MonoBehaviour, IPointerClickHandler, IOffer
+    public class ItemOfferDisplay : MonoBehaviour, IPointerClickHandler, IOffer
     {
-        public ItemInfo ItemInfo { get; set; }
+        public ItemOffer ItemOffer { get; set; }
         public Sprite Sprite { get; set; }
 
         [SerializeField] private Image backgroundImage;
@@ -23,8 +23,8 @@ namespace OfferScreen
 
         private void Start()
         {
-            titleText.text = ItemInfo.Title;
-            descText.text = ItemInfo.Desc;
+            titleText.text = ItemOffer.Title;
+            descText.text = ItemOffer.Desc;
             image.sprite = Sprite;
 
             OfferScreenEvents.Current.OnGridsUpdated += OffersRefreshed;
@@ -42,9 +42,9 @@ namespace OfferScreen
 
         public void OnPointerClick(PointerEventData eventData)
         {
-            if (OfferManager.Current.BuyerSeller.Gold < ItemInfo.Cost) return;
+            if (OfferManager.Current.BuyerSeller.Gold < ItemOffer.Cost) return;
             
-            OfferManager.Current.BuyItem(ItemInfo);
+            OfferManager.Current.BuyItem(ItemOffer);
             Destroy(gameObject);
         }
 
@@ -57,7 +57,7 @@ namespace OfferScreen
 
         private void OffersRefreshed()
         {
-            costDisplay.Refresh(ItemInfo.Cost);
+            costDisplay.Refresh(ItemOffer.Cost);
         }
     }
 }

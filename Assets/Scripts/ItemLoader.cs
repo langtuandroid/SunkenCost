@@ -21,10 +21,7 @@ public class ItemLoader : MonoBehaviour
         _current = this;
         
         // Get the Etching Offers
-        var itemsEnumerable =
-            Assembly.GetAssembly(typeof(InGameItem)).GetTypes().Where(t => t.IsSubclassOf(typeof(InGameItem)))
-                .Where(ty => !ty.IsAbstract);
-
+        var itemsEnumerable = Extensions.GetAllChildrenOfClassOrNull<InGameItem>();
         foreach (var type in itemsEnumerable)
         {
             // Remove the 'Items.' from the start and 'Item' from end of file name
@@ -46,33 +43,33 @@ public class ItemLoader : MonoBehaviour
         return _current.itemSprites[index];
     }
 
-    public static ItemInfo GetItemInfo(string itemID)
+    public static ItemOffer CreateItemOffer(string itemID)
     {
         var title = "ERROR";
         var desc = "ERROR";
-        var cost = -1;
+        var rarity = -1;
 
         switch (itemID)
         {
             case "PoisonTips":
                 title = "Poison Tips";
                 desc = "Apply " + PoisonTipsItem.PoisonAmount +" poison every time an enemy is attacked";
-                cost = 8;
+                rarity = 1;
                 break;
             
             case "ExpiredMedicine":
                 title = "Expired Medicine";
                 desc = "Whenever an enemy heals, it takes " + ExpiredMedicineItem.DamageAmount + " damage";
-                cost = 5;
+                rarity = 1;
                 break;
             case "ReDress":
                 title = "ReDress";
                 desc = "Whenever an enemy reaches your boat, deal " + ReDressItem.DamageAmount + " damage to all enemies";
-                cost = 7;
+                rarity = 1;
                 break;
         }
 
-        return new ItemInfo(itemID, title, desc, cost);
+        return new ItemOffer(itemID, title, desc, rarity);
     }
 
     public static string GetRandomItem()

@@ -1,11 +1,13 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Linq;
+using System.Reflection;
 using UnityEditor;
 using UnityEngine;
 
 public class Extensions
 {
-    public static T[] GetAllInstances<T>() where T : ScriptableObject
+    public static T[] GetAllInstancesOrNull<T>() where T : ScriptableObject
     {
         var guids = AssetDatabase.FindAssets("t:"+ typeof(T).Name);
         var a = new T[guids.Length];
@@ -17,5 +19,11 @@ public class Extensions
  
         return a;
  
+    }
+    
+    public static IEnumerable<Type> GetAllChildrenOfClassOrNull<T>() where T : class
+    {
+        return Assembly.GetAssembly(typeof(T)).GetTypes().Where(t => t.IsSubclassOf(typeof(T)))
+                .Where(ty => !ty.IsAbstract);
     }
 }

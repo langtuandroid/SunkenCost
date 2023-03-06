@@ -34,8 +34,8 @@ public class MapEventGenerator : MonoBehaviour
             bottomMapEvent.disturbance = bottomDisturbance;
             break;
         }
-
-        RunProgress.HasGeneratedMapEvents = true;
+        
+        RunProgress.HaveGeneratedMapEvents();
     }
 
     private Disturbance GenerateDisturbance()

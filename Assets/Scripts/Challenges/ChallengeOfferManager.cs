@@ -1,7 +1,9 @@
 ﻿using System;
 using System.Collections.Generic;
+using Challenges.Challenges;
 using OfferScreen;
 using UnityEngine;
+using Random = UnityEngine.Random;
 
 namespace Challenges
 {
@@ -16,7 +18,7 @@ namespace Challenges
 
         private void Start()
         {
-            var listOfOfferedChallenges = RunProgress.activeChallenges;
+            var listOfOfferedChallenges = RunProgress.ActiveChallenges;
             
             foreach (var challenge in listOfOfferedChallenges)
             {
@@ -24,7 +26,7 @@ namespace Challenges
             }
 
             var amountOfChallengesToGenerate = 
-                RunProgress.PlayerInventory.AmountOfChallengesToOffer - listOfOfferedChallenges.Count;
+                RunProgress.PlayerProgress.NumberOfChallengesToOffer - listOfOfferedChallenges.Count;
 
             for (var i = 0; i < amountOfChallengesToGenerate; i++)
             {
@@ -36,7 +38,7 @@ namespace Challenges
 
         private Challenge GenerateChallenge(List<Challenge> listOfOfferedChallenges)
         {
-            return new CleanSheetChallenge(ChallengeRewardType.Move, -2);
+            return new PacifistChallenge(ChallengeRewardType.Move, 0);
         }
     }
 }

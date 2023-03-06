@@ -1,18 +1,22 @@
 ﻿namespace Items
 {
-    public class ItemInfo
+    public class ItemOffer
     {
         public string ItemId;
         public string Title { get; set; }
         public string Desc { get; set; }
+        public int Rarity { get; set; }
+        
         public int Cost { get; set; }
 
-        public ItemInfo(string itemId, string title, string desc, int cost)
+        public ItemOffer(string itemId, string title, string desc, int rarity)
         {
             ItemId = itemId;
             Title = title;
             Desc = desc;
-            Cost = cost;
+            Rarity = rarity;
+
+            Cost = RunProgress.PlayerProgress.PriceHandler.GetItemCost(rarity);
         }
     }
 }

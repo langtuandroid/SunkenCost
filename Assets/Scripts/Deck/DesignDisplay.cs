@@ -8,7 +8,7 @@ using UnityEngine.EventSystems;
 using UnityEngine.UI;
 using Random = UnityEngine.Random;
 
-public class DesignInfo : MonoBehaviour
+public class DesignDisplay : MonoBehaviour
 {
     [SerializeField] private TextMeshProUGUI titleText;
     public TextMeshProUGUI TitleText => titleText;

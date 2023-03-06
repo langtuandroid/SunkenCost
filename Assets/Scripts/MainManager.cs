@@ -7,7 +7,7 @@ using UnityEngine.SceneManagement;
 public class MainManager : MonoBehaviour
 {
     public static MainManager Current;
-    
+
     private void Awake()
     {
         Current = this;
@@ -50,5 +50,11 @@ public class MainManager : MonoBehaviour
     public void LoadNextBattle()
     {
         ChangeScene(3);
+    }
+
+    public void StartRun()
+    {
+        RunProgress.Initialise();
+        LoadOfferScreen();
     }
 }

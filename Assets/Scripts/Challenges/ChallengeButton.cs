@@ -24,7 +24,7 @@ namespace Challenges
             iconImage.sprite = challengeRewardArchetype.sprite;
             title.text = challengeRewardArchetype.title;
             
-            description.text = challenge.GetDescription();
+            description.text = challenge.GetDescriptionWithProgress();
             _challenge = challenge;
 
             SetAppearance();

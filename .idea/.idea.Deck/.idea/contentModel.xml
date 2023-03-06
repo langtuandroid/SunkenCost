@@ -636,6 +636,7 @@
             <e p="EndOfBattlePopup.cs" t="Include" />
             <e p="PlayerController.cs" t="Include" />
           </e>
+          <e p="ChallengeLoader.cs" t="Include" />
           <e p="Challenges" t="Include">
             <e p="Challenge.cs" t="Include" />
             <e p="ChallengeArchetypeLoader.cs" t="Include" />
@@ -644,12 +645,15 @@
             <e p="ChallengeOfferManager.cs" t="Include" />
             <e p="ChallengeRewardArchetype.cs" t="Include" />
             <e p="Challenges" t="Include">
-              <e p="CleanSheetChallenge.cs" t="Include" />
+              <e p="PacifistChallenge.cs" t="Include" />
+              <e p="UntouchableChallenge.cs" t="Include" />
+              <e p="WipeoutChallenge.cs" t="Include" />
             </e>
             <e p="InBattleChallengeListener.cs" t="Include" />
             <e p="Listeners" t="Include">
               <e p="IEndOfBattleListener.cs" t="Include" />
               <e p="IKillListener.cs" t="Include" />
+              <e p="IPlayerLostLifeListener.cs" t="Include" />
             </e>
           </e>
           <e p="Debug" t="Include">
@@ -658,10 +662,11 @@
           <e p="Deck" t="Include">
             <e p="Design.cs" t="Include" />
             <e p="DesignCategory.cs" t="Include" />
-            <e p="DesignInfo.cs" t="Include" />
+            <e p="DesignDisplay.cs" t="Include" />
             <e p="DesignManager.cs" t="Include" />
             <e p="Designs.cs" t="Include" />
             <e p="ListExtensions.cs" t="Include" />
+            <e p="Rarities.cs" t="Include" />
           </e>
           <e p="Disturbance.cs" t="Include" />
           <e p="DisturbanceManager.cs" t="Include" />
@@ -732,7 +737,7 @@
             <e p="ExpiredMedicineItem.cs" t="Include" />
             <e p="ExtraTurnItem.cs" t="Include" />
             <e p="InGameItem.cs" t="Include" />
-            <e p="ItemInfo.cs" t="Include" />
+            <e p="ItemOffer.cs" t="Include" />
             <e p="PoisonTipsItem.cs" t="Include" />
             <e p="RedressItem.cs" t="Include" />
           </e>
@@ -753,16 +758,17 @@
             <e p="DesignCardRow.cs" t="Include" />
             <e p="GoldDisplay.cs" t="Include" />
             <e p="IOffer.cs" t="Include" />
-            <e p="ItemOffer.cs" t="Include" />
+            <e p="ItemOfferDisplay.cs" t="Include" />
             <e p="LockButton.cs" t="Include" />
             <e p="OfferManager.cs" t="Include" />
             <e p="OfferScreenEvents.cs" t="Include" />
             <e p="OfferStorage.cs" t="Include" />
             <e p="PlankCount.cs" t="Include" />
+            <e p="PriceHandler.cs" t="Include" />
           </e>
           <e p="PersistantManagers.cs" t="Include" />
-          <e p="PlayerInventory.cs" t="Include" />
           <e p="PlayerLevelController.cs" t="Include" />
+          <e p="PlayerProgress.cs" t="Include" />
           <e p="ReorderableList" t="Include">
             <e p="ReorderableList.cs" t="Include" />
             <e p="ReorderableListContent.cs" t="Include" />

@@ -23,7 +23,7 @@ namespace OfferScreen
         private void UpdateText()
         {
             var cardsOnTop = OfferManager.Current.CardsOnTopRow;
-            var maxCards = RunProgress.PlayerInventory.MaxPlanks;
+            var maxCards = RunProgress.PlayerProgress.MaxPlanks;
 
             _textMeshProUGUI.text = cardsOnTop + "/" + maxCards;
 

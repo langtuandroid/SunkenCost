@@ -57,11 +57,11 @@ public class ScenarioManager : MonoBehaviour
             var scenario = scenarioOptions[i];
             scenario.scaledDifficulty = difficulty;
             return scenario;
-        }
+        }  
         
         //Debug.Log("Battle No. " + battle + ", difficulty " + difficulty +": No scenario found");
         var scaledScenario = GetScenario(0);
-        scaledScenario.scaledDifficulty = (int)Math.Floor(battle / 2f);
+        scaledScenario.scaledDifficulty = (int)Math.Floor(battle / 3f);
         return scaledScenario;
     }
 }
