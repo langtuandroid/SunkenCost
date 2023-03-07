@@ -4,17 +4,16 @@ namespace Challenges.Challenges
 {
     public class PacifistChallenge : Challenge, IKillListener, IEndOfBattleListener
     {
-        private const int BASE_RUNS_REQUIRED = 3;
-
-        public PacifistChallenge(ChallengeRewardType challengeRewardType, int level) : 
-            base(challengeRewardType)
-        {
-            RequiredProgress = level + BASE_RUNS_REQUIRED;
-        }
-
+        private const int BASE_RUNS_REQUIRED = 2;
+        
         protected override string GetDescription()
         {
             return "Kill no enemies in " + RequiredProgress + " consecutive battles";
+        }
+
+        protected override int GetRequiredProgress(int level)
+        {
+            return level + BASE_RUNS_REQUIRED;
         }
 
         public void EnemyKilled()

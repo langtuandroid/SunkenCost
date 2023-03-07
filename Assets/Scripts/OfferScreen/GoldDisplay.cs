@@ -13,9 +13,10 @@ namespace OfferScreen
         private void Awake()
         {
             _textMeshProUGUI = GetComponentInChildren<TextMeshProUGUI>();
+            UpdateText(RunProgress.PlayerProgress.Gold);
         }
 
-        public void Refresh(int goldAmount)
+        public void UpdateText(int goldAmount)
         {
             _textMeshProUGUI.text = goldAmount.ToString();
             _textMeshProUGUI.colorGradientPreset = goldAmount >= 0 ? _goodColor : _badColor;

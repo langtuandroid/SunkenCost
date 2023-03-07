@@ -21,7 +21,7 @@ public class BattleEvents : MonoBehaviour
         Current = this;
     }
 
-    public event Action OnBeginBattle;
+    public event Action OnStartBattle;
     public event Action OnEndBattle;
     
     public event Action OnEndEnemyTurn;
@@ -47,6 +47,7 @@ public class BattleEvents : MonoBehaviour
     public event Action OnEnemyMoved;
     public event Action OnEnemyAttacked;
     public event Action OnEnemyHealed;
+    public event Action OnEnemyKilled;
 
     private Enemy _lastEnemyAttacked;
     private Etching _lastEtchingToAttack;
@@ -57,7 +58,7 @@ public class BattleEvents : MonoBehaviour
 
     public void BeginBattle()
     {
-        OnBeginBattle?.Invoke();
+        OnStartBattle?.Invoke();
     }
 
     public void EndBattle()
@@ -179,6 +180,11 @@ public class BattleEvents : MonoBehaviour
     {
         Current._lastEnemyHealed = enemy;
         OnEnemyHealed?.Invoke();
+    }
+
+    public void EnemyKilled()
+    {
+        OnEnemyKilled?.Invoke();
     }
 
     private IEnumerator GiveSticksTimeToLoad()

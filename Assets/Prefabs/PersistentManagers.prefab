@@ -59,8 +59,9 @@ GameObject:
   m_Component:
   - component: {fileID: 7099704740614234605}
   - component: {fileID: 1715812072908261019}
+  - component: {fileID: 8078994622421322212}
   m_Layer: 0
-  m_Name: ChallengeArchetypeLoader
+  m_Name: ChallengeLoader
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -91,6 +92,18 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: ef602ffd00b345a8b0c0b8652d9c005e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &8078994622421322212
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4478821229414216604}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 683640a23f6a459e88aad4878965d332, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
 --- !u!1 &4799959914248010403

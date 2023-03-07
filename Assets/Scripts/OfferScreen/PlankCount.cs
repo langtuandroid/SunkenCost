@@ -7,32 +7,22 @@ namespace OfferScreen
     {
         private TextMeshProUGUI _textMeshProUGUI;
 
-        [SerializeField] private TMP_ColorGradient _goodColor;
-        [SerializeField] private TMP_ColorGradient _badColor;
+        [SerializeField] private TMP_ColorGradient goodColor;
+        [SerializeField] private TMP_ColorGradient badColor;
 
         private void Awake()
         {
             _textMeshProUGUI = GetComponentInChildren<TextMeshProUGUI>();
+            UpdateText(RunProgress.PlayerProgress.Deck.Count);
         }
 
-        private void Start()
+        public void UpdateText(int numOfPlanksInDeck)
         {
-            OfferScreenEvents.Current.OnGridsUpdated += UpdateText;
-        }
-
-        private void UpdateText()
-        {
-            var cardsOnTop = OfferManager.Current.CardsOnTopRow;
             var maxCards = RunProgress.PlayerProgress.MaxPlanks;
 
-            _textMeshProUGUI.text = cardsOnTop + "/" + maxCards;
+            _textMeshProUGUI.text = numOfPlanksInDeck + "/" + maxCards;
 
-            _textMeshProUGUI.colorGradientPreset = cardsOnTop <= maxCards ? _goodColor : _badColor;
-        }
-
-        private void OnDestroy()
-        {
-            OfferScreenEvents.Current.OnGridsUpdated -= UpdateText;
+            _textMeshProUGUI.colorGradientPreset = numOfPlanksInDeck <= maxCards ? goodColor : badColor;
         }
     }
 }

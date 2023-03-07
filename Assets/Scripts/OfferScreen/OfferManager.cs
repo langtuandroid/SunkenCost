@@ -41,12 +41,31 @@ public class OfferManager : MonoBehaviour
     {
         CreateDesignCards();
 
-        var items = new string[RunProgress.PlayerProgress.NumberOfItemsToOffer];
+        var itemIds = new List<string>();
 
-        for (var i = 0; i < RunProgress.PlayerProgress.NumberOfItemsToOffer; i++)
+        foreach (var itemOffer in RunProgress.OfferStorage.LockedItemOffers)
         {
-            items[i] = SpawnItem(items);
+            CreateItemOfferDisplay(itemOffer, true);
+            itemIds.Add(itemOffer.ItemId);
         }
+
+        if (RunProgress.HasGeneratedMapEvents)
+        {
+            foreach (var itemOffer in RunProgress.OfferStorage.UnlockedItemOffers)
+            {
+                CreateItemOfferDisplay(itemOffer, false);
+                itemIds.Add(itemOffer.ItemId);
+            }
+        }
+        else
+        {
+            for (var i = RunProgress.OfferStorage.LockedItemOffers.Count;
+                i < RunProgress.PlayerProgress.NumberOfItemsToOffer; i++)
+            {
+                CreateItemOfferDisplay(GenerateNewItemOffer(itemIds), false);
+            }
+        }
+        
     }
 
     public void BackToMap()
@@ -61,32 +80,33 @@ public class OfferManager : MonoBehaviour
         RunProgress.OfferStorage.StoreOffers(deckRow, offerRow, itemOffers);
         MainManager.Current.LoadMap();
     }
-    
-    private string SpawnItem(string[] otherItems)
+
+    private static ItemOffer GenerateNewItemOffer(IReadOnlyCollection<string> otherItems)
+    {
+        string itemId;
+            
+        while (true)
+        { 
+            itemId = ItemLoader.GetRandomItem(); 
+            if (otherItems.FirstOrDefault(id => id == itemId) == null)
+                break;
+        }
+
+        return ItemLoader.CreateItemOffer(itemId);
+    }
+
+    private void CreateItemOfferDisplay(ItemOffer itemOffer, bool isLocked)
     {
         var itemOfferGameObject = Instantiate(itemOfferPrefab, itemGrid);
-        var itemOffer = itemOfferGameObject.GetComponent<ItemOfferDisplay>();
-
-        if (itemOffer is null)
-        {
-            Debug.Log("Null Item!");
-            return null;
-        }
-        else
-        {
-            string itemId;
-            while (true)
-            {
-                itemId = ItemLoader.GetRandomItem();
-                if (otherItems.FirstOrDefault(id => id == itemId) == null)
-                    break;
-            }
-
-            itemOffer.ItemOffer = ItemLoader.CreateItemOffer(itemId);
-            itemOffer.Sprite = ItemLoader.GetItemSprite(itemId);
-
-            return itemId;
-        }
+        var itemOfferDisplay = itemOfferGameObject.GetComponent<ItemOfferDisplay>();
+        InitialiseItemOfferDisplay(itemOfferDisplay, itemOffer, isLocked);
+    }
+    
+    private void InitialiseItemOfferDisplay(ItemOfferDisplay itemOfferDisplay, ItemOffer itemOffer, bool isLocked)
+    {
+        itemOfferDisplay.ItemOffer = itemOffer;
+        itemOfferDisplay.Sprite = ItemLoader.GetItemSprite(itemOffer.ItemId);
+        itemOfferDisplay.isLocked = isLocked;
     }
 
     private void CreateDesignCards()
@@ -105,6 +125,7 @@ public class OfferManager : MonoBehaviour
 
         StartCoroutine(WaitForDesignCardsToInitialise());
     }
+    
 
     private void CreateDeckCards()
     {
@@ -201,6 +222,14 @@ public class OfferManager : MonoBehaviour
 
         // Rare
         return DesignManager.RareDesigns[Random.Range(0, DesignManager.RareDesigns.Count)];
+    }
+    
+    private void CreateLockedItems()
+    {
+        foreach (var itemOffer in RunProgress.OfferStorage.LockedItemOffers)
+        {
+            
+        }
     }
 
     public void TryMerge(DesignCard cardBeingMerged, DesignCard cardBeingMergedInto)

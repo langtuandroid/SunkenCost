@@ -12,6 +12,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1ce21ef09b6141939fbf00d53209d4b8, type: 3}
   m_Name: Plank
   m_EditorClassIdentifier: 
-  challengeRewardType: 1
+  challengeRewardType: 0
   title: +1 Plank
   sprite: {fileID: 21300000, guid: a2bcf595c9132454fa4f104c5c687205, type: 3}

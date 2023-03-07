@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using System.Linq;
 using Challenges.Listeners;
 using UnityEngine;
@@ -7,47 +8,29 @@ namespace Challenges
 {
     public class InBattleChallengeListener : MonoBehaviour
     {
-        private List<Challenge> _activeChallenges;
-        private IEnumerable<IKillListener> _killListeners;
-        private IEnumerable<IEndOfBattleListener> _endOfBattleListeners;
-        private IEnumerable<IPlayerLostLifeListener> _playerLostLifeListeners;
-        
+        private List<Challenge> activeChallenges;
         private void Start()
         {
-            BattleEvents.Current.OnEnemyAttacked += EnemyAttacked;
-            BattleEvents.Current.OnEndBattle += EndedBattle;
-            BattleEvents.Current.OnLostLife += LostLife;
-
-            _activeChallenges = RunProgress.ActiveChallenges;
-            _killListeners = _activeChallenges.OfType<IKillListener>();
-            _endOfBattleListeners = _activeChallenges.OfType<IEndOfBattleListener>();
-            _playerLostLifeListeners = _activeChallenges.OfType<IPlayerLostLifeListener>();
-
-        }
-
-        private void EnemyAttacked()
-        {
-            if (!BattleEvents.LastEnemyAttacked.IsDestroyed) return;
+            activeChallenges = RunProgress.ActiveChallenges;
             
-            foreach (var listener in _killListeners)
+            foreach (var listener in activeChallenges.OfType<IStartOfBattleListener>())
             {
-                listener.EnemyKilled();
+                BattleEvents.Current.OnStartBattle += listener.StartOfBattle;
             }
-        }
 
-        private void EndedBattle()
-        {
-            foreach (var listener in _endOfBattleListeners)
+            foreach (var listener in activeChallenges.OfType<IEndOfBattleListener>())
             {
-                listener.EndOfBattle();
+                BattleEvents.Current.OnEndBattle += listener.EndOfBattle;
             }
-        }
-
-        private void LostLife()
-        {
-            foreach (var listener in _playerLostLifeListeners)
+            
+            foreach (var listener in activeChallenges.OfType<IKillListener>())
             {
-                listener.PlayerLostLife();
+                BattleEvents.Current.OnEnemyKilled += listener.EnemyKilled;
+            }
+            
+            foreach (var listener in activeChallenges.OfType<IPlayerLostLifeListener>())
+            {
+                BattleEvents.Current.OnLostLife += listener.PlayerLostLife;
             }
         }
     }

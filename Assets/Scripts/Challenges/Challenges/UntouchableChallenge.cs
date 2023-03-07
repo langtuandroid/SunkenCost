@@ -4,13 +4,18 @@ namespace Challenges.Challenges
 {
     public class UntouchableChallenge : Challenge, IPlayerLostLifeListener, IEndOfBattleListener
     {
-        private const int BASE_RUNS_REQUIRED = 1;
-        
-        public UntouchableChallenge(ChallengeRewardType challengeRewardType, int level) : base(challengeRewardType)
+        private const int BASE_RUNS_REQUIRED = 2;
+
+        protected override string GetDescription()
         {
-            RequiredProgress = level + BASE_RUNS_REQUIRED;
+            return "Finish " + RequiredProgress + " consecutive battles without losing a life";
         }
 
+        protected override int GetRequiredProgress(int level)
+        {
+            return level + BASE_RUNS_REQUIRED;
+        }
+        
         public void PlayerLostLife()
         {
             Progress = -1;
@@ -19,11 +24,6 @@ namespace Challenges.Challenges
         public void EndOfBattle()
         {
             Progress++;
-        }
-        
-        protected override string GetDescription()
-        {
-            return "Finish " + RequiredProgress + " consecutive battles without losing a life";
         }
     }
 }

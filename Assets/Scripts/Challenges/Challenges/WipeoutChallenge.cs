@@ -6,15 +6,14 @@ namespace Challenges.Challenges
     {
         private const int BASE_WIPEOUTS_REQUIRED = 1;
 
-        public WipeoutChallenge(ChallengeRewardType challengeRewardType, int level) : 
-            base(challengeRewardType)
-        {
-            RequiredProgress = level + BASE_WIPEOUTS_REQUIRED;
-        }
-
         protected override string GetDescription()
         {
             return "Kill every enemy in " + RequiredProgress + " consecutive battles";
+        }
+        
+        protected override int GetRequiredProgress(int level)
+        {
+            return level + BASE_WIPEOUTS_REQUIRED;
         }
 
         public void EndOfBattle()

@@ -13,10 +13,10 @@ public class PlayerProgress
     private const int INIT_MAX_LIVES = 3;
     private const int INIT_GOLD = 5;
     private const int INIT_MOVES_PER_TURN = 1;
-    private const int INIT_NUM_OF_TURNS = 5;
+    private const int INIT_NUM_OF_TURNS = 6;
     
-    private const int INIT_NUM_OF_CARD_OFFERS = 3;
-    private const int INIT_NUM_OF_ITEM_OFFERS = 3;
+    private const int INIT_NUM_OF_CARD_OFFERS = 2;
+    private const int INIT_NUM_OF_ITEM_OFFERS = 2;
     private const int INIT_NUM_OF_CHALLENGE_OFFERS = 2;
     
     public List<Design> Deck { get; private set; }= new List<Design>();
@@ -75,8 +75,6 @@ public class PlayerProgress
     {
         switch (challengeRewardType)
         {
-            case ChallengeRewardType.None:
-                break;
             case ChallengeRewardType.Plank:
                 MaxPlanks++;
                 break;
@@ -84,10 +82,13 @@ public class PlayerProgress
                 MovesPerTurn++;
                 break;
             case ChallengeRewardType.DesignOffer:
+                NumberOfCardsToOffer++;
                 break;
             case ChallengeRewardType.ItemOffer:
+                NumberOfItemsToOffer++;
                 break;
             case ChallengeRewardType.ChallengeOffer:
+                NumberOfChallengesToOffer++;
                 break;
             default:
                 throw new ArgumentOutOfRangeException();

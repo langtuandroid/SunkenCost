@@ -18,13 +18,14 @@ namespace OfferScreen
         [SerializeField] private CostDisplay costDisplay;
         [SerializeField] private LockButton lockButton;
         [SerializeField] private Color lockColor;
+        [SerializeField] private TooltipTrigger tooltipTrigger;
     
         public bool isLocked = false;
 
         private void Start()
         {
-            titleText.text = ItemOffer.Title;
-            descText.text = ItemOffer.Desc;
+            titleText.text = tooltipTrigger.header = ItemOffer.Title;
+            descText.text = tooltipTrigger.content = ItemOffer.Desc;
             image.sprite = Sprite;
 
             OfferScreenEvents.Current.OnGridsUpdated += OffersRefreshed;

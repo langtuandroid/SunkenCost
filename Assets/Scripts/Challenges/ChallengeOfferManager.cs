@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Linq;
 using Challenges.Challenges;
 using OfferScreen;
 using UnityEngine;
@@ -36,9 +37,39 @@ namespace Challenges
             }
         }
 
-        private Challenge GenerateChallenge(List<Challenge> listOfOfferedChallenges)
+        private static Challenge GenerateChallenge(List<Challenge> listOfOfferedChallenges)
         {
-            return new PacifistChallenge(ChallengeRewardType.Move, 0);
+            var types = listOfOfferedChallenges.Select(c => c.GetType()).ToList();
+            var challengeType = ChallengeLoader.GetRandomChallengeType(types);
+            var challenge = ChallengeLoader.CreateChallenge(challengeType);
+
+            var challengeRewardTypes = listOfOfferedChallenges.Select(c => c.ChallengeRewardType).ToList();
+
+            var allChallengeRewardTypes = Enum.GetValues(typeof(ChallengeRewardType));
+
+            ChallengeRewardType challengeRewardType;
+
+            if (!challengeRewardTypes.Contains(ChallengeRewardType.Plank))
+                challengeRewardType = ChallengeRewardType.Plank;
+            else while (true)
+            {
+                challengeRewardType =
+                    (ChallengeRewardType)allChallengeRewardTypes
+                        .GetValue(Random.Range(0, allChallengeRewardTypes.Length));
+
+                if (!challengeRewardTypes.Contains(challengeRewardType)) break;
+            }
+            
+            
+            var level = (int)MathF.Floor(RunProgress.BattleNumber / 5f);
+                
+            // Plank challenges are harder
+            if (challengeRewardType == ChallengeRewardType.Plank) level ++;
+                
+            challenge.Initialise(challengeRewardType, level);
+
+            
+            return challenge;
         }
     }
 }

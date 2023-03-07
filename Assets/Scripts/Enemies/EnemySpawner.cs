@@ -22,11 +22,11 @@ public class EnemySpawner : MonoBehaviour
         }
 
         BattleEvents.Current.OnBeginPlayerTurn += SpawnNewRound;
-        BattleEvents.Current.OnBeginBattle += BeginBattle;
+        BattleEvents.Current.OnStartBattle += StartBattle;
         
     }
 
-    private void BeginBattle()
+    private void StartBattle()
     {
         _scenario = ScenarioManager.GetScenario(RunProgress.BattleNumber);
         SpawnNewRound();
@@ -34,6 +34,8 @@ public class EnemySpawner : MonoBehaviour
 
     private void SpawnNewRound()
     {
+        if (BattleManager.Current.Turn == RunProgress.PlayerProgress.NumberOfTurns) return;
+        
         var enemyTypes = _scenario.GetRound(BattleManager.Current.Turn);
         
         var newEnemies = new List<string>();

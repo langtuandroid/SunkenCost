@@ -9,8 +9,10 @@ namespace Challenges
 
         public void SpawnChallengeButton(Challenge challenge)
         {
-            var newObj = Instantiate(challengeButtonPrefab, challengesArea);
-            var newChallengeButton = newObj.GetComponent<ChallengeButton>();
+            var newTransform = Instantiate(challengeButtonPrefab, challengesArea).transform;
+            newTransform.SetSiblingIndex(challengesArea.childCount - 2);
+            
+            var newChallengeButton = newTransform.GetComponent<ChallengeButton>();
             newChallengeButton.Init(challenge);
         }
     }

@@ -20,7 +20,7 @@ namespace Challenges
 
         public void Init(Challenge challenge)
         {
-            var challengeRewardArchetype = ChallengeArchetypeLoader.GetChallengeArchetype(challenge.ChallengeRewardType);
+            var challengeRewardArchetype = ChallengeRewardLoader.GetChallengeRewardInfo(challenge.ChallengeRewardType);
             iconImage.sprite = challengeRewardArchetype.sprite;
             title.text = challengeRewardArchetype.title;
             

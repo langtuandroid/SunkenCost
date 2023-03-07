@@ -10,9 +10,10 @@ namespace Challenges
         protected int Progress { get; set; }
         protected int RequiredProgress { get; set; }
 
-        protected Challenge(ChallengeRewardType challengeRewardType)
+        public void Initialise(ChallengeRewardType challengeRewardType, int level)
         {
             ChallengeRewardType = challengeRewardType;
+            RequiredProgress = GetRequiredProgress(level);
         }
 
         public bool HasAchievedCondition()
@@ -24,11 +25,19 @@ namespace Challenges
         {
             var desc = GetDescription();
 
+            if (RequiredProgress == 1)
+            {
+                if (desc.Contains("consecutive battles"))
+                    desc = desc.Replace("1 consecutive battles", "a battle");
+            }
+
             if (HasAchievedCondition()) return desc;
             
             return desc + " (" + Progress + "/" + RequiredProgress + ")";
         }
 
         protected abstract string GetDescription();
+
+        protected abstract int GetRequiredProgress(int level);
     }
 }

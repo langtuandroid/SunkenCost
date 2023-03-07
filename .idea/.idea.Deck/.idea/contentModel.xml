@@ -639,12 +639,15 @@
           <e p="ChallengeLoader.cs" t="Include" />
           <e p="Challenges" t="Include">
             <e p="Challenge.cs" t="Include" />
-            <e p="ChallengeArchetypeLoader.cs" t="Include" />
             <e p="ChallengeButton.cs" t="Include" />
             <e p="ChallengeButtonSpawner.cs" t="Include" />
+            <e p="ChallengeLoader.cs" t="Include" />
             <e p="ChallengeOfferManager.cs" t="Include" />
-            <e p="ChallengeRewardArchetype.cs" t="Include" />
+            <e p="ChallengeReward.cs" t="Include" />
+            <e p="ChallengeRewardLoader.cs" t="Include" />
             <e p="Challenges" t="Include">
+              <e p="ArrogantChallenge.cs" t="Include" />
+              <e p="HoarderChallenge.cs" t="Include" />
               <e p="PacifistChallenge.cs" t="Include" />
               <e p="UntouchableChallenge.cs" t="Include" />
               <e p="WipeoutChallenge.cs" t="Include" />
@@ -654,6 +657,7 @@
               <e p="IEndOfBattleListener.cs" t="Include" />
               <e p="IKillListener.cs" t="Include" />
               <e p="IPlayerLostLifeListener.cs" t="Include" />
+              <e p="IStartOfBattleListener.cs" t="Include" />
             </e>
           </e>
           <e p="Debug" t="Include">
@@ -760,6 +764,7 @@
             <e p="IOffer.cs" t="Include" />
             <e p="ItemOfferDisplay.cs" t="Include" />
             <e p="LockButton.cs" t="Include" />
+            <e p="MovesDisplay.cs" t="Include" />
             <e p="OfferManager.cs" t="Include" />
             <e p="OfferScreenEvents.cs" t="Include" />
             <e p="OfferStorage.cs" t="Include" />

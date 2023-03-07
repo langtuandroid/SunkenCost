@@ -1,10 +1,13 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using OfferScreen;
 using UnityEngine;
 
 public class OfferScreenEvents : MonoBehaviour
 {
+    [SerializeField] private PlankCount plankCount;
+    
     public static OfferScreenEvents Current;
 
     public event Action OnGridsUpdated;
@@ -22,5 +25,6 @@ public class OfferScreenEvents : MonoBehaviour
     public void RefreshOffers()
     {
         OnGridsUpdated?.Invoke();
+        plankCount.UpdateText(OfferManager.Current.CardsOnTopRow);
     }
 }

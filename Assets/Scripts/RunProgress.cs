@@ -73,10 +73,6 @@ public class RunProgress : MonoBehaviour
         _offerStorage = new OfferStorage();
         _battleNumber = 0;
         _currentEvent = DisturbanceType.None;
-        _activeChallenges = new List<Challenge>()
-        {
-            new UntouchableChallenge(ChallengeRewardType.Move, 0),
-            new WipeoutChallenge(ChallengeRewardType.Plank, 0)
-        };
+        _activeChallenges = new List<Challenge>();
     }
 }

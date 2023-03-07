@@ -24,7 +24,7 @@
         private void AlterGold(int amount)
         {
             Gold += amount;
-            _goldDisplay.Refresh(Gold);
+            _goldDisplay.UpdateText(Gold);
         }
     }
 }

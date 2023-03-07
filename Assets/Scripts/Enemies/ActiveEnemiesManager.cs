@@ -160,13 +160,14 @@ public class ActiveEnemiesManager : MonoBehaviour
                 */
                 
                 // Tell everyone about the move
+                if (enemy.StickNum == StickManager.current.stickCount) continue;
+                
+                
                 BattleEvents.Current.CharacterMoved();
-
+                    
                 // Wait for any planks to execute
                 while (!EtchingManager.Current.finishedProcessingEnemyMove)
                     yield return 0;
-                
-                
             }
         }
 

@@ -4,7 +4,6 @@ namespace Challenges
 {
     public enum ChallengeRewardType
     {
-        None,
         Plank,
         Move,
         DesignOffer,
@@ -13,7 +12,7 @@ namespace Challenges
     }
     
     [CreateAssetMenu(menuName = "ChallengeRewardArchetype")]
-    public class ChallengeRewardArchetype : ScriptableObject
+    public class ChallengeReward : ScriptableObject
     {
         public ChallengeRewardType challengeRewardType;
         public string title;
