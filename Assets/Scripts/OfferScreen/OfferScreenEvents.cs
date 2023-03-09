@@ -25,6 +25,6 @@ public class OfferScreenEvents : MonoBehaviour
     public void RefreshOffers()
     {
         OnGridsUpdated?.Invoke();
-        plankCount.UpdateText(OfferManager.Current.CardsOnTopRow);
+        plankCount.UpdateText(OfferManager.CardsOnTopRow);
     }
 }

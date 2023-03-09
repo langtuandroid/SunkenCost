@@ -70,6 +70,7 @@ public class RunProgress : MonoBehaviour
     {
         _playerProgress = new PlayerProgress();
         _playerProgress.InitialiseDeck();
+        _playerProgress.InitialiseItems();
         _offerStorage = new OfferStorage();
         _battleNumber = 0;
         _currentEvent = DisturbanceType.None;

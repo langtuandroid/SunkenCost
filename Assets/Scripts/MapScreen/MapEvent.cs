@@ -8,11 +8,18 @@ namespace MapScreen
 
     public class MapEvent : MonoBehaviour
     {
-        private Button _button;
-        public Disturbance disturbance;
-
         [SerializeField] private TextMeshProUGUI titleText;
         [SerializeField] private TextMeshProUGUI descriptionText;
+
+        [SerializeField] private Image innerWash;
+        [SerializeField] private Sprite blueInnerWash;
+        [SerializeField] private Sprite redInnerWash;
+
+        public Disturbance disturbance;
+
+        public bool isElite;
+        //private Button _button;
+        
 
         private void Start()
         {
@@ -20,6 +27,8 @@ namespace MapScreen
             image.sprite = disturbance.sprite;
             titleText.text = disturbance.title;
             descriptionText.text = disturbance.description;
+
+            innerWash.sprite = isElite ? redInnerWash : blueInnerWash;
         }
         
         public void NextBattle()

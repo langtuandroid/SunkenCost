@@ -681,7 +681,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 3739874107440994272, guid: 753e431c20e8b5d45a1560f4e9ca944f, type: 3}
       propertyPath: m_Pivot.x
-      value: -0.1
+      value: 1.01
       objectReference: {fileID: 0}
     - target: {fileID: 3739874107440994272, guid: 753e431c20e8b5d45a1560f4e9ca944f, type: 3}
       propertyPath: m_SizeDelta.x
@@ -697,11 +697,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3739874107440994272, guid: 753e431c20e8b5d45a1560f4e9ca944f, type: 3}
       propertyPath: m_AnchoredPosition.x
-      value: 1126.3317
+      value: 2097.1675
       objectReference: {fileID: 0}
     - target: {fileID: 3739874107440994272, guid: 753e431c20e8b5d45a1560f4e9ca944f, type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: 1193.0696
+      value: 3401.202
       objectReference: {fileID: 0}
     - target: {fileID: 3739874107924409688, guid: 753e431c20e8b5d45a1560f4e9ca944f, type: 3}
       propertyPath: m_Pivot.x
@@ -1503,6 +1503,8 @@ GameObject:
   - component: {fileID: 2643005068748562046}
   - component: {fileID: 2643005068748562047}
   - component: {fileID: 2643005068748562044}
+  - component: {fileID: 2643005068748562049}
+  - component: {fileID: 2643005068748562048}
   m_Layer: 0
   m_Name: OfferManager
   m_TagString: Untagged
@@ -1550,12 +1552,36 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 197f6c6d32eeea54298e7fa9864a172c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  takeGrid: {fileID: 2643005069100941201}
-  leaveGrid: {fileID: 2643005068724583717}
+  goldDisplay: {fileID: 1054751920}
+--- !u!114 &2643005068748562048
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2643005068748562041}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4cdf6a755153433dbff5e33b9a6961cf, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  deckRow: {fileID: 2643005069100941201}
+  offerRow: {fileID: 2643005068724583717}
   designCardPrefab: {fileID: 3236138630613875171, guid: 53c7292f3521a3f448e8a0ab6a7ad794, type: 3}
+--- !u!114 &2643005068748562049
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2643005068748562041}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3b75e1cc52d145d8b9a379594d4ca4f6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
   itemOfferPrefab: {fileID: 8599158762966935373, guid: 3c4f4e62bd98f8f47832d91bc87574d8, type: 3}
   itemGrid: {fileID: 975578165}
-  goldDisplay: {fileID: 1054751920}
 --- !u!1 &2643005069100941200
 GameObject:
   m_ObjectHideFlags: 0

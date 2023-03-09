@@ -6,11 +6,17 @@ using UnityEngine.Serialization;
 
 public enum DisturbanceType
 {
+    // Normal
     None,
     GoldRush,
     Heart,
     UpgradeCard,
-    SpecificCard
+    SpecificCard,
+    Item,
+    
+    // Elite
+    Confused,
+    Move
 }
 
 [CreateAssetMenu(menuName = "Disturbance")]

@@ -1,6 +1,6 @@
 namespace Items
 {
-    public class PoisonTipsItem : InGameItem
+    public class PoisonTipsItem : InBattleItem
     {
         public const int PoisonAmount = 1;
     

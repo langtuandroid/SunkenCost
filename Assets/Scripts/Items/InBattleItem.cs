@@ -4,7 +4,7 @@ using UnityEngine.UI;
 
 namespace Items
 {
-    public abstract class InGameItem : MonoBehaviour
+    public abstract class InBattleItem : MonoBehaviour
     {
         public string Title { get; set; }
         public string Description { get; set; }

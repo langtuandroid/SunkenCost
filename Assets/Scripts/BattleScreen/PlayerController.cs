@@ -22,11 +22,15 @@ public class PlayerController : MonoBehaviour
         // One instance of static objects only
         if (current)
         {
-            Destroy(gameObject);
-            return;
+            Destroy(current.gameObject);
         }
         
         current = this;
+        
+        Lives = RunProgress.PlayerProgress.Lives;
+        MaxLives = RunProgress.PlayerProgress.MaxLives;
+        _baseMovesPerTurn = RunProgress.PlayerProgress.MovesPerTurn;
+        MovesPerTurn = _baseMovesPerTurn;
     }
 
     private void Start()
@@ -36,13 +40,7 @@ public class PlayerController : MonoBehaviour
         BattleEvents.Current.OnEnemyReachedEnd += OnEnemyReachedEnd;
         BattleEvents.Current.OnRedraw += OnRedraw;
 
-        Lives = RunProgress.PlayerProgress.Lives;
-        MaxLives = RunProgress.PlayerProgress.MaxLives;
-        _baseMovesPerTurn = RunProgress.PlayerProgress.MovesPerTurn;
-        MovesPerTurn = _baseMovesPerTurn;
-        
-        HUDManager.current.UpdateLives();
-        HUDManager.current.UpdateMovesText();
+        BattleHUDManager.current.UpdateMovesText();
     }
 
     private void OnEndEnemyTurn()
@@ -64,7 +62,6 @@ public class PlayerController : MonoBehaviour
     {
         Lives -= 1;
         BattleEvents.Current.LostLife();
-        HUDManager.current.UpdateLives();
         if (Lives <= 0) BattleManager.Current.OutOfLives();
     }
 
@@ -82,7 +79,7 @@ public class PlayerController : MonoBehaviour
     private void UsedMove()
     {
         MovesUsedThisTurn += 1;
-        HUDManager.current.UpdateMovesText();
+        BattleHUDManager.current.UpdateMovesText();
     }
 
     public void PlayCard(int cost)

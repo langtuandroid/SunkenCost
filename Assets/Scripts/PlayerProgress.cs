@@ -13,7 +13,7 @@ public class PlayerProgress
     private const int INIT_MAX_LIVES = 3;
     private const int INIT_GOLD = 5;
     private const int INIT_MOVES_PER_TURN = 1;
-    private const int INIT_NUM_OF_TURNS = 6;
+    private const int INIT_NUM_OF_TURNS = 5;
     
     private const int INIT_NUM_OF_CARD_OFFERS = 2;
     private const int INIT_NUM_OF_ITEM_OFFERS = 2;
@@ -25,11 +25,11 @@ public class PlayerProgress
 
     public readonly PriceHandler PriceHandler = new PriceHandler();
 
-    public int MaxPlanks { get; private set; }
+    public int MaxPlanks { get; set; }
     public int Lives { get; set; }
     public int MaxLives { get; private set; }
     public int Gold { get; private set; }
-    public int MovesPerTurn { get; private set; }
+    public int MovesPerTurn { get; set; }
     public int NumberOfTurns { get; private set; }
     public int NumberOfCardsToOffer { get; private set; }
     public int NumberOfItemsToOffer { get; private set; }
@@ -55,6 +55,10 @@ public class PlayerProgress
         Deck.Add(new Swordsman());
         Deck.Add(new Slinger());
         Deck.Add(new Impede());
+    }
+    
+    public void InitialiseItems()
+    {
     }
 
     public void SaveDeck(IEnumerable<Design> newDeck)

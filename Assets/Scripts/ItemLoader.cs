@@ -21,7 +21,7 @@ public class ItemLoader : MonoBehaviour
         _current = this;
         
         // Get the Etching Offers
-        var itemsEnumerable = Extensions.GetAllChildrenOfClassOrNull<InGameItem>();
+        var itemsEnumerable = Extensions.GetAllChildrenOfClassOrNull<InBattleItem>();
         foreach (var type in itemsEnumerable)
         {
             // Remove the 'Items.' from the start and 'Item' from end of file name

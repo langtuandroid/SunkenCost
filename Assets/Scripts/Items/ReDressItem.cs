@@ -1,6 +1,6 @@
 namespace Items
 {
-    public class ReDressItem : InGameItem
+    public class ReDressItem : InBattleItem
     {
         public const int DamageAmount = 5;
         

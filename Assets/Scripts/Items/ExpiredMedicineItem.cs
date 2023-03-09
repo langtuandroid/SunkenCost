@@ -1,6 +1,6 @@
 namespace Items
 {
-    public class ExpiredMedicineItem : InGameItem
+    public class ExpiredMedicineItem : InBattleItem
     {
         public const int DamageAmount = 2;
 

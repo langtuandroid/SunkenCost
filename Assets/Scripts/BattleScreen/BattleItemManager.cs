@@ -9,8 +9,8 @@ public class BattleItemManager : MonoBehaviour
 {
     public static BattleItemManager Current;
 
-    private readonly List<InGameItem> _activeItems = new List<InGameItem>();
-    public static List<InGameItem> ActiveItems => Current._activeItems;
+    private readonly List<InBattleItem> _activeItems = new List<InBattleItem>();
+    public static List<InBattleItem> ActiveItems => Current._activeItems;
     
     [SerializeField] private GameObject itemPrefab;
     [SerializeField] private Transform itemGrid;
@@ -40,7 +40,7 @@ public class BattleItemManager : MonoBehaviour
         newItem.AddComponent(itemType);
         newItem.transform.GetChild(0).GetChild(1).GetComponent<Image>().sprite = ItemLoader.GetItemSprite(itemName);
         
-        ActiveItems.Add(newItem.GetComponent<InGameItem>());
+        ActiveItems.Add(newItem.GetComponent<InBattleItem>());
     }
 
 }

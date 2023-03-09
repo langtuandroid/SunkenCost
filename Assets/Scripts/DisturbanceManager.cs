@@ -32,11 +32,35 @@ public class DisturbanceManager : MonoBehaviour
     public static void ExecuteEndOfBattleDisturbanceAction(DisturbanceType disturbanceType)
     {
         var disturbance = GetDisturbance(disturbanceType);
+        
+        //TODO: FIX THIS
 
-        if (disturbance.disturbanceType == DisturbanceType.GoldRush)
-            RunProgress.PlayerProgress.AlterGold(disturbance.amount);
-        else if (disturbance.disturbanceType == DisturbanceType.Heart)
-            PlayerController.current.AddLife(disturbance.amount);
+        switch (disturbance.disturbanceType)
+        {
+            case DisturbanceType.GoldRush:
+                RunProgress.PlayerProgress.AlterGold(disturbance.amount);
+                break;
+            case DisturbanceType.Heart:
+                PlayerController.current.AddLife(disturbance.amount);
+                break;
+            case DisturbanceType.None:
+                break;
+            case DisturbanceType.UpgradeCard:
+                break;
+            case DisturbanceType.SpecificCard:
+                break;
+            case DisturbanceType.Item:
+                break;
+            case DisturbanceType.Move:
+                RunProgress.PlayerProgress.MovesPerTurn++;
+                break;
+            case DisturbanceType.Confused:
+                RunProgress.PlayerProgress.MaxPlanks++;
+                RunProgress.PlayerProgress.Items.Add("Confused");
+                break;
+            default:
+                throw new ArgumentOutOfRangeException();
+        }
     }
 
     private string GetDisturbanceDescription(Disturbance disturbance)

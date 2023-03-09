@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using System.Linq;
 using Etchings;
 using UnityEngine;
+using Random = UnityEngine.Random;
 
 public class StickManager : MonoBehaviour
 {
@@ -113,4 +114,14 @@ public class StickManager : MonoBehaviour
     }
 
     public Stick MouseOver => _sticks.FirstOrDefault(stick => stick.mouseIsOver);
+
+    public void RandomisePlanks()
+    {
+        _sticks = _sticks.OrderBy(s => Random.value).ToList();
+
+        for (var i = 0; i < _sticks.Count; i++)
+        {
+            _sticks[i].transform.SetSiblingIndex(i+1);
+        }
+    }
 }

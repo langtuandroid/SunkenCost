@@ -10,10 +10,21 @@ public enum EnemyType
     Axolitl
 }
 
+public enum ScenarioType
+{
+    Easy,
+    EasyElite,
+    Medium,
+    MediumElite,
+    Hard,
+    HardElite,
+}
+
 [CreateAssetMenu(menuName = "Battles/Scenario")]
 public class Scenario : ScriptableObject
 {
-    public int Difficulty { get; private set; }
+    public ScenarioType scenarioType;
+
     public List<EnemyType> round1 = new List<EnemyType>();
     public List<EnemyType> round2 = new List<EnemyType>();
     public List<EnemyType> round3 = new List<EnemyType>();
@@ -23,7 +34,7 @@ public class Scenario : ScriptableObject
     public List<EnemyType> round7 = new List<EnemyType>();
 
 
-    public int scaledDifficulty;
+    public float scaledDifficulty;
 
     public List<EnemyType> GetRound(int round)
     {

@@ -9,10 +9,11 @@ using Random = UnityEngine.Random;
 
 public class ScenarioManager : MonoBehaviour
 {
+    private const int BATTLES_PER_DIFFICULTY = 3;
+    
     private static ScenarioManager Current;
 
-    public List<Scenario> scenariosList = new List<Scenario>();
-    public Dictionary<int, List<Scenario>> scenarios { get; private set; }= new Dictionary<int, List<Scenario>>();
+    private Dictionary<ScenarioType, List<Scenario>> scenariosByDifficulty { get; set; }= new Dictionary<ScenarioType, List<Scenario>>();
     
     void Awake()
     {
@@ -24,24 +25,19 @@ public class ScenarioManager : MonoBehaviour
 
         Current = this;
         DontDestroyOnLoad(this.gameObject);
+
+        var scenarios = Extensions.GetAllInstancesOrNull<Scenario>();
         
-        /*
-        var scenariosList = AssetDatabase.FindAssets($"t: {nameof(Scenario)}").ToList()
-            .Select(AssetDatabase.GUIDToAssetPath)
-            .Select(AssetDatabase.LoadAssetAtPath<Scenario>)
-            .ToList();
-        */
-        
-        foreach (var scenario in scenariosList)
+        foreach (var scenario in scenarios)
         {
-            var difficulty = scenario.Difficulty;
-            if (scenarios.ContainsKey(difficulty))
+            var difficulty = scenario.scenarioType;
+            if (scenariosByDifficulty.ContainsKey(difficulty))
             {
-                scenarios[difficulty].Add(scenario);
+                scenariosByDifficulty[difficulty].Add(scenario);
             }
             else
             {
-                scenarios.Add(difficulty, new List<Scenario>() {scenario});
+                scenariosByDifficulty.Add(difficulty, new List<Scenario>() {scenario});
             }
         }
         
@@ -49,17 +45,46 @@ public class ScenarioManager : MonoBehaviour
 
     public static Scenario GetScenario(int battle)
     {
-        var difficulty = (int)Math.Floor(battle / 2f);
-        var scenarioOptions = Current.scenarios.Where(p => p.Key == difficulty).Select(p => p.Value).FirstOrDefault();
+        ScenarioType scenarioType;
+        switch (battle)
+        { 
+            case (< BATTLES_PER_DIFFICULTY):
+                scenarioType = ScenarioType.Easy;
+                break;
+            case (BATTLES_PER_DIFFICULTY):
+                scenarioType = ScenarioType.EasyElite;
+                break;
+            case (<BATTLES_PER_DIFFICULTY * 2):
+                scenarioType = ScenarioType.Medium;
+                break;
+            case (BATTLES_PER_DIFFICULTY * 2):
+                scenarioType = ScenarioType.MediumElite;
+                break;
+            case (< BATTLES_PER_DIFFICULTY * 3):
+                scenarioType = ScenarioType.Hard;
+                break;
+            case (BATTLES_PER_DIFFICULTY * 3):
+                scenarioType = ScenarioType.HardElite;
+                break;
+            default:
+                Debug.Log(BATTLES_PER_DIFFICULTY);
+                scenarioType = ScenarioType.Easy;
+                break;
+        }
+
+        var scenarioOptions = Current.scenariosByDifficulty.
+            Where(p => p.Key == scenarioType).
+            Select(p => p.Value).FirstOrDefault();
+        
         if (scenarioOptions?.Count > 0)
         {
             var i = Random.Range(0, scenarioOptions.Count);
             var scenario = scenarioOptions[i];
-            scenario.scaledDifficulty = difficulty;
+            scenario.scaledDifficulty = 0;
             return scenario;
         }  
         
-        //Debug.Log("Battle No. " + battle + ", difficulty " + difficulty +": No scenario found");
+        //TODO: Get rid of this once all battles have been implemented
         var scaledScenario = GetScenario(0);
         scaledScenario.scaledDifficulty = (int)Math.Floor(battle / 3f);
         return scaledScenario;

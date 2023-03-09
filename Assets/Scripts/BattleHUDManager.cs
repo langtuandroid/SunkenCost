@@ -2,17 +2,18 @@
 using System.Collections;
 using System.Collections.Generic;
 using TMPro;
+using UI;
 using UnityEngine;
 using UnityEngine.Serialization;
 using UnityEngine.UI;
 
-public class HUDManager : MonoBehaviour
+public class BattleHUDManager : MonoBehaviour
 {
-    public static HUDManager current;
+    public static BattleHUDManager current;
+
+    [SerializeField] private Hearts hearts;
     
     [SerializeField] private TextMeshProUGUI _movesText;
-
-    private List<Heart> _hearts = new List<Heart>();
 
     [SerializeField] private Transform heartsParentTransform;
 
@@ -31,11 +32,10 @@ public class HUDManager : MonoBehaviour
     private void Start()
     {
         BattleEvents.Current.OnBeginPlayerTurn += UpdateMovesText;
+        BattleEvents.Current.OnLostLife += UpdateLives;
         
-        for (var i = 0; i < heartsParentTransform.childCount; i++)
-        {
-            _hearts.Add(heartsParentTransform.GetChild(i).GetComponent<Heart>());
-        }
+        UpdateLives();
+        UpdateMovesText();
     }
 
 
@@ -45,13 +45,8 @@ public class HUDManager : MonoBehaviour
         _movesText.text = movesLeft + "/" + PlayerController.current.MovesPerTurn;
     }
 
-    public void UpdateLives()
+    private void UpdateLives()
     {
-        var lives = PlayerController.current.Lives;
-
-        for (var i = 0; i < _hearts.Count; i++)
-        {
-            _hearts[i].SetHeart(lives > i);
-        }
+        hearts.UpdateLives(PlayerController.current.Lives);
     }
 }

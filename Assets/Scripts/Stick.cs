@@ -8,15 +8,16 @@ using UnityEngine.EventSystems;
 
 public class Stick : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDragHandler, IPointerEnterHandler, IPointerExitHandler
 {
+    [SerializeField] private Image plankImage;
+    [SerializeField] private Image washImage;
+    
     private UnityEngine.UI.Extensions.ReorderableListNoEdges _parentListController;
-    private Image _image;
+    
     public ActiveEtching etching = null;
     public IndicatorController IndicatorController { get; private set; }
     private bool _dragging = false;
     public bool mouseIsOver = false;
 
-    [SerializeField] private Image _washImage;
-    
 
     private void Start()
     {
@@ -24,8 +25,6 @@ public class Stick : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDragHan
 
         _parentListController =
             transform.parent.parent.GetComponent<UnityEngine.UI.Extensions.ReorderableListNoEdges>();
-
-        _image = transform.GetChild(0).GetComponent<Image>();
     }
 
     public void Update()
@@ -54,7 +53,7 @@ public class Stick : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDragHan
         }
         */
 
-        _washImage.enabled = false;
+        washImage.enabled = false;
         _dragging = true;
     }
 
@@ -63,7 +62,7 @@ public class Stick : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDragHan
         if (!_dragging) return;
         transform.localScale = new Vector3(1, 1, 1);
         _dragging = false;
-        _washImage.enabled = true;
+        washImage.enabled = true;
     }
 
     public void OnPointerEnter(PointerEventData eventData)
@@ -88,15 +87,15 @@ public class Stick : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDragHan
 
     private IEnumerator ColorForAttack(Color color)
     {
-        var oldColor = _image.color;
-        _image.color = color;
+        var oldColor = plankImage.color;
+        plankImage.color = color;
         yield return new WaitForSeconds(BattleManager.AttackTime);
-        _image.color = oldColor;
+        plankImage.color = oldColor;
     }
 
     public void SetActive(bool active)
     {
-        _image.color = active ? Color.white : new Color(0.65f, 0.65f, 0.65f);
+        plankImage.color = active ? Color.white : new Color(0.65f, 0.65f, 0.65f);
     }
 
     public void DestroyStick()

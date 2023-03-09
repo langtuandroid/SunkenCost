@@ -629,6 +629,7 @@
             <e p="MusicManager.cs" t="Include" />
           </e>
           <e p="BackgroundColorController.cs" t="Include" />
+          <e p="BattleHUDManager.cs" t="Include" />
           <e p="BattleScreen" t="Include">
             <e p="BattleEvents.cs" t="Include" />
             <e p="BattleItemManager.cs" t="Include" />
@@ -735,12 +736,12 @@
           <e p="EtchingTurnProcess.cs" t="Include" />
           <e p="Extensions.cs" t="Include" />
           <e p="GlobalEvents.cs" t="Include" />
-          <e p="HUDManager.cs" t="Include" />
           <e p="ItemLoader.cs" t="Include" />
           <e p="Items" t="Include">
+            <e p="ConfusedItem.cs" t="Include" />
             <e p="ExpiredMedicineItem.cs" t="Include" />
             <e p="ExtraTurnItem.cs" t="Include" />
-            <e p="InGameItem.cs" t="Include" />
+            <e p="InBattleItem.cs" t="Include" />
             <e p="ItemOffer.cs" t="Include" />
             <e p="PoisonTipsItem.cs" t="Include" />
             <e p="RedressItem.cs" t="Include" />
@@ -748,7 +749,6 @@
           <e p="Log.cs" t="Include" />
           <e p="MainManager.cs" t="Include" />
           <e p="MapScreen" t="Include">
-            <e p="DisturbanceEvent.cs" t="Include" />
             <e p="MapEvent.cs" t="Include" />
             <e p="MapEventGenerator.cs" t="Include" />
             <e p="ShipyardButton.cs" t="Include" />
@@ -759,10 +759,12 @@
             <e p="CardLayout.cs" t="Include" />
             <e p="CostDisplay.cs" t="Include" />
             <e p="DesignCard.cs" t="Include" />
+            <e p="DesignCardOfferGenerator.cs" t="Include" />
             <e p="DesignCardRow.cs" t="Include" />
             <e p="GoldDisplay.cs" t="Include" />
             <e p="IOffer.cs" t="Include" />
             <e p="ItemOfferDisplay.cs" t="Include" />
+            <e p="ItemOfferGenerator.cs" t="Include" />
             <e p="LockButton.cs" t="Include" />
             <e p="MovesDisplay.cs" t="Include" />
             <e p="OfferManager.cs" t="Include" />
@@ -772,7 +774,6 @@
             <e p="PriceHandler.cs" t="Include" />
           </e>
           <e p="PersistantManagers.cs" t="Include" />
-          <e p="PlayerLevelController.cs" t="Include" />
           <e p="PlayerProgress.cs" t="Include" />
           <e p="ReorderableList" t="Include">
             <e p="ReorderableList.cs" t="Include" />
@@ -795,6 +796,7 @@
             <e p="EnemyTurnFrame.cs" t="Include" />
             <e p="GoldText.cs" t="Include" />
             <e p="Heart.cs" t="Include" />
+            <e p="Hearts.cs" t="Include" />
             <e p="InGameButton.cs" t="Include" />
             <e p="LoseLifeShaderController.cs" t="Include" />
             <e p="MainMenu.cs" t="Include" />
