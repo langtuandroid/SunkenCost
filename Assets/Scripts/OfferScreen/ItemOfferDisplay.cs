@@ -9,7 +9,6 @@ namespace OfferScreen
     public class ItemOfferDisplay : MonoBehaviour, IPointerClickHandler, IOffer
     {
         public ItemOffer ItemOffer { get; set; }
-        public Sprite Sprite { get; set; }
 
         [SerializeField] private Image backgroundImage;
         [SerializeField] private Image image;
@@ -24,9 +23,10 @@ namespace OfferScreen
 
         private void Start()
         {
-            titleText.text = tooltipTrigger.header = ItemOffer.Title;
-            descText.text = tooltipTrigger.content = ItemOffer.Desc;
-            image.sprite = Sprite;
+            var asset = ItemOffer.itemAsset;
+            titleText.text = tooltipTrigger.header = asset.title;
+            descText.text = tooltipTrigger.content = asset.GetDescription(asset.amount);
+            image.sprite = asset.sprite;
 
             OfferScreenEvents.Current.OnGridsUpdated += OffersRefreshed;
         }

@@ -1,46 +1,32 @@
-using System;
-using System.Collections;
-using System.Collections.Generic;
-using Items;
 using UnityEngine;
-using UnityEngine.UI;
 
-public class BattleItemManager : MonoBehaviour
+namespace BattleScreen
 {
-    public static BattleItemManager Current;
-
-    private readonly List<InBattleItem> _activeItems = new List<InBattleItem>();
-    public static List<InBattleItem> ActiveItems => Current._activeItems;
-    
-    [SerializeField] private GameObject itemPrefab;
-    [SerializeField] private Transform itemGrid;
-
-    private void Awake()
+    public class BattleItemManager : MonoBehaviour
     {
-        if (Current)
+        private void Start()
         {
-            Destroy(Current.gameObject);
+            BattleEvents.Current.OnStartBattle += StartOfBattle;
+            BattleEvents.Current.OnEnemyAttacked += EnemyAttacked;
+            BattleEvents.Current.OnEnemyHealed += EnemyHealed;
         }
 
-        Current = this;
-    }
-
-    private void Start()
-    {
-        foreach (var item in RunProgress.PlayerProgress.Items)
+        private void StartOfBattle()
         {
-            EquipItem(item);
+            foreach (var listener in RunProgress.ItemInventory.StartOfBattleListeners)
+                listener.StartOfBattle();
+        }
+
+        private void EnemyAttacked()
+        {
+            foreach (var listener in RunProgress.ItemInventory.EnemyAttackedListeners)
+                listener.EnemyAttacked();
+        }
+
+        private void EnemyHealed()
+        {
+            foreach (var listener in RunProgress.ItemInventory.EnemyHealedListeners)
+                listener.EnemyHealed();
         }
     }
-    
-    public static void EquipItem(string itemName)
-    {
-        var newItem = Instantiate(Current.itemPrefab, Current.itemGrid);
-        var itemType = ItemLoader.Items[itemName];
-        newItem.AddComponent(itemType);
-        newItem.transform.GetChild(0).GetChild(1).GetComponent<Image>().sprite = ItemLoader.GetItemSprite(itemName);
-        
-        ActiveItems.Add(newItem.GetComponent<InBattleItem>());
-    }
-
 }

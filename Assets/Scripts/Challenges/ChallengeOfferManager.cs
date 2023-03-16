@@ -27,7 +27,7 @@ namespace Challenges
             }
 
             var amountOfChallengesToGenerate = 
-                RunProgress.PlayerProgress.NumberOfChallengesToOffer - listOfOfferedChallenges.Count;
+                RunProgress.PlayerStats.NumberOfChallengesToOffer - listOfOfferedChallenges.Count;
 
             for (var i = 0; i < amountOfChallengesToGenerate; i++)
             {

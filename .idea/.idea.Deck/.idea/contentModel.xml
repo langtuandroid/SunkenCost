@@ -621,6 +621,7 @@
           <e p="BattleScenarios" t="Include" />
           <e p="ChallengeRewards" t="Include" />
           <e p="Disturbances" t="Include" />
+          <e p="Items" t="Include" />
         </e>
         <e p="Scripts" t="Include">
           <e p="Audio" t="Include">
@@ -654,12 +655,6 @@
               <e p="WipeoutChallenge.cs" t="Include" />
             </e>
             <e p="InBattleChallengeListener.cs" t="Include" />
-            <e p="Listeners" t="Include">
-              <e p="IEndOfBattleListener.cs" t="Include" />
-              <e p="IKillListener.cs" t="Include" />
-              <e p="IPlayerLostLifeListener.cs" t="Include" />
-              <e p="IStartOfBattleListener.cs" t="Include" />
-            </e>
           </e>
           <e p="Debug" t="Include">
             <e p="ScreenToWorldPoint.cs" t="Include" />
@@ -734,17 +729,32 @@
             <e p="StrikeZoneEtching.cs" t="Include" />
           </e>
           <e p="EtchingTurnProcess.cs" t="Include" />
+          <e p="EventListeners" t="Include">
+            <e p="IEndOfBattleListener.cs" t="Include" />
+            <e p="IEnemyAttackedListener.cs" t="Include" />
+            <e p="IEnemyHealedListener.cs" t="Include" />
+            <e p="IEnemyReachedEnd.cs" t="Include" />
+            <e p="IKillListener.cs" t="Include" />
+            <e p="IPlayerLostLifeListener.cs" t="Include" />
+            <e p="IStartOfBattleListener.cs" t="Include" />
+          </e>
           <e p="Extensions.cs" t="Include" />
           <e p="GlobalEvents.cs" t="Include" />
           <e p="ItemLoader.cs" t="Include" />
           <e p="Items" t="Include">
-            <e p="ConfusedItem.cs" t="Include" />
-            <e p="ExpiredMedicineItem.cs" t="Include" />
             <e p="ExtraTurnItem.cs" t="Include" />
             <e p="InBattleItem.cs" t="Include" />
+            <e p="ItemAsset.cs" t="Include" />
+            <e p="ItemInventory.cs" t="Include" />
             <e p="ItemOffer.cs" t="Include" />
-            <e p="PoisonTipsItem.cs" t="Include" />
-            <e p="RedressItem.cs" t="Include" />
+            <e p="Items" t="Include">
+              <e p="ConfusedItem.cs" t="Include" />
+              <e p="ExpiredMedicineItem.cs" t="Include" />
+              <e p="IHasPickupAction.cs" t="Include" />
+              <e p="Item.cs" t="Include" />
+              <e p="PoisonTipsItem.cs" t="Include" />
+              <e p="RedressItem.cs" t="Include" />
+            </e>
           </e>
           <e p="Log.cs" t="Include" />
           <e p="MainManager.cs" t="Include" />
@@ -774,7 +784,7 @@
             <e p="PriceHandler.cs" t="Include" />
           </e>
           <e p="PersistantManagers.cs" t="Include" />
-          <e p="PlayerProgress.cs" t="Include" />
+          <e p="PlayerStats.cs" t="Include" />
           <e p="ReorderableList" t="Include">
             <e p="ReorderableList.cs" t="Include" />
             <e p="ReorderableListContent.cs" t="Include" />
@@ -798,6 +808,7 @@
             <e p="Heart.cs" t="Include" />
             <e p="Hearts.cs" t="Include" />
             <e p="InGameButton.cs" t="Include" />
+            <e p="ItemDisplay.cs" t="Include" />
             <e p="LoseLifeShaderController.cs" t="Include" />
             <e p="MainMenu.cs" t="Include" />
             <e p="MoveText.cs" t="Include" />

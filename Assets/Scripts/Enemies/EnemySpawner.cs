@@ -34,7 +34,7 @@ public class EnemySpawner : MonoBehaviour
 
     private void SpawnNewRound()
     {
-        if (BattleManager.Current.Turn == RunProgress.PlayerProgress.NumberOfTurns) return;
+        if (BattleManager.Current.Turn == RunProgress.PlayerStats.NumberOfTurns) return;
         
         var enemyTypes = _scenario.GetRound(BattleManager.Current.Turn);
         
@@ -90,7 +90,7 @@ public class EnemySpawner : MonoBehaviour
         // For now
         var newEnemies = new List<string>();
 
-            var amountToSpawn = Mathf.Floor((BattleManager.Current.Turn + (RunProgress.BattleNumber / 3 * 2 * RunProgress.PlayerProgress.NumberOfTurns)) / (RunProgress.PlayerProgress.NumberOfTurns * 2f)) + 1;
+            var amountToSpawn = Mathf.Floor((BattleManager.Current.Turn + (RunProgress.BattleNumber / 3 * 2 * RunProgress.PlayerStats.NumberOfTurns)) / (RunProgress.PlayerStats.NumberOfTurns * 2f)) + 1;
             for (var i = 0; i < amountToSpawn; i++)
             {
                 // Count -1 to not include boss

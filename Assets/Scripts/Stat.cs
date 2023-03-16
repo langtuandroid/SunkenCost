@@ -1,13 +1,14 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
+using System.Linq;
+using UnityEngine;
 
 public class Stat
 {
-    private float _baseValue;
-    private float lastBaseValue = float.MinValue;
+    private float _lastBaseValue = float.MinValue;
 
-    private bool needsRecalculating = true;
+    private bool _needsRecalculating = true;
     private int _value;
     
     private readonly List<StatModifier> _statModifiers;
@@ -18,18 +19,16 @@ public class Stat
     {
         get
         {
-            if (needsRecalculating || _baseValue != lastBaseValue)
-            {
-                lastBaseValue = _baseValue;
-                _value = (int) CalculateFinalValue();
-                needsRecalculating = false;
-            }
+            if (!_needsRecalculating && !(Math.Abs(BaseValue - _lastBaseValue) > 0.01f)) return _value;
+            _lastBaseValue = BaseValue;
+            _value = CalculateFinalValue();
+            _needsRecalculating = false;
 
             return _value;
         }
     }
 
-    public float BaseValue => _baseValue;
+    public float BaseValue { get; }
 
     public Stat()
     {
@@ -39,13 +38,13 @@ public class Stat
     
     public Stat(int baseValue) : this()
     {
-        _baseValue = baseValue;
+        BaseValue = baseValue;
         
     }
 
     public void AddModifier(StatModifier mod)
     {
-        needsRecalculating = true;
+        _needsRecalculating = true;
         _statModifiers.Add(mod);
         _statModifiers.Sort(CompareModifierOrder);
     }
@@ -63,7 +62,7 @@ public class Stat
     {
         if (_statModifiers.Remove(mod))
         {
-            needsRecalculating = true;
+            _needsRecalculating = true;
             return true;
         }
 
@@ -78,7 +77,7 @@ public class Stat
         {
             if (_statModifiers[i].Source == source)
             {
-                needsRecalculating = true;
+                _needsRecalculating = true;
                 didRemove = true;
                 _statModifiers.RemoveAt(i);
             }
@@ -89,32 +88,43 @@ public class Stat
 
     private int CalculateFinalValue()
     {
-        var finalValue = _baseValue;
+        var finalValue = BaseValue;
         float sumPercentAdd = 0;
+
+        // If there's override stat mod types, return the largest numbered override
+        var overrides = _statModifiers.Where(sm => sm.Type == StatModType.Override).ToList();
+        if (overrides.Any())
+        {
+            return (int)overrides.Max(sm => sm.Value);
+        }
 
         for (var i = 0; i < _statModifiers.Count; i++)
         {
-            StatModifier statModifier = _statModifiers[i];
-            
-            if (statModifier.Type == StatModType.Flat)
-            {
-                finalValue += statModifier.Value;
-            }
-            else if (statModifier.Type == StatModType.PercentAdd)
-            {
-                sumPercentAdd += statModifier.Value;
+            var statModifier = _statModifiers[i];
 
-                if (i + 1 >= _statModifiers.Count || _statModifiers[i + 1].Type != StatModType.PercentAdd)
-                {
-                    finalValue *= 1 + sumPercentAdd;
-                    sumPercentAdd = 0;
-                }
-            }
-            else if (statModifier.Type == StatModType.PercentMult)
+            switch (statModifier.Type)
             {
-                finalValue *= 1 + statModifier.Value;
+                case StatModType.Flat:
+                    finalValue += statModifier.Value;
+                    break;
+                case StatModType.PercentAdd:
+                {
+                    sumPercentAdd += statModifier.Value;
+
+                    if (i + 1 >= _statModifiers.Count || _statModifiers[i + 1].Type != StatModType.PercentAdd)
+                    {
+                        finalValue *= 1 + sumPercentAdd;
+                        sumPercentAdd = 0;
+                    }
+
+                    break;
+                }
+                case StatModType.PercentMult:
+                    finalValue *= 1 + statModifier.Value;
+                    break;
+                default:
+                    throw new ArgumentOutOfRangeException();
             }
-            
         }
 
         return (int) Math.Round(finalValue, 0);

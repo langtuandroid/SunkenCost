@@ -1,4 +1,4 @@
-﻿namespace Challenges.Listeners
+﻿namespace EventListeners
 {
     public interface IPlayerLostLifeListener
     {

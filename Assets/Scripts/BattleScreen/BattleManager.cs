@@ -3,6 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using BattleScene;
+using BattleScreen;
 using Challenges;
 using UnityEngine;
 using UnityEngine.UI;
@@ -54,7 +55,7 @@ public class BattleManager : MonoBehaviour
 
         BattleEvents.Current.BeginBattle();
 
-        foreach (var design in RunProgress.PlayerProgress.Deck)
+        foreach (var design in RunProgress.PlayerStats.Deck)
         {
             StickManager.current.CreateStick();
             EtchingManager.Current.CreateEtching(StickManager.current.GetStick(StickManager.current.stickCount - 1),
@@ -71,8 +72,7 @@ public class BattleManager : MonoBehaviour
         //
         if (Input.GetKeyDown(KeyCode.X))
         {
-            BattleItemManager.EquipItem("ExtraTurn");
-            RunProgress.PlayerProgress.AlterGold(50);
+            RunProgress.PlayerStats.AlterGold(50);
         }
 
         if (Input.GetKeyDown(KeyCode.D))
@@ -92,7 +92,7 @@ public class BattleManager : MonoBehaviour
         {
             BattleEvents.Current.EndEnemyTurn();
             
-            if (Turn >= RunProgress.PlayerProgress.NumberOfTurns)
+            if (Turn >= RunProgress.PlayerStats.NumberOfTurns)
             {
                 gameState = GameState.Rewards;
                 CreateEndOfBattlePopup();
@@ -194,7 +194,7 @@ public class BattleManager : MonoBehaviour
     {
         foreach (var challenge in _completedChallenges)
         {
-            RunProgress.PlayerProgress.AcceptChallengeReward(challenge.ChallengeRewardType);
+            RunProgress.PlayerStats.AcceptChallengeReward(challenge.ChallengeRewardType);
         }
         
         EndBattle();
@@ -204,7 +204,7 @@ public class BattleManager : MonoBehaviour
     {
         DisturbanceManager.ExecuteEndOfBattleDisturbanceAction(RunProgress.CurrentEvent);
         
-        RunProgress.PlayerProgress.Lives = PlayerController.current.Lives;
+        RunProgress.PlayerStats.Lives = PlayerController.current.Lives;
         MainManager.Current.LoadOfferScreen();
         Destroy(gameObject);
     }

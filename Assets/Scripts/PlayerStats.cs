@@ -7,7 +7,7 @@ using JetBrains.Annotations;
 using OfferScreen;
 using UnityEngine;
 
-public class PlayerProgress
+public class PlayerStats
 {
     private const int INIT_MAX_PLANKS = 3;
     private const int INIT_MAX_LIVES = 3;
@@ -21,11 +21,11 @@ public class PlayerProgress
     
     public List<Design> Deck { get; private set; }= new List<Design>();
 
-    public List<string> Items { get; private set; } = new List<string>();
-
     public readonly PriceHandler PriceHandler = new PriceHandler();
 
-    public int MaxPlanks { get; set; }
+    public readonly Stat maxPlanks;
+
+    public int MaxPlanks => maxPlanks.Value;
     public int Lives { get; set; }
     public int MaxLives { get; private set; }
     public int Gold { get; private set; }
@@ -36,9 +36,9 @@ public class PlayerProgress
     
     public int NumberOfChallengesToOffer { get; private set; }
 
-    public PlayerProgress()
+    public PlayerStats()
     {
-        MaxPlanks = INIT_MAX_PLANKS;
+        maxPlanks = new Stat(INIT_MAX_PLANKS);
         MaxLives = INIT_MAX_LIVES;
         Gold = INIT_GOLD;
         MovesPerTurn = INIT_MOVES_PER_TURN;
@@ -56,18 +56,14 @@ public class PlayerProgress
         Deck.Add(new Slinger());
         Deck.Add(new Impede());
     }
-    
-    public void InitialiseItems()
-    {
-    }
 
     public void SaveDeck(IEnumerable<Design> newDeck)
     {
         Deck = newDeck.ToList();
         
         // Cut off deck if it's too big
-        if (Deck.Count >= RunProgress.PlayerProgress.MaxPlanks) 
-            Deck = Deck.GetRange(0, RunProgress.PlayerProgress.MaxPlanks);
+        if (Deck.Count >= RunProgress.PlayerStats.MaxPlanks) 
+            Deck = Deck.GetRange(0, RunProgress.PlayerStats.MaxPlanks);
     }
     
     public void AlterGold(int amount)
@@ -77,10 +73,10 @@ public class PlayerProgress
 
     public void AcceptChallengeReward(ChallengeRewardType challengeRewardType)
     {
+        /*
         switch (challengeRewardType)
         {
             case ChallengeRewardType.Plank:
-                MaxPlanks++;
                 break;
             case ChallengeRewardType.Move:
                 MovesPerTurn++;
@@ -97,5 +93,6 @@ public class PlayerProgress
             default:
                 throw new ArgumentOutOfRangeException();
         }
+        */
     }
 }

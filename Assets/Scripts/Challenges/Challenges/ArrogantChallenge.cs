@@ -1,4 +1,4 @@
-﻿using Challenges.Listeners;
+﻿using EventListeners;
 
 namespace Challenges.Challenges
 {
@@ -18,7 +18,7 @@ namespace Challenges.Challenges
 
         public void StartOfBattle()
         {
-            if (StickManager.current.stickCount >= RunProgress.PlayerProgress.MaxPlanks)
+            if (StickManager.current.stickCount >= RunProgress.PlayerStats.MaxPlanks)
             {
                 Progress = 0;
                 return;

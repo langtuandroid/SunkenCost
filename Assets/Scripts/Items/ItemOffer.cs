@@ -2,21 +2,13 @@
 {
     public class ItemOffer
     {
-        public string ItemId;
-        public string Title { get; set; }
-        public string Desc { get; set; }
-        public int Rarity { get; set; }
+        public readonly ItemAsset itemAsset;
+        public int Cost { get; private set; }
         
-        public int Cost { get; set; }
-
-        public ItemOffer(string itemId, string title, string desc, int rarity)
+        public ItemOffer(ItemAsset itemAsset)
         {
-            ItemId = itemId;
-            Title = title;
-            Desc = desc;
-            Rarity = rarity;
-
-            Cost = RunProgress.PlayerProgress.PriceHandler.GetItemCost(rarity);
+            this.itemAsset = itemAsset;
+            Cost = RunProgress.PlayerStats.PriceHandler.GetItemCost(itemAsset.rarity);
         }
     }
 }

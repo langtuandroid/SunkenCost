@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using Challenges;
 using Challenges.Challenges;
+using Items;
 using MapScreen;
 using OfferScreen;
 using UnityEngine;
@@ -10,8 +11,9 @@ using UnityEngine;
 public class RunProgress : MonoBehaviour
 {
     private static RunProgress _current;
-    private PlayerProgress _playerProgress;
+    private PlayerStats _playerStats;
     private OfferStorage _offerStorage;
+    private ItemInventory _itemInventory;
 
     private int _battleNumber;
 
@@ -20,8 +22,10 @@ public class RunProgress : MonoBehaviour
 
     private bool _hasGeneratedMapEvents;
 
-    public static PlayerProgress PlayerProgress => _current._playerProgress;
+    public static PlayerStats PlayerStats => _current._playerStats;
     public static OfferStorage OfferStorage => _current._offerStorage;
+
+    public static ItemInventory ItemInventory => _current._itemInventory;
     
     public static int BattleNumber => _current._battleNumber;
 
@@ -34,6 +38,8 @@ public class RunProgress : MonoBehaviour
     public void Awake()
     {
         _current = this;
+
+        _itemInventory = GetComponentInChildren<ItemInventory>();
     }
 
     public static void Initialise()
@@ -68,10 +74,10 @@ public class RunProgress : MonoBehaviour
     
     private void InitialiseRun()
     {
-        _playerProgress = new PlayerProgress();
-        _playerProgress.InitialiseDeck();
-        _playerProgress.InitialiseItems();
+        _playerStats = new PlayerStats();
+        _playerStats.InitialiseDeck();
         _offerStorage = new OfferStorage();
+        _itemInventory.WipeInventory();
         _battleNumber = 0;
         _currentEvent = DisturbanceType.None;
         _activeChallenges = new List<Challenge>();

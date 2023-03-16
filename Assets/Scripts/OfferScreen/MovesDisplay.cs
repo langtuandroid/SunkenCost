@@ -10,7 +10,7 @@ namespace OfferScreen
 
         private void Awake()
         {
-            UpdateText(RunProgress.PlayerProgress.MovesPerTurn);
+            UpdateText(RunProgress.PlayerStats.MovesPerTurn);
         }
 
         private void UpdateText(int moves)

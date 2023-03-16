@@ -48,7 +48,7 @@ public abstract class Design
             Limitless = true;
         }
         
-        Cost = RunProgress.PlayerProgress.PriceHandler.GetCardCost(GetStat(St.Rarity));
+        Cost = RunProgress.PlayerStats.PriceHandler.GetCardCost(GetStat(St.Rarity));
     }
 
     protected abstract void Init();

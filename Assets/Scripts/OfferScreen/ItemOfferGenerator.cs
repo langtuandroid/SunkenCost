@@ -14,13 +14,13 @@ namespace OfferScreen
 
         public void Initialise()
         {
-            var offeredItemIds = new List<string>();
+            var offeredItemAssets = new List<ItemAsset>();
 
             // Load locked items
             foreach (var itemOffer in RunProgress.OfferStorage.LockedItemOffers)
             {
                 CreateItemOfferDisplay(itemOffer, true);
-                offeredItemIds.Add(itemOffer.ItemId);
+                offeredItemAssets.Add(itemOffer.itemAsset);
             }
 
             // If we've already generated the items (haven't completed a battle since), load the unlocked items from
@@ -30,16 +30,16 @@ namespace OfferScreen
                 foreach (var itemOffer in RunProgress.OfferStorage.UnlockedItemOffers)
                 {
                     CreateItemOfferDisplay(itemOffer, false);
-                    offeredItemIds.Add(itemOffer.ItemId);
+                    offeredItemAssets.Add(itemOffer.itemAsset);
                 }
             }
             else
             {
                 for (var i = RunProgress.OfferStorage.LockedItemOffers.Count;
-                    i < RunProgress.PlayerProgress.NumberOfItemsToOffer;
+                    i < RunProgress.PlayerStats.NumberOfItemsToOffer;
                     i++)
                 {
-                    CreateItemOfferDisplay(GenerateNewItemOffer(offeredItemIds), false);
+                    CreateItemOfferDisplay(GenerateNewItemOffer(offeredItemAssets), false);
                 }
             }
         }
@@ -50,22 +50,26 @@ namespace OfferScreen
             var itemOfferDisplay = itemOfferGameObject.GetComponent<ItemOfferDisplay>();
             
             itemOfferDisplay.ItemOffer = itemOffer;
-            itemOfferDisplay.Sprite = ItemLoader.GetItemSprite(itemOffer.ItemId);
             itemOfferDisplay.isLocked = isLocked;
         }
         
-        private static ItemOffer GenerateNewItemOffer(IReadOnlyCollection<string> otherItems)
+        private static ItemOffer GenerateNewItemOffer(IReadOnlyCollection<ItemAsset> otherItemAssets)
         {
-            string itemId;
+            ItemAsset itemAsset;
             
             while (true)
             { 
-                itemId = ItemLoader.GetRandomItem(); 
-                if (otherItems.FirstOrDefault(id => id == itemId) == null)
+                itemAsset = GetRandomItemAsset(); 
+                if (otherItemAssets.FirstOrDefault(i => i == itemAsset) == null)
                     break;
             }
 
-            return ItemLoader.CreateItemOffer(itemId);
+            return new ItemOffer(itemAsset);
+        }
+        
+        private static ItemAsset GetRandomItemAsset()
+        {
+            return ItemLoader.ItemTypes.ElementAt(Random.Range(0, ItemLoader.ItemTypes.Count)).Key;
         }
     }
 }

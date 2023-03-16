@@ -38,7 +38,7 @@ public class DisturbanceManager : MonoBehaviour
         switch (disturbance.disturbanceType)
         {
             case DisturbanceType.GoldRush:
-                RunProgress.PlayerProgress.AlterGold(disturbance.amount);
+                RunProgress.PlayerStats.AlterGold(disturbance.amount);
                 break;
             case DisturbanceType.Heart:
                 PlayerController.current.AddLife(disturbance.amount);
@@ -52,11 +52,9 @@ public class DisturbanceManager : MonoBehaviour
             case DisturbanceType.Item:
                 break;
             case DisturbanceType.Move:
-                RunProgress.PlayerProgress.MovesPerTurn++;
+                RunProgress.PlayerStats.MovesPerTurn++;
                 break;
             case DisturbanceType.Confused:
-                RunProgress.PlayerProgress.MaxPlanks++;
-                RunProgress.PlayerProgress.Items.Add("Confused");
                 break;
             default:
                 throw new ArgumentOutOfRangeException();

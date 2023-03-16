@@ -332,7 +332,7 @@ namespace Enemies
         {
             InGameSfxManager.current.Death();
             // TODO: CHANGE 
-            if (killedByPlayer) RunProgress.PlayerProgress.AlterGold(Gold);
+            if (killedByPlayer) RunProgress.PlayerStats.AlterGold(Gold);
             IsDestroyed = true;
             Moving = false;
             Log.current.AddEvent("E" + _turnOrder + " has been killed");

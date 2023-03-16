@@ -16,7 +16,7 @@ namespace OfferScreen
         public void StoreOffers(IEnumerable<DesignCard> deckRow,
             IEnumerable<DesignCard> designOfferRow, IEnumerable<ItemOfferDisplay> itemOffers)
         {
-            RunProgress.PlayerProgress.SaveDeck(deckRow.Select(designCard => designCard.Design).ToList());
+            RunProgress.PlayerStats.SaveDeck(deckRow.Select(designCard => designCard.Design).ToList());
             LockedDesignOffers.Clear();
             UnlockedDesignOffers.Clear();
             LockedItemOffers.Clear();

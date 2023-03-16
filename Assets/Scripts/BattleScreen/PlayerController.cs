@@ -27,9 +27,9 @@ public class PlayerController : MonoBehaviour
         
         current = this;
         
-        Lives = RunProgress.PlayerProgress.Lives;
-        MaxLives = RunProgress.PlayerProgress.MaxLives;
-        _baseMovesPerTurn = RunProgress.PlayerProgress.MovesPerTurn;
+        Lives = RunProgress.PlayerStats.Lives;
+        MaxLives = RunProgress.PlayerStats.MaxLives;
+        _baseMovesPerTurn = RunProgress.PlayerStats.MovesPerTurn;
         MovesPerTurn = _baseMovesPerTurn;
     }
 

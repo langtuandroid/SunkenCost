@@ -1,4 +1,4 @@
-﻿using Challenges.Listeners;
+﻿using EventListeners;
 
 namespace Challenges.Challenges
 {

@@ -33,7 +33,7 @@ public class OfferManager : MonoBehaviour
 
         Current = this;
         
-        BuyerSeller = new BuyerSeller(RunProgress.PlayerProgress.Gold, goldDisplay);
+        BuyerSeller = new BuyerSeller(RunProgress.PlayerStats.Gold, goldDisplay);
 
         _itemOfferGenerator = GetComponent<ItemOfferGenerator>();
         _designCardOfferGenerator = GetComponent<DesignCardOfferGenerator>();
@@ -49,7 +49,7 @@ public class OfferManager : MonoBehaviour
     public void BackToMap()
     {
         if (BuyerSeller.Gold < 0) return;
-        if (CardsOnTopRow > RunProgress.PlayerProgress.MaxPlanks) return;
+        if (CardsOnTopRow > RunProgress.PlayerStats.MaxPlanks) return;
 
         var deckRow = _designCardOfferGenerator.CardsInDeckRow;
         var offerRow = _designCardOfferGenerator.CardsInLeaveRow;
@@ -73,7 +73,7 @@ public class OfferManager : MonoBehaviour
 
     public void BuyItem(ItemOffer itemOffer)
     {
-        RunProgress.PlayerProgress.Items.Add(itemOffer.ItemId);
+        RunProgress.ItemInventory.AddItem(itemOffer.itemAsset);
         BuyerSeller.Buy(itemOffer.Cost);
         OfferScreenEvents.Current.RefreshOffers();
     }

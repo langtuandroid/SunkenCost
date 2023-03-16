@@ -312,7 +312,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: Shoddy Craftsmanship
+  m_text: MAP EVEN HERE MAPE EVENT EV
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 4499a74f09eb89d46b9ef11cf627fe67, type: 2}
   m_sharedMaterial: {fileID: -206832898088371101, guid: 4499a74f09eb89d46b9ef11cf627fe67, type: 2}
@@ -447,7 +447,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: What the fuck, you definitely should not be seeing this
+  m_text: What the what the, you definitely should not be seeing this
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: b9ad7116cce90bd4299bd085f02dda22, type: 2}
   m_sharedMaterial: {fileID: 5762254661995016597, guid: b9ad7116cce90bd4299bd085f02dda22, type: 2}

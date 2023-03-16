@@ -39,7 +39,7 @@ namespace OfferScreen
 
         private IEnumerable<DesignCard> CreateDeckCards()
         {
-            return CreateBatchOfDesignCards(RunProgress.PlayerProgress.Deck, deckRow, lockable: false);
+            return CreateBatchOfDesignCards(RunProgress.PlayerStats.Deck, deckRow, lockable: false);
         }
 
         private IEnumerable<DesignCard> CreateLockedCards()
@@ -57,7 +57,7 @@ namespace OfferScreen
             var newCards = new List<DesignCard>();
             
             var amountOfLockedCards = RunProgress.OfferStorage.LockedDesignOffers.Count;
-            for (var i = amountOfLockedCards; i < RunProgress.PlayerProgress.NumberOfCardsToOffer; i++)
+            for (var i = amountOfLockedCards; i < RunProgress.PlayerStats.NumberOfCardsToOffer; i++)
             {
                 var designName = GetDesign();
                 var designType = DesignManager.GetDesignType(designName);

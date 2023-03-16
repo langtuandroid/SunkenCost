@@ -1,4 +1,6 @@
-﻿using UnityEngine;
+﻿using System;
+using Items;
+using Random = UnityEngine.Random;
 
 namespace OfferScreen
 {
@@ -24,10 +26,26 @@ namespace OfferScreen
                    + Random.Range(-BASE_CARD_COST_VARIATION, BASE_CARD_COST_VARIATION);
         }
 
-        public int GetItemCost(int itemRarity)
+        public int GetItemCost(ItemRarity itemRarity)
         {
-            return itemRarity * _itemCostMultiplier.Value
-                   + Random.Range(-BASE_ITEM_COST_VARIATION, BASE_ITEM_COST_VARIATION);;
+            var cost = Random.Range(-BASE_ITEM_COST_VARIATION, BASE_ITEM_COST_VARIATION);
+            switch (itemRarity)
+            {
+                case ItemRarity.Common:
+                    cost += 15;
+                    break;
+                case ItemRarity.Uncommon:
+                    cost += 25;
+                    break;
+                case ItemRarity.Rare:
+                    cost += 40;
+                    break;
+                case ItemRarity.ElitePickup:
+                default:
+                    throw new ArgumentOutOfRangeException(nameof(itemRarity), itemRarity, null);
+            }
+
+            return cost;
         }
     }
 }

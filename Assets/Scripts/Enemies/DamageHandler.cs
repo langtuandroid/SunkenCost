@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
+using BattleScreen;
 using Enemies;
 using Etchings;
 using UnityEngine;
@@ -41,8 +42,8 @@ public static class DamageHandler
 
         var flatModifyingEtchings = EtchingManager.Current.etchingOrder.OfType<IDamageFlatModifier>();
         var multiModifyingEtchings = EtchingManager.Current.etchingOrder.OfType<IDamageMultiplierModifier>();
-        var flatModifyingItems = BattleItemManager.ActiveItems.OfType<IDamageFlatModifier>();
-        var multiModifyingItems = BattleItemManager.ActiveItems.OfType<IDamageMultiplierModifier>();
+        var flatModifyingItems = RunProgress.ItemInventory.DamageFlatModifiers;
+        var multiModifyingItems = RunProgress.ItemInventory.DamageMultiplierModifiers;
         
         damage = flatModifyingEtchings.Aggregate(damage, (current, mod) => mod.GetDamageModification(current, enemy, source, etching));
         damage = flatModifyingItems.Aggregate(damage, (current, mod) => mod.GetDamageModification(current, enemy, source, etching));
