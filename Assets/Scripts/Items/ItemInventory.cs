@@ -1,3 +1,4 @@
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using EventListeners;
@@ -10,6 +11,7 @@ namespace Items
     {
         private List<EquippedItem> _items = new List<EquippedItem>();
 
+        public IEnumerable<ItemInstance> ItemInstances => _items.Select(i => i.ItemInstance).ToArray();
         public IEnumerable<ItemAsset> ItemAssets => _items.Select(i => i.ItemInstance.itemAsset);
 
         public IEnumerable<IStartOfBattleListener> StartOfBattleListeners => _items
@@ -27,9 +29,16 @@ namespace Items
         public void AddItem(ItemInstance itemInstance)
         {
             var itemType = ItemLoader.ItemTypes[itemInstance.itemAsset];
-            var newItem = gameObject.AddComponent(itemType).GetComponent<EquippedItem>();
-            newItem.SetInstance(itemInstance);
-            _items.Add(newItem);
+            
+            if (gameObject.AddComponent(itemType) is EquippedItem newItem)
+            {
+                newItem.SetInstance(itemInstance);
+                _items.Add(newItem);
+            }
+            else
+            {
+                throw new Exception("Equipped item is not an equipped item?");
+            }
         }
     
         public void WipeInventory()
@@ -40,11 +49,6 @@ namespace Items
             }
         
             _items = new List<EquippedItem>();
-        }
-    
-        public void StartBattle()
-        {
-        
         }
     }
 }

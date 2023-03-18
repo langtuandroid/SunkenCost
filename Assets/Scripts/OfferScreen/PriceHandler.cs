@@ -28,6 +28,8 @@ namespace OfferScreen
 
         public int GetItemCost(ItemRarity itemRarity)
         {
+            return 1;
+            
             var cost = Random.Range(-BASE_ITEM_COST_VARIATION, BASE_ITEM_COST_VARIATION);
             switch (itemRarity)
             {

@@ -23,16 +23,11 @@ namespace OfferScreen
         private void Start()
         {
             var itemInstance = ItemOffer.itemInstance;
-
-            var title = itemInstance.Title;
-            var desc = itemInstance.Description;
-
-            itemDisplay.SetTitle(title);
-            itemDisplay.SetDescription(desc);
-            itemDisplay.SetSprite(itemInstance.Sprite);
+            
+            itemDisplay.SetItemInstance(itemInstance);
             itemDisplay.SetBackgroundColor(isLocked ? lockColor : Color.white);
             
-            titleText.text = title;
+            titleText.text = itemInstance.Title;
             
             OfferScreenEvents.Current.OnGridsUpdated += OffersRefreshed;
         }

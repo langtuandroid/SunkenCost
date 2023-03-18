@@ -50,7 +50,6 @@ namespace OfferScreen
         {
             var itemOfferGameObject = Instantiate(itemOfferPrefab, itemGrid);
             var itemOfferDisplay = itemOfferGameObject.GetComponent<ItemOfferDisplay>();
-            
             itemOfferDisplay.ItemOffer = itemOffer;
             itemOfferDisplay.isLocked = isLocked;
         }

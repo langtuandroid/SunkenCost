@@ -810,6 +810,7 @@
             <e p="Hearts.cs" t="Include" />
             <e p="InGameButton.cs" t="Include" />
             <e p="ItemDisplay.cs" t="Include" />
+            <e p="ItemIconsDisplay.cs" t="Include" />
             <e p="LoseLifeShaderController.cs" t="Include" />
             <e p="MainMenu.cs" t="Include" />
             <e p="MoveText.cs" t="Include" />

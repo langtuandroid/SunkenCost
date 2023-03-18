@@ -1,4 +1,6 @@
-﻿using TMPro;
+﻿using System;
+using Items;
+using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -11,24 +13,38 @@ namespace UI
         
         [SerializeField] private TooltipTrigger tooltipTrigger;
 
-        public void SetTitle(string title)
+        private ItemInstance _itemInstance;
+
+        private void Start()
+        {
+            SetTitle(_itemInstance.Title);
+            SetDescription(_itemInstance.Description);
+            SetSprite(_itemInstance.Sprite);
+        }
+
+        public void SetItemInstance(ItemInstance itemInstance)
+        {
+            _itemInstance = itemInstance;
+        }
+        
+        public void SetBackgroundColor(Color color)
+        {
+            backgroundImage.color = color;
+        }
+
+        private void SetTitle(string title)
         {
             tooltipTrigger.header = title;
         }
 
-        public void SetDescription(string desc)
+        private void SetDescription(string desc)
         {
             tooltipTrigger.content = desc;
         }
-        
-        public void SetSprite(Sprite sprite)
+
+        private void SetSprite(Sprite sprite)
         {
             image.sprite = sprite;
-        }
-
-        public void SetBackgroundColor(Color color)
-        {
-            backgroundImage.color = color;
         }
     }
 }
