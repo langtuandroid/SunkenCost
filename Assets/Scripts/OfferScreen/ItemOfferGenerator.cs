@@ -39,7 +39,9 @@ namespace OfferScreen
                     i < RunProgress.PlayerStats.NumberOfItemsToOffer;
                     i++)
                 {
-                    CreateItemOfferDisplay(GenerateNewItemOffer(offeredItemAssets), false);
+                    var nextItemAsset = GenerateNextItemAsset(offeredItemAssets);
+                    var newItemOffer = new ItemOffer(nextItemAsset);
+                    CreateItemOfferDisplay(newItemOffer, false);
                 }
             }
         }
@@ -53,7 +55,7 @@ namespace OfferScreen
             itemOfferDisplay.isLocked = isLocked;
         }
         
-        private static ItemOffer GenerateNewItemOffer(IReadOnlyCollection<ItemAsset> otherItemAssets)
+        private static ItemAsset GenerateNextItemAsset(IReadOnlyCollection<ItemAsset> otherItemAssets)
         {
             ItemAsset itemAsset;
             
@@ -64,7 +66,7 @@ namespace OfferScreen
                     break;
             }
 
-            return new ItemOffer(itemAsset);
+            return itemAsset;
         }
         
         private static ItemAsset GetRandomItemAsset()

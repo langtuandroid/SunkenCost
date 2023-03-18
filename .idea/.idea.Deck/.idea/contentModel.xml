@@ -745,13 +745,14 @@
             <e p="ExtraTurnItem.cs" t="Include" />
             <e p="InBattleItem.cs" t="Include" />
             <e p="ItemAsset.cs" t="Include" />
+            <e p="ItemInstance.cs" t="Include" />
             <e p="ItemInventory.cs" t="Include" />
             <e p="ItemOffer.cs" t="Include" />
             <e p="Items" t="Include">
               <e p="ConfusedItem.cs" t="Include" />
+              <e p="EquippedItem.cs" t="Include" />
               <e p="ExpiredMedicineItem.cs" t="Include" />
               <e p="IHasPickupAction.cs" t="Include" />
-              <e p="Item.cs" t="Include" />
               <e p="PoisonTipsItem.cs" t="Include" />
               <e p="RedressItem.cs" t="Include" />
             </e>

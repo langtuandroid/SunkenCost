@@ -1,5 +1,6 @@
 using Items;
 using TMPro;
+using UI;
 using UnityEngine;
 using UnityEngine.EventSystems;
 using UnityEngine.UI;
@@ -8,26 +9,31 @@ namespace OfferScreen
 {
     public class ItemOfferDisplay : MonoBehaviour, IPointerClickHandler, IOffer
     {
-        public ItemOffer ItemOffer { get; set; }
-
-        [SerializeField] private Image backgroundImage;
-        [SerializeField] private Image image;
         [SerializeField] private TextMeshProUGUI titleText;
-        [SerializeField] private TextMeshProUGUI descText;
+
+        [SerializeField] private ItemDisplay itemDisplay;
         [SerializeField] private CostDisplay costDisplay;
         [SerializeField] private LockButton lockButton;
         [SerializeField] private Color lockColor;
-        [SerializeField] private TooltipTrigger tooltipTrigger;
-    
+        
+        public ItemOffer ItemOffer { get; set; }
+
         public bool isLocked = false;
 
         private void Start()
         {
-            var asset = ItemOffer.itemAsset;
-            titleText.text = tooltipTrigger.header = asset.title;
-            descText.text = tooltipTrigger.content = asset.GetDescription(asset.amount);
-            image.sprite = asset.sprite;
+            var itemInstance = ItemOffer.itemInstance;
 
+            var title = itemInstance.Title;
+            var desc = itemInstance.Description;
+
+            itemDisplay.SetTitle(title);
+            itemDisplay.SetDescription(desc);
+            itemDisplay.SetSprite(itemInstance.Sprite);
+            itemDisplay.SetBackgroundColor(isLocked ? lockColor : Color.white);
+            
+            titleText.text = title;
+            
             OfferScreenEvents.Current.OnGridsUpdated += OffersRefreshed;
         }
         
@@ -52,7 +58,7 @@ namespace OfferScreen
         public void ClickedLockButton()
         {
             isLocked = !isLocked;
-            backgroundImage.color = isLocked ? lockColor : Color.white;
+            itemDisplay.SetBackgroundColor(isLocked ? lockColor : Color.white);
 
         }
 

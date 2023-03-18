@@ -73,7 +73,7 @@ public class OfferManager : MonoBehaviour
 
     public void BuyItem(ItemOffer itemOffer)
     {
-        RunProgress.ItemInventory.AddItem(itemOffer.itemAsset);
+        RunProgress.ItemInventory.AddItem(itemOffer.itemInstance);
         BuyerSeller.Buy(itemOffer.Cost);
         OfferScreenEvents.Current.RefreshOffers();
     }

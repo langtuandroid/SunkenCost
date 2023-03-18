@@ -8,9 +8,9 @@ namespace Items
 {
     public class ItemInventory : MonoBehaviour
     {
-        private List<Item> _items = new List<Item>();
+        private List<EquippedItem> _items = new List<EquippedItem>();
 
-        public IEnumerable<ItemAsset> ItemAssets => _items.Select(i => i.ItemAsset);
+        public IEnumerable<ItemAsset> ItemAssets => _items.Select(i => i.ItemInstance.itemAsset);
 
         public IEnumerable<IStartOfBattleListener> StartOfBattleListeners => _items
             .OfType<IStartOfBattleListener>();
@@ -24,11 +24,11 @@ namespace Items
         public IEnumerable<IDamageFlatModifier> DamageFlatModifiers => _items.OfType<IDamageFlatModifier>();
         public IEnumerable<IDamageMultiplierModifier> DamageMultiplierModifiers => _items.OfType<IDamageMultiplierModifier>();
 
-        public void AddItem(ItemAsset itemAsset)
+        public void AddItem(ItemInstance itemInstance)
         {
-            var itemType = ItemLoader.ItemTypes[itemAsset];
-            var newItem = gameObject.AddComponent(itemType).GetComponent<Item>();
-            newItem.SetAsset(itemAsset);
+            var itemType = ItemLoader.ItemTypes[itemInstance.itemAsset];
+            var newItem = gameObject.AddComponent(itemType).GetComponent<EquippedItem>();
+            newItem.SetInstance(itemInstance);
             _items.Add(newItem);
         }
     
@@ -39,7 +39,7 @@ namespace Items
                 Destroy(item);
             }
         
-            _items = new List<Item>();
+            _items = new List<EquippedItem>();
         }
     
         public void StartBattle()

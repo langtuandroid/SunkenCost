@@ -2,7 +2,7 @@
 
 namespace Items.Items
 {
-    public class ConfusedItem : Item, IHasPickupAction, IStartOfBattleListener
+    public class ConfusedItem : EquippedItem, IHasPickupAction, IStartOfBattleListener
     {
         private StatModifier _extraPlank;
 

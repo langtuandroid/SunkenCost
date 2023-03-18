@@ -1,4 +1,5 @@
 ﻿using UnityEngine;
+using UnityEngine.Serialization;
 
 namespace Items
 {
@@ -16,7 +17,7 @@ namespace Items
         public string title;
         [SerializeField] private string description;
         public Sprite sprite;
-        public int amount;
+        public int modifier;
         public ItemRarity rarity;
 
         public string GetDescription(int amount)

@@ -2,7 +2,7 @@
 
 namespace Items.Items
 {
-    public class ExpiredMedicineItem : Item, IEnemyHealedListener
+    public class ExpiredMedicineItem : EquippedItem, IEnemyHealedListener
     {
         public void EnemyHealed()
         {

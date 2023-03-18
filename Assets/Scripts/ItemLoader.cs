@@ -20,7 +20,7 @@ public class ItemLoader : MonoBehaviour
         
         // Add all the Item classes to a dictionary with their class name as the key
         var itemClasses = new Dictionary<string, Type>();
-        var itemsEnumerable = Extensions.GetAllChildrenOfClassOrNull<Item>();
+        var itemsEnumerable = Extensions.GetAllChildrenOfClassOrNull<EquippedItem>();
         foreach (var type in itemsEnumerable)
         {
             // Remove "Item" from the end of the class name

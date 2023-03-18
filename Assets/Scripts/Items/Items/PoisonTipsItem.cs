@@ -2,7 +2,7 @@
 
 namespace Items.Items
 {
-    public class PoisonTipsItem : Item, IEnemyAttackedListener
+    public class PoisonTipsItem : EquippedItem, IEnemyAttackedListener
     {
         public void EnemyAttacked()
         {
