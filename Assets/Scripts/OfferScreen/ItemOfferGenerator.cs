@@ -1,7 +1,9 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using System.Linq;
 using Items;
 using UnityEngine;
+using Random = UnityEngine.Random;
 
 namespace OfferScreen
 {
@@ -15,6 +17,9 @@ namespace OfferScreen
         public void Initialise()
         {
             var offeredItemAssets = new List<ItemAsset>();
+            
+            // Don't show the already equipped items
+            offeredItemAssets.AddRange(RunProgress.ItemInventory.ItemAssets);
 
             // Load locked items
             foreach (var itemOffer in RunProgress.OfferStorage.LockedItemOffers)
@@ -39,7 +44,8 @@ namespace OfferScreen
                     i < RunProgress.PlayerStats.NumberOfItemsToOffer;
                     i++)
                 {
-                    var nextItemAsset = GenerateNextItemAsset(offeredItemAssets);
+                    var nextItemAsset = ItemLoader.ShopItemAssets.GetRandomNonDuplicate(offeredItemAssets);
+                    offeredItemAssets.Add(nextItemAsset);
                     var newItemOffer = new ItemOffer(nextItemAsset);
                     CreateItemOfferDisplay(newItemOffer, false);
                 }
@@ -52,25 +58,6 @@ namespace OfferScreen
             var itemOfferDisplay = itemOfferGameObject.GetComponent<ItemOfferDisplay>();
             itemOfferDisplay.ItemOffer = itemOffer;
             itemOfferDisplay.isLocked = isLocked;
-        }
-        
-        private static ItemAsset GenerateNextItemAsset(IReadOnlyCollection<ItemAsset> otherItemAssets)
-        {
-            ItemAsset itemAsset;
-            
-            while (true)
-            { 
-                itemAsset = GetRandomItemAsset(); 
-                if (otherItemAssets.FirstOrDefault(i => i == itemAsset) == null)
-                    break;
-            }
-
-            return itemAsset;
-        }
-        
-        private static ItemAsset GetRandomItemAsset()
-        {
-            return ItemLoader.ItemTypes.ElementAt(Random.Range(0, ItemLoader.ItemTypes.Count)).Key;
         }
     }
 }

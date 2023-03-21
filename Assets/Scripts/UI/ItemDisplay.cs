@@ -27,9 +27,9 @@ namespace UI
             _itemInstance = itemInstance;
         }
         
-        public void SetBackgroundColor(Color color)
+        public void SetColor(Color color)
         {
-            backgroundImage.color = color;
+            image.color = color;
         }
 
         private void SetTitle(string title)

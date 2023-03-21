@@ -14,7 +14,7 @@ namespace Challenges
         {
             _current = this;
 
-            var challengeRewards = Extensions.GetAllInstancesOrNull<ChallengeReward>();
+            var challengeRewards = Extensions.LoadScriptableObjects<ChallengeReward>();
 
             foreach (var challengeReward in challengeRewards)
             {

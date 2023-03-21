@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: df20449da52bf174cb531673cb4069a9, type: 3}
   m_Name: Move
   m_EditorClassIdentifier: 
-  disturbanceType: 7
+  disturbanceType: 600
   sprite: {fileID: 21300000, guid: 78d798399d0aa9a4799caad82bbeda74, type: 3}
   title: Dexterity
   description: +1 Move per turn

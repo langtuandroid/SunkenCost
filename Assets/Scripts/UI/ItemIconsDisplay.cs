@@ -12,12 +12,11 @@ namespace UI
         {
             foreach (var itemInstance in RunProgress.ItemInventory.ItemInstances)
             {
-                Debug.Log(itemInstance.Title);
                 AddItemToDisplay(itemInstance);
             }
         }
 
-        private void AddItemToDisplay(ItemInstance itemInstance)
+        public void AddItemToDisplay(ItemInstance itemInstance)
         {
             var newItemIconGameObject = Instantiate(itemIconDisplayPrefab, displayGrid);
             var newItemDisplay = newItemIconGameObject.GetComponent<ItemDisplay>();

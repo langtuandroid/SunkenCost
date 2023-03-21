@@ -28,12 +28,17 @@ namespace Items
 
         public void AddItem(ItemInstance itemInstance)
         {
-            var itemType = ItemLoader.ItemTypes[itemInstance.itemAsset];
+            var itemType = ItemLoader.ItemAssetToTypeDict[itemInstance.itemAsset];
             
             if (gameObject.AddComponent(itemType) is EquippedItem newItem)
             {
                 newItem.SetInstance(itemInstance);
                 _items.Add(newItem);
+
+                if (newItem is IHasPickupAction pickupActionItem)
+                {
+                    pickupActionItem.OnPickup();
+                }
             }
             else
             {

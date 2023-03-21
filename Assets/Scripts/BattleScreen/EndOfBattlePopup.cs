@@ -1,6 +1,7 @@
 using System;
 using System.Collections.Generic;
 using Challenges;
+using Disturbances;
 using TMPro;
 using UnityEngine;
 using UnityEngine.Events;
@@ -21,10 +22,10 @@ namespace BattleScene
 
         [SerializeField] private Button button;
 
-        public void SetReward(Sprite sprite, string text)
+        public void SetReward(Disturbance disturbance)
         {
-            rewardImage.sprite = sprite;
-            rewardText.text = text;
+            rewardImage.sprite = disturbance.GetSprite();
+            rewardText.text = disturbance.GetDescription();
         }
 
         public void SwapToChallengeRewards(Challenge[] completedChallenges)

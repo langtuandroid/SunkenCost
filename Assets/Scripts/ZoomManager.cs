@@ -50,7 +50,7 @@ public class ZoomManager : MonoBehaviour
     private void SetStickScale()
     {
         var stickCount = StickManager.current.stickCount;
-        stickScale = stickCount <= 4 ? 1 : (1f - 0.13f - ((stickCount - 4) * 0.1f));
+        stickScale = stickCount <= 5 ? 1 : (1f - 0.13f - ((stickCount - 4) * 0.1f));
         _stickGridTransform.localScale =  new Vector3(stickScale, stickScale, 1);
     }
 }

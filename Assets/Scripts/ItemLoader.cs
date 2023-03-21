@@ -12,7 +12,9 @@ using Random = UnityEngine.Random;
 public class ItemLoader : MonoBehaviour
 {
     private static ItemLoader _current;
-    public static readonly Dictionary<ItemAsset, Type> ItemTypes = new Dictionary<ItemAsset, Type>();
+    public static ReadOnlyDictionary<ItemAsset, Type> ItemAssetToTypeDict;
+    public static ReadOnlyCollection<ItemAsset> ShopItemAssets;
+    public static ReadOnlyCollection<ItemAsset> EliteItemAssets;
 
     private void Start()
     {
@@ -29,8 +31,8 @@ public class ItemLoader : MonoBehaviour
         }
         
         // Add all the ItemAssets to another dictionary - their names must match!
-        var itemAssetsEnumerable = Extensions.GetAllInstancesOrNull<ItemAsset>();
-        
+        var itemAssetsEnumerable = Extensions.LoadScriptableObjects<ItemAsset>();
+        var itemDictionary = new Dictionary<ItemAsset, Type>();
         foreach (var itemAsset in itemAssetsEnumerable)
         {
             var (key, value) = itemClasses.FirstOrDefault
@@ -42,7 +44,16 @@ public class ItemLoader : MonoBehaviour
                 return;
             }
             
-            ItemTypes.Add(itemAsset, value);
+            itemDictionary.Add(itemAsset, value);
         }
+        
+        ItemAssetToTypeDict = new ReadOnlyDictionary<ItemAsset, Type>(itemDictionary);
+
+        var allItemAssets = ItemAssetToTypeDict.Select(kvp => kvp.Key).ToArray();
+        ShopItemAssets = allItemAssets.GetReadonlyCollection
+            (ia => ia.rarity != ItemRarity.ElitePickup);
+
+        EliteItemAssets  = allItemAssets.GetReadonlyCollection
+            (ia => ia.rarity == ItemRarity.ElitePickup);
     }
 }

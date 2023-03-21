@@ -668,8 +668,13 @@
             <e p="ListExtensions.cs" t="Include" />
             <e p="Rarities.cs" t="Include" />
           </e>
-          <e p="Disturbance.cs" t="Include" />
-          <e p="DisturbanceManager.cs" t="Include" />
+          <e p="Disturbances" t="Include">
+            <e p="CardDisturbance.cs" t="Include" />
+            <e p="Disturbance.cs" t="Include" />
+            <e p="DisturbanceAsset.cs" t="Include" />
+            <e p="DisturbanceManager.cs" t="Include" />
+            <e p="ItemDisturbance.cs" t="Include" />
+          </e>
           <e p="Editor" t="Include">
             <e p="TMP_FontChanger.cs" t="Include" />
             <e p="TMP_FontReplacementTool.cs" t="Include" />
@@ -753,6 +758,7 @@
               <e p="EquippedItem.cs" t="Include" />
               <e p="ExpiredMedicineItem.cs" t="Include" />
               <e p="IHasPickupAction.cs" t="Include" />
+              <e p="InvestmentNetworkItem.cs" t="Include" />
               <e p="PoisonTipsItem.cs" t="Include" />
               <e p="RedressItem.cs" t="Include" />
             </e>
@@ -760,8 +766,8 @@
           <e p="Log.cs" t="Include" />
           <e p="MainManager.cs" t="Include" />
           <e p="MapScreen" t="Include">
-            <e p="MapEvent.cs" t="Include" />
-            <e p="MapEventGenerator.cs" t="Include" />
+            <e p="DisturbanceEvent.cs" t="Include" />
+            <e p="DisturbanceGenerator.cs" t="Include" />
             <e p="ShipyardButton.cs" t="Include" />
           </e>
           <e p="OfferScreen" t="Include">
@@ -772,6 +778,7 @@
             <e p="DesignCard.cs" t="Include" />
             <e p="DesignCardOfferGenerator.cs" t="Include" />
             <e p="DesignCardRow.cs" t="Include" />
+            <e p="DesignFactory.cs" t="Include" />
             <e p="GoldDisplay.cs" t="Include" />
             <e p="IOffer.cs" t="Include" />
             <e p="ItemOfferDisplay.cs" t="Include" />

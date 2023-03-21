@@ -28,19 +28,17 @@ namespace OfferScreen
 
         public int GetItemCost(ItemRarity itemRarity)
         {
-            return 1;
-            
             var cost = Random.Range(-BASE_ITEM_COST_VARIATION, BASE_ITEM_COST_VARIATION);
             switch (itemRarity)
             {
                 case ItemRarity.Common:
-                    cost += 15;
+                    cost += 10;
                     break;
                 case ItemRarity.Uncommon:
-                    cost += 25;
+                    cost += 20;
                     break;
                 case ItemRarity.Rare:
-                    cost += 40;
+                    cost += 30;
                     break;
                 case ItemRarity.ElitePickup:
                 default:

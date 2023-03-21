@@ -5,6 +5,7 @@ using System.Linq;
 using BattleScene;
 using BattleScreen;
 using Challenges;
+using Disturbances;
 using UnityEngine;
 using UnityEngine.UI;
 using Random = System.Random;
@@ -165,16 +166,14 @@ public class BattleManager : MonoBehaviour
     public void CreateEndOfBattlePopup()
     {
         endOfBattlePopup.gameObject.SetActive(true);
-        var disturbance = DisturbanceManager.GetDisturbance(RunProgress.CurrentEvent);
-        endOfBattlePopup.SetReward(disturbance.sprite, disturbance.description);
+        var disturbance = RunProgress.CurrentDisturbance;
+        endOfBattlePopup.SetReward(disturbance);
         endOfBattlePopup.SetButtonAction(SwapToChallengeRewardsOrEndBattle);
         
     }
 
     private void SwapToChallengeRewardsOrEndBattle()
     {
-        
-        
         BattleEvents.Current.EndBattle();
         
         _completedChallenges = RunProgress.ExtractCompletedChallenges();
@@ -202,7 +201,7 @@ public class BattleManager : MonoBehaviour
 
     private void EndBattle()
     {
-        DisturbanceManager.ExecuteEndOfBattleDisturbanceAction(RunProgress.CurrentEvent);
+        DisturbanceManager.ExecuteEndOfBattleDisturbanceAction(RunProgress.CurrentDisturbance);
         
         RunProgress.PlayerStats.Lives = PlayerController.current.Lives;
         MainManager.Current.LoadOfferScreen();

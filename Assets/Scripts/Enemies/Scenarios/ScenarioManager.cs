@@ -26,7 +26,7 @@ public class ScenarioManager : MonoBehaviour
         Current = this;
         DontDestroyOnLoad(this.gameObject);
 
-        var scenarios = Extensions.GetAllInstancesOrNull<Scenario>();
+        var scenarios = Extensions.LoadScriptableObjects<Scenario>();
         
         foreach (var scenario in scenarios)
         {

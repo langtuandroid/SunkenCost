@@ -23,6 +23,7 @@ namespace OfferScreen
             
             allCards.AddRange(CreateDeckCards());
             allCards.AddRange(CreateLockedCards());
+            allCards.AddRange(CreateRewardCards());
 
             allCards.AddRange(RunProgress.HasGeneratedMapEvents
                 ? CreateSavedUnlockedCards()
@@ -39,7 +40,12 @@ namespace OfferScreen
 
         private IEnumerable<DesignCard> CreateDeckCards()
         {
-            return CreateBatchOfDesignCards(RunProgress.PlayerStats.Deck, deckRow, lockable: false);
+            return CreateBatchOfDesignCards(RunProgress.PlayerStats.Deck, deckRow, false);
+        }
+
+        private IEnumerable<DesignCard> CreateRewardCards()
+        {
+            return CreateBatchOfDesignCards(RunProgress.OfferStorage.RewardDesignOffers, offerRow);
         }
 
         private IEnumerable<DesignCard> CreateLockedCards()
@@ -59,10 +65,7 @@ namespace OfferScreen
             var amountOfLockedCards = RunProgress.OfferStorage.LockedDesignOffers.Count;
             for (var i = amountOfLockedCards; i < RunProgress.PlayerStats.NumberOfCardsToOffer; i++)
             {
-                var designName = GetDesign();
-                var designType = DesignManager.GetDesignType(designName);
-                var design = (Design)Activator.CreateInstance(designType);
-
+                var design = DesignFactory.GenerateStoreDesign();
                 newCards.Add(CreateDesignCardFromDesign(design, offerRow));
             }
 
@@ -90,43 +93,6 @@ namespace OfferScreen
             return designCard;
         }
 
-        private string GetDesign()
-        {
-            var currentProgress = RunProgress.BattleNumber;
-            var maxProgress = 50.0;
-            
-            var chancesOnFirstBattle = new[] {0.8, 0.5, 0.05};
-            var chancesOnLastPossibleBattle = new[] {0.2, 0.6, 0.2};
-
-            var percentage = currentProgress / maxProgress;
-
-            var currentChances = new double[chancesOnFirstBattle.Length];
-
-            for (var i = 0; i < currentChances.Length; i++)
-            {
-                currentChances[i] = chancesOnFirstBattle[i] +
-                                    (chancesOnLastPossibleBattle[i] - chancesOnFirstBattle[i]) * percentage;
-                
-            }
-
-            var randomNum = (double)Random.value;
-            
-            // Common
-            if (randomNum <= currentChances[0])
-            {
-                return DesignManager.CommonDesigns[Random.Range(0, DesignManager.CommonDesigns.Count)];
-            }
-
-            randomNum -= currentChances[0];
-                
-            // Uncommon
-            if (randomNum <= currentChances[1])
-            {
-                return DesignManager.UncommonDesigns[Random.Range(0, DesignManager.UncommonDesigns.Count)];
-            }
-
-            // Rare
-            return DesignManager.RareDesigns[Random.Range(0, DesignManager.RareDesigns.Count)];
-        }
+        
     }
 }

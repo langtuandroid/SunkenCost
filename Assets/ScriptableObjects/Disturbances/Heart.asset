@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: df20449da52bf174cb531673cb4069a9, type: 3}
   m_Name: Heart
   m_EditorClassIdentifier: 
-  disturbanceType: 2
+  disturbanceType: 200
   sprite: {fileID: 21300000, guid: f196bdbfb18ad1e4aae6c35468f3c340, type: 3}
   title: Medical Research
   description: Heal 1 life

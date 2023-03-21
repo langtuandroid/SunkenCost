@@ -22,7 +22,8 @@ namespace Items
 
         public string GetDescription(int amount)
         {
-            return description.Replace("@", amount.ToString());
+            var desc = description;
+            return desc.Replace("@", amount.ToString());
         }
     }
 }

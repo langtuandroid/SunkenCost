@@ -1,4 +1,5 @@
-﻿using EventListeners;
+﻿using Disturbances;
+using EventListeners;
 
 namespace Challenges.Challenges
 {
@@ -19,8 +20,6 @@ namespace Challenges.Challenges
         public void EndOfBattle()
         {
             Progress = RunProgress.PlayerStats.Gold;
-            if (RunProgress.CurrentEvent == DisturbanceType.GoldRush)
-                Progress += DisturbanceManager.GetDisturbance(DisturbanceType.GoldRush).amount;
         }
     }
 }

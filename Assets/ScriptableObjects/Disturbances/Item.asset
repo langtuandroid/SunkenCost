@@ -10,9 +10,10 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: df20449da52bf174cb531673cb4069a9, type: 3}
-  m_Name: SpecificDesign
+  m_Name: Item
   m_EditorClassIdentifier: 
-  disturbanceType: 4
-  sprite: {fileID: 21300000, guid: a0b49719bb2f9d14fb99da8e2960b84f, type: 3}
-  title: Rescue Mission
-  description: Find a rare design
+  disturbanceType: 500
+  sprite: {fileID: 0}
+  title: <color=#F1792A>Item:</color>
+  description: 
+  amount: 0

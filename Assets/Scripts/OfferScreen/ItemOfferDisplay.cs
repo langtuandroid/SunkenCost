@@ -25,7 +25,7 @@ namespace OfferScreen
             var itemInstance = ItemOffer.itemInstance;
             
             itemDisplay.SetItemInstance(itemInstance);
-            itemDisplay.SetBackgroundColor(isLocked ? lockColor : Color.white);
+            itemDisplay.SetColor(isLocked ? lockColor : Color.white);
             
             titleText.text = itemInstance.Title;
             
@@ -53,7 +53,7 @@ namespace OfferScreen
         public void ClickedLockButton()
         {
             isLocked = !isLocked;
-            itemDisplay.SetBackgroundColor(isLocked ? lockColor : Color.white);
+            itemDisplay.SetColor(isLocked ? lockColor : Color.white);
 
         }
 

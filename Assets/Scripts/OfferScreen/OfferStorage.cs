@@ -8,16 +8,18 @@ namespace OfferScreen
     public class OfferStorage
     {
         public readonly List<Design> LockedDesignOffers = new List<Design>();
+        public readonly List<Design> RewardDesignOffers = new List<Design>();
         public readonly List<Design> UnlockedDesignOffers = new List<Design>();
-        
+
         public readonly List<ItemOffer> LockedItemOffers = new List<ItemOffer>();
         public readonly List<ItemOffer> UnlockedItemOffers = new List<ItemOffer>();
-        
+
         public void StoreOffers(IEnumerable<DesignCard> deckRow,
             IEnumerable<DesignCard> designOfferRow, IEnumerable<ItemOfferDisplay> itemOffers)
         {
             RunProgress.PlayerStats.SaveDeck(deckRow.Select(designCard => designCard.Design).ToList());
             LockedDesignOffers.Clear();
+            RewardDesignOffers.Clear();
             UnlockedDesignOffers.Clear();
             LockedItemOffers.Clear();
             UnlockedItemOffers.Clear();

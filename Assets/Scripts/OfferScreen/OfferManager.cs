@@ -5,18 +5,20 @@ using System.Linq;
 using Items;
 using OfferScreen;
 using TMPro;
+using UI;
 using UnityEngine;
 using Random = UnityEngine.Random;
 
 public class OfferManager : MonoBehaviour
 {
+    [SerializeField] private GoldDisplay goldDisplay;
+    [SerializeField] private ItemIconsDisplay itemIconsDisplay;
+    
     public static OfferManager Current;
 
     private ItemOfferGenerator _itemOfferGenerator;
     private DesignCardOfferGenerator _designCardOfferGenerator;
-    
-    [SerializeField] private GoldDisplay goldDisplay;
-    
+
     public List<DesignCard> AllDesignCards { get; private set; }
     
     public BuyerSeller BuyerSeller { get; private set; }
@@ -56,6 +58,7 @@ public class OfferManager : MonoBehaviour
         var itemOfferDisplays = _itemOfferGenerator.ItemOfferDisplays;
         
         RunProgress.OfferStorage.StoreOffers(deckRow, offerRow, itemOfferDisplays);
+        RunProgress.PlayerStats.AlterGold(-RunProgress.PlayerStats.Gold + BuyerSeller.Gold);
         MainManager.Current.LoadMap();
     }
 
@@ -76,6 +79,7 @@ public class OfferManager : MonoBehaviour
         RunProgress.ItemInventory.AddItem(itemOffer.itemInstance);
         BuyerSeller.Buy(itemOffer.Cost);
         OfferScreenEvents.Current.RefreshOffers();
+        itemIconsDisplay.AddItemToDisplay(itemOffer.itemInstance);
     }
 
     private IEnumerator WaitForDesignCardsToInitialise()
