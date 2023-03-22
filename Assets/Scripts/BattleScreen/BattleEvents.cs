@@ -35,7 +35,7 @@ public class BattleEvents : MonoBehaviour
     public event Action OnSticksUpdated;
     
     
-    public event Action OnLostLife;
+    public event Action OnPlayerLostLife;
     public event Action OnRedraw;
     public event Action OnLevelUp;
     
@@ -156,7 +156,7 @@ public class BattleEvents : MonoBehaviour
 
     public void LostLife()
     {
-        OnLostLife?.Invoke();
+        OnPlayerLostLife?.Invoke();
     }
 
     public void Redrew()

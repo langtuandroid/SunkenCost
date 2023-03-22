@@ -1,6 +1,6 @@
 ﻿namespace EventListeners
 {
-    public interface IEnemyReachedEnd
+    public interface IEnemyReachedEndListener
     {
         public void EnemyReachedEnd();
     }

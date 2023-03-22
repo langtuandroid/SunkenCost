@@ -9,6 +9,8 @@ namespace BattleScreen
             BattleEvents.Current.OnStartBattle += StartOfBattle;
             BattleEvents.Current.OnEnemyAttacked += EnemyAttacked;
             BattleEvents.Current.OnEnemyHealed += EnemyHealed;
+            BattleEvents.Current.OnEnemyReachedEnd += EnemyReachedEnd;
+            BattleEvents.Current.OnPlayerLostLife += PlayerPlayerLostLife;
         }
 
         private void StartOfBattle()
@@ -27,6 +29,18 @@ namespace BattleScreen
         {
             foreach (var listener in RunProgress.ItemInventory.EnemyHealedListeners)
                 listener.EnemyHealed();
+        }
+
+        private void EnemyReachedEnd()
+        {
+            foreach (var listener in RunProgress.ItemInventory.EnemyReachedEndListeners)
+                listener.EnemyReachedEnd();
+        }
+
+        private void PlayerPlayerLostLife()
+        {
+            foreach (var listener in RunProgress.ItemInventory.PlayerLostLifeListeners)
+                listener.PlayerPlayerLostLife();
         }
     }
 }

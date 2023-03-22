@@ -23,6 +23,12 @@ namespace Items
         public IEnumerable<IEnemyHealedListener> EnemyHealedListeners => _items
             .OfType<IEnemyHealedListener>();
 
+        public IEnumerable<IEnemyReachedEndListener> EnemyReachedEndListeners => _items
+            .OfType<IEnemyReachedEndListener>();
+
+        public IEnumerable<IPlayerLostLifeListener> PlayerLostLifeListeners => _items
+            .OfType<IPlayerLostLifeListener>();
+
         public IEnumerable<IDamageFlatModifier> DamageFlatModifiers => _items.OfType<IDamageFlatModifier>();
         public IEnumerable<IDamageMultiplierModifier> DamageMultiplierModifiers => _items.OfType<IDamageMultiplierModifier>();
 

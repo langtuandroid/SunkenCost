@@ -16,12 +16,11 @@ namespace MapScreen
     
         private static readonly Dictionary<DisturbanceType, float> NormalWeightings = new Dictionary<DisturbanceType, float>()
         {
-            {DisturbanceType.GoldRush, 0.3f},
+            {DisturbanceType.GoldRush, 0.35f},
             {DisturbanceType.Heart, 0.2f},
-            {DisturbanceType.UpgradeCard, 0.15f},
             {DisturbanceType.Move, 0.15f},
-            {DisturbanceType.Card, 0.1f},
-            {DisturbanceType.Item, 0.1f}
+            {DisturbanceType.Card, 0.15f},
+            {DisturbanceType.Item, 0.15f}
         };
     
         private static readonly Dictionary<DisturbanceType, float> EliteWeightings = new Dictionary<DisturbanceType, float>()
@@ -59,8 +58,11 @@ namespace MapScreen
                     Debug.Log("Couldn't generate a disturbance!!");
                 }
             
+                // Duplicates of items or cards are ok, but not anything else
                 var bottomDisturbance = GenerateDisturbance(weightings);
-                if (bottomDisturbance.DisturbanceType == topDisturbance.DisturbanceType) continue;
+                if (bottomDisturbance.DisturbanceType != DisturbanceType.Card 
+                    && bottomDisturbance.DisturbanceType != DisturbanceType.Item
+                    && bottomDisturbance.DisturbanceType == topDisturbance.DisturbanceType) continue;
             
                 bottomDisturbanceEvent.Init(bottomDisturbance);
                 generatedDisturbances.Add(bottomDisturbance);

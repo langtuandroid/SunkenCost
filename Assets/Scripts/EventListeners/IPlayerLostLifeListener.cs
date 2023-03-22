@@ -2,6 +2,6 @@
 {
     public interface IPlayerLostLifeListener
     {
-        public void PlayerLostLife();
+        public void PlayerPlayerLostLife();
     }
 }

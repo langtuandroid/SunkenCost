@@ -30,7 +30,7 @@ namespace Challenges
             
             foreach (var listener in activeChallenges.OfType<IPlayerLostLifeListener>())
             {
-                BattleEvents.Current.OnLostLife += listener.PlayerLostLife;
+                BattleEvents.Current.OnPlayerLostLife += listener.PlayerPlayerLostLife;
             }
         }
     }

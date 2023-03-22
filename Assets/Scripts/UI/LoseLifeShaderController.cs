@@ -11,13 +11,13 @@ public class LoseLifeShaderController : MonoBehaviour
     
     private void Start()
     {
-        BattleEvents.Current.OnLostLife += LostLife;
+        BattleEvents.Current.OnPlayerLostLife += PlayerLostLife;
         _image = GetComponent<Image>();
         _image.enabled = false;
         _material = _image.material;
     }
 
-    private void LostLife()
+    private void PlayerLostLife()
     {
         StartCoroutine(ShowHeart());
     }

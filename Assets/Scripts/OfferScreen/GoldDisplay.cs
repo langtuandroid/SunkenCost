@@ -18,7 +18,7 @@ namespace OfferScreen
 
         public void UpdateText(int goldAmount)
         {
-            _textMeshProUGUI.text = goldAmount.ToString();
+            _textMeshProUGUI.text = "$" + goldAmount.ToString();
             _textMeshProUGUI.colorGradientPreset = goldAmount >= 0 ? _goodColor : _badColor;
         }
     }

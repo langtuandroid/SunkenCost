@@ -738,7 +738,7 @@
             <e p="IEndOfBattleListener.cs" t="Include" />
             <e p="IEnemyAttackedListener.cs" t="Include" />
             <e p="IEnemyHealedListener.cs" t="Include" />
-            <e p="IEnemyReachedEnd.cs" t="Include" />
+            <e p="IEnemyReachedEndListener.cs" t="Include" />
             <e p="IKillListener.cs" t="Include" />
             <e p="IPlayerLostLifeListener.cs" t="Include" />
             <e p="IStartOfBattleListener.cs" t="Include" />
@@ -761,6 +761,7 @@
               <e p="InvestmentNetworkItem.cs" t="Include" />
               <e p="PoisonTipsItem.cs" t="Include" />
               <e p="RedressItem.cs" t="Include" />
+              <e p="ShortFuseItem.cs" t="Include" />
             </e>
           </e>
           <e p="Log.cs" t="Include" />
@@ -773,6 +774,8 @@
           <e p="OfferScreen" t="Include">
             <e p="BoatMover.cs" t="Include" />
             <e p="BuyerSeller.cs" t="Include" />
+            <e p="BuyMoveOffer.cs" t="Include" />
+            <e p="BuyPlankOffer.cs" t="Include" />
             <e p="CardLayout.cs" t="Include" />
             <e p="CostDisplay.cs" t="Include" />
             <e p="DesignCard.cs" t="Include" />
@@ -790,6 +793,7 @@
             <e p="OfferStorage.cs" t="Include" />
             <e p="PlankCount.cs" t="Include" />
             <e p="PriceHandler.cs" t="Include" />
+            <e p="UpgradeOffer.cs" t="Include" />
           </e>
           <e p="PersistantManagers.cs" t="Include" />
           <e p="PlayerStats.cs" t="Include" />

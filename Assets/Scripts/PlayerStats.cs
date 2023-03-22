@@ -15,8 +15,8 @@ public class PlayerStats
     private const int INIT_MOVES_PER_TURN = 1;
     private const int INIT_NUM_OF_TURNS = 5;
     
-    private const int INIT_NUM_OF_CARD_OFFERS = 2;
-    private const int INIT_NUM_OF_ITEM_OFFERS = 2;
+    private const int INIT_NUM_OF_CARD_OFFERS = 3;
+    private const int INIT_NUM_OF_ITEM_OFFERS = 1;
     private const int INIT_NUM_OF_CHALLENGE_OFFERS = 2;
     
     public List<Design> Deck { get; private set; }= new List<Design>();
@@ -26,6 +26,9 @@ public class PlayerStats
     public readonly Stat maxPlanks;
 
     public int MaxPlanks => maxPlanks.Value;
+
+    public int PlanksBought { get; private set; } = 0;
+    public int MovesBought { get; private set; } = 0;
     public int Lives { get; set; }
     public int MaxLives { get; private set; }
     public int Gold { get; private set; }
@@ -69,6 +72,18 @@ public class PlayerStats
     public void AlterGold(int amount)
     {
         Gold += amount;
+    }
+
+    public void BuyPlank()
+    {
+        PlanksBought++;
+        maxPlanks.AddModifier(new StatModifier(1, StatModType.Flat));
+    }
+
+    public void BuyMove()
+    {
+        MovesBought++;
+        MovesPerTurn++;
     }
 
     public void AcceptChallengeReward(ChallengeRewardType challengeRewardType)

@@ -16,7 +16,7 @@ namespace Challenges.Challenges
             return level + BASE_RUNS_REQUIRED;
         }
         
-        public void PlayerLostLife()
+        public void PlayerPlayerLostLife()
         {
             Progress = -1;
         }

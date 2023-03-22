@@ -13,6 +13,9 @@ public class OfferManager : MonoBehaviour
 {
     [SerializeField] private GoldDisplay goldDisplay;
     [SerializeField] private ItemIconsDisplay itemIconsDisplay;
+
+    [SerializeField] private BuyPlankOffer buyPlankOffer;
+    [SerializeField] private BuyMoveOffer buyMoveOffer;
     
     public static OfferManager Current;
 
@@ -43,6 +46,11 @@ public class OfferManager : MonoBehaviour
 
     private void Start()
     {
+        UpdateBuyMoveCost();
+        UpdateBuyPlankCost();
+        OfferScreenEvents.Current.OnGridsUpdated += UpdateBuyMoveCost;
+        OfferScreenEvents.Current.OnGridsUpdated += UpdateBuyPlankCost;
+        
         _itemOfferGenerator.Initialise();
         AllDesignCards = _designCardOfferGenerator.CreateDesignCards();
         StartCoroutine(WaitForDesignCardsToInitialise());
@@ -80,6 +88,32 @@ public class OfferManager : MonoBehaviour
         BuyerSeller.Buy(itemOffer.Cost);
         OfferScreenEvents.Current.RefreshOffers();
         itemIconsDisplay.AddItemToDisplay(itemOffer.itemInstance);
+    }
+
+    public void BuyPlank(int cost)
+    {
+        BuyerSeller.Buy(cost);
+        RunProgress.PlayerStats.BuyPlank();
+        OfferScreenEvents.Current.RefreshOffers();
+    }
+
+    public void BuyMove(int cost)
+    {
+        BuyerSeller.Buy(cost);
+        RunProgress.PlayerStats.BuyMove();
+        OfferScreenEvents.Current.RefreshOffers();
+    }
+    
+    private void UpdateBuyPlankCost()
+    {
+        buyPlankOffer.UpdateCost((RunProgress.PlayerStats.PlanksBought + 1)
+            * 10);
+    }
+    
+    private void UpdateBuyMoveCost()
+    {
+        buyMoveOffer.UpdateCost((RunProgress.PlayerStats.MovesBought + 1)
+            * 5);
     }
 
     private IEnumerator WaitForDesignCardsToInitialise()

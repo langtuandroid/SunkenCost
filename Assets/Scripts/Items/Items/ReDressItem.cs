@@ -2,7 +2,7 @@
 
 namespace Items.Items
 {
-    public class ReDressItem : EquippedItem, IEnemyReachedEnd
+    public class ReDressItem : EquippedItem, IEnemyReachedEndListener
     {
         public void EnemyReachedEnd()
         {

@@ -89,6 +89,8 @@ public class RunProgress : MonoBehaviour
         _battleNumber = 0;
         _currentDisturbance = null;
         _activeChallenges = new List<Challenge>();
+        
+        AddItem(typeof(ShortFuseItem));
     }
 
     // Used to test Items - add to initialise run
