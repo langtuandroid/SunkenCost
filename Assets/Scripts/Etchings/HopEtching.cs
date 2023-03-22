@@ -9,14 +9,14 @@ namespace Etchings
             var currentEnemy = ActiveEnemiesManager.CurrentEnemy;
             var stickNum = Stick.GetStickNumber();
 
-            if (currentEnemy.StickNum != stickNum + (1 * currentEnemy.Direction)) return false;
+            if (currentEnemy.StickNum != stickNum + (1 * currentEnemy.LastDirection)) return false;
             Debug.Log(currentEnemy.StickNum);
             
             //currentEnemy.NextMove += currentEnemy.Direction * initialHopAmount;
             if (currentEnemy.StickNum <
-                StickManager.current.stickCount - 1 + (currentEnemy.Direction * GetStatValue(St.Hop)))
+                StickManager.current.stickCount - 1 + (currentEnemy.LastDirection * GetStatValue(St.Hop)))
             {
-                currentEnemy.StickNum += currentEnemy.Direction * GetStatValue(St.Hop);
+                currentEnemy.StickNum += currentEnemy.LastDirection * GetStatValue(St.Hop);
             }
 
             UsesUsedThisTurn += 1;

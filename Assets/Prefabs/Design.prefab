@@ -201,7 +201,9 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: DO 1 <sprite=0> to all and take 1 <sprite=1> away
+  m_text: 'DO 1 <sprite=0> to all and take 1 <sprite=1> away fieheauhf fuh uefh au
+    hiadfu hadsiuf haisdu fhiasufhd iaushdf isaudfh iausdhf iaushdf iaushdf ia h
+    fdslapfl apsldf '
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: b9ad7116cce90bd4299bd085f02dda22, type: 2}
   m_sharedMaterial: {fileID: 5762254661995016597, guid: b9ad7116cce90bd4299bd085f02dda22, type: 2}
@@ -228,12 +230,12 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 18
+  m_fontSize: 15
   m_fontSizeBase: 18
   m_fontWeight: 400
-  m_enableAutoSizing: 0
-  m_fontSizeMin: 18
-  m_fontSizeMax: 72
+  m_enableAutoSizing: 1
+  m_fontSizeMin: 15
+  m_fontSizeMax: 18
   m_fontStyle: 0
   m_HorizontalAlignment: 2
   m_VerticalAlignment: 256

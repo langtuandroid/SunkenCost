@@ -25,6 +25,28 @@ public class Swordsman : CommonDesign
    }
 }
 
+public class Ambush : UncommonDesign
+{
+    protected override void Init()
+    {
+        Title = "Ambush";
+        Category = DesignCategory.Ambush;
+        Color = new Color(0.2f, 0.35f, 0.38f);
+        AddStat(St.Damage, 3);
+        AddStat(St.DamageFlatModifier, 3);
+    }
+
+    protected override void FirstLevelUp()
+    {
+        ModifyStat(St.DamageFlatModifier, 2);
+    }
+
+    protected override void SecondLevelUp()
+    {
+        ModifyStat(St.DamageFlatModifier, 5);
+    }
+}
+
 public class LoneWolf : RareDesign
 {
     protected override void Init()
@@ -32,18 +54,18 @@ public class LoneWolf : RareDesign
         Title = "Lone Wolf";
         Category = DesignCategory.LoneWolf;
         Color = new Color(0.2f, 0.35f, 0.38f);
-        AddStat(St.Damage, 30);
-        AddStat(St.DamageFlatModifier, -3);
+        AddStat(St.Damage, 60);
+        AddStat(St.DamageFlatModifier, -10);
     }
 
     protected override void FirstLevelUp()
     {
-        ModifyStat(St.Damage, 5);
+        ModifyStat(St.Damage, 10);
     }
 
     protected override void SecondLevelUp()
     {
-        ModifyStat(St.Damage, 5);
+        ModifyStat(St.Damage, 10);
     }
 }
 

@@ -710,6 +710,7 @@
           <e p="EtchingManager.cs" t="Include" />
           <e p="Etchings" t="Include">
             <e p="ActiveEtching.cs" t="Include" />
+            <e p="AmbushEtching.cs" t="Include" />
             <e p="AreaEtching.cs" t="Include" />
             <e p="BlockEtching.cs" t="Include" />
             <e p="BoostEtching.cs" t="Include" />

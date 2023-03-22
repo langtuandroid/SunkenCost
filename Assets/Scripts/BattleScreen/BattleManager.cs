@@ -204,6 +204,7 @@ public class BattleManager : MonoBehaviour
         DisturbanceManager.ExecuteEndOfBattleDisturbanceAction(RunProgress.CurrentDisturbance);
         
         RunProgress.PlayerStats.Lives = PlayerController.current.Lives;
+        RunProgress.PlayerStats.AlterGold(3);
         MainManager.Current.LoadOfferScreen();
         Destroy(gameObject);
     }

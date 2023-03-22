@@ -20,7 +20,8 @@ public enum DesignCategory
     StrikeZone,
     Infirmary,
     LoneWolf,
-    GrandFinalist
+    GrandFinalist,
+    Ambush
 }
 
 public class DesignManager : MonoBehaviour
@@ -113,12 +114,18 @@ public class DesignManager : MonoBehaviour
 
         switch (design.Category)
         {
-            case DesignCategory.Melee: case DesignCategory.LoneWolf:  
+            case DesignCategory.Melee: case DesignCategory.LoneWolf: case DesignCategory.Ambush:  
                 description = "Attacks enemies landing on this plank for " + damage?.Value + " damage";
                 if (design.Category == DesignCategory.LoneWolf)
                 {
-                    description = "<size=90%>" + description + ". " + design.Stats[St.DamageFlatModifier].Value + 
+                    description += ". " + design.Stats[St.DamageFlatModifier].Value + 
                                   " damage for each plank you have<size=100%>";
+                }
+
+                if (design.Category == DesignCategory.Ambush)
+                {
+                    description += ". Increase by " + design.GetStat(St.DamageFlatModifier) +
+                                   " each turn it doesn't attack";
                 }
 
                 break;
@@ -182,8 +189,8 @@ public class DesignManager : MonoBehaviour
                 else description += " life";
                 break;
             case DesignCategory.GrandFinalist:
-                description = "<size=90%>When enemies land on this plank, deal " + damage?.Value +
-                              " damage to all enemies. If any survive, lose a life<size=100%>";
+                description = "When enemies land on this plank, deal " + damage?.Value +
+                              " damage to all enemies. If any survive, lose a life";
                 break;
         }
 

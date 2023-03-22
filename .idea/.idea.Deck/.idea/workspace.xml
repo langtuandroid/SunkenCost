@@ -23,55 +23,22 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="50470089-3e0c-4487-973b-9d375622b070" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/Assets/Prefabs/OfferScreen/ItemOffer.prefab" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/Prefabs/OfferScreen/ItemOffer.prefab.meta" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/Prefabs/OfferScreen/ShopButton.prefab" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/Prefabs/OfferScreen/ShopButton.prefab.meta" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/ScriptableObjects/Items/ShortFuse.asset" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/ScriptableObjects/Items/ShortFuse.asset.meta" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/Scripts/Items/Items/ShortFuseItem.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/Scripts/Items/Items/ShortFuseItem.cs.meta" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/Scripts/OfferScreen/BuyMoveOffer.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/Scripts/OfferScreen/BuyMoveOffer.cs.meta" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/Scripts/OfferScreen/BuyPlankOffer.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/Scripts/OfferScreen/BuyPlankOffer.cs.meta" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/Scripts/OfferScreen/UpgradeOffer.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/Scripts/OfferScreen/UpgradeOffer.cs.meta" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/Sprites/BigMoney.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/Sprites/BigMoney.png.meta" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/Sprites/BuyExtraMove.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/Sprites/BuyExtraMove.png.meta" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/Sprites/Items/ShortFuse.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/Sprites/Items/ShortFuse.png.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Scripts/Etchings/AmbushEtching.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Scripts/Etchings/AmbushEtching.cs.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Sprites/DesignLogos/Ambush.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Sprites/DesignLogos/Ambush.png.meta" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/.idea.Deck/.idea/contentModel.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.Deck/.idea/contentModel.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/.idea.Deck/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.Deck/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/AllIn1SpriteShader/Materials/Panel.mat" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/AllIn1SpriteShader/Materials/Panel.mat" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Fonts/Janyk SDF.asset" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Fonts/Janyk SDF.asset" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Plugins/FMOD/Resources/FMODStudioSettings.asset" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Plugins/FMOD/Resources/FMODStudioSettings.asset" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/PlayerInventoryDisplay.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Prefabs/PlayerInventoryDisplay.prefab" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scenes/OfferScreen.unity" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scenes/OfferScreen.unity" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/BattleHUDManager.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/BattleHUDManager.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/BattleScreen/BattleEvents.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/BattleScreen/BattleEvents.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/BattleScreen/BattleItemManager.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/BattleScreen/BattleItemManager.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Challenges/Challenges/UntouchableChallenge.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Challenges/Challenges/UntouchableChallenge.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Challenges/InBattleChallengeListener.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Challenges/InBattleChallengeListener.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/EventListeners/IEnemyReachedEnd.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/EventListeners/IEnemyReachedEndListener.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/EventListeners/IEnemyReachedEnd.cs.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/EventListeners/IEnemyReachedEndListener.cs.meta" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/EventListeners/IPlayerLostLifeListener.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/EventListeners/IPlayerLostLifeListener.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Items/ItemInventory.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Items/ItemInventory.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Items/Items/ReDressItem.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Items/Items/ReDressItem.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/MapScreen/DisturbanceGenerator.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/MapScreen/DisturbanceGenerator.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/OfferScreen/BoatMover.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/OfferScreen/BoatMover.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/OfferScreen/CardLayout.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/OfferScreen/CardLayout.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/OfferScreen/GoldDisplay.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/OfferScreen/GoldDisplay.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/OfferScreen/OfferManager.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/OfferScreen/OfferManager.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/PersistentManagers.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Prefabs/PersistentManagers.prefab" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/BattleScreen/BattleManager.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/BattleScreen/BattleManager.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Deck/DesignManager.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Deck/DesignManager.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Deck/Designs.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Deck/Designs.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Enemies/Enemy.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Enemies/Enemy.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Etchings/HopEtching.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Etchings/HopEtching.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Etchings/ReverseEtching.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Etchings/ReverseEtching.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Items/Items/ShortFuseItem.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Items/Items/ShortFuseItem.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Scripts/PlayerStats.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/PlayerStats.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Scripts/RunProgress.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/RunProgress.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/UI/LoseLifeShaderController.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/UI/LoseLifeShaderController.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Sprites/BackToMapButton.png" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Sprites/BackToMapButton.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Sprites/BuyExtra.png" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Sprites/BuyExtra.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Sprites/ItemOfferTable.png" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Sprites/ItemOfferTable.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Sprites/Map/BoatRoller.png" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Sprites/Map/BoatRoller.png" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/UserSettings/Layouts/CurrentMaximizeLayout.dwlt" beforeDir="false" afterPath="$PROJECT_DIR$/UserSettings/Layouts/CurrentMaximizeLayout.dwlt" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -113,11 +80,6 @@
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/Assets/Scripts/Enemies/DamageHandler.cs" />
-        <option value="$PROJECT_DIR$/Assets/Scripts/UI/ItemDisplay1.cs" />
-        <option value="$PROJECT_DIR$/Assets/Scripts/Items/ItemOffer.cs" />
-        <option value="$PROJECT_DIR$/Assets/Scripts/Items/Items/Item.cs" />
-        <option value="$PROJECT_DIR$/Assets/Scripts/Items/ItemInstance.cs" />
         <option value="$PROJECT_DIR$/Assets/Scripts/BattleScreen/BattleItemDisplay.cs" />
         <option value="$PROJECT_DIR$/Assets/Scripts/OfferScreen/ItemOfferDisplay.cs" />
         <option value="$PROJECT_DIR$/Assets/Scripts/Items/Items/EquippedItem.cs" />
@@ -126,7 +88,6 @@
         <option value="$PROJECT_DIR$/Assets/Scripts/DisturbanceAsset.cs" />
         <option value="$PROJECT_DIR$/Assets/Scripts/Disturbances/ActiveDisturbance.cs" />
         <option value="$PROJECT_DIR$/Assets/Scripts/Challenges/Challenges/HoarderChallenge.cs" />
-        <option value="$PROJECT_DIR$/Assets/Scripts/BattleScreen/BattleManager.cs" />
         <option value="$PROJECT_DIR$/Assets/Scripts/OfferScreen/ItemOfferGenerator.cs" />
         <option value="$PROJECT_DIR$/Assets/Scripts/BattleScreen/EndOfBattlePopup.cs" />
         <option value="$PROJECT_DIR$/Assets/Scripts/UI/ItemIconsDisplay.cs" />
@@ -156,14 +117,20 @@
         <option value="$PROJECT_DIR$/Assets/Scripts/OfferScreen/BuyPlankOffer.cs" />
         <option value="$PROJECT_DIR$/Assets/Scripts/OfferScreen/BuyMoveOffer.cs" />
         <option value="$PROJECT_DIR$/Assets/Scripts/OfferScreen/UpgradeOffer.cs" />
-        <option value="$PROJECT_DIR$/Assets/Scripts/PlayerStats.cs" />
         <option value="$PROJECT_DIR$/Assets/Scripts/OfferScreen/GoldDisplay.cs" />
-        <option value="$PROJECT_DIR$/Assets/Scripts/OfferScreen/OfferManager.cs" />
         <option value="$PROJECT_DIR$/Assets/Scripts/MapScreen/DisturbanceGenerator.cs" />
-        <option value="$PROJECT_DIR$/Assets/Scripts/RunProgress.cs" />
-        <option value="$PROJECT_DIR$/Assets/Scripts/Items/Items/ShortFuseItem.cs" />
         <option value="$PROJECT_DIR$/Assets/Scripts/Items/ItemInventory.cs" />
         <option value="$PROJECT_DIR$/Assets/Scripts/BattleScreen/BattleItemManager.cs" />
+        <option value="$PROJECT_DIR$/Assets/Scripts/Items/Items/ShortFuseItem.cs" />
+        <option value="$PROJECT_DIR$/Assets/Scripts/BattleScreen/BattleManager.cs" />
+        <option value="$PROJECT_DIR$/Assets/Scripts/RunProgress.cs" />
+        <option value="$PROJECT_DIR$/Assets/Scripts/Enemies/Enemy.cs" />
+        <option value="$PROJECT_DIR$/Assets/Scripts/Etchings/ReverseEtching.cs" />
+        <option value="$PROJECT_DIR$/Assets/Scripts/OfferScreen/OfferManager.cs" />
+        <option value="$PROJECT_DIR$/Assets/Scripts/Deck/Designs.cs" />
+        <option value="$PROJECT_DIR$/Assets/Scripts/Etchings/AmbushEtching.cs" />
+        <option value="$PROJECT_DIR$/Assets/Scripts/PlayerStats.cs" />
+        <option value="$PROJECT_DIR$/Assets/Scripts/Deck/DesignManager.cs" />
       </list>
     </option>
   </component>
@@ -276,7 +243,7 @@
       <workItem from="1678918524423" duration="11990000" />
       <workItem from="1679093529656" duration="3573000" />
       <workItem from="1679178097618" duration="8313000" />
-      <workItem from="1679352506678" duration="31276000" />
+      <workItem from="1679352506678" duration="33751000" />
     </task>
     <servers />
   </component>
@@ -334,11 +301,11 @@
     <state x="532" y="0" width="840" height="1034" key="run.anything.popup/0.0.1920.1040@0.0.1920.1040" timestamp="1675489416658" />
     <state x="1064" y="0" width="1680" height="2148" key="run.anything.popup/0.0.3840.2160@0.0.3840.2160" timestamp="1679448023991" />
     <state x="532" y="777" width="840" height="1034" key="run.anything.popup/0.1080.1920.1040/0.0.1920.1040@0.1080.1920.1040" timestamp="1672456494495" />
-    <state x="1078" y="10" width="1680" height="2148" key="search.everywhere.popup" timestamp="1679369533711">
+    <state x="1078" y="10" width="1680" height="2148" key="search.everywhere.popup" timestamp="1679487840301">
       <screen x="0" y="0" width="3840" height="2160" />
     </state>
     <state x="539" y="5" width="840" height="1034" key="search.everywhere.popup/0.0.1920.1040@0.0.1920.1040" timestamp="1675255493675" />
-    <state x="1078" y="10" width="1680" height="2148" key="search.everywhere.popup/0.0.3840.2160@0.0.3840.2160" timestamp="1679369533711" />
+    <state x="1078" y="10" width="1680" height="2148" key="search.everywhere.popup/0.0.3840.2160@0.0.3840.2160" timestamp="1679487840301" />
     <state x="539" y="5" width="840" height="1034" key="search.everywhere.popup/0.1080.1920.1040/0.0.1920.1040@0.0.1920.1040" timestamp="1671410021070" />
     <state x="539" y="1085" width="840" height="1034" key="search.everywhere.popup/0.1080.1920.1040/0.0.1920.1040@0.1080.1920.1040" timestamp="1672281603634" />
   </component>

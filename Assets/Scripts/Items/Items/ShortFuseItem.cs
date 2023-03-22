@@ -18,7 +18,6 @@ namespace Items.Items
         {
             if (BattleManager.Current.Turn == _turnPlayerLastLostLife)
             {
-                Debug.Log(Amount);
                 return damage * Amount;
             }
 

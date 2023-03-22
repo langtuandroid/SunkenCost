@@ -35,13 +35,23 @@ namespace Enemies
 
         public List<Action> PreMovingEffects = new List<Action>();
 
-        public int Direction
+        public int LastDirection
         {
             get
             {
-                // -1 if moving backwards, 0 if not moving, 1 if moving forwards
+                // -1 if moved backwards, 0 if didn't move, 1 if moved forwards
                 if (LastMove == 0) return 0;
                 return LastMove / Math.Abs(LastMove);
+            }
+        }
+
+        public int NextDirection
+        {
+            get
+            {
+                // -1 if moving backwards, 0 if not moving, 1 if moved forwards
+                if (NextMove == 0) return 0;
+                return NextMove / Math.Abs(NextMove);
             }
         }
 
@@ -182,8 +192,8 @@ namespace Enemies
             {
 
                 // Change my stick
-                StickNum += Direction;
-                NextMove -= Direction;
+                StickNum += LastDirection;
+                NextMove -= LastDirection;
 
                 //HACK - Timing of sound clip
                 // Wait to move
