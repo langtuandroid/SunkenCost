@@ -53,6 +53,9 @@ public class EnemySpawner : MonoBehaviour
                 case EnemyType.Axolitl:
                     newEnemies.Add("Axolitl");
                     break;
+                case EnemyType.Cucunger:
+                    newEnemies.Add("Cucunger");
+                    break;
                 default:
                     throw new ArgumentOutOfRangeException();
             }

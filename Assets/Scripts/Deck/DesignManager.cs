@@ -21,7 +21,8 @@ public enum DesignCategory
     Infirmary,
     LoneWolf,
     GrandFinalist,
-    Ambush
+    Ambush,
+    Cauterize
 }
 
 public class DesignManager : MonoBehaviour
@@ -111,6 +112,7 @@ public class DesignManager : MonoBehaviour
         design.Stats.TryGetValue(St.Block, out var block);
         design.Stats.TryGetValue(St.Poison, out var poison);
         design.Stats.TryGetValue(St.HealPlayer, out var healPlayer);
+        design.Stats.TryGetValue(St.MaxHealthMultiplier, out var maxHealthMultiplier);
 
         switch (design.Category)
         {
@@ -192,6 +194,12 @@ public class DesignManager : MonoBehaviour
                 description = "When enemies land on this plank, deal " + damage?.Value +
                               " damage to all enemies. If any survive, lose a life";
                 break;
+            case DesignCategory.Cauterize:
+                var multiplier = maxHealthMultiplier?.Value;
+                var multiText = multiplier > 1 ? multiplier + "x " : "";
+                description = "When enemies land on this plank, lower their maximum health by " + multiText +
+                              "their poison amount";
+                break;
         }
 
         if (design.Stats.TryGetValue(St.UsesPerTurn, out var usesPerTurn))
@@ -201,6 +209,7 @@ public class DesignManager : MonoBehaviour
 
         description = description.Replace("1x", "once");
         description = description.Replace("2x", "twice");
+        description = description.Replace("3x", "triple");
 
         return description;
     }

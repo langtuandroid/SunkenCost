@@ -685,8 +685,8 @@
             <e p="DamageHandler.cs" t="Include" />
             <e p="Enemies" t="Include">
               <e p="AxolitlEnemy.cs" t="Include" />
-              <e p="BossEnemy.cs" t="Include" />
               <e p="ClausEnemy.cs" t="Include" />
+              <e p="CucungerEnemy.cs" t="Include" />
               <e p="GrouldEnemy.cs" t="Include" />
               <e p="StrongClausEnemy.cs" t="Include" />
             </e>
@@ -714,6 +714,7 @@
             <e p="AreaEtching.cs" t="Include" />
             <e p="BlockEtching.cs" t="Include" />
             <e p="BoostEtching.cs" t="Include" />
+            <e p="CauterizeEtching.cs" t="Include" />
             <e p="CharMovementActivatedEtching.cs" t="Include" />
             <e p="CharPreMovementActivatedEffect.cs" t="Include" />
             <e p="DamageEtching.cs" t="Include" />

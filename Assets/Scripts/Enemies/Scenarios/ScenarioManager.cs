@@ -17,14 +17,7 @@ public class ScenarioManager : MonoBehaviour
     
     void Awake()
     {
-        if (Current)
-        {
-            Destroy(gameObject);
-            return;
-        }
-
         Current = this;
-        DontDestroyOnLoad(this.gameObject);
 
         var scenarios = Extensions.LoadScriptableObjects<Scenario>();
         

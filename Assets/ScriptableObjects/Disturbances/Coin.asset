@@ -16,4 +16,4 @@ MonoBehaviour:
   sprite: {fileID: 21300000, guid: 881f505dcc63b1f45b7f7eed9588956e, type: 3}
   title: Gold Rush
   description: +@ bonus gold
-  amount: 5
+  amount: 3

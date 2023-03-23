@@ -4,18 +4,17 @@ using System.Collections.Generic;
 using Enemies;
 using UnityEngine;
 
-public class BossEnemy : Enemy
+public class CucungerEnemy : Enemy
 {
     // Smashes the last stick every X turns
-    private static int abilityCooldown = 3;
+    private static int abilityCooldown = 2;
     [SerializeField] private int cooldownCounter = 0;
 
     protected override void Init()
     {
         Size = 1.2f;
         Name = "Cucunger";
-        MoveMax = 1;
-        MoveMin = 1;
+        MoveSet.Add(1);
         SetInitialHealth(60);
         Gold = 5;
     }

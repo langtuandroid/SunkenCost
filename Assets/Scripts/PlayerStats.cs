@@ -57,7 +57,7 @@ public class PlayerStats
     {
         Deck.Add(new Swordsman());
         Deck.Add(new Slinger());
-        Deck.Add(new Ambush());
+        Deck.Add(new Impede());
     }
 
     public void SaveDeck(IEnumerable<Design> newDeck)

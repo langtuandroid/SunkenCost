@@ -306,6 +306,20 @@ namespace Enemies
             BattleEvents.Current.EnemyHealed(this);
         }
 
+        public void AddMaxHealthModifier(StatModifier statModifier)
+        {
+            MaxHealth.AddModifier(statModifier);
+            var overHeal = Health - MaxHealth.Value;
+            
+            ChangeHealth(overHeal > 0 ? -overHeal : 0);
+        }
+
+        public void RemoveMaxHealthModifier(StatModifier statModifier)
+        {
+            MaxHealth.RemoveModifier(statModifier);
+            ChangeHealth(0);
+        }
+
         protected void ChangeHealth(int amount)
         {
             Health += amount;
@@ -333,7 +347,18 @@ namespace Enemies
         public void UpdateMovementText()
         {
             var movement = NextMove.ToString();
-            if (NextMove == 0) movement = "-";
+            switch (NextMove)
+            {
+                case <0:
+                    movement = "<sprite=0> " + movement;
+                    break;
+                case 0:
+                    movement = "-";
+                    break;
+                case >0:
+                    movement += "<sprite=1>";
+                    break;
+            }
 
             _movementText.text = movement;
         }

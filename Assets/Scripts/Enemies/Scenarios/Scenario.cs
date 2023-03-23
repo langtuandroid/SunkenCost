@@ -7,7 +7,8 @@ public enum EnemyType
 {
     Grould,
     Claus,
-    Axolitl
+    Axolitl,
+    Cucunger
 }
 
 public enum ScenarioType

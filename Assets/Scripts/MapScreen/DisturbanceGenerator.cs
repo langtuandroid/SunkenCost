@@ -124,9 +124,7 @@ namespace MapScreen
         {
             var design = disturbanceAsset.disturbanceType == DisturbanceType.EliteCard 
                 ? DesignFactory.GenerateRandomRareDesign() : DesignFactory.GenerateStoreDesign();
-            
-            design.LevelUp();
-            
+
             return new CardDisturbance(disturbanceAsset, disturbanceAsset.amount, design);
         }
     }

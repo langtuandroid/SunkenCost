@@ -18,7 +18,8 @@ public enum St
     HealPlayer,
     DamageFlatModifier,
     MovementBoost,
-    DamagePlayer
+    DamagePlayer,
+    MaxHealthMultiplier
 }
 
 public abstract class Design

@@ -73,7 +73,7 @@ public class GrandFinalist : UncommonDesign
 {
     protected override void Init()
     {
-        Title = "Grand Finalist";
+        Title = "Finalise";
         Category = DesignCategory.GrandFinalist;
         Color = new Color(0.2f, 0.35f, 0.38f);
         AddStat(St.Damage, 10);
@@ -121,7 +121,7 @@ public class Archer : CommonDesign
 {
     protected override void Init()
     {
-        Title = "Archer";
+        Title = "Pelt";
         Category = DesignCategory.Ranged;
         Color = Color.red;
         AddStat(St.Damage, 3);
@@ -144,7 +144,7 @@ public class Marksman : UncommonDesign
 {
     protected override void Init()
     {
-        Title = "Marksman";
+        Title = "Snipe";
         Category = DesignCategory.Ranged;
         Color = Color.red;
         AddStat(St.Damage, 6);
@@ -170,7 +170,7 @@ public class Stomp : CommonDesign
 {
     protected override void Init()
     {
-        Title = "Mortar";
+        Title = "Stomp";
         Category = DesignCategory.Area;
         Color = Color.yellow;
         AddStat(St.Damage, 1);
@@ -192,22 +192,22 @@ public class Splatter : UncommonDesign
 {
     protected override void Init()
     {
-        Title = "Bomber";
+        Title = "Bomb";
         Category = DesignCategory.Area;
         Color = Color.yellow;
         AddStat(St.UsesPerTurn, 1);
-        AddStat(St.Damage, 5);
+        AddStat(St.Damage, 7);
         AddStat(St.MaxRange, 2);
     }
     
     protected override void FirstLevelUp()
     {
-        ModifyStat(St.Damage, 2);
+        ModifyStat(St.Damage, 3);
     }
 
     protected override void SecondLevelUp()
     {
-        ModifyStat(St.UsesPerTurn, 1);
+        ModifyStat(St.UsesPerTurn, 5);
     }
 }
 #endregion
@@ -221,7 +221,7 @@ public class Boost : CommonDesign
 {
     protected override void Init()
     {
-        Title = "Flag Bearer";
+        Title = "Rally";
         Category = DesignCategory.Boost;
         Color = Color.magenta;
         AddStat(St.Boost, 2);
@@ -234,7 +234,7 @@ public class Boost : CommonDesign
 
     protected override void SecondLevelUp()
     {
-        ModifyStat(St.Boost, 1);
+        ModifyStat(St.Boost, 2);
     }
 }
 
@@ -242,7 +242,7 @@ public class StrikeZone : UncommonDesign
 {
     protected override void Init()
     {
-        Title = "Strike Zone";
+        Title = "Focus";
         Category = DesignCategory.StrikeZone;
         Color = new Color(0f, 0.59f, 0.71f);
         AddStat(St.Boost, 2);
@@ -350,6 +350,27 @@ public class Poison : CommonDesign
     protected override void SecondLevelUp()
     {
         ModifyStat(St.Poison, 2);
+    }
+}
+
+public class Cauterize : RareDesign
+{
+    protected override void Init()
+    {
+        Title = "Cauterize";
+        Category = DesignCategory.Cauterize;
+        Color = new Color(0.41f, 0.67f, 0f);
+        AddStat(St.MaxHealthMultiplier, 1);
+    }
+    
+    protected override void FirstLevelUp()
+    {
+        ModifyStat(St.MaxHealthMultiplier, 1);
+    }
+
+    protected override void SecondLevelUp()
+    {
+        ModifyStat(St.MaxHealthMultiplier, 1);
     }
 }
 
