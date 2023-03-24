@@ -50,6 +50,8 @@ namespace Disturbances
                 case DisturbanceType.Card:
                     case DisturbanceType.EliteCard:
                         if (!(disturbance is CardDisturbance cardDisturbance)) throw new Exception();
+                        var rewardCard = cardDisturbance.Design;
+                        rewardCard.MakeFree();
                         RunProgress.OfferStorage.RewardDesignOffers.Add(cardDisturbance.Design);
                     break;
                 case DisturbanceType.Item:

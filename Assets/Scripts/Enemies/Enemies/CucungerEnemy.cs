@@ -7,7 +7,7 @@ using UnityEngine;
 public class CucungerEnemy : Enemy
 {
     // Smashes the last stick every X turns
-    private static int abilityCooldown = 2;
+    private static int abilityCooldown = 3;
     [SerializeField] private int cooldownCounter = 0;
 
     protected override void Init()
@@ -15,7 +15,7 @@ public class CucungerEnemy : Enemy
         Size = 1.2f;
         Name = "Cucunger";
         MoveSet.Add(1);
-        SetInitialHealth(60);
+        SetInitialHealth(50);
         Gold = 5;
     }
 

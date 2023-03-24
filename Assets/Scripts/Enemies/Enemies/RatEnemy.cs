@@ -4,14 +4,13 @@ using System.Collections.Generic;
 using Enemies;
 using UnityEngine;
 
-public class StrongClausEnemy : Enemy
+public class RatEnemy : Enemy
 {
     protected override void Init()
     {
-        Name = "Strong C'laus";
+        Name = "Scrat";
         MoveSet.Add(2);
-        MoveSet.Add(3);
-        SetInitialHealth(20);
+        SetInitialHealth(10);
         Gold = 1;
     }
     

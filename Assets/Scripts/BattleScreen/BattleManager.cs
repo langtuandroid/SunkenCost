@@ -130,6 +130,12 @@ public class BattleManager : MonoBehaviour
         return false;
     }
 
+    public void AlterGold(int amount)
+    {
+        RunProgress.PlayerStats.AlterGold(amount);
+        BattleHUDManager.current.UpdateGoldText();
+    }
+
     private void BeginPlayerTurn()
     {
         gameState = GameState.PlayerTurn;
@@ -204,7 +210,6 @@ public class BattleManager : MonoBehaviour
         DisturbanceManager.ExecuteEndOfBattleDisturbanceAction(RunProgress.CurrentDisturbance);
         
         RunProgress.PlayerStats.Lives = PlayerController.current.Lives;
-        RunProgress.PlayerStats.AlterGold(3);
         MainManager.Current.LoadOfferScreen();
         Destroy(gameObject);
     }

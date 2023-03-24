@@ -163,6 +163,30 @@ public class Marksman : UncommonDesign
     }
 }
 
+public class AirRaid : UncommonDesign
+{
+    protected override void Init()
+    {
+        Title = "Raid";
+        Category = DesignCategory.AirRaid;
+        Color = Color.red;
+        AddStat(St.Damage, 2);
+        AddStat(St.MinRange, 1);
+        AddStat(St.MaxRange, 2);
+        AddStat(St.StatMultiplier, 2);
+    }
+    
+    protected override void FirstLevelUp()
+    {
+        ModifyStat(St.Damage, 2);
+    }
+
+    protected override void SecondLevelUp()
+    {
+        ModifyStat(St.StatMultiplier, 1);
+    }
+}
+
 #endregion
 
 #region Area
@@ -360,17 +384,17 @@ public class Cauterize : RareDesign
         Title = "Cauterize";
         Category = DesignCategory.Cauterize;
         Color = new Color(0.41f, 0.67f, 0f);
-        AddStat(St.MaxHealthMultiplier, 1);
+        AddStat(St.StatMultiplier, 1);
     }
     
     protected override void FirstLevelUp()
     {
-        ModifyStat(St.MaxHealthMultiplier, 1);
+        ModifyStat(St.StatMultiplier, 1);
     }
 
     protected override void SecondLevelUp()
     {
-        ModifyStat(St.MaxHealthMultiplier, 1);
+        ModifyStat(St.StatMultiplier, 1);
     }
 }
 
@@ -394,5 +418,26 @@ public class Infirmary : UncommonDesign
     protected override void SecondLevelUp()
     {
         ModifyStat(St.HealPlayer, 1);
+    }
+}
+
+public class Research : UncommonDesign
+{
+    protected override void Init()
+    {
+        Title = "Research";
+        Category = DesignCategory.Research;
+        Color = new Color(0.61f, 0.35f, 0.67f);
+        AddStat(St.IntRequirement, 10);
+        AddStat(St.Gold, 1);
+    }
+    
+    protected override void FirstLevelUp()
+    {
+    }
+
+    protected override void SecondLevelUp()
+    {
+        ModifyStat(St.Gold, 1);
     }
 }

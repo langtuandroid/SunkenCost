@@ -12,9 +12,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e88836627efa4444288b773536f04a36, type: 3}
   m_Name: Easy2
   m_EditorClassIdentifier: 
+  scenarioType: 0
   round1: 02000000
   round2: 01000000
-  round3: 
+  round3: 04000000
   round4: 02000000
   round5: 01000000
   round6: 01000000

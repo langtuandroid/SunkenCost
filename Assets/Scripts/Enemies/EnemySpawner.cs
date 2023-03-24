@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
 using Enemies;
 using UnityEngine;
 using Random = UnityEngine.Random;
@@ -38,40 +39,7 @@ public class EnemySpawner : MonoBehaviour
         
         var enemyTypes = _scenario.GetRound(BattleManager.Current.Turn);
         
-        var newEnemies = new List<string>();
-
-        foreach (var enemyType in enemyTypes)
-        {
-            switch (enemyType)
-            {
-                case EnemyType.Grould:
-                    newEnemies.Add("Grould");
-                    break;
-                case EnemyType.Claus:
-                    newEnemies.Add("Claus");
-                    break;
-                case EnemyType.Axolitl:
-                    newEnemies.Add("Axolitl");
-                    break;
-                case EnemyType.Cucunger:
-                    newEnemies.Add("Cucunger");
-                    break;
-                default:
-                    throw new ArgumentOutOfRangeException();
-            }
-        }
-        //var newEnemies = GetNewRound();
-
-        // Spawn boss every 16 rounds
-        if (BattleManager.Current.Turn % 16 == 0 && BattleManager.Current.Turn != 0)
-        {
-            newEnemies = new List<string>();
-            newEnemies.Add("Boss");
-            
-            Music.current.SelectSong(2);
-        }
-        // Only spawn every second round otherwise
-        //else if (_round % 2 == 0) return;
+        var newEnemies = enemyTypes.Select(enemyType => Enum.GetName(typeof(EnemyType), enemyType)).ToList();
 
         if (newEnemies.Count == 0) return;
 

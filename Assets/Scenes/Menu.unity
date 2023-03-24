@@ -799,7 +799,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 2777186646240246781, guid: a92265c572f764c47b352f3ae9d506dc, type: 3}
       propertyPath: m_Name
-      value: Loaders
+      value: PersistentManagers
       objectReference: {fileID: 0}
     - target: {fileID: 5699943836172560093, guid: a92265c572f764c47b352f3ae9d506dc, type: 3}
       propertyPath: m_RootOrder

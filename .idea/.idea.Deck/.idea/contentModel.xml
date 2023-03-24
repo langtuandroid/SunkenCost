@@ -688,7 +688,7 @@
               <e p="ClausEnemy.cs" t="Include" />
               <e p="CucungerEnemy.cs" t="Include" />
               <e p="GrouldEnemy.cs" t="Include" />
-              <e p="StrongClausEnemy.cs" t="Include" />
+              <e p="RatEnemy.cs" t="Include" />
             </e>
             <e p="Enemy.cs" t="Include" />
             <e p="EnemyAnimationController.cs" t="Include" />
@@ -710,6 +710,7 @@
           <e p="EtchingManager.cs" t="Include" />
           <e p="Etchings" t="Include">
             <e p="ActiveEtching.cs" t="Include" />
+            <e p="AirRaidEtching.cs" t="Include" />
             <e p="AmbushEtching.cs" t="Include" />
             <e p="AreaEtching.cs" t="Include" />
             <e p="BlockEtching.cs" t="Include" />
@@ -731,6 +732,7 @@
             <e p="MeleeEtching.cs" t="Include" />
             <e p="PoisonEtching.cs" t="Include" />
             <e p="RangedEtching.cs" t="Include" />
+            <e p="ResearchEtching.cs" t="Include" />
             <e p="ReverseEtching.cs" t="Include" />
             <e p="StickUpdateActivatedEtching.cs" t="Include" />
             <e p="StrikeZoneEtching.cs" t="Include" />

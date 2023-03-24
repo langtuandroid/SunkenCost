@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections;
 using System.Collections.Generic;
+using OfferScreen;
 using TMPro;
 using UI;
 using UnityEngine;
@@ -15,7 +16,7 @@ public class BattleHUDManager : MonoBehaviour
     
     [SerializeField] private TextMeshProUGUI _movesText;
 
-    [SerializeField] private Transform heartsParentTransform;
+    [SerializeField] private GoldDisplay _goldDisplay;
 
     private void Awake()
     {
@@ -33,7 +34,7 @@ public class BattleHUDManager : MonoBehaviour
     {
         BattleEvents.Current.OnBeginPlayerTurn += UpdateMovesText;
         BattleEvents.Current.OnPlayerLostLife += UpdateLives;
-        
+
         UpdateLives();
         UpdateMovesText();
     }
@@ -48,5 +49,10 @@ public class BattleHUDManager : MonoBehaviour
     private void UpdateLives()
     {
         hearts.UpdateLives(PlayerController.current.Lives);
+    }
+
+    public void UpdateGoldText()
+    {
+        _goldDisplay.UpdateText(RunProgress.PlayerStats.Gold);
     }
 }

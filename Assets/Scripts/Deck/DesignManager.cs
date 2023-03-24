@@ -22,7 +22,9 @@ public enum DesignCategory
     LoneWolf,
     GrandFinalist,
     Ambush,
-    Cauterize
+    Cauterize,
+    AirRaid,
+    Research
 }
 
 public class DesignManager : MonoBehaviour
@@ -112,7 +114,9 @@ public class DesignManager : MonoBehaviour
         design.Stats.TryGetValue(St.Block, out var block);
         design.Stats.TryGetValue(St.Poison, out var poison);
         design.Stats.TryGetValue(St.HealPlayer, out var healPlayer);
-        design.Stats.TryGetValue(St.MaxHealthMultiplier, out var maxHealthMultiplier);
+        design.Stats.TryGetValue(St.StatMultiplier, out var statMultiplier);
+        design.Stats.TryGetValue(St.Gold, out var gold);
+        design.Stats.TryGetValue(St.IntRequirement, out var intRequirement);
 
         switch (design.Category)
         {
@@ -131,7 +135,7 @@ public class DesignManager : MonoBehaviour
                 }
 
                 break;
-            case DesignCategory.Ranged:
+            case DesignCategory.Ranged: case DesignCategory.AirRaid:
                 var range = "";
                 if (minRange?.Value == maxRange?.Value)
                 {
@@ -144,6 +148,9 @@ public class DesignManager : MonoBehaviour
                 }
                 
                 description = "Attacks enemies landing " + range + " away for " + damage?.Value + " damage";
+
+                if (design.Category == DesignCategory.AirRaid)
+                    description += ". Deal " + statMultiplier?.Value + "x as much damage on non-Attack planks";
                 break;
             case DesignCategory.Area:
                 var distance = maxRange?.Value + " plank";
@@ -195,10 +202,22 @@ public class DesignManager : MonoBehaviour
                               " damage to all enemies. If any survive, lose a life";
                 break;
             case DesignCategory.Cauterize:
-                var multiplier = maxHealthMultiplier?.Value;
+                var multiplier = statMultiplier?.Value;
                 var multiText = multiplier > 1 ? multiplier + "x " : "";
                 description = "When enemies land on this plank, lower their maximum health by " + multiText +
                               "their poison amount";
+                break;
+            case DesignCategory.Research:
+                description = "When enemies land on this plank, heal them to full health. Gain " + gold?.Value + 
+                    " gold ";
+                if (design.Level == 0)
+                {
+                    description += "if more than " + intRequirement?.Value + " health is healed";
+                }
+                else
+                {
+                    description += "per " + intRequirement?.Value + " health healed";
+                }
                 break;
         }
 

@@ -14,7 +14,7 @@ namespace Etchings
             if (poison <= 0) return false;
             
             var newStatMod = new StatModifier
-                (-poison * GetStatValue(St.MaxHealthMultiplier), StatModType.Flat);
+                (-poison * GetStatValue(St.StatMultiplier), StatModType.Flat);
             enemy.AddMaxHealthModifier(newStatMod);
 
             StartCoroutine(ColorForActivate());

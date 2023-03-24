@@ -19,7 +19,7 @@ namespace Enemies
         public int MoveMax { get; protected set; }
         public  Stat MaxHealth { get; private set; }
         protected int Gold { get; set; }
-        protected int Health { get; private set; }
+        public int Health { get; private set; }
         public float Size { get; protected set; } = 1;
 
         protected List<int> MoveSet = new List<int>();
@@ -298,7 +298,7 @@ namespace Enemies
             _animationController.Damage();
         }
     
-        protected void Heal(int amount)
+        public void Heal(int amount)
         {
             ChangeHealth(amount);
             InGameSfxManager.current.Healed();
@@ -367,7 +367,7 @@ namespace Enemies
         {
             InGameSfxManager.current.Death();
             // TODO: CHANGE 
-            if (killedByPlayer) RunProgress.PlayerStats.AlterGold(Gold);
+            if (killedByPlayer) BattleManager.Current.AlterGold(Gold);
             IsDestroyed = true;
             Moving = false;
             Log.current.AddEvent("E" + _turnOrder + " has been killed");

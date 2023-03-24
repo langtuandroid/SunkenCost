@@ -432,6 +432,8 @@ MonoBehaviour:
   - GrandFinalist
   - Ambush
   - Cauterize
+  - AirRaid
+  - Research
   etchingSprites:
   - {fileID: 21300000, guid: b662687ca76c9d441a3334e79945a3ed, type: 3}
   - {fileID: 21300000, guid: 04b966b030cc5f8458ac126563c2af2a, type: 3}
@@ -447,3 +449,5 @@ MonoBehaviour:
   - {fileID: 21300000, guid: 08871885d88539a4b946dd558635b26f, type: 3}
   - {fileID: 21300000, guid: cc89b3ad9b368b449b0dd793256dfd3f, type: 3}
   - {fileID: 21300000, guid: 73f16dc48b500ed40a069a83120f6db4, type: 3}
+  - {fileID: 21300000, guid: 0eed845f96fbe9c46934d461da72048f, type: 3}
+  - {fileID: 21300000, guid: abb3dc196b12d754c98646e474402cfc, type: 3}

@@ -19,7 +19,9 @@ public enum St
     DamageFlatModifier,
     MovementBoost,
     DamagePlayer,
-    MaxHealthMultiplier
+    HealEnemy,
+    Gold,
+    IntRequirement
 }
 
 public abstract class Design
@@ -53,18 +55,7 @@ public abstract class Design
     }
 
     protected abstract void Init();
-    protected abstract int GetRarity();
-
-    protected void AddStat(St st, int value)
-    {
-        Stats.Add(st, new Stat(value));
-    }
-
-    protected void ModifyStat(St st, int value)
-    {
-        Stats[st].AddModifier(new StatModifier(value, StatModType.Flat));
-    }
-
+    
     public int GetStat(St st)
     {
         Stats.TryGetValue(st, out var stat);
@@ -83,6 +74,23 @@ public abstract class Design
         else FirstLevelUp();
         
         ModifyStat(St.Rarity, (int)Stats[St.Rarity].BaseValue);
+    }
+
+    public void MakeFree()
+    {
+        Cost = 0;
+    }
+    
+    protected abstract int GetRarity();
+
+    protected void AddStat(St st, int value) 
+    {
+        Stats.Add(st, new Stat(value));
+    }
+
+    protected void ModifyStat(St st, int value)
+    {
+        Stats[st].AddModifier(new StatModifier(value, StatModType.Flat));
     }
 
     protected abstract void FirstLevelUp();
