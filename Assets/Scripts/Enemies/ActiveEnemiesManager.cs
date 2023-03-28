@@ -62,8 +62,6 @@ public class ActiveEnemiesManager : MonoBehaviour
 
     public void AddEnemy(Enemy enemy)
     {
-        enemy.StickNum = 0;
-        //enemy.image.color = Color.gray;
         _waitingEnemies.Add(enemy);
         _allEnemies.Add(enemy);
         ArrangeEnemiesOnStick(enemy);
@@ -111,9 +109,6 @@ public class ActiveEnemiesManager : MonoBehaviour
         // The enemy to be moved
         var enemy = _enemyTurnOrder[_currentEnemy];
 
-        Log.current.AddEvent("E" + (_currentEnemy + 1) + " to move " + enemy.NextMove + " to S" +
-                             enemy.StickNum + enemy.NextMove);
-        
         // Activate any effects the enemy might have
         enemy.BeginMyTurn();
         
@@ -128,13 +123,13 @@ public class ActiveEnemiesManager : MonoBehaviour
         }
 
         // If the enemy is not moving, wait for a moment then continue
-        if (enemy.NextMove == 0 && enemy.PreMovingEffects.Count == 0)
+        if (enemy.FinishedMoving && enemy.PreMovingEffects.Count == 0)
         {
             yield return new WaitForSeconds(BattleManager.AttackTime);
         }
         else
         {
-            while (enemy.NextMove != 0 && !enemy.IsDestroyed)
+            while (!enemy.FinishedMoving && !enemy.IsDestroyed)
             {
                 BattleEvents.Current.BegunEnemyMovement();
                 
@@ -143,7 +138,9 @@ public class ActiveEnemiesManager : MonoBehaviour
                     yield return 0;
                 
                 // If the planks have stopped it moving break
-                if (enemy.NextMove == 0) break;
+                if (enemy.FinishedMoving) break;
+
+                enemy.BeginMyMove();
                 
                 StartCoroutine(enemy.ExecuteMoveStep());
 
@@ -185,6 +182,8 @@ public class ActiveEnemiesManager : MonoBehaviour
 
     public void EnemyMoved()
     {
+        InGameSfxManager.current.EnemyMoved();
+        
         // Rearrange the enemies to be neat on the stick
         foreach (var enemy in _allEnemies)
         {
@@ -227,30 +226,10 @@ public class ActiveEnemiesManager : MonoBehaviour
             
             
             // Place it a bit further down if there's multiple
-            e.MoveSprite(new Vector3(0 + startStickOffsetX, (-120 * i) + Enemy.EnemyOffset + startStickOffsetY));
+            e.RePosition(new Vector3
+                (0 + startStickOffsetX, (-120 * i)+ EnemyMover.EnemyOffset + startStickOffsetY));
             i+= e.Size;
         }
-    }
-
-    private IEnumerator PushEnemies (List<Enemy> enemies)
-    {
-        foreach (var enemy in enemies)
-        {
-            enemy.NextMove += 1;
-            StartCoroutine(enemy.ExecuteMoveStep());
-            
-            // Wait for the enemy to finish moving
-            while (enemy.Moving)
-                yield return 0;
-
-            // Tell everyone about the move
-            BattleEvents.Current.CharacterMoved();
-
-            // Wait for any attacks to execute
-            while (!EtchingManager.Current.finishedProcessingEnemyMove)
-                yield return 0;
-        }
-        yield break;
     }
 
     private void BeginEnemyTurn()
@@ -265,7 +244,7 @@ public class ActiveEnemiesManager : MonoBehaviour
 
             foreach (var enemy in enemyList)
             {
-                enemy.StickNum = stickNum;
+                enemy.Mover.SetStickNum(stickNum);
             }
         }
         
@@ -282,7 +261,6 @@ public class ActiveEnemiesManager : MonoBehaviour
         foreach (var enemy in _waitingEnemies)
         {
             _activeEnemies.Add(enemy);
-            enemy.image.color = Color.white;
         }
         
         _waitingEnemies.Clear();

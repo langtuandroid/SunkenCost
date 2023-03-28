@@ -56,8 +56,8 @@ public class PlayerStats
     public void InitialiseDeck()
     {
         Deck.Add(new Swordsman());
-        Deck.Add(new Swordsman());
-        Deck.Add(new Research());
+        Deck.Add(new Slinger());
+        Deck.Add(new Impede());
     }
 
     public void SaveDeck(IEnumerable<Design> newDeck)

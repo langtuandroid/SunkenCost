@@ -10,82 +10,39 @@ namespace Enemies
 {
     public abstract class Enemy : MonoBehaviour
     {
-        public const int EnemyOffset = 100;
+        public EnemyStats stats;
+        
+        public List<Action> PreMovingEffects = new List<Action>();
+        
+        private EnemyAnimationController _animationController;
 
-        private TooltipTrigger _tooltipTrigger;
+        private int _turnOrder;
+        
         public string Name { get; protected set; }
-
-        public int MoveMin { get; protected set; }
-        public int MoveMax { get; protected set; }
+        
         public  Stat MaxHealth { get; private set; }
         protected int Gold { get; set; }
         public int Health { get; private set; }
         public float Size { get; protected set; } = 1;
-
-        protected List<int> MoveSet = new List<int>();
-        private Queue<int> _moves = new Queue<int>();
-
-        public EnemyStats stats;
-        private EnemyAnimationController _animationController;
-
-        public int StickNum { get; set; }
-        private int _turnOrder;
-        public int NextMove { get; set; }
-        private int LastMove { get; set; }
-
-        public List<Action> PreMovingEffects = new List<Action>();
-
-        public int LastDirection
-        {
-            get
-            {
-                // -1 if moved backwards, 0 if didn't move, 1 if moved forwards
-                if (LastMove == 0) return 0;
-                return LastMove / Math.Abs(LastMove);
-            }
-        }
-
-        public int NextDirection
-        {
-            get
-            {
-                // -1 if moving backwards, 0 if not moving, 1 if moved forwards
-                if (NextMove == 0) return 0;
-                return NextMove / Math.Abs(NextMove);
-            }
-        }
-
+        
         public bool Moving { get; private set; } = false;
-
-        private EnemyTurnOrderText _turnOrderText;
-        private EnemyHealthText _healthText;
-        private TextMeshProUGUI _movementText;
-        public Image image;
-        public Image poisonImage;
-        public TextMeshProUGUI poisonText;
-
-
-        private EnemySpeechBubble _speechBubble;
-
-        private float _moveVelocityX = 0f;
-        private float _moveVelocityY = 0f;
-        private const float Smooth = 0.01f;
-        private Vector2 _aimPosition = Vector2.zero;
 
         public bool IsDestroyed { get; private set; } = false;
 
-        public Stick Stick => StickManager.current.GetStick(StickNum);
+        public EnemyMover Mover { get; private set; }
+        public EnemyUI.EnemyUI UI { get; private set; }
+
+        public Stick Stick => StickManager.current.GetStick(Mover.StickNum);
+        public int StickNum => Mover.StickNum;
+
+        public bool FinishedMoving => Mover.FinishedMoving;
+
+        public int NextDirection => Mover.NextDirection;
 
         protected virtual void Awake()
         {
-            image = transform.GetChild(0).GetComponent<Image>();
-            _tooltipTrigger = transform.GetChild(1).GetComponent<TooltipTrigger>();
-            _turnOrderText = transform.GetChild(2).GetComponent<EnemyTurnOrderText>();
-            _healthText = transform.GetChild(3).GetComponent<EnemyHealthText>();
-            _movementText = transform.GetChild(4).GetComponent<TextMeshProUGUI>();
-            poisonImage = transform.GetChild(5).GetComponent<Image>();
-            poisonText = transform.GetChild(6).GetComponent<TextMeshProUGUI>();
-            _speechBubble = transform.GetChild(7).GetComponent<EnemySpeechBubble>();
+            UI = GetComponent<EnemyUI.EnemyUI>();
+            Mover = GetComponent<EnemyMover>();
 
             stats = new EnemyStats(this);
             _animationController = GetComponent<EnemyAnimationController>();
@@ -98,41 +55,8 @@ namespace Enemies
         protected virtual void Start()
         {
             ChangeHealth(MaxHealth.Value);
-            
-            foreach (var move in MoveSet)
-            {
-                _moves.Enqueue(move);
-            }
 
-            // Randomise first move
-            while (NextMove == 0)
-            {
-                var randomise = Random.Range(0, MoveSet.Count);
-
-                for (var i = 0; i < randomise; i++)
-                {
-                    var move = _moves.Dequeue();
-                    _moves.Enqueue(move);
-                }
-
-                SetNextMoveSequence();
-            }
-
-            BattleEvents.Current.OnEndEnemyTurn += OnEndEnemyTurn;
-
-            _tooltipTrigger.header = Name;
-        }
-
-        private void LateUpdate()
-        {
-            if (TutorialManager.current.HighlightedEnemy) return;
-        
-            var localPosition = transform.localPosition;
-            var newPositionX = Mathf.SmoothDamp(
-                localPosition.x, _aimPosition.x, ref _moveVelocityX, Smooth);
-            var newPositionY = Mathf.SmoothDamp(
-                localPosition.y, _aimPosition.y, ref _moveVelocityY, Smooth);
-            transform.localPosition = new Vector3(newPositionX, newPositionY, 0);
+            UI.TooltipTrigger.header = name;
         }
 
         protected void SetInitialHealth(int health)
@@ -141,65 +65,15 @@ namespace Enemies
             MaxHealth = new Stat(health);
         }
 
-        public void AddMovementModifier(int amount)
-        {
-            for (var i = 0; i < MoveSet.Count; i++)
-            {
-                var move = MoveSet[i];
-                if (move < 0)
-                {
-                    MoveSet[i] -= amount;
-                }
-                else if (move > 0)
-                {
-                    MoveSet[i] += amount;
-                }
-            }
-        }
-
-        private void OnEndEnemyTurn()
-        {
-            SetNextMoveSequence();
-        }
-
-        private void SetNextMoveSequence()
-        {
-            while (true)
-            {
-                var newMove = _moves.Dequeue();
-                _moves.Enqueue(newMove);
-                
-                // Always move off starting stick
-                if (newMove < 1 && StickNum == 0)
-                {
-                    continue;
-                }
-                
-                NextMove = newMove;
-                UpdateMovementText();
-
-                break;
-            }
-        }
-
         public IEnumerator ExecuteMoveStep()
         {
             Moving = true;
 
-            LastMove = NextMove;
-
-            if (NextMove != 0 || !IsDestroyed)
+            if (Mover.FinishedMoving || !IsDestroyed)
             {
 
                 // Change my stick
-                StickNum += LastDirection;
-                NextMove -= LastDirection;
-
-                //HACK - Timing of sound clip
-                // Wait to move
-            
-                InGameSfxManager.current.EnemyMoved();
-
+                Mover.Move();
 
                 ActiveEnemiesManager.Current.EnemyMoved();
 
@@ -215,13 +89,10 @@ namespace Enemies
                 }
 
                 if (IsDestroyed) yield break;
-                UpdateMovementText();
-            }
-            else
-            {
-                UpdateMovementText();
             }
 
+            Mover.UpdateMovementText();
+            
             Moving = false;
         }
 
@@ -235,20 +106,22 @@ namespace Enemies
                 PreMovingEffects.Add(Poison);
             }
 
-            if (TestForPreMovingAbility())
+            if (TestForStartOfTurnAbility())
             {
-                PreMovingEffects.Add(PreMovingAbility);
+                PreMovingEffects.Add(StartOfTurnAbility);
             }
         
-            _turnOrderText.MyTurn();
-
-            // Move
+            UI.TurnOrderText.MyTurn();
+        }
+        
+        public void BeginMyMove()
+        {
         }
 
         public void EndMyTurn()
         {
             PreMovingEffects.Clear();
-            _turnOrderText.EndMyTurn();
+            UI.TurnOrderText.EndMyTurn();
         }
 
         private void Poison()
@@ -257,11 +130,11 @@ namespace Enemies
             InGameSfxManager.current.Poisoned();
         }
 
-        protected virtual void PreMovingAbility()
+        protected virtual void StartOfTurnAbility()
         {
         }
 
-        protected virtual bool TestForPreMovingAbility()
+        protected virtual bool TestForStartOfTurnAbility()
         {
             return false;
         }
@@ -273,23 +146,12 @@ namespace Enemies
 
         public void Block(int blockAmount)
         {
-            if (NextMove > 0)
-            {
-                NextMove -= blockAmount;
-                if (NextMove < 0) NextMove = 0;
-            }
-            else
-            {
-                NextMove += blockAmount;
-                if (NextMove > 0) NextMove = 0;
-            }
-
-            UpdateMovementText();
+            Mover.Block(blockAmount);
         }
 
-        public void MoveSprite(Vector2 newPosition)
+        public void RePosition(Vector2 newPosition)
         {
-            _aimPosition = newPosition;
+            Mover.SetAimPosition(newPosition);
         }
 
         public void TakeDamage(int damage)
@@ -320,10 +182,10 @@ namespace Enemies
             ChangeHealth(0);
         }
 
-        protected void ChangeHealth(int amount)
+        private void ChangeHealth(int amount)
         {
             Health += amount;
-            _healthText.AlterHealth(Health, MaxHealth.Value);
+            UI.HealthText.AlterHealth(Health, MaxHealth.Value);
 
             if (Health <= 0)
             {
@@ -334,34 +196,15 @@ namespace Enemies
         public void SetTurnOrder(int turnOrder)
         {
             _turnOrder = turnOrder;
-            _turnOrderText.SetTurnOrder(_turnOrder);
+            UI.TurnOrderText.SetTurnOrder(turnOrder);
         }
 
         protected void Speak(string text)
         {
-            _speechBubble.WriteText(text);
+            UI.SpeechBubble.WriteText(text);
         }
 
         public abstract string GetDescription();
-
-        public void UpdateMovementText()
-        {
-            var movement = NextMove.ToString();
-            switch (NextMove)
-            {
-                case <0:
-                    movement = "<sprite=0> " + movement;
-                    break;
-                case 0:
-                    movement = "-";
-                    break;
-                case >0:
-                    movement += "<sprite=1>";
-                    break;
-            }
-
-            _movementText.text = movement;
-        }
 
         public virtual void DestroySelf(bool killedByPlayer)
         {
@@ -371,7 +214,6 @@ namespace Enemies
             IsDestroyed = true;
             Moving = false;
             Log.current.AddEvent("E" + _turnOrder + " has been killed");
-            BattleEvents.Current.OnEndEnemyTurn -= OnEndEnemyTurn;
             ActiveEnemiesManager.Current.DestroyEnemy(this);
         }
     }

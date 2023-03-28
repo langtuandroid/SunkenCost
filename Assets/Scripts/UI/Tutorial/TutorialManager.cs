@@ -443,7 +443,7 @@ public class TutorialManager : MonoBehaviour
     private void CheckForEnemyOnLastStick()
     {
         // If an enemy has made it to the last stick
-        var enemiesOnStick = ActiveEnemiesManager.Current.GetEnemiesOnStick(StickManager.current.stickCount - 1).Where(e => e.NextMove > 0).ToList();
+        var enemiesOnStick = ActiveEnemiesManager.Current.GetEnemiesOnStick(StickManager.current.stickCount - 1).Where(e => e.FinishedMoving).ToList();
         if (enemiesOnStick.Count <= 0) return;
         
         _firstEnemy = enemiesOnStick[0];

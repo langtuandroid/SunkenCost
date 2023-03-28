@@ -11,8 +11,8 @@ public class AxolitlEnemy : Enemy
     protected override void Init()
     {
         Name = "Axolitl";
-        MoveSet.Add(1);
-        MoveSet.Add(2);
+        Mover.AddMove(1);
+        Mover.AddMove(2);
         SetInitialHealth(15);
         Gold = 1;
     }
@@ -22,7 +22,7 @@ public class AxolitlEnemy : Enemy
         return "Gains health each turn";
     }
 
-    protected override void PreMovingAbility()
+    protected override void StartOfTurnAbility()
     {
         // Heal up to max heath
         if (Health < MaxHealth.Value)
@@ -37,10 +37,10 @@ public class AxolitlEnemy : Enemy
             }
         }
         
-        base.PreMovingAbility();
+        base.StartOfTurnAbility();
     }
 
-    protected override bool TestForPreMovingAbility()
+    protected override bool TestForStartOfTurnAbility()
     {
         return true;
     }

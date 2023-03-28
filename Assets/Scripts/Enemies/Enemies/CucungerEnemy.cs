@@ -14,9 +14,9 @@ public class CucungerEnemy : Enemy
     {
         Size = 1.2f;
         Name = "Cucunger";
-        MoveSet.Add(1);
+        Mover.AddMove(1);
         SetInitialHealth(50);
-        Gold = 5;
+        Gold = 10;
     }
 
     protected override void Start()
@@ -47,7 +47,7 @@ public class CucungerEnemy : Enemy
         return "Destroys the furthest plank to the right " + turnText;
     }
 
-    protected override void PreMovingAbility()
+    protected override void StartOfTurnAbility()
     {
         var speakText = (abilityCooldown - cooldownCounter).ToString();
         if (speakText == "0")
@@ -65,10 +65,10 @@ public class CucungerEnemy : Enemy
             cooldownCounter++;
         }
         
-        base.PreMovingAbility();
+        base.StartOfTurnAbility();
     }
 
-    protected override bool TestForPreMovingAbility()
+    protected override bool TestForStartOfTurnAbility()
     {
         return true;
     }

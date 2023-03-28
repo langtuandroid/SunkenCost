@@ -871,7 +871,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 1, y: 0}
   m_AnchorMax: {x: 1, y: 0}
-  m_AnchoredPosition: {x: -50, y: 55.03}
+  m_AnchoredPosition: {x: -50, y: 55.03003}
   m_SizeDelta: {x: 199, y: 130.5}
   m_Pivot: {x: 1, y: 0}
 --- !u!224 &1001261295 stripped
@@ -930,11 +930,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3739874107440994272, guid: 753e431c20e8b5d45a1560f4e9ca944f, type: 3}
       propertyPath: m_AnchoredPosition.x
-      value: 2136.8423
+      value: 2095.1074
       objectReference: {fileID: 0}
     - target: {fileID: 3739874107440994272, guid: 753e431c20e8b5d45a1560f4e9ca944f, type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: 3412.6316
+      value: 3407.382
       objectReference: {fileID: 0}
     - target: {fileID: 3739874107924409688, guid: 753e431c20e8b5d45a1560f4e9ca944f, type: 3}
       propertyPath: m_Pivot.x
@@ -2468,6 +2468,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 751611253}
     m_Modifications:
+    - target: {fileID: 5891915918813623431, guid: e3cc4f2c33cfd684c8636588f351035d, type: 3}
+      propertyPath: m_fontSize
+      value: 90
+      objectReference: {fileID: 0}
     - target: {fileID: 5891915919942667590, guid: e3cc4f2c33cfd684c8636588f351035d, type: 3}
       propertyPath: m_Pivot.x
       value: 1

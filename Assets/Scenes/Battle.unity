@@ -466,12 +466,14 @@ MonoBehaviour:
   - Axolitl
   - Cucunger
   - Rat
+  - FlyingFish
   enemyPrefabs:
   - {fileID: 7923812371195210878, guid: 5ef39fbf033852144bcb8f3c74d2d860, type: 3}
   - {fileID: 1231011296041315399, guid: 71cc31b502beb3046aa91f95e616019f, type: 3}
   - {fileID: 5450485110028922466, guid: 5a6e0485318cb964aa6eb07b2cc18160, type: 3}
   - {fileID: 2520175707461143471, guid: febc9701302a1024285b138ad3af69a1, type: 3}
   - {fileID: 1298086995011842886, guid: 3384cdbddab22f84f975346a5ded1168, type: 3}
+  - {fileID: 5288099224730438730, guid: 3d3c41a808c243643858858cd90c514a, type: 3}
   startStick: {fileID: 1155358484}
 --- !u!4 &145267314
 Transform:
@@ -3140,11 +3142,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3739874107440994272, guid: 753e431c20e8b5d45a1560f4e9ca944f, type: 3}
       propertyPath: m_AnchoredPosition.x
-      value: 2070.3865
+      value: 2082.7468
       objectReference: {fileID: 0}
     - target: {fileID: 3739874107440994272, guid: 753e431c20e8b5d45a1560f4e9ca944f, type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: 3388.8413
+      value: 3380.601
       objectReference: {fileID: 0}
     - target: {fileID: 3739874107924409688, guid: 753e431c20e8b5d45a1560f4e9ca944f, type: 3}
       propertyPath: m_Pivot.x

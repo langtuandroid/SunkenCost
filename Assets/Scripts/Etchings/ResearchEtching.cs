@@ -14,6 +14,7 @@ namespace Etchings
             var enemy = ActiveEnemiesManager.CurrentEnemy;
             if (!CheckInfluence(enemy.StickNum)) return false;
             StartCoroutine(ColorForActivate());
+            Stick.SetTempColour(design.Color);
 
             var amountToHeal = enemy.MaxHealth.Value - enemy.Health;
                 

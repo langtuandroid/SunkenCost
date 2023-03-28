@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: Confused
   m_EditorClassIdentifier: 
   title: Confused Craftsmen
-  description: +@ Plank\nStart each battle with your planks in a random order
+  description: +@ Plank, but start each battle with your planks in a random order
   sprite: {fileID: 21300000, guid: 3788e22a2a464bd40976ecb5dbb296b0, type: 3}
   modifier: 1
   rarity: 3

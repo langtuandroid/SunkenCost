@@ -17,21 +17,21 @@ public class EnemyStats
     public void AddPoison(int amount)
     {
         _poisonStat.AddModifier(new StatModifier(amount, StatModType.Flat));
-        _enemy.poisonImage.enabled = true;
-        _enemy.poisonText.enabled = true;
-        _enemy.poisonText.text = Poison.ToString();
+        _enemy.UI.PoisonImage.enabled = true;
+        _enemy.UI.PoisonText.enabled = true;
+        _enemy.UI.PoisonText.text = Poison.ToString();
 
     }
 
     public void RemovePoison(int amount)
     {
         _poisonStat.AddModifier(new StatModifier(-amount, StatModType.Flat));
-        _enemy.poisonText.text = Poison.ToString();
+        _enemy.UI.PoisonText.text = Poison.ToString();
 
         if (Poison <= 0)
         {
-            _enemy.poisonImage.enabled = false;
-            _enemy.poisonText.enabled = false;
+            _enemy.UI.PoisonImage.enabled = false;
+            _enemy.UI.PoisonText.enabled = false;
             _poisonStat = new Stat();
         }
     }

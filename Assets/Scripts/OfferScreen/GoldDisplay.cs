@@ -18,7 +18,8 @@ namespace OfferScreen
 
         public void UpdateText(int goldAmount)
         {
-            _textMeshProUGUI.text = "$" + goldAmount.ToString();
+            _textMeshProUGUI.text = "<font=\"GrapeSoda SDF\"><cspace=-0.2em>$ </cspace></font>" 
+                                    + goldAmount.ToString();
             _textMeshProUGUI.colorGradientPreset = goldAmount >= 0 ? _goodColor : _badColor;
         }
     }

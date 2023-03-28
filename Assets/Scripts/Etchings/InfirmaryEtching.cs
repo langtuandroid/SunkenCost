@@ -25,6 +25,8 @@ namespace Etchings
         private void HealPlayer()
         {
             PlayerController.current.AddLife(_healAmountStat.Value);
+            Stick.SetTempColour(design.Color);
+            StartCoroutine(ColorForActivate());
         }
     }
 }

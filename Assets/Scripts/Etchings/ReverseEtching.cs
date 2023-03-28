@@ -11,16 +11,12 @@ namespace Etchings
             var stickNum = Stick.GetStickNumber();
             var currentEnemyStickNum = currentEnemy.StickNum;
 
-            if (currentEnemyStickNum != stickNum || currentEnemy.NextMove == 0) return false;
+            if (currentEnemyStickNum != stickNum || currentEnemy.FinishedMoving) return false;
 
             // Set the new goal stick as the opposite direction
-            currentEnemy.NextMove *= -1;
+            currentEnemy.Mover.Reverse();
 
-            currentEnemy.NextMove += GetStatValue(St.MovementBoost) * currentEnemy.NextDirection;
-            
-            currentEnemy.UpdateMovementText();
-
-            if (currentEnemy.NextMove <= -currentEnemyStickNum) currentEnemy.NextMove = -currentEnemyStickNum;
+            currentEnemy.Mover.AddMovement(GetStatValue(St.MovementBoost));
 
             UsesUsedThisTurn += 1;
             return true;

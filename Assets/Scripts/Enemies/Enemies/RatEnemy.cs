@@ -9,13 +9,13 @@ public class RatEnemy : Enemy
     protected override void Init()
     {
         Name = "Scrat";
-        MoveSet.Add(2);
+        Mover.AddMove(2);
         SetInitialHealth(10);
         Gold = 1;
     }
     
     public override string GetDescription()
     {
-        return "Always moves";
+        return "Scurries along steadily";
     }
 }

@@ -212,7 +212,7 @@ public class DesignManager : MonoBehaviour
                     " gold ";
                 if (design.Level == 0)
                 {
-                    description += "if more than " + intRequirement?.Value + " health is healed";
+                    description += "if " + intRequirement?.Value + " or more health is healed";
                 }
                 else
                 {

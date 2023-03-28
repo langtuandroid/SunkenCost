@@ -9,7 +9,8 @@ public enum EnemyType
     Claus,
     Axolitl,
     Cucunger,
-    Rat
+    Rat,
+    FlyingFish
 }
 
 public enum ScenarioType

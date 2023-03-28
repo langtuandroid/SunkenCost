@@ -9,7 +9,7 @@ public class GrouldEnemy : Enemy
     protected override void Init()
     {
         Name = "Grould";
-        MoveSet.Add(1);
+        Mover.AddMove(1);
         SetInitialHealth(20);
         Gold = 1;
     }
@@ -19,13 +19,13 @@ public class GrouldEnemy : Enemy
         return "Disables the plank it starts each turn on";
     }
 
-    protected override void PreMovingAbility()
+    protected override void StartOfTurnAbility()
     {
         Stick.etching?.Deactivate(1);
         InGameSfxManager.current.Slimed();
     }
 
-    protected override bool TestForPreMovingAbility()
+    protected override bool TestForStartOfTurnAbility()
     {
         return (StickNum != 0);
     }

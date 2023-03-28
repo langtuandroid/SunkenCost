@@ -51,7 +51,7 @@ public class EnemySpawner : MonoBehaviour
 
             var enemy = newEnemy.GetComponent<Enemy>();
             enemy.MaxHealth.AddModifier(new StatModifier(_scenario.scaledDifficulty, StatModType.PercentMult));
-            enemy.AddMovementModifier((int)(_scenario.scaledDifficulty / 2f));
+            enemy.Mover.AddMovementModifier((int)(_scenario.scaledDifficulty / 2f));
             ActiveEnemiesManager.Current.AddEnemy(enemy);
         }
     }

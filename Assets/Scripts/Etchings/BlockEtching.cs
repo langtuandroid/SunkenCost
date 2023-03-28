@@ -10,7 +10,7 @@ namespace Etchings
             var stickNum = Stick.GetStickNumber();
             var currentEnemyStickNum = currentEnemy.StickNum;
 
-            if (currentEnemyStickNum != stickNum || currentEnemy.NextMove == 0) return false;
+            if (currentEnemyStickNum != stickNum || currentEnemy.FinishedMoving) return false;
             
             currentEnemy.Block(design.GetStat(St.Block));
             UsesUsedThisTurn += 1;

@@ -9,14 +9,14 @@ public class ClausEnemy : Enemy
     protected override void Init()
     {
         Name = "C'laus";
-        MoveSet.Add(2);
-        MoveSet.Add(3);
+        Mover.AddMove(2);
+        Mover.AddMove(3);
         SetInitialHealth(16);
         Gold = 1;
     }
     
     public override string GetDescription()
     {
-        return "Always moves";
+        return "Fast little critter!";
     }
 }

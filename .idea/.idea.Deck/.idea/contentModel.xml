@@ -616,6 +616,7 @@
           </e>
         </e>
         <e p="RenderTextures" t="Include" />
+        <e p="Resources" t="Include" />
         <e p="Scenes" t="Include" />
         <e p="ScriptableObjects" t="Include">
           <e p="BattleScenarios" t="Include" />
@@ -687,19 +688,23 @@
               <e p="AxolitlEnemy.cs" t="Include" />
               <e p="ClausEnemy.cs" t="Include" />
               <e p="CucungerEnemy.cs" t="Include" />
+              <e p="FlyingFishEnemy.cs" t="Include" />
               <e p="GrouldEnemy.cs" t="Include" />
               <e p="RatEnemy.cs" t="Include" />
             </e>
             <e p="Enemy.cs" t="Include" />
             <e p="EnemyAnimationController.cs" t="Include" />
             <e p="EnemyManager.cs" t="Include" />
+            <e p="EnemyMover.cs" t="Include" />
             <e p="EnemyPlaceholder.cs" t="Include" />
             <e p="EnemySpawner.cs" t="Include" />
             <e p="EnemyStats.cs" t="Include" />
             <e p="EnemyUI" t="Include">
               <e p="EnemyHealthText.cs" t="Include" />
+              <e p="EnemyMovementText.cs" t="Include" />
               <e p="EnemySpeechBubble.cs" t="Include" />
               <e p="EnemyTurnOrderText.cs" t="Include" />
+              <e p="EnemyUI.cs" t="Include" />
               <e p="EnemyUIText.cs" t="Include" />
             </e>
             <e p="Scenarios" t="Include">
@@ -722,7 +727,6 @@
             <e p="DummyEtching.cs" t="Include" />
             <e p="Etching.cs" t="Include" />
             <e p="GrandFinalistEtching.cs" t="Include" />
-            <e p="HopEtching.cs" t="Include" />
             <e p="ImpedeEtching.cs" t="Include" />
             <e p="Indicator.cs" t="Include" />
             <e p="IndicatorController.cs" t="Include" />

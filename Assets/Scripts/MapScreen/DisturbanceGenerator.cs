@@ -39,7 +39,7 @@ namespace MapScreen
                 return;
             }
             
-            var eliteRound = RunProgress.BattleNumber % 3 == 2;
+            var eliteRound = RunProgress.BattleNumber % 4 == 3;
         
             var weightings = eliteRound
                 ? EliteWeightings

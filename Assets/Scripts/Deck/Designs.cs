@@ -404,7 +404,7 @@ public class Infirmary : UncommonDesign
 {
     protected override void Init()
     {
-        Title = "Infirmary";
+        Title = "Rest";
         Category = DesignCategory.Infirmary;
         Color = new Color(0.67f, 0.2f, 0.27f);
         AddStat(St.HealPlayer, 1);
