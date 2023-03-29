@@ -1,10 +1,10 @@
 ﻿namespace Enemies.Enemies
 {
-    public class FlunderEnemy : Enemy
+    public class CribEnemy : Enemy
     {
         protected override void Init()
         {
-            Name = "Flunder";
+            Name = "Crib";
             Mover.AddMove(2);
             Mover.AddMove(-1);
             SetInitialHealth(35);

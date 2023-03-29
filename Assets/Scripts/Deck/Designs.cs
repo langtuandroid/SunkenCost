@@ -11,7 +11,7 @@ public class Swordsman : CommonDesign
         Title = "Stab";
         Category = DesignCategory.Melee;
         Color = Color.cyan;
-        AddStat(St.Damage, 6);
+        AddStat(St.Damage, 7);
     }
 
     protected override void FirstLevelUp()
@@ -21,7 +21,7 @@ public class Swordsman : CommonDesign
 
     protected override void SecondLevelUp()
     {
-        ModifyStat(St.Damage, 3);
+        ModifyStat(St.Damage, 5);
    }
 }
 
@@ -33,7 +33,7 @@ public class Ambush : UncommonDesign
         Category = DesignCategory.Ambush;
         Color = new Color(0.2f, 0.35f, 0.38f);
         AddStat(St.Damage, 3);
-        AddStat(St.DamageFlatModifier, 3);
+        AddStat(St.DamageFlatModifier, 4);
     }
 
     protected override void FirstLevelUp()
@@ -76,18 +76,18 @@ public class GrandFinalist : UncommonDesign
         Title = "Finalise";
         Category = DesignCategory.GrandFinalist;
         Color = new Color(0.2f, 0.35f, 0.38f);
-        AddStat(St.Damage, 10);
+        AddStat(St.Damage, 12);
         AddStat(St.DamagePlayer, -1);
     }
 
     protected override void FirstLevelUp()
     {
-        ModifyStat(St.Damage, 2);
+        ModifyStat(St.Damage, 3);
     }
 
     protected override void SecondLevelUp()
     {
-        ModifyStat(St.Damage, 3);
+        ModifyStat(St.Damage, 5);
     }
 }
 
@@ -101,19 +101,19 @@ public class Slinger : CommonDesign
         Title = "Hurl";
         Category = DesignCategory.Ranged;
         Color = Color.red;
-        AddStat(St.Damage, 4);
+        AddStat(St.Damage, 5);
         AddStat(St.MinRange, 1);
         AddStat(St.MaxRange, 1);
     }
     
     protected override void FirstLevelUp()
     {
-        ModifyStat(St.Damage, 1);
+        ModifyStat(St.Damage, 2);
     }
 
     protected override void SecondLevelUp()
     {
-        ModifyStat(St.Damage, 2);
+        ModifyStat(St.Damage, 3);
     }
 }
 
@@ -178,7 +178,7 @@ public class AirRaid : UncommonDesign
     
     protected override void FirstLevelUp()
     {
-        ModifyStat(St.Damage, 2);
+        ModifyStat(St.Damage, 1);
     }
 
     protected override void SecondLevelUp()

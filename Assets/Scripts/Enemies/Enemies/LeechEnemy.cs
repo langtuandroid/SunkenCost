@@ -11,7 +11,7 @@ namespace Enemies.Enemies
             Size = 1.2f;
             Name = "Leech";
             Mover.AddMove(2);
-            SetInitialHealth(20);
+            SetInitialHealth(30);
             Gold = 5;
 
             _steelo = FindObjectOfType<SteeloEnemy>();

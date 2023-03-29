@@ -54,14 +54,14 @@ public class BattleManager : MonoBehaviour
         BattleEvents.Current.OnOfferDesigns += OfferingDesigns;
         BattleEvents.Current.OnBossKilled += BossKilled;
 
-        BattleEvents.Current.BeginBattle();
-
         foreach (var design in RunProgress.PlayerStats.Deck)
         {
             StickManager.current.CreateStick();
             EtchingManager.Current.CreateEtching(StickManager.current.GetStick(StickManager.current.stickCount - 1),
                 design);
         }
+        
+        BattleEvents.Current.BeginBattle();
     }
 
     // Update is called once per frame

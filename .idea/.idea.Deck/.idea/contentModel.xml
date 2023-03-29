@@ -687,8 +687,8 @@
             <e p="Enemies" t="Include">
               <e p="AxolitlEnemy.cs" t="Include" />
               <e p="ClausEnemy.cs" t="Include" />
+              <e p="CribEnemy.cs" t="Include" />
               <e p="CucungerEnemy.cs" t="Include" />
-              <e p="FlunderEnemy.cs" t="Include" />
               <e p="FlyingFishEnemy.cs" t="Include" />
               <e p="GrouldEnemy.cs" t="Include" />
               <e p="LeechEnemy.cs" t="Include" />

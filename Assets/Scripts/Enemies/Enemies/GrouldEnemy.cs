@@ -10,7 +10,7 @@ public class GrouldEnemy : Enemy
     {
         Name = "Grould";
         Mover.AddMove(1);
-        SetInitialHealth(20);
+        SetInitialHealth(25);
         Gold = 1;
     }
     

@@ -6,14 +6,14 @@ using UnityEngine;
 
 public class AxolitlEnemy : Enemy
 {
-    private int _healingAmount = 3;
+    private int _healingAmount = 5;
     
     protected override void Init()
     {
         Name = "Axolitl";
         Mover.AddMove(1);
         Mover.AddMove(2);
-        SetInitialHealth(15);
+        SetInitialHealth(25);
         Gold = 1;
     }
     

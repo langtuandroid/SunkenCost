@@ -52,6 +52,7 @@ namespace Etchings
         {
             Stick.SetActive(false);
             deactivationTurns = turns;
+            BattleEvents.Current.EtchingsUpdated();
         }
 
         private void OnDestroy()

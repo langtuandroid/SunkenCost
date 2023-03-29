@@ -28,7 +28,7 @@ public class Stat
         }
     }
 
-    public float BaseValue { get; }
+    public float BaseValue { get; private set; }
 
     public Stat()
     {
@@ -40,6 +40,12 @@ public class Stat
     {
         BaseValue = baseValue;
         
+    }
+
+    public void ModifyBaseValue(int amount)
+    {
+        BaseValue += amount;
+        _needsRecalculating = true;
     }
 
     public void AddModifier(StatModifier mod)

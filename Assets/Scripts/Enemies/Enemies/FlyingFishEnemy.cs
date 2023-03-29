@@ -8,7 +8,7 @@ namespace Enemies.Enemies
         {
             Name = "Flighting Fish";
             Mover.AddMove(1);
-            SetInitialHealth(30);
+            SetInitialHealth(35);
             Gold = 1;
         }
 

@@ -15,7 +15,7 @@ public class CucungerEnemy : Enemy
         Size = 1.2f;
         Name = "Cucunger";
         Mover.AddMove(1);
-        SetInitialHealth(50);
+        SetInitialHealth(70);
         Gold = 10;
     }
     

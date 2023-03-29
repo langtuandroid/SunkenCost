@@ -150,7 +150,7 @@ public class DesignManager : MonoBehaviour
                 description = "Attacks enemies landing " + range + " away for " + damage?.Value + " damage";
 
                 if (design.Category == DesignCategory.AirRaid)
-                    description += ". Deal " + statMultiplier?.Value + "x as much damage on non-Attack planks";
+                    description += ". Deal " + statMultiplier?.Value + "x damage on non-Attack planks";
                 break;
             case DesignCategory.Area:
                 var distance = maxRange?.Value + " plank";
@@ -177,20 +177,8 @@ public class DesignManager : MonoBehaviour
                 description = "Applies " + poison?.Value + " poison to enemies landing on this plank";
                 break;
             case DesignCategory.StrikeZone:
-                description = "Enemies on this plank take ";
-                switch (design.Level)
-                {
-                    case 0:
-                        description += "double damage from Attacks";
-                        break;
-                    case 1:
-                        description += "double damage";
-                        break;
-                    case 2:
-                        description += "triple damage";
-                        break;
-                }
-
+                description = "Enemies on this plank take " + statMultiplier?.Value + " damage";
+                if (design.Level < 2) description += "from Attacks";
                 break;
             case DesignCategory.Infirmary:
                 description = "At the end of the battle, recover " + healPlayer?.Value;
@@ -220,6 +208,9 @@ public class DesignManager : MonoBehaviour
                 }
                 break;
         }
+
+        description = description.Replace("2x", "double");
+        description = description.Replace("3x", "triple");
 
         if (design.Stats.TryGetValue(St.UsesPerTurn, out var usesPerTurn))
         {

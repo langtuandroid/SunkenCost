@@ -13,7 +13,7 @@ public enum EnemyType
     FlyingFish,
     Steelo,
     Leech,
-    Flunder,
+    Crib,
     Retortoise
 }
 
@@ -37,8 +37,6 @@ public class Scenario : ScriptableObject
     public List<EnemyType> round3 = new List<EnemyType>();
     public List<EnemyType> round4 = new List<EnemyType>();
     public List<EnemyType> round5 = new List<EnemyType>();
-    public List<EnemyType> round6 = new List<EnemyType>();
-    public List<EnemyType> round7 = new List<EnemyType>();
 
 
     public float scaledDifficulty;
@@ -57,10 +55,6 @@ public class Scenario : ScriptableObject
                 return round4;
             case 5: 
                 return round5;
-            case 6: 
-                return round6;
-            case 7: 
-                return round7;
             default:
                 Debug.Log("Round " + round + " not found!");
                 return new List<EnemyType>();

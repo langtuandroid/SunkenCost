@@ -90,7 +90,7 @@ public abstract class Design
 
     protected void ModifyStat(St st, int value)
     {
-        Stats[st].AddModifier(new StatModifier(value, StatModType.Flat));
+        Stats[st].ModifyBaseValue(value);
     }
 
     protected abstract void FirstLevelUp();
