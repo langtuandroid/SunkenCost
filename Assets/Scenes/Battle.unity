@@ -467,6 +467,10 @@ MonoBehaviour:
   - Cucunger
   - Rat
   - FlyingFish
+  - Steelo
+  - Leech
+  - Flunder
+  - Retortoise
   enemyPrefabs:
   - {fileID: 7923812371195210878, guid: 5ef39fbf033852144bcb8f3c74d2d860, type: 3}
   - {fileID: 1231011296041315399, guid: 71cc31b502beb3046aa91f95e616019f, type: 3}
@@ -474,6 +478,10 @@ MonoBehaviour:
   - {fileID: 2520175707461143471, guid: febc9701302a1024285b138ad3af69a1, type: 3}
   - {fileID: 1298086995011842886, guid: 3384cdbddab22f84f975346a5ded1168, type: 3}
   - {fileID: 5288099224730438730, guid: 3d3c41a808c243643858858cd90c514a, type: 3}
+  - {fileID: 2520175707461143471, guid: 1216c9ff4fbbd104a86fe22ccd4b94dd, type: 3}
+  - {fileID: 2520175707461143471, guid: d66294247a79bb44ca0c71b3f8d6eaef, type: 3}
+  - {fileID: 5288099224730438730, guid: bdacb69a8e31880418e285c60a947363, type: 3}
+  - {fileID: 2520175707461143471, guid: 48b04dc8e7afc3e4d87ea82ff3759e36, type: 3}
   startStick: {fileID: 1155358484}
 --- !u!4 &145267314
 Transform:
@@ -3142,11 +3150,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3739874107440994272, guid: 753e431c20e8b5d45a1560f4e9ca944f, type: 3}
       propertyPath: m_AnchoredPosition.x
-      value: 2082.7468
+      value: 3802.4453
       objectReference: {fileID: 0}
     - target: {fileID: 3739874107440994272, guid: 753e431c20e8b5d45a1560f4e9ca944f, type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: 3380.601
+      value: 4647.433
       objectReference: {fileID: 0}
     - target: {fileID: 3739874107924409688, guid: 753e431c20e8b5d45a1560f4e9ca944f, type: 3}
       propertyPath: m_Pivot.x

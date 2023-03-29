@@ -9,7 +9,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 2663034553424059562, guid: 040da2e7c8c848d46836370018ab3bda, type: 3}
       propertyPath: m_Name
-      value: BattleItemDisplay
+      value: ItemIconDisplay
       objectReference: {fileID: 0}
     - target: {fileID: 2663034553424059563, guid: 040da2e7c8c848d46836370018ab3bda, type: 3}
       propertyPath: m_Pivot.x

@@ -38,8 +38,9 @@ namespace MapScreen
                 
                 return;
             }
-            
-            var eliteRound = RunProgress.BattleNumber % 4 == 3;
+
+            var bpd = ScenarioManager.BATTLES_PER_DIFFICULTY;
+            var eliteRound = RunProgress.BattleNumber % bpd == bpd - 1;
         
             var weightings = eliteRound
                 ? EliteWeightings

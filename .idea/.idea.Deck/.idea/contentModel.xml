@@ -688,9 +688,13 @@
               <e p="AxolitlEnemy.cs" t="Include" />
               <e p="ClausEnemy.cs" t="Include" />
               <e p="CucungerEnemy.cs" t="Include" />
+              <e p="FlunderEnemy.cs" t="Include" />
               <e p="FlyingFishEnemy.cs" t="Include" />
               <e p="GrouldEnemy.cs" t="Include" />
+              <e p="LeechEnemy.cs" t="Include" />
               <e p="RatEnemy.cs" t="Include" />
+              <e p="RetortoiseEnemy.cs" t="Include" />
+              <e p="SteeloEnemy.cs" t="Include" />
             </e>
             <e p="Enemy.cs" t="Include" />
             <e p="EnemyAnimationController.cs" t="Include" />
@@ -727,6 +731,7 @@
             <e p="DummyEtching.cs" t="Include" />
             <e p="Etching.cs" t="Include" />
             <e p="GrandFinalistEtching.cs" t="Include" />
+            <e p="HopEtching.cs" t="Include" />
             <e p="ImpedeEtching.cs" t="Include" />
             <e p="Indicator.cs" t="Include" />
             <e p="IndicatorController.cs" t="Include" />

@@ -10,7 +10,11 @@ public enum EnemyType
     Axolitl,
     Cucunger,
     Rat,
-    FlyingFish
+    FlyingFish,
+    Steelo,
+    Leech,
+    Flunder,
+    Retortoise
 }
 
 public enum ScenarioType

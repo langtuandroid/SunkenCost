@@ -17,9 +17,9 @@ namespace OfferScreen
         
         public static Design GenerateStoreDesign()
         {
-            const double maxProgress = 50.0;
+            const double maxProgress = 15.0;
             
-            var chancesOnFirstBattle = new[] {0.8, 0.5, 0.05};
+            var chancesOnFirstBattle = new[] {0.7, 0.25, 0.05};
             var chancesOnLastPossibleBattle = new[] {0.2, 0.6, 0.2};
 
             var percentage = Progress / maxProgress;

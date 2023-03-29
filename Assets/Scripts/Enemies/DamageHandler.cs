@@ -12,6 +12,7 @@ public enum DamageSource
     Poison,
     Item,
     Self,
+    EnemyAbility
 }
 
 public interface IDamageFlatModifier
@@ -69,7 +70,7 @@ public static class DamageHandler
         
         damage = multiModifyingItems.Aggregate(damage, (current, item) => item.GetDamageModification(current, enemy, source, etching));
 
-        enemy.TakeDamage(damage);
+        enemy.TakeDamage(damage, source);
         
         if (source == DamageSource.Plank)
         {

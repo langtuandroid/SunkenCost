@@ -55,8 +55,7 @@ namespace Enemies
         protected virtual void Start()
         {
             ChangeHealth(MaxHealth.Value);
-
-            UI.TooltipTrigger.header = name;
+            UI.TooltipTrigger.header = Name;
         }
 
         protected void SetInitialHealth(int health)
@@ -154,7 +153,7 @@ namespace Enemies
             Mover.SetAimPosition(newPosition);
         }
 
-        public void TakeDamage(int damage)
+        public virtual void TakeDamage(int damage, DamageSource damageSource)
         {
             ChangeHealth(-damage);
             _animationController.Damage();
@@ -162,7 +161,11 @@ namespace Enemies
     
         public void Heal(int amount)
         {
-            ChangeHealth(amount);
+            var healAmount = amount;
+            var healthDifference = (MaxHealth.Value - Health);
+            if (healthDifference < healAmount) healAmount = healthDifference;
+            
+            ChangeHealth(healAmount);
             InGameSfxManager.current.Healed();
             _animationController.Heal();
             BattleEvents.Current.EnemyHealed(this);

@@ -7,8 +7,9 @@ using UnityEngine.UI;
 
 namespace OfferScreen
 {
-    public class ItemOfferDisplay : MonoBehaviour, IPointerClickHandler, IOffer
+    public class ItemOfferDisplay : MonoBehaviour, IOffer
     {
+
         [SerializeField] private TextMeshProUGUI titleText;
 
         [SerializeField] private ItemDisplay itemDisplay;
@@ -42,7 +43,7 @@ namespace OfferScreen
             lockButton.Hide();
         }
 
-        public void OnPointerClick(PointerEventData eventData)
+        public void Click()
         {
             if (OfferManager.Current.BuyerSeller.Gold < ItemOffer.Cost) return;
             

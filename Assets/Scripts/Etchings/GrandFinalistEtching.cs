@@ -12,18 +12,19 @@ namespace Etchings
 
         protected override bool TestCharMovementActivatedEffect()
         {
-            var enemy = ActiveEnemiesManager.CurrentEnemy;
+            var currentEnemy = ActiveEnemiesManager.CurrentEnemy;
 
-            if (!CheckInfluence(enemy.StickNum)) return false;
+            if (!CheckInfluence(currentEnemy.StickNum)) return false;
 
-            var activeEnemies = ActiveEnemiesManager.Current.ActiveEnemies.ToList();
-            foreach (var activeEnemy in activeEnemies)
+            var enemiesOnPlanks = ActiveEnemiesManager.Current.ActiveEnemies.Where
+                (e => e.StickNum != 0).ToArray();
+            foreach (var enemy in enemiesOnPlanks)
             {
-                if (activeEnemy.StickNum > 0) activeEnemy.Stick.SetTempColour(design.Color);
-                DamageEnemy(activeEnemy);
+                if (enemy.StickNum > 0) enemy.Stick.SetTempColour(design.Color);
+                DamageEnemy(enemy);
             }
 
-            if (ActiveEnemiesManager.Current.ActiveEnemies.Count > 0)
+            if (enemiesOnPlanks.Any(e => !e.IsDestroyed))
             {
                 PlayerController.current.TakeLife();
             }

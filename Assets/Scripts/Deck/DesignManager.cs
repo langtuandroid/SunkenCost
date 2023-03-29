@@ -125,7 +125,7 @@ public class DesignManager : MonoBehaviour
                 if (design.Category == DesignCategory.LoneWolf)
                 {
                     description += ". " + design.Stats[St.DamageFlatModifier].Value + 
-                                  " damage for each plank you have<size=100%>";
+                                  " damage for each other plank you have";
                 }
 
                 if (design.Category == DesignCategory.Ambush)
@@ -155,8 +155,8 @@ public class DesignManager : MonoBehaviour
             case DesignCategory.Area:
                 var distance = maxRange?.Value + " plank";
                 if (maxRange?.Value != 1) distance += "s";
-                description = "Attacks all enemies for " + damage?.Value + " damage when an enemy lands within " + distance +
-                              " away ";
+                description = "Attacks all enemies up to " + distance +
+                              " away for " + damage?.Value + " damage when an enemy lands within that range";
                 break;
             case DesignCategory.Block: 
                 description = "Removes " + block?.Value + " movement from enemies leaving this plank";
@@ -199,7 +199,7 @@ public class DesignManager : MonoBehaviour
                 break;
             case DesignCategory.GrandFinalist:
                 description = "When enemies land on this plank, deal " + damage?.Value +
-                              " damage to all enemies. If any survive, lose a life";
+                              " damage to all enemies on every plank. If any survive, lose a life";
                 break;
             case DesignCategory.Cauterize:
                 var multiplier = statMultiplier?.Value;
@@ -223,13 +223,16 @@ public class DesignManager : MonoBehaviour
 
         if (design.Stats.TryGetValue(St.UsesPerTurn, out var usesPerTurn))
         {
-            description += " (" + usesPerTurn?.Value + "x per turn)";
+            var usesText = usesPerTurn?.Value switch
+            {
+                1 => "once",
+                2 => "twice",
+                3 => "triple",
+                _ => usesPerTurn?.Value + "x"
+            };
+            description += "(" + usesText + " per turn)";
         }
-
-        description = description.Replace("1x", "once");
-        description = description.Replace("2x", "twice");
-        description = description.Replace("3x", "triple");
-
+        
         return description;
     }
 }

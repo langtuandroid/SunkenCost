@@ -9,7 +9,7 @@ using Random = UnityEngine.Random;
 
 public class ScenarioManager : MonoBehaviour
 {
-    private const int BATTLES_PER_DIFFICULTY = 4;
+    public const int BATTLES_PER_DIFFICULTY = 3;
     
     private static ScenarioManager Current;
 

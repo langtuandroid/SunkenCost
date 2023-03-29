@@ -219,6 +219,34 @@ PrefabInstance:
       propertyPath: m_VerticalAlignment
       value: 1024
       objectReference: {fileID: 0}
+    - target: {fileID: 5930947046585361509, guid: caf43998dc516d54bb25c2ecac156361, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5930947046585361509, guid: caf43998dc516d54bb25c2ecac156361, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Mode
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5930947046585361509, guid: caf43998dc516d54bb25c2ecac156361, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 9053059805704872794}
+    - target: {fileID: 5930947046585361509, guid: caf43998dc516d54bb25c2ecac156361, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_CallState
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 5930947046585361509, guid: caf43998dc516d54bb25c2ecac156361, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: Click
+      objectReference: {fileID: 0}
+    - target: {fileID: 5930947046585361509, guid: caf43998dc516d54bb25c2ecac156361, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
+      value: OfferScreen.ItemOfferDisplay, Assembly-CSharp
+      objectReference: {fileID: 0}
+    - target: {fileID: 5930947046585361509, guid: caf43998dc516d54bb25c2ecac156361, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgumentAssemblyTypeName
+      value: UnityEngine.Object, UnityEngine
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: caf43998dc516d54bb25c2ecac156361, type: 3}
 --- !u!1 &3572904816238135373 stripped
@@ -303,7 +331,7 @@ MonoBehaviour:
   itemDisplay: {fileID: 5861141324400653213}
   costDisplay: {fileID: 7571966559546668652}
   lockButton: {fileID: 7532624825152540338}
-  lockColor: {r: 1, g: 0.9137255, b: 0.63529414, a: 0}
+  lockColor: {r: 1, g: 0.9137255, b: 0.63529414, a: 1}
   isLocked: 0
 --- !u!114 &7571966559546668652 stripped
 MonoBehaviour:

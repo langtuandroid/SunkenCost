@@ -13,8 +13,8 @@ MonoBehaviour:
   m_Name: EasyElite0
   m_EditorClassIdentifier: 
   scenarioType: 1
-  round1: 03000000
-  round2: 04000000
+  round1: 0600000007000000
+  round2: 
   round3: 04000000
   round4: 04000000
   round5: 04000000

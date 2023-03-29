@@ -15,6 +15,7 @@ namespace BattleScene
 
         [SerializeField] private GameObject reward;
         [SerializeField] private Image rewardImage;
+        [SerializeField] private TextMeshProUGUI rewardTitle;
         [SerializeField] private TextMeshProUGUI rewardText;
         
         [SerializeField] private Transform challengeRewardsGrid;
@@ -25,6 +26,7 @@ namespace BattleScene
         public void SetReward(Disturbance disturbance)
         {
             rewardImage.sprite = disturbance.GetSprite();
+            rewardTitle.text = disturbance.GetTitle();
             rewardText.text = disturbance.GetDescription();
         }
 

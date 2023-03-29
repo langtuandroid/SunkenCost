@@ -93,7 +93,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6339590033965927433, guid: 612507e68b4c9e94191816346f3cc3e8, type: 3}
       propertyPath: m_AnchoredPosition.x
-      value: 50
+      value: 58.69
       objectReference: {fileID: 0}
     - target: {fileID: 6499902039103880501, guid: 612507e68b4c9e94191816346f3cc3e8, type: 3}
       propertyPath: m_Name
@@ -110,7 +110,7 @@ PrefabInstance:
     - target: {fileID: 7729284425644849085, guid: 612507e68b4c9e94191816346f3cc3e8, type: 3}
       propertyPath: m_Sprite
       value: 
-      objectReference: {fileID: -101459772, guid: 1aacb6e1b6552ec44b29752a4b0957c2, type: 3}
+      objectReference: {fileID: -680894883, guid: bcfa0628013fcc04298148680ea9a181, type: 3}
     - target: {fileID: 8434244612522797590, guid: 612507e68b4c9e94191816346f3cc3e8, type: 3}
       propertyPath: m_Controller
       value: 
@@ -134,9 +134,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f71cab256fd6f1244893652e64328ec2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  image: {fileID: 0}
-  poisonImage: {fileID: 0}
-  poisonText: {fileID: 0}
   cooldownCounter: 0
 --- !u!1 &4907096921318964346 stripped
 GameObject:

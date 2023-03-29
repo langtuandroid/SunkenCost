@@ -29,7 +29,7 @@ namespace Enemies
 
         public bool FinishedMoving => _nextMove == 0;
 
-        private int LastDirection
+        public int LastDirection
         {
             get
             {
@@ -51,6 +51,7 @@ namespace Enemies
 
         private void Start()
         {
+            _moves.Clear();
             foreach (var move in MoveSet)
             {
                 _moves.Enqueue(move);
@@ -151,17 +152,25 @@ namespace Enemies
 
         public void AddMovementModifier(int amount)
         {
-            for (var i = 0; i < MoveSet.Count; i++)
+            var moveSet = _moves.ToArray();
+            
+            for (var i = 0; i < moveSet.Length; i++)
             {
-                var move = MoveSet[i];
+                var move = moveSet[i];
                 if (move < 0)
                 {
-                    MoveSet[i] -= amount;
+                    moveSet[i] -= amount;
                 }
                 else if (move > 0)
                 {
-                    MoveSet[i] += amount;
+                    moveSet[i] += amount;
                 }
+            }
+            
+            _moves.Clear();
+            foreach (var move in moveSet)
+            {
+                _moves.Enqueue(move);
             }
         }
 

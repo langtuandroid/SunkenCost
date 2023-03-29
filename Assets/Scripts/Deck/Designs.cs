@@ -54,7 +54,7 @@ public class LoneWolf : RareDesign
         Title = "Lone Wolf";
         Category = DesignCategory.LoneWolf;
         Color = new Color(0.2f, 0.35f, 0.38f);
-        AddStat(St.Damage, 60);
+        AddStat(St.Damage, 40);
         AddStat(St.DamageFlatModifier, -10);
     }
 
@@ -147,7 +147,7 @@ public class Marksman : UncommonDesign
         Title = "Snipe";
         Category = DesignCategory.Ranged;
         Color = Color.red;
-        AddStat(St.Damage, 6);
+        AddStat(St.Damage, 8);
         AddStat(St.MinRange, 3);
         AddStat(St.MaxRange, 3);
     }
@@ -159,7 +159,7 @@ public class Marksman : UncommonDesign
 
     protected override void SecondLevelUp()
     {
-        ModifyStat(St.Damage, 3);
+        ModifyStat(St.Damage, 5);
     }
 }
 
@@ -183,7 +183,7 @@ public class AirRaid : UncommonDesign
 
     protected override void SecondLevelUp()
     {
-        ModifyStat(St.StatMultiplier, 1);
+        ModifyStat(St.MaxRange, 1);
     }
 }
 
@@ -208,7 +208,7 @@ public class Stomp : CommonDesign
 
     protected override void SecondLevelUp()
     {
-        ModifyStat(St.UsesPerTurn, 1);
+        ModifyStat(St.Damage, 1);
     }
 }
 
@@ -262,7 +262,7 @@ public class Boost : CommonDesign
     }
 }
 
-public class StrikeZone : UncommonDesign
+public class StrikeZone : RareDesign
 {
     protected override void Init()
     {
@@ -331,7 +331,7 @@ public class Reverse : RareDesign
         ModifyStat(St.UsesPerTurn, 1);
     }
 }
-
+/*
 public class Hop : UncommonDesign
 {
     protected override void Init()
@@ -350,7 +350,7 @@ public class Hop : UncommonDesign
     {
     }
 }
-
+*/
 
 #endregion
 

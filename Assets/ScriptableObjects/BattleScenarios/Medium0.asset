@@ -14,10 +14,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   scenarioType: 2
   round1: 05000000
-  round2: 05000000
-  round3: 05000000
+  round2: 04000000
+  round3: 04000000
   round4: 05000000
-  round5: 05000000
-  round6: 05000000
+  round5: 04000000
+  round6: 04000000
   round7: 
   scaledDifficulty: 0

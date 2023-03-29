@@ -8,7 +8,7 @@ namespace Enemies.Enemies
         {
             Name = "Flighting Fish";
             Mover.AddMove(1);
-            SetInitialHealth(25);
+            SetInitialHealth(30);
             Gold = 1;
         }
 
@@ -20,7 +20,6 @@ namespace Enemies.Enemies
         protected override void StartOfTurnAbility()
         {
             Mover.AddSkip(1);
-            Debug.Log(StickNum);
             base.StartOfTurnAbility();
         }
         

@@ -14,8 +14,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   scenarioType: 0
   round1: 00000000
-  round2: 02000000
-  round3: 04000000
+  round2: 04000000
+  round3: 
   round4: 01000000
   round5: 04000000
   round6: 01000000

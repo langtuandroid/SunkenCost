@@ -7,7 +7,7 @@ using UnityEngine;
 public class CucungerEnemy : Enemy
 {
     // Smashes the last stick every X turns
-    private static int abilityCooldown = 3;
+    private static int abilityCooldown = 2;
     [SerializeField] private int cooldownCounter = 0;
 
     protected override void Init()
@@ -18,14 +18,7 @@ public class CucungerEnemy : Enemy
         SetInitialHealth(50);
         Gold = 10;
     }
-
-    protected override void Start()
-    {
-        BattleEvents.Current.BossSpawned();
-        
-        base.Start();
-    }
-
+    
     public override string GetDescription()
     {
         var turns = abilityCooldown - cooldownCounter;
@@ -71,11 +64,5 @@ public class CucungerEnemy : Enemy
     protected override bool TestForStartOfTurnAbility()
     {
         return true;
-    }
-
-    public override void DestroySelf(bool killedByPlayer)
-    {
-        BattleEvents.Current.BossKilled();
-        base.DestroySelf(killedByPlayer);
     }
 }
