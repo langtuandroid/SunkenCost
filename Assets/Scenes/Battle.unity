@@ -472,6 +472,8 @@ MonoBehaviour:
   - Crib
   - Retortoise
   - Maxolotl
+  - Carppool
+  - BullCarp
   enemyPrefabs:
   - {fileID: 7923812371195210878, guid: 5ef39fbf033852144bcb8f3c74d2d860, type: 3}
   - {fileID: 1231011296041315399, guid: 71cc31b502beb3046aa91f95e616019f, type: 3}
@@ -484,7 +486,8 @@ MonoBehaviour:
   - {fileID: 5288099224730438730, guid: bdacb69a8e31880418e285c60a947363, type: 3}
   - {fileID: 7985317729966621086, guid: 91c04533e32111d408cd2024ed2cb8a3, type: 3}
   - {fileID: 2655713838273099450, guid: 66ee7a8dc0a242242aab3a8b0ee4afe2, type: 3}
-  startStick: {fileID: 1155358484}
+  - {fileID: 5482310750778572484, guid: 2b30edcb4ac596f49b8f01dcda88313d, type: 3}
+  - {fileID: 7816918493809717753, guid: 6f8dac1e479046f41947ad946ad5d707, type: 3}
 --- !u!4 &145267314
 Transform:
   m_ObjectHideFlags: 0
@@ -3351,6 +3354,10 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 1210558848469399205, guid: 7e05e520579b24a45a28a9993e09aa39, type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: -100.26999
+      objectReference: {fileID: 0}
+    - target: {fileID: 1210558848469399205, guid: 7e05e520579b24a45a28a9993e09aa39, type: 3}
       propertyPath: m_LocalEulerAnglesHint.x
       value: 0
       objectReference: {fileID: 0}
@@ -3535,7 +3542,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 3739874107440994272, guid: 753e431c20e8b5d45a1560f4e9ca944f, type: 3}
       propertyPath: m_Pivot.x
-      value: 1.01
+      value: -0.1
       objectReference: {fileID: 0}
     - target: {fileID: 3739874107440994272, guid: 753e431c20e8b5d45a1560f4e9ca944f, type: 3}
       propertyPath: m_Pivot.y
@@ -3555,11 +3562,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3739874107440994272, guid: 753e431c20e8b5d45a1560f4e9ca944f, type: 3}
       propertyPath: m_AnchoredPosition.x
-      value: 1868.1082
+      value: -1892.093
       objectReference: {fileID: 0}
     - target: {fileID: 3739874107440994272, guid: 753e431c20e8b5d45a1560f4e9ca944f, type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: 3072.7415
+      value: 1273.4883
       objectReference: {fileID: 0}
     - target: {fileID: 3739874107924409688, guid: 753e431c20e8b5d45a1560f4e9ca944f, type: 3}
       propertyPath: m_Pivot.x

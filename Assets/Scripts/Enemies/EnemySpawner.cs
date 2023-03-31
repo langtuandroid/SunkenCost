@@ -8,13 +8,20 @@ using Random = UnityEngine.Random;
 
 public class EnemySpawner : MonoBehaviour
 {
+    public static EnemySpawner current;
+    
     [SerializeField] private List<string> enemyNames = new List<string>();
     [SerializeField] private List<GameObject> enemyPrefabs = new List<GameObject>();
 
     private Dictionary<string, GameObject> enemyDictionary = new Dictionary<string, GameObject>();
-    public Transform startStick;
 
     private Scenario _scenario;
+
+    private void Awake()
+    {
+        current = this;
+    }
+
     private void Start()
     {
         for (var i = 0; i < enemyNames.Count; i++)
@@ -33,6 +40,17 @@ public class EnemySpawner : MonoBehaviour
         SpawnNewRound();
     }
 
+    public Enemy SpawnEnemy(string enemyName, int stickNum)
+    {
+        var enemyPrefab = enemyDictionary[enemyName];
+        var stickToSpawnOn = StickManager.current.stickGrid.GetChild(stickNum);
+        var newEnemy = Instantiate(enemyPrefab, stickToSpawnOn, true);
+        newEnemy.transform.localPosition = Vector3.zero;
+        newEnemy.transform.localScale = new Vector3(1, 1, 1);
+
+        return newEnemy.GetComponent<Enemy>();
+    }
+
     private void SpawnNewRound()
     {
         if (BattleManager.Current.Turn == RunProgress.PlayerStats.NumberOfTurns) return;
@@ -45,11 +63,7 @@ public class EnemySpawner : MonoBehaviour
 
         foreach (var enemyName in newEnemies)
         {
-            var newEnemy = Instantiate(enemyDictionary[enemyName], startStick, true);
-            newEnemy.transform.localPosition = Vector3.zero;
-            newEnemy.transform.localScale = new Vector3(1, 1, 1);
-
-            var enemy = newEnemy.GetComponent<Enemy>();
+            var enemy = SpawnEnemy(enemyName, 0);
             enemy.MaxHealth.AddModifier(new StatModifier(_scenario.scaledDifficulty, StatModType.PercentMult));
             enemy.Mover.AddMovementModifier((int)(_scenario.scaledDifficulty / 2f));
             ActiveEnemiesManager.Current.AddEnemy(enemy);

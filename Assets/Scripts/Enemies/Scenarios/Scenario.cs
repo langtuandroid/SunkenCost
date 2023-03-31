@@ -15,7 +15,8 @@ public enum EnemyType
     Leech,
     Crib,
     Retortoise,
-    Maxolotl
+    Maxolotl,
+    Carppool
 }
 
 public enum ScenarioType

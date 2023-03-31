@@ -97,7 +97,7 @@ namespace OfferScreen
             mergeButton.gameObject.SetActive(HasMergeableDesignCard);
             if (HasMergeableDesignCard)
             {
-                mergeButton.Refresh(Design.Cost);
+                mergeButton.Refresh(_mergeableDesignCard.Design.Cost);
             }
 
             _designDisplay.Refresh();

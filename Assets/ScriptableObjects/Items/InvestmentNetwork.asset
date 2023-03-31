@@ -15,5 +15,5 @@ MonoBehaviour:
   title: Investment Network
   description: Gold Rush battles give an extra @ coins
   sprite: {fileID: 21300000, guid: e21e1bb908a6d2040bf46dc8f152e542, type: 3}
-  modifier: 3
+  modifier: 2
   rarity: 0

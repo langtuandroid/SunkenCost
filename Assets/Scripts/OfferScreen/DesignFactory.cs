@@ -19,10 +19,11 @@ namespace OfferScreen
         {
             const double maxProgress = 15.0;
             
-            var chancesOnFirstBattle = new[] {0.7, 0.25, 0.05};
+            var chancesOnFirstBattle = new[] {0.77, 0.26, 0.02};
             var chancesOnLastPossibleBattle = new[] {0.2, 0.6, 0.2};
 
             var percentage = Progress / maxProgress;
+            Debug.Log(percentage);
 
             var currentChances = new double[chancesOnFirstBattle.Length];
 
