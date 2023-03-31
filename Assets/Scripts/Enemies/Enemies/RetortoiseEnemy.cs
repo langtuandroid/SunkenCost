@@ -6,8 +6,8 @@
         {
             Size = 1.2f;
             Name = "Retortoise";
-            Mover.AddMove(0);
-            SetInitialHealth(70);
+            Mover.AddMove(1);
+            SetInitialHealth(50);
             Gold = 5;
         }
 

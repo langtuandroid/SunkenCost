@@ -9,9 +9,9 @@ AnimatorOverrideController:
   m_Name: RatAnimationController
   m_Controller: {fileID: 9100000, guid: 618ba848a187d534fa3b9205eadbc5b4, type: 2}
   m_Clips:
-  - m_OriginalClip: {fileID: 7400000, guid: a1e30dbb977c7f64f9cc7add5012e033, type: 2}
-    m_OverrideClip: {fileID: 7400000, guid: 53099fb162dd096469b3b8dca7d33971, type: 2}
   - m_OriginalClip: {fileID: 7400000, guid: b80c061b06b77a243af84f371b3e13c4, type: 2}
     m_OverrideClip: {fileID: 7400000, guid: b80c061b06b77a243af84f371b3e13c4, type: 2}
   - m_OriginalClip: {fileID: 7400000, guid: 5733cc512bbe81b418d96d437d9e7061, type: 2}
     m_OverrideClip: {fileID: 7400000, guid: 5733cc512bbe81b418d96d437d9e7061, type: 2}
+  - m_OriginalClip: {fileID: 7400000, guid: e69770ecab8cfeb45a877c3e1bd56587, type: 2}
+    m_OverrideClip: {fileID: 7400000, guid: 53099fb162dd096469b3b8dca7d33971, type: 2}

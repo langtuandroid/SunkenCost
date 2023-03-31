@@ -9,8 +9,8 @@ namespace Enemies.Enemies
             Size = 1.2f;
             Name = "Steelo";
             Mover.AddMove(1);
-            SetInitialHealth(50);
-            Gold = 5;
+            SetInitialHealth(100);
+            Gold = 2;
         }
 
         public override string GetDescription()

@@ -7,10 +7,10 @@ namespace Items.Items
         public void EnemyReachedEnd()
         {
             var enemies = ActiveEnemiesManager.Current.ActiveEnemies;
-            foreach (var enemy in enemies)
+            for (var i = enemies.Count - 1 ; i > 0; i--)
             {
-                if (!enemy || enemy.IsDestroyed) continue;
-                DamageHandler.DamageEnemy(Amount, enemy, DamageSource.Item);
+                if (!enemies[i] || enemies[i].IsDestroyed) continue;
+                DamageHandler.DamageEnemy(Amount, enemies[i], DamageSource.Item);
             }
         }
     }

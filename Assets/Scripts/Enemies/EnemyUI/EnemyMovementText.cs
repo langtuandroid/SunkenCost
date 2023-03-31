@@ -13,7 +13,7 @@ namespace Enemies.EnemyUI
             switch (moveAmount)
             {
                 case <0:
-                    movement = "<sprite=0> " + movement;
+                    movement = "<sprite=0> " + Mathf.Abs(moveAmount);
                     break;
                 case 0:
                     movement = "-";

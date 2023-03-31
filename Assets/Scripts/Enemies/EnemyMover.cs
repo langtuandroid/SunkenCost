@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Linq;
 using Newtonsoft.Json.Bson;
 using UnityEngine;
 using Random = UnityEngine.Random;
@@ -48,7 +49,7 @@ namespace Enemies
                 return _nextMove / Math.Abs(_nextMove);
             }
         }
-
+        
         private void Start()
         {
             _moves.Clear();
@@ -58,11 +59,9 @@ namespace Enemies
             }
 
             // Randomise first move
-            while (_nextMove == 0)
+            foreach (var randomise in MoveSet.Select(i => Random.Range(0, MoveSet.Count)))
             {
-                var randomise = Random.Range(0, MoveSet.Count);
-
-                for (var i = 0; i < randomise; i++)
+                for (var ii = 0; ii < randomise; ii++)
                 {
                     var move = _moves.Dequeue();
                     _moves.Enqueue(move);
@@ -186,22 +185,18 @@ namespace Enemies
         
         private void SetNextMoveSequence()
         {
-            while (true)
+            var newMove = _moves.Dequeue();
+            _moves.Enqueue(newMove);
+            
+            // Always move off starting stick
+            if (newMove < 1 && StickNum == 0)
             {
-                var newMove = _moves.Dequeue();
+                newMove = _moves.Dequeue();
                 _moves.Enqueue(newMove);
-                
-                // Always move off starting stick
-                if (newMove < 1 && StickNum == 0)
-                {
-                    continue;
-                }
-                
-                _nextMove = newMove;
-                UpdateMovementText();
-
-                break;
             }
+                
+            _nextMove = newMove;
+            UpdateMovementText();
         }
     }
 }

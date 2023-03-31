@@ -5,16 +5,8 @@ using UnityEngine;
 
 public class EnemyAnimationController : MonoBehaviour
 {
-    private Animator _animator;
-    private Animator _healAnimator;
-
-    private void Awake()
-    {
-        _animator = transform.GetChild(0).GetComponent<Animator>();
-
-        _healAnimator = transform.GetChild(8).GetChild(0).GetComponent<Animator>();
-
-    }
+    [SerializeField] private Animator _animator;
+    [SerializeField] private Animator _healAnimator;
 
     public void WiggleBeforeMoving()
     {

@@ -12,12 +12,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e88836627efa4444288b773536f04a36, type: 3}
   m_Name: MediumElite1
   m_EditorClassIdentifier: 
-  scenarioType: 1
-  round1: 09000000
+  scenarioType: 3
+  round1: 0600000007000000
   round2: 
   round3: 01000000
   round4: 01000000
-  round5: 04000000
-  round6: 04000000
-  round7: 
+  round5: 01000000
   scaledDifficulty: 0

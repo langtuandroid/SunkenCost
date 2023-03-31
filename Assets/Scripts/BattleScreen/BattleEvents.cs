@@ -58,6 +58,12 @@ public class BattleEvents : MonoBehaviour
 
     public void BeginBattle()
     {
+        StartCoroutine(StartBattle());
+    }
+
+    private IEnumerator StartBattle()
+    {
+        yield return 0;
         OnStartBattle?.Invoke();
     }
 

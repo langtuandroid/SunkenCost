@@ -692,6 +692,7 @@
               <e p="FlyingFishEnemy.cs" t="Include" />
               <e p="GrouldEnemy.cs" t="Include" />
               <e p="LeechEnemy.cs" t="Include" />
+              <e p="Maxolotl.cs" t="Include" />
               <e p="RatEnemy.cs" t="Include" />
               <e p="RetortoiseEnemy.cs" t="Include" />
               <e p="SteeloEnemy.cs" t="Include" />

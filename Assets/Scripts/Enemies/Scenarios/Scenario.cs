@@ -14,7 +14,8 @@ public enum EnemyType
     Steelo,
     Leech,
     Crib,
-    Retortoise
+    Retortoise,
+    Maxolotl
 }
 
 public enum ScenarioType

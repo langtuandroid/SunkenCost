@@ -19,7 +19,7 @@ public class AxolitlEnemy : Enemy
     
     public override string GetDescription()
     {
-        return "Gains health each turn";
+        return "Heals " + _healingAmount + " health each turn";
     }
 
     protected override void StartOfTurnAbility()
