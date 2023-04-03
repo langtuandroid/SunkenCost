@@ -34,6 +34,7 @@ public class BattleHUDManager : MonoBehaviour
     {
         BattleEvents.Current.OnBeginPlayerTurn += UpdateMovesText;
         BattleEvents.Current.OnPlayerLostLife += UpdateLives;
+        BattleEvents.Current.OnPlayerGainedGold += UpdateGoldText;
 
         UpdateLives();
         UpdateMovesText();
@@ -51,7 +52,7 @@ public class BattleHUDManager : MonoBehaviour
         hearts.UpdateLives(PlayerController.current.Lives);
     }
 
-    public void UpdateGoldText()
+    private void UpdateGoldText()
     {
         _goldDisplay.UpdateText(RunProgress.PlayerStats.Gold);
     }

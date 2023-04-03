@@ -32,6 +32,8 @@ namespace Items
         public IEnumerable<IDamageFlatModifier> DamageFlatModifiers => _items.OfType<IDamageFlatModifier>();
         public IEnumerable<IDamageMultiplierModifier> DamageMultiplierModifiers => _items.OfType<IDamageMultiplierModifier>();
 
+        public IEnumerable<IGainedGoldListener> PlayerGainedGoldListeners => _items.OfType<IGainedGoldListener>();
+        
         public void AddItem(ItemInstance itemInstance)
         {
             var itemType = ItemLoader.ItemAssetToTypeDict[itemInstance.itemAsset];

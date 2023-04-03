@@ -16,4 +16,4 @@ MonoBehaviour:
   description: When you lose a life, do double damage for the rest of the turn
   sprite: {fileID: 21300000, guid: bfcce3101c7a29b44ae15a2729727222, type: 3}
   modifier: 2
-  rarity: 3
+  rarity: 4

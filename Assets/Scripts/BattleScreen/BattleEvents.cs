@@ -34,7 +34,9 @@ public class BattleEvents : MonoBehaviour
     public event Action OnOfferDesigns;
     public event Action OnDesignOfferAccepted;
     public event Action OnSticksUpdated;
-    
+
+
+    public event Action OnPlayerGainedGold;
     
     public event Action OnPlayerLostLife;
     public event Action OnRedraw;
@@ -49,6 +51,8 @@ public class BattleEvents : MonoBehaviour
     public event Action OnEnemyAttacked;
     public event Action OnEnemyHealed;
     public event Action OnEnemyKilled;
+    
+    
 
     private Enemy _lastEnemyAttacked;
     private Etching _lastEtchingToAttack;
@@ -159,6 +163,11 @@ public class BattleEvents : MonoBehaviour
     {
         Log.current.AddEvent("BOSS KILLED");
         OnBossKilled?.Invoke();
+    }
+
+    public void PlayerGainedGold()
+    {
+        OnPlayerGainedGold?.Invoke();
     }
 
     public void LostLife()

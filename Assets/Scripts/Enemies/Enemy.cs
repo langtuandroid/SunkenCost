@@ -21,7 +21,7 @@ namespace Enemies
         public string Name { get; protected set; }
         
         public  Stat MaxHealth { get; private set; }
-        protected int Gold { get; set; }
+        public int Gold { get; protected set; }
         public int Health { get; private set; }
         public float Size { get; protected set; } = 1;
         
@@ -213,11 +213,11 @@ namespace Enemies
         {
             InGameSfxManager.current.Death();
             // TODO: CHANGE 
-            if (killedByPlayer) BattleManager.Current.AlterGold(Gold);
             IsDestroyed = true;
             Moving = false;
-            Log.current.AddEvent("E" + _turnOrder + " has been killed");
-            ActiveEnemiesManager.Current.DestroyEnemy(this);
+            
+            if (killedByPlayer) ActiveEnemiesManager.Current.PlayerKilledEnemy(this);
+            else ActiveEnemiesManager.Current.DestroyEnemy(this);
         }
     }
 }

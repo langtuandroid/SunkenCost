@@ -133,7 +133,7 @@ public class BattleManager : MonoBehaviour
     public void AlterGold(int amount)
     {
         RunProgress.PlayerStats.AlterGold(amount);
-        BattleHUDManager.current.UpdateGoldText();
+        BattleEvents.Current.PlayerGainedGold();
     }
 
     private void BeginPlayerTurn()

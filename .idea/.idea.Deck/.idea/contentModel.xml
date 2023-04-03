@@ -753,6 +753,7 @@
             <e p="IEnemyAttackedListener.cs" t="Include" />
             <e p="IEnemyHealedListener.cs" t="Include" />
             <e p="IEnemyReachedEndListener.cs" t="Include" />
+            <e p="IGainedGoldListener.cs" t="Include" />
             <e p="IKillListener.cs" t="Include" />
             <e p="IPlayerLostLifeListener.cs" t="Include" />
             <e p="IStartOfBattleListener.cs" t="Include" />
@@ -768,6 +769,7 @@
             <e p="ItemInventory.cs" t="Include" />
             <e p="ItemOffer.cs" t="Include" />
             <e p="Items" t="Include">
+              <e p="CapitalListItem.cs" t="Include" />
               <e p="ConfusedItem.cs" t="Include" />
               <e p="EquippedItem.cs" t="Include" />
               <e p="ExpiredMedicineItem.cs" t="Include" />

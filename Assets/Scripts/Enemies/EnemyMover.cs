@@ -191,7 +191,7 @@ namespace Enemies
                 if (_moveIndex >= MoveSet.Count) _moveIndex = 0;
 
                 // Always move off starting stick
-                if (MoveSet[_moveIndex].magnitude == 0 && StickNum == 0)
+                if (MoveSet[_moveIndex].magnitude <= 0 && StickNum == 0)
                 {
                     continue;
                 }

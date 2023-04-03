@@ -2,7 +2,7 @@
 
 namespace Items.Items
 {
-    public class PacifistItem : EquippedItem, IEndOfBattleListener, IKillListener
+    public class PaciFistItem : EquippedItem, IEndOfBattleListener, IKillListener
     {
         private bool _hasKilledEnemyThisBattle = false;
         

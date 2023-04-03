@@ -5,6 +5,7 @@ using System.Linq.Expressions;
 using System.Collections.Generic;
 using Enemies;
 using UnityEngine;
+using Random = UnityEngine.Random;
 
 public class ActiveEnemiesManager : MonoBehaviour
 {
@@ -74,6 +75,12 @@ public class ActiveEnemiesManager : MonoBehaviour
         _activeEnemies.Add(enemy);
         ArrangeEnemiesOnStick(enemy);
         RefreshEnemyTurnOrder();
+    }
+
+    public static Enemy GetRandomActiveEnemy()
+    {
+        if (Current.ActiveEnemies.Count == 0) return null;
+        return Current.ActiveEnemies[Random.Range(0, Current.ActiveEnemies.Count)];
     }
 
     private void FindNextEnemyToMove()
@@ -361,4 +368,10 @@ public class ActiveEnemiesManager : MonoBehaviour
 
     public static int NumberOfActiveEnemies => Current._activeEnemies.Count;
     public int NumberOfTotalEnemies => Current._allEnemies.Count;
+
+    public void PlayerKilledEnemy(Enemy enemy)
+    {
+        DestroyEnemy(enemy);
+        BattleManager.Current.AlterGold(enemy.Gold);
+    }
 }

@@ -23,156 +23,35 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="50470089-3e0c-4487-973b-9d375622b070" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/Assets/ScriptableObjects/Designs.meta" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/ScriptableObjects/Designs/Ambush.asset" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/ScriptableObjects/Designs/Ambush.asset.meta" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/ScriptableObjects/Designs/Bomb.asset" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/ScriptableObjects/Designs/Bomb.asset.meta" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/ScriptableObjects/Designs/Cauterize.asset" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/ScriptableObjects/Designs/Cauterize.asset.meta" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/ScriptableObjects/Designs/Finalise.asset" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/ScriptableObjects/Designs/Finalise.asset.meta" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/ScriptableObjects/Designs/Focus.asset" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/ScriptableObjects/Designs/Focus.asset.meta" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/ScriptableObjects/Designs/Hurl.asset" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/ScriptableObjects/Designs/Hurl.asset.meta" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/ScriptableObjects/Designs/Impede.asset" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/ScriptableObjects/Designs/Impede.asset.meta" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/ScriptableObjects/Designs/LoneWolf.asset" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/ScriptableObjects/Designs/LoneWolf.asset.meta" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/ScriptableObjects/Designs/Pelt.asset" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/ScriptableObjects/Designs/Pelt.asset.meta" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/ScriptableObjects/Designs/Poison.asset" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/ScriptableObjects/Designs/Poison.asset.meta" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/ScriptableObjects/Designs/Pound.asset" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/ScriptableObjects/Designs/Pound.asset.meta" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/ScriptableObjects/Designs/Raid.asset" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/ScriptableObjects/Designs/Raid.asset.meta" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/ScriptableObjects/Designs/Rally.asset" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/ScriptableObjects/Designs/Rally.asset.meta" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/ScriptableObjects/Designs/Research.asset" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/ScriptableObjects/Designs/Research.asset.meta" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/ScriptableObjects/Designs/Rest.asset" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/ScriptableObjects/Designs/Rest.asset.meta" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/ScriptableObjects/Designs/Reverse.asset" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/ScriptableObjects/Designs/Reverse.asset.meta" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/ScriptableObjects/Designs/Snipe.asset" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/ScriptableObjects/Designs/Snipe.asset.meta" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/ScriptableObjects/Designs/Stab.asset" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/ScriptableObjects/Designs/Stab.asset.meta" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/ScriptableObjects/Designs/Stomp.asset" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/ScriptableObjects/Designs/Stomp.asset.meta" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/Scripts/Designs/Design.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/Scripts/Designs/DesignAsset.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/Scripts/Designs/DesignAsset.cs.meta" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/Scripts/SerializedDictionary.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/Sprites/DesignLogos/Bomb.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/Sprites/DesignLogos/Bomb.png.meta" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/Sprites/DesignLogos/Impede.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/Sprites/DesignLogos/Impede.png.meta" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/Sprites/DesignLogos/Poison.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/Sprites/DesignLogos/Poison.png.meta" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/Sprites/DesignLogos/Pound.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/Sprites/DesignLogos/Pound.png.meta" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/Sprites/DesignLogos/Snipe.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/Sprites/DesignLogos/Snipe.png.meta" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/Sprites/DesignLogos/Stab.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/Sprites/DesignLogos/Stab.png.meta" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/Sprites/DesignLogos/StrikeZone.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/Sprites/DesignLogos/StrikeZone.png.meta" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Bugs.docx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/~$Bugs.docx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/ScriptableObjects/Items/CapitalList.asset" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/ScriptableObjects/Items/CapitalList.asset.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Scripts/EventListeners/IGainedGoldListener.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Scripts/EventListeners/IGainedGoldListener.cs.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Scripts/Items/Items/CapitalListItem.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Scripts/Items/Items/CapitalListItem.cs.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Sprites/Items/Capital-List.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Sprites/Items/Capital-List.png.meta" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/.idea.Deck/.idea/contentModel.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.Deck/.idea/contentModel.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/.idea.Deck/.idea/indexLayout.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.Deck/.idea/indexLayout.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/.idea.Deck/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.Deck/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/AllIn1SpriteShader/Materials/Panel.mat" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/AllIn1SpriteShader/Materials/Panel.mat" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/Design.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Prefabs/Design.prefab" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/Enemies/BossVariant.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Prefabs/Enemies/BossVariant.prefab" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/Enemies/Enemy.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Prefabs/Enemies/Enemy.prefab" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/PersistentManagers.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Prefabs/PersistentManagers.prefab" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scenes/Battle.unity" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scenes/Battle.unity" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/ScriptableObjects/Items/InvestmentNetwork.asset" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/ScriptableObjects/Items/InvestmentNetwork.asset" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/AllIn1SpriteShader/Materials/EnemyTurnFrame.mat" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/AllIn1SpriteShader/Materials/EnemyTurnFrame.mat" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scenes/OfferScreen.unity" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scenes/OfferScreen.unity" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/ScriptableObjects/Designs/Ambush.asset" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/ScriptableObjects/Designs/Ambush.asset" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/ScriptableObjects/Designs/Bomb.asset" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/ScriptableObjects/Designs/Bomb.asset" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/ScriptableObjects/Items/Confused.asset" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/ScriptableObjects/Items/Confused.asset" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/ScriptableObjects/Items/Pacifist.asset" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/ScriptableObjects/Items/Pacifist.asset" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/ScriptableObjects/Items/ReDress.asset" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/ScriptableObjects/Items/ReDress.asset" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/ScriptableObjects/Items/PoisonTips.asset" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/ScriptableObjects/Items/PoisonTips.asset" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/ScriptableObjects/Items/ShortFuse.asset" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/ScriptableObjects/Items/ShortFuse.asset" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/BattleHUDManager.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/BattleHUDManager.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Scripts/BattleScreen/BattleEvents.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/BattleScreen/BattleEvents.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Challenges/ChallengeLoader.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Challenges/ChallengeLoader.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Challenges/ChallengeRewardLoader.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Challenges/ChallengeRewardLoader.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Deck.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Designs.meta" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Deck/Design.cs" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Deck/Design.cs.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Designs/Design.cs.meta" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Deck/DesignCategory.cs" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Deck/DesignCategory.cs.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Deck/DesignDisplay.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Designs/DesignDisplay.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Deck/DesignDisplay.cs.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Designs/DesignDisplay.cs.meta" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Deck/DesignManager.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Designs/DesignManager.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Deck/DesignManager.cs.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Designs/DesignManager.cs.meta" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Deck/Designs.cs" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Deck/Designs.cs.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Deck/ListExtensions.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Designs/ListExtensions.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Deck/ListExtensions.cs.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Designs/ListExtensions.cs.meta" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Deck/Rarities.cs" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Deck/Rarities.cs.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Disturbances/CardDisturbance.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Disturbances/CardDisturbance.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Disturbances/DisturbanceManager.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Disturbances/DisturbanceManager.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/BattleScreen/BattleItemManager.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/BattleScreen/BattleItemManager.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/BattleScreen/BattleManager.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/BattleScreen/BattleManager.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Scripts/Enemies/ActiveEnemiesManager.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Enemies/ActiveEnemiesManager.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Enemies/Enemies/CarppoolEnemy.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Enemies/Enemies/CarppoolEnemy.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Enemies/Enemies/FlyingFishEnemy.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Enemies/Enemies/FlyingFishEnemy.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Scripts/Enemies/Enemy.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Enemies/Enemy.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Enemies/EnemyManager.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Enemies/EnemyManager.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Scripts/Enemies/EnemyMover.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Enemies/EnemyMover.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Enemies/EnemySpawner.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Enemies/EnemySpawner.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Enemies/EnemyUI/EnemyMovementText.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Enemies/EnemyUI/EnemyMovementText.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Enemies/Scenarios/ScenarioManager.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Enemies/Scenarios/ScenarioManager.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/EtchingManager.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/EtchingManager.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Etchings/AirRaidEtching.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Etchings/RaidEtching.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Etchings/AirRaidEtching.cs.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Etchings/RaidEtching.cs.meta" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Etchings/AmbushEtching.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Etchings/AmbushEtching.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Etchings/BlockEtching.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Etchings/BlockEtching.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Etchings/BoostEtching.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Etchings/BoostEtching.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Etchings/CauterizeEtching.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Etchings/CauterizeEtching.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Etchings/DamageEtching.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Etchings/DamageEtching.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Etchings/Etching.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Etchings/Etching.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Etchings/GrandFinalistEtching.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Etchings/FinaliseEtching.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Etchings/GrandFinalistEtching.cs.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Etchings/FinaliseEtching.cs.meta" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Etchings/HopEtching.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Etchings/HopEtching.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Etchings/ImpedeEtching.cs" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Etchings/ImpedeEtching.cs.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Etchings/InfirmaryEtching.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Etchings/RestEtching.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Etchings/InfirmaryEtching.cs.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Etchings/RestEtching.cs.meta" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Etchings/LoneWolfEtching.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Etchings/LoneWolfEtching.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Etchings/PoisonEtching.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Etchings/PoisonEtching.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Etchings/ResearchEtching.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Etchings/ResearchEtching.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Etchings/ReverseEtching.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Etchings/ReverseEtching.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Etchings/StrikeZoneEtching.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Etchings/FocusEtching.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Etchings/StrikeZoneEtching.cs.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Etchings/FocusEtching.cs.meta" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Extensions.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Extensions.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/ItemLoader.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/ItemLoader.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Items/ItemAsset.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Items/ItemAsset.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Items/ItemInstance.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Items/ItemInstance.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/MapScreen/DisturbanceGenerator.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/MapScreen/DisturbanceGenerator.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/OfferScreen/DesignCard.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/OfferScreen/DesignCard.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/OfferScreen/DesignCardOfferGenerator.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/OfferScreen/DesignCardOfferGenerator.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/OfferScreen/DesignFactory.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/OfferScreen/DesignFactory.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/OfferScreen/OfferManager.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/OfferScreen/OfferManager.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/OfferScreen/OfferStorage.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/OfferScreen/OfferStorage.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/OfferScreen/PriceHandler.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/OfferScreen/PriceHandler.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/PlayerStats.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/PlayerStats.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/RunProgress.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/RunProgress.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/UI/Tutorial/TutorialManager.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/UI/Tutorial/TutorialManager.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Sprites/DesignLogos/Area.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Sprites/DesignLogos/Area.png.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Sprites/DesignLogos/Block.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Sprites/DesignLogos/Block.png.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Sprites/DesignLogos/Melee.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Sprites/DesignLogos/Melee.png.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Sprites/DesignLogos/Poisoned.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Sprites/DesignLogos/Poisoned.png.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Sprites/DesignLogos/Ranged.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Sprites/DesignLogos/Ranged.png.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Sprites/DesignLogos/Zone.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Sprites/DesignLogos/Zone.png.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Sprites/TextMeshProSprites/Arrows.png" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Sprites/TextMeshProSprites/Arrows.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Sprites/TextMeshProSprites/Arrows.png.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Sprites/TextMeshProSprites/Arrows.png.meta" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/UserSettings/Layouts/CurrentMaximizeLayout.dwlt" beforeDir="false" afterPath="$PROJECT_DIR$/UserSettings/Layouts/CurrentMaximizeLayout.dwlt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Items/ItemInventory.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Items/ItemInventory.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Items/Items/PacifistItem.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Items/Items/PaciFistItem.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/UserSettings/EditorUserSettings.asset" beforeDir="false" afterPath="$PROJECT_DIR$/UserSettings/EditorUserSettings.asset" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/UserSettings/Layouts/default-2021.dwlt" beforeDir="false" afterPath="$PROJECT_DIR$/UserSettings/Layouts/default-2021.dwlt" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -215,34 +94,20 @@
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/Assets/Scripts/BattleScreen/BattleEvents.cs" />
-        <option value="$PROJECT_DIR$/Assets/Scripts/Items/Items/ReDressItem.cs" />
-        <option value="$PROJECT_DIR$/Assets/Scripts/Etchings/AmbushEtching.cs" />
-        <option value="$PROJECT_DIR$/Assets/Scripts/Enemies/Enemies/LeechEnemy.cs" />
-        <option value="$PROJECT_DIR$/Assets/Scripts/Enemies/Enemies/SteeloEnemy.cs" />
-        <option value="$PROJECT_DIR$/Assets/Scripts/Enemies/EnemyAnimationController.cs" />
-        <option value="$PROJECT_DIR$/Assets/Scripts/Enemies/Enemies/Maxolotl.cs" />
-        <option value="$PROJECT_DIR$/Assets/Scripts/Items/Items/PacifistItem.cs" />
-        <option value="$PROJECT_DIR$/Assets/Scripts/OfferScreen/DesignCard.cs" />
-        <option value="$PROJECT_DIR$/Assets/Scripts/Enemies/Enemies/RetortoiseEnemy.cs" />
         <option value="$PROJECT_DIR$/Assets/Scripts/Enemies/Enemies/Carp.cs" />
         <option value="$PROJECT_DIR$/Assets/Scripts/Enemies/Enemies/CarpEnemy.cs" />
         <option value="$PROJECT_DIR$/Assets/Scripts/Enemies/Scenarios/Scenario.cs" />
-        <option value="$PROJECT_DIR$/Assets/Scripts/Enemies/Enemy.cs" />
         <option value="$PROJECT_DIR$/Assets/Scripts/Enemies/Enemies/BullCarpEnemy.cs" />
-        <option value="$PROJECT_DIR$/Assets/Scripts/RunProgress.cs" />
         <option value="$PROJECT_DIR$/Assets/Scripts/ItemLoader.cs" />
         <option value="$PROJECT_DIR$/Assets/Scripts/Challenges/ChallengeRewardLoader.cs" />
         <option value="$PROJECT_DIR$/Assets/Scripts/Challenges/ChallengeLoader.cs" />
         <option value="$PROJECT_DIR$/Assets/Scripts/Enemies/EnemyManager.cs" />
         <option value="$PROJECT_DIR$/Assets/Scripts/Enemies/Scenarios/ScenarioManager.cs" />
         <option value="$PROJECT_DIR$/Assets/Scripts/OfferScreen/OfferManager.cs" />
-        <option value="$PROJECT_DIR$/Assets/Scripts/Enemies/ActiveEnemiesManager.cs" />
         <option value="$PROJECT_DIR$/Assets/Scripts/Enemies/Enemies/CarppoolEnemy.cs" />
         <option value="$PROJECT_DIR$/Assets/Scripts/Enemies/Enemies/AxolitlEnemy.cs" />
         <option value="$PROJECT_DIR$/Assets/Scripts/Enemies/Enemies/FlyingFishEnemy.cs" />
         <option value="$PROJECT_DIR$/Assets/Scripts/Enemies/EnemyUI/EnemyMovementText.cs" />
-        <option value="$PROJECT_DIR$/Assets/Scripts/Enemies/EnemyMover.cs" />
         <option value="$PROJECT_DIR$/Assets/Scripts/SerializedDictionary.cs" />
         <option value="$PROJECT_DIR$/Assets/Scripts/Enemies/EnemySpawner.cs" />
         <option value="$PROJECT_DIR$/Assets/Scripts/Deck/DesignBlueprint.cs" />
@@ -266,6 +131,20 @@
         <option value="$PROJECT_DIR$/Assets/Scripts/Deck/DesignManager.cs" />
         <option value="$PROJECT_DIR$/Assets/Scripts/Deck/Design.cs" />
         <option value="$PROJECT_DIR$/Assets/Scripts/Designs/DesignCategory.cs" />
+        <option value="$PROJECT_DIR$/Assets/Scripts/Enemies/EnemyMover.cs" />
+        <option value="$PROJECT_DIR$/Assets/Scripts/EventListeners/IGainedGoldListener.cs" />
+        <option value="$PROJECT_DIR$/Assets/Scripts/BattleScreen/BattleEvents.cs" />
+        <option value="$PROJECT_DIR$/Assets/Scripts/Items/ItemInventory.cs" />
+        <option value="$PROJECT_DIR$/Assets/Scripts/BattleScreen/BattleItemManager.cs" />
+        <option value="$PROJECT_DIR$/Assets/Scripts/Items/Items/CapitalList.cs" />
+        <option value="$PROJECT_DIR$/Assets/Scripts/Items/Items/PacifistItem.cs" />
+        <option value="$PROJECT_DIR$/Assets/Scripts/Items/Items/PaciFistItem.cs" />
+        <option value="$PROJECT_DIR$/Assets/Scripts/BattleScreen/BattleManager.cs" />
+        <option value="$PROJECT_DIR$/Assets/Scripts/BattleHUDManager.cs" />
+        <option value="$PROJECT_DIR$/Assets/Scripts/Enemies/Enemy.cs" />
+        <option value="$PROJECT_DIR$/Assets/Scripts/Enemies/ActiveEnemiesManager.cs" />
+        <option value="$PROJECT_DIR$/Assets/Scripts/Items/Items/CapitalListItem.cs" />
+        <option value="$PROJECT_DIR$/Assets/Scripts/RunProgress.cs" />
       </list>
     </option>
   </component>
@@ -386,7 +265,7 @@
       <workItem from="1680303141230" duration="335000" />
       <workItem from="1680303604628" duration="8738000" />
       <workItem from="1680476816097" duration="6320000" />
-      <workItem from="1680492241821" duration="5309000" />
+      <workItem from="1680492241821" duration="8957000" />
     </task>
     <servers />
   </component>
@@ -445,11 +324,11 @@
     <state x="532" y="0" width="840" height="1034" key="run.anything.popup/0.0.1920.1040@0.0.1920.1040" timestamp="1675489416658" />
     <state x="1064" y="0" width="1680" height="2148" key="run.anything.popup/0.0.3840.2160@0.0.3840.2160" timestamp="1679448023991" />
     <state x="532" y="777" width="840" height="1034" key="run.anything.popup/0.1080.1920.1040/0.0.1920.1040@0.1080.1920.1040" timestamp="1672456494495" />
-    <state x="1078" y="10" width="1680" height="2148" key="search.everywhere.popup" timestamp="1680479979726">
+    <state x="1078" y="10" width="1680" height="2148" key="search.everywhere.popup" timestamp="1680506566293">
       <screen x="0" y="0" width="3840" height="2160" />
     </state>
     <state x="539" y="5" width="840" height="1034" key="search.everywhere.popup/0.0.1920.1040@0.0.1920.1040" timestamp="1675255493675" />
-    <state x="1078" y="10" width="1680" height="2148" key="search.everywhere.popup/0.0.3840.2160@0.0.3840.2160" timestamp="1680479979726" />
+    <state x="1078" y="10" width="1680" height="2148" key="search.everywhere.popup/0.0.3840.2160@0.0.3840.2160" timestamp="1680506566293" />
     <state x="539" y="1085" width="840" height="1034" key="search.everywhere.popup/0.1080.1920.1040/0.0.1920.1040@0.1080.1920.1040" timestamp="1672281603634" />
   </component>
   <component name="XDebuggerManager">
