@@ -1,16 +1,17 @@
 ﻿using System.Collections.Generic;
+using Designs;
 using Enemies;
 using UnityEngine;
 
 namespace Etchings
 {
-    public class StrikeZoneEtching : ActiveEtching, IDamageMultiplierModifier
+    public class FocusEtching : ActiveEtching, IDamageMultiplierModifier
     {
         private Stat _boostAmountStat;
         
         protected override void Start()
         {
-            _boostAmountStat = new Stat(design.GetStat(St.Boost));
+            _boostAmountStat = new Stat(design.GetStat(StatType.Boost));
             colorWhenActivated = true;
             base.Start();
         }

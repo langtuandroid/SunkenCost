@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using Enemies;
 using Etchings;
 using UnityEngine;
+using Action = System.Action;
 
 public class BattleEvents : MonoBehaviour
 {

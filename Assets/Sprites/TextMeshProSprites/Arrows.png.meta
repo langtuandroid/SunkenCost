@@ -158,6 +158,48 @@ TextureImporter:
       indices: 
       edges: []
       weights: []
+    - serializedVersion: 2
+      name: Arrows_2
+      rect:
+        serializedVersion: 2
+        x: 12
+        y: 0
+        width: 6
+        height: 10
+      alignment: 9
+      pivot: {x: 0, y: 0.05}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 2b17bbb0e1b92074d84e6d1f0b83cc08
+      internalID: -1243664955
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Arrows_3
+      rect:
+        serializedVersion: 2
+        x: 18
+        y: 0
+        width: 6
+        height: 10
+      alignment: 9
+      pivot: {x: 0, y: 0.05}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 258189367d2d3da4eac8387f44607453
+      internalID: 640378447
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
     outline: []
     physicsShape: []
     bones: []
@@ -170,7 +212,9 @@ TextureImporter:
     secondaryTextures: []
     nameFileIdTable:
       Arrows_0: -1700414313
+      Arrows_3: 640378447
       Arrows_1: -540453117
+      Arrows_2: -1243664955
   spritePackingTag: 
   pSDRemoveMatte: 0
   pSDShowRemoveMatteOption: 0

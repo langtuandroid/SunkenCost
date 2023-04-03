@@ -10,7 +10,7 @@ namespace Items
         public string Title { get; private set; }
         public string Description { get; private set; }
         public Sprite Sprite { get; private set; }
-        public ItemRarity Rarity { get; private set; }
+        public Rarity Rarity { get; private set; }
 
         public ItemInstance(ItemAsset itemAsset, int modifier)
         {

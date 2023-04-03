@@ -1,4 +1,5 @@
-﻿using UnityEngine;
+﻿using Designs;
+using UnityEngine;
 
 namespace Etchings
 {
@@ -20,8 +21,8 @@ namespace Etchings
                 
             enemy.Heal(amountToHeal);
 
-            var timesMetRequirement = (int)Mathf.Floor(((float)amountToHeal / GetStatValue(St.IntRequirement)));
-            var amountOfGoldToGive = timesMetRequirement * GetStatValue(St.Gold);
+            var timesMetRequirement = (int)Mathf.Floor(((float)amountToHeal / GetStatValue(StatType.IntRequirement)));
+            var amountOfGoldToGive = timesMetRequirement * GetStatValue(StatType.Gold);
             BattleManager.Current.AlterGold(amountOfGoldToGive);
 
             return true;

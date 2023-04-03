@@ -7,6 +7,27 @@ using Random = UnityEngine.Random;
 
 namespace Enemies
 {
+    public enum MovementType
+    {
+        Walk,
+        Skip,
+        Wait
+    }
+
+    public struct EnemyMove
+    {
+        public MovementType movementType;
+        public int magnitude;
+
+        public void IncreaseMagnitude(int amountToIncrease)
+        {
+            if (magnitude == 0) return;
+
+            if (magnitude > 0) magnitude += amountToIncrease;
+            else magnitude -= amountToIncrease;
+        }
+    }
+    
     public class EnemyMover : MonoBehaviour
     {
         public const int EnemyOffset = 100;
@@ -14,21 +35,23 @@ namespace Enemies
 
         [SerializeField] private EnemyUI.EnemyUI _enemyUI;
         
-        private int _nextMove;
+        private int _amountOfMovesLeftThisTurn;
         private int _lastMove;
         private int _skips;
 
-        private List<int> MoveSet = new List<int>();
-        private Queue<int> _moves = new Queue<int>();
+        private List<EnemyMove> MoveSet = new List<EnemyMove>();
+        private int _moveIndex;
 
         private float _moveVelocityX = 0f;
         private float _moveVelocityY = 0f;
         
         private Vector2 _aimPosition = Vector2.zero;
 
-        public int StickNum { get; private set; } = 0;
+        public int StickNum { get; private set; }
 
-        public bool FinishedMoving => _nextMove == 0;
+        public bool FinishedMoving => _amountOfMovesLeftThisTurn == 0;
+
+        private EnemyMove CurrentMove => MoveSet[_moveIndex];
 
         public int LastDirection
         {
@@ -45,31 +68,16 @@ namespace Enemies
             get
             {
                 // -1 if moving backwards, 0 if not moving, 1 if moved forwards
-                if (_nextMove == 0) return 0;
-                return _nextMove / Math.Abs(_nextMove);
+                if (_amountOfMovesLeftThisTurn == 0) return 0;
+                return _amountOfMovesLeftThisTurn / Math.Abs(_amountOfMovesLeftThisTurn);
             }
         }
         
         private void Start()
         {
-            _moves.Clear();
-            foreach (var move in MoveSet)
-            {
-                _moves.Enqueue(move);
-            }
-
             // Randomise first move
-            foreach (var randomise in MoveSet.Select(i => Random.Range(0, MoveSet.Count)))
-            {
-                for (var ii = 0; ii < randomise; ii++)
-                {
-                    var move = _moves.Dequeue();
-                    _moves.Enqueue(move);
-                }
-
-                SetNextMoveSequence();
-            }
-            
+            _moveIndex = Random.Range(0, MoveSet.Count);
+            SetNextMoveSequence();
             BattleEvents.Current.OnEndEnemyTurn += OnEndEnemyTurn;
         }
         
@@ -92,15 +100,21 @@ namespace Enemies
 
         public void Move()
         {
-            _lastMove = _nextMove;
+            _lastMove = _amountOfMovesLeftThisTurn;
             StickNum += LastDirection + (LastDirection * _skips);
+            _amountOfMovesLeftThisTurn -= LastDirection + (LastDirection * _skips);
             _skips = 0;
-            _nextMove -= LastDirection;
         }
 
-        public void AddMove(int move)
+        public void AddMove(MovementType moveType, int magnitude)
         {
+            var move = new EnemyMove {movementType = moveType, magnitude = magnitude};
             MoveSet.Add(move);
+        }
+
+        public void AddMove(int magnitude)
+        {
+            AddMove(MovementType.Walk, magnitude);
         }
 
         public void SetStickNum(int stickNum)
@@ -120,15 +134,15 @@ namespace Enemies
 
         public void Block(int amount)
         {
-            if (_nextMove > 0)
+            if (_amountOfMovesLeftThisTurn > 0)
             {
-                _nextMove -= amount;
-                if (_nextMove < 0) _nextMove = 0;
+                _amountOfMovesLeftThisTurn -= amount;
+                if (_amountOfMovesLeftThisTurn < 0) _amountOfMovesLeftThisTurn = 0;
             }
             else
             {
-                _nextMove += amount;
-                if (_nextMove > 0) _nextMove = 0;
+                _amountOfMovesLeftThisTurn += amount;
+                if (_amountOfMovesLeftThisTurn > 0) _amountOfMovesLeftThisTurn = 0;
             }
 
             UpdateMovementText();
@@ -136,14 +150,14 @@ namespace Enemies
 
         public void Reverse()
         {
-            _nextMove *= -1;
+            _amountOfMovesLeftThisTurn *= -1;
         }
 
         public void AddMovement(int amount)
         {
-            _nextMove += amount * NextDirection;
+            _amountOfMovesLeftThisTurn += amount * NextDirection;
             
-            if (_nextMove <= -StickNum) _nextMove = -StickNum;
+            if (_amountOfMovesLeftThisTurn <= -StickNum) _amountOfMovesLeftThisTurn = -StickNum;
             
             UpdateMovementText();
             
@@ -151,52 +165,42 @@ namespace Enemies
 
         public void AddMovementModifier(int amount)
         {
-            var moveSet = _moves.ToArray();
-            
-            for (var i = 0; i < moveSet.Length; i++)
+            for (var i = 0; i < MoveSet.Count; i++)
             {
-                var move = moveSet[i];
-                if (move < 0)
-                {
-                    moveSet[i] -= amount;
-                }
-                else if (move > 0)
-                {
-                    moveSet[i] += amount;
-                }
-            }
-            
-            _moves.Clear();
-            foreach (var move in moveSet)
-            {
-                _moves.Enqueue(move);
+                var move = MoveSet.ElementAt(i);
+                if (move.movementType == MovementType.Wait) continue;
+                move.IncreaseMagnitude(amount);
             }
         }
 
         public void UpdateMovementText()
         {
-            _enemyUI.MovementText.UpdateMovementText(_nextMove);
+            _enemyUI.MovementText.UpdateMovementText(CurrentMove.movementType, _amountOfMovesLeftThisTurn);
         }
         
-        private void OnEndEnemyTurn()
+        private void OnEndEnemyTurn() 
         {
             SetNextMoveSequence();
         }
-        
+
         private void SetNextMoveSequence()
         {
-            var newMove = _moves.Dequeue();
-            _moves.Enqueue(newMove);
-            
-            // Always move off starting stick
-            if (newMove < 1 && StickNum == 0)
+            for (var i = 0; i < 100; i++)
             {
-                newMove = _moves.Dequeue();
-                _moves.Enqueue(newMove);
+                _moveIndex++;
+                if (_moveIndex >= MoveSet.Count) _moveIndex = 0;
+
+                // Always move off starting stick
+                if (MoveSet[_moveIndex].magnitude == 0 && StickNum == 0)
+                {
+                    continue;
+                }
+
+                _amountOfMovesLeftThisTurn = CurrentMove.magnitude;
+                _skips = CurrentMove.movementType == MovementType.Skip ? CurrentMove.magnitude - 1 : 0;
+                UpdateMovementText();
+                break;
             }
-                
-            _nextMove = newMove;
-            UpdateMovementText();
         }
     }
 }

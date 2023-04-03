@@ -8,7 +8,21 @@ using UnityEngine;
 
 public class EnemyManager : MonoBehaviour
 {
+    private static EnemyManager _current;
+    
     public static readonly List<string> EnemiesList = new List<string>();
+    
+    private void Awake()
+    {
+        if (_current)
+        {
+            Destroy(gameObject);
+            return;
+        }
+        
+        _current = this;
+    }
+    
     void Start()
     {
         // Get the enemies

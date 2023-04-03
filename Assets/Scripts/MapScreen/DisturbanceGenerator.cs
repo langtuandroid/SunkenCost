@@ -114,7 +114,7 @@ namespace MapScreen
             var randomItemAsset = disturbanceAsset.disturbanceType == DisturbanceType.EliteItem
                 ? ItemLoader.EliteItemAssets.GetRandomNonDuplicate(itemsToExclude)
                 : ItemLoader.ShopItemAssets.GetRandomNonDuplicate
-                    (itemsToExclude, ia => ia.rarity == ItemRarity.Common);
+                    (itemsToExclude, ia => ia.rarity == Rarity.Common);
 
             var item = new ItemInstance(randomItemAsset, randomItemAsset.modifier);
                     

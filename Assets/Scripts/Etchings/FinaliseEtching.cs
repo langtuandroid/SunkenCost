@@ -3,7 +3,7 @@ using UnityEngine;
 
 namespace Etchings
 {
-    public class GrandFinalistEtching : DamageEtching
+    public class FinaliseEtching : DamageEtching
     {
         protected override bool CheckInfluence(int stickNum)
         {

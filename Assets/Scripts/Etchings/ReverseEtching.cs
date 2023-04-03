@@ -1,4 +1,5 @@
 ﻿using System;
+using Designs;
 using UnityEngine;
 
 namespace Etchings
@@ -16,7 +17,7 @@ namespace Etchings
             // Set the new goal stick as the opposite direction
             currentEnemy.Mover.Reverse();
 
-            currentEnemy.Mover.AddMovement(GetStatValue(St.MovementBoost));
+            currentEnemy.Mover.AddMovement(GetStatValue(StatType.MovementBoost));
 
             UsesUsedThisTurn += 1;
             return true;

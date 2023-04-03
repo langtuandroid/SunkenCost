@@ -40,11 +40,15 @@ public class RunProgress : MonoBehaviour
 
     public static List<Disturbance> GeneratedMapDisturbances { get; private set; }
 
-    public void Awake()
+    private void Awake()
     {
+        if (_current)
+        {
+            Destroy(gameObject);
+            return;
+        }
+        
         _current = this;
-
-        _itemInventory = GetComponentInChildren<ItemInventory>();
     }
 
     public static void Initialise()
@@ -85,7 +89,7 @@ public class RunProgress : MonoBehaviour
         _playerStats = new PlayerStats();
         _playerStats.InitialiseDeck();
         _offerStorage = new OfferStorage();
-        _itemInventory.WipeInventory();
+        _itemInventory = transform.GetChild(0).gameObject.AddComponent<ItemInventory>();
         _battleNumber = 0;
         _currentDisturbance = null;
         _activeChallenges = new List<Challenge>();

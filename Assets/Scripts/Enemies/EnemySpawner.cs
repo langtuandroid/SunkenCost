@@ -4,7 +4,9 @@ using System.Collections.Generic;
 using System.Linq;
 using Enemies;
 using UnityEngine;
+using UnityEngine.Rendering;
 using Random = UnityEngine.Random;
+
 
 public class EnemySpawner : MonoBehaviour
 {
@@ -40,15 +42,31 @@ public class EnemySpawner : MonoBehaviour
         SpawnNewRound();
     }
 
-    public Enemy SpawnEnemy(string enemyName, int stickNum)
+    public Enemy SpawnActiveEnemy(string enemyName, int stickNum)
+    {
+        var newEnemy = SpawnEnemy(enemyName, stickNum);
+        ActiveEnemiesManager.Current.AddActiveEnemy(newEnemy);
+        return newEnemy;
+    }
+    
+    private Enemy SpawnWaitingEnemy(string enemyName)
+    {
+        var newEnemy = SpawnEnemy(enemyName, 0);
+        ActiveEnemiesManager.Current.AddWaitingEnemy(newEnemy);
+        return newEnemy;
+    }
+
+    private Enemy SpawnEnemy(string enemyName, int stickNum)
     {
         var enemyPrefab = enemyDictionary[enemyName];
         var stickToSpawnOn = StickManager.current.stickGrid.GetChild(stickNum);
-        var newEnemy = Instantiate(enemyPrefab, stickToSpawnOn, true);
-        newEnemy.transform.localPosition = Vector3.zero;
-        newEnemy.transform.localScale = new Vector3(1, 1, 1);
-
-        return newEnemy.GetComponent<Enemy>();
+        var newEnemyObject = Instantiate(enemyPrefab, stickToSpawnOn, true);
+        newEnemyObject.transform.localPosition = Vector3.zero;
+        newEnemyObject.transform.localScale = new Vector3(1, 1, 1);
+        
+        var newEnemy = newEnemyObject.GetComponent<Enemy>();
+        newEnemy.Mover.SetStickNum(stickNum);
+        return newEnemy;
     }
 
     private void SpawnNewRound()
@@ -63,30 +81,9 @@ public class EnemySpawner : MonoBehaviour
 
         foreach (var enemyName in newEnemies)
         {
-            var enemy = SpawnEnemy(enemyName, 0);
+            var enemy = SpawnWaitingEnemy(enemyName);
             enemy.MaxHealth.AddModifier(new StatModifier(_scenario.scaledDifficulty, StatModType.PercentMult));
             enemy.Mover.AddMovementModifier((int)(_scenario.scaledDifficulty / 2f));
-            ActiveEnemiesManager.Current.AddEnemy(enemy);
         }
-    }
-
-    private List<string> GetNewRound()
-    {
-        // For now
-        var newEnemies = new List<string>();
-
-            var amountToSpawn = Mathf.Floor((BattleManager.Current.Turn + (RunProgress.BattleNumber / 3 * 2 * RunProgress.PlayerStats.NumberOfTurns)) / (RunProgress.PlayerStats.NumberOfTurns * 2f)) + 1;
-            for (var i = 0; i < amountToSpawn; i++)
-            {
-                // Count -1 to not include boss
-                newEnemies.Add(enemyNames[Random.Range(0, enemyNames.Count-1)]);
-            }
-
-            if (Random.Range(0, 3) == 1)
-            {
-                newEnemies.Clear();
-            }
-
-            return newEnemies;
     }
 }

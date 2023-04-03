@@ -16,4 +16,4 @@ MonoBehaviour:
   description: Whenever an enemy reaches your boat, deal @ Damage to all enemies
   sprite: {fileID: 21300000, guid: 36fda7ccad465b544a6995f8bdae6584, type: 3}
   modifier: 10
-  rarity: 0
+  rarity: 2

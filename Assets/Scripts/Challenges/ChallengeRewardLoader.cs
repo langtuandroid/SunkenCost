@@ -9,11 +9,20 @@ namespace Challenges
 
         private readonly Dictionary<ChallengeRewardType, ChallengeReward> _challengeRewards =
             new Dictionary<ChallengeRewardType, ChallengeReward>();
+        
+        private void Awake()
+        {
+            if (_current)
+            {
+                Destroy(gameObject);
+                return;
+            }
+        
+            _current = this;
+        }
 
         private void Start()
         {
-            _current = this;
-
             var challengeRewards = Extensions.LoadScriptableObjects<ChallengeReward>();
 
             foreach (var challengeReward in challengeRewards)

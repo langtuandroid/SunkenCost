@@ -8,10 +8,20 @@ namespace Disturbances
     {
         private static DisturbanceManager _current;
         private readonly Dictionary<DisturbanceType, DisturbanceAsset> _disturbances = new Dictionary<DisturbanceType, DisturbanceAsset>();
+        
+        private void Awake()
+        {
+            if (_current)
+            {
+                Destroy(gameObject);
+                return;
+            }
+        
+            _current = this;
+        }
+        
         private void Start()
         {
-            _current = this;
-
             LoadDisturbanceAssets();
         }
 
@@ -51,7 +61,7 @@ namespace Disturbances
                     case DisturbanceType.EliteCard:
                         if (!(disturbance is CardDisturbance cardDisturbance)) throw new Exception();
                         var rewardCard = cardDisturbance.Design;
-                        rewardCard.MakeFree();
+                        rewardCard.SetCost(0);
                         RunProgress.OfferStorage.RewardDesignOffers.Add(cardDisturbance.Design);
                     break;
                 case DisturbanceType.Item:

@@ -3,6 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using Challenges;
+using Designs;
 using JetBrains.Annotations;
 using OfferScreen;
 using UnityEngine;
@@ -55,9 +56,20 @@ public class PlayerStats
 
     public void InitialiseDeck()
     {
-        Deck.Add(new Swordsman());
-        Deck.Add(new Slinger());
-        Deck.Add(new Impede());
+        var initialDeck = new string[]
+        {
+            "Stab", "Hurl", "Impede"
+        };
+
+        foreach (var name in initialDeck)
+        {
+            Deck.Add(DesignFactory.InstantiateDesignFromString(name));
+        }
+
+        foreach (var design in Deck)
+        {
+            design.SetCost(3);
+        }
     }
 
     public void SaveDeck(IEnumerable<Design> newDeck)

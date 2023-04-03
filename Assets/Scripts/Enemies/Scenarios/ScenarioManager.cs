@@ -9,16 +9,21 @@ using Random = UnityEngine.Random;
 
 public class ScenarioManager : MonoBehaviour
 {
-    public const int BATTLES_PER_DIFFICULTY = 3;
+    public const int BATTLES_PER_DIFFICULTY = 5;
     
-    private static ScenarioManager Current;
+    private static ScenarioManager _current;
 
     private Dictionary<ScenarioType, List<Scenario>> scenariosByDifficulty { get; set; }= new Dictionary<ScenarioType, List<Scenario>>();
     
     void Awake()
     {
-        Current = this;
-
+        if (_current)
+        {
+            Destroy(gameObject);
+            return;
+        }
+        
+        _current = this;
         var scenarios = Extensions.LoadScriptableObjects<Scenario>();
         
         foreach (var scenario in scenarios)
@@ -65,7 +70,7 @@ public class ScenarioManager : MonoBehaviour
                 break;
         }
 
-        var scenarioOptions = Current.scenariosByDifficulty.
+        var scenarioOptions = _current.scenariosByDifficulty.
             Where(p => p.Key == scenarioType).
             Select(p => p.Value).FirstOrDefault();
         

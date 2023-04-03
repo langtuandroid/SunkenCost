@@ -1,4 +1,5 @@
-﻿using UnityEngine;
+﻿using Designs;
+using UnityEngine;
 
 namespace Etchings
 {
@@ -12,7 +13,7 @@ namespace Etchings
 
             if (currentEnemyStickNum != stickNum || currentEnemy.FinishedMoving) return false;
             
-            currentEnemy.Block(design.GetStat(St.Block));
+            currentEnemy.Block(design.GetStat(StatType.Block));
             UsesUsedThisTurn += 1;
             return true;
 

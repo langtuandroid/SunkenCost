@@ -6,9 +6,9 @@ namespace OfferScreen
 {
     public class PriceHandler
     {
-        private const int BASE_CARD_COST_VARIATION = 1;
+        private const int BASE_CARD_COST_VARIATION = 2;
         private const int BASE_ITEM_COST_VARIATION = 4;
-        private const int BASE_CARD_COST_MULTIPLIER = 3;
+        private const int BASE_CARD_COST_MULTIPLIER = 4;
         private const int BASE_ITEM_COST_MULTIPLIER = 10;
 
         private readonly Stat _cardCostMultiplier;
@@ -20,29 +20,29 @@ namespace OfferScreen
             _itemCostMultiplier = new Stat(BASE_ITEM_COST_MULTIPLIER);
         }
 
-        public int GetCardCost(int cardRarity)
+        public int GetCardCost(Rarity rarity)
         {
-            return cardRarity * _cardCostMultiplier.Value
+            return (int)rarity * _cardCostMultiplier.Value
                    + Random.Range(-BASE_CARD_COST_VARIATION, BASE_CARD_COST_VARIATION);
         }
 
-        public int GetItemCost(ItemRarity itemRarity)
+        public int GetItemCost(Rarity rarity)
         {
             var cost = Random.Range(-BASE_ITEM_COST_VARIATION, BASE_ITEM_COST_VARIATION);
-            switch (itemRarity)
+            switch (rarity)
             {
-                case ItemRarity.Common:
+                case Rarity.Common:
                     cost += 10;
                     break;
-                case ItemRarity.Uncommon:
+                case Rarity.Uncommon:
                     cost += 20;
                     break;
-                case ItemRarity.Rare:
+                case Rarity.Rare:
                     cost += 30;
                     break;
-                case ItemRarity.ElitePickup:
+                case Rarity.ElitePickup:
                 default:
-                    throw new ArgumentOutOfRangeException(nameof(itemRarity), itemRarity, null);
+                    throw new ArgumentOutOfRangeException(nameof(rarity), rarity, null);
             }
 
             return cost;

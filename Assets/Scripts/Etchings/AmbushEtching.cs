@@ -1,4 +1,5 @@
 ﻿using System.Collections.Generic;
+using Designs;
 
 namespace Etchings
 {
@@ -30,9 +31,9 @@ namespace Etchings
         {
             if (!_hadEnemyOnPlankThisTurn)
             {
-                var increase = new StatModifier(design.GetStat(St.DamageFlatModifier), StatModType.Flat);
+                var increase = new StatModifier(design.GetStat(StatType.DamageFlatModifier), StatModType.Flat);
                 _statModifiers.Push(increase);
-                design.Stats[St.Damage].AddModifier(increase);
+                design.Stats[StatType.Damage].AddModifier(increase);
             }
 
             _hadEnemyOnPlankThisTurn = false;
@@ -42,7 +43,7 @@ namespace Etchings
         {
             foreach (var statModifier in _statModifiers)
             {
-                design.Stats[St.Damage].RemoveModifier(statModifier);
+                design.Stats[StatType.Damage].RemoveModifier(statModifier);
             }
         }
     }

@@ -12,7 +12,7 @@ namespace Enemies
     {
         public EnemyStats stats;
         
-        public List<Action> PreMovingEffects = new List<Action>();
+        public List<System.Action> PreMovingEffects = new List<System.Action>();
         
         private EnemyAnimationController _animationController;
 
@@ -51,7 +51,7 @@ namespace Enemies
         }
 
         protected abstract void Init();
-
+        
         protected virtual void Start()
         {
             ChangeHealth(MaxHealth.Value);

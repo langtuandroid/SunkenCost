@@ -2,6 +2,7 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
+using Designs;
 using Etchings;
 using UnityEngine;
 
@@ -66,7 +67,8 @@ public class EtchingManager : MonoBehaviour
         }
 
         var newEtching = Instantiate(etchingPrefab, etchingSlot);
-        var etching = newEtching.AddComponent(DesignManager.GetEtchingType(design.Category)).GetComponent<ActiveEtching>();
+        var etching = newEtching.AddComponent(DesignManager.DesignAssetToEtchingTypeDict[design.designAsset])
+            .GetComponent<ActiveEtching>();
         etching.design = design;
         etchingSlot.transform.parent.GetComponent<Stick>().etching = etching;
         etchingCount++;

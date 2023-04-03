@@ -1,4 +1,6 @@
-﻿namespace Etchings
+﻿using Designs;
+
+namespace Etchings
 {
     public class PoisonEtching : CharMovementActivatedEtching
     {
@@ -9,7 +11,7 @@
 
         protected override void Start()
         {
-            _poisonAmountStat = new Stat(design.GetStat(St.Poison));
+            _poisonAmountStat = new Stat(design.GetStat(StatType.Poison));
         
             base.Start();
         }

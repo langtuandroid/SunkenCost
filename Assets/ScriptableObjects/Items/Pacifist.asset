@@ -16,4 +16,4 @@ MonoBehaviour:
   description: If you kill no enemies in a battle, gain @ gold
   sprite: {fileID: 21300000, guid: 6d741615fa72f704f8f6c7aeb764aa8c, type: 3}
   modifier: 3
-  rarity: 0
+  rarity: 1

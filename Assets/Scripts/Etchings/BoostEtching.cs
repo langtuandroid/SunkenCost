@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using System.Security.Cryptography.X509Certificates;
+using Designs;
 using UnityEngine;
 
 namespace Etchings
@@ -13,7 +14,7 @@ namespace Etchings
 
         protected override void Start()
         {
-            _boostAmountStat = new Stat(design.GetStat(St.Boost));
+            _boostAmountStat = new Stat(design.GetStat(StatType.Boost));
             colorWhenActivated = false;
             BattleEvents.Current.OnEndBattle += ClearMods;
             base.Start();
@@ -24,7 +25,7 @@ namespace Etchings
             // Clear stored etchings
             foreach (var etching in _boostedEtchings)
             {
-                etching.ModifyStat(St.Damage, -_boostAmount);
+                etching.ModifyStat(StatType.Damage, -_boostAmount);
             }
             _boostedEtchings.Clear();
         }
@@ -67,7 +68,7 @@ namespace Etchings
 
             foreach (var etching in _boostedEtchings)
             {
-                etching.ModifyStat(St.Damage, +_boostAmount);
+                etching.ModifyStat(StatType.Damage, +_boostAmount);
             }
 
             return true;

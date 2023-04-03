@@ -72,7 +72,7 @@ public class OfferManager : MonoBehaviour
 
     public void TryMerge(DesignCard cardBeingMerged, DesignCard cardBeingMergedInto)
     {
-        var cost = cardBeingMergedInto.Design.Cost;
+        var cost = cardBeingMerged.Design.Cost;
         if (BuyerSeller.Gold < cost) return;
         BuyerSeller.Buy(cost);
 

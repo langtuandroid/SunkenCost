@@ -1,4 +1,5 @@
-﻿using UnityEngine;
+﻿using Designs;
+using UnityEngine;
 
 namespace Etchings
 {
@@ -15,7 +16,7 @@ namespace Etchings
 
             if (currentEnemy.StickNum - currentEnemy.Mover.LastDirection != stickNum) return false;
             
-            currentEnemy.Mover.AddSkip(GetStatValue(St.Hop));
+            currentEnemy.Mover.AddSkip(GetStatValue(StatType.Hop));
             StartCoroutine(ColorForActivate());
 
             UsesUsedThisTurn += 1;

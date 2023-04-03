@@ -1,4 +1,5 @@
-﻿using Items;
+﻿using Designs;
+using Items;
 using UnityEngine;
 
 namespace Disturbances
@@ -25,7 +26,7 @@ namespace Disturbances
         
         public override Sprite GetSprite()
         {
-            return DesignManager.GetEtchingSprite(Design.Category);
+            return Design.Sprite;
         }
     }
 }

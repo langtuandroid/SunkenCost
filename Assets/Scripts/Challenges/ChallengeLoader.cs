@@ -14,6 +14,12 @@ namespace Challenges
 
         private void Awake()
         {
+            if (_current)
+            {
+                Destroy(gameObject);
+                return;
+            }
+        
             _current = this;
             _challenges = Extensions.GetAllChildrenOfClassOrNull<Challenge>().ToList();
         }

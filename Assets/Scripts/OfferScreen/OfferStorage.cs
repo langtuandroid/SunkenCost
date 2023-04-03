@@ -1,5 +1,6 @@
 ﻿using System.Collections.Generic;
 using System.Linq;
+using Designs;
 using Items;
 using UnityEngine;
 
@@ -31,6 +32,7 @@ namespace OfferScreen
                 if (designOffer.isLocked)
                 {
                     LockedDesignOffers.Add(design);
+                    design.SetCost(design.Cost + 1);
                 }
                 else
                 {

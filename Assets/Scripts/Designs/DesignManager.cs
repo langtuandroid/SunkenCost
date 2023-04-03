@@ -1,13 +1,15 @@
 ﻿using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using System.Linq;
 using System.Reflection;
-using Deck;
+using Designs;
 using Etchings;
+using Items;
 using UnityEngine;
 
-public enum DesignCategory
+public enum DesignType
 {
     Melee,
     Ranged,
@@ -17,125 +19,133 @@ public enum DesignCategory
     Hop,
     Reverse,
     Poison,
-    StrikeZone,
-    Infirmary,
+    Focus,
+    Rest,
     LoneWolf,
-    GrandFinalist,
+    Finalise,
     Ambush,
     Cauterize,
-    AirRaid,
+    Raid,
     Research
 }
 
 public class DesignManager : MonoBehaviour
 {
     private static DesignManager _current;
-    private static readonly Dictionary<string, Type> DesignTypes = new Dictionary<string, Type>();
-    
-    private static readonly Dictionary<string, Type> EtchingTypes = new Dictionary<string, Type>();
-    
-    [SerializeField] private List<string> etchingTypes = new List<string>();
-    [SerializeField] private List<Sprite> etchingSprites = new List<Sprite>();
 
-    public static readonly List<string> CommonDesigns = new List<string>();
-    public static readonly List<string> UncommonDesigns = new List<string>();
-    public static readonly List<string> RareDesigns = new List<string>();
+    public static ReadOnlyDictionary<DesignAsset, Type> DesignAssetToEtchingTypeDict;
+
+    public static ReadOnlyDictionary<string, DesignAsset> AllDesignAssetsByName;
     
+    public static readonly List<DesignAsset> CommonDesigns = new List<DesignAsset>();
+    public static readonly List<DesignAsset> UncommonDesigns = new List<DesignAsset>();
+    public static readonly List<DesignAsset> RareDesigns = new List<DesignAsset>();
+    public static readonly List<DesignAsset> ElitePickupDesigns = new List<DesignAsset>();
+
+    private void Awake()
+    {
+        if (_current)
+        {
+            Destroy(gameObject);
+            return;
+        }
+        
+        _current = this;
+    }
+
     private void Start()
     {
-        _current = this;
-
-        // If reloading
-        if (EtchingTypes.Count > 0) return;
-        
-        // Get the Designs
-        var designs = Extensions.GetAllChildrenOfClassOrNull<Design>();
-
-        foreach (var type in designs)
-        {
-            var designName = type.FullName;
-            DesignTypes.Add(designName ?? "ERROR", type);
-
-            if (type.IsSubclassOf(typeof(CommonDesign)))
-            {
-                CommonDesigns.Add(designName);
-            }
-            else if (type.IsSubclassOf(typeof(UncommonDesign)))
-            {
-                UncommonDesigns.Add(designName);
-            }
-            else if (type.IsSubclassOf(typeof(RareDesign)))
-            {
-                RareDesigns.Add(designName);
-            }
-            else
-            {
-                Debug.Log("ERROR: NOT OF ANY RARITY??");
-                Debug.Log(designName);
-            }
-        }
-
-        // Get the Etchings
+        // Add all the etchings to a dictionary where their class name is the key
         var etchingsEnumerable = 
             Assembly.GetAssembly(typeof(ActiveEtching)).GetTypes().Where(t => t.IsSubclassOf(typeof(ActiveEtching))).Where(ty => !ty.IsAbstract);
 
+        var etchingNamesAndTypes = new Dictionary<string, Type>();        
         foreach (var type in etchingsEnumerable)
         {
             // // Remove the 'Etchings.' and 'Etching' from beginning and end of file name
+            if (type.FullName == null) continue;
             var etchingName = type.FullName.Remove(type.FullName.Length - 7, 7).Remove(0, 9);
-            EtchingTypes.Add(etchingName, type);
+            etchingNamesAndTypes.Add(etchingName, type);
         }
-    }
-    
-    public static Type GetEtchingType(DesignCategory designCategory)
-    {
-        //Debug.Log(etchingCategory.ToString());
-        return EtchingTypes[designCategory.ToString()];
-    }
+        
+        // Now match all of the designs to their corresponding etching using their DesignType - note the names
+        // of the etchings must match the corresponding DesignType!
+        var allDesignAssets = Extensions.LoadScriptableObjects<DesignAsset>();
+        
+        var allDesignAssetsByName = allDesignAssets.ToDictionary(asset => asset.name);
+        AllDesignAssetsByName = new ReadOnlyDictionary<string, DesignAsset>(allDesignAssetsByName);
+        
+        var designAssetToEtchingTypeDict = new Dictionary<DesignAsset, Type>();
 
-    public static Type GetDesignType(string designName)
-    {
-        return DesignTypes[designName];
-    }
+        foreach (var designAsset in allDesignAssets)
+        {
+            switch (designAsset.rarity)
+            {
+                case Rarity.Common:
+                    CommonDesigns.Add(designAsset);
+                    break;
+                case Rarity.Uncommon:
+                    UncommonDesigns.Add(designAsset);
+                    break;
+                case Rarity.Rare:
+                    RareDesigns.Add(designAsset);
+                    break;
+                case Rarity.ElitePickup:
+                    ElitePickupDesigns.Add(designAsset);
+                    break;
+                default:
+                    throw new ArgumentOutOfRangeException();
+            }
+            
+            var designTypeName = Enum.GetName(typeof(DesignType), designAsset.designType);
+            
+            var matchingEtchingType = etchingNamesAndTypes.FirstOrDefault
+                (i => i.Key == designTypeName).Value;
 
-    public static Sprite GetEtchingSprite(DesignCategory designCategory)
-    {
-        var index = _current.etchingTypes.IndexOf(designCategory.ToString());
-        return _current.etchingSprites[index];
+            if (matchingEtchingType == null)
+            {
+                Debug.Log("ERROR: Couldn't find an Etching class called " + designTypeName);
+                return;
+            }
+            
+            designAssetToEtchingTypeDict.Add(designAsset, matchingEtchingType);
+        }
+        
+        DesignAssetToEtchingTypeDict = new ReadOnlyDictionary<DesignAsset, Type>(designAssetToEtchingTypeDict);
     }
 
     public static string GetDescription(Design design)
     {
         var description = "";
-        design.Stats.TryGetValue(St.MinRange, out var minRange);
-        design.Stats.TryGetValue(St.MaxRange, out var maxRange);
-        design.Stats.TryGetValue(St.Damage, out var damage);
-        design.Stats.TryGetValue(St.Boost, out var boost);
-        design.Stats.TryGetValue(St.Block, out var block);
-        design.Stats.TryGetValue(St.Poison, out var poison);
-        design.Stats.TryGetValue(St.HealPlayer, out var healPlayer);
-        design.Stats.TryGetValue(St.StatMultiplier, out var statMultiplier);
-        design.Stats.TryGetValue(St.Gold, out var gold);
-        design.Stats.TryGetValue(St.IntRequirement, out var intRequirement);
+        design.Stats.TryGetValue(StatType.MinRange, out var minRange);
+        design.Stats.TryGetValue(StatType.MaxRange, out var maxRange);
+        design.Stats.TryGetValue(StatType.Damage, out var damage);
+        design.Stats.TryGetValue(StatType.Boost, out var boost);
+        design.Stats.TryGetValue(StatType.Block, out var block);
+        design.Stats.TryGetValue(StatType.Poison, out var poison);
+        design.Stats.TryGetValue(StatType.HealPlayer, out var healPlayer);
+        design.Stats.TryGetValue(StatType.StatMultiplier, out var statMultiplier);
+        design.Stats.TryGetValue(StatType.Gold, out var gold);
+        design.Stats.TryGetValue(StatType.IntRequirement, out var intRequirement);
 
-        switch (design.Category)
+        switch (design.Type)
         {
-            case DesignCategory.Melee: case DesignCategory.LoneWolf: case DesignCategory.Ambush:  
+            case DesignType.Melee: case DesignType.LoneWolf: case DesignType.Ambush:  
                 description = "Attacks enemies landing on this plank for " + damage?.Value + " damage";
-                if (design.Category == DesignCategory.LoneWolf)
+                if (design.Type == DesignType.LoneWolf)
                 {
-                    description += ". " + design.Stats[St.DamageFlatModifier].Value + 
+                    description += ". " + design.Stats[StatType.DamageFlatModifier].Value + 
                                   " damage for each other plank you have";
                 }
 
-                if (design.Category == DesignCategory.Ambush)
+                if (design.Type == DesignType.Ambush)
                 {
-                    description += ". Increase by " + design.GetStat(St.DamageFlatModifier) +
+                    description += ". Increase by " + design.GetStat(StatType.DamageFlatModifier) +
                                    " each turn it doesn't attack";
                 }
 
                 break;
-            case DesignCategory.Ranged: case DesignCategory.AirRaid:
+            case DesignType.Ranged: case DesignType.Raid:
                 var range = "";
                 if (minRange?.Value == maxRange?.Value)
                 {
@@ -149,53 +159,53 @@ public class DesignManager : MonoBehaviour
                 
                 description = "Attacks enemies landing " + range + " away for " + damage?.Value + " damage";
 
-                if (design.Category == DesignCategory.AirRaid)
+                if (design.Type == DesignType.Raid)
                     description += ". Deal " + statMultiplier?.Value + "x damage on non-Attack planks";
                 break;
-            case DesignCategory.Area:
+            case DesignType.Area:
                 var distance = maxRange?.Value + " plank";
                 if (maxRange?.Value != 1) distance += "s";
                 description = "Attacks all enemies up to " + distance +
                               " away for " + damage?.Value + " damage when an enemy lands within that range";
                 break;
-            case DesignCategory.Block: 
+            case DesignType.Block: 
                 description = "Removes " + block?.Value + " movement from enemies leaving this plank";
                 break;
-            case DesignCategory.Boost: 
+            case DesignType.Boost: 
                 description = "Boosts damage of adjacent Attack planks by " + boost?.Value;
                 break;
-            case DesignCategory.Hop:
+            case DesignType.Hop:
                 description = "Enemies leaving this plank skip the next plank";
                 break;
-            case DesignCategory.Reverse:
+            case DesignType.Reverse:
                 description = "Reverses the direction ";
                 if (design.Level == 0) description += "of ";
                 else description += " and adds 1 movement to ";
                 description += " an enemy leaving this plank";
                 break;
-            case DesignCategory.Poison:
+            case DesignType.Poison:
                 description = "Applies " + poison?.Value + " poison to enemies landing on this plank";
                 break;
-            case DesignCategory.StrikeZone:
+            case DesignType.Focus:
                 description = "Enemies on this plank take " + statMultiplier?.Value + " damage";
                 if (design.Level < 2) description += "from Attacks";
                 break;
-            case DesignCategory.Infirmary:
+            case DesignType.Rest:
                 description = "At the end of the battle, recover " + healPlayer?.Value;
                 if (healPlayer?.Value > 1) description += " lives";
                 else description += " life";
                 break;
-            case DesignCategory.GrandFinalist:
+            case DesignType.Finalise:
                 description = "When enemies land on this plank, deal " + damage?.Value +
                               " damage to all enemies on every plank. If any survive, lose a life";
                 break;
-            case DesignCategory.Cauterize:
+            case DesignType.Cauterize:
                 var multiplier = statMultiplier?.Value;
                 var multiText = multiplier > 1 ? multiplier + "x " : "";
                 description = "When enemies land on this plank, lower their maximum health by " + multiText +
                               "their poison amount";
                 break;
-            case DesignCategory.Research:
+            case DesignType.Research:
                 description = "When enemies land on this plank, heal them to full health. Gain " + gold?.Value + 
                     " gold ";
                 if (design.Level == 0)
@@ -212,7 +222,7 @@ public class DesignManager : MonoBehaviour
         description = description.Replace("2x", "double");
         description = description.Replace("3x", "triple");
 
-        if (design.Stats.TryGetValue(St.UsesPerTurn, out var usesPerTurn))
+        if (design.Stats.TryGetValue(StatType.UsesPerTurn, out var usesPerTurn))
         {
             var usesText = usesPerTurn?.Value switch
             {
@@ -221,7 +231,7 @@ public class DesignManager : MonoBehaviour
                 3 => "triple",
                 _ => usesPerTurn?.Value + "x"
             };
-            description += "(" + usesText + " per turn)";
+            description += " (" + usesText + " per turn)";
         }
         
         return description;

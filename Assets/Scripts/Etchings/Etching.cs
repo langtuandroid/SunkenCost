@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections;
 using System.Collections.Generic;
+using Designs;
 using Enemies;
 using TMPro;
 using UnityEngine;
@@ -18,7 +19,7 @@ namespace Etchings
         public Stick Stick { get; protected set; }
         protected int deactivationTurns;
 
-        protected int UsesPerTurn => design.GetStat(St.UsesPerTurn);
+        protected int UsesPerTurn => design.GetStat(StatType.UsesPerTurn);
 
         protected int UsesUsedThisTurn
         {
@@ -38,9 +39,9 @@ namespace Etchings
             BattleEvents.Current.OnBeginPlayerTurn += designDisplay.Refresh;
         }
 
-        protected int GetStatValue(St st)
+        protected int GetStatValue(StatType statType)
         {
-            if (design.Stats.ContainsKey(st)) return design.Stats[st].Value;
+            if (design.Stats.ContainsKey(statType)) return design.Stats[statType].Value;
             return -1;
         }
 

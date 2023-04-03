@@ -3,12 +3,12 @@ using UnityEngine.Serialization;
 
 namespace Items
 {
-    public enum ItemRarity
+    public enum Rarity
     {
-        Common,
-        Uncommon,
-        Rare,
-        ElitePickup
+        Common = 1,
+        Uncommon = 2,
+        Rare = 3,
+        ElitePickup = 4
     }
     
     [CreateAssetMenu(menuName = "Item")]
@@ -18,7 +18,7 @@ namespace Items
         [SerializeField] private string description;
         public Sprite sprite;
         public int modifier;
-        public ItemRarity rarity;
+        public Rarity rarity;
 
         public string GetDescription(int amount)
         {

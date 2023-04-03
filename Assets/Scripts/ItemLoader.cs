@@ -16,10 +16,19 @@ public class ItemLoader : MonoBehaviour
     public static ReadOnlyCollection<ItemAsset> ShopItemAssets;
     public static ReadOnlyCollection<ItemAsset> EliteItemAssets;
 
+    private void Awake()
+    {
+        if (_current)
+        {
+            Destroy(gameObject);
+            return;
+        }
+        
+        _current = this;
+    }
+
     private void Start()
     {
-        _current = this;
-        
         // Add all the Item classes to a dictionary with their class name as the key
         var itemClasses = new Dictionary<string, Type>();
         var itemsEnumerable = Extensions.GetAllChildrenOfClassOrNull<EquippedItem>();
@@ -51,9 +60,9 @@ public class ItemLoader : MonoBehaviour
 
         var allItemAssets = ItemAssetToTypeDict.Select(kvp => kvp.Key).ToArray();
         ShopItemAssets = allItemAssets.GetReadonlyCollection
-            (ia => ia.rarity != ItemRarity.ElitePickup);
+            (ia => ia.rarity != Rarity.ElitePickup);
 
         EliteItemAssets  = allItemAssets.GetReadonlyCollection
-            (ia => ia.rarity == ItemRarity.ElitePickup);
+            (ia => ia.rarity == Rarity.ElitePickup);
     }
 }

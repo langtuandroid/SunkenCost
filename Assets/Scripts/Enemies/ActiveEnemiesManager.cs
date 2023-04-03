@@ -60,10 +60,18 @@ public class ActiveEnemiesManager : MonoBehaviour
         }
     }
 
-    public void AddEnemy(Enemy enemy)
+    public void AddWaitingEnemy(Enemy enemy)
     {
         _waitingEnemies.Add(enemy);
         _allEnemies.Add(enemy);
+        ArrangeEnemiesOnStick(enemy);
+        RefreshEnemyTurnOrder();
+    }
+
+    public void AddActiveEnemy(Enemy enemy)
+    {
+        _allEnemies.Add(enemy);
+        _activeEnemies.Add(enemy);
         ArrangeEnemiesOnStick(enemy);
         RefreshEnemyTurnOrder();
     }

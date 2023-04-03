@@ -621,6 +621,7 @@
         <e p="ScriptableObjects" t="Include">
           <e p="BattleScenarios" t="Include" />
           <e p="ChallengeRewards" t="Include" />
+          <e p="Designs" t="Include" />
           <e p="Disturbances" t="Include" />
           <e p="Items" t="Include" />
         </e>
@@ -660,14 +661,12 @@
           <e p="Debug" t="Include">
             <e p="ScreenToWorldPoint.cs" t="Include" />
           </e>
-          <e p="Deck" t="Include">
+          <e p="Designs" t="Include">
             <e p="Design.cs" t="Include" />
-            <e p="DesignCategory.cs" t="Include" />
+            <e p="DesignAsset.cs" t="Include" />
             <e p="DesignDisplay.cs" t="Include" />
             <e p="DesignManager.cs" t="Include" />
-            <e p="Designs.cs" t="Include" />
             <e p="ListExtensions.cs" t="Include" />
-            <e p="Rarities.cs" t="Include" />
           </e>
           <e p="Disturbances" t="Include">
             <e p="CardDisturbance.cs" t="Include" />
@@ -722,7 +721,6 @@
           <e p="EtchingManager.cs" t="Include" />
           <e p="Etchings" t="Include">
             <e p="ActiveEtching.cs" t="Include" />
-            <e p="AirRaidEtching.cs" t="Include" />
             <e p="AmbushEtching.cs" t="Include" />
             <e p="AreaEtching.cs" t="Include" />
             <e p="BlockEtching.cs" t="Include" />
@@ -733,21 +731,21 @@
             <e p="DamageEtching.cs" t="Include" />
             <e p="DummyEtching.cs" t="Include" />
             <e p="Etching.cs" t="Include" />
-            <e p="GrandFinalistEtching.cs" t="Include" />
+            <e p="FinaliseEtching.cs" t="Include" />
+            <e p="FocusEtching.cs" t="Include" />
             <e p="HopEtching.cs" t="Include" />
-            <e p="ImpedeEtching.cs" t="Include" />
             <e p="Indicator.cs" t="Include" />
             <e p="IndicatorController.cs" t="Include" />
             <e p="IndicatorManager.cs" t="Include" />
-            <e p="InfirmaryEtching.cs" t="Include" />
             <e p="LoneWolfEtching.cs" t="Include" />
             <e p="MeleeEtching.cs" t="Include" />
             <e p="PoisonEtching.cs" t="Include" />
+            <e p="RaidEtching.cs" t="Include" />
             <e p="RangedEtching.cs" t="Include" />
             <e p="ResearchEtching.cs" t="Include" />
+            <e p="RestEtching.cs" t="Include" />
             <e p="ReverseEtching.cs" t="Include" />
             <e p="StickUpdateActivatedEtching.cs" t="Include" />
-            <e p="StrikeZoneEtching.cs" t="Include" />
           </e>
           <e p="EtchingTurnProcess.cs" t="Include" />
           <e p="EventListeners" t="Include">
@@ -827,6 +825,7 @@
             <e p="ReorderableListNoEdges.cs" t="Include" />
           </e>
           <e p="RunProgress.cs" t="Include" />
+          <e p="SerializedDictionary.cs" t="Include" />
           <e p="Stat.cs" t="Include" />
           <e p="StatModifier.cs" t="Include" />
           <e p="Stick.cs" t="Include" />

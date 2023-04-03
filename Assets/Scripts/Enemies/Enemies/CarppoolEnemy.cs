@@ -15,7 +15,7 @@ namespace Enemies.Enemies
         
         public override string GetDescription()
         {
-            return "Spawns two Bull Carp every turn";
+            return "Spawns a Bull Carp every turn";
         }
 
         protected override bool TestForStartOfTurnAbility()
@@ -25,8 +25,7 @@ namespace Enemies.Enemies
 
         protected override void StartOfTurnAbility()
         {
-            EnemySpawner.current.SpawnEnemy("BullCarp", StickNum);
-            EnemySpawner.current.SpawnEnemy("BullCarp", StickNum);
+            EnemySpawner.current.SpawnActiveEnemy("BullCarp", StickNum);
         }
     }
 }

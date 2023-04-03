@@ -1,4 +1,5 @@
-﻿using UnityEngine;
+﻿using Designs;
+using UnityEngine;
 
 namespace Etchings
 {
@@ -14,7 +15,7 @@ namespace Etchings
             if (poison <= 0) return false;
             
             var newStatMod = new StatModifier
-                (-poison * GetStatValue(St.StatMultiplier), StatModType.Flat);
+                (-poison * GetStatValue(StatType.StatMultiplier), StatModType.Flat);
             enemy.AddMaxHealthModifier(newStatMod);
 
             StartCoroutine(ColorForActivate());

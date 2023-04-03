@@ -1,6 +1,7 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using Designs;
 using TMPro;
 using Unity.Mathematics;
 using UnityEngine;
@@ -42,7 +43,7 @@ public class DesignDisplay : MonoBehaviour
     {
         TitleText.text = design.Title;
         Refresh();
-        image.sprite = DesignManager.GetEtchingSprite(design.Category);
+        image.sprite = design.Sprite;
         _canvasGroup.alpha = 1;
     }
 
@@ -66,6 +67,6 @@ public class DesignDisplay : MonoBehaviour
         
         descriptionText.text = descriptionWithColor;
 
-        usesText.text = design.Limitless ? "" : design.Stats[St.UsesPerTurn].Value - design.UsesUsedThisTurn + "/" + design.Stats[St.UsesPerTurn].Value;
+        usesText.text = design.Limitless ? "" : design.Stats[StatType.UsesPerTurn].Value - design.UsesUsedThisTurn + "/" + design.Stats[StatType.UsesPerTurn].Value;
     }
 }
