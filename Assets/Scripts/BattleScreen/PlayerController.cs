@@ -35,10 +35,10 @@ public class PlayerController : MonoBehaviour
 
     private void Start()
     {
-        BattleEvents.Current.OnEndEnemyTurn += OnEndEnemyTurn;
-        BattleEvents.Current.OnPlayerMovedStick += OnPlayerMovedStick;
-        BattleEvents.Current.OnEnemyReachedEnd += OnEnemyReachedEnd;
-        BattleEvents.Current.OnRedraw += OnRedraw;
+        OldBattleEvents.Current.OnEndEnemyTurn += OnEndEnemyTurn;
+        OldBattleEvents.Current.OnPlayerMovedStick += OnPlayerMovedStick;
+        OldBattleEvents.Current.OnEnemyReachedEnd += OnEnemyReachedEnd;
+        OldBattleEvents.Current.OnRedraw += OnRedraw;
 
         BattleHUDManager.current.UpdateMovesText();
     }
@@ -61,7 +61,7 @@ public class PlayerController : MonoBehaviour
     public void TakeLife()
     {
         Lives -= 1;
-        BattleEvents.Current.LostLife();
+        OldBattleEvents.Current.LostLife();
         if (Lives <= 0) BattleManager.Current.OutOfLives();
     }
 

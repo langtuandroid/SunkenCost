@@ -1,27 +1,35 @@
-﻿using Enemies;
+﻿using System.Collections;
+using BattleScreen;
+using Enemies;
 using Etchings;
 using EventListeners;
 using UnityEngine;
 
 namespace Items.Items
 {
-    public class ShortFuseItem : EquippedItem, IPlayerLostLifeListener, IDamageMultiplierModifier
+    public class ShortFuseItem : EquippedItem, IBattleEventResponder, IDamageMultiplierModifier
     {
         private int _turnPlayerLastLostLife = -1;
-        
-        public void PlayerPlayerLostLife()
+
+        public bool GetResponseToBattleEvent(BattleEvent previousBattleEvent)
+        {
+            return previousBattleEvent.battleEventType == BattleEventType.PlayerLostLife;
+        }
+
+        public IEnumerator ExecuteResponseToAction(BattleEvent battleEvent)
         {
             _turnPlayerLastLostLife = BattleManager.Current.Turn;
+            yield break;
         }
-        
-        public int GetDamageModification(int damage, Enemy enemy, DamageSource source, Etching etching = null)
-        {
-            if (BattleManager.Current.Turn == _turnPlayerLastLostLife)
-            {
-                return damage * Amount;
-            }
 
-            return damage;
+        public bool CanModify(DamageBattleEvent damageToModify)
+        {
+            return (BattleManager.Current.Turn == _turnPlayerLastLostLife);
+        }
+
+        public int GetDamageMultiplier(DamageBattleEvent damageToModify)
+        {
+            return Amount;
         }
     }
 }

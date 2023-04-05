@@ -1,8 +1,9 @@
-﻿using UnityEngine;
+﻿using System.Collections;
+using UnityEngine;
 
 namespace Enemies.Enemies
 {
-    public class CarppoolEnemy : Enemy
+    public class CarppoolEnemy : Enemy, IStartOfTurnAbilityHolder
     {
         protected override void Init()
         {
@@ -18,14 +19,10 @@ namespace Enemies.Enemies
             return "Spawns a Bull Carp every turn";
         }
 
-        protected override bool TestForStartOfTurnAbility()
-        {
-            return true;
-        }
-
-        protected override void StartOfTurnAbility()
+        public IEnumerator ExecuteStartOfTurnAbility()
         {
             EnemySpawner.current.SpawnActiveEnemy("BullCarp", StickNum);
+            yield break;
         }
     }
 }

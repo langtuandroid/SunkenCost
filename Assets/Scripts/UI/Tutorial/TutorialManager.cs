@@ -101,11 +101,11 @@ public class TutorialManager : MonoBehaviour
 
     private void Start()
     {
-        BattleEvents.Current.OnOfferDesigns += ExecuteNextTutorialStep;
-        BattleEvents.Current.OnStickAdded += ExecuteNextTutorialStep;
-        BattleEvents.Current.OnBeginEnemyTurn += ExecuteNextTutorialStep;
-        BattleEvents.Current.OnPlayerMovedStick += ExecuteNextTutorialStep;
-        BattleEvents.Current.OnBeginPlayerTurn += ExecuteNextTutorialStep;
+        OldBattleEvents.Current.OnOfferDesigns += ExecuteNextTutorialStep;
+        OldBattleEvents.Current.OnStickAdded += ExecuteNextTutorialStep;
+        OldBattleEvents.Current.OnBeginEnemyTurn += ExecuteNextTutorialStep;
+        OldBattleEvents.Current.OnPlayerMovedStick += ExecuteNextTutorialStep;
+        OldBattleEvents.Current.OnBeginPlayerTurn += ExecuteNextTutorialStep;
         SetVisibility(true);
         
         NextTurnButton.Current.CanClick(false);
@@ -194,11 +194,11 @@ public class TutorialManager : MonoBehaviour
 
     public void SkipTutorial()
     {
-        BattleEvents.Current.OnOfferDesigns -= ExecuteNextTutorialStep;
-        BattleEvents.Current.OnStickAdded -= ExecuteNextTutorialStep;
-        BattleEvents.Current.OnBeginEnemyTurn -= ExecuteNextTutorialStep;
-        BattleEvents.Current.OnPlayerMovedStick -= ExecuteNextTutorialStep;
-        BattleEvents.Current.OnBeginPlayerTurn -= ExecuteNextTutorialStep;
+        OldBattleEvents.Current.OnOfferDesigns -= ExecuteNextTutorialStep;
+        OldBattleEvents.Current.OnStickAdded -= ExecuteNextTutorialStep;
+        OldBattleEvents.Current.OnBeginEnemyTurn -= ExecuteNextTutorialStep;
+        OldBattleEvents.Current.OnPlayerMovedStick -= ExecuteNextTutorialStep;
+        OldBattleEvents.Current.OnBeginPlayerTurn -= ExecuteNextTutorialStep;
         
         NextTurnButton.Current.CanClick(true);
 
@@ -302,7 +302,7 @@ public class TutorialManager : MonoBehaviour
     private void AskToDragAnotherPlankOffer()
     {
         UnHighlight();
-        BattleEvents.Current.OnOfferDesigns -= ExecuteNextTutorialStep;
+        OldBattleEvents.Current.OnOfferDesigns -= ExecuteNextTutorialStep;
         
         _popupWithButton.Move(0, 0);
         _popupWithButtonText.text = "Drag this plank to either side of your first.";
@@ -325,20 +325,20 @@ public class TutorialManager : MonoBehaviour
         
         
         SetVisibility(false);
-        BattleEvents.Current.OnOfferDesigns += HidePopup;
+        OldBattleEvents.Current.OnOfferDesigns += HidePopup;
         NextTurnButton.Current.CanClick(false);
     }
 
     private void HidePopup()
     {
-        BattleEvents.Current.OnOfferDesigns -= HidePopup;
+        OldBattleEvents.Current.OnOfferDesigns -= HidePopup;
     }
 
     private void PlayerMoves()
     {
         SetVisibility(true);
-        BattleEvents.Current.OnPlayerMovedStick -= ExecuteNextTutorialStep;
-        BattleEvents.Current.OnStickAdded -= ExecuteNextTutorialStep;
+        OldBattleEvents.Current.OnPlayerMovedStick -= ExecuteNextTutorialStep;
+        OldBattleEvents.Current.OnStickAdded -= ExecuteNextTutorialStep;
         UnHighlight();
         
         _popupWithButton.Move(0, 0);
@@ -362,13 +362,13 @@ public class TutorialManager : MonoBehaviour
     {
         UnHighlight();
         SetVisibility(false);
-        BattleEvents.Current.OnBeginEnemyTurn -= ExecuteNextTutorialStep;
+        OldBattleEvents.Current.OnBeginEnemyTurn -= ExecuteNextTutorialStep;
     }
 
     private void FinalMessage()
     {
-        BattleEvents.Current.OnBeginPlayerTurn -= ExecuteNextTutorialStep;
-        BattleEvents.Current.OnBeginPlayerTurn += CheckForEnemyOnLastStick;
+        OldBattleEvents.Current.OnBeginPlayerTurn -= ExecuteNextTutorialStep;
+        OldBattleEvents.Current.OnBeginPlayerTurn += CheckForEnemyOnLastStick;
         _subscribedToOnBeingPlayerTurn = true;
         SetVisibility(true);
         
@@ -417,12 +417,12 @@ public class TutorialManager : MonoBehaviour
     private void WaitForBoss()
     {
         SetVisibility(false);
-        BattleEvents.Current.OnBossSpawned += ExecuteNextTutorialStep;
+        OldBattleEvents.Current.OnBossSpawned += ExecuteNextTutorialStep;
     }
 
     private void PointOutBoss()
     {
-        BattleEvents.Current.OnBossSpawned -= ExecuteNextTutorialStep;
+        OldBattleEvents.Current.OnBossSpawned -= ExecuteNextTutorialStep;
         SetVisibility(true);
 
         _popupWithButton.Move(0, 0);
@@ -449,17 +449,17 @@ public class TutorialManager : MonoBehaviour
         
         _firstEnemy = enemiesOnStick[0];
         ExecuteNextTutorialStep();
-        BattleEvents.Current.OnBeginPlayerTurn -= CheckForEnemyOnLastStick;
+        OldBattleEvents.Current.OnBeginPlayerTurn -= CheckForEnemyOnLastStick;
         _subscribedToOnBeingPlayerTurn = false;
         _subscribedToOnSticksUpdated = true;
-        BattleEvents.Current.OnSticksUpdated += CheckForZoomOut;
+        OldBattleEvents.Current.OnSticksUpdated += CheckForZoomOut;
     }
 
     private void CheckForZoomOut()
     {
         if (StickManager.current.stickCount < 5) return;
             
-        BattleEvents.Current.OnSticksUpdated -= CheckForZoomOut;
+        OldBattleEvents.Current.OnSticksUpdated -= CheckForZoomOut;
         _subscribedToOnSticksUpdated = false;
         
         ExecuteNextTutorialStep();
@@ -467,7 +467,7 @@ public class TutorialManager : MonoBehaviour
 
     private void OnDestroy()
     {
-        if (_subscribedToOnBeingPlayerTurn) BattleEvents.Current.OnBeginPlayerTurn -= CheckForEnemyOnLastStick;
-        if (_subscribedToOnSticksUpdated) BattleEvents.Current.OnSticksUpdated -= CheckForZoomOut;
+        if (_subscribedToOnBeingPlayerTurn) OldBattleEvents.Current.OnBeginPlayerTurn -= CheckForEnemyOnLastStick;
+        if (_subscribedToOnSticksUpdated) OldBattleEvents.Current.OnSticksUpdated -= CheckForZoomOut;
     }
 }

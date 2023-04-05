@@ -28,16 +28,16 @@ public class WhoseTurnText : MonoBehaviour
 
     private void Start()
     {
-        BattleEvents.Current.OnBeginPlayerTurn += UpdateText;
-        BattleEvents.Current.OnBeginPlayerTurn += SetToPlayerColor;
-        BattleEvents.Current.OnBeginEnemyTurn += SetToEnemyColor;
+        OldBattleEvents.Current.OnBeginPlayerTurn += UpdateText;
+        OldBattleEvents.Current.OnBeginPlayerTurn += SetToPlayerColor;
+        OldBattleEvents.Current.OnBeginEnemyTurn += SetToEnemyColor;
     }
     
     private void OnDestroy()
     {
-        BattleEvents.Current.OnBeginPlayerTurn -= UpdateText;
-        BattleEvents.Current.OnBeginPlayerTurn -= SetToPlayerColor;
-        BattleEvents.Current.OnBeginEnemyTurn -= SetToEnemyColor;
+        OldBattleEvents.Current.OnBeginPlayerTurn -= UpdateText;
+        OldBattleEvents.Current.OnBeginPlayerTurn -= SetToPlayerColor;
+        OldBattleEvents.Current.OnBeginEnemyTurn -= SetToEnemyColor;
     }
 
     public void SetToPlayerColor()

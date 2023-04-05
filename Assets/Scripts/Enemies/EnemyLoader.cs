@@ -6,9 +6,9 @@ using System.Reflection;
 using Enemies;
 using UnityEngine;
 
-public class EnemyManager : MonoBehaviour
+public class EnemyLoader : MonoBehaviour
 {
-    private static EnemyManager _current;
+    private static EnemyLoader _current;
     
     public static readonly List<string> EnemiesList = new List<string>();
     

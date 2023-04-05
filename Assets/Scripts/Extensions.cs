@@ -28,6 +28,12 @@ public static class Extensions
         filter ??= x => true;
         return originalCollection.Where(filter).ToList().AsReadOnly();
     }
+
+    public static T GetRandom<T>([NotNull] this IEnumerable<T> collectionToCheck)
+    {
+        var toCheck = collectionToCheck as T[] ?? collectionToCheck.ToArray();
+        return toCheck.ElementAt(Random.Range(0, toCheck.Length));
+    }
     
     public static T GetRandomNonDuplicate<T>([NotNull] this IEnumerable<T> collectionToCheck,
         [NotNull] IEnumerable<T> duplicates, Func<T, bool> filter = null)
@@ -38,8 +44,8 @@ public static class Extensions
         filter ??= x => true;
         var nonDuplicates =
             collectionToCheck.Where(t => !duplicates.Contains(t)).Where(filter).ToArray();
-            
-        return nonDuplicates.ElementAt(Random.Range(0, nonDuplicates.Length));
+
+        return nonDuplicates.GetRandom();
     }
     
     public static T[] LoadScriptableObjects<T>() where T : ScriptableObject

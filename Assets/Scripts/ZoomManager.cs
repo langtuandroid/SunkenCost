@@ -44,7 +44,7 @@ public class ZoomManager : MonoBehaviour
         
         SetStickScale();
         
-        BattleEvents.Current.OnStickAdded += SetStickScale;
+        OldBattleEvents.Current.OnStickAdded += SetStickScale;
     }
 
     private void SetStickScale()

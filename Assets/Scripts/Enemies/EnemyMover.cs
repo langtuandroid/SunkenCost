@@ -78,7 +78,7 @@ namespace Enemies
             // Randomise first move
             _moveIndex = Random.Range(0, MoveSet.Count);
             SetNextMoveSequence();
-            BattleEvents.Current.OnEndEnemyTurn += OnEndEnemyTurn;
+            OldBattleEvents.Current.OnEndEnemyTurn += OnEndEnemyTurn;
         }
         
         private void LateUpdate()
@@ -95,9 +95,9 @@ namespace Enemies
 
         private void OnDestroy()
         {
-            BattleEvents.Current.OnEndEnemyTurn -= OnEndEnemyTurn;
+            OldBattleEvents.Current.OnEndEnemyTurn -= OnEndEnemyTurn;
         }
-
+        
         public void Move()
         {
             _lastMove = _amountOfMovesLeftThisTurn;

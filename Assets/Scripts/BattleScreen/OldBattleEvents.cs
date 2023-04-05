@@ -6,9 +6,9 @@ using Etchings;
 using UnityEngine;
 using Action = System.Action;
 
-public class BattleEvents : MonoBehaviour
+public class OldBattleEvents : MonoBehaviour
 {
-    public static BattleEvents Current;
+    public static OldBattleEvents Current;
 
     private void Awake()
     {
@@ -61,6 +61,8 @@ public class BattleEvents : MonoBehaviour
     public static Etching LastEtchingToAttack => Current._lastEtchingToAttack;
     public static Enemy LastEnemyHealed => Current._lastEnemyHealed;
 
+    
+    /*
     public void BeginBattle()
     {
         StartCoroutine(StartBattle());
@@ -208,4 +210,6 @@ public class BattleEvents : MonoBehaviour
         yield return 0;
         OnSticksUpdated?.Invoke();
     }
+    
+    */
 }

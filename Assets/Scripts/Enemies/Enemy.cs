@@ -112,10 +112,6 @@ namespace Enemies
         
             UI.TurnOrderText.MyTurn();
         }
-        
-        public void BeginMyMove()
-        {
-        }
 
         public void EndMyTurn()
         {

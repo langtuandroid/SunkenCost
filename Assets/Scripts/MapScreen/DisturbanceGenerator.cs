@@ -109,12 +109,9 @@ namespace MapScreen
 
         private static ItemDisturbance GenerateNewItemDisturbance(DisturbanceAsset disturbanceAsset)
         {
-            var itemsToExclude = RunProgress.ItemInventory.ItemAssets;
-        
             var randomItemAsset = disturbanceAsset.disturbanceType == DisturbanceType.EliteItem
-                ? ItemLoader.EliteItemAssets.GetRandomNonDuplicate(itemsToExclude)
-                : ItemLoader.ShopItemAssets.GetRandomNonDuplicate
-                    (itemsToExclude, ia => ia.rarity == Rarity.Common);
+                ? ItemLoader.EliteItemAssets.GetRandom()
+                : ItemLoader.ShopItemAssets.GetRandom();
 
             var item = new ItemInstance(randomItemAsset, randomItemAsset.modifier);
                     

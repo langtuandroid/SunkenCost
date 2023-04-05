@@ -36,7 +36,7 @@ namespace Etchings
         protected virtual void Start()
         {
             designDisplay.design = design;
-            BattleEvents.Current.OnBeginPlayerTurn += designDisplay.Refresh;
+            OldBattleEvents.Current.OnBeginPlayerTurn += designDisplay.Refresh;
         }
 
         protected int GetStatValue(StatType statType)
@@ -72,7 +72,7 @@ namespace Etchings
 
         private void OnDestroy()
         {
-            BattleEvents.Current.OnBeginPlayerTurn -= designDisplay.Refresh;
+            OldBattleEvents.Current.OnBeginPlayerTurn -= designDisplay.Refresh;
         }
     }
 }

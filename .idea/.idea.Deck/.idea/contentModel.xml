@@ -632,14 +632,24 @@
             <e p="MusicManager.cs" t="Include" />
           </e>
           <e p="BackgroundColorController.cs" t="Include" />
-          <e p="BattleHUDManager.cs" t="Include" />
           <e p="BattleScreen" t="Include">
+            <e p="ActionsAndResponses" t="Include">
+              <e p="BattleAction.cs" t="Include" />
+              <e p="BattleActionResponderGroup.cs" t="Include" />
+              <e p="BattleActionResponderItem.cs" t="Include" />
+              <e p="BattleActions.cs" t="Include" />
+              <e p="IBattleActionResponder.cs" t="Include" />
+              <e p="IDamageBattleActionResponder.cs" t="Include" />
+              <e p="ItemBattleActionResponderGroup.cs" t="Include" />
+            </e>
             <e p="BattleEvents.cs" t="Include" />
-            <e p="BattleItemManager.cs" t="Include" />
+            <e p="BattleHUDManager.cs" t="Include" />
             <e p="BattleManager.cs" t="Include" />
             <e p="EndOfBattlePopup.cs" t="Include" />
+            <e p="EnemyController.cs" t="Include" />
             <e p="PlayerController.cs" t="Include" />
           </e>
+          <e p="BattleState.cs" t="Include" />
           <e p="ChallengeLoader.cs" t="Include" />
           <e p="Challenges" t="Include">
             <e p="Challenge.cs" t="Include" />
@@ -700,7 +710,7 @@
             </e>
             <e p="Enemy.cs" t="Include" />
             <e p="EnemyAnimationController.cs" t="Include" />
-            <e p="EnemyManager.cs" t="Include" />
+            <e p="EnemyLoader.cs" t="Include" />
             <e p="EnemyMover.cs" t="Include" />
             <e p="EnemyPlaceholder.cs" t="Include" />
             <e p="EnemySpawner.cs" t="Include" />
@@ -762,8 +772,6 @@
           <e p="GlobalEvents.cs" t="Include" />
           <e p="ItemLoader.cs" t="Include" />
           <e p="Items" t="Include">
-            <e p="ExtraTurnItem.cs" t="Include" />
-            <e p="InBattleItem.cs" t="Include" />
             <e p="ItemAsset.cs" t="Include" />
             <e p="ItemInstance.cs" t="Include" />
             <e p="ItemInventory.cs" t="Include" />

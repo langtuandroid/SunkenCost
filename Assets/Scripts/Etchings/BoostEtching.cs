@@ -16,7 +16,7 @@ namespace Etchings
         {
             _boostAmountStat = new Stat(design.GetStat(StatType.Boost));
             colorWhenActivated = false;
-            BattleEvents.Current.OnEndBattle += ClearMods;
+            OldBattleEvents.Current.OnEndBattle += ClearMods;
             base.Start();
         }
 

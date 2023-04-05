@@ -31,8 +31,8 @@ public class EnemySpawner : MonoBehaviour
             enemyDictionary.Add(enemyNames[i], enemyPrefabs[i]);
         }
 
-        BattleEvents.Current.OnBeginPlayerTurn += SpawnNewRound;
-        BattleEvents.Current.OnStartBattle += StartBattle;
+        OldBattleEvents.Current.OnBeginPlayerTurn += SpawnNewRound;
+        OldBattleEvents.Current.OnStartBattle += StartBattle;
         
     }
 

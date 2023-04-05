@@ -4,7 +4,7 @@ using System.Collections.Generic;
 using Enemies;
 using UnityEngine;
 
-public class AxolitlEnemy : Enemy
+public class AxolitlEnemy : Enemy, IStartOfTurnAbilityHolder
 {
     private int _healingAmount = 5;
     
@@ -21,27 +21,19 @@ public class AxolitlEnemy : Enemy
     {
         return "Heals " + _healingAmount + " health each turn";
     }
-
-    protected override void StartOfTurnAbility()
+    
+    public IEnumerator ExecuteStartOfTurnAbility()
     {
-        // Heal up to max heath
-        if (Health < MaxHealth.Value)
-        {
-            if (MaxHealth.Value - _healingAmount > _healingAmount)
-            {
-                Heal(_healingAmount);
-            }
-            else
-            {
-                Heal(MaxHealth.Value - Health);
-            }
-        }
+        // Only heal up to max heath
+        if (Health >= MaxHealth.Value) yield break;
         
-        base.StartOfTurnAbility();
-    }
-
-    protected override bool TestForStartOfTurnAbility()
-    {
-        return true;
+        if (MaxHealth.Value - _healingAmount > _healingAmount)
+        {
+            yield return StartCoroutine(Heal(_healingAmount));
+        }
+        else
+        {
+            yield return StartCoroutine(Heal(MaxHealth.Value - Health));
+        }
     }
 }

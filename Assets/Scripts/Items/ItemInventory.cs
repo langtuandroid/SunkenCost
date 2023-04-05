@@ -1,6 +1,7 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using BattleScreen;
 using EventListeners;
 using Items.Items;
 using UnityEngine;
@@ -11,29 +12,12 @@ namespace Items
     {
         private List<EquippedItem> _items = new List<EquippedItem>();
 
+        public IEnumerable<IBattleEventResponder> AllItemsAsBattleActionResponders =>
+            _items.Select(i => i as IBattleEventResponder);
+
         public IEnumerable<ItemInstance> ItemInstances => _items.Select(i => i.ItemInstance).ToArray();
         public IEnumerable<ItemAsset> ItemAssets => _items.Select(i => i.ItemInstance.itemAsset);
 
-        public IEnumerable<IStartOfBattleListener> StartOfBattleListeners => _items
-            .OfType<IStartOfBattleListener>();
-    
-        public IEnumerable<IEnemyAttackedListener> EnemyAttackedListeners => _items
-            .OfType<IEnemyAttackedListener>();
-    
-        public IEnumerable<IEnemyHealedListener> EnemyHealedListeners => _items
-            .OfType<IEnemyHealedListener>();
-
-        public IEnumerable<IEnemyReachedEndListener> EnemyReachedEndListeners => _items
-            .OfType<IEnemyReachedEndListener>();
-
-        public IEnumerable<IPlayerLostLifeListener> PlayerLostLifeListeners => _items
-            .OfType<IPlayerLostLifeListener>();
-
-        public IEnumerable<IDamageFlatModifier> DamageFlatModifiers => _items.OfType<IDamageFlatModifier>();
-        public IEnumerable<IDamageMultiplierModifier> DamageMultiplierModifiers => _items.OfType<IDamageMultiplierModifier>();
-
-        public IEnumerable<IGainedGoldListener> PlayerGainedGoldListeners => _items.OfType<IGainedGoldListener>();
-        
         public void AddItem(ItemInstance itemInstance)
         {
             var itemType = ItemLoader.ItemAssetToTypeDict[itemInstance.itemAsset];

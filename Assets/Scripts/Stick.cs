@@ -93,7 +93,7 @@ public class Stick : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDragHan
         plankImage.color = oldColor;
     }
 
-    public void SetActive(bool active)
+    public void SetActiveColor(bool active)
     {
         plankImage.color = active ? Color.white : new Color(0.65f, 0.65f, 0.65f);
     }

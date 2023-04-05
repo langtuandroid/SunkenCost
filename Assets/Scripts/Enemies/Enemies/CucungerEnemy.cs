@@ -58,10 +58,10 @@ public class CucungerEnemy : Enemy
             cooldownCounter++;
         }
         
-        base.StartOfTurnAbility();
+        base.ExecuteStartOfTurnAbility();
     }
 
-    protected override bool TestForStartOfTurnAbility()
+    protected override bool HasStartOfTurnAbility()
     {
         return true;
     }

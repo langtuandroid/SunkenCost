@@ -1,13 +1,13 @@
-﻿using UnityEngine;
+﻿using System.Collections;
+using BattleScreen;
+using UnityEngine;
 
 namespace Items.Items
 {
-    public class EquippedItem : MonoBehaviour
+    public abstract class EquippedItem : MonoBehaviour
     {
         public ItemInstance ItemInstance { get; private set; }
-
-        public string Description => ItemInstance.Description;
-        public int Amount => ItemInstance.modifier;
+        protected int Amount => ItemInstance.modifier;
 
         public void SetInstance(ItemInstance itemInstance)
         {

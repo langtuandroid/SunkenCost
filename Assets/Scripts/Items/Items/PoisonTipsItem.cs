@@ -1,13 +1,28 @@
-﻿using EventListeners;
+﻿using System;
+using System.Collections;
+using BattleScreen;
 
 namespace Items.Items
 {
-    public class PoisonTipsItem : EquippedItem, IEnemyAttackedListener
+    public class PoisonTipsItem : BattleEventResponderItem
     {
-        public void EnemyAttacked()
+        public override bool GetResponseToBattleEvent(BattleEvent previousBattleEvent)
         {
-            var enemy = BattleEvents.LastEnemyAttacked;
-            enemy.stats.AddPoison(Amount);
+            return previousBattleEvent is EtchingDamageBattleEvent;
+        }
+
+        protected override IEnumerator Activate(BattleEvent battleEvent)
+        {
+            if (battleEvent is EtchingDamageBattleEvent etchingDamageBattleEvent)
+            {
+                etchingDamageBattleEvent.enemy.stats.AddPoison(Amount);
+            }
+            else
+            {
+                throw new Exception("Poison Tips shouldn't be responding!");
+            }
+            
+            yield break;
         }
     }
 }

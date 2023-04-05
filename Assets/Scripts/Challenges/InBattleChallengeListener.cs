@@ -15,22 +15,22 @@ namespace Challenges
             
             foreach (var listener in activeChallenges.OfType<IStartOfBattleListener>())
             {
-                BattleEvents.Current.OnStartBattle += listener.StartOfBattle;
+                OldBattleEvents.Current.OnStartBattle += listener.StartOfBattle;
             }
 
             foreach (var listener in activeChallenges.OfType<IEndOfBattleListener>())
             {
-                BattleEvents.Current.OnEndBattle += listener.EndOfBattle;
+                OldBattleEvents.Current.OnEndBattle += listener.EndOfBattle;
             }
             
             foreach (var listener in activeChallenges.OfType<IKillListener>())
             {
-                BattleEvents.Current.OnEnemyKilled += listener.EnemyKilled;
+                OldBattleEvents.Current.OnEnemyKilled += listener.EnemyKilled;
             }
             
             foreach (var listener in activeChallenges.OfType<IPlayerLostLifeListener>())
             {
-                BattleEvents.Current.OnPlayerLostLife += listener.PlayerPlayerLostLife;
+                OldBattleEvents.Current.OnPlayerLostLife += listener.PlayerPlayerLostLife;
             }
         }
     }

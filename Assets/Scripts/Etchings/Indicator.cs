@@ -21,7 +21,7 @@ namespace Etchings
 
         private void Start()
         {
-            BattleEvents.Current.OnSticksUpdated += SticksUpdated;
+            OldBattleEvents.Current.OnSticksUpdated += SticksUpdated;
         }
 
         public void SetColor(Color color)
@@ -86,7 +86,7 @@ namespace Etchings
     
         private void OnDestroy()
         {
-            BattleEvents.Current.OnSticksUpdated -= SticksUpdated;
+            OldBattleEvents.Current.OnSticksUpdated -= SticksUpdated;
         }
     }
 }

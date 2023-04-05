@@ -11,7 +11,7 @@ namespace Etchings
 
         protected virtual void DamageEnemy(Enemy enemy)
         {
-            DamageHandler.DamageEnemy(Damage, enemy, DamageSource.Plank);
+            DamageHandler.DamageEnemy(Damage, enemy, DamageSource.Etching);
         }
 
         public void ModifyStat(StatType stat, int amount)

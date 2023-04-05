@@ -10,7 +10,7 @@ namespace Etchings
         protected override void Start()
         {
             UpdateDamage();
-            BattleEvents.Current.OnSticksUpdated += UpdateDamage;
+            OldBattleEvents.Current.OnSticksUpdated += UpdateDamage;
             base.Start();
         }
 
@@ -27,7 +27,7 @@ namespace Etchings
 
         private void OnDestroy()
         {
-            BattleEvents.Current.OnSticksUpdated -= UpdateDamage;
+            OldBattleEvents.Current.OnSticksUpdated -= UpdateDamage;
             design.Stats[StatType.Damage].RemoveModifier(_damageModifer);
         }
     }

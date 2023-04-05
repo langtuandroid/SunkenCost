@@ -32,9 +32,9 @@ public class BattleHUDManager : MonoBehaviour
 
     private void Start()
     {
-        BattleEvents.Current.OnBeginPlayerTurn += UpdateMovesText;
-        BattleEvents.Current.OnPlayerLostLife += UpdateLives;
-        BattleEvents.Current.OnPlayerGainedGold += UpdateGoldText;
+        OldBattleEvents.Current.OnBeginPlayerTurn += UpdateMovesText;
+        OldBattleEvents.Current.OnPlayerLostLife += UpdateLives;
+        OldBattleEvents.Current.OnPlayerGainedGold += UpdateGoldText;
 
         UpdateLives();
         UpdateMovesText();

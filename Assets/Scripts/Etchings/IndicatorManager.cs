@@ -6,7 +6,7 @@ namespace Etchings
     {
         private void Start()
         {
-            BattleEvents.Current.OnSticksUpdated += SticksUpdated;
+            OldBattleEvents.Current.OnSticksUpdated += SticksUpdated;
         }
 
         private void SticksUpdated()

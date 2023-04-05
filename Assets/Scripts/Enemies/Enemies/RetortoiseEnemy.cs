@@ -18,7 +18,7 @@
 
         public override void TakeDamage(int damage, DamageSource damageSource)
         {
-            if (damageSource != DamageSource.Plank) return;
+            if (damageSource != DamageSource.Etching) return;
             
             Mover.AddMovementModifier(1);
 

@@ -10,8 +10,8 @@ public class EnemyTurnFrame : MonoBehaviour
     
     private void Start()
     {
-        BattleEvents.Current.OnEndPlayerTurn += OnEndPlayerTurn;
-        BattleEvents.Current.OnEndEnemyTurn += OnEndEnemyTurn;
+        OldBattleEvents.Current.OnEndPlayerTurn += OnEndPlayerTurn;
+        OldBattleEvents.Current.OnEndEnemyTurn += OnEndEnemyTurn;
         _image = GetComponent<Image>();
         _material = _image.material;
         _material.SetFloat("_FadeAmount", 1f);

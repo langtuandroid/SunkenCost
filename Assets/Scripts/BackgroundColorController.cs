@@ -16,8 +16,8 @@ public class BackgroundColorController : MonoBehaviour
         _image = GetComponent<Image>();
         _normalColour = _image.color;
 
-        BattleEvents.Current.OnBossSpawned += OnBossSpawned;
-        BattleEvents.Current.OnBossKilled += OnBossKilled;
+        OldBattleEvents.Current.OnBossSpawned += OnBossSpawned;
+        OldBattleEvents.Current.OnBossKilled += OnBossKilled;
     }
 
     private void OnBossSpawned()

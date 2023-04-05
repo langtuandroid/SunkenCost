@@ -50,9 +50,9 @@ public class BattleManager : MonoBehaviour
     {
         GlobalEvents.current.LoadedLevel();
 
-        BattleEvents.Current.OnDesignOfferAccepted += DesignOfferAccepted;
-        BattleEvents.Current.OnOfferDesigns += OfferingDesigns;
-        BattleEvents.Current.OnBossKilled += BossKilled;
+        OldBattleEvents.Current.OnDesignOfferAccepted += DesignOfferAccepted;
+        OldBattleEvents.Current.OnOfferDesigns += OfferingDesigns;
+        OldBattleEvents.Current.OnBossKilled += BossKilled;
 
         foreach (var design in RunProgress.PlayerStats.Deck)
         {
@@ -61,7 +61,7 @@ public class BattleManager : MonoBehaviour
                 design);
         }
         
-        BattleEvents.Current.BeginBattle();
+        OldBattleEvents.Current.BeginBattle();
     }
 
     // Update is called once per frame
@@ -91,7 +91,7 @@ public class BattleManager : MonoBehaviour
         if (gameState == GameState.EnemyTurn && EtchingManager.Current.finishedProcessingEnemyMove &&
             ActiveEnemiesManager.Current.finishedProcessingEnemyTurn)
         {
-            BattleEvents.Current.EndEnemyTurn();
+            OldBattleEvents.Current.EndEnemyTurn();
             
             if (Turn >= RunProgress.PlayerStats.NumberOfTurns)
             {
@@ -117,7 +117,7 @@ public class BattleManager : MonoBehaviour
         // LATER - chane to just NoTurn
         if (gameState == GameState.PlayerTurn)
         {
-            BattleEvents.Current.EndPlayerTurn();
+            OldBattleEvents.Current.EndPlayerTurn();
             NextTurnButton.Current.CanClick(false);
             InGameSfxManager.current.NextTurn();
             
@@ -133,7 +133,7 @@ public class BattleManager : MonoBehaviour
     public void AlterGold(int amount)
     {
         RunProgress.PlayerStats.AlterGold(amount);
-        BattleEvents.Current.PlayerGainedGold();
+        OldBattleEvents.Current.PlayerGainedGold();
     }
 
     private void BeginPlayerTurn()
@@ -142,7 +142,7 @@ public class BattleManager : MonoBehaviour
         InGameSfxManager.current.BeginTurn();
 
         Turn++;
-        BattleEvents.Current.BeginPlayerTurn();
+        OldBattleEvents.Current.BeginPlayerTurn();
 
         NextTurnButton.Current.CanClick(true);
     }
@@ -180,7 +180,7 @@ public class BattleManager : MonoBehaviour
 
     private void SwapToChallengeRewardsOrEndBattle()
     {
-        BattleEvents.Current.EndBattle();
+        OldBattleEvents.Current.EndBattle();
         
         _completedChallenges = RunProgress.ExtractCompletedChallenges();
 
@@ -218,6 +218,6 @@ public class BattleManager : MonoBehaviour
     {
         yield return new WaitForSeconds(0.3f);
         gameState = GameState.EnemyTurn;
-        BattleEvents.Current.BeginEnemyTurn();
+        OldBattleEvents.Current.BeginEnemyTurn();
     }
 }

@@ -14,7 +14,7 @@ namespace Etchings
             _healAmountStat = new Stat(design.GetStat(StatType.HealPlayer));
             colorWhenActivated = true;
 
-            BattleEvents.Current.OnEndBattle += HealPlayer;
+            OldBattleEvents.Current.OnEndBattle += HealPlayer;
             base.Start();
         }
 

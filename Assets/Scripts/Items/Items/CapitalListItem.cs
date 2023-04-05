@@ -1,14 +1,21 @@
-﻿using EventListeners;
+﻿using System;
+using System.Collections;
+using BattleScreen;
 
 namespace Items.Items
 {
-    public class CapitalListItem : EquippedItem, IGainedGoldListener
+    public class CapitalListItem : BattleEventResponderItem
     {
-        public void GainedGold()
+        public override bool GetResponseToBattleEvent(BattleEvent previousBattleEvent)
         {
-            var randomEnemy = ActiveEnemiesManager.GetRandomActiveEnemy();
-            if (!randomEnemy) return;
-            DamageHandler.DamageEnemy(Amount, randomEnemy, DamageSource.Item);
+            return previousBattleEvent.battleEventType == BattleEventType.GainGold && BattleState.current.EnemyController.NumberOfEnemies > 0;
+        }
+
+        protected override IEnumerator Activate(BattleEvent battleEvent)
+        {
+            var randomEnemy = BattleState.current.EnemyController.GetRandomEnemy();
+            if (!randomEnemy) throw new Exception("Somehow there is no active enemy?");
+            yield return StartCoroutine(BattleState.current.DamageHandler.DamageEnemy(Amount, randomEnemy, DamageSource.Item, item: this));
         }
     }
 }

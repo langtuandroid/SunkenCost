@@ -18,7 +18,7 @@ namespace Etchings
         
         public int GetDamageModification(int damage, Enemy enemy, DamageSource source, Etching etching = null)
         {
-            if ((source != DamageSource.Plank && design.Level < 1) || deactivationTurns > 0) return damage;
+            if ((source != DamageSource.Etching && design.Level < 1) || deactivationTurns > 0) return damage;
             
             if (enemy.Stick == Stick)
             {

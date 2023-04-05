@@ -37,9 +37,9 @@ public class ActiveEnemiesManager : MonoBehaviour
     private void Start()
     {
         _stickManager = StickManager.current;
-        BattleEvents.Current.OnBeginEnemyTurn += BeginEnemyTurn;
-        BattleEvents.Current.OnEndEnemyTurn += EndEnemyTurn;
-        BattleEvents.Current.OnEndPlayerTurn += EndPlayerTurn;
+        OldBattleEvents.Current.OnBeginEnemyTurn += BeginEnemyTurn;
+        OldBattleEvents.Current.OnEndEnemyTurn += EndEnemyTurn;
+        OldBattleEvents.Current.OnEndPlayerTurn += EndPlayerTurn;
     }
 
     private void Update()
@@ -146,7 +146,7 @@ public class ActiveEnemiesManager : MonoBehaviour
         {
             while (!enemy.FinishedMoving && !enemy.IsDestroyed)
             {
-                BattleEvents.Current.BegunEnemyMovement();
+                OldBattleEvents.Current.BegunEnemyMovement();
                 
                 // Wait for any planks to execute
                 while (!EtchingManager.Current.finishedProcessingEnemyMove)
@@ -154,28 +154,16 @@ public class ActiveEnemiesManager : MonoBehaviour
                 
                 // If the planks have stopped it moving break
                 if (enemy.FinishedMoving) break;
-
-                enemy.BeginMyMove();
                 
                 StartCoroutine(enemy.ExecuteMoveStep());
 
                 // Wait for the enemy to finish moving
                 while (enemy.Moving)
                     yield return 0;
-                
-                /* Is it on the last stick?
-                if (enemy.StickNum == StickManager.Current.stickCount)
-                {
-                    GameEvents.current.EnemyReachedEnd();
-                    break;
-                }
-                */
-                
-                // Tell everyone about the move
+
                 if (enemy.StickNum == StickManager.current.stickCount) continue;
-                
-                
-                BattleEvents.Current.CharacterMoved();
+
+                OldBattleEvents.Current.CharacterMoved();
                     
                 // Wait for any planks to execute
                 while (!EtchingManager.Current.finishedProcessingEnemyMove)

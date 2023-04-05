@@ -25,7 +25,7 @@ public class GrouldEnemy : Enemy
         InGameSfxManager.current.Slimed();
     }
 
-    protected override bool TestForStartOfTurnAbility()
+    protected override bool HasStartOfTurnAbility()
     {
         return (StickNum != 0);
     }

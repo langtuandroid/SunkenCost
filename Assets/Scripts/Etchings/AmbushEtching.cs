@@ -11,7 +11,7 @@ namespace Etchings
         
         protected override void Start()
         {
-            BattleEvents.Current.OnBeginPlayerTurn += UpdateDamage;
+            OldBattleEvents.Current.OnBeginPlayerTurn += UpdateDamage;
             base.Start();
         }
 

@@ -12,21 +12,23 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 942f8b137e054c4f96a7f159489a25ee, type: 3}
   m_Name: Raid
   m_EditorClassIdentifier: 
-  _designType: 14
-  _title: Raid
-  _sprite: {fileID: 21300000, guid: 0eed845f96fbe9c46934d461da72048f, type: 3}
+  designType: 14
+  title: Raid
+  sprite: {fileID: 21300000, guid: 0eed845f96fbe9c46934d461da72048f, type: 3}
   _color: {r: 1, g: 0, b: 0, a: 1}
-  _rarity: 2
-  _initialStats:
+  rarity: 2
+  initialStats:
   - _statType: 2
     _magnitude: 2
   - _statType: 3
     _magnitude: 1
   - _statType: 4
     _magnitude: 2
-  _firstLevelUpStatMods:
+  - _statType: 9
+    _magnitude: 2
+  firstLevelUpStatMods:
   - _statType: 2
     _magnitude: 3
-  _secondLevelUpStatMods:
-  - _statType: 4
+  secondLevelUpStatMods:
+  - _statType: 9
     _magnitude: 1

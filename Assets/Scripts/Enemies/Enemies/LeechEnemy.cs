@@ -21,7 +21,7 @@ namespace Enemies.Enemies
             }
         }
 
-        protected override bool TestForStartOfTurnAbility()
+        protected override bool HasStartOfTurnAbility()
         {
             return (_steelo && !_steelo.IsDestroyed);
         }

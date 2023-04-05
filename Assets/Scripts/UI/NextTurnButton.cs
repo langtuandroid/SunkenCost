@@ -24,7 +24,7 @@ public class NextTurnButton : InGameButton
 
     private void Start()
     {
-        BattleEvents.Current.OnBeginPlayerTurn += UpdateText;
+        OldBattleEvents.Current.OnBeginPlayerTurn += UpdateText;
     }
 
     protected override bool TestForSuccess()
@@ -42,6 +42,6 @@ public class NextTurnButton : InGameButton
 
     private void OnDestroy()
     {
-        BattleEvents.Current.OnBeginPlayerTurn -= UpdateText;
+        OldBattleEvents.Current.OnBeginPlayerTurn -= UpdateText;
     }
 }
