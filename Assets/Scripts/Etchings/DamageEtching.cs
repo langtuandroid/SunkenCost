@@ -19,7 +19,7 @@ namespace Etchings
             if (!design.Stats.ContainsKey(stat)) return;
         
             design.Stats[stat].AddModifier(new StatModifier(amount, StatModType.Flat));
-            designDisplay.Refresh();
+            etchingDisplay.UpdateDisplay();
         }
     }
 }

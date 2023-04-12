@@ -4,6 +4,7 @@
 
 using System;
 using System.Collections.Generic;
+using BattleScreen;
 using UnityEngine.EventSystems;
 
 namespace UnityEngine.UI.Extensions
@@ -73,7 +74,7 @@ namespace UnityEngine.UI.Extensions
                 return;
 
             //Can't drag, return...
-            if (!_reorderableList.IsDraggable || !this.IsGrabbable || PlayerController.current.IsOutOfMoves)
+            if (!_reorderableList.IsDraggable || !this.IsGrabbable || Player.Current.IsOutOfMoves)
             {
                 _draggingObject = null;
                 return;
@@ -417,7 +418,7 @@ namespace UnityEngine.UI.Extensions
                     // I DID THIS - Tell Event that we've moved something
                     if (_fromIndex != _fakeElement.GetSiblingIndex() - 1)
                     {
-                        OldBattleEvents.Current.PlayerMovedStick();
+                        PlayerTurnEvents.Current.InvokeEvent(new BattleEvent(BattleEventType.PlayerMovedPlank));
                     }
 
                     //If the item is transferable, it can be dragged out again

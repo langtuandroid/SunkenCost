@@ -1,12 +1,7 @@
-using System;
-using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
-using Challenges;
 using Designs;
-using JetBrains.Annotations;
 using OfferScreen;
-using UnityEngine;
 
 public class PlayerStats
 {
@@ -32,7 +27,7 @@ public class PlayerStats
     public int MovesBought { get; private set; } = 0;
     public int Lives { get; set; }
     public int MaxLives { get; private set; }
-    public int Gold { get; private set; }
+    public int Gold { get; set; }
     public int MovesPerTurn { get; set; }
     public int NumberOfTurns { get; private set; }
     public int NumberOfCardsToOffer { get; private set; }
@@ -80,11 +75,6 @@ public class PlayerStats
         if (Deck.Count >= RunProgress.PlayerStats.MaxPlanks) 
             Deck = Deck.GetRange(0, RunProgress.PlayerStats.MaxPlanks);
     }
-    
-    public void AlterGold(int amount)
-    {
-        Gold += amount;
-    }
 
     public void BuyPlank()
     {
@@ -96,30 +86,5 @@ public class PlayerStats
     {
         MovesBought++;
         MovesPerTurn++;
-    }
-
-    public void AcceptChallengeReward(ChallengeRewardType challengeRewardType)
-    {
-        /*
-        switch (challengeRewardType)
-        {
-            case ChallengeRewardType.Plank:
-                break;
-            case ChallengeRewardType.Move:
-                MovesPerTurn++;
-                break;
-            case ChallengeRewardType.DesignOffer:
-                NumberOfCardsToOffer++;
-                break;
-            case ChallengeRewardType.ItemOffer:
-                NumberOfItemsToOffer++;
-                break;
-            case ChallengeRewardType.ChallengeOffer:
-                NumberOfChallengesToOffer++;
-                break;
-            default:
-                throw new ArgumentOutOfRangeException();
-        }
-        */
     }
 }

@@ -2,7 +2,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using BattleScreen;
-using EventListeners;
+using BattleScreen.BattleEvents;
 using Items.Items;
 using UnityEngine;
 
@@ -12,8 +12,8 @@ namespace Items
     {
         private List<EquippedItem> _items = new List<EquippedItem>();
 
-        public IEnumerable<IBattleEventResponder> AllItemsAsBattleActionResponders =>
-            _items.Select(i => i as IBattleEventResponder);
+        public IEnumerable<BattleEventResponder> AllItemsAsBattleEventResponders =>
+            _items.Select(i => i as BattleEventResponder);
 
         public IEnumerable<ItemInstance> ItemInstances => _items.Select(i => i.ItemInstance).ToArray();
         public IEnumerable<ItemAsset> ItemAssets => _items.Select(i => i.ItemInstance.itemAsset);

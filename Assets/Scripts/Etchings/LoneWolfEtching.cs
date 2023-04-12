@@ -19,7 +19,7 @@ namespace Etchings
             if (_damageModifer is not null)
                 design.Stats[StatType.Damage].RemoveModifier(_damageModifer);
 
-            var penalty = design.GetStat(StatType.DamageFlatModifier) * (StickManager.current.stickCount - 2);
+            var penalty = design.GetStat(StatType.DamageFlatModifier) * (PlankMap.current.stickCount - 2);
 
             _damageModifer = new StatModifier(penalty, StatModType.Flat);
             design.Stats[StatType.Damage].AddModifier(_damageModifer);

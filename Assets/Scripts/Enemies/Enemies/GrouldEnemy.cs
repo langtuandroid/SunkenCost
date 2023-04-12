@@ -21,7 +21,7 @@ public class GrouldEnemy : Enemy
 
     protected override void StartOfTurnAbility()
     {
-        Stick.etching?.Deactivate(1);
+        yield return StartCoroutine(Plank.Etching?.Deactivate(1));
         InGameSfxManager.current.Slimed();
     }
 

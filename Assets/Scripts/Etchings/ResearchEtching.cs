@@ -7,7 +7,7 @@ namespace Etchings
     {
         protected override bool CheckInfluence(int stickNum)
         {
-            return stickNum == Stick.GetStickNumber();
+            return stickNum == Plank.GetPlankNum();
         }
 
         protected override bool TestCharMovementActivatedEffect()
@@ -15,7 +15,7 @@ namespace Etchings
             var enemy = ActiveEnemiesManager.CurrentEnemy;
             if (!CheckInfluence(enemy.StickNum)) return false;
             StartCoroutine(ColorForActivate());
-            Stick.SetTempColour(design.Color);
+            Plank.SetTempColour(design.Color);
 
             var amountToHeal = enemy.MaxHealth.Value - enemy.Health;
                 

@@ -1,6 +1,10 @@
 ﻿using System;
 using System.Collections;
 using System.Collections.Generic;
+using BattleScreen;
+using BattleScreen.BattleEvents;
+using BattleScreen.BattleEvents.EventTypes;
+using BattleScreen.Events;
 using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
@@ -8,15 +12,12 @@ using Random = UnityEngine.Random;
 
 namespace Enemies
 {
-    public abstract class Enemy : MonoBehaviour
+    public abstract class Enemy : BattleEventResponder
     {
         public EnemyStats stats;
-        
-        public List<System.Action> PreMovingEffects = new List<System.Action>();
-        
-        private EnemyAnimationController _animationController;
 
-        private int _turnOrder;
+        private EnemyAnimationController _animationController;
+        
         
         public string Name { get; protected set; }
         
@@ -32,12 +33,10 @@ namespace Enemies
         public EnemyMover Mover { get; private set; }
         public EnemyUI.EnemyUI UI { get; private set; }
 
-        public Stick Stick => StickManager.current.GetStick(Mover.StickNum);
+        public Plank Plank => PlankMap.Current.GetPlank(Mover.StickNum);
         public int StickNum => Mover.StickNum;
 
         public bool FinishedMoving => Mover.FinishedMoving;
-
-        public int NextDirection => Mover.NextDirection;
 
         protected virtual void Awake()
         {
@@ -63,80 +62,96 @@ namespace Enemies
             // TODO: APPLY MODIFIERS
             MaxHealth = new Stat(health);
         }
-
-        public IEnumerator ExecuteMoveStep()
-        {
-            Moving = true;
-
-            if (Mover.FinishedMoving || !IsDestroyed)
-            {
-
-                // Change my stick
-                Mover.Move();
-
-                ActiveEnemiesManager.Current.EnemyMoved();
-
-                yield return new WaitForSeconds(BattleManager.AttackTime / 16);
-
-                // TEMPORARY Destroy if at end
-                if (StickNum >= StickManager.current.stickCount)
-                {
-                    BattleEvents.Current.EnemyReachedEnd();
-                    DestroySelf(true);
-                    yield return 0;
-                    yield break;
-                }
-
-                if (IsDestroyed) yield break;
-            }
-
-            Mover.UpdateMovementText();
-            
-            Moving = false;
-        }
-
-        public void BeginMyTurn()
-        {
-            _animationController.WiggleBeforeMoving();
         
+        public List<BattleEvent> StartTurn()
+        {
+            var startTurnEvents = new List<BattleEvent>();
+            
+            var startTurnEvent = new EnemyBattleEvent(BattleEventType.StartedIndividualEnemyTurn, this);
+            startTurnEvents.AddRange(
+                BattleEventsManager.Current.GetEventAndResponsesList(startTurnEvent));
+            
             // Apply poison
             if (stats.Poison > 0)
             {
-                PreMovingEffects.Add(Poison);
+                startTurnEvents.AddRange(DealPoison());
             }
 
-            if (TestForStartOfTurnAbility())
+            if (this is IStartOfTurnAbilityHolder startOfTurnAbilityHolder)
             {
-                PreMovingEffects.Add(StartOfTurnAbility);
+                startTurnEvents.AddRange(startOfTurnAbilityHolder.GetStartOfTurnAbility());
             }
-        
+
+            return startTurnEvents;
+        }
+
+        public List<BattleEvent> MoveStep()
+        {
+            // Change my stick
+            Mover.Move();
+
+            // TEMPORARY Destroy if at end
+            if (StickNum >= PlankMap.Current.PlankCount)
+            {
+                DestroySelf(DamageSource.Boat);
+                
+                var enemyReachedBoatEvent = new EnemyBattleEvent(BattleEventType.EnemyReachedBoat, this);
+                return (BattleEventsManager.Current.GetEventAndResponsesList(enemyReachedBoatEvent));
+            }
+            
+            var enemyMovedStepTurnAction = new EnemyBattleEvent(BattleEventType.EnemyMove, this);
+            
+            return
+                BattleEventsManager.Current.GetEventAndResponsesList(enemyMovedStepTurnAction);
+        }
+
+        public List<BattleEvent> EndTurn()
+        {
+            var endTurnEvent = new EnemyBattleEvent(BattleEventType.EnemyEndTurn, this);
+            return BattleEventsManager.Current.GetEventAndResponsesList(endTurnEvent);
+        }
+
+        public IEnumerator MoveAnimation()
+        {
+            Mover.UpdateMovementText();
+            
+            yield break;
+        }
+
+        public IEnumerator BeginMyTurnAnimation()
+        {
+            _animationController.WiggleBeforeMoving();
             UI.TurnOrderText.MyTurn();
+            
+            yield break;
         }
 
-        public void EndMyTurn()
+        public IEnumerator HealAnimation()
         {
-            PreMovingEffects.Clear();
+            InGameSfxManager.current.Healed();
+            UI.HealthText.AlterHealth(Health, MaxHealth.Value);
+            _animationController.Heal();
+            
+            yield break;
+        }
+
+        public IEnumerator DamageAnimation()
+        {
+            _animationController.Damage();
+            yield break;
+        }
+
+        public IEnumerator EndMyTurnAnimation()
+        {
             UI.TurnOrderText.EndMyTurn();
+            yield break;
         }
 
-        private void Poison()
+        private List<BattleEvent> DealPoison()
         {
-            DamageHandler.DamageEnemy(stats.Poison, this, DamageSource.Poison);
-            InGameSfxManager.current.Poisoned();
-        }
-
-        protected virtual void StartOfTurnAbility()
-        {
-        }
-
-        protected virtual bool TestForStartOfTurnAbility()
-        {
-            return false;
-        }
-
-        protected virtual bool TestForPostMovingAbility()
-        {
-            return false;
+            return BattleEventsManager.Current.GetEventAndResponsesList(DamageHandler.DamageEnemy
+                (stats.Poison, this, DamageSource.Poison));
+            
         }
 
         public void Block(int blockAmount)
@@ -152,19 +167,23 @@ namespace Enemies
         public virtual void TakeDamage(int damage, DamageSource damageSource)
         {
             ChangeHealth(-damage);
-            _animationController.Damage();
+            
+            if (Health <= 0)
+            {
+                DestroySelf(damageSource);
+            }
         }
     
-        public void Heal(int amount)
+        public List<BattleEvent> Heal(int amount)
         {
             var healAmount = amount;
             var healthDifference = (MaxHealth.Value - Health);
             if (healthDifference < healAmount) healAmount = healthDifference;
             
             ChangeHealth(healAmount);
-            InGameSfxManager.current.Healed();
-            _animationController.Heal();
-            BattleEvents.Current.EnemyHealed(this);
+
+            var healingEvent = new EnemyHealBattleEvent(this, healAmount);
+            return BattleEventsManager.Current.GetEventAndResponsesList(healingEvent);
         }
 
         public void AddMaxHealthModifier(StatModifier statModifier)
@@ -184,17 +203,10 @@ namespace Enemies
         private void ChangeHealth(int amount)
         {
             Health += amount;
-            UI.HealthText.AlterHealth(Health, MaxHealth.Value);
-
-            if (Health <= 0)
-            {
-                DestroySelf(true);
-            }
         }
 
         public void SetTurnOrder(int turnOrder)
         {
-            _turnOrder = turnOrder;
             UI.TurnOrderText.SetTurnOrder(turnOrder);
         }
 
@@ -205,15 +217,13 @@ namespace Enemies
 
         public abstract string GetDescription();
 
-        public virtual void DestroySelf(bool killedByPlayer)
+        public virtual List<BattleEvent> DestroySelf(DamageSource damageSource)
         {
-            InGameSfxManager.current.Death();
-            // TODO: CHANGE 
             IsDestroyed = true;
             Moving = false;
             
-            if (killedByPlayer) ActiveEnemiesManager.Current.PlayerKilledEnemy(this);
-            else ActiveEnemiesManager.Current.DestroyEnemy(this);
+            var enemyKilledEvent = new EnemyKillBattleEvent(this, damageSource);
+            return BattleEventsManager.Current.GetEventAndResponsesList(enemyKilledEvent);
         }
     }
 }

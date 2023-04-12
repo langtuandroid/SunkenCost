@@ -43,13 +43,13 @@ public class BattleHUDManager : MonoBehaviour
 
     public void UpdateMovesText()
     {
-        var movesLeft = (PlayerController.current.MovesPerTurn - PlayerController.current.MovesUsedThisTurn).ToString();
-        _movesText.text = movesLeft + "/" + PlayerController.current.MovesPerTurn;
+        var movesLeft = (Player.Current.MovesPerTurn - Player.Current.MovesUsedThisTurn).ToString();
+        _movesText.text = movesLeft + "/" + Player.Current.MovesPerTurn;
     }
 
     private void UpdateLives()
     {
-        hearts.UpdateLives(PlayerController.current.Lives);
+        hearts.UpdateLives(Player.Current.Lives);
     }
 
     private void UpdateGoldText()

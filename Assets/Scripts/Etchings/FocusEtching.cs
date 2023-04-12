@@ -20,7 +20,7 @@ namespace Etchings
         {
             if ((source != DamageSource.Etching && design.Level < 1) || deactivationTurns > 0) return damage;
             
-            if (enemy.Stick == Stick)
+            if (enemy.Plank == Plank)
             {
                 return damage *= _boostAmountStat.Value;
             }
@@ -30,7 +30,7 @@ namespace Etchings
 
         protected override bool CheckInfluence(int stickNum)
         {
-            return stickNum == Stick.GetStickNumber();
+            return stickNum == Plank.GetPlankNum();
         }
     }
 }

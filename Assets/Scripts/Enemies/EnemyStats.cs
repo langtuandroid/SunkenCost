@@ -1,5 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
+using BattleScreen;
+using BattleScreen.BattleEvents.EventTypes;
 using Enemies;
 using UnityEngine;
 
@@ -14,13 +16,13 @@ public class EnemyStats
         _enemy = enemy;
     }
 
-    public void AddPoison(int amount)
+    public BattleEvent AddPoison(int amount)
     {
         _poisonStat.AddModifier(new StatModifier(amount, StatModType.Flat));
         _enemy.UI.PoisonImage.enabled = true;
         _enemy.UI.PoisonText.enabled = true;
         _enemy.UI.PoisonText.text = Poison.ToString();
-
+        return new EnemyPoisonBattleEvent(_enemy, amount);
     }
 
     public void RemovePoison(int amount)
@@ -34,10 +36,5 @@ public class EnemyStats
             _enemy.UI.PoisonText.enabled = false;
             _poisonStat = new Stat();
         }
-    }
-
-    public void AddVulnerable(int damageMultiplyer)
-    {
-        
     }
 }

@@ -1,19 +1,23 @@
 ﻿using System.Collections;
 using BattleScreen;
+using BattleScreen.BattleEvents;
+using BattleScreen.BattleEvents.EventTypes;
 
 namespace Items.Items
 {
-    public class ExpiredMedicineItem : BattleEventResponderItem
+    public class ExpiredMedicineItem : EquippedItem
     {
-        public override bool GetResponseToBattleEvent(BattleEvent previousBattleEvent)
+        public override bool GetIfRespondingToBattleEvent(BattleEvent battleEvent)
         {
-            return previousBattleEvent.battleEventType == BattleEventType.EnemyHeal;
+            return battleEvent.Type == BattleEventType.EnemyHealed;
         }
 
-        protected override IEnumerator Activate(BattleEvent battleEvent)
+        protected override BattleEvent GetResponse(BattleEvent battleEvent)
         {
-            yield return StartCoroutine(BattleState.current.DamageHandler.DamageEnemy
-                (Amount, OldBattleEvents.LastEnemyHealed, DamageSource.Item));
+            if (!(battleEvent is EnemyHealBattleEvent enemyHealBattleEvent)) throw new UnexpectedBattleEventException(battleEvent);
+            
+            return DamageHandler.DamageEnemy
+                (Amount, enemyHealBattleEvent.enemy, DamageSource.Item, item: this);
         }
     }
 }

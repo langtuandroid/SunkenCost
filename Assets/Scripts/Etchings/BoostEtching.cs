@@ -36,12 +36,12 @@ namespace Etchings
 
             if (deactivationTurns > 0) return false;
             
-            var stickNumber = Stick.GetStickNumber();
+            var stickNumber = Plank.GetPlankNum();
 
             // Etching to the left
             if (stickNumber > 1)
             {
-                var leftEtching = StickManager.current.GetStick(stickNumber - 1);
+                var leftEtching = PlankMap.current.GetStick(stickNumber - 1);
                 if (leftEtching && leftEtching.etching)
                 {
                     if (leftEtching.etching is DamageEtching etching)
@@ -52,9 +52,9 @@ namespace Etchings
             }
             
             // Etching to the right
-            if (stickNumber < StickManager.current.stickCount)
+            if (stickNumber < PlankMap.current.stickCount)
             {
-                var rightEtching = StickManager.current.GetStick(stickNumber + 1);
+                var rightEtching = PlankMap.current.GetStick(stickNumber + 1);
                 if (rightEtching && rightEtching.etching)
                 {
                     if (rightEtching.etching is DamageEtching etching)
@@ -76,7 +76,7 @@ namespace Etchings
 
         protected override bool CheckInfluence(int stickNum)
         {
-            return (stickNum == Stick.GetStickNumber() - 1 || stickNum == Stick.GetStickNumber() + 1);
+            return (stickNum == Plank.GetPlankNum() - 1 || stickNum == Plank.GetPlankNum() + 1);
         }
         
     }

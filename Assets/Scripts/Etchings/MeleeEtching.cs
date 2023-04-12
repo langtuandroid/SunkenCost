@@ -18,12 +18,12 @@ namespace Etchings
 
         protected override bool CheckInfluence(int stickNum)
         {
-            return stickNum == Stick.GetStickNumber();
+            return stickNum == Plank.GetPlankNum();
         }
 
         protected override void DamageEnemy(Enemy enemy)
         {
-            Stick.SetTempColour(design.Color);
+            Plank.SetTempColour(design.Color);
             UsesUsedThisTurn += 1;
             base.DamageEnemy(enemy);
             InGameSfxManager.current.DamagedEnemy();

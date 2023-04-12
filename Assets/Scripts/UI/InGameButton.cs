@@ -21,7 +21,7 @@ public abstract class InGameButton : MonoBehaviour
 
     private void OnClick()
     {
-        if (TestForSuccess())
+        if (TryClick())
         {
             InGameSfxManager.current.GoodClick();
         }
@@ -31,7 +31,7 @@ public abstract class InGameButton : MonoBehaviour
         }
     }
 
-    protected abstract bool TestForSuccess();
+    protected abstract bool TryClick();
 
     private void OnDestroy()
     {

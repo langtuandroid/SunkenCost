@@ -66,7 +66,7 @@ public class OfferManager : MonoBehaviour
         var itemOfferDisplays = _itemOfferGenerator.ItemOfferDisplays;
         
         RunProgress.OfferStorage.StoreOffers(deckRow, offerRow, itemOfferDisplays);
-        RunProgress.PlayerStats.AlterGold(-RunProgress.PlayerStats.Gold + BuyerSeller.Gold);
+        RunProgress.PlayerStats.Gold = BuyerSeller.Gold;
         MainManager.Current.LoadMap();
     }
 

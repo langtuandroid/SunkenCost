@@ -51,7 +51,7 @@ namespace Disturbances
                     RunProgress.PlayerStats.AlterGold(disturbance.Modifier);
                     break;
                 case DisturbanceType.Heart:
-                    PlayerController.current.AddLife(disturbance.Modifier);
+                    RunProgress.PlayerStats.Lives += disturbance.Modifier;
                     break;
                 case DisturbanceType.None:
                     break;

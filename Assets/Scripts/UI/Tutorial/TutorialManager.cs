@@ -75,7 +75,6 @@ public class TutorialManager : MonoBehaviour
             WaitTilBoughtPlank,
             AskToDragPlankOffer,
             WaitForDraggedPlankOffer,
-            ExplainEnemy,
             EnemyHover,
             EnemyMovement,
             EnemyTurnOrder,
@@ -250,21 +249,6 @@ public class TutorialManager : MonoBehaviour
         SetVisibility(false);
     }
 
-    private void ExplainEnemy()
-    {
-        SetVisibility(true);
-        
-        var currentEnemy = ActiveEnemiesManager.CurrentEnemy;
-        HighlightEnemy(currentEnemy.transform);
-        
-        _popupWithButton.Move(570, 0);
-        _popupWithButtonText.text = "Enemies move to the right. If they reach your boat, you lose a life.";
-
-        _arrow.Move(180, 0);
-        
-        _keepArrow = true;
-    }
-
     private void EnemyHover()
     {
         _popupWithButton.Move(570, 0);
@@ -368,7 +352,6 @@ public class TutorialManager : MonoBehaviour
     private void FinalMessage()
     {
         OldBattleEvents.Current.OnBeginPlayerTurn -= ExecuteNextTutorialStep;
-        OldBattleEvents.Current.OnBeginPlayerTurn += CheckForEnemyOnLastStick;
         _subscribedToOnBeingPlayerTurn = true;
         SetVisibility(true);
         
@@ -439,25 +422,9 @@ public class TutorialManager : MonoBehaviour
     
     
     #endregion
-
-
-    private void CheckForEnemyOnLastStick()
-    {
-        // If an enemy has made it to the last stick
-        var enemiesOnStick = ActiveEnemiesManager.Current.GetEnemiesOnStick(StickManager.current.stickCount - 1).Where(e => e.FinishedMoving).ToList();
-        if (enemiesOnStick.Count <= 0) return;
-        
-        _firstEnemy = enemiesOnStick[0];
-        ExecuteNextTutorialStep();
-        OldBattleEvents.Current.OnBeginPlayerTurn -= CheckForEnemyOnLastStick;
-        _subscribedToOnBeingPlayerTurn = false;
-        _subscribedToOnSticksUpdated = true;
-        OldBattleEvents.Current.OnSticksUpdated += CheckForZoomOut;
-    }
-
     private void CheckForZoomOut()
     {
-        if (StickManager.current.stickCount < 5) return;
+        if (PlankMap.Current.PlankCount < 5) return;
             
         OldBattleEvents.Current.OnSticksUpdated -= CheckForZoomOut;
         _subscribedToOnSticksUpdated = false;
@@ -467,7 +434,6 @@ public class TutorialManager : MonoBehaviour
 
     private void OnDestroy()
     {
-        if (_subscribedToOnBeingPlayerTurn) OldBattleEvents.Current.OnBeginPlayerTurn -= CheckForEnemyOnLastStick;
         if (_subscribedToOnSticksUpdated) OldBattleEvents.Current.OnSticksUpdated -= CheckForZoomOut;
     }
 }

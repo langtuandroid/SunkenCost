@@ -8,15 +8,15 @@ namespace Etchings
     {
         protected override bool TestCharMovementActivatedEffect()
         {
-            var stickNum = Stick.GetStickNumber();
+            var stickNum = Plank.GetPlankNum();
             if (Math.Abs(ActiveEnemiesManager.CurrentEnemy.StickNum - stickNum) > MaxRange) return false;
             
             var stickNums = new List<int>();
-            for (var i = stickNum - MaxRange; i <= stickNum + MaxRange && i < StickManager.current.stickCount; i++)
+            for (var i = stickNum - MaxRange; i <= stickNum + MaxRange && i < PlankMap.current.stickCount; i++)
             {
                 if (i <= 0) 
                     i = 1;
-                StickManager.current.stickGrid.GetChild(i).GetComponent<Stick>().SetTempColour(design.Color);
+                PlankMap.current.stickGrid.GetChild(i).GetComponent<Plank>().SetTempColour(design.Color);
                 stickNums.Add(i);
             }
 
@@ -36,7 +36,7 @@ namespace Etchings
         
         protected override bool CheckInfluence(int stickNum)
         {
-            return Math.Abs(Stick.GetStickNumber() - stickNum) <= MaxRange;
+            return Math.Abs(Plank.GetPlankNum() - stickNum) <= MaxRange;
         }
         
     }

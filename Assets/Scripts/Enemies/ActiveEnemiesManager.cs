@@ -6,14 +6,14 @@ using System.Collections.Generic;
 using Enemies;
 using UnityEngine;
 using Random = UnityEngine.Random;
-
+/*
 public class ActiveEnemiesManager : MonoBehaviour
 {
     public static ActiveEnemiesManager Current { get; private set; }
 
     private const int EnemiesAllowedOnStick = 3;
 
-    private StickManager _stickManager;
+    private PlankMap _plankMap;
 
     private List<Enemy> _activeEnemies = new List<Enemy>();
     private List<Enemy> _waitingEnemies = new List<Enemy>();
@@ -25,7 +25,7 @@ public class ActiveEnemiesManager : MonoBehaviour
     private int _currentEnemy = 0;
     private bool _canMove = true;
     
-    private Dictionary<Stick, List<Enemy>> enemyPositions = new Dictionary<Stick, List<Enemy>>();
+    private Dictionary<Plank, List<Enemy>> enemyPositions = new Dictionary<Plank, List<Enemy>>();
 
     public bool finishedProcessingEnemyTurn = false;
 
@@ -36,7 +36,7 @@ public class ActiveEnemiesManager : MonoBehaviour
 
     private void Start()
     {
-        _stickManager = StickManager.current;
+        _plankMap = PlankMap.current;
         OldBattleEvents.Current.OnBeginEnemyTurn += BeginEnemyTurn;
         OldBattleEvents.Current.OnEndEnemyTurn += EndEnemyTurn;
         OldBattleEvents.Current.OnEndPlayerTurn += EndPlayerTurn;
@@ -44,18 +44,9 @@ public class ActiveEnemiesManager : MonoBehaviour
 
     private void Update()
     {
-        /*
-        if (_enemiesToDestroy.Count > 0)
-        {
-            foreach (var enemy in _enemiesToDestroy)
-            {
-                Destroy(enemy.gameObject);
-            }
-            _enemiesToDestroy.Clear();
-        }*/
 
         if (_activeEnemies.Count > 0 &&
-            BattleManager.Current.gameState == GameState.EnemyTurn && _canMove && EtchingManager.Current.finishedProcessingEnemyMove)
+            BattleManager.Current.gameState == GameState.EnemyTurn && _canMove && EtchingMap.Current.finishedProcessingEnemyMove)
         {
            StartCoroutine(MoveNextEnemy());
         }
@@ -149,24 +140,24 @@ public class ActiveEnemiesManager : MonoBehaviour
                 OldBattleEvents.Current.BegunEnemyMovement();
                 
                 // Wait for any planks to execute
-                while (!EtchingManager.Current.finishedProcessingEnemyMove)
+                while (!EtchingMap.Current.finishedProcessingEnemyMove)
                     yield return 0;
                 
                 // If the planks have stopped it moving break
                 if (enemy.FinishedMoving) break;
                 
-                StartCoroutine(enemy.ExecuteMoveStep());
+                StartCoroutine(enemy.MoveStep());
 
                 // Wait for the enemy to finish moving
                 while (enemy.Moving)
                     yield return 0;
 
-                if (enemy.StickNum == StickManager.current.stickCount) continue;
+                if (enemy.StickNum == PlankMap.current.stickCount) continue;
 
                 OldBattleEvents.Current.CharacterMoved();
                     
                 // Wait for any planks to execute
-                while (!EtchingManager.Current.finishedProcessingEnemyMove)
+                while (!EtchingMap.Current.finishedProcessingEnemyMove)
                     yield return 0;
             }
         }
@@ -198,36 +189,19 @@ public class ActiveEnemiesManager : MonoBehaviour
     {
         // Set the parent
         var enemyTransform = movingEnemy.transform;
-        enemyTransform.SetParent(_stickManager.stickGrid.transform.GetChild(movingEnemy.StickNum));
+        enemyTransform.SetParent(_plankMap.GetPlank(movingEnemy.StickNum).transform);
 
         // How many enemies are on this stick?
         var enemiesOnStick =
             _allEnemies.Where(en =>
                 (en.StickNum == movingEnemy.StickNum)).ToList();
         
-        /*
-        var pushEnemies = new List<Enemy>();
-        for (var i = movingEnemy.StickNum; )
-        for (var ii = 0; enemiesOnStick.Count - ii > EnemiesAllowedOnStick; ii++)
-        {
-            pushEnemies.Add(enemiesOnStick[0]);
-            enemiesOnStick.Remove(enemiesOnStick[0]);
-        }
-
-        if (enemiesOnStick.Count > 0)
-        {
-            StartCoroutine(PushEnemies(pushEnemies));
-        }
-        */
-
         var startStickOffsetX = movingEnemy.StickNum == 0 ? 25f : 0f;
         var startStickOffsetY = movingEnemy.StickNum == 0 ? 25f : 0f;
         
         var i = 0f;
         foreach (var e in enemiesOnStick)
         {
-            
-            
             // Place it a bit further down if there's multiple
             e.RePosition(new Vector3
                 (0 + startStickOffsetX, (-120 * i)+ EnemyMover.EnemyOffset + startStickOffsetY));
@@ -243,7 +217,7 @@ public class ActiveEnemiesManager : MonoBehaviour
         foreach (var enemiesOnStick in enemyPositions)
         {
             var enemyList = enemiesOnStick.Value;
-            var stickNum = enemiesOnStick.Key.GetStickNumber();
+            var stickNum = enemiesOnStick.Key.GetPlankNum();
 
             foreach (var enemy in enemyList)
             {
@@ -284,7 +258,7 @@ public class ActiveEnemiesManager : MonoBehaviour
                 if (enemy.StickNum == 0) continue;
 
                 // Save all the enemy's positions
-                var stick = StickManager.current.stickGrid.GetChild(enemy.StickNum).GetComponent<Stick>();
+                var stick = PlankMap.current.stickGrid.GetChild(enemy.StickNum).GetComponent<Plank>();
 
                 if (enemyPositions.ContainsKey(stick))
                 {
@@ -363,3 +337,4 @@ public class ActiveEnemiesManager : MonoBehaviour
         BattleManager.Current.AlterGold(enemy.Gold);
     }
 }
+*/

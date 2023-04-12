@@ -1,38 +1,36 @@
 ﻿using System;
 using System.Collections;
 using BattleScreen;
+using BattleScreen.BattleEvents;
+using BattleScreen.BattleEvents.EventTypes;
 
 namespace Items.Items
 {
-    public class PaciFistItem : BattleEventResponderItem
+    public class PaciFistItem : EquippedItem
     {
         private bool _hasKilledEnemyThisBattle = false;
 
-        public override bool GetResponseToBattleEvent(BattleEvent previousBattleEvent)
+        public override bool GetIfRespondingToBattleEvent(BattleEvent battleEvent)
         {
-            return previousBattleEvent.battleEventType == BattleEventType.EnemyKilled ||
-                   previousBattleEvent.battleEventType == BattleEventType.EndBattle;
+            return battleEvent.Type == BattleEventType.EnemyKilled ||
+                   battleEvent.Type == BattleEventType.EndedBattle;
         }
-
-        protected override IEnumerator Activate(BattleEvent battleEvent)
+        
+        protected override BattleEvent GetResponse(BattleEvent battleEvent)
         {
-            if (battleEvent.battleEventType == BattleEventType.EnemyKilled)
+            switch (battleEvent.Type)
             {
-                _hasKilledEnemyThisBattle = true;
+                case BattleEventType.EnemyKilled:
+                    _hasKilledEnemyThisBattle = true;
+                    break;
+                case BattleEventType.EndedBattle:
+                    if (!_hasKilledEnemyThisBattle) return new TryGainGoldBattleEvent(Amount);
+                    else break;
+                default:
+                    throw new UnexpectedBattleEventException(battleEvent);
             }
-            else if (battleEvent.battleEventType == BattleEventType.EndBattle)
-            {
-                // TODO: Make Alter Gold a coroutine
-                if (!_hasKilledEnemyThisBattle)
-                {
-                    RunProgress.PlayerStats.AlterGold(Amount);
-                }
-                yield break;
-            }
-            else
-            {
-                throw new Exception("Pacifist should not be responding to " + battleEvent.battleEventType);
-            }
+
+            return new BattleEvent(BattleEventType.None);
         }
     }
 }

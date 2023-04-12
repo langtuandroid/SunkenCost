@@ -1,6 +1,7 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using BattleScreen;
 using TMPro;
 using UnityEngine;
 
@@ -27,17 +28,22 @@ public class NextTurnButton : InGameButton
         OldBattleEvents.Current.OnBeginPlayerTurn += UpdateText;
     }
 
-    protected override bool TestForSuccess()
-    {
-        return BattleManager.Current.TryNextTurn();
-    }
-
     private void UpdateText()
     {
-        if (BattleManager.Current.Turn == RunProgress.PlayerStats.NumberOfTurns + 1)
+        if (Battle.Current.Turn == RunProgress.PlayerStats.NumberOfTurns + 1)
         {
             _textMeshProUGUI.text = "END BATTLE";
         }
+    }
+
+    protected override bool TryClick()
+    {
+        if (Battle.Current.GameState == GameState.PlayerTurn)
+        {
+            Battle.Current.NextTurn();
+            return true;
+        }
+        return false;
     }
 
     private void OnDestroy()

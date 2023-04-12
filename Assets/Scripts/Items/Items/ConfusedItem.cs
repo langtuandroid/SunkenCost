@@ -3,7 +3,7 @@ using BattleScreen;
 
 namespace Items.Items
 {
-    public class ConfusedItem : BattleEventResponderItem, IHasPickupAction, IBattleEventResponder
+    public class ConfusedItem : EquippedItem, IHasPickupAction
     {
         private StatModifier _extraPlank;
 
@@ -18,15 +18,15 @@ namespace Items.Items
             RunProgress.PlayerStats.maxPlanks.RemoveModifier(_extraPlank);
         }
 
-        public override bool GetResponseToBattleEvent(BattleEvent previousBattleEvent)
+        public override bool GetIfRespondingToBattleEvent(BattleEvent battleEvent)
         {
-            return previousBattleEvent.battleEventType == BattleEventType.StartBattle;
+            return battleEvent.Type == BattleEventType.StartBattle;
         }
-        
-        protected override IEnumerator Activate(BattleEvent battleEvent)
+
+        protected override BattleEvent GetResponse(BattleEvent battleEvent)
         {
-            StickManager.current.RandomisePlanks();
-            yield break;
+            PlankMap.Current.RandomisePlanks();
+            return new BattleEvent(BattleEventType.None);
         }
     }
 }

@@ -19,7 +19,7 @@ public class QuitButton : InGameButton
         base.Awake();
     }
 
-    protected override bool TestForSuccess()
+    protected override bool TryClick()
     {
         BattleManager.Current.Quit();
         return true;

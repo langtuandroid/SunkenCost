@@ -1,9 +1,11 @@
 ﻿using System.Collections;
+using System.Collections.Generic;
+using BattleScreen;
 
 namespace Enemies
 {
     public interface IStartOfTurnAbilityHolder
     {
-        public IEnumerator ExecuteStartOfTurnAbility();
+        public List<BattleEvent> GetStartOfTurnAbility();
     }
 }

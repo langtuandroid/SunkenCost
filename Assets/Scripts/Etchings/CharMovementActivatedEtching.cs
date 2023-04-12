@@ -4,7 +4,7 @@ using UnityEngine;
 
 namespace Etchings
 {
-    public abstract class CharMovementActivatedEtching : ActiveEtching
+    public abstract class CharMovementActivatedEtching : Etching
     {
         public bool DetectCharacterMovement()
         {
@@ -14,15 +14,15 @@ namespace Etchings
             if (deactivationTurns > 0) return false;
             
             // GAMEOVER?
-            if (enemy.StickNum >= StickManager.current.stickCount + 1) return false;
+            if (enemy.StickNum >= PlankMap.current.stickCount + 1) return false;
             
             if ((design.Limitless || UsesUsedThisTurn < UsesPerTurn) && TestCharMovementActivatedEffect())
             {
                 StartCoroutine(ColorForActivate());
-                Log.current.AddEvent(design.Title + " on S" + Stick.GetStickNumber() + " activates against E" + enemy.name +
+                Log.current.AddEvent(design.Title + " on S" + Plank.GetPlankNum() + " activates against E" + enemy.name +
                                      " on S" + enemy.StickNum);
                 
-                designDisplay.Refresh();
+                etchingDisplay.UpdateDisplay();
                 return true;
             }
 

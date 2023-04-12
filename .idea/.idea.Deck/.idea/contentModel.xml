@@ -633,40 +633,34 @@
           </e>
           <e p="BackgroundColorController.cs" t="Include" />
           <e p="BattleScreen" t="Include">
-            <e p="ActionsAndResponses" t="Include">
-              <e p="BattleAction.cs" t="Include" />
-              <e p="BattleActionResponderGroup.cs" t="Include" />
-              <e p="BattleActionResponderItem.cs" t="Include" />
-              <e p="BattleActions.cs" t="Include" />
-              <e p="IBattleActionResponder.cs" t="Include" />
-              <e p="IDamageBattleActionResponder.cs" t="Include" />
-              <e p="ItemBattleActionResponderGroup.cs" t="Include" />
+            <e p="Battle.cs" t="Include" />
+            <e p="BattleEvents" t="Include">
+              <e p="BattleEvent.cs" t="Include" />
+              <e p="BattleEventResponder.cs" t="Include" />
+              <e p="BattleEventResponderGroup.cs" t="Include" />
+              <e p="BattleEventsManager.cs" t="Include" />
+              <e p="EtchingBattleEventResponderGroup.cs" t="Include" />
+              <e p="EventTypes" t="Include">
+                <e p="EnemyBattleEvent.cs" t="Include" />
+                <e p="PlayerLifeBattleEvent.cs" t="Include" />
+                <e p="TryGainGoldBattleEvent.cs" t="Include" />
+              </e>
+              <e p="ItemBattleEventResponderGroup.cs" t="Include" />
+              <e p="UnexpectedBattleEventException.cs" t="Include" />
             </e>
-            <e p="BattleEvents.cs" t="Include" />
             <e p="BattleHUDManager.cs" t="Include" />
             <e p="BattleManager.cs" t="Include" />
             <e p="EndOfBattlePopup.cs" t="Include" />
             <e p="EnemyController.cs" t="Include" />
-            <e p="PlayerController.cs" t="Include" />
+            <e p="OldBattleEvents.cs" t="Include" />
+            <e p="Player.cs" t="Include" />
+            <e p="PlayerTurnEvents.cs" t="Include" />
           </e>
-          <e p="BattleState.cs" t="Include" />
           <e p="ChallengeLoader.cs" t="Include" />
-          <e p="Challenges" t="Include">
-            <e p="Challenge.cs" t="Include" />
-            <e p="ChallengeButton.cs" t="Include" />
-            <e p="ChallengeButtonSpawner.cs" t="Include" />
-            <e p="ChallengeLoader.cs" t="Include" />
-            <e p="ChallengeOfferManager.cs" t="Include" />
-            <e p="ChallengeReward.cs" t="Include" />
-            <e p="ChallengeRewardLoader.cs" t="Include" />
-            <e p="Challenges" t="Include">
-              <e p="ArrogantChallenge.cs" t="Include" />
-              <e p="HoarderChallenge.cs" t="Include" />
-              <e p="PacifistChallenge.cs" t="Include" />
-              <e p="UntouchableChallenge.cs" t="Include" />
-              <e p="WipeoutChallenge.cs" t="Include" />
-            </e>
-            <e p="InBattleChallengeListener.cs" t="Include" />
+          <e p="Damage" t="Include">
+            <e p="DamageHandler.cs" t="Include" />
+            <e p="DamageModification.cs" t="Include" />
+            <e p="DamageModificationPackage.cs" t="Include" />
           </e>
           <e p="Debug" t="Include">
             <e p="ScreenToWorldPoint.cs" t="Include" />
@@ -692,7 +686,6 @@
           <e p="EditorInit.cs" t="Include" />
           <e p="Enemies" t="Include">
             <e p="ActiveEnemiesManager.cs" t="Include" />
-            <e p="DamageHandler.cs" t="Include" />
             <e p="Enemies" t="Include">
               <e p="AxolitlEnemy.cs" t="Include" />
               <e p="BullCarpEnemy.cs" t="Include" />
@@ -723,14 +716,14 @@
               <e p="EnemyUI.cs" t="Include" />
               <e p="EnemyUIText.cs" t="Include" />
             </e>
+            <e p="IStartOfTurnAbilityHolder.cs" t="Include" />
             <e p="Scenarios" t="Include">
               <e p="Scenario.cs" t="Include" />
               <e p="ScenarioManager.cs" t="Include" />
             </e>
           </e>
-          <e p="EtchingManager.cs" t="Include" />
+          <e p="EtchingMap.cs" t="Include" />
           <e p="Etchings" t="Include">
-            <e p="ActiveEtching.cs" t="Include" />
             <e p="AmbushEtching.cs" t="Include" />
             <e p="AreaEtching.cs" t="Include" />
             <e p="BlockEtching.cs" t="Include" />
@@ -758,16 +751,6 @@
             <e p="StickUpdateActivatedEtching.cs" t="Include" />
           </e>
           <e p="EtchingTurnProcess.cs" t="Include" />
-          <e p="EventListeners" t="Include">
-            <e p="IEndOfBattleListener.cs" t="Include" />
-            <e p="IEnemyAttackedListener.cs" t="Include" />
-            <e p="IEnemyHealedListener.cs" t="Include" />
-            <e p="IEnemyReachedEndListener.cs" t="Include" />
-            <e p="IGainedGoldListener.cs" t="Include" />
-            <e p="IKillListener.cs" t="Include" />
-            <e p="IPlayerLostLifeListener.cs" t="Include" />
-            <e p="IStartOfBattleListener.cs" t="Include" />
-          </e>
           <e p="Extensions.cs" t="Include" />
           <e p="GlobalEvents.cs" t="Include" />
           <e p="ItemLoader.cs" t="Include" />
@@ -821,6 +804,8 @@
             <e p="UpgradeOffer.cs" t="Include" />
           </e>
           <e p="PersistantManagers.cs" t="Include" />
+          <e p="Plank.cs" t="Include" />
+          <e p="PlankMap.cs" t="Include" />
           <e p="PlayerStats.cs" t="Include" />
           <e p="ReorderableList" t="Include">
             <e p="ReorderableList.cs" t="Include" />
@@ -838,8 +823,6 @@
           <e p="SerializedDictionary.cs" t="Include" />
           <e p="Stat.cs" t="Include" />
           <e p="StatModifier.cs" t="Include" />
-          <e p="Stick.cs" t="Include" />
-          <e p="StickManager.cs" t="Include" />
           <e p="UI" t="Include">
             <e p="EnemyTurnFrame.cs" t="Include" />
             <e p="GoldText.cs" t="Include" />

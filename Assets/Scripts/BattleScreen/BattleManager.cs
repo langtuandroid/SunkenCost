@@ -4,7 +4,6 @@ using System.Collections.Generic;
 using System.Linq;
 using BattleScene;
 using BattleScreen;
-using Challenges;
 using Disturbances;
 using UnityEngine;
 using UnityEngine.UI;
@@ -12,13 +11,7 @@ using Random = System.Random;
 using Items;
 using UnityEngine.SceneManagement;
 
-public enum GameState
-{
-    PlayerTurn,
-    EnemyTurn,
-    OfferingDesigns,
-    Rewards
-}
+/*
 
 public class BattleManager : MonoBehaviour
 {
@@ -56,8 +49,8 @@ public class BattleManager : MonoBehaviour
 
         foreach (var design in RunProgress.PlayerStats.Deck)
         {
-            StickManager.current.CreateStick();
-            EtchingManager.Current.CreateEtching(StickManager.current.GetStick(StickManager.current.stickCount - 1),
+            PlankMap.current.CreateStick();
+            EtchingMap.Current.CreateEtching(PlankMap.current.GetStick(PlankMap.current.stickCount - 1),
                 design);
         }
         
@@ -78,7 +71,7 @@ public class BattleManager : MonoBehaviour
 
         if (Input.GetKeyDown(KeyCode.D))
         {
-            StickManager.current.DestroyStick(1);
+            PlankMap.current.DestroyStick(1);
         }
 
         // Begin Next turn
@@ -88,7 +81,7 @@ public class BattleManager : MonoBehaviour
         }
         //
 
-        if (gameState == GameState.EnemyTurn && EtchingManager.Current.finishedProcessingEnemyMove &&
+        if (gameState == GameState.EnemyTurn && EtchingMap.Current.finishedProcessingEnemyMove &&
             ActiveEnemiesManager.Current.finishedProcessingEnemyTurn)
         {
             OldBattleEvents.Current.EndEnemyTurn();
@@ -221,3 +214,6 @@ public class BattleManager : MonoBehaviour
         OldBattleEvents.Current.BeginEnemyTurn();
     }
 }
+
+*/
+

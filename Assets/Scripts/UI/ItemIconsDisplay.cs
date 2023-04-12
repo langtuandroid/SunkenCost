@@ -2,7 +2,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using BattleScreen;
-using BattleScreen.ActionsAndResponses;
+using BattleScreen.BattleEvents;
 using BattleScreen.Events;
 using Items;
 using UnityEngine;
@@ -61,7 +61,7 @@ namespace UI
         private static IEnumerator SetTempColor(ItemDisplay itemDisplay)
         {
             itemDisplay.SetColor(Color.green);
-            yield return new WaitForSeconds(BattleEvents.ActionExecutionSpeed);
+            yield return new WaitForSeconds(BattleEventsManager.ActionExecutionSpeed);
             itemDisplay.SetColor(Color.white);
         }
     }

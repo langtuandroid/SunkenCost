@@ -4,18 +4,19 @@ using BattleScreen;
 
 namespace Items.Items
 {
-    public class CapitalListItem : BattleEventResponderItem
+    public class CapitalListItem : EquippedItem
     {
-        public override bool GetResponseToBattleEvent(BattleEvent previousBattleEvent)
+        public override bool GetIfRespondingToBattleEvent(BattleEvent battleEvent)
         {
-            return previousBattleEvent.battleEventType == BattleEventType.GainGold && BattleState.current.EnemyController.NumberOfEnemies > 0;
+            return battleEvent.Type == BattleEventType.GainedGold
+                   && EnemyController.Current.NumberOfEnemies > 0;
         }
 
-        protected override IEnumerator Activate(BattleEvent battleEvent)
+        protected override BattleEvent GetResponse(BattleEvent battleEvent)
         {
-            var randomEnemy = BattleState.current.EnemyController.GetRandomEnemy();
+            var randomEnemy = EnemyController.Current.GetRandomEnemy();
             if (!randomEnemy) throw new Exception("Somehow there is no active enemy?");
-            yield return StartCoroutine(BattleState.current.DamageHandler.DamageEnemy(Amount, randomEnemy, DamageSource.Item, item: this));
+            return DamageHandler.DamageEnemy(Amount, randomEnemy, DamageSource.Item, item: this);
         }
     }
 }

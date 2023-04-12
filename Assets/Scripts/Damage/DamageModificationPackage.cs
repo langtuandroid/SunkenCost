@@ -11,5 +11,11 @@ namespace Damage
         public DamageModificationPackage
             (List<DamageModification> flatModifications, List<DamageModification> multiModifications)
             => (this.flatModifications, this.multiModifications) = (flatModifications, multiModifications);
+
+        public static DamageModificationPackage Empty()
+        {
+            return new DamageModificationPackage(new List<DamageModification>(), 
+                new List<DamageModification>());
+        }
     }
 }

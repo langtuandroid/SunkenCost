@@ -2,8 +2,6 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
-using Challenges;
-using Challenges.Challenges;
 using Disturbances;
 using Items;
 using Items.Items;
@@ -21,7 +19,6 @@ public class RunProgress : MonoBehaviour
     private int _battleNumber;
 
     private Disturbance _currentDisturbance;
-    private List<Challenge> _activeChallenges;
 
     private bool _hasGeneratedMapEvents;
 
@@ -33,8 +30,6 @@ public class RunProgress : MonoBehaviour
     public static int BattleNumber => _current._battleNumber;
 
     public static Disturbance CurrentDisturbance => _current._currentDisturbance;
-    
-    public static List<Challenge> ActiveChallenges => _current._activeChallenges;
 
     public static bool HasGeneratedMapEvents => _current._hasGeneratedMapEvents;
 
@@ -59,7 +54,6 @@ public class RunProgress : MonoBehaviour
     public static void SelectNextBattle(Disturbance disturbance)
     {
         _current._currentDisturbance = disturbance;
-        _current._activeChallenges = ActiveChallenges.Where(c => c.IsActive).ToList();
         _current._battleNumber++;
         _current._hasGeneratedMapEvents = false;
     }
@@ -68,18 +62,6 @@ public class RunProgress : MonoBehaviour
     {
         _current._hasGeneratedMapEvents = true;
         GeneratedMapDisturbances = disturbances;
-    }
-
-    public static Challenge[] ExtractCompletedChallenges()
-    {
-        var completedChallenges = ActiveChallenges.Where(c => c.HasAchievedCondition()).ToArray();
-
-        foreach (var challenge in completedChallenges)
-        {
-            ActiveChallenges.Remove(challenge);
-        }
-
-        return completedChallenges;
     }
     
     private void InitialiseRun()
@@ -92,7 +74,6 @@ public class RunProgress : MonoBehaviour
         _itemInventory = transform.GetChild(0).gameObject.AddComponent<ItemInventory>();
         _battleNumber = 0;
         _currentDisturbance = null;
-        _activeChallenges = new List<Challenge>();
     }
 
     // Used to test Items - add to initialise run

@@ -2,6 +2,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
+using BattleScreen;
 using Enemies;
 using UnityEngine;
 using UnityEngine.Rendering;
@@ -42,38 +43,25 @@ public class EnemySpawner : MonoBehaviour
         SpawnNewRound();
     }
 
-    public Enemy SpawnActiveEnemy(string enemyName, int stickNum)
-    {
-        var newEnemy = SpawnEnemy(enemyName, stickNum);
-        ActiveEnemiesManager.Current.AddActiveEnemy(newEnemy);
-        return newEnemy;
-    }
-    
-    private Enemy SpawnWaitingEnemy(string enemyName)
-    {
-        var newEnemy = SpawnEnemy(enemyName, 0);
-        ActiveEnemiesManager.Current.AddWaitingEnemy(newEnemy);
-        return newEnemy;
-    }
-
-    private Enemy SpawnEnemy(string enemyName, int stickNum)
+    private Enemy SpawnEnemy(string enemyName, int plankNum)
     {
         var enemyPrefab = enemyDictionary[enemyName];
-        var stickToSpawnOn = StickManager.current.stickGrid.GetChild(stickNum);
+        var stickToSpawnOn = PlankMap.Current.GetPlank(plankNum).transform;
         var newEnemyObject = Instantiate(enemyPrefab, stickToSpawnOn, true);
         newEnemyObject.transform.localPosition = Vector3.zero;
         newEnemyObject.transform.localScale = new Vector3(1, 1, 1);
         
         var newEnemy = newEnemyObject.GetComponent<Enemy>();
-        newEnemy.Mover.SetStickNum(stickNum);
+        newEnemy.Mover.SetStickNum(plankNum);
+        EnemyController.Current.AddEnemy(newEnemy);
         return newEnemy;
     }
 
     private void SpawnNewRound()
     {
-        if (BattleManager.Current.Turn == RunProgress.PlayerStats.NumberOfTurns) return;
+        if (Battle.Current.Turn == RunProgress.PlayerStats.NumberOfTurns) return;
         
-        var enemyTypes = _scenario.GetRound(BattleManager.Current.Turn);
+        var enemyTypes = _scenario.GetRound(Battle.Current.Turn);
         
         var newEnemies = enemyTypes.Select(enemyType => Enum.GetName(typeof(EnemyType), enemyType)).ToList();
 
@@ -81,7 +69,7 @@ public class EnemySpawner : MonoBehaviour
 
         foreach (var enemyName in newEnemies)
         {
-            var enemy = SpawnWaitingEnemy(enemyName);
+            var enemy = SpawnEnemy(enemyName, 0);
             enemy.MaxHealth.AddModifier(new StatModifier(_scenario.scaledDifficulty, StatModType.PercentMult));
             enemy.Mover.AddMovementModifier((int)(_scenario.scaledDifficulty / 2f));
         }

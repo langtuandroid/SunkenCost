@@ -8,7 +8,7 @@ namespace Etchings
         protected override bool TestCharMovementActivatedEffect()
         {
             var currentEnemy = ActiveEnemiesManager.CurrentEnemy;
-            var stickNum = Stick.GetStickNumber();
+            var stickNum = Plank.GetPlankNum();
 
             if (currentEnemy.FinishedMoving) return false;
             
@@ -26,7 +26,7 @@ namespace Etchings
 
         protected override bool CheckInfluence(int stickNum)
         {
-            return stickNum == Stick.GetStickNumber();
+            return stickNum == Plank.GetPlankNum();
         }
     }
 }

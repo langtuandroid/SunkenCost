@@ -6,26 +6,26 @@ namespace Etchings
     public class IndicatorController : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler
     {
         private Indicator _indicator;
-        private Stick _stick;
+        private Plank _plank;
 
         private LTDescr _delay;
 
         private void Awake()
         {
-            _stick = transform.parent.GetComponent<Stick>();
+            _plank = transform.parent.GetComponent<Plank>();
             _indicator = transform.GetChild(0).GetComponent<Indicator>();
         }
     
         public void OnPointerEnter(PointerEventData eventData)
         {
-            _stick.etching?.UpdateIndicators();
+            _plank.Etching?.UpdateIndicators();
         }
 
         public void OnPointerExit(PointerEventData eventData)
         {
-            for (var i = 1; i < StickManager.current.stickCount; i++)
+            for (var i = 1; i < PlankMap.current.stickCount; i++)
             {
-                var stick = StickManager.current.GetStick(i);
+                var stick = PlankMap.current.GetStick(i);
                 stick?.IndicatorController.Hide();
             }
         

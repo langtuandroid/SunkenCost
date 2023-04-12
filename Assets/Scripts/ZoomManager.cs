@@ -49,7 +49,7 @@ public class ZoomManager : MonoBehaviour
 
     private void SetStickScale()
     {
-        var stickCount = StickManager.current.stickCount;
+        var stickCount = PlankMap.Current.PlankCount;
         stickScale = stickCount <= 5 ? 1 : (1f - 0.13f - ((stickCount - 6) * 0.1f));
         _stickGridTransform.localScale =  new Vector3(stickScale, stickScale, 1);
     }

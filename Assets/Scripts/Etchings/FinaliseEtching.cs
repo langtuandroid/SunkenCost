@@ -7,7 +7,7 @@ namespace Etchings
     {
         protected override bool CheckInfluence(int stickNum)
         {
-            return stickNum == Stick.GetStickNumber();
+            return stickNum == Plank.GetPlankNum();
         }
 
         protected override bool TestCharMovementActivatedEffect()
@@ -20,13 +20,13 @@ namespace Etchings
                 (e => e.StickNum != 0).ToArray();
             foreach (var enemy in enemiesOnPlanks)
             {
-                if (enemy.StickNum > 0) enemy.Stick.SetTempColour(design.Color);
+                if (enemy.StickNum > 0) enemy.Plank.SetTempColour(design.Color);
                 DamageEnemy(enemy);
             }
 
             if (enemiesOnPlanks.Any(e => !e.IsDestroyed))
             {
-                PlayerController.current.TakeLife();
+                Player.current.TakeLife();
             }
             
             return true;

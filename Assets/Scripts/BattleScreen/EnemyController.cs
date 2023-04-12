@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using System.Linq;
 using Enemies;
 using UnityEngine;
@@ -10,10 +11,19 @@ namespace BattleScreen
 {
     public class EnemyController : MonoBehaviour
     {
+        public static EnemyController Current;
+        
         private List<Enemy> _enemies = new List<Enemy>();
         private Queue<Enemy> _enemyCurrentTurnMoveQueue = new Queue<Enemy>();
 
         public int NumberOfEnemies => _enemies.Count;
+        public ReadOnlyCollection<Enemy> AllEnemies => new ReadOnlyCollection<Enemy>(_enemies);
+
+        private void Awake()
+        {
+            if (Current) Destroy(Current.gameObject);
+            Current = this;
+        }
 
         public void AddEnemy(Enemy enemy)
         {
@@ -26,8 +36,10 @@ namespace BattleScreen
             return _enemies.GetRandom();
         }
 
-        public IEnumerator ExecuteEnemyTurn()
+        public List<BattleEvent> GetMovements()
         {
+            var turn = new List<BattleEvent>();
+            
             RefreshEnemies();
             _enemyCurrentTurnMoveQueue = new Queue<Enemy>(_enemies);
 
@@ -36,31 +48,42 @@ namespace BattleScreen
                 var enemy = _enemyCurrentTurnMoveQueue.Dequeue();
                 
                 if (!EnemyIsAlive(enemy)) continue;
-
-                // Start of turn - wait for responses
-                var enemyStartTurnAction = new EnemyBattleEvent(BattleEventType.EnemyStartTurn, enemy);
-                yield return StartCoroutine
-                    (BattleState.current.BattleEvents.ExecuteTurnActionResponses(enemyStartTurnAction));
                 
-                // Wait for any effects on the enemy - poison, start of turn ability etc
-                yield return StartCoroutine(enemy.BeginMyTurn());
+                // Apply any start-of effects on the enemy
+                turn.AddRange(enemy.StartTurn());
                 
                 // Move sequence
                 while (EnemyIsAlive(enemy) && !enemy.FinishedMoving)
                 {
                     
                     // Move
-                    yield return StartCoroutine(enemy.ExecuteMoveStep());
-                    
-                    // Wait for responses
-                    var enemyMovedStepTurnAction = new EnemyBattleEvent(BattleEventType.EnemyMove, enemy);
-                    yield return StartCoroutine
-                        (BattleState.current.BattleEvents.ExecuteTurnActionResponses(enemyMovedStepTurnAction));
+                    turn.AddRange(enemy.MoveStep());
                 }
                 
                 // TODO: End of turn processing
-                yield return StartCoroutine(enemy.EndMyTurn());
+                turn.AddRange(enemy.EndTurn());
             }
+
+            return turn;
+        }
+        
+        public List<Enemy> GetEnemiesOnStick(int stick)
+        {
+            var enemies = new List<Enemy>();
+            enemies.AddRange(_enemies.Where(e => e.StickNum == stick));
+
+            return enemies;
+        }
+
+        public List<Enemy> GetEnemiesOnSticks(List<int> sticks)
+        {
+            var enemies = new List<Enemy>();
+            foreach (var stick in sticks)
+            {
+                enemies.AddRange(_enemies.Where(e => e.StickNum == stick));
+            }
+
+            return enemies;
         }
 
         private void RefreshEnemies()

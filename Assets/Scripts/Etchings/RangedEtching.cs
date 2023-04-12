@@ -10,15 +10,15 @@ namespace Etchings
             var enemy = ActiveEnemiesManager.CurrentEnemy;
 
             // Not in play
-            if (enemy.StickNum == 0 || enemy.StickNum >= StickManager.current.stickCount) return false;
+            if (enemy.StickNum == 0 || enemy.StickNum >= PlankMap.current.stickCount) return false;
 
-            var stickNum = Stick.GetStickNumber();
+            var stickNum = Plank.GetPlankNum();
 
             
             // On this stick or not within range
             if (!CheckInfluence(enemy.StickNum)) return false;
             
-            enemy.Stick.SetTempColour(design.Color);
+            enemy.Plank.SetTempColour(design.Color);
             DamageEnemy(enemy);
             InGameSfxManager.current.DamagedEnemy();
             UsesUsedThisTurn += 1;
@@ -27,8 +27,8 @@ namespace Etchings
 
         protected override bool CheckInfluence(int stickNum)
         {
-            return Math.Abs(stickNum - Stick.GetStickNumber()) >= MinRange &&
-                   Math.Abs(stickNum - Stick.GetStickNumber()) <= MaxRange;
+            return Math.Abs(stickNum - Plank.GetPlankNum()) >= MinRange &&
+                   Math.Abs(stickNum - Plank.GetPlankNum()) <= MaxRange;
         }
     }
 }

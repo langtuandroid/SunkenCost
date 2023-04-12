@@ -22,7 +22,7 @@ public class AxolitlEnemy : Enemy, IStartOfTurnAbilityHolder
         return "Heals " + _healingAmount + " health each turn";
     }
     
-    public IEnumerator ExecuteStartOfTurnAbility()
+    public IEnumerator GetStartOfTurnAbilityEventSequence()
     {
         // Only heal up to max heath
         if (Health >= MaxHealth.Value) yield break;

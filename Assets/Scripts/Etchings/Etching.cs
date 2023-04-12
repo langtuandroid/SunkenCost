@@ -1,6 +1,9 @@
 ﻿using System;
 using System.Collections;
 using System.Collections.Generic;
+using BattleScreen;
+using BattleScreen.BattleEvents;
+using BattleScreen.Events;
 using Designs;
 using Enemies;
 using TMPro;
@@ -9,14 +12,16 @@ using UnityEngine.UI;
 
 namespace Etchings
 {
-    public abstract class Etching : MonoBehaviour
+    public abstract class Etching : BattleEventResponder
     {
         public Design design;
         protected DesignDisplay designDisplay;
         
         protected bool colorWhenActivated = false;
+        
+        private Color _normalColor;
 
-        public Stick Stick { get; protected set; }
+        public Plank Plank { get; protected set; }
         protected int deactivationTurns;
 
         protected int UsesPerTurn => design.GetStat(StatType.UsesPerTurn);
@@ -29,14 +34,14 @@ namespace Etchings
 
         protected void Awake()
         {
-            Stick = transform.parent.parent.GetComponent<Stick>();
+            Plank = transform.parent.parent.GetComponent<Plank>();
             designDisplay = GetComponent<DesignDisplay>();
         }
 
         protected virtual void Start()
         {
             designDisplay.design = design;
-            OldBattleEvents.Current.OnBeginPlayerTurn += designDisplay.Refresh;
+            _normalColor = designDisplay.TitleText.color;
         }
 
         protected int GetStatValue(StatType statType)
@@ -47,32 +52,63 @@ namespace Etchings
 
         protected abstract bool CheckInfluence(int stickNum);
 
-        public void UpdateIndicators()
+        private void EndEnemyTurn()
         {
-            if (StickManager.current.IsDragging)
+            UsesUsedThisTurn = 0;
+
+            if (deactivationTurns > 0)
             {
-                Stick.IndicatorController.Hide();
-                return;
+                deactivationTurns--;
+
+                if (deactivationTurns == 0)
+                {
+                    Plank.SetActiveColor(true);
+                }
             }
             
-            for (var i = 1; i < StickManager.current.stickCount; i++)
-            {
-                var stick = StickManager.current.GetStick(i);
-
-                if (CheckInfluence(i))
-                {
-                    stick.IndicatorController.Show(design.Color);
-                }
-                else
-                {
-                    stick.IndicatorController.Hide();
-                }
-            }
+            designDisplay.Refresh();
         }
-
-        private void OnDestroy()
+        
+        private IEnumerator ColorForActivate()
         {
-            OldBattleEvents.Current.OnBeginPlayerTurn -= designDisplay.Refresh;
+            designDisplay.TitleText.color = Color.green;
+            yield return new WaitForSeconds(BattleManager.AttackTime);
+            designDisplay.TitleText.color = _normalColor;
         }
+
+        public IEnumerator Deactivate(int turns)
+        {
+            Plank.SetActiveColor(false);
+            deactivationTurns = turns;
+            yield return StartCoroutine(BattleSingleton.Current.BattleEvents.EtchingDeactivated());
+        }
+
+        public bool GetIfRespondingToBattleEvent(BattleEvent battleEvent)
+        {
+            switch (battleEvent.battleEventType)
+            {
+                case BattleEventType.EndedEnemyTurn:
+                    EndEnemyTurn();
+                    break;
+                case BattleEventType.PlayerMovedPlank:
+                    designDisplay.Refresh();
+                    break;
+            }
+
+            if (deactivationTurns > 0) return false;
+            
+            return GetDesignResponseToEvent(battleEvent);
+        }
+
+        public IEnumerator ExecuteResponseToAction(BattleEvent battleEvent)
+        {
+            StartCoroutine(ColorForActivate());
+            yield return new WaitForSeconds(BattleEventsManager.ActionExecutionSpeed);
+            yield return StartCoroutine(Activate(battleEvent));
+        }
+
+        protected abstract bool GetDesignResponseToEvent(BattleEvent battleEvent);
+
+        protected abstract IEnumerator Activate(BattleEvent battleEvent);
     }
 }

@@ -20,13 +20,13 @@ namespace Etchings
 
         protected override bool CheckInfluence(int stickNum)
         {
-            return stickNum == Stick.GetStickNumber();
+            return stickNum == Plank.GetPlankNum();
         }
 
         private void HealPlayer()
         {
-            PlayerController.current.AddLife(_healAmountStat.Value);
-            Stick.SetTempColour(design.Color);
+            Player.current.AddLife(_healAmountStat.Value);
+            Plank.SetTempColour(design.Color);
             StartCoroutine(ColorForActivate());
         }
     }

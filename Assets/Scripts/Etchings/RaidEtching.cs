@@ -7,7 +7,7 @@ namespace Etchings
     {
         protected override void DamageEnemy(Enemy enemy)
         {
-            if (enemy.Stick.etching is not DamageEtching)
+            if (enemy.Plank.Etching is not DamageEtching)
             {
                 var statMod = new StatModifier(design.GetStat(StatType.StatMultiplier) - 1, StatModType.PercentMult);
                 design.Stats[StatType.Damage].AddModifier(statMod);

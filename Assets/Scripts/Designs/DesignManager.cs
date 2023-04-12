@@ -57,7 +57,7 @@ public class DesignManager : MonoBehaviour
     {
         // Add all the etchings to a dictionary where their class name is the key
         var etchingsEnumerable = 
-            Assembly.GetAssembly(typeof(ActiveEtching)).GetTypes().Where(t => t.IsSubclassOf(typeof(ActiveEtching))).Where(ty => !ty.IsAbstract);
+            Assembly.GetAssembly(typeof(Etching)).GetTypes().Where(t => t.IsSubclassOf(typeof(Etching))).Where(ty => !ty.IsAbstract);
 
         var etchingNamesAndTypes = new Dictionary<string, Type>();        
         foreach (var type in etchingsEnumerable)

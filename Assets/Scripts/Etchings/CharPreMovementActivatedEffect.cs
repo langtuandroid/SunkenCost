@@ -1,6 +1,6 @@
 namespace Etchings
 {
-    public abstract class CharPreMovementActivatedEffect : ActiveEtching
+    public abstract class CharPreMovementActivatedEffect : Etching
     {
         public bool DetectCharacterAboutToMove()
         {
@@ -10,16 +10,16 @@ namespace Etchings
             if (deactivationTurns > 0) return false;
             
             // GAMEOVER?
-            if (enemy.StickNum >= StickManager.current.stickCount + 1) return false;
+            if (enemy.StickNum >= PlankMap.current.stickCount + 1) return false;
             
             if ((UsesUsedThisTurn < UsesPerTurn || design.Limitless) && TestCharAboutToMoveActivatedEffect())
             {
                 StartCoroutine(ColorForActivate());
-                Log.current.AddEvent(design.Title + " on S" + Stick.GetStickNumber() + " activates against E" + enemy.name +
+                Log.current.AddEvent(design.Title + " on S" + Plank.GetPlankNum() + " activates against E" + enemy.name +
                                      " on S" + enemy.StickNum);
             
-                enemy.Stick.SetTempColour(design.Color);
-                designDisplay.Refresh();
+                enemy.Plank.SetTempColour(design.Color);
+                etchingDisplay.UpdateDisplay();
                 return true;
             }
 

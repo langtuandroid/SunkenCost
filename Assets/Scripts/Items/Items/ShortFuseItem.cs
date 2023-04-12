@@ -1,35 +1,34 @@
 ﻿using System.Collections;
 using BattleScreen;
-using Enemies;
-using Etchings;
-using EventListeners;
-using UnityEngine;
+using BattleScreen.BattleEvents;
+using BattleScreen.BattleEvents.EventTypes;
+using Damage;
 
 namespace Items.Items
 {
-    public class ShortFuseItem : EquippedItem, IBattleEventResponder, IDamageMultiplierModifier
+    public class ShortFuseItem : EquippedItem, IDamageMultiplierModifier
     {
         private int _turnPlayerLastLostLife = -1;
 
-        public bool GetResponseToBattleEvent(BattleEvent previousBattleEvent)
+        public override bool GetIfRespondingToBattleEvent(BattleEvent battleEvent)
         {
-            return previousBattleEvent.battleEventType == BattleEventType.PlayerLostLife;
+            return battleEvent.Type == BattleEventType.PlayerLostLife;
         }
 
-        public IEnumerator ExecuteResponseToAction(BattleEvent battleEvent)
+        protected override BattleEvent GetResponse(BattleEvent battleEvent)
         {
-            _turnPlayerLastLostLife = BattleManager.Current.Turn;
-            yield break;
+            _turnPlayerLastLostLife = Battle.Current.Turn;
+            return new BattleEvent(BattleEventType.GenericItemActivation);
         }
 
-        public bool CanModify(DamageBattleEvent damageToModify)
+        public bool CanModify(EnemyDamageBattleEvent enemyDamageToModify)
         {
-            return (BattleManager.Current.Turn == _turnPlayerLastLostLife);
+            return (Battle.Current.Turn == _turnPlayerLastLostLife);
         }
 
-        public int GetDamageMultiplier(DamageBattleEvent damageToModify)
+        public DamageModification GetDamageMultiplier(EnemyDamageBattleEvent enemyDamageToModify)
         {
-            return Amount;
+            return new DamageModification(this, Amount);
         }
     }
 }

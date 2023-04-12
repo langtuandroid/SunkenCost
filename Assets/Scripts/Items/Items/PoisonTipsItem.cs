@@ -1,28 +1,28 @@
 ﻿using System;
 using System.Collections;
 using BattleScreen;
+using BattleScreen.BattleEvents;
+using BattleScreen.BattleEvents.EventTypes;
 
 namespace Items.Items
 {
-    public class PoisonTipsItem : BattleEventResponderItem
+    public class PoisonTipsItem : EquippedItem
     {
-        public override bool GetResponseToBattleEvent(BattleEvent previousBattleEvent)
+        public override bool GetIfRespondingToBattleEvent(BattleEvent battleEvent)
         {
-            return previousBattleEvent is EtchingDamageBattleEvent;
+            return battleEvent is EtchingEnemyDamageBattleEvent;
         }
 
-        protected override IEnumerator Activate(BattleEvent battleEvent)
+        protected override BattleEvent GetResponse(BattleEvent battleEvent)
         {
-            if (battleEvent is EtchingDamageBattleEvent etchingDamageBattleEvent)
+            if (battleEvent is EtchingEnemyDamageBattleEvent etchingDamageBattleEvent)
             {
-                etchingDamageBattleEvent.enemy.stats.AddPoison(Amount);
+                return etchingDamageBattleEvent.enemy.stats.AddPoison(Amount);
             }
             else
             {
-                throw new Exception("Poison Tips shouldn't be responding!");
+                throw new UnexpectedBattleEventException(battleEvent);
             }
-            
-            yield break;
         }
     }
 }

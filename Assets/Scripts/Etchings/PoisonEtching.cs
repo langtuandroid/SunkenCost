@@ -23,7 +23,7 @@ namespace Etchings
             if (!CheckInfluence(enemy.StickNum)) return false;
             
             enemy.stats.AddPoison(_poisonAmount);
-            enemy.Stick.SetTempColour(design.Color);
+            enemy.Plank.SetTempColour(design.Color);
             InGameSfxManager.current.Poisoned();
             UsesUsedThisTurn++;
             return true;
@@ -31,7 +31,7 @@ namespace Etchings
         
         protected override bool CheckInfluence(int stickNum)
         {
-            return stickNum == Stick.GetStickNumber();
+            return stickNum == Plank.GetPlankNum();
         }
     }
 }

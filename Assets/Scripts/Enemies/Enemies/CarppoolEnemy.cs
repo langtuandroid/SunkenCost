@@ -19,7 +19,7 @@ namespace Enemies.Enemies
             return "Spawns a Bull Carp every turn";
         }
 
-        public IEnumerator ExecuteStartOfTurnAbility()
+        public IEnumerator GetStartOfTurnAbilityEventSequence()
         {
             EnemySpawner.current.SpawnActiveEnemy("BullCarp", StickNum);
             yield break;

@@ -48,10 +48,10 @@ public class CucungerEnemy : Enemy
 
         Speak(speakText);
         
-        if (cooldownCounter >= abilityCooldown && StickNum != StickManager.current.stickCount-1)
+        if (cooldownCounter >= abilityCooldown && StickNum != PlankMap.current.stickCount-1)
         {
             cooldownCounter = 0;
-            StickManager.current.DestroyStick(StickManager.current.stickCount-1);
+            PlankMap.current.DestroyStick(PlankMap.current.stickCount-1);
         }
         else
         {
