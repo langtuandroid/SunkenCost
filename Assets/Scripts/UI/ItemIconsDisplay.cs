@@ -11,7 +11,7 @@ namespace UI
 {
     public class ItemIconsDisplay : MonoBehaviour
     {
-        private static ItemIconsDisplay _current;
+        public static ItemIconsDisplay Current;
         
         private Dictionary<ItemInstance, ItemDisplay> _itemDisplaysAndInstances =
             new Dictionary<ItemInstance, ItemDisplay>();
@@ -21,12 +21,12 @@ namespace UI
 
         private void Awake()
         {
-            if (_current)
+            if (Current)
             {
-                Destroy(_current.gameObject);
+                Destroy(Current.gameObject);
             }
 
-            _current = this;
+            Current = this;
         }
 
         private void Start()
@@ -46,11 +46,11 @@ namespace UI
             _itemDisplaysAndInstances.Add(itemInstance, newItemDisplay);
         }
 
-        public static void ActivateItemDisplay(ItemInstance itemInstance)
+        public void ActivateItemDisplay(ItemInstance itemInstance)
         {
-            if (_current._itemDisplaysAndInstances.TryGetValue(itemInstance, out var itemDisplay))
+            if (_itemDisplaysAndInstances.TryGetValue(itemInstance, out var itemDisplay))
             {
-                _current.StartCoroutine(SetTempColor(itemDisplay));
+                StartCoroutine(SetTempColor(itemDisplay));
             }
             else
             {
@@ -58,10 +58,22 @@ namespace UI
             }
         }
 
+        public void RefreshItem(ItemInstance itemInstance, ItemDisplayState itemDisplayState)
+        {
+            if (_itemDisplaysAndInstances.TryGetValue(itemInstance, out var display))
+            {
+                display.UpdateDisplay(itemDisplayState);
+            }
+            else
+            {
+                throw new ArgumentException(itemInstance.Title + " not in display?");
+            }
+        }
+
         private static IEnumerator SetTempColor(ItemDisplay itemDisplay)
         {
             itemDisplay.SetColor(Color.green);
-            yield return new WaitForSeconds(BattleEventsManager.ActionExecutionSpeed);
+            yield return new WaitForSeconds(Battle.ActionExecutionSpeed);
             itemDisplay.SetColor(Color.white);
         }
     }

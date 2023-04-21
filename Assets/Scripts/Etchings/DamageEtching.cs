@@ -1,17 +1,18 @@
-﻿using Designs;
+﻿using BattleScreen;
+using Designs;
 using Enemies;
 
 namespace Etchings
 {
-    public abstract class DamageEtching : CharMovementActivatedEtching
+    public abstract class DamageEtching : LandedOnPlankActivatedEtching
     {
         protected int Damage => GetStatValue(StatType.Damage);
         protected int MinRange => GetStatValue(StatType.MinRange);
         protected int MaxRange => GetStatValue(StatType.MaxRange);
 
-        protected virtual void DamageEnemy(Enemy enemy)
+        protected virtual BattleEvent DamageEnemy(Enemy enemy)
         {
-            DamageHandler.DamageEnemy(Damage, enemy, DamageSource.Etching);
+            return DamageHandler.DamageEnemy(Damage, enemy, DamageSource.Etching, this);
         }
 
         public void ModifyStat(StatType stat, int amount)
@@ -19,7 +20,6 @@ namespace Etchings
             if (!design.Stats.ContainsKey(stat)) return;
         
             design.Stats[stat].AddModifier(new StatModifier(amount, StatModType.Flat));
-            etchingDisplay.UpdateDisplay();
         }
     }
 }

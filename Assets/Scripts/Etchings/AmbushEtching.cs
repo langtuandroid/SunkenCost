@@ -1,4 +1,5 @@
 ﻿using System.Collections.Generic;
+using BattleScreen;
 using Designs;
 
 namespace Etchings
@@ -9,22 +10,19 @@ namespace Etchings
 
         private readonly Stack<StatModifier> _statModifiers = new Stack<StatModifier>();
         
-        protected override void Start()
+        public override bool GetIfRespondingToBattleEvent(BattleEvent battleEvent)
         {
-            OldBattleEvents.Current.OnBeginPlayerTurn += UpdateDamage;
-            base.Start();
-        }
-
-        protected override bool TestCharMovementActivatedEffect()
-        {
-            var success = base.TestCharMovementActivatedEffect();
-
-            if (success)
+            switch (battleEvent.type)
             {
-                _hadEnemyOnPlankThisTurn = true;
+                case BattleEventType.EndedEnemyTurn:
+                    UpdateDamage();
+                    break;
+                case BattleEventType.EnemyMove when battleEvent.enemyAffectee.PlankNum == PlankNum:
+                    _hadEnemyOnPlankThisTurn = true;
+                    break;
             }
 
-            return success;
+            return base.GetIfRespondingToBattleEvent(battleEvent);
         }
 
         private void UpdateDamage()

@@ -1,10 +1,11 @@
 ﻿using System;
 using System.Collections;
 using System.Collections.Generic;
+using BattleScreen;
 using Enemies;
 using UnityEngine;
 
-public class CucungerEnemy : Enemy
+public class CucungerEnemy : Enemy, IStartOfTurnAbilityHolder
 {
     // Smashes the last stick every X turns
     private static int abilityCooldown = 2;
@@ -40,29 +41,32 @@ public class CucungerEnemy : Enemy
         return "Destroys the furthest plank to the right " + turnText;
     }
 
-    protected override void StartOfTurnAbility()
+    public bool GetIfUsingStartOfTurnAbility()
     {
+        return true;
+    }
+
+    public List<BattleEvent> GetStartOfTurnAbility()
+    {
+        var response = new List<BattleEvent>();
+        
         var speakText = (abilityCooldown - cooldownCounter).ToString();
         if (speakText == "0")
             speakText = "X";
 
-        Speak(speakText);
+        UI.Speak(speakText);
+        response.Add(CreateEvent(BattleEventType.EnemySpeaking));
         
-        if (cooldownCounter >= abilityCooldown && StickNum != PlankMap.current.stickCount-1)
+        if (cooldownCounter >= abilityCooldown && PlankNum != PlankMap.Current.PlankCount - 1)
         {
             cooldownCounter = 0;
-            PlankMap.current.DestroyStick(PlankMap.current.stickCount-1);
+            response.Add(PlankMap.Current.DestroyPlank(DamageSource.EnemyAbility, PlankMap.Current.PlankCount - 1));
         }
         else
         {
             cooldownCounter++;
         }
-        
-        base.ExecuteStartOfTurnAbility();
-    }
 
-    protected override bool HasStartOfTurnAbility()
-    {
-        return true;
+        return response;
     }
 }

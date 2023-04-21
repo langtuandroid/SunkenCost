@@ -1,3 +1,6 @@
+using System;
+using System.Collections.Generic;
+using BattleScreen;
 using Designs;
 using UnityEngine;
 
@@ -5,30 +8,44 @@ namespace Etchings
 {
     public class LoneWolfEtching : MeleeEtching
     {
-        private StatModifier _damageModifer;
+        private Stat _baseDamage;
+        private Stat _baseDamageModifier;
+        private StatModifier _damageMod;
 
-        protected override void Start()
+        private void Start()
         {
-            UpdateDamage();
-            OldBattleEvents.Current.OnSticksUpdated += UpdateDamage;
-            base.Start();
+            _baseDamage = new Stat(design.GetStat(StatType.Damage));
+            _baseDamageModifier = new Stat(design.GetStat(StatType.DamageFlatModifier));
         }
 
-        private void UpdateDamage()
+        protected override List<BattleEvent> GetDesignResponsesToEvent(BattleEvent battleEvent)
         {
-            if (_damageModifer is not null)
-                design.Stats[StatType.Damage].RemoveModifier(_damageModifer);
+            var responses = new List<BattleEvent>();
 
-            var penalty = design.GetStat(StatType.DamageFlatModifier) * (PlankMap.current.stickCount - 2);
-
-            _damageModifer = new StatModifier(penalty, StatModType.Flat);
-            design.Stats[StatType.Damage].AddModifier(_damageModifer);
+            switch (battleEvent.type)
+            {
+                case BattleEventType.PlankCreated:
+                case BattleEventType.PlankDestroyed:
+                case BattleEventType.StartBattle:
+                    responses.Add(UpdateDamage());
+                    break;
+            }
+            
+            responses.AddRange(base.GetDesignResponsesToEvent(battleEvent));
+            return responses;
         }
 
-        private void OnDestroy()
+        private BattleEvent UpdateDamage()
         {
-            OldBattleEvents.Current.OnSticksUpdated -= UpdateDamage;
-            design.Stats[StatType.Damage].RemoveModifier(_damageModifer);
+            if (_damageMod is not null)
+                _baseDamage.RemoveModifier(_damageMod);
+
+            var penalty = _baseDamageModifier.Value * (PlankMap.Current.PlankCount - 2);
+
+            _damageMod = new StatModifier(penalty, StatModType.Flat);
+            _baseDamage.AddModifier(_damageMod);
+
+            return new BattleEvent(BattleEventType.DesignModified);
         }
     }
 }

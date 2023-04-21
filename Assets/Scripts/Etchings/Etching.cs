@@ -15,16 +15,11 @@ namespace Etchings
     public abstract class Etching : BattleEventResponder
     {
         public Design design;
-        protected DesignDisplay designDisplay;
-        
-        protected bool colorWhenActivated = false;
-        
-        private Color _normalColor;
-
         public Plank Plank { get; protected set; }
-        protected int deactivationTurns;
+        protected bool deactivated;
 
         protected int UsesPerTurn => design.GetStat(StatType.UsesPerTurn);
+        protected int PlankNum => Plank.GetPlankNum();
 
         protected int UsesUsedThisTurn
         {
@@ -35,13 +30,6 @@ namespace Etchings
         protected void Awake()
         {
             Plank = transform.parent.parent.GetComponent<Plank>();
-            designDisplay = GetComponent<DesignDisplay>();
-        }
-
-        protected virtual void Start()
-        {
-            designDisplay.design = design;
-            _normalColor = designDisplay.TitleText.color;
         }
 
         protected int GetStatValue(StatType statType)
@@ -50,65 +38,59 @@ namespace Etchings
             return -1;
         }
 
-        protected abstract bool CheckInfluence(int stickNum);
-
-        private void EndEnemyTurn()
+        private BattleEvent EndOfEnemyTurn()
         {
             UsesUsedThisTurn = 0;
 
-            if (deactivationTurns > 0)
+            if (deactivated)
             {
-                deactivationTurns--;
-
-                if (deactivationTurns == 0)
-                {
-                    Plank.SetActiveColor(true);
-                }
+                deactivated = false;
+                return CreateEvent(BattleEventType.EtchingActivated);
             }
             
-            designDisplay.Refresh();
-        }
-        
-        private IEnumerator ColorForActivate()
-        {
-            designDisplay.TitleText.color = Color.green;
-            yield return new WaitForSeconds(BattleManager.AttackTime);
-            designDisplay.TitleText.color = _normalColor;
+            return BattleEvent.None;
         }
 
-        public IEnumerator Deactivate(int turns)
+        public BattleEvent Deactivate(DamageSource source)
         {
             Plank.SetActiveColor(false);
-            deactivationTurns = turns;
-            yield return StartCoroutine(BattleSingleton.Current.BattleEvents.EtchingDeactivated());
+            deactivated = true;
+            return CreateEvent(BattleEventType.PlankDeactivated, source);
         }
 
-        public bool GetIfRespondingToBattleEvent(BattleEvent battleEvent)
+        public override bool GetIfRespondingToBattleEvent(BattleEvent battleEvent)
         {
-            switch (battleEvent.battleEventType)
+            if (deactivated) return false;
+
+            return battleEvent.type == BattleEventType.EndedEnemyTurn || GetIfDesignIsRespondingToEvent(battleEvent);
+        }
+
+        public override List<BattleEvent> GetResponseToBattleEvent(BattleEvent battleEvent)
+        {
+            if (battleEvent.type == BattleEventType.EndedEnemyTurn)
+                return new List<BattleEvent>() {EndOfEnemyTurn()};
+
+            var response = new List<BattleEvent>();
+            var plankActivation = CreateEvent(BattleEventType.EtchingActivated);
+            response.AddRange(BattleEventsManager.Current.GetEventAndResponsesList(plankActivation));
+
+            var designResponses = GetDesignResponsesToEvent(battleEvent);
+            foreach (var designResponse in designResponses)
             {
-                case BattleEventType.EndedEnemyTurn:
-                    EndEnemyTurn();
-                    break;
-                case BattleEventType.PlayerMovedPlank:
-                    designDisplay.Refresh();
-                    break;
+                response.AddRange(BattleEventsManager.Current.GetEventAndResponsesList(designResponse));
             }
 
-            if (deactivationTurns > 0) return false;
-            
-            return GetDesignResponseToEvent(battleEvent);
+            UsesUsedThisTurn++;
+            return response;
         }
 
-        public IEnumerator ExecuteResponseToAction(BattleEvent battleEvent)
+        protected BattleEvent CreateEvent(BattleEventType type, DamageSource source = DamageSource.None, Enemy enemy = null, int modifier = 0)
         {
-            StartCoroutine(ColorForActivate());
-            yield return new WaitForSeconds(BattleEventsManager.ActionExecutionSpeed);
-            yield return StartCoroutine(Activate(battleEvent));
+            return new BattleEvent(type, this) {etching = this, damageSource = source, enemyAffectee = enemy, modifier = modifier};
         }
+        
+        protected abstract bool GetIfDesignIsRespondingToEvent(BattleEvent battleEvent);
 
-        protected abstract bool GetDesignResponseToEvent(BattleEvent battleEvent);
-
-        protected abstract IEnumerator Activate(BattleEvent battleEvent);
+        protected abstract List<BattleEvent> GetDesignResponsesToEvent(BattleEvent battleEvent);
     }
 }

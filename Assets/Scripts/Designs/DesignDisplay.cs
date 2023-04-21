@@ -1,72 +1,91 @@
-using System;
 using System.Collections;
 using System.Collections.Generic;
-using Designs;
 using TMPro;
-using Unity.Mathematics;
 using UnityEngine;
-using UnityEngine.EventSystems;
 using UnityEngine.UI;
-using Random = UnityEngine.Random;
 
-public class DesignDisplay : MonoBehaviour
+namespace Designs
 {
-    [SerializeField] private TextMeshProUGUI titleText;
-    public TextMeshProUGUI TitleText => titleText;
-    [SerializeField] private TextMeshProUGUI descriptionText;
-    [SerializeField] private TextMeshProUGUI usesText;
-    [SerializeField] private Image image;
-
-    private CanvasGroup _canvasGroup;
-
-    public Design design;
-
-    public void Awake()
+    public readonly struct DesignDisplayState
     {
-        _canvasGroup = GetComponent<CanvasGroup>();
-        _canvasGroup.alpha = 0f;
+        public readonly string title;
+        public readonly string description;
+        public readonly string uses;
+
+        public DesignDisplayState(string title, string description, string uses) =>
+            (this.title, this.description, this.uses) = (title, description, uses);
     }
-
-    protected virtual void Start()
+    
+    public class DesignDisplay : MonoBehaviour
     {
-        // Give it one frame to catch up
-        StartCoroutine(StartInitialisation());
-    }
-
-    private IEnumerator StartInitialisation()
-    {
-        yield return 0;
-        Init();
-    }
-
-    protected virtual void Init()
-    {
-        TitleText.text = design.Title;
-        Refresh();
-        image.sprite = design.Sprite;
-        _canvasGroup.alpha = 1;
-    }
-
-    public void Refresh()
-    {
-        titleText.text = design.Title;
-        if (design.Level == 1) titleText.text += " +";
-        else if (design.Level == 2) titleText.text += " X";
+        [SerializeField] private TextMeshProUGUI titleText;
+        public TextMeshProUGUI TitleText => titleText;
+        [SerializeField] private TextMeshProUGUI descriptionText;
+        [SerializeField] private TextMeshProUGUI usesText;
+        [SerializeField] private Image image;
         
-        var description = DesignManager.GetDescription(design);
+        public Design design;
+        private CanvasGroup _canvasGroup;
 
-        var descriptionWithSprites = description
-            .Replace("damage", "<sprite=0>")
-            .Replace("movement", "<sprite=1>");
+        public void Awake()
+        {
+            _canvasGroup = GetComponent<CanvasGroup>();
+            _canvasGroup.alpha = 0f;
+        }
 
-        var defaultColor = ColorUtility.ToHtmlStringRGB(descriptionText.color);
-        var allColor = ColorUtility.ToHtmlStringRGB(new Color(0.6f, 0.58f, 0.3f));
+        protected virtual void Start()
+        {
+            // Give it one frame to catch up
+            StartCoroutine(StartInitialisation());
+        }
 
-        var descriptionWithColor = descriptionWithSprites
-            .Replace("all", "<color=#" + allColor + ">all<color=#" + defaultColor + ">");
+        private IEnumerator StartInitialisation()
+        {
+            yield return 0;
+            Init();
+        }
+
+        protected virtual void Init()
+        {
+            TitleText.text = design.Title;
+            UpdateDisplay(GetDisplayState());
+            image.sprite = design.Sprite;
+            _canvasGroup.alpha = 1;
+        }
+
+        public void UpdateDisplayWithCurrentState()
+        {
+            UpdateDisplay(GetDisplayState());
+        }
+
+        protected void UpdateDisplay(DesignDisplayState displayState)
+        {
+            titleText.text = displayState.title;
+            descriptionText.text = displayState.description;
+            usesText.text = displayState.uses;
+        }
+
+        protected DesignDisplayState GetDisplayState()
+        {
+            var title = design.Title;
+            if (design.Level == 1) title += " +";
+            else if (design.Level == 2) title += " X";
         
-        descriptionText.text = descriptionWithColor;
+            var rawDescription = DesignManager.GetDescription(design);
 
-        usesText.text = design.Limitless ? "" : design.Stats[StatType.UsesPerTurn].Value - design.UsesUsedThisTurn + "/" + design.Stats[StatType.UsesPerTurn].Value;
+            var descriptionWithSprites = rawDescription
+                .Replace("damage", "<sprite=0>")
+                .Replace("movement", "<sprite=1>");
+
+            var defaultColor = ColorUtility.ToHtmlStringRGB(descriptionText.color);
+            var allColor = ColorUtility.ToHtmlStringRGB(new Color(0.6f, 0.58f, 0.3f));
+
+            var finalDescription = descriptionWithSprites
+                .Replace("all", "<color=#" + allColor + ">all<color=#" + defaultColor + ">");
+
+            var uses = design.Limitless ? "" : design.Stats[StatType.UsesPerTurn].Value - design.UsesUsedThisTurn + "/" + design.Stats[StatType.UsesPerTurn].Value;
+            
+            return new DesignDisplayState(title, finalDescription, uses);
+        }
     }
 }

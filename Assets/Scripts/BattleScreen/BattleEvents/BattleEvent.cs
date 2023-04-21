@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections;
 using System.Collections.Generic;
+using BattleScreen.BattleEvents;
 using Damage;
 using Enemies;
 using Etchings;
@@ -18,15 +19,18 @@ namespace BattleScreen
         StartedIndividualEnemyTurn,
         EnemyStartMove,
         EnemyMove,
-        EnemyEndTurn,
-        EnemyDebuff,
-        EnemyAbility,
+        EnemyEndMyMove,
+        EnemyMovementModified,
+        EnemyBlocked,
+        EnemySpeaking,
         EnemyHealed,
+        EnemyMaxHealthModified,
         EnemyPoisoned,
         EnemyDamaged,
+        EnemySpawned,
         EnemyKilled,
         EnemyReachedBoat,
-        PlankActivated,
+        EtchingActivated,
         PlankDeactivated,
         PlankDestroyed,
         GenericItemActivation,
@@ -40,12 +44,31 @@ namespace BattleScreen
         PlayerGainedLife,
         PlayerDied,
         PlankCreated,
+        DesignModified,
     }
+    
+    
 
     public class BattleEvent
     {
-        public readonly BattleEventType battleEventType;
+        public readonly BattleEventType type;
+        public readonly BattleEventResponder creator;
+        public int modifier;
+        public List<IBattleEventUpdatedUI> visualisers = new List<IBattleEventUpdatedUI>();
+        public DamageSource damageSource;
+        public DamageModificationPackage damageModificationPackage;
+        public Enemy enemyAffectee;
+        public Etching etching;
+        public EquippedItem item;
+        public Enemy enemyAffector;
+        public int[] plankVisuals;
 
-        public BattleEvent(BattleEventType battleEventType) => this.battleEventType = battleEventType;
+        public BattleEvent(BattleEventType type, BattleEventResponder creator = null)
+        {
+            this.type = type;
+            this.creator = creator;
+        }
+        
+        public static BattleEvent None => new BattleEvent(BattleEventType.None);
     }
 }

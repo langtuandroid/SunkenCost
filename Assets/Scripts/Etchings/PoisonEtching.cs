@@ -1,37 +1,29 @@
-﻿using Designs;
+﻿using System;
+using System.Collections.Generic;
+using BattleScreen;
+using Designs;
+using Enemies;
 
 namespace Etchings
 {
-    public class PoisonEtching : CharMovementActivatedEtching
+    public class PoisonEtching : LandedOnPlankActivatedEtching
     {
-        private Stat _poisonAmountStat;
-        private int _poisonAmount => _poisonAmountStat.Value;
+        private Stat _poisonStat;
 
-        public int initialPoisonAmount;
-
-        protected override void Start()
+        private void Start()
         {
-            _poisonAmountStat = new Stat(design.GetStat(StatType.Poison));
-        
-            base.Start();
+            _poisonStat = new Stat(design.GetStat(StatType.Poison));
         }
 
-        protected override bool TestCharMovementActivatedEffect()
+        protected override List<BattleEvent> GetDesignResponsesToEvent(BattleEvent battleEvent)
         {
-            var enemy = ActiveEnemiesManager.CurrentEnemy;
-
-            if (!CheckInfluence(enemy.StickNum)) return false;
-            
-            enemy.stats.AddPoison(_poisonAmount);
-            enemy.Plank.SetTempColour(design.Color);
-            InGameSfxManager.current.Poisoned();
-            UsesUsedThisTurn++;
-            return true;
+            return new List<BattleEvent>() 
+                {battleEvent.enemyAffectee.stats.AddPoison(_poisonStat.Value)};
         }
-        
-        protected override bool CheckInfluence(int stickNum)
+
+        protected override bool TestCharMovementActivatedEffect(Enemy enemy)
         {
-            return stickNum == Plank.GetPlankNum();
+            return enemy.PlankNum == PlankNum;
         }
     }
 }

@@ -2,7 +2,6 @@
 using System.Collections;
 using BattleScreen;
 using BattleScreen.BattleEvents;
-using BattleScreen.BattleEvents.EventTypes;
 
 namespace Items.Items
 {
@@ -12,25 +11,25 @@ namespace Items.Items
 
         public override bool GetIfRespondingToBattleEvent(BattleEvent battleEvent)
         {
-            return battleEvent.Type == BattleEventType.EnemyKilled ||
-                   battleEvent.Type == BattleEventType.EndedBattle;
+            return battleEvent.type == BattleEventType.EnemyKilled ||
+                   battleEvent.type == BattleEventType.EndedBattle;
         }
         
         protected override BattleEvent GetResponse(BattleEvent battleEvent)
         {
-            switch (battleEvent.Type)
+            switch (battleEvent.type)
             {
                 case BattleEventType.EnemyKilled:
                     _hasKilledEnemyThisBattle = true;
                     break;
                 case BattleEventType.EndedBattle:
-                    if (!_hasKilledEnemyThisBattle) return new TryGainGoldBattleEvent(Amount);
+                    if (!_hasKilledEnemyThisBattle) return new BattleEvent(BattleEventType.TryGainedGold, this) {modifier = Amount};
                     else break;
                 default:
                     throw new UnexpectedBattleEventException(battleEvent);
             }
 
-            return new BattleEvent(BattleEventType.None);
+            return BattleEvent.None;
         }
     }
 }

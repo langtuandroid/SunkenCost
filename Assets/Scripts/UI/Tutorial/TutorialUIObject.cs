@@ -6,6 +6,7 @@ using UnityEngine.UIElements;
 
 public class TutorialUIObject : MonoBehaviour
 {
+    /*
     [SerializeField] private float _xOffset;
     [SerializeField] private float _yOffset;
     
@@ -63,4 +64,5 @@ public class TutorialUIObject : MonoBehaviour
         _canvasGroup.interactable = active;
         _canvasGroup.blocksRaycasts = active;
     }
+    */
 }

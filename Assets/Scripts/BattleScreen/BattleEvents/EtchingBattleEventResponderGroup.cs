@@ -13,10 +13,10 @@ namespace BattleScreen.Events
 
         public override BattleEventResponder[] GetEventResponders(BattleEvent previousBattleEvent)
         {
-            if (previousBattleEvent.Type == BattleEventType.PlayerMovedPlank ||
-                previousBattleEvent.Type == BattleEventType.PlankCreated ||
-                previousBattleEvent.Type == BattleEventType.PlankDestroyed ||
-                previousBattleEvent.Type == BattleEventType.StartedEnemyTurn)
+            if (previousBattleEvent.type == BattleEventType.PlayerMovedPlank ||
+                previousBattleEvent.type == BattleEventType.PlankCreated ||
+                previousBattleEvent.type == BattleEventType.PlankDestroyed ||
+                previousBattleEvent.type == BattleEventType.StartedEnemyTurn)
             {
                 EtchingMap.Current.RefreshEtchingOrder();
                 RefreshEtchingResponderOrder();

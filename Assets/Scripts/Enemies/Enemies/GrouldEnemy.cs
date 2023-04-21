@@ -1,10 +1,11 @@
 ﻿using System;
 using System.Collections;
 using System.Collections.Generic;
+using BattleScreen;
 using Enemies;
 using UnityEngine;
 
-public class GrouldEnemy : Enemy
+public class GrouldEnemy : Enemy, IStartOfTurnAbilityHolder
 {
     protected override void Init()
     {
@@ -19,14 +20,17 @@ public class GrouldEnemy : Enemy
         return "Disables the plank it starts each turn on";
     }
 
-    protected override void StartOfTurnAbility()
+    public bool GetIfUsingStartOfTurnAbility()
     {
-        yield return StartCoroutine(Plank.Etching?.Deactivate(1));
-        InGameSfxManager.current.Slimed();
+        return PlankNum != 0;
     }
 
-    protected override bool HasStartOfTurnAbility()
+    public List<BattleEvent> GetStartOfTurnAbility()
     {
-        return (StickNum != 0);
+        var response = new List<BattleEvent>();
+        var deactivate = Plank.Etching.Deactivate(DamageSource.EnemyAbility);
+        deactivate.enemyAffector = this;
+        response.Add(deactivate);
+        return response;
     }
 }

@@ -1,7 +1,6 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using BattleScreen;
-using BattleScreen.BattleEvents;
-using BattleScreen.BattleEvents.EventTypes;
 using Damage;
 
 namespace Items.Items
@@ -12,21 +11,23 @@ namespace Items.Items
 
         public override bool GetIfRespondingToBattleEvent(BattleEvent battleEvent)
         {
-            return battleEvent.Type == BattleEventType.PlayerLostLife;
+            if (battleEvent.type == BattleEventType.PlayerLostLife)
+                _turnPlayerLastLostLife = Battle.Current.Turn;
+
+            return false;
         }
 
         protected override BattleEvent GetResponse(BattleEvent battleEvent)
         {
-            _turnPlayerLastLostLife = Battle.Current.Turn;
-            return new BattleEvent(BattleEventType.GenericItemActivation);
+            throw new NotImplementedException();
         }
 
-        public bool CanModify(EnemyDamageBattleEvent enemyDamageToModify)
+        public bool CanModify(BattleEvent battleEventToModify)
         {
             return (Battle.Current.Turn == _turnPlayerLastLostLife);
         }
 
-        public DamageModification GetDamageMultiplier(EnemyDamageBattleEvent enemyDamageToModify)
+        public DamageModification GetDamageMultiplier(BattleEvent battleEvent)
         {
             return new DamageModification(this, Amount);
         }

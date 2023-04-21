@@ -1,6 +1,10 @@
-﻿namespace Enemies.Enemies
+﻿using System.Collections.Generic;
+using System.Linq;
+using BattleScreen;
+
+namespace Enemies.Enemies
 {
-    public class Maxolotl : Enemy
+    public class Maxolotl : Enemy, IStartOfTurnAbilityHolder
     {
         private const int HEALING_AMOUNT = 5;
         
@@ -19,19 +23,15 @@
             return "Heals all enemies by " + HEALING_AMOUNT + " health each turn";
         }
 
-        protected override void StartOfTurnAbility()
-        {
-            foreach (var enemy in ActiveEnemiesManager.Current.ActiveEnemies)
-            {
-                enemy.Heal(HEALING_AMOUNT);
-            }
-            
-            base.ExecuteStartOfTurnAbility();
-        }
-
-        protected override bool HasStartOfTurnAbility()
+        public bool GetIfUsingStartOfTurnAbility()
         {
             return true;
+        }
+
+        public List<BattleEvent> GetStartOfTurnAbility()
+        {
+            return EnemyController.Current.AllEnemies.Select
+                (enemy => enemy.Heal(HEALING_AMOUNT)).ToList();
         }
     }
 }

@@ -2,7 +2,6 @@
 using System.Collections;
 using BattleScreen;
 using BattleScreen.BattleEvents;
-using BattleScreen.BattleEvents.EventTypes;
 
 public class Player : BattleEventResponder
 {
@@ -42,44 +41,45 @@ public class Player : BattleEventResponder
 
     private BattleEvent EnemyReachedEnd()
     {
-        return new PlayerLifeBattleEvent(-1, DamageSource.Boat);
+        return new BattleEvent(BattleEventType.PlayerLifeModified, this) 
+            {modifier = -1, damageSource = DamageSource.Boat};
     }
 
-    private BattleEvent ModifyLife(PlayerLifeBattleEvent lifeBattleEvent)
+    private BattleEvent ModifyLife(BattleEvent battleEvent)
     {
         var previousLives = Lives;
-        Lives += lifeBattleEvent.lifeModAmount;
+        Lives += battleEvent.modifier;
 
         if (Lives <= 0)
-            return new BattleEvent(BattleEventType.PlayerDied);
+            return new BattleEvent(BattleEventType.PlayerDied, this);
         
         if (Lives < previousLives)
-            return new BattleEvent(BattleEventType.PlayerGainedLife);
+            return new BattleEvent(BattleEventType.PlayerGainedLife, this);
         
         if (Lives > MaxLives)
             Lives = MaxLives;
         
         if (Lives > previousLives)
-            return new BattleEvent(BattleEventType.PlayerGainedLife);
+            return new BattleEvent(BattleEventType.PlayerGainedLife, this);
         
-        return new BattleEvent(BattleEventType.None);
+        return BattleEvent.None;
     }
     
     private BattleEvent UsedMove()
     {
         MovesUsedThisTurn += 1;
-        return new BattleEvent(BattleEventType.PlayerUsedMove);
+        return new BattleEvent(BattleEventType.PlayerUsedMove, this);
     }
 
-    private BattleEvent TryGainGold(TryGainGoldBattleEvent tryGainGoldBattleEvent)
+    private BattleEvent TryGainGold(BattleEvent battleEvent)
     {
-        Gold += tryGainGoldBattleEvent.amount;
-        return new BattleEvent(BattleEventType.GainedGold);
+        Gold += battleEvent.modifier;
+        return new BattleEvent(BattleEventType.GainedGold, this);
     }
 
     public override bool GetIfRespondingToBattleEvent(BattleEvent battleEvent)
     {
-        switch (battleEvent.Type)
+        switch (battleEvent.type)
         {
             case BattleEventType.EndedEnemyTurn:
                 ResetMoves();
@@ -93,19 +93,14 @@ public class Player : BattleEventResponder
         return false;
     }
 
-    public override IEnumerator DisplayEvent(BattleEvent battleEvent)
-    {
-        throw new NotImplementedException();
-    }
-
     protected override BattleEvent GetResponse(BattleEvent battleEvent)
     {
-        return battleEvent.Type switch
+        return battleEvent.type switch
         {
             BattleEventType.PlayerMovedPlank => UsedMove(),
             BattleEventType.EnemyReachedBoat => EnemyReachedEnd(),
-            BattleEventType.PlayerLifeModified => ModifyLife(battleEvent as PlayerLifeBattleEvent),
-            BattleEventType.TryGainedGold => TryGainGold(battleEvent as TryGainGoldBattleEvent),
+            BattleEventType.PlayerLifeModified => ModifyLife(battleEvent),
+            BattleEventType.TryGainedGold => TryGainGold(battleEvent),
             _ => throw new Exception("Unexpected BattleEventType")
         };
     }

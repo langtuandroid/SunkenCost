@@ -1,23 +1,24 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.Security.Cryptography.X509Certificates;
+using BattleScreen;
+using BattleScreen.BattleEvents;
 using Designs;
 using UnityEngine;
 
 namespace Etchings
 {
-    public class BoostEtching : StickUpdateActivatedEtching
+    public class BoostEtching : StickMovementActivatedEtching
     {
         private readonly List<DamageEtching> _boostedEtchings = new List<DamageEtching>();
         private Stat _boostAmountStat;
         private int _boostAmount => _boostAmountStat.Value;
+        private bool modsActive = false;
 
-        protected override void Start()
+        protected void Start()
         {
             _boostAmountStat = new Stat(design.GetStat(StatType.Boost));
-            colorWhenActivated = false;
-            OldBattleEvents.Current.OnEndBattle += ClearMods;
-            base.Start();
         }
 
         private void ClearMods()
@@ -27,57 +28,68 @@ namespace Etchings
             {
                 etching.ModifyStat(StatType.Damage, -_boostAmount);
             }
+
+            modsActive = false;
             _boostedEtchings.Clear();
         }
         
-        protected override bool TestStickMovementActivatedEffect()
+        protected override bool TestStickMovementActivatedEffect(BattleEvent battleEvent)
         {
-            ClearMods();
-
-            if (deactivationTurns > 0) return false;
+            if (deactivated)
+            {
+                if (modsActive) ClearMods();
+                return false;
+            }
             
-            var stickNumber = Plank.GetPlankNum();
+            return battleEvent.type switch
+            {
+                BattleEventType.EndedEnemyTurn => true,
+                BattleEventType.EndedBattle => true,
+                BattleEventType.PlankDestroyed => true,
+                BattleEventType.PlayerMovedPlank => true,
+                BattleEventType.PlankCreated => true,
+                BattleEventType.DesignModified => true,
+                _ => false
+            };
+        }
+
+        protected override List<BattleEvent> GetDesignResponsesToEvent(BattleEvent battleEvent)
+        {
+            if (modsActive) ClearMods();
 
             // Etching to the left
-            if (stickNumber > 1)
+            if (PlankNum > 1)
             {
-                var leftEtching = PlankMap.current.GetStick(stickNumber - 1);
-                if (leftEtching && leftEtching.etching)
+                var leftPlank = PlankMap.Current.GetPlank(PlankNum - 1);
+                if (leftPlank && leftPlank.Etching && leftPlank.Etching is DamageEtching damageEtching)
                 {
-                    if (leftEtching.etching is DamageEtching etching)
-                    {
-                        _boostedEtchings.Add(etching);
-                    }
+                    _boostedEtchings.Add(damageEtching);
+                    modsActive = true;
                 }
             }
             
             // Etching to the right
-            if (stickNumber < PlankMap.current.stickCount)
+            if (PlankNum < PlankMap.Current.PlankCount)
             {
-                var rightEtching = PlankMap.current.GetStick(stickNumber + 1);
-                if (rightEtching && rightEtching.etching)
+                var rightPlank = PlankMap.Current.GetPlank(PlankNum + 1);
+                if (rightPlank && rightPlank.Etching && rightPlank.Etching is DamageEtching damageEtching)
                 {
-                    if (rightEtching.etching is DamageEtching etching)
-                    {
-                        _boostedEtchings.Add(etching);
-                    }
+                    _boostedEtchings.Add(damageEtching);
+                    modsActive = true;
                 }
             }
 
-            if (_boostedEtchings.Count == 0) return false;
+            if (_boostedEtchings.Count == 0) return new List<BattleEvent>() {BattleEvent.None};
+
+            var events = new List<BattleEvent>();
 
             foreach (var etching in _boostedEtchings)
             {
                 etching.ModifyStat(StatType.Damage, +_boostAmount);
+                events.Add(CreateEvent(BattleEventType.DesignModified));
             }
 
-            return true;
+            return events;
         }
-
-        protected override bool CheckInfluence(int stickNum)
-        {
-            return (stickNum == Plank.GetPlankNum() - 1 || stickNum == Plank.GetPlankNum() + 1);
-        }
-        
     }
 }

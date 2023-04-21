@@ -38,20 +38,7 @@ public class InGameSfxManager : MonoBehaviour
         current = this;
         _audioSource = GetComponent<AudioSource>();
     }
-
-    private void Start()
-    {
-        GlobalEvents.current.OnLoadedLevel += LoadedLevel;
-    }
-
-    private void LoadedLevel()
-    {
-        OldBattleEvents.Current.OnStickAdded += MovedStick;
-        OldBattleEvents.Current.OnPlayerMovedStick += MovedStick;
-
-        OldBattleEvents.Current.OnOfferDesigns += OfferedDesigns;
-    }
-
+    
     private void OfferedDesigns()
     {
         _successfulBuyPlankSound.Play();
@@ -121,13 +108,5 @@ public class InGameSfxManager : MonoBehaviour
     {
         yield return new WaitForSeconds(0.2f);
         _beginTurnSound.Play();
-    }
-
-    private void OnDestroy()
-    {
-        if (!OldBattleEvents.Current) return;
-        
-        OldBattleEvents.Current.OnStickAdded -= MovedStick;
-        OldBattleEvents.Current.OnPlayerMovedStick -= MovedStick;
     }
 }

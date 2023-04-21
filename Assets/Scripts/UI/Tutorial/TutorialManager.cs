@@ -10,6 +10,7 @@ using Action = System.Action;
 
 public class TutorialManager : MonoBehaviour
 {
+    /*
     public static TutorialManager current;
     
     [SerializeField] private GameObject tutorialTextPopupPrefab;
@@ -418,7 +419,7 @@ public class TutorialManager : MonoBehaviour
         Destroy(gameObject);
     }
     
-    /* SET IN TUTORIAL FOR LATER BITS */
+    /* SET IN TUTORIAL FOR LATER BITS
     
     
     #endregion
@@ -436,4 +437,6 @@ public class TutorialManager : MonoBehaviour
     {
         if (_subscribedToOnSticksUpdated) OldBattleEvents.Current.OnSticksUpdated -= CheckForZoomOut;
     }
+    
+    */
 }

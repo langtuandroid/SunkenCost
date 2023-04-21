@@ -1,35 +1,32 @@
+using System.Collections.Generic;
 using System.Linq;
+using BattleScreen;
+using Enemies;
 using UnityEngine;
 
 namespace Etchings
 {
     public class FinaliseEtching : DamageEtching
     {
-        protected override bool CheckInfluence(int stickNum)
+        protected override List<BattleEvent> GetDesignResponsesToEvent(BattleEvent battleEvent)
         {
-            return stickNum == Plank.GetPlankNum();
-        }
+            var currentMovingEnemy = battleEvent.enemyAffectee;
 
-        protected override bool TestCharMovementActivatedEffect()
-        {
-            var currentEnemy = ActiveEnemiesManager.CurrentEnemy;
+            var enemiesOnPlanks = EnemyController.Current.AllEnemies.Where(e => e.PlankNum != 0).ToArray();
 
-            if (!CheckInfluence(currentEnemy.StickNum)) return false;
-
-            var enemiesOnPlanks = ActiveEnemiesManager.Current.ActiveEnemies.Where
-                (e => e.StickNum != 0).ToArray();
-            foreach (var enemy in enemiesOnPlanks)
-            {
-                if (enemy.StickNum > 0) enemy.Plank.SetTempColour(design.Color);
-                DamageEnemy(enemy);
-            }
-
+            var response = enemiesOnPlanks.Select(DamageEnemy).ToList();
+            
             if (enemiesOnPlanks.Any(e => !e.IsDestroyed))
             {
-                Player.current.TakeLife();
+                response.Add(CreateEvent(BattleEventType.PlayerLifeModified, modifier: -1));
             }
-            
-            return true;
+
+            return response;
+        }
+
+        protected override bool TestCharMovementActivatedEffect(Enemy enemy)
+        {
+            return enemy.PlankNum == PlankNum;
         }
     }
 }

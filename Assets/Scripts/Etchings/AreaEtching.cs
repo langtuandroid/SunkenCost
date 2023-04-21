@@ -1,43 +1,37 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Linq;
+using BattleScreen;
+using Enemies;
 using UnityEngine;
 
 namespace Etchings
 {
     public class AreaEtching : DamageEtching
     {
-        protected override bool TestCharMovementActivatedEffect()
+        //TEST INFLUENCE
+        //return Math.Abs(PlankNum - battleEvent.enemyAffected.PlankNum) <= MaxRange;
+
+        protected override List<BattleEvent> GetDesignResponsesToEvent(BattleEvent battleEvent)
         {
-            var stickNum = Plank.GetPlankNum();
-            if (Math.Abs(ActiveEnemiesManager.CurrentEnemy.StickNum - stickNum) > MaxRange) return false;
-            
-            var stickNums = new List<int>();
-            for (var i = stickNum - MaxRange; i <= stickNum + MaxRange && i < PlankMap.current.stickCount; i++)
+            var plankNums = new List<int>();
+            for (var i = PlankNum - MaxRange; i <= PlankNum + MaxRange && i < PlankMap.Current.PlankCount; i++)
             {
                 if (i <= 0) 
                     i = 1;
-                PlankMap.current.stickGrid.GetChild(i).GetComponent<Plank>().SetTempColour(design.Color);
-                stickNums.Add(i);
+                plankNums.Add(i);
             }
 
-            var enemies = ActiveEnemiesManager.Current.GetEnemiesOnSticks(stickNums);
-            
-            if (enemies.Count == 0) return false;
-            
-            InGameSfxManager.current.DamagedEnemy();
-            
-            foreach (var enemy in enemies)
-            {
-                DamageEnemy(enemy);
-            }
+            var enemies = EnemyController.Current.GetEnemiesOnPlanks(plankNums);
+
+            return enemies.Select(DamageEnemy).ToList();
+        }
+
+        protected override bool TestCharMovementActivatedEffect(Enemy enemy)
+        {
+            if (Math.Abs(enemy.PlankNum - PlankNum) > MaxRange) return false;
             UsesUsedThisTurn++;
             return true;
         }
-        
-        protected override bool CheckInfluence(int stickNum)
-        {
-            return Math.Abs(Plank.GetPlankNum() - stickNum) <= MaxRange;
-        }
-        
     }
 }

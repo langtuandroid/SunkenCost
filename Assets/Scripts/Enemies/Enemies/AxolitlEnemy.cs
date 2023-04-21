@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections;
 using System.Collections.Generic;
+using BattleScreen;
 using Enemies;
 using UnityEngine;
 
@@ -21,19 +22,21 @@ public class AxolitlEnemy : Enemy, IStartOfTurnAbilityHolder
     {
         return "Heals " + _healingAmount + " health each turn";
     }
-    
-    public IEnumerator GetStartOfTurnAbilityEventSequence()
+
+    public bool GetIfUsingStartOfTurnAbility()
     {
-        // Only heal up to max heath
-        if (Health >= MaxHealth.Value) yield break;
+        return Health < MaxHealth;
+    }
+
+    public List<BattleEvent> GetStartOfTurnAbility()
+    {
+        var response = new List<BattleEvent>
+        {
+            MaxHealth - _healingAmount > _healingAmount
+                ? Heal(_healingAmount)
+                : Heal(MaxHealth - Health)
+        };
         
-        if (MaxHealth.Value - _healingAmount > _healingAmount)
-        {
-            yield return StartCoroutine(Heal(_healingAmount));
-        }
-        else
-        {
-            yield return StartCoroutine(Heal(MaxHealth.Value - Health));
-        }
+        return response;
     }
 }

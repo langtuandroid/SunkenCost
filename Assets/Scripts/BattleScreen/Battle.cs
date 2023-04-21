@@ -2,7 +2,6 @@
 using System.Collections.Generic;
 using BattleScene;
 using BattleScreen.BattleEvents;
-using BattleScreen.BattleEvents.EventTypes;
 using Disturbances;
 using UnityEngine;
 
@@ -25,6 +24,7 @@ namespace BattleScreen
         
         
         [SerializeField] private EndOfBattlePopup _endOfBattlePopup;
+        [SerializeField] private BattleHUDManager _hudManager;
 
         public int Turn { get; private set; }
         public GameState GameState { get; private set; } = GameState.Loading;
@@ -39,19 +39,25 @@ namespace BattleScreen
 
         private void Start()
         {
-            BattleEvents.BattleEventsManager.Current.StartBattle();
+            foreach (var design in RunProgress.PlayerStats.Deck)
+            {
+                var plank = PlankMap.Current.CreatePlank();
+                EtchingMap.Current.CreateEtching(plank, design);
+            }
+            
+            BattleEventsManager.Current.StartBattle();
         }
 
         public void ClickedNextTurn()
         {
             if (GameState == GameState.PlayerTurn) StartCoroutine(NextEnemyTurn());
         }
-
-        public void VisualisePlayerEvents(Queue<BattleEvent> battleEvents)
+        
+        public void ClickedQuit()
         {
-            
+            throw new System.NotImplementedException();
         }
-
+        
         private IEnumerator NextEnemyTurn()
         {
             Turn++;
@@ -62,22 +68,26 @@ namespace BattleScreen
             GameState = GameState.PlayerTurn;
         }
 
-        public static IEnumerator VisualiseBattleEvents(Queue<BattleEvent> battleEvents)
+        public IEnumerator VisualiseBattleEvents(Queue<BattleEvent> battleEvents)
         {
             while (battleEvents.Count > 0)
             {
                 var nextBattleEvent = battleEvents.Dequeue();
                 
-                if (nextBattleEvent.battleEventType == BattleEventType.None)
+                _hudManager.UpdateDisplay(nextBattleEvent.type);
+                
+                foreach (var visualiser in nextBattleEvent.visualisers)
+                    visualiser.LoadNextState();
+                
+                if (nextBattleEvent.type == BattleEventType.None)
                     continue;
                 
-                if (nextBattleEvent.battleEventType == BattleEventType.PlayerDied)
+                if (nextBattleEvent.type == BattleEventType.PlayerDied)
                     yield break;
-
-                if (nextBattleEvent is VisualisedBattleEvent v)
-                {
-                    v.visualiser.StartVisualisationCoroutine(nextBattleEvent);
-                }
+                
+                if (nextBattleEvent.type == BattleEventType.EnemyDamaged)
+                    yield return new WaitForSeconds
+                        (ActionExecutionSpeed * nextBattleEvent.damageModificationPackage.ModCount);
                 
                 yield return new WaitForSeconds(ActionExecutionSpeed);
             }

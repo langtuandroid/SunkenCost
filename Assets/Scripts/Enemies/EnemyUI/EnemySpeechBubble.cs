@@ -1,35 +1,36 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using BattleScreen;
 using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
 
 public class EnemySpeechBubble : MonoBehaviour
 {
-    private TextMeshProUGUI _text;
+    private TextMeshProUGUI _textMeshProUGUI;
     private Image _image;
 
     private void Awake()
     {
-        _text = GetComponentInChildren<TextMeshProUGUI>();
+        _textMeshProUGUI = GetComponentInChildren<TextMeshProUGUI>();
         _image = GetComponent<Image>();
     }
 
-    public void WriteText(string text)
+    public void DisplayText(string text)
     {
         StartCoroutine(Activate(text));
     }
 
     private IEnumerator Activate(string text)
     {
-        _text.text = text;
-        _text.enabled = true;
+        _textMeshProUGUI.text = text;
+        _textMeshProUGUI.enabled = true;
         _image.enabled = true;
         
-        yield return new WaitForSeconds(BattleManager.AttackTime * 1.5f);
+        yield return new WaitForSeconds(Battle.ActionExecutionSpeed * 1.5f);
 
-        _text.enabled = false;
+        _textMeshProUGUI.enabled = false;
         _image.enabled = false;
     }
 }

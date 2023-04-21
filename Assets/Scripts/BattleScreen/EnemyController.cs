@@ -3,6 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Linq;
+using BattleScreen.BattleEvents;
 using Enemies;
 using UnityEngine;
 using UnityEngine.Serialization;
@@ -19,16 +20,21 @@ namespace BattleScreen
         public int NumberOfEnemies => _enemies.Count;
         public ReadOnlyCollection<Enemy> AllEnemies => new ReadOnlyCollection<Enemy>(_enemies);
 
+        private EnemyBattleEventResponderGroup _enemyBattleEventResponderGroup;
+
         private void Awake()
         {
             if (Current) Destroy(Current.gameObject);
             Current = this;
+
+            _enemyBattleEventResponderGroup = GetComponent<EnemyBattleEventResponderGroup>();
         }
 
         public void AddEnemy(Enemy enemy)
         {
             _enemies.Add(enemy);
             _enemyCurrentTurnMoveQueue.Enqueue(enemy);
+            _enemyBattleEventResponderGroup.EnemySpawned(enemy);
         }
 
         public Enemy GetRandomEnemy()
@@ -42,12 +48,16 @@ namespace BattleScreen
             
             RefreshEnemies();
             _enemyCurrentTurnMoveQueue = new Queue<Enemy>(_enemies);
+            var enemyCount = _enemies.Count;
+            var currentEnemyTurnOrder = 1;
 
             while (_enemyCurrentTurnMoveQueue.Count > 0)
             {
                 var enemy = _enemyCurrentTurnMoveQueue.Dequeue();
-                
+
                 if (!EnemyIsAlive(enemy)) continue;
+                
+                enemy.SetTurnOrder(currentEnemyTurnOrder);
                 
                 // Apply any start-of effects on the enemy
                 turn.AddRange(enemy.StartTurn());
@@ -62,6 +72,8 @@ namespace BattleScreen
                 
                 // TODO: End of turn processing
                 turn.AddRange(enemy.EndTurn());
+
+                currentEnemyTurnOrder++;
             }
 
             return turn;
@@ -70,17 +82,17 @@ namespace BattleScreen
         public List<Enemy> GetEnemiesOnStick(int stick)
         {
             var enemies = new List<Enemy>();
-            enemies.AddRange(_enemies.Where(e => e.StickNum == stick));
+            enemies.AddRange(_enemies.Where(e => e.PlankNum == stick));
 
             return enemies;
         }
 
-        public List<Enemy> GetEnemiesOnSticks(List<int> sticks)
+        public List<Enemy> GetEnemiesOnPlanks(List<int> sticks)
         {
             var enemies = new List<Enemy>();
             foreach (var stick in sticks)
             {
-                enemies.AddRange(_enemies.Where(e => e.StickNum == stick));
+                enemies.AddRange(_enemies.Where(e => e.PlankNum == stick));
             }
 
             return enemies;

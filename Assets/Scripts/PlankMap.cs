@@ -41,11 +41,11 @@ public class PlankMap : MonoBehaviour
     private void Update()
     {
         // Can't move or add if it's not the player's turn
-        if (Battle.Current.GameState != GameState.PlayerTurn)
+        if (Battle.Current.GameState != GameState.PlayerTurn || Player.Current.IsOutOfMoves)
         {
             _plankGridController.IsDraggable = false;
         }
-        else if (!_plankGridController.IsDraggable)
+        else if (!_plankGridController.IsDraggable && !Player.Current.IsOutOfMoves)
         {
             _plankGridController.IsDraggable = true;
         }
@@ -58,17 +58,19 @@ public class PlankMap : MonoBehaviour
         return _plankGridController.Content.GetChild(plankPosition).GetComponent<Plank>();
     }
 
-    public GameObject CreateStick()
+    public Plank CreatePlank()
     {
         var newPlank = Instantiate(_plankPrefab, _plankGrid);
-        newPlank.transform.SetSiblingIndex(PlankCount);
         PlankCount++;
+        newPlank.transform.SetSiblingIndex(PlankCount);
         _plankGridController.Refresh();
-        _planks.Add(newPlank.GetComponent<Plank>());
-        return newPlank;
+
+        var plank = newPlank.GetComponent<Plank>();
+        _planks.Add(plank);
+        return plank;
     }
 
-    public List<BattleEvent> DestroyPlank(DamageSource source, int plankPosition = -1, Plank plank = null)
+    public BattleEvent DestroyPlank(DamageSource source, int plankPosition = -1, Plank plank = null)
     {
         if (plankPosition != -1)
             plank = GetPlank(plankPosition);
@@ -83,8 +85,7 @@ public class PlankMap : MonoBehaviour
         if (plank.Etching) EtchingMap.Current.RemoveEtching(plank.Etching);
         PlankCount--;
         
-        var plankDestructionEvent = new BattleEvent(BattleEventType.PlankDestroyed);
-        return BattleEventsManager.Current.GetEventAndResponsesList(plankDestructionEvent);
+        return new BattleEvent(BattleEventType.PlankDestroyed);
     }
     
     private IEnumerator WaitForPlankDestruction(Plank plank)

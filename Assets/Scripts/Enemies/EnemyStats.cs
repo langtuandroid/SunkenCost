@@ -1,7 +1,6 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using BattleScreen;
-using BattleScreen.BattleEvents.EventTypes;
 using Enemies;
 using UnityEngine;
 
@@ -22,7 +21,7 @@ public class EnemyStats
         _enemy.UI.PoisonImage.enabled = true;
         _enemy.UI.PoisonText.enabled = true;
         _enemy.UI.PoisonText.text = Poison.ToString();
-        return new EnemyPoisonBattleEvent(_enemy, amount);
+        return new BattleEvent(BattleEventType.EnemyPoisoned) {enemyAffectee = _enemy, modifier = amount};
     }
 
     public void RemovePoison(int amount)

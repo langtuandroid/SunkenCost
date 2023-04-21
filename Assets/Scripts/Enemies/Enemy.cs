@@ -3,8 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using BattleScreen;
 using BattleScreen.BattleEvents;
-using BattleScreen.BattleEvents.EventTypes;
-using BattleScreen.Events;
+using Enemies.EnemyUI;
 using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
@@ -17,15 +16,17 @@ namespace Enemies
         public EnemyStats stats;
 
         private EnemyAnimationController _animationController;
-        
-        
+
+
         public string Name { get; protected set; }
         
-        public  Stat MaxHealth { get; private set; }
+        public Stat MaxHealthStat { get; private set; }
         public int Gold { get; protected set; }
         public int Health { get; private set; }
-        public float Size { get; protected set; } = 1;
         
+        public int TurnOrder { get; private set; }
+        public float Size { get; protected set; } = 1;
+
         public bool Moving { get; private set; } = false;
 
         public bool IsDestroyed { get; private set; } = false;
@@ -33,8 +34,10 @@ namespace Enemies
         public EnemyMover Mover { get; private set; }
         public EnemyUI.EnemyUI UI { get; private set; }
 
+        public int MaxHealth => MaxHealthStat.Value;
+
         public Plank Plank => PlankMap.Current.GetPlank(Mover.StickNum);
-        public int StickNum => Mover.StickNum;
+        public int PlankNum => Mover.StickNum;
 
         public bool FinishedMoving => Mover.FinishedMoving;
 
@@ -53,23 +56,20 @@ namespace Enemies
         
         protected virtual void Start()
         {
-            ChangeHealth(MaxHealth.Value);
-            UI.TooltipTrigger.header = Name;
+            ChangeHealth(MaxHealthStat.Value);
         }
 
         protected void SetInitialHealth(int health)
         {
             // TODO: APPLY MODIFIERS
-            MaxHealth = new Stat(health);
+            MaxHealthStat = new Stat(health);
         }
         
         public List<BattleEvent> StartTurn()
         {
             var startTurnEvents = new List<BattleEvent>();
             
-            var startTurnEvent = new EnemyBattleEvent(BattleEventType.StartedIndividualEnemyTurn, this);
-            startTurnEvents.AddRange(
-                BattleEventsManager.Current.GetEventAndResponsesList(startTurnEvent));
+            var startTurnEvent = CreateEventAndResponses(BattleEventType.StartedIndividualEnemyTurn);
             
             // Apply poison
             if (stats.Poison > 0)
@@ -79,7 +79,10 @@ namespace Enemies
 
             if (this is IStartOfTurnAbilityHolder startOfTurnAbilityHolder)
             {
-                startTurnEvents.AddRange(startOfTurnAbilityHolder.GetStartOfTurnAbility());
+                foreach (var battleEvent in startOfTurnAbilityHolder.GetStartOfTurnAbility())
+                {
+                    startTurnEvents.AddRange(BattleEventsManager.Current.GetEventAndResponsesList(battleEvent));
+                }
             }
 
             return startTurnEvents;
@@ -91,24 +94,20 @@ namespace Enemies
             Mover.Move();
 
             // TEMPORARY Destroy if at end
-            if (StickNum >= PlankMap.Current.PlankCount)
+            if (PlankNum >= PlankMap.Current.PlankCount)
             {
                 DestroySelf(DamageSource.Boat);
                 
-                var enemyReachedBoatEvent = new EnemyBattleEvent(BattleEventType.EnemyReachedBoat, this);
-                return (BattleEventsManager.Current.GetEventAndResponsesList(enemyReachedBoatEvent));
+                return CreateEventAndResponses(BattleEventType.EnemyReachedBoat);
             }
             
-            var enemyMovedStepTurnAction = new EnemyBattleEvent(BattleEventType.EnemyMove, this);
-            
-            return
-                BattleEventsManager.Current.GetEventAndResponsesList(enemyMovedStepTurnAction);
+            return CreateEventAndResponses(BattleEventType.EnemyMove);
         }
 
         public List<BattleEvent> EndTurn()
         {
-            var endTurnEvent = new EnemyBattleEvent(BattleEventType.EnemyEndTurn, this);
-            return BattleEventsManager.Current.GetEventAndResponsesList(endTurnEvent);
+            Mover.EndTurn();
+            return CreateEventAndResponses(BattleEventType.EnemyEndMyMove);
         }
 
         public IEnumerator MoveAnimation()
@@ -129,7 +128,7 @@ namespace Enemies
         public IEnumerator HealAnimation()
         {
             InGameSfxManager.current.Healed();
-            UI.HealthText.AlterHealth(Health, MaxHealth.Value);
+            UI.HealthText.AlterHealth(Health, MaxHealthStat.Value);
             _animationController.Heal();
             
             yield break;
@@ -154,9 +153,10 @@ namespace Enemies
             
         }
 
-        public void Block(int blockAmount)
+        public BattleEvent Block(int blockAmount)
         {
             Mover.Block(blockAmount);
+            return CreateEvent(BattleEventType.EnemyBlocked, blockAmount);
         }
 
         public void RePosition(Vector2 newPosition)
@@ -174,29 +174,28 @@ namespace Enemies
             }
         }
     
-        public List<BattleEvent> Heal(int amount)
+        public BattleEvent Heal(int amount)
         {
             var healAmount = amount;
-            var healthDifference = (MaxHealth.Value - Health);
+            var healthDifference = (MaxHealthStat.Value - Health);
             if (healthDifference < healAmount) healAmount = healthDifference;
             
             ChangeHealth(healAmount);
 
-            var healingEvent = new EnemyHealBattleEvent(this, healAmount);
-            return BattleEventsManager.Current.GetEventAndResponsesList(healingEvent);
+            return CreateEvent(BattleEventType.EnemyHealed, healAmount);
         }
 
         public void AddMaxHealthModifier(StatModifier statModifier)
         {
-            MaxHealth.AddModifier(statModifier);
-            var overHeal = Health - MaxHealth.Value;
+            MaxHealthStat.AddModifier(statModifier);
+            var overHeal = Health - MaxHealthStat.Value;
             
             ChangeHealth(overHeal > 0 ? -overHeal : 0);
         }
 
         public void RemoveMaxHealthModifier(StatModifier statModifier)
         {
-            MaxHealth.RemoveModifier(statModifier);
+            MaxHealthStat.RemoveModifier(statModifier);
             ChangeHealth(0);
         }
 
@@ -207,23 +206,36 @@ namespace Enemies
 
         public void SetTurnOrder(int turnOrder)
         {
-            UI.TurnOrderText.SetTurnOrder(turnOrder);
-        }
-
-        protected void Speak(string text)
-        {
-            UI.SpeechBubble.WriteText(text);
+            TurnOrder = turnOrder;
         }
 
         public abstract string GetDescription();
+
+        protected BattleEvent CreateEvent(BattleEventType type, int modifier = 0,
+            DamageSource damageSource = DamageSource.None)
+        {
+            return new BattleEvent(type) 
+                {enemyAffectee = this, modifier = modifier, damageSource = damageSource};
+        }
+
+        private List<BattleEvent> CreateEventAndResponses(BattleEventType type, int modifier = 0, 
+            DamageSource damageSource = DamageSource.None)
+        {
+            var battleEvent = CreateEvent(type, modifier, damageSource);
+            return BattleEventsManager.Current.GetEventAndResponsesList(battleEvent);
+        }
 
         public virtual List<BattleEvent> DestroySelf(DamageSource damageSource)
         {
             IsDestroyed = true;
             Moving = false;
             
-            var enemyKilledEvent = new EnemyKillBattleEvent(this, damageSource);
-            return BattleEventsManager.Current.GetEventAndResponsesList(enemyKilledEvent);
+            return CreateEventAndResponses(BattleEventType.EnemyKilled, damageSource: damageSource);
+        }
+
+        public override bool GetIfRespondingToBattleEvent(BattleEvent battleEvent)
+        {
+            return false;
         }
     }
 }

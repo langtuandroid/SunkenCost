@@ -1,8 +1,10 @@
 ﻿using System;
+using System.Collections.Generic;
+using BattleScreen;
 
 namespace Enemies.Enemies
 {
-    public class LeechEnemy : Enemy
+    public class LeechEnemy : Enemy, IStartOfTurnAbilityHolder
     {
         private SteeloEnemy _steelo;
         
@@ -21,25 +23,27 @@ namespace Enemies.Enemies
             }
         }
 
-        protected override bool HasStartOfTurnAbility()
-        {
-            return (_steelo && !_steelo.IsDestroyed);
-        }
-
-        protected override void StartOfTurnAbility()
-        {
-            var damage = MaxHealth.Value - Health;
-            if (damage <= 0) return;
-            
-            if (_steelo.Health < damage) damage = _steelo.Health;
-            
-            DamageHandler.DamageEnemy(damage, _steelo, DamageSource.EnemyAbility);
-            Heal(damage);
-        }
-
         public override string GetDescription()
         {
             return "At the start of it's turn it leeches health from Steelo";
+        }
+
+        public bool GetIfUsingStartOfTurnAbility()
+        {
+            return (_steelo && !_steelo.IsDestroyed && MaxHealth - Health > 0);
+        }
+
+        public List<BattleEvent> GetStartOfTurnAbility()
+        {
+            var damage = MaxHealth - Health;
+
+            if (_steelo.Health < damage) damage = _steelo.Health;
+
+            var response = new List<BattleEvent>();
+            
+            response.Add(DamageHandler.DamageEnemy(damage, _steelo, DamageSource.EnemyAbility));
+            response.Add(Heal(damage));
+            return response;
         }
     }
 }

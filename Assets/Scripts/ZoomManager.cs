@@ -43,11 +43,9 @@ public class ZoomManager : MonoBehaviour
         _gameCamera = GetComponent<Camera>();
         
         SetStickScale();
-        
-        OldBattleEvents.Current.OnStickAdded += SetStickScale;
     }
 
-    private void SetStickScale()
+    public void SetStickScale()
     {
         var stickCount = PlankMap.Current.PlankCount;
         stickScale = stickCount <= 5 ? 1 : (1f - 0.13f - ((stickCount - 6) * 0.1f));

@@ -9,7 +9,7 @@ namespace Items.Items
     {
         public override bool GetIfRespondingToBattleEvent(BattleEvent battleEvent)
         {
-            return battleEvent.Type == BattleEventType.EnemyReachedBoat;
+            return battleEvent.type == BattleEventType.EnemyReachedBoat;
         }
 
         public override List<BattleEvent> GetResponseToBattleEvent(BattleEvent battleEvent)

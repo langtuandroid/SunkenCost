@@ -60,7 +60,7 @@ GameObject:
   - component: {fileID: 9030936314841676894}
   - component: {fileID: 1957974301743806241}
   m_Layer: 5
-  m_Name: Stick
+  m_Name: Plank
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -100,10 +100,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 334e499b2e731f14b969e3b6305c33a0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  plankImage: {fileID: 1783619837528516207}
-  washImage: {fileID: 8036491537051007689}
-  etching: {fileID: 0}
-  mouseIsOver: 0
+  _plankImage: {fileID: 1783619837528516207}
+  _washImage: {fileID: 8036491537051007689}
 --- !u!1001 &8463438074134601691
 PrefabInstance:
   m_ObjectHideFlags: 0

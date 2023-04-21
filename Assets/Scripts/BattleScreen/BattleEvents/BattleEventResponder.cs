@@ -1,4 +1,5 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -14,8 +15,9 @@ namespace BattleScreen.BattleEvents
             return BattleEventsManager.Current.GetEventAndResponsesList(response);
         }
 
-        public abstract IEnumerator DisplayEvent(BattleEvent battleEvent);
-
-        protected abstract BattleEvent GetResponse(BattleEvent battleEvent);
+        protected virtual BattleEvent GetResponse(BattleEvent battleEvent)
+        {
+            throw new NotImplementedException();
+        }
     }
 }

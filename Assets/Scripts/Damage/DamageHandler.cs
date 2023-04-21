@@ -4,8 +4,6 @@ using System.Collections.Generic;
 using System.Linq;
 using BattleScreen;
 using BattleScreen.BattleEvents;
-using BattleScreen.BattleEvents.EventTypes;
-using BattleScreen.Events;
 using Damage;
 using Enemies;
 using Etchings;
@@ -14,41 +12,57 @@ using UnityEngine;
 
 public enum DamageSource 
 {
+    None,
     Etching,
     Poison,
     Item,
     Self,
     EnemyAbility,
-    Boat
+    Boat,
 }
 
-public enum DamageModificationType
-{
-    Flat,
-    Multi
-}
 public interface IDamageFlatModifier
 {
-    public bool CanModify(EnemyDamageBattleEvent enemyDamageToModify);
+    public bool CanModify(BattleEvent battleEventToModify);
     
-    public DamageModification GetDamageAddition(EnemyDamageBattleEvent enemyDamageToModify);
+    public DamageModification GetDamageAddition(BattleEvent battleEventToModify);
 }
     
 public interface IDamageMultiplierModifier
 {
-    public bool CanModify(EnemyDamageBattleEvent enemyDamageToModify);
-    public DamageModification GetDamageMultiplier(EnemyDamageBattleEvent enemyDamageToModify);
+    public bool CanModify(BattleEvent battleEventToModify);
+    public DamageModification GetDamageMultiplier(BattleEvent battleEventToModify);
 }
 
 public static class DamageHandler
 {
-    public static BattleEvent DamageEnemy(int directDamage, Enemy enemy, DamageSource source, 
+    public static BattleEvent DamageEnemy(int directDamage, Enemy enemy, DamageSource source,
         Etching etching = null, EquippedItem item = null, Enemy enemyDamaging = null)
     {
         var damage = directDamage;
 
-        var preModDamageBattleAction = GetNewDamageBattleAction
-            (directDamage, enemy, DamageModificationPackage.Empty(), source, etching, item, enemy);
+        var battleResponder = source switch
+        {
+            DamageSource.None => throw new ArgumentException(),
+            DamageSource.Etching => etching as BattleEventResponder,
+            DamageSource.Poison => enemy as BattleEventResponder,
+            DamageSource.Item => item as BattleEventResponder,
+            DamageSource.Self => enemy as BattleEventResponder,
+            DamageSource.EnemyAbility => enemyDamaging as BattleEventResponder,
+            DamageSource.Boat => null,
+            _ => throw new ArgumentException()
+        };
+
+        var preModDamageBattleAction = new BattleEvent(BattleEventType.EnemyDamaged, battleResponder)
+        {
+            modifier = damage,
+            enemyAffectee = enemy,
+            damageSource = source,
+            damageModificationPackage = DamageModificationPackage.Empty(),
+            etching = etching,
+            item = item,
+            enemyAffector = enemyDamaging
+        };
 
         var damageModifications = 
             BattleEventsManager.Current.GetDamageModifiers(preModDamageBattleAction);
@@ -75,27 +89,16 @@ public static class DamageHandler
         Debug.Log("Total " + total);
         
         enemy.TakeDamage(total, source);
-        
-        return  GetNewDamageBattleAction
-            (total, enemy, damageModifications, source, etching, item, enemy);
-    }
 
-    private static EnemyDamageBattleEvent GetNewDamageBattleAction(int directDamage, Enemy enemy, 
-        DamageModificationPackage damageModificationPackage, DamageSource source, Etching etching = null, 
-        EquippedItem item = null, Enemy enemyDamaging = null)
-    {
-        return source switch
+        return new BattleEvent(BattleEventType.EnemyDamaged, battleResponder)
         {
-            DamageSource.Etching => new EtchingEnemyDamageBattleEvent
-                (enemy, directDamage, damageModificationPackage, etching),
-            DamageSource.Poison => new EnemyDamageBattleEvent
-                (enemy, directDamage, damageModificationPackage, DamageSource.Poison),
-            DamageSource.Item => new ItemEnemyDamageBattleEvent(enemy, directDamage, damageModificationPackage, item),
-            DamageSource.Self => new EnemyAbilityEnemyDamageBattleEvent
-                (enemy, directDamage, damageModificationPackage, enemy),
-            DamageSource.EnemyAbility => new EnemyAbilityEnemyDamageBattleEvent
-                (enemy, directDamage, damageModificationPackage, enemyDamaging),
-            _ => throw new ArgumentOutOfRangeException(nameof(source), source, null)
+            modifier = total,
+            enemyAffectee = enemy,
+            damageSource = source,
+            damageModificationPackage = damageModifications,
+            etching = etching,
+            item = item,
+            enemyAffector = enemyDamaging
         };
     }
 }

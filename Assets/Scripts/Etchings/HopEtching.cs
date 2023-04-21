@@ -1,32 +1,23 @@
-﻿using Designs;
+﻿using System.Collections.Generic;
+using BattleScreen;
+using Designs;
+using Enemies;
 using UnityEngine;
 
 namespace Etchings
 {
-    public class HopEtching : CharMovementActivatedEtching
+    public class HopEtching : AboutToMoveActivatedEffect
     {
-        protected override bool TestCharMovementActivatedEffect()
+        protected override List<BattleEvent> GetDesignResponsesToEvent(BattleEvent battleEvent)
         {
-            var currentEnemy = ActiveEnemiesManager.CurrentEnemy;
-            var stickNum = Plank.GetPlankNum();
-
-            if (currentEnemy.FinishedMoving) return false;
-            
-            // Check if leaving this etching
-
-            if (currentEnemy.StickNum - currentEnemy.Mover.LastDirection != stickNum) return false;
-            
-            currentEnemy.Mover.AddSkip(GetStatValue(StatType.Hop));
-            StartCoroutine(ColorForActivate());
-
-            UsesUsedThisTurn += 1;
-            return true;
-
+            battleEvent.enemyAffectee.Mover.AddSkip(GetStatValue(StatType.Hop));
+            return new List<BattleEvent>(){CreateEvent(BattleEventType.EnemyMovementModified)};
         }
 
-        protected override bool CheckInfluence(int stickNum)
+        protected override bool TestCharMovementActivatedEffect(Enemy enemy)
         {
-            return stickNum == Plank.GetPlankNum();
+            if (enemy.FinishedMoving) return false;
+            return enemy.PlankNum - enemy.Mover.LastDirection != PlankNum;
         }
     }
 }

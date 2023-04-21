@@ -1,32 +1,27 @@
 ﻿using System;
+using System.Collections.Generic;
+using BattleScreen;
 using Designs;
+using Enemies;
 using UnityEngine;
 
 namespace Etchings
 {
-    public class ReverseEtching : CharPreMovementActivatedEffect
+    public class ReverseEtching : AboutToMoveActivatedEffect
     {
-        protected override bool TestCharAboutToMoveActivatedEffect()
+        protected override List<BattleEvent> GetDesignResponsesToEvent(BattleEvent battleEvent)
         {
-            var currentEnemy = ActiveEnemiesManager.CurrentEnemy;
-            var stickNum = Plank.GetPlankNum();
-            var currentEnemyStickNum = currentEnemy.StickNum;
-
-            if (currentEnemyStickNum != stickNum || currentEnemy.FinishedMoving) return false;
-
+            var enemy = battleEvent.enemyAffectee;
+            
             // Set the new goal stick as the opposite direction
-            currentEnemy.Mover.Reverse();
-
-            currentEnemy.Mover.AddMovement(GetStatValue(StatType.MovementBoost));
-
-            UsesUsedThisTurn += 1;
-            return true;
-
+            enemy.Mover.Reverse();
+            enemy.Mover.AddMovement(GetStatValue(StatType.MovementBoost));
+            return new List<BattleEvent>(){CreateEvent(BattleEventType.EnemyMovementModified, DamageSource.Etching, enemy)};
         }
-        
-        protected override bool CheckInfluence(int stickNum)
+
+        protected override bool TestCharMovementActivatedEffect(Enemy enemy)
         {
-            return stickNum == Plank.GetPlankNum();
+            return enemy.PlankNum == PlankNum && !enemy.FinishedMoving;
         }
     }
 }

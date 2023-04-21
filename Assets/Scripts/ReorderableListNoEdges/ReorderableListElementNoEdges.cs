@@ -67,6 +67,7 @@ namespace UnityEngine.UI.Extensions
 
         public void BeginDrag()
         {
+            Debug.Log("x");
             if (!_canvasGroup) { _canvasGroup = gameObject.GetOrAddComponent<CanvasGroup>(); }
             _canvasGroup.blocksRaycasts = false;
             isValid = true;

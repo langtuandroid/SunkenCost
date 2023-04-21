@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using BattleScreen;
 using UnityEngine;
 
 public class QuitButton : InGameButton
@@ -21,7 +22,7 @@ public class QuitButton : InGameButton
 
     protected override bool TryClick()
     {
-        BattleManager.Current.Quit();
+        Battle.Current.ClickedQuit();
         return true;
     }
 }

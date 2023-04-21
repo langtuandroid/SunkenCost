@@ -6,6 +6,8 @@ namespace Enemies
 {
     public interface IStartOfTurnAbilityHolder
     {
+        public bool GetIfUsingStartOfTurnAbility();
+        
         public List<BattleEvent> GetStartOfTurnAbility();
     }
 }

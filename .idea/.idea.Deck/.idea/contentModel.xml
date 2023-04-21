@@ -639,12 +639,9 @@
               <e p="BattleEventResponder.cs" t="Include" />
               <e p="BattleEventResponderGroup.cs" t="Include" />
               <e p="BattleEventsManager.cs" t="Include" />
+              <e p="EnemyBattleEventResponderGroup.cs" t="Include" />
               <e p="EtchingBattleEventResponderGroup.cs" t="Include" />
-              <e p="EventTypes" t="Include">
-                <e p="EnemyBattleEvent.cs" t="Include" />
-                <e p="PlayerLifeBattleEvent.cs" t="Include" />
-                <e p="TryGainGoldBattleEvent.cs" t="Include" />
-              </e>
+              <e p="IBattleEventUpdatedUI.cs" t="Include" />
               <e p="ItemBattleEventResponderGroup.cs" t="Include" />
               <e p="UnexpectedBattleEventException.cs" t="Include" />
             </e>
@@ -652,7 +649,6 @@
             <e p="BattleManager.cs" t="Include" />
             <e p="EndOfBattlePopup.cs" t="Include" />
             <e p="EnemyController.cs" t="Include" />
-            <e p="OldBattleEvents.cs" t="Include" />
             <e p="Player.cs" t="Include" />
             <e p="PlayerTurnEvents.cs" t="Include" />
           </e>
@@ -670,6 +666,7 @@
             <e p="DesignAsset.cs" t="Include" />
             <e p="DesignDisplay.cs" t="Include" />
             <e p="DesignManager.cs" t="Include" />
+            <e p="EtchingDisplay.cs" t="Include" />
             <e p="ListExtensions.cs" t="Include" />
           </e>
           <e p="Disturbances" t="Include">
@@ -724,31 +721,28 @@
           </e>
           <e p="EtchingMap.cs" t="Include" />
           <e p="Etchings" t="Include">
+            <e p="AboutToMoveActivatedEffect.cs" t="Include" />
             <e p="AmbushEtching.cs" t="Include" />
             <e p="AreaEtching.cs" t="Include" />
             <e p="BlockEtching.cs" t="Include" />
             <e p="BoostEtching.cs" t="Include" />
             <e p="CauterizeEtching.cs" t="Include" />
-            <e p="CharMovementActivatedEtching.cs" t="Include" />
-            <e p="CharPreMovementActivatedEffect.cs" t="Include" />
             <e p="DamageEtching.cs" t="Include" />
-            <e p="DummyEtching.cs" t="Include" />
             <e p="Etching.cs" t="Include" />
             <e p="FinaliseEtching.cs" t="Include" />
             <e p="FocusEtching.cs" t="Include" />
             <e p="HopEtching.cs" t="Include" />
-            <e p="Indicator.cs" t="Include" />
-            <e p="IndicatorController.cs" t="Include" />
-            <e p="IndicatorManager.cs" t="Include" />
+            <e p="LandedOnPlankActivatedEtching.cs" t="Include" />
             <e p="LoneWolfEtching.cs" t="Include" />
             <e p="MeleeEtching.cs" t="Include" />
+            <e p="MovementActivatedEtching.cs" t="Include" />
             <e p="PoisonEtching.cs" t="Include" />
             <e p="RaidEtching.cs" t="Include" />
             <e p="RangedEtching.cs" t="Include" />
             <e p="ResearchEtching.cs" t="Include" />
             <e p="RestEtching.cs" t="Include" />
             <e p="ReverseEtching.cs" t="Include" />
-            <e p="StickUpdateActivatedEtching.cs" t="Include" />
+            <e p="StickMovementActivatedEtching.cs" t="Include" />
           </e>
           <e p="EtchingTurnProcess.cs" t="Include" />
           <e p="Extensions.cs" t="Include" />
@@ -853,7 +847,7 @@
               <e p="TutorialUIObject.cs" t="Include" />
             </e>
             <e p="VolumeSlider.cs" t="Include" />
-            <e p="WhoseTurnText.cs" t="Include" />
+            <e p="WhosTurnText.cs" t="Include" />
           </e>
           <e p="ZoomManager.cs" t="Include" />
         </e>

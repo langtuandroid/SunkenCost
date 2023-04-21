@@ -11,7 +11,7 @@ using Random = UnityEngine.Random;
 
 public class EnemySpawner : MonoBehaviour
 {
-    public static EnemySpawner current;
+    public static EnemySpawner Current;
     
     [SerializeField] private List<string> enemyNames = new List<string>();
     [SerializeField] private List<GameObject> enemyPrefabs = new List<GameObject>();
@@ -22,7 +22,7 @@ public class EnemySpawner : MonoBehaviour
 
     private void Awake()
     {
-        current = this;
+        Current = this;
     }
 
     private void Start()
@@ -31,10 +31,6 @@ public class EnemySpawner : MonoBehaviour
         {
             enemyDictionary.Add(enemyNames[i], enemyPrefabs[i]);
         }
-
-        OldBattleEvents.Current.OnBeginPlayerTurn += SpawnNewRound;
-        OldBattleEvents.Current.OnStartBattle += StartBattle;
-        
     }
 
     private void StartBattle()
@@ -43,7 +39,7 @@ public class EnemySpawner : MonoBehaviour
         SpawnNewRound();
     }
 
-    private Enemy SpawnEnemy(string enemyName, int plankNum)
+    public Enemy SpawnEnemy(string enemyName, int plankNum)
     {
         var enemyPrefab = enemyDictionary[enemyName];
         var stickToSpawnOn = PlankMap.Current.GetPlank(plankNum).transform;
@@ -70,7 +66,7 @@ public class EnemySpawner : MonoBehaviour
         foreach (var enemyName in newEnemies)
         {
             var enemy = SpawnEnemy(enemyName, 0);
-            enemy.MaxHealth.AddModifier(new StatModifier(_scenario.scaledDifficulty, StatModType.PercentMult));
+            enemy.MaxHealthStat.AddModifier(new StatModifier(_scenario.scaledDifficulty, StatModType.PercentMult));
             enemy.Mover.AddMovementModifier((int)(_scenario.scaledDifficulty / 2f));
         }
     }

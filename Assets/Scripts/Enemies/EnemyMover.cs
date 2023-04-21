@@ -35,7 +35,7 @@ namespace Enemies
 
         [SerializeField] private EnemyUI.EnemyUI _enemyUI;
         
-        private int _amountOfMovesLeftThisTurn;
+        public int AmountOfMovesLeftThisTurn { get; private set; }
         private int _lastMove;
         private int _skips;
 
@@ -49,9 +49,9 @@ namespace Enemies
 
         public int StickNum { get; private set; }
 
-        public bool FinishedMoving => _amountOfMovesLeftThisTurn == 0;
+        public bool FinishedMoving => AmountOfMovesLeftThisTurn == 0;
 
-        private EnemyMove CurrentMove => MoveSet[_moveIndex];
+        public EnemyMove CurrentMove => MoveSet[_moveIndex];
 
         public int LastDirection
         {
@@ -68,8 +68,8 @@ namespace Enemies
             get
             {
                 // -1 if moving backwards, 0 if not moving, 1 if moved forwards
-                if (_amountOfMovesLeftThisTurn == 0) return 0;
-                return _amountOfMovesLeftThisTurn / Math.Abs(_amountOfMovesLeftThisTurn);
+                if (AmountOfMovesLeftThisTurn == 0) return 0;
+                return AmountOfMovesLeftThisTurn / Math.Abs(AmountOfMovesLeftThisTurn);
             }
         }
         
@@ -78,13 +78,10 @@ namespace Enemies
             // Randomise first move
             _moveIndex = Random.Range(0, MoveSet.Count);
             SetNextMoveSequence();
-            OldBattleEvents.Current.OnEndEnemyTurn += OnEndEnemyTurn;
         }
         
         private void LateUpdate()
         {
-            if (TutorialManager.current.HighlightedEnemy) return;
-        
             var localPosition = transform.localPosition;
             var newPositionX = Mathf.SmoothDamp(
                 localPosition.x, _aimPosition.x, ref _moveVelocityX, Smooth);
@@ -92,17 +89,12 @@ namespace Enemies
                 localPosition.y, _aimPosition.y, ref _moveVelocityY, Smooth);
             transform.localPosition = new Vector3(newPositionX, newPositionY, 0);
         }
-
-        private void OnDestroy()
-        {
-            OldBattleEvents.Current.OnEndEnemyTurn -= OnEndEnemyTurn;
-        }
         
         public void Move()
         {
-            _lastMove = _amountOfMovesLeftThisTurn;
+            _lastMove = AmountOfMovesLeftThisTurn;
             StickNum += LastDirection + (LastDirection * _skips);
-            _amountOfMovesLeftThisTurn -= LastDirection + (LastDirection * _skips);
+            AmountOfMovesLeftThisTurn -= LastDirection + (LastDirection * _skips);
             _skips = 0;
         }
 
@@ -134,15 +126,15 @@ namespace Enemies
 
         public void Block(int amount)
         {
-            if (_amountOfMovesLeftThisTurn > 0)
+            if (AmountOfMovesLeftThisTurn > 0)
             {
-                _amountOfMovesLeftThisTurn -= amount;
-                if (_amountOfMovesLeftThisTurn < 0) _amountOfMovesLeftThisTurn = 0;
+                AmountOfMovesLeftThisTurn -= amount;
+                if (AmountOfMovesLeftThisTurn < 0) AmountOfMovesLeftThisTurn = 0;
             }
             else
             {
-                _amountOfMovesLeftThisTurn += amount;
-                if (_amountOfMovesLeftThisTurn > 0) _amountOfMovesLeftThisTurn = 0;
+                AmountOfMovesLeftThisTurn += amount;
+                if (AmountOfMovesLeftThisTurn > 0) AmountOfMovesLeftThisTurn = 0;
             }
 
             UpdateMovementText();
@@ -150,14 +142,14 @@ namespace Enemies
 
         public void Reverse()
         {
-            _amountOfMovesLeftThisTurn *= -1;
+            AmountOfMovesLeftThisTurn *= -1;
         }
 
         public void AddMovement(int amount)
         {
-            _amountOfMovesLeftThisTurn += amount * NextDirection;
+            AmountOfMovesLeftThisTurn += amount * NextDirection;
             
-            if (_amountOfMovesLeftThisTurn <= -StickNum) _amountOfMovesLeftThisTurn = -StickNum;
+            if (AmountOfMovesLeftThisTurn <= -StickNum) AmountOfMovesLeftThisTurn = -StickNum;
             
             UpdateMovementText();
             
@@ -175,10 +167,10 @@ namespace Enemies
 
         public void UpdateMovementText()
         {
-            _enemyUI.MovementText.UpdateMovementText(CurrentMove.movementType, _amountOfMovesLeftThisTurn);
+            _enemyUI.MovementText.UpdateMovementText(CurrentMove.movementType, AmountOfMovesLeftThisTurn);
         }
         
-        private void OnEndEnemyTurn() 
+        public void EndTurn() 
         {
             SetNextMoveSequence();
         }
@@ -196,7 +188,7 @@ namespace Enemies
                     continue;
                 }
 
-                _amountOfMovesLeftThisTurn = CurrentMove.magnitude;
+                AmountOfMovesLeftThisTurn = CurrentMove.magnitude;
                 _skips = CurrentMove.movementType == MovementType.Skip ? CurrentMove.magnitude - 1 : 0;
                 UpdateMovementText();
                 break;

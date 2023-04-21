@@ -36,7 +36,7 @@ namespace BattleScreen
         private IEnumerator PlayOutEventQueue()
         {
             Executing = true;
-            yield return Battle.VisualiseBattleEvents(_playerEventsQueue);
+            yield return Battle.Current.VisualiseBattleEvents(_playerEventsQueue);
             Executing = false;
         }
     }

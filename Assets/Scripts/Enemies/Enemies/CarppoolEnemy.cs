@@ -1,4 +1,6 @@
 ﻿using System.Collections;
+using System.Collections.Generic;
+using BattleScreen;
 using UnityEngine;
 
 namespace Enemies.Enemies
@@ -19,10 +21,18 @@ namespace Enemies.Enemies
             return "Spawns a Bull Carp every turn";
         }
 
-        public IEnumerator GetStartOfTurnAbilityEventSequence()
+        public bool GetIfUsingStartOfTurnAbility()
         {
-            EnemySpawner.current.SpawnActiveEnemy("BullCarp", StickNum);
-            yield break;
+            return true;
+        }
+
+        public List<BattleEvent> GetStartOfTurnAbility()
+        {
+            var newBullCarp = EnemySpawner.Current.SpawnEnemy("BullCarp", PlankNum);
+            var newEvent = CreateEvent(BattleEventType.EnemySpawned);
+            newEvent.enemyAffectee = newBullCarp;
+            newEvent.enemyAffector = this;
+            return new List<BattleEvent>(){newEvent};
         }
     }
 }

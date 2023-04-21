@@ -20,13 +20,13 @@ namespace Items.Items
 
         public override bool GetIfRespondingToBattleEvent(BattleEvent battleEvent)
         {
-            return battleEvent.Type == BattleEventType.StartBattle;
+            return battleEvent.type == BattleEventType.StartBattle;
         }
 
         protected override BattleEvent GetResponse(BattleEvent battleEvent)
         {
             PlankMap.Current.RandomisePlanks();
-            return new BattleEvent(BattleEventType.None);
+            return BattleEvent.None;
         }
     }
 }

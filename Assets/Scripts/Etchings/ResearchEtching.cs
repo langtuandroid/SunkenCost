@@ -1,32 +1,33 @@
-﻿using Designs;
+﻿using System.Collections.Generic;
+using BattleScreen;
+using Designs;
+using Enemies;
 using UnityEngine;
 
 namespace Etchings
 {
-    public class ResearchEtching : CharMovementActivatedEtching
+    public class ResearchEtching : LandedOnPlankActivatedEtching
     {
-        protected override bool CheckInfluence(int stickNum)
+        protected override List<BattleEvent> GetDesignResponsesToEvent(BattleEvent battleEvent)
         {
-            return stickNum == Plank.GetPlankNum();
-        }
+            var enemy = battleEvent.enemyAffectee;
+            var amountToHeal = enemy.MaxHealth - enemy.Health;
 
-        protected override bool TestCharMovementActivatedEffect()
-        {
-            var enemy = ActiveEnemiesManager.CurrentEnemy;
-            if (!CheckInfluence(enemy.StickNum)) return false;
-            StartCoroutine(ColorForActivate());
-            Plank.SetTempColour(design.Color);
-
-            var amountToHeal = enemy.MaxHealth.Value - enemy.Health;
-                
-            enemy.Heal(amountToHeal);
+            var responses = new List<BattleEvent>();
+            
+            responses.Add(enemy.Heal(amountToHeal));
 
             var timesMetRequirement = (int)Mathf.Floor(((float)amountToHeal / GetStatValue(StatType.IntRequirement)));
             var amountOfGoldToGive = timesMetRequirement * GetStatValue(StatType.Gold);
-            BattleManager.Current.AlterGold(amountOfGoldToGive);
+            
+            responses.Add(CreateEvent(BattleEventType.TryGainedGold, modifier: amountOfGoldToGive));
 
-            return true;
+            return responses;
+        }
 
+        protected override bool TestCharMovementActivatedEffect(Enemy enemy)
+        {
+            return enemy.PlankNum == PlankNum;
         }
     }
 }

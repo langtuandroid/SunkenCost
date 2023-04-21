@@ -11,7 +11,7 @@ namespace BattleScreen.BattleEvents
 
         public UnexpectedBattleEventException(BattleEvent battleEvent) : base()
         {
-            _battleEventType = battleEvent.Type;
+            _battleEventType = battleEvent.type;
         }
     }
 }

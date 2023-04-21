@@ -8,6 +8,8 @@ namespace Damage
         public readonly List<DamageModification> flatModifications;
         public readonly List<DamageModification> multiModifications;
 
+        public int ModCount => flatModifications.Count + multiModifications.Count;
+
         public DamageModificationPackage
             (List<DamageModification> flatModifications, List<DamageModification> multiModifications)
             => (this.flatModifications, this.multiModifications) = (flatModifications, multiModifications);

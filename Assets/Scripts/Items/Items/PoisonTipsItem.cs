@@ -2,7 +2,6 @@
 using System.Collections;
 using BattleScreen;
 using BattleScreen.BattleEvents;
-using BattleScreen.BattleEvents.EventTypes;
 
 namespace Items.Items
 {
@@ -10,19 +9,12 @@ namespace Items.Items
     {
         public override bool GetIfRespondingToBattleEvent(BattleEvent battleEvent)
         {
-            return battleEvent is EtchingEnemyDamageBattleEvent;
+            return battleEvent.type == BattleEventType.EnemyDamaged && battleEvent.damageSource == DamageSource.Etching;
         }
 
         protected override BattleEvent GetResponse(BattleEvent battleEvent)
         {
-            if (battleEvent is EtchingEnemyDamageBattleEvent etchingDamageBattleEvent)
-            {
-                return etchingDamageBattleEvent.enemy.stats.AddPoison(Amount);
-            }
-            else
-            {
-                throw new UnexpectedBattleEventException(battleEvent);
-            }
+            return battleEvent.enemyAffectee.stats.AddPoison(Amount);
         }
     }
 }

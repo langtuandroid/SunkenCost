@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class TutorialButton : MonoBehaviour
 {
+    /*
     public void Clicked()
     {
         InGameSfxManager.current.GoodClick();
@@ -15,4 +16,5 @@ public class TutorialButton : MonoBehaviour
         InGameSfxManager.current.GoodClick();
         TutorialManager.current.SkipTutorial();
     }
+    */
 }

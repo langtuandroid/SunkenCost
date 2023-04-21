@@ -1,6 +1,8 @@
 ﻿using System;
 using System.Collections;
 using System.Collections.Generic;
+using BattleScreen;
+using BattleScreen.BattleEvents;
 using OfferScreen;
 using TMPro;
 using UI;
@@ -10,36 +12,22 @@ using UnityEngine.UI;
 
 public class BattleHUDManager : MonoBehaviour
 {
-    public static BattleHUDManager current;
-
-    [SerializeField] private Hearts hearts;
+    [SerializeField] private Hearts _hearts;
+    [SerializeField] private LoseLifeShaderController _loseLifeShaderController;
     
     [SerializeField] private TextMeshProUGUI _movesText;
 
     [SerializeField] private GoldDisplay _goldDisplay;
 
-    private void Awake()
-    {
-        // One instance of static objects only
-        if (current)
-        {
-            Destroy(gameObject);
-            return;
-        }
-
-        current = this;
-    }
+    [SerializeField] private NextTurnButton _nextTurnButton;
+    [SerializeField] private EnemyTurnFrame _turnFrame;
+    [SerializeField] private WhosTurnText _whosTurnText;
 
     private void Start()
     {
-        OldBattleEvents.Current.OnBeginPlayerTurn += UpdateMovesText;
-        OldBattleEvents.Current.OnPlayerLostLife += UpdateLives;
-        OldBattleEvents.Current.OnPlayerGainedGold += UpdateGoldText;
-
         UpdateLives();
         UpdateMovesText();
     }
-
 
     public void UpdateMovesText()
     {
@@ -47,13 +35,77 @@ public class BattleHUDManager : MonoBehaviour
         _movesText.text = movesLeft + "/" + Player.Current.MovesPerTurn;
     }
 
+    private void EndedBattle()
+    {
+        _nextTurnButton.UpdateText();
+    }
+
+    private void GainedLife()
+    {
+        UpdateLives();
+    }
+
+    private void LostLife()
+    {
+        UpdateLives();
+        _loseLifeShaderController.PlayerLostLife();
+    }
+
     private void UpdateLives()
     {
-        hearts.UpdateLives(Player.Current.Lives);
+        _hearts.UpdateLives(Player.Current.Lives);
     }
 
     private void UpdateGoldText()
     {
         _goldDisplay.UpdateText(RunProgress.PlayerStats.Gold);
+    }
+
+    private void StartEnemyTurn()
+    {
+        _turnFrame.StartEnemyTurn();
+        _whosTurnText.StartEnemyTurn();
+    }
+
+    private void EndEnemyTurn()
+    {
+        _turnFrame.EndEnemyTurn();
+        _whosTurnText.EndEnemyTurn();
+    }
+
+    private void PlankAddedOrRemoved()
+    {
+        ZoomManager.current.SetStickScale();
+    }
+
+    public void UpdateDisplay(BattleEventType battleEventType)
+    {
+        switch (battleEventType)
+        {
+            case BattleEventType.GainedGold:
+                UpdateGoldText();
+                break;
+            case BattleEventType.PlayerGainedLife:
+                GainedLife();
+                break;
+            case BattleEventType.PlayerLostLife:
+                LostLife();
+                break;
+            case BattleEventType.PlayerUsedMove:
+                UpdateMovesText();
+                break;
+            case BattleEventType.EndedBattle:
+                EndedBattle();
+                break;
+            case BattleEventType.StartedEnemyTurn:
+                StartEnemyTurn();
+                break;
+            case BattleEventType.EndedEnemyTurn:
+                EndEnemyTurn();
+                break;
+            case BattleEventType.PlankCreated: case BattleEventType.PlankDestroyed:
+                PlankAddedOrRemoved();
+                break;
+        }
     }
 }

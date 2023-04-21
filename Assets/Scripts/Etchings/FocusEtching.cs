@@ -1,36 +1,34 @@
 ﻿using System.Collections.Generic;
+using BattleScreen;
+using Damage;
 using Designs;
 using Enemies;
 using UnityEngine;
 
 namespace Etchings
 {
-    public class FocusEtching : ActiveEtching, IDamageMultiplierModifier
+    public class FocusEtching : Etching, IDamageMultiplierModifier
     {
-        private Stat _boostAmountStat;
-        
-        protected override void Start()
+        protected override bool GetIfDesignIsRespondingToEvent(BattleEvent battleEvent)
         {
-            _boostAmountStat = new Stat(design.GetStat(StatType.Boost));
-            colorWhenActivated = true;
-            base.Start();
-        }
-        
-        public int GetDamageModification(int damage, Enemy enemy, DamageSource source, Etching etching = null)
-        {
-            if ((source != DamageSource.Etching && design.Level < 1) || deactivationTurns > 0) return damage;
-            
-            if (enemy.Plank == Plank)
-            {
-                return damage *= _boostAmountStat.Value;
-            }
-
-            return damage;
+            return false;
         }
 
-        protected override bool CheckInfluence(int stickNum)
+        protected override List<BattleEvent> GetDesignResponsesToEvent(BattleEvent battleEvent)
         {
-            return stickNum == Plank.GetPlankNum();
+            throw new System.NotImplementedException();
+        }
+
+        public bool CanModify(BattleEvent battleEventToModify)
+        {
+            // Only affects etching damage on level 0
+            if (battleEventToModify.damageSource != DamageSource.Etching && design.Level < 1) return false;
+            return !deactivated && battleEventToModify.enemyAffectee.PlankNum == PlankNum;
+        }
+
+        public DamageModification GetDamageMultiplier(BattleEvent battleEventToModify)
+        {
+            return new DamageModification(this, design.GetStat(StatType.StatMultiplier));
         }
     }
 }

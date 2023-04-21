@@ -1,33 +1,28 @@
 ﻿using System.Collections.Generic;
+using BattleScreen;
 using Designs;
 using Enemies;
 using UnityEngine;
 
 namespace Etchings
 {
-    public class RestEtching : ActiveEtching
+    public class RestEtching : Etching
     {
         private Stat _healAmountStat;
         
-        protected override void Start()
+        private void Start()
         {
             _healAmountStat = new Stat(design.GetStat(StatType.HealPlayer));
-            colorWhenActivated = true;
-
-            OldBattleEvents.Current.OnEndBattle += HealPlayer;
-            base.Start();
         }
 
-        protected override bool CheckInfluence(int stickNum)
+        protected override bool GetIfDesignIsRespondingToEvent(BattleEvent battleEvent)
         {
-            return stickNum == Plank.GetPlankNum();
+            return battleEvent.type == BattleEventType.EndedBattle;
         }
 
-        private void HealPlayer()
+        protected override List<BattleEvent> GetDesignResponsesToEvent(BattleEvent battleEvent)
         {
-            Player.current.AddLife(_healAmountStat.Value);
-            Plank.SetTempColour(design.Color);
-            StartCoroutine(ColorForActivate());
+            return new List<BattleEvent>(){CreateEvent(BattleEventType.PlayerLifeModified, modifier: _healAmountStat.Value)};
         }
     }
 }

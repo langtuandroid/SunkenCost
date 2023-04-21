@@ -48,7 +48,7 @@ namespace Disturbances
             switch (disturbance.DisturbanceType)
             {
                 case DisturbanceType.GoldRush:
-                    RunProgress.PlayerStats.AlterGold(disturbance.Modifier);
+                    RunProgress.PlayerStats.Gold += disturbance.Modifier;
                     break;
                 case DisturbanceType.Heart:
                     RunProgress.PlayerStats.Lives += disturbance.Modifier;

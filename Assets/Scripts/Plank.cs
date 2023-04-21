@@ -12,8 +12,8 @@ using UnityEngine.Serialization;
 
 public class Plank : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDragHandler, IPointerEnterHandler, IPointerExitHandler
 {
-    [FormerlySerializedAs("plankImage")] [SerializeField] private Image _plankImage;
-    [FormerlySerializedAs("washImage")] [SerializeField] private Image _washImage;
+    [SerializeField] private Image _plankImage;
+    [SerializeField] private Image _washImage;
 
     public Etching Etching { get; set; }
 
@@ -36,7 +36,7 @@ public class Plank : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDragHan
     {
         if (eventData.button != PointerEventData.InputButton.Left)
             return;
-
+        
         _washImage.enabled = false;
         _dragging = true;
     }
@@ -73,7 +73,7 @@ public class Plank : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDragHan
     {
         var oldColor = _plankImage.color;
         _plankImage.color = color;
-        yield return new WaitForSeconds(BattleEventsManager.ActionExecutionSpeed);
+        yield return new WaitForSeconds(Battle.ActionExecutionSpeed);
         _plankImage.color = oldColor;
     }
 

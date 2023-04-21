@@ -8,7 +8,7 @@ namespace Items.Items
     {
         public override bool GetIfRespondingToBattleEvent(BattleEvent battleEvent)
         {
-            return battleEvent.Type == BattleEventType.GainedGold
+            return battleEvent.type == BattleEventType.GainedGold
                    && EnemyController.Current.NumberOfEnemies > 0;
         }
 

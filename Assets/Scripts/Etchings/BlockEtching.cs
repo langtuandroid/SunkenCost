@@ -1,27 +1,21 @@
-﻿using Designs;
+﻿using System.Collections.Generic;
+using BattleScreen;
+using Designs;
+using Enemies;
 using UnityEngine;
 
 namespace Etchings
 {
-    public class BlockEtching : CharPreMovementActivatedEffect
+    public class BlockEtching : AboutToMoveActivatedEffect
     {
-        protected override bool TestCharAboutToMoveActivatedEffect()
+        protected override List<BattleEvent> GetDesignResponsesToEvent(BattleEvent battleEvent)
         {
-            var currentEnemy = ActiveEnemiesManager.CurrentEnemy;
-            var stickNum = Plank.GetPlankNum();
-            var currentEnemyStickNum = currentEnemy.StickNum;
-
-            if (currentEnemyStickNum != stickNum || currentEnemy.FinishedMoving) return false;
-            
-            currentEnemy.Block(design.GetStat(StatType.Block));
-            UsesUsedThisTurn += 1;
-            return true;
-
+            return new List<BattleEvent>() {battleEvent.enemyAffectee.Block(design.GetStat(StatType.Block))};
         }
-        
-        protected override bool CheckInfluence(int stickNum)
+
+        protected override bool TestCharMovementActivatedEffect(Enemy enemy)
         {
-            return stickNum == Plank.GetPlankNum();
+            return (enemy.PlankNum == PlankNum && !enemy.FinishedMoving);
         }
     }
 }

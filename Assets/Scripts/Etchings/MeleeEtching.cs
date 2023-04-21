@@ -1,33 +1,21 @@
-﻿using Enemies;
+﻿using System.Collections;
+using System.Collections.Generic;
+using BattleScreen;
+using Enemies;
 using UnityEngine;
 
 namespace Etchings
 {
     public class MeleeEtching : DamageEtching
     {
-        protected override bool TestCharMovementActivatedEffect()
+        protected override bool TestCharMovementActivatedEffect(Enemy enemy)
         {
-            var enemy = ActiveEnemiesManager.CurrentEnemy;
-
-            if (!CheckInfluence(enemy.StickNum)) return false;
-            
-            DamageEnemy(enemy);
-            return true;
-
-        }
-
-        protected override bool CheckInfluence(int stickNum)
-        {
-            return stickNum == Plank.GetPlankNum();
-        }
-
-        protected override void DamageEnemy(Enemy enemy)
-        {
-            Plank.SetTempColour(design.Color);
-            UsesUsedThisTurn += 1;
-            base.DamageEnemy(enemy);
-            InGameSfxManager.current.DamagedEnemy();
+            return enemy.PlankNum == PlankNum;
         }
         
+        protected override List<BattleEvent> GetDesignResponsesToEvent(BattleEvent battleEvent)
+        {
+            return new List<BattleEvent>() {DamageEnemy(battleEvent.enemyAffectee)};
+        }
     }
 }

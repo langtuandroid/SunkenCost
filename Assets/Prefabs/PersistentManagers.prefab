@@ -74,7 +74,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 5699943836172560093}
-  m_RootOrder: 5
+  m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &450946849018941076
 MonoBehaviour:
@@ -121,7 +121,6 @@ Transform:
   - {fileID: 2229243425509765493}
   - {fileID: 9011165170673219606}
   - {fileID: 6074709828410030489}
-  - {fileID: 7099704740614234605}
   - {fileID: 3348616157266084595}
   - {fileID: 7587208056174234099}
   m_Father: {fileID: 0}
@@ -169,7 +168,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 5699943836172560093}
-  m_RootOrder: 6
+  m_RootOrder: 5
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &5548302784536871156
 MonoBehaviour:
@@ -181,63 +180,6 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 72204f1d66f5c47459f1cb212da963a8, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
---- !u!1 &4478821229414216604
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 7099704740614234605}
-  - component: {fileID: 1715812072908261019}
-  - component: {fileID: 8078994622421322212}
-  m_Layer: 0
-  m_Name: ChallengeLoader
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &7099704740614234605
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4478821229414216604}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children: []
-  m_Father: {fileID: 5699943836172560093}
-  m_RootOrder: 4
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &1715812072908261019
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4478821229414216604}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ef602ffd00b345a8b0c0b8652d9c005e, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
---- !u!114 &8078994622421322212
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4478821229414216604}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 683640a23f6a459e88aad4878965d332, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
 --- !u!1 &4799959914248010403
@@ -417,37 +359,3 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6406184f62bb58a4aa32aa028dcd0795, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  etchingTypes:
-  - Melee
-  - Ranged
-  - Area
-  - Block
-  - Boost
-  - Reverse
-  - Poison
-  - StrikeZone
-  - Infirmary
-  - LoneWolf
-  - GrandFinalist
-  - Ambush
-  - Cauterize
-  - AirRaid
-  - Research
-  - Pound
-  etchingSprites:
-  - {fileID: 21300000, guid: b662687ca76c9d441a3334e79945a3ed, type: 3}
-  - {fileID: 21300000, guid: 04b966b030cc5f8458ac126563c2af2a, type: 3}
-  - {fileID: 21300000, guid: 28a0543dfb02cfe43abec410d3463c07, type: 3}
-  - {fileID: 21300000, guid: 6b474909e6c138048afa75f0de785990, type: 3}
-  - {fileID: 21300000, guid: 08ca2657d2c737d46a3e5f630ae3f58e, type: 3}
-  - {fileID: 21300000, guid: e4e0d1508bb461e47918c85dd5a07c9f, type: 3}
-  - {fileID: 21300000, guid: 8ad2dfc81df1ced4d8efa3216f6ad7d4, type: 3}
-  - {fileID: 21300000, guid: ecdd156f938fa2a4d9d2f77dc2e73510, type: 3}
-  - {fileID: 21300000, guid: aebfbe60762b0ef4086c52317d594a32, type: 3}
-  - {fileID: 21300000, guid: 6f533f2fe7178644c87abb5b522243cc, type: 3}
-  - {fileID: 21300000, guid: 08871885d88539a4b946dd558635b26f, type: 3}
-  - {fileID: 21300000, guid: cc89b3ad9b368b449b0dd793256dfd3f, type: 3}
-  - {fileID: 21300000, guid: 73f16dc48b500ed40a069a83120f6db4, type: 3}
-  - {fileID: 21300000, guid: 0eed845f96fbe9c46934d461da72048f, type: 3}
-  - {fileID: 21300000, guid: abb3dc196b12d754c98646e474402cfc, type: 3}
-  - {fileID: 21300000, guid: ff19f45423553e7448d7f49e99ccd44f, type: 3}
