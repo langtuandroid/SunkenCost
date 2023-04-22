@@ -1,0 +1,19 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a37d5dce21df4a2e9cf1cad81cd13ca6, type: 3}
+  m_Name: ExpiredMedicine
+  m_EditorClassIdentifier: 
+  title: Expired Medicine
+  description: Whenever an enemy heals, it takes @ Damage
+  sprite: {fileID: 21300000, guid: 4c53e18cd9c317c45b157601331d802f, type: 3}
+  modifier: 5
+  rarity: 1

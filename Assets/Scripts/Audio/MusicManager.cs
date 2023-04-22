@@ -26,10 +26,10 @@ public class MusicManager : MonoBehaviour
 
     private void Start()
     {
-        Music.current.SelectSong(0);
         Music.current.SetMusicVolume(MusicVolume);
         Music.current.SetSfxVolume(SfxVolume);
         Music.current.Play();
+        Music.current.SelectSong(1);
     }
 
     public void MusicVolumeChange(float value)

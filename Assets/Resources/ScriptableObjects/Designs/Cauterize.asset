@@ -1,0 +1,28 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 942f8b137e054c4f96a7f159489a25ee, type: 3}
+  m_Name: Cauterize
+  m_EditorClassIdentifier: 
+  _designType: 13
+  _title: Cauterize
+  _sprite: {fileID: 21300000, guid: 73f16dc48b500ed40a069a83120f6db4, type: 3}
+  _color: {r: 0.40784314, g: 0.6666667, b: 0, a: 1}
+  _rarity: 2
+  _initialStats:
+  - _statType: 9
+    _magnitude: 1
+  _firstLevelUpStatMods:
+  - _statType: 9
+    _magnitude: 1
+  _secondLevelUpStatMods:
+  - _statType: 9
+    _magnitude: 1

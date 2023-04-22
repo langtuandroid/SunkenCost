@@ -202,7 +202,7 @@ public class TutorialManager : MonoBehaviour
         
         NextTurnButton.Current.CanClick(true);
 
-        Music.current.SelectSong(1);
+        //Music.current.SelectSong(1);
 
         _popup.SetActive(false);
         _popupWithButton.SetActive(false);
@@ -379,7 +379,7 @@ public class TutorialManager : MonoBehaviour
 
     private void StartSongAndWaitForEnemyOnLastStick()
     {
-        Music.current.SelectSong(1);
+        //Music.current.SelectSong(1);
         SetVisibility(false);
         InLockedTutorial = false;
     }
