@@ -58,7 +58,9 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 9030936314841676894}
+  - component: {fileID: 232368599547325722}
   - component: {fileID: 1957974301743806241}
+  - component: {fileID: 8401635382843068101}
   m_Layer: 5
   m_Name: Plank
   m_TagString: Untagged
@@ -88,6 +90,18 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &232368599547325722
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 9030936314841676893}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 58ceaba3e075447799de1278551b7205, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!114 &1957974301743806241
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -102,6 +116,18 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _plankImage: {fileID: 1783619837528516207}
   _washImage: {fileID: 8036491537051007689}
+--- !u!225 &8401635382843068101
+CanvasGroup:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 9030936314841676893}
+  m_Enabled: 1
+  m_Alpha: 1
+  m_Interactable: 1
+  m_BlocksRaycasts: 1
+  m_IgnoreParentGroups: 0
 --- !u!1001 &8463438074134601691
 PrefabInstance:
   m_ObjectHideFlags: 0

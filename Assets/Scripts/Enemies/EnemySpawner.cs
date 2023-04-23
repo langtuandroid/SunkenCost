@@ -3,6 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using BattleScreen;
+using BattleScreen.BattleBoard;
 using Enemies;
 using UnityEngine;
 using UnityEngine.Rendering;
@@ -42,7 +43,7 @@ public class EnemySpawner : MonoBehaviour
     public Enemy SpawnEnemy(string enemyName, int plankNum)
     {
         var enemyPrefab = enemyDictionary[enemyName];
-        var stickToSpawnOn = PlankMap.Current.GetPlank(plankNum).transform;
+        var stickToSpawnOn = Board.Current.GetPlank(plankNum).transform;
         var newEnemyObject = Instantiate(enemyPrefab, stickToSpawnOn, true);
         newEnemyObject.transform.localPosition = Vector3.zero;
         newEnemyObject.transform.localScale = new Vector3(1, 1, 1);

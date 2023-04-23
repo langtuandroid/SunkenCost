@@ -18,7 +18,7 @@ namespace Designs
 
         protected override void Start()
         {
-            FindObjectOfType<BattleEventsManager>().RegisterUIUpdater(this);
+            BattleEventsManager.Current.RegisterUIUpdater(this);
             
             design = GetComponent<Etching>().design;
             base.Start();
@@ -56,7 +56,7 @@ namespace Designs
 
         private void OnDestroy()
         {
-            FindObjectOfType<BattleEventsManager>().DeregisterUIUpdater(this);
+            BattleEventsManager.Current.DeregisterUIUpdater(this);
         }
     }
 }

@@ -634,6 +634,10 @@
           <e p="BackgroundColorController.cs" t="Include" />
           <e p="BattleScreen" t="Include">
             <e p="Battle.cs" t="Include" />
+            <e p="BattleBoard" t="Include">
+              <e p="Board.cs" t="Include" />
+              <e p="Plank.cs" t="Include" />
+            </e>
             <e p="BattleEvents" t="Include">
               <e p="BattleEvent.cs" t="Include" />
               <e p="BattleEventResponder.cs" t="Include" />
@@ -719,7 +723,7 @@
               <e p="ScenarioManager.cs" t="Include" />
             </e>
           </e>
-          <e p="EtchingMap.cs" t="Include" />
+          <e p="EtchingFactory.cs" t="Include" />
           <e p="Etchings" t="Include">
             <e p="AboutToMoveActivatedEffect.cs" t="Include" />
             <e p="AmbushEtching.cs" t="Include" />
@@ -798,8 +802,8 @@
             <e p="UpgradeOffer.cs" t="Include" />
           </e>
           <e p="PersistantManagers.cs" t="Include" />
-          <e p="Plank.cs" t="Include" />
-          <e p="PlankMap.cs" t="Include" />
+          <e p="PlankDisplay.cs" t="Include" />
+          <e p="PlankFactory.cs" t="Include" />
           <e p="PlayerStats.cs" t="Include" />
           <e p="ReorderableList" t="Include">
             <e p="ReorderableList.cs" t="Include" />

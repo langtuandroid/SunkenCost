@@ -1,6 +1,7 @@
 using System;
 using System.Collections.Generic;
 using BattleScreen;
+using BattleScreen.BattleBoard;
 using Designs;
 using UnityEngine;
 
@@ -40,7 +41,7 @@ namespace Etchings
             if (_damageMod is not null)
                 _baseDamage.RemoveModifier(_damageMod);
 
-            var penalty = _baseDamageModifier.Value * (PlankMap.Current.PlankCount - 2);
+            var penalty = _baseDamageModifier.Value * (Board.Current.PlankCount - 2);
 
             _damageMod = new StatModifier(penalty, StatModType.Flat);
             _baseDamage.AddModifier(_damageMod);

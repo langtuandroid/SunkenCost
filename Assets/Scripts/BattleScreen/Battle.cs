@@ -41,11 +41,12 @@ namespace BattleScreen
         {
             foreach (var design in RunProgress.PlayerStats.Deck)
             {
-                var plank = PlankMap.Current.CreatePlank();
-                EtchingMap.Current.CreateEtching(plank, design);
+                var plank = PlankFactory.Current.CreatePlank();
+                EtchingFactory.Current.CreateEtching(plank, design);
             }
             
-            BattleEventsManager.Current.StartBattle();
+            // Give the game one frame to load etchings, enemies etc
+            StartCoroutine(InitializeBattle());
         }
 
         public void ClickedNextTurn()
@@ -56,6 +57,16 @@ namespace BattleScreen
         public void ClickedQuit()
         {
             throw new System.NotImplementedException();
+        }
+
+        private IEnumerator InitializeBattle()
+        {
+            yield return 0;
+            
+            var startBattleEvents = BattleEventsManager.Current.StartBattle();
+            StartCoroutine(VisualiseBattleEvents(new Queue<BattleEvent>(startBattleEvents)));
+            
+            GameState = GameState.PlayerTurn;
         }
         
         private IEnumerator NextEnemyTurn()
@@ -74,6 +85,7 @@ namespace BattleScreen
             {
                 var nextBattleEvent = battleEvents.Dequeue();
                 
+                Debug.Log("Visualising: " + nextBattleEvent.type);
                 _hudManager.UpdateDisplay(nextBattleEvent.type);
                 
                 foreach (var visualiser in nextBattleEvent.visualisers)

@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using BattleScreen;
+using BattleScreen.BattleBoard;
 using Enemies;
 using UnityEngine;
 
@@ -15,7 +16,7 @@ namespace Etchings
         protected override List<BattleEvent> GetDesignResponsesToEvent(BattleEvent battleEvent)
         {
             var plankNums = new List<int>();
-            for (var i = PlankNum - MaxRange; i <= PlankNum + MaxRange && i < PlankMap.Current.PlankCount; i++)
+            for (var i = PlankNum - MaxRange; i <= PlankNum + MaxRange && i < Board.Current.PlankCount; i++)
             {
                 if (i <= 0) 
                     i = 1;

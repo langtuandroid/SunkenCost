@@ -2,6 +2,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using BattleScreen;
+using BattleScreen.BattleBoard;
 using Enemies;
 using UnityEngine;
 
@@ -57,10 +58,10 @@ public class CucungerEnemy : Enemy, IStartOfTurnAbilityHolder
         UI.Speak(speakText);
         response.Add(CreateEvent(BattleEventType.EnemySpeaking));
         
-        if (cooldownCounter >= abilityCooldown && PlankNum != PlankMap.Current.PlankCount - 1)
+        if (cooldownCounter >= abilityCooldown && PlankNum != Board.Current.PlankCount - 1)
         {
             cooldownCounter = 0;
-            response.Add(PlankMap.Current.DestroyPlank(DamageSource.EnemyAbility, PlankMap.Current.PlankCount - 1));
+            response.Add(PlankFactory.Current.DestroyPlank(DamageSource.EnemyAbility, Board.Current.PlankCount - 1));
         }
         else
         {

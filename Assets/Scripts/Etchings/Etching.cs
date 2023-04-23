@@ -15,11 +15,11 @@ namespace Etchings
     public abstract class Etching : BattleEventResponder
     {
         public Design design;
-        public Plank Plank { get; protected set; }
+        public PlankDisplay PlankDisplay { get; protected set; }
         protected bool deactivated;
 
         protected int UsesPerTurn => design.GetStat(StatType.UsesPerTurn);
-        protected int PlankNum => Plank.GetPlankNum();
+        protected int PlankNum => PlankDisplay.GetPlankNum();
 
         protected int UsesUsedThisTurn
         {
@@ -29,7 +29,7 @@ namespace Etchings
 
         protected void Awake()
         {
-            Plank = transform.parent.parent.GetComponent<Plank>();
+            PlankDisplay = transform.parent.parent.GetComponent<PlankDisplay>();
         }
 
         protected int GetStatValue(StatType statType)
@@ -53,7 +53,7 @@ namespace Etchings
 
         public BattleEvent Deactivate(DamageSource source)
         {
-            Plank.SetActiveColor(false);
+            PlankDisplay.SetActiveColor(false);
             deactivated = true;
             return CreateEvent(BattleEventType.PlankDeactivated, source);
         }

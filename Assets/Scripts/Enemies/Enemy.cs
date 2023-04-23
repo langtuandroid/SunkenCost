@@ -2,6 +2,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using BattleScreen;
+using BattleScreen.BattleBoard;
 using BattleScreen.BattleEvents;
 using Enemies.EnemyUI;
 using TMPro;
@@ -36,7 +37,7 @@ namespace Enemies
 
         public int MaxHealth => MaxHealthStat.Value;
 
-        public Plank Plank => PlankMap.Current.GetPlank(Mover.StickNum);
+        public Plank Plank => Board.Current.GetPlank(Mover.StickNum);
         public int PlankNum => Mover.StickNum;
 
         public bool FinishedMoving => Mover.FinishedMoving;
@@ -94,7 +95,7 @@ namespace Enemies
             Mover.Move();
 
             // TEMPORARY Destroy if at end
-            if (PlankNum >= PlankMap.Current.PlankCount)
+            if (PlankNum >= Board.Current.PlankCount)
             {
                 DestroySelf(DamageSource.Boat);
                 

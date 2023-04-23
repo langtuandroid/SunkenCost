@@ -1,5 +1,6 @@
 ﻿using System.Collections;
 using BattleScreen;
+using BattleScreen.BattleBoard;
 
 namespace Items.Items
 {
@@ -25,7 +26,7 @@ namespace Items.Items
 
         protected override BattleEvent GetResponse(BattleEvent battleEvent)
         {
-            PlankMap.Current.RandomisePlanks();
+            Board.Current.RandomisePlanks();
             return BattleEvent.None;
         }
     }

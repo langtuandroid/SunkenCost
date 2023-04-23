@@ -1,21 +1,22 @@
 ﻿using System;
 using System.Collections;
 using System.Collections.Generic;
+using BattleScreen.BattleBoard;
 using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.UI.Extensions;
 
 public class ZoomManager : MonoBehaviour
 {
+    [SerializeField] private Transform _boardContentTransform;
+    
     public static ZoomManager current;
-    
-    
+
     public float stickScale = 1f;
     private const float MinScale = 0.54f;
     private const float MaxScale = 1f;
     private const float ZoomSpeed = 3f;
-
-    private Transform _stickGridTransform;
+    
     private ScrollRect _stickGridScrollRect;
     
     private Vector3 _targetScale;
@@ -38,17 +39,14 @@ public class ZoomManager : MonoBehaviour
 
     void Start()
     {
-        var grid = FindObjectOfType<ReorderableListNoEdges>();
-        _stickGridTransform = grid.Content.transform;
         _gameCamera = GetComponent<Camera>();
-        
         SetStickScale();
     }
 
     public void SetStickScale()
     {
-        var stickCount = PlankMap.Current.PlankCount;
+        var stickCount = Board.Current.PlankCount;
         stickScale = stickCount <= 5 ? 1 : (1f - 0.13f - ((stickCount - 6) * 0.1f));
-        _stickGridTransform.localScale =  new Vector3(stickScale, stickScale, 1);
+        _boardContentTransform.localScale =  new Vector3(stickScale, stickScale, 1);
     }
 }

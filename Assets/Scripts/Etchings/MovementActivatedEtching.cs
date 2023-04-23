@@ -1,4 +1,5 @@
 ﻿using BattleScreen;
+using BattleScreen.BattleBoard;
 using Enemies;
 
 namespace Etchings
@@ -12,7 +13,7 @@ namespace Etchings
             var enemy = battleEvent.enemyAffectee;
             
             // Enemy reached end
-            if (enemy.PlankNum >= PlankMap.Current.PlankCount + 1) return false;
+            if (enemy.PlankNum >= Board.Current.PlankCount + 1) return false;
 
             return ((design.Limitless || UsesUsedThisTurn < UsesPerTurn) && TestCharMovementActivatedEffect(enemy));
         }

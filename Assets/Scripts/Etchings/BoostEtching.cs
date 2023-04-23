@@ -3,6 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using System.Security.Cryptography.X509Certificates;
 using BattleScreen;
+using BattleScreen.BattleBoard;
 using BattleScreen.BattleEvents;
 using Designs;
 using UnityEngine;
@@ -60,7 +61,7 @@ namespace Etchings
             // Etching to the left
             if (PlankNum > 1)
             {
-                var leftPlank = PlankMap.Current.GetPlank(PlankNum - 1);
+                var leftPlank = Board.Current.GetPlank(PlankNum - 1);
                 if (leftPlank && leftPlank.Etching && leftPlank.Etching is DamageEtching damageEtching)
                 {
                     _boostedEtchings.Add(damageEtching);
@@ -69,9 +70,9 @@ namespace Etchings
             }
             
             // Etching to the right
-            if (PlankNum < PlankMap.Current.PlankCount)
+            if (PlankNum < Board.Current.PlankCount)
             {
-                var rightPlank = PlankMap.Current.GetPlank(PlankNum + 1);
+                var rightPlank = Board.Current.GetPlank(PlankNum + 1);
                 if (rightPlank && rightPlank.Etching && rightPlank.Etching is DamageEtching damageEtching)
                 {
                     _boostedEtchings.Add(damageEtching);

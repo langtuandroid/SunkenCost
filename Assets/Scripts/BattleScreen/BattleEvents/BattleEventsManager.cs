@@ -9,10 +9,11 @@ namespace BattleScreen.BattleEvents
     public class BattleEventsManager : MonoBehaviour
     {
         public static BattleEventsManager Current;
-
+        
         [SerializeField] private BattleEventResponderGroup _itemManager;
         [SerializeField] private BattleEventResponderGroup _enemiesManager;
         [SerializeField] private BattleEventResponderGroup _etchingManager;
+        [SerializeField] private BattleEventResponder _player;
         [SerializeField] private EnemyController _enemyController;
         
         private BattleEventResponderGroup[] _responderOrder;
@@ -71,6 +72,9 @@ namespace BattleScreen.BattleEvents
                 var groupResponses = GetResponsesFromGroup(responderGroup, battleEvent);
                 responses.AddRange(groupResponses);
             }
+            
+            if (_player.GetIfRespondingToBattleEvent(battleEvent))
+                responses.AddRange(_player.GetResponseToBattleEvent(battleEvent));
 
             return responses;
         }
