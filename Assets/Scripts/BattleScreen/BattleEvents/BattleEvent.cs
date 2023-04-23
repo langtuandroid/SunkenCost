@@ -12,7 +12,7 @@ namespace BattleScreen
     public enum BattleEventType
     {
         None,
-        StartBattle,
+        StartedBattle,
         StartedEnemyTurn,
         EndedEnemyTurn,
         EndedBattle,

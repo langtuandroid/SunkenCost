@@ -21,7 +21,7 @@ namespace Items.Items
 
         public override bool GetIfRespondingToBattleEvent(BattleEvent battleEvent)
         {
-            return battleEvent.type == BattleEventType.StartBattle;
+            return battleEvent.type == BattleEventType.StartedBattle;
         }
 
         protected override BattleEvent GetResponse(BattleEvent battleEvent)

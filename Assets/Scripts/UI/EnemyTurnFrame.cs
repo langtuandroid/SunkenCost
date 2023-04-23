@@ -7,6 +7,8 @@ public class EnemyTurnFrame : MonoBehaviour
 {
     private Image _image;
     private Material _material;
+
+    private bool _running;
     
     private void Start()
     {
@@ -27,7 +29,13 @@ public class EnemyTurnFrame : MonoBehaviour
 
     private IEnumerator PlayerTurn()
     {
-        if (_material.GetFloat("_FadeAmount") > 0.5f) yield break; 
+        if (_running)
+            StopCoroutine(EnemyTurn());
+
+        _running = true;
+        
+
+        //if (_material.GetFloat("_FadeAmount") > 0.5f) yield break; 
         
         var progress = 0f;
 
@@ -37,22 +45,34 @@ public class EnemyTurnFrame : MonoBehaviour
             progress += 0.05f;
             yield return new WaitForSeconds(0.01f);
         }
+        
+        Debug.Log("Player turn");
 
         _image.enabled = false;
+
+        _running = false;
     }
 
     private IEnumerator EnemyTurn()
     {
+        if (_running)
+            StopCoroutine(PlayerTurn());
+
+        _running = true;
+        _image.enabled = true;
+        
 
         var progress = 0f;
 
         while (progress < 1f)
         {
             _material.SetFloat("_FadeAmount", 1f-progress);
-            progress += 0.05f;
-            yield return new WaitForSeconds(0.01f);
+            progress += 0.1f;
+            yield return new WaitForSeconds(0.001f);
         }
-
-        _image.enabled = true;
+        
+        
+        Debug.Log("Enemy turn");
+        _running = false;
     }
 }

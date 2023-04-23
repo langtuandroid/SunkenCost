@@ -34,7 +34,11 @@ namespace BattleScreen.BattleEvents
 
         public List<BattleEvent> StartBattle()
         {
-            return GetEventAndResponsesList(new BattleEvent(BattleEventType.StartBattle, null));
+            var startBattleEvents = GetEventAndResponsesList(new BattleEvent(BattleEventType.StartedBattle, null));
+
+            EnemySpawner.Instance.StartBattle();
+            startBattleEvents.AddRange(SpawnEnemies());
+            return startBattleEvents;
         }
 
         public List<BattleEvent> GetNextTurn()
@@ -53,8 +57,14 @@ namespace BattleScreen.BattleEvents
             turnEvents.AddRange(startTurnBattleEvents);
             turnEvents.AddRange(movementBattleEvents);
             turnEvents.AddRange(endTurnBattleEvents);
+            turnEvents.AddRange(SpawnEnemies());
 
             return turnEvents;
+        }
+
+        public List<BattleEvent> EndBattle()
+        {
+            return GetEventAndResponsesList(new BattleEvent(BattleEventType.EndedBattle, null));
         }
 
         public List<BattleEvent> GetEventAndResponsesList(BattleEvent battleEvent)
@@ -118,8 +128,16 @@ namespace BattleScreen.BattleEvents
             return groupResponse;
         }
 
-        #region Events
 
-        #endregion
+        private List<BattleEvent> SpawnEnemies()
+        {
+            var battleEvents = new List<BattleEvent>();
+            foreach (var enemySpawnEvent in EnemySpawner.Instance.SpawnNewTurn())
+            {
+                battleEvents.AddRange(GetEventAndResponsesList(enemySpawnEvent));
+            }
+
+            return battleEvents;
+        }
     }
 }

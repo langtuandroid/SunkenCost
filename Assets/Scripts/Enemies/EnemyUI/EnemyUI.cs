@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using BattleScreen;
 using BattleScreen.BattleEvents;
@@ -29,6 +30,7 @@ namespace Enemies.EnemyUI
     public class EnemyUI : MonoBehaviour, IBattleEventUpdatedUI
     {
         [SerializeField] private Image _image;
+        [SerializeField] private EnemyPositioner _enemyPositioner;
 
         [SerializeField] private TooltipTrigger _tooltipTrigger;
         
@@ -62,7 +64,7 @@ namespace Enemies.EnemyUI
         private void Awake()
         {
             _enemy = GetComponent<Enemy>();
-            FindObjectOfType<BattleEventsManager>().RegisterUIUpdater(this);
+            BattleEventsManager.Current.RegisterUIUpdater(this);
         }
 
         public bool GetIfUpdating(BattleEvent battleEvent)
@@ -90,7 +92,7 @@ namespace Enemies.EnemyUI
         {
             _speechText = text;
         }
-        
+
         private void UpdateUI(EnemyUIDisplayState state)
         {
             _tooltipTrigger.header = state.title;
@@ -106,7 +108,7 @@ namespace Enemies.EnemyUI
         
         private void OnDestroy()
         {
-            FindObjectOfType<BattleEventsManager>().DeregisterUIUpdater(this);
+            BattleEventsManager.Current.DeregisterUIUpdater(this);
         }
     }
 }

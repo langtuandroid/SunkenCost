@@ -26,7 +26,7 @@ namespace BattleScreen
         [SerializeField] private EndOfBattlePopup _endOfBattlePopup;
         [SerializeField] private BattleHUDManager _hudManager;
 
-        public int Turn { get; private set; }
+        public int Turn { get; private set; } = 1;
         public GameState GameState { get; private set; } = GameState.Loading;
         
         private void Awake()
@@ -51,7 +51,10 @@ namespace BattleScreen
 
         public void ClickedNextTurn()
         {
-            if (GameState == GameState.PlayerTurn) StartCoroutine(NextEnemyTurn());
+            if (GameState != GameState.PlayerTurn) return;
+
+            if (Turn < RunProgress.PlayerStats.NumberOfTurns) StartCoroutine(NextEnemyTurn());
+            else StartCoroutine(EndBattle());
         }
         
         public void ClickedQuit()
@@ -71,12 +74,21 @@ namespace BattleScreen
         
         private IEnumerator NextEnemyTurn()
         {
-            Turn++;
             GameState = GameState.EnemyTurn;
+            
             var battleActions = BattleEventsManager.Current.GetNextTurn();
             var battleActionQueue = new Queue<BattleEvent>(battleActions);
             yield return StartCoroutine(VisualiseBattleEvents(battleActionQueue));
+            Turn++;
             GameState = GameState.PlayerTurn;
+        }
+
+        private IEnumerator EndBattle()
+        {
+            var endBattleEvents = BattleEventsManager.Current.EndBattle();
+            yield return StartCoroutine(VisualiseBattleEvents(new Queue<BattleEvent>(endBattleEvents)));
+            GameState = GameState.Rewards;
+            CreateEndOfBattlePopup();
         }
 
         public IEnumerator VisualiseBattleEvents(Queue<BattleEvent> battleEvents)
@@ -100,8 +112,12 @@ namespace BattleScreen
                 if (nextBattleEvent.type == BattleEventType.EnemyDamaged)
                     yield return new WaitForSeconds
                         (ActionExecutionSpeed * nextBattleEvent.damageModificationPackage.ModCount);
-                
-                yield return new WaitForSeconds(ActionExecutionSpeed);
+
+                var waitTime = nextBattleEvent.type switch
+                {
+                    _ => ActionExecutionSpeed
+                };
+                yield return new WaitForSeconds(waitTime);
             }
         }
 
@@ -110,11 +126,11 @@ namespace BattleScreen
             _endOfBattlePopup.gameObject.SetActive(true);
             var disturbance = RunProgress.CurrentDisturbance;
             _endOfBattlePopup.SetReward(disturbance);
-            _endOfBattlePopup.SetButtonAction(EndBattle);
+            _endOfBattlePopup.SetButtonAction(LeaveBattle);
         
         }
 
-        private void EndBattle()
+        private void LeaveBattle()
         {
             DisturbanceManager.ExecuteEndOfBattleDisturbanceAction(RunProgress.CurrentDisturbance);
             RunProgress.PlayerStats.Gold = Player.Current.Gold;

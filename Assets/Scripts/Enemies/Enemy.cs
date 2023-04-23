@@ -37,8 +37,8 @@ namespace Enemies
 
         public int MaxHealth => MaxHealthStat.Value;
 
-        public Plank Plank => Board.Current.GetPlank(Mover.StickNum);
-        public int PlankNum => Mover.StickNum;
+        public Plank Plank => Board.Current.GetPlank(Mover.PlankNum);
+        public int PlankNum => Mover.PlankNum;
 
         public bool FinishedMoving => Mover.FinishedMoving;
 
@@ -158,11 +158,6 @@ namespace Enemies
         {
             Mover.Block(blockAmount);
             return CreateEvent(BattleEventType.EnemyBlocked, blockAmount);
-        }
-
-        public void RePosition(Vector2 newPosition)
-        {
-            Mover.SetAimPosition(newPosition);
         }
 
         public virtual void TakeDamage(int damage, DamageSource damageSource)

@@ -10,6 +10,7 @@ namespace BattleScreen.BattleBoard
     public class Board : MonoBehaviour
     {
         [SerializeField] private LayoutGroup _plankArea;
+        [SerializeField] private Transform _island;
 
         public static Board Current;
         
@@ -21,6 +22,9 @@ namespace BattleScreen.BattleBoard
         public Canvas Canvas { get; private set; }
         public RectTransform Content { get; private set; }
         public RectTransform Rect { get; private set; }
+
+        public Transform Island => _island;
+        
         public bool CanMovePlanks => !Player.Current.IsOutOfMoves && Battle.Current.GameState == GameState.PlayerTurn;
         
         public int PlankCount => _cachedPlanks.Count;

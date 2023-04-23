@@ -712,6 +712,7 @@
             <e p="EnemyUI" t="Include">
               <e p="EnemyHealthText.cs" t="Include" />
               <e p="EnemyMovementText.cs" t="Include" />
+              <e p="EnemyPositioner.cs" t="Include" />
               <e p="EnemySpeechBubble.cs" t="Include" />
               <e p="EnemyTurnOrderText.cs" t="Include" />
               <e p="EnemyUI.cs" t="Include" />
@@ -810,12 +811,6 @@
             <e p="ReorderableListContent.cs" t="Include" />
             <e p="ReorderableListDebug.cs" t="Include" />
             <e p="ReorderableListElement.cs" t="Include" />
-          </e>
-          <e p="ReorderableListNoEdges" t="Include">
-            <e p="ReorderableListContentNoEdges.cs" t="Include" />
-            <e p="ReorderableListDebugNoEdges.cs" t="Include" />
-            <e p="ReorderableListElementNoEdges.cs" t="Include" />
-            <e p="ReorderableListNoEdges.cs" t="Include" />
           </e>
           <e p="RunProgress.cs" t="Include" />
           <e p="SerializedDictionary.cs" t="Include" />

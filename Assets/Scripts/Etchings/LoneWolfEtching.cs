@@ -27,7 +27,7 @@ namespace Etchings
             {
                 case BattleEventType.PlankCreated:
                 case BattleEventType.PlankDestroyed:
-                case BattleEventType.StartBattle:
+                case BattleEventType.StartedBattle:
                     responses.Add(UpdateDamage());
                     break;
             }

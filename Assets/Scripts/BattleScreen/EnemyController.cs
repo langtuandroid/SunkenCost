@@ -79,20 +79,20 @@ namespace BattleScreen
             return turn;
         }
         
-        public List<Enemy> GetEnemiesOnStick(int stick)
+        public List<Enemy> GetEnemiesOnPlank(int plankNum)
         {
             var enemies = new List<Enemy>();
-            enemies.AddRange(_enemies.Where(e => e.PlankNum == stick));
+            enemies.AddRange(_enemies.Where(e => e.PlankNum == plankNum));
 
             return enemies;
         }
 
-        public List<Enemy> GetEnemiesOnPlanks(List<int> sticks)
+        public List<Enemy> GetEnemiesOnPlanks(List<int> plankNums)
         {
             var enemies = new List<Enemy>();
-            foreach (var stick in sticks)
+            foreach (var plankNum in plankNums)
             {
-                enemies.AddRange(_enemies.Where(e => e.PlankNum == stick));
+                enemies.AddRange(_enemies.Where(e => e.PlankNum == plankNum));
             }
 
             return enemies;

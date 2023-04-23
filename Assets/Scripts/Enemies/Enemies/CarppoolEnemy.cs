@@ -28,7 +28,7 @@ namespace Enemies.Enemies
 
         public List<BattleEvent> GetStartOfTurnAbility()
         {
-            var newBullCarp = EnemySpawner.Current.SpawnEnemy("BullCarp", PlankNum);
+            var newBullCarp = EnemySpawner.Instance.SpawnEnemyOnPlank("BullCarp", PlankNum);
             var newEvent = CreateEvent(BattleEventType.EnemySpawned);
             newEvent.enemyAffectee = newBullCarp;
             newEvent.enemyAffector = this;

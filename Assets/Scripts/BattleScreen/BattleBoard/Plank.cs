@@ -132,7 +132,7 @@ namespace BattleScreen.BattleBoard
         
         public void Destroy(DamageSource source)
         {
-            var enemies = EnemyController.Current.GetEnemiesOnStick(transform.GetSiblingIndex());
+            var enemies = EnemyController.Current.GetEnemiesOnPlank(transform.GetSiblingIndex());
 
             foreach (var enemy in enemies)
             {

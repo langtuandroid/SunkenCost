@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using Newtonsoft.Json.Bson;
@@ -30,9 +31,6 @@ namespace Enemies
     
     public class EnemyMover : MonoBehaviour
     {
-        public const int EnemyOffset = 100;
-        private const float Smooth = 0.01f;
-
         [SerializeField] private EnemyUI.EnemyUI _enemyUI;
         
         public int AmountOfMovesLeftThisTurn { get; private set; }
@@ -42,12 +40,8 @@ namespace Enemies
         private List<EnemyMove> MoveSet = new List<EnemyMove>();
         private int _moveIndex;
 
-        private float _moveVelocityX = 0f;
-        private float _moveVelocityY = 0f;
         
-        private Vector2 _aimPosition = Vector2.zero;
-
-        public int StickNum { get; private set; }
+        public int PlankNum { get; private set; }
 
         public bool FinishedMoving => AmountOfMovesLeftThisTurn == 0;
 
@@ -80,20 +74,10 @@ namespace Enemies
             SetNextMoveSequence();
         }
         
-        private void LateUpdate()
-        {
-            var localPosition = transform.localPosition;
-            var newPositionX = Mathf.SmoothDamp(
-                localPosition.x, _aimPosition.x, ref _moveVelocityX, Smooth);
-            var newPositionY = Mathf.SmoothDamp(
-                localPosition.y, _aimPosition.y, ref _moveVelocityY, Smooth);
-            transform.localPosition = new Vector3(newPositionX, newPositionY, 0);
-        }
-        
         public void Move()
         {
             _lastMove = AmountOfMovesLeftThisTurn;
-            StickNum += LastDirection + (LastDirection * _skips);
+            PlankNum += LastDirection + (LastDirection * _skips);
             AmountOfMovesLeftThisTurn -= LastDirection + (LastDirection * _skips);
             _skips = 0;
         }
@@ -109,14 +93,9 @@ namespace Enemies
             AddMove(MovementType.Walk, magnitude);
         }
 
-        public void SetStickNum(int stickNum)
+        public void SetPlankNum(int plankNum)
         {
-            StickNum = stickNum;
-        }
-
-        public void SetAimPosition(Vector2 newPosition)
-        {
-            _aimPosition = newPosition;
+            PlankNum = plankNum;
         }
 
         public void AddSkip(int amount)
@@ -149,7 +128,7 @@ namespace Enemies
         {
             AmountOfMovesLeftThisTurn += amount * NextDirection;
             
-            if (AmountOfMovesLeftThisTurn <= -StickNum) AmountOfMovesLeftThisTurn = -StickNum;
+            if (AmountOfMovesLeftThisTurn <= -PlankNum) AmountOfMovesLeftThisTurn = -PlankNum;
             
             UpdateMovementText();
             
@@ -183,7 +162,7 @@ namespace Enemies
                 if (_moveIndex >= MoveSet.Count) _moveIndex = 0;
 
                 // Always move off starting stick
-                if (MoveSet[_moveIndex].magnitude <= 0 && StickNum == 0)
+                if (MoveSet[_moveIndex].magnitude <= 0 && PlankNum == 0)
                 {
                     continue;
                 }

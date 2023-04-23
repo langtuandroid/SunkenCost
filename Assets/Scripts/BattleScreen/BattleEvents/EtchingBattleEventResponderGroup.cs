@@ -11,7 +11,7 @@ namespace BattleScreen.Events
     {
         public override BattleEventResponder[] GetEventResponders(BattleEvent previousBattleEvent)
         {
-            if (previousBattleEvent.type == BattleEventType.StartBattle ||
+            if (previousBattleEvent.type == BattleEventType.StartedBattle ||
                 previousBattleEvent.type == BattleEventType.PlayerMovedPlank ||
                 previousBattleEvent.type == BattleEventType.PlankCreated ||
                 previousBattleEvent.type == BattleEventType.PlankDestroyed ||
@@ -32,9 +32,6 @@ namespace BattleScreen.Events
             {
                 if (responder is null) throw new Exception("Etching is not responder!");
                 AddResponder(responder);
-
-                var etching = responder as Etching;
-                Debug.Log(etching.design.Title);
             }
         }
     }
