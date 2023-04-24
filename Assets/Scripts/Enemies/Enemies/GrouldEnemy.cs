@@ -22,7 +22,7 @@ public class GrouldEnemy : Enemy, IStartOfTurnAbilityHolder
 
     public bool GetIfUsingStartOfTurnAbility()
     {
-        return PlankNum != 0;
+        return PlankNum != -1;
     }
 
     public List<BattleEvent> GetStartOfTurnAbility()

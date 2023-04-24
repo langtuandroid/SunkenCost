@@ -71,6 +71,7 @@ namespace BattleScreen.BattleEvents
         {
             foreach (var ui in _eventRespondingUI.Where(ui => ui.GetIfUpdating(battleEvent)))
             {
+                Debug.Log(ui + " saving state!");
                 ui.SaveCurrentState();
                 battleEvent.visualisers.Add(ui);
             }

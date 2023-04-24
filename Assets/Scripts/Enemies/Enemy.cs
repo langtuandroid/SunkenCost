@@ -15,10 +15,7 @@ namespace Enemies
     public abstract class Enemy : BattleEventResponder
     {
         public EnemyStats stats;
-
-        private EnemyAnimationController _animationController;
-
-
+        
         public string Name { get; protected set; }
         
         public Stat MaxHealthStat { get; private set; }
@@ -32,8 +29,9 @@ namespace Enemies
 
         public bool IsDestroyed { get; private set; } = false;
 
-        public EnemyMover Mover { get; private set; }
-        public EnemyUI.EnemyUI UI { get; private set; }
+        public string Speech { get; private set; } = "";
+
+        public EnemyMover Mover { get; } = new EnemyMover();
 
         public int MaxHealth => MaxHealthStat.Value;
 
@@ -44,21 +42,14 @@ namespace Enemies
 
         protected virtual void Awake()
         {
-            UI = GetComponent<EnemyUI.EnemyUI>();
-            Mover = GetComponent<EnemyMover>();
-
             stats = new EnemyStats(this);
-            _animationController = GetComponent<EnemyAnimationController>();
 
             Init();
+            Mover.Init();
+            ChangeHealth(MaxHealthStat.Value);
         }
 
         protected abstract void Init();
-        
-        protected virtual void Start()
-        {
-            ChangeHealth(MaxHealthStat.Value);
-        }
 
         protected void SetInitialHealth(int health)
         {
@@ -68,9 +59,7 @@ namespace Enemies
         
         public List<BattleEvent> StartTurn()
         {
-            var startTurnEvents = new List<BattleEvent>();
-            
-            var startTurnEvent = CreateEventAndResponses(BattleEventType.StartedIndividualEnemyTurn);
+            var startTurnEvents = CreateEventAndResponses(BattleEventType.StartedIndividualEnemyTurn);
             
             // Apply poison
             if (stats.Poison > 0)
@@ -78,7 +67,8 @@ namespace Enemies
                 startTurnEvents.AddRange(DealPoison());
             }
 
-            if (this is IStartOfTurnAbilityHolder startOfTurnAbilityHolder)
+            if (this is IStartOfTurnAbilityHolder startOfTurnAbilityHolder
+                && startOfTurnAbilityHolder.GetIfUsingStartOfTurnAbility())
             {
                 foreach (var battleEvent in startOfTurnAbilityHolder.GetStartOfTurnAbility())
                 {
@@ -95,11 +85,10 @@ namespace Enemies
             Mover.Move();
 
             // TEMPORARY Destroy if at end
-            if (PlankNum >= Board.Current.PlankCount)
+            if (PlankNum >= Board.Current.PlankCount - 1)
             {
-                DestroySelf(DamageSource.Boat);
-                
-                return CreateEventAndResponses(BattleEventType.EnemyReachedBoat);
+                var response = CreateEventAndResponses(BattleEventType.EnemyReachedBoat);
+                response.AddRange(DestroySelf(DamageSource.Boat));
             }
             
             return CreateEventAndResponses(BattleEventType.EnemyMove);
@@ -109,42 +98,6 @@ namespace Enemies
         {
             Mover.EndTurn();
             return CreateEventAndResponses(BattleEventType.EnemyEndMyMove);
-        }
-
-        public IEnumerator MoveAnimation()
-        {
-            Mover.UpdateMovementText();
-            
-            yield break;
-        }
-
-        public IEnumerator BeginMyTurnAnimation()
-        {
-            _animationController.WiggleBeforeMoving();
-            UI.TurnOrderText.MyTurn();
-            
-            yield break;
-        }
-
-        public IEnumerator HealAnimation()
-        {
-            InGameSfxManager.current.Healed();
-            UI.HealthText.AlterHealth(Health, MaxHealthStat.Value);
-            _animationController.Heal();
-            
-            yield break;
-        }
-
-        public IEnumerator DamageAnimation()
-        {
-            _animationController.Damage();
-            yield break;
-        }
-
-        public IEnumerator EndMyTurnAnimation()
-        {
-            UI.TurnOrderText.EndMyTurn();
-            yield break;
         }
 
         private List<BattleEvent> DealPoison()
@@ -206,6 +159,21 @@ namespace Enemies
         }
 
         public abstract string GetDescription();
+        
+        public override bool GetIfRespondingToBattleEvent(BattleEvent battleEvent)
+        {
+            if (battleEvent.type == BattleEventType.PlankMoved) RefreshMoverPlankNum();
+            return false;
+        }
+
+        protected List<BattleEvent> Speak(string text)
+        {
+            Speech = text;
+            var speechEventAndResponses = CreateEventAndResponses(BattleEventType.EnemySpeaking);
+            Speech = "";
+
+            return speechEventAndResponses;
+        }
 
         protected BattleEvent CreateEvent(BattleEventType type, int modifier = 0,
             DamageSource damageSource = DamageSource.None)
@@ -220,18 +188,19 @@ namespace Enemies
             var battleEvent = CreateEvent(type, modifier, damageSource);
             return BattleEventsManager.Current.GetEventAndResponsesList(battleEvent);
         }
+        
+        private void RefreshMoverPlankNum()
+        {
+            if (Mover.PlankNum == -1) return;
+            Mover.SetPlankNum(transform.parent.GetSiblingIndex());
+        }
 
-        public virtual List<BattleEvent> DestroySelf(DamageSource damageSource)
+        public List<BattleEvent> DestroySelf(DamageSource damageSource)
         {
             IsDestroyed = true;
             Moving = false;
             
             return CreateEventAndResponses(BattleEventType.EnemyKilled, damageSource: damageSource);
-        }
-
-        public override bool GetIfRespondingToBattleEvent(BattleEvent battleEvent)
-        {
-            return false;
         }
     }
 }

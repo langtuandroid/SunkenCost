@@ -34,6 +34,7 @@ namespace BattleScreen
         {
             _enemies.Add(enemy);
             _enemyCurrentTurnMoveQueue.Enqueue(enemy);
+            enemy.SetTurnOrder(_enemies.Count);
             _enemyBattleEventResponderGroup.EnemySpawned(enemy);
         }
 

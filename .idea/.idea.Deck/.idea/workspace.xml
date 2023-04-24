@@ -23,33 +23,37 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="50470089-3e0c-4487-973b-9d375622b070" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/Assets/Scripts/Enemies/EnemyUI/EnemyPositioner.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/Scripts/Enemies/EnemyUI/EnemyPositioner.cs.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Scripts/BattleScreen/BattleBoard/BoardPositioner.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Scripts/BattleScreen/BattleBoard/BoardPositioner.cs.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Scripts/Enemies/EnemyUI/EnemyPoisonDisplay.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Scripts/Enemies/EnemyUI/EnemyPoisonDisplay.cs.meta" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/.idea.Deck/.idea/contentModel.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.Deck/.idea/contentModel.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/.idea.Deck/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.Deck/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/AllIn1SpriteShader/Materials/EnemyTurnFrame.mat" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/AllIn1SpriteShader/Materials/EnemyTurnFrame.mat" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/Enemies/Enemy.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Prefabs/Enemies/Enemy.prefab" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/Plank.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Prefabs/Plank.prefab" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scenes/Battle.unity" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scenes/Battle.unity" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Scripts/BattleScreen/Battle.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/BattleScreen/Battle.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Scripts/BattleScreen/BattleBoard/Board.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/BattleScreen/BattleBoard/Board.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Scripts/BattleScreen/BattleBoard/Plank.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/BattleScreen/BattleBoard/Plank.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Scripts/BattleScreen/BattleEvents/BattleEvent.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/BattleScreen/BattleEvents/BattleEvent.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Scripts/BattleScreen/BattleEvents/BattleEventsManager.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/BattleScreen/BattleEvents/BattleEventsManager.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/BattleScreen/BattleEvents/EtchingBattleEventResponderGroup.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/BattleScreen/BattleEvents/EtchingBattleEventResponderGroup.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/BattleScreen/BattleEvents/EnemyBattleEventResponderGroup.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/BattleScreen/BattleEvents/EnemyBattleEventResponderGroup.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Scripts/BattleScreen/EnemyController.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/BattleScreen/EnemyController.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Enemies/Enemies/CarppoolEnemy.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Enemies/Enemies/CarppoolEnemy.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Damage/DamageHandler.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Damage/DamageHandler.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Enemies/Enemies/CucungerEnemy.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Enemies/Enemies/CucungerEnemy.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Enemies/Enemies/GrouldEnemy.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Enemies/Enemies/GrouldEnemy.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Scripts/Enemies/Enemy.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Enemies/Enemy.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Scripts/Enemies/EnemyMover.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Enemies/EnemyMover.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Enemies/EnemySpawner.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Enemies/EnemySpawner.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Enemies/EnemyStats.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Enemies/EnemyStats.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Enemies/EnemyUI/EnemyPositioner.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Enemies/EnemyUI/EnemyTransformPositioner.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Enemies/EnemyUI/EnemyPositioner.cs.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Enemies/EnemyUI/EnemyTransformPositioner.cs.meta" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Enemies/EnemyUI/EnemyTurnOrderText.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Enemies/EnemyUI/EnemyTurnOrderText.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Scripts/Enemies/EnemyUI/EnemyUI.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Enemies/EnemyUI/EnemyUI.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Etchings/LoneWolfEtching.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Etchings/LoneWolfEtching.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Etchings/Etching.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Etchings/Etching.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Scripts/Items/Items/ConfusedItem.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Items/Items/ConfusedItem.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/ReorderableListNoEdges.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/ReorderableListNoEdges/ReorderableListContentNoEdges.cs" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/ReorderableListNoEdges/ReorderableListContentNoEdges.cs.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/ReorderableListNoEdges/ReorderableListDebugNoEdges.cs" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/ReorderableListNoEdges/ReorderableListDebugNoEdges.cs.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/ReorderableListNoEdges/ReorderableListElementNoEdges.cs" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/ReorderableListNoEdges/ReorderableListElementNoEdges.cs.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/ReorderableListNoEdges/ReorderableListNoEdges.cs" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/ReorderableListNoEdges/ReorderableListNoEdges.cs.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/UI/EnemyTurnFrame.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/UI/EnemyTurnFrame.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/PlankFactory.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/PlankFactory.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/UserSettings/EditorUserSettings.asset" beforeDir="false" afterPath="$PROJECT_DIR$/UserSettings/EditorUserSettings.asset" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -92,23 +96,11 @@
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/Assets/Scripts/Enemies/Enemies/AxolitlEnemy.cs" />
-        <option value="$PROJECT_DIR$/Assets/Scripts/Etchings/ReverseEtching.cs" />
-        <option value="$PROJECT_DIR$/Assets/Scripts/UI/QuitButton.cs" />
-        <option value="$PROJECT_DIR$/Assets/Scripts/UI/Tutorial/TutorialManager.cs" />
-        <option value="$PROJECT_DIR$/Assets/Scripts/UI/NextTurnButton.cs" />
-        <option value="$PROJECT_DIR$/Assets/Scripts/BattleScreen/PlayerTurnEvents.cs" />
-        <option value="$PROJECT_DIR$/Assets/Scripts/UI/Tutorial/TutorialButton.cs" />
-        <option value="$PROJECT_DIR$/Assets/Scripts/UI/Tutorial/TutorialUIObject.cs" />
-        <option value="$PROJECT_DIR$/Assets/Scripts/UI/WhoseTurnText.cs" />
-        <option value="$PROJECT_DIR$/Assets/Scripts/UI/WhosTurnText.cs" />
         <option value="$PROJECT_DIR$/Assets/Scripts/UI/LoseLifeShaderController.cs" />
         <option value="$PROJECT_DIR$/Assets/Scripts/BackgroundColorController.cs" />
         <option value="$PROJECT_DIR$/Assets/Scripts/BattleScreen/BattleHUDManager.cs" />
         <option value="$PROJECT_DIR$/Assets/Scripts/Audio/InGameSfxManager.cs" />
         <option value="$PROJECT_DIR$/Assets/Scripts/BattleScreen/BattleEvents/BattleEventResponderGroup.cs" />
-        <option value="$PROJECT_DIR$/Assets/Scripts/BattleScreen/BattleEvents/EnemyBattleEventResponderGroup.cs" />
-        <option value="$PROJECT_DIR$/Assets/Scripts/Damage/DamageHandler.cs" />
         <option value="$PROJECT_DIR$/Assets/Scripts/ReorderableListNoEdges/ReorderableListElementNoEdges.cs" />
         <option value="$PROJECT_DIR$/Assets/Scripts/Plank.cs" />
         <option value="$PROJECT_DIR$/Assets/Scripts/BattleScreen/Board/BoardElement.cs" />
@@ -120,29 +112,41 @@
         <option value="$PROJECT_DIR$/Assets/Scripts/BattleScreen/Board/BoardContent.cs" />
         <option value="$PROJECT_DIR$/Assets/Scripts/BattleScreen/Board/Board.cs" />
         <option value="$PROJECT_DIR$/Assets/Scripts/EtchingFactory.cs" />
-        <option value="$PROJECT_DIR$/Assets/Scripts/Enemies/Enemies/CucungerEnemy.cs" />
         <option value="$PROJECT_DIR$/Assets/Scripts/Etchings/AreaEtching.cs" />
         <option value="$PROJECT_DIR$/Assets/Scripts/Etchings/BoostEtching.cs" />
         <option value="$PROJECT_DIR$/Assets/Scripts/Etchings/LoneWolfEtching.cs" />
         <option value="$PROJECT_DIR$/Assets/Scripts/Etchings/MovementActivatedEtching.cs" />
         <option value="$PROJECT_DIR$/Assets/Scripts/Etchings/RangedEtching.cs" />
-        <option value="$PROJECT_DIR$/Assets/Scripts/Items/Items/ConfusedItem.cs" />
         <option value="$PROJECT_DIR$/Assets/Scripts/BattleScreen/BattleBoard/BoardContent.cs" />
-        <option value="$PROJECT_DIR$/Assets/Scripts/BattleScreen/BattleBoard/Plank.cs" />
         <option value="$PROJECT_DIR$/Assets/Scripts/UI/EnemyTurnFrame.cs" />
         <option value="$PROJECT_DIR$/Assets/Scripts/BattleScreen/BattleEvents/EtchingBattleEventResponderGroup.cs" />
-        <option value="$PROJECT_DIR$/Assets/Scripts/BattleScreen/BattleEvents/BattleEventsManager.cs" />
-        <option value="$PROJECT_DIR$/Assets/Scripts/BattleScreen/Battle.cs" />
-        <option value="$PROJECT_DIR$/Assets/Scripts/PlankFactory.cs" />
-        <option value="$PROJECT_DIR$/Assets/Scripts/Enemies/EnemySpawner.cs" />
-        <option value="$PROJECT_DIR$/Assets/Scripts/BattleScreen/BattleBoard/Board.cs" />
-        <option value="$PROJECT_DIR$/Assets/Scripts/BattleScreen/EnemyController.cs" />
-        <option value="$PROJECT_DIR$/Assets/Scripts/Enemies/EnemyUI/EnemyUI.cs" />
         <option value="$PROJECT_DIR$/Assets/Scripts/Enemies/EnemyUI/EnemyTransformMover.cs" />
-        <option value="$PROJECT_DIR$/Assets/Scripts/Enemies/EnemyMover.cs" />
-        <option value="$PROJECT_DIR$/Assets/Scripts/Enemies/Enemy.cs" />
         <option value="$PROJECT_DIR$/Assets/Scripts/PlankDisplay.cs" />
         <option value="$PROJECT_DIR$/Assets/Scripts/Enemies/EnemyUI/EnemyPositioner.cs" />
+        <option value="$PROJECT_DIR$/Assets/Scripts/Enemies/EnemyStats.cs" />
+        <option value="$PROJECT_DIR$/Assets/Scripts/Enemies/EnemyUI/EnemyPoisonDisplay.cs" />
+        <option value="$PROJECT_DIR$/Assets/Scripts/BattleScreen/BattleEvents/BattleEventsManager.cs" />
+        <option value="$PROJECT_DIR$/Assets/Scripts/BattleScreen/BattleBoard/IslandPositioner.cs" />
+        <option value="$PROJECT_DIR$/Assets/Scripts/BattleScreen/BattleBoard/BoardPositioner.cs" />
+        <option value="$PROJECT_DIR$/Assets/Scripts/Enemies/Enemies/GrouldEnemy.cs" />
+        <option value="$PROJECT_DIR$/Assets/Scripts/BattleScreen/BattleEvents/IBattleEventUpdatedUI.cs" />
+        <option value="$PROJECT_DIR$/Assets/Scripts/Damage/DamageHandler.cs" />
+        <option value="$PROJECT_DIR$/Assets/Scripts/Enemies/EnemyUI/EnemyTransformPositioner.cs" />
+        <option value="$PROJECT_DIR$/Assets/Scripts/BattleScreen/EnemyController.cs" />
+        <option value="$PROJECT_DIR$/Assets/Scripts/Enemies/EnemyUI/EnemyTurnOrderText.cs" />
+        <option value="$PROJECT_DIR$/Assets/Scripts/BattleScreen/BattleEvents/EnemyBattleEventResponderGroup.cs" />
+        <option value="$PROJECT_DIR$/Assets/Scripts/Enemies/EnemyUI/EnemyUI.cs" />
+        <option value="$PROJECT_DIR$/Assets/Scripts/Etchings/Etching.cs" />
+        <option value="$PROJECT_DIR$/Assets/Scripts/BattleScreen/BattleBoard/Board.cs" />
+        <option value="$PROJECT_DIR$/Assets/Scripts/BattleScreen/Battle.cs" />
+        <option value="$PROJECT_DIR$/Assets/Scripts/BattleScreen/BattleEvents/BattleEvent.cs" />
+        <option value="$PROJECT_DIR$/Assets/Scripts/Items/Items/ConfusedItem.cs" />
+        <option value="$PROJECT_DIR$/Assets/Scripts/Enemies/EnemySpawner.cs" />
+        <option value="$PROJECT_DIR$/Assets/Scripts/Enemies/EnemyMover.cs" />
+        <option value="$PROJECT_DIR$/Assets/Scripts/Enemies/Enemy.cs" />
+        <option value="$PROJECT_DIR$/Assets/Scripts/BattleScreen/BattleBoard/Plank.cs" />
+        <option value="$PROJECT_DIR$/Assets/Scripts/PlankFactory.cs" />
+        <option value="$PROJECT_DIR$/Assets/Scripts/Enemies/Enemies/CucungerEnemy.cs" />
       </list>
     </option>
   </component>
@@ -271,6 +275,8 @@
       <workItem from="1681089483927" duration="1168000" />
       <workItem from="1681167563396" duration="8398000" />
       <workItem from="1681341014740" duration="48308000" />
+      <workItem from="1682295796008" duration="12901000" />
+      <workItem from="1682374213923" duration="3682000" />
     </task>
     <servers />
   </component>
@@ -313,25 +319,25 @@
     </state>
     <state x="344" y="78" key="SettingsEditor/0.0.1920.1040@0.0.1920.1040" timestamp="1674871190253" />
     <state x="688" y="162" key="SettingsEditor/0.0.3840.2160@0.0.3840.2160" timestamp="1681265399718" />
-    <state x="216" y="0" width="782" height="544" key="VCS.FileHistoryDialog" timestamp="1681952671049">
+    <state x="216" y="0" width="782" height="544" key="VCS.FileHistoryDialog" timestamp="1682297090133">
       <screen x="0" y="0" width="3840" height="2160" />
     </state>
     <state x="49" y="0" width="782" height="544" key="VCS.FileHistoryDialog/0.0.1920.1080@0.0.1920.1080" timestamp="1680091451955" />
-    <state x="216" y="0" width="782" height="544" key="VCS.FileHistoryDialog/0.0.3840.2160@0.0.3840.2160" timestamp="1681952671049" />
+    <state x="216" y="0" width="782" height="544" key="VCS.FileHistoryDialog/0.0.3840.2160@0.0.3840.2160" timestamp="1682297090133" />
     <state x="452" y="162" width="850" height="999" key="find.popup" timestamp="1680137721419">
       <screen x="0" y="0" width="3840" height="2160" />
     </state>
     <state x="452" y="162" width="850" height="999" key="find.popup/0.0.3840.2160@0.0.3840.2160" timestamp="1680137721419" />
-    <state x="1064" y="0" width="1680" height="2148" key="run.anything.popup" timestamp="1682207183859">
+    <state x="1064" y="0" width="1680" height="2148" key="run.anything.popup" timestamp="1682320620135">
       <screen x="0" y="0" width="3840" height="2160" />
     </state>
     <state x="532" y="0" width="840" height="1034" key="run.anything.popup/0.0.1920.1040@0.0.1920.1040" timestamp="1675489416658" />
-    <state x="1064" y="0" width="1680" height="2148" key="run.anything.popup/0.0.3840.2160@0.0.3840.2160" timestamp="1682207183859" />
-    <state x="1078" y="10" width="1680" height="2148" key="search.everywhere.popup" timestamp="1682207376495">
+    <state x="1064" y="0" width="1680" height="2148" key="run.anything.popup/0.0.3840.2160@0.0.3840.2160" timestamp="1682320620135" />
+    <state x="1078" y="10" width="1680" height="2148" key="search.everywhere.popup" timestamp="1682302718565">
       <screen x="0" y="0" width="3840" height="2160" />
     </state>
     <state x="539" y="5" width="840" height="1034" key="search.everywhere.popup/0.0.1920.1040@0.0.1920.1040" timestamp="1675255493675" />
-    <state x="1078" y="10" width="1680" height="2148" key="search.everywhere.popup/0.0.3840.2160@0.0.3840.2160" timestamp="1682207376495" />
+    <state x="1078" y="10" width="1680" height="2148" key="search.everywhere.popup/0.0.3840.2160@0.0.3840.2160" timestamp="1682302718565" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>

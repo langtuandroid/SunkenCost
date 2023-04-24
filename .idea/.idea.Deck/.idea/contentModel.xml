@@ -636,6 +636,7 @@
             <e p="Battle.cs" t="Include" />
             <e p="BattleBoard" t="Include">
               <e p="Board.cs" t="Include" />
+              <e p="BoardPositioner.cs" t="Include" />
               <e p="Plank.cs" t="Include" />
             </e>
             <e p="BattleEvents" t="Include">
@@ -712,8 +713,9 @@
             <e p="EnemyUI" t="Include">
               <e p="EnemyHealthText.cs" t="Include" />
               <e p="EnemyMovementText.cs" t="Include" />
-              <e p="EnemyPositioner.cs" t="Include" />
+              <e p="EnemyPoisonDisplay.cs" t="Include" />
               <e p="EnemySpeechBubble.cs" t="Include" />
+              <e p="EnemyTransformPositioner.cs" t="Include" />
               <e p="EnemyTurnOrderText.cs" t="Include" />
               <e p="EnemyUI.cs" t="Include" />
               <e p="EnemyUIText.cs" t="Include" />

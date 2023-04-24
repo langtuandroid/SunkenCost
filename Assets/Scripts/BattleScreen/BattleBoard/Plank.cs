@@ -1,4 +1,6 @@
-﻿using Etchings;
+﻿using System.Collections.Generic;
+using BattleScreen.BattleEvents;
+using Etchings;
 using UnityEngine;
 using UnityEngine.EventSystems;
 using UnityEngine.UI;
@@ -67,7 +69,7 @@ namespace BattleScreen.BattleBoard
             _emptySpaceRect.sizeDelta = _rectTransform.sizeDelta;
             emptySpace.AddComponent<LayoutElement>();
             
-            // Move out of the content area
+            // Move this plank out of the content area
             _rectTransform.SetParent(_board.Rect);
             _rectTransform.SetAsLastSibling();
 
@@ -123,22 +125,29 @@ namespace BattleScreen.BattleBoard
 
             Destroy(_emptySpaceRect.gameObject);
             _canvasGroup.blocksRaycasts = true;
+
+            // Only counts as a move if the planks have been rearranged
+            if (_lastSiblingIndex == newSiblingIndex) return;
             
-            if (_lastSiblingIndex != newSiblingIndex)
-            {
-                PlayerTurnEvents.Current.InvokeEvent(new BattleEvent(BattleEventType.PlayerMovedPlank));
-            }
+            PlayerTurnEvents.Current.InvokeEvent(new BattleEvent(BattleEventType.PlayerMovedPlank));
+            PlayerTurnEvents.Current.InvokeEvent(new BattleEvent(BattleEventType.PlankMoved));
         }
         
-        public void Destroy(DamageSource source)
+        public List<BattleEvent> Destroy(DamageSource source)
         {
+            var response = new List<BattleEvent>();
             var enemies = EnemyController.Current.GetEnemiesOnPlank(transform.GetSiblingIndex());
 
             foreach (var enemy in enemies)
             {
-                enemy.DestroySelf(source);
+               response.AddRange(enemy.DestroySelf(source));
             }
+            
+            response.AddRange(BattleEventsManager.Current
+                .GetEventAndResponsesList(new BattleEvent(BattleEventType.PlankDestroyed)));
+            
             Destroy(gameObject);
+            return response;
         }
     }
 }

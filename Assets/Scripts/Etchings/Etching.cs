@@ -38,19 +38,6 @@ namespace Etchings
             return -1;
         }
 
-        private BattleEvent EndOfEnemyTurn()
-        {
-            UsesUsedThisTurn = 0;
-
-            if (deactivated)
-            {
-                deactivated = false;
-                return CreateEvent(BattleEventType.EtchingActivated);
-            }
-            
-            return BattleEvent.None;
-        }
-
         public BattleEvent Deactivate(DamageSource source)
         {
             PlankDisplay.SetActiveColor(false);
@@ -60,15 +47,22 @@ namespace Etchings
 
         public override bool GetIfRespondingToBattleEvent(BattleEvent battleEvent)
         {
-            if (deactivated) return false;
+            if (battleEvent.type == BattleEventType.EndedEnemyTurn)
+            {
+                UsesUsedThisTurn = 0;
+                if (deactivated) return true;
+            }
 
-            return battleEvent.type == BattleEventType.EndedEnemyTurn || GetIfDesignIsRespondingToEvent(battleEvent);
+            return GetIfDesignIsRespondingToEvent(battleEvent);
         }
 
         public override List<BattleEvent> GetResponseToBattleEvent(BattleEvent battleEvent)
         {
-            if (battleEvent.type == BattleEventType.EndedEnemyTurn)
-                return new List<BattleEvent>() {EndOfEnemyTurn()};
+            if (battleEvent.type == BattleEventType.EndedEnemyTurn && deactivated)
+            {
+                deactivated = false;
+                return new List<BattleEvent>() {new BattleEvent(BattleEventType.EtchingActivated)};
+            }
 
             var response = new List<BattleEvent>();
             var plankActivation = CreateEvent(BattleEventType.EtchingActivated);

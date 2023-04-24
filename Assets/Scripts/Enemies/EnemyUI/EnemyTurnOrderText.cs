@@ -6,19 +6,17 @@ public class EnemyTurnOrderText : EnemyUIText
 {
     [SerializeField] private Color _myTurnColor;
 
-    public void SetTurnOrder(int place)
+    public void SetTurnOrder(int turnOrder)
     {
-        var turnOrder = place;
-        
         // Waiting
-        if (place == -1)
+        if (turnOrder == -1)
         {
             SetText("");
             return;
         }
 
-        var placeString = place.ToString();
-        var lastChar = placeString[placeString.Length - 1];
+        var turnOrderString = turnOrder.ToString();
+        var lastChar = turnOrderString[^1];
         var suffix = "th";
 
         switch (lastChar)

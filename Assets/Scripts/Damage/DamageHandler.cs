@@ -67,32 +67,21 @@ public static class DamageHandler
         var damageModifications = 
             BattleEventsManager.Current.GetDamageModifiers(preModDamageBattleAction);
 
-        var flatTotal = damageModifications.flatModifications.Sum(d => d.modificationAmount);
-        var multiTotal = new int[]
-        {
+        var flatTotal = directDamage + 
+                        damageModifications.flatModifications.Sum(d => d.modificationAmount);
+        
+        var multiTotal =
             damageModifications.multiModifications.Aggregate
-                (flatTotal, (current, mod) => mod.modificationAmount * current)
-        };
+                (flatTotal, (current, mod) => mod.modificationAmount * current);
 
         Debug.Log("Base damage: " + directDamage);
-        Debug.Log("Flat modifiers: " + flatTotal);
-        Debug.Log("Multi modifiers:");
-
-        var total = directDamage + flatTotal;
-
-        foreach (var multi in multiTotal)
-        {
-            Debug.Log(multi);
-            total *= multi;
-        }
-
-        Debug.Log("Total " + total);
+        Debug.Log("Total damage: " + multiTotal);
         
-        enemy.TakeDamage(total, source);
+        enemy.TakeDamage(multiTotal, source);
 
         return new BattleEvent(BattleEventType.EnemyDamaged, battleResponder)
         {
-            modifier = total,
+            modifier = multiTotal,
             enemyAffectee = enemy,
             damageSource = source,
             damageModificationPackage = damageModifications,

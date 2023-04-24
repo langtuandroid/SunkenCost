@@ -62,47 +62,22 @@ namespace BattleScreen
             throw new System.NotImplementedException();
         }
 
-        private IEnumerator InitializeBattle()
-        {
-            yield return 0;
-            
-            var startBattleEvents = BattleEventsManager.Current.StartBattle();
-            StartCoroutine(VisualiseBattleEvents(new Queue<BattleEvent>(startBattleEvents)));
-            
-            GameState = GameState.PlayerTurn;
-        }
-        
-        private IEnumerator NextEnemyTurn()
-        {
-            GameState = GameState.EnemyTurn;
-            
-            var battleActions = BattleEventsManager.Current.GetNextTurn();
-            var battleActionQueue = new Queue<BattleEvent>(battleActions);
-            yield return StartCoroutine(VisualiseBattleEvents(battleActionQueue));
-            Turn++;
-            GameState = GameState.PlayerTurn;
-        }
-
-        private IEnumerator EndBattle()
-        {
-            var endBattleEvents = BattleEventsManager.Current.EndBattle();
-            yield return StartCoroutine(VisualiseBattleEvents(new Queue<BattleEvent>(endBattleEvents)));
-            GameState = GameState.Rewards;
-            CreateEndOfBattlePopup();
-        }
-
         public IEnumerator VisualiseBattleEvents(Queue<BattleEvent> battleEvents)
         {
+            Debug.Log("------ Visualising ------");
             while (battleEvents.Count > 0)
             {
                 var nextBattleEvent = battleEvents.Dequeue();
                 
-                Debug.Log("Visualising: " + nextBattleEvent.type);
+                Debug.Log(nextBattleEvent.type);
                 _hudManager.UpdateDisplay(nextBattleEvent.type);
-                
+
                 foreach (var visualiser in nextBattleEvent.visualisers)
+                {
+                    Debug.Log(visualiser + " loading state");
                     visualiser.LoadNextState();
-                
+                }
+
                 if (nextBattleEvent.type == BattleEventType.None)
                     continue;
                 
@@ -115,10 +90,46 @@ namespace BattleScreen
 
                 var waitTime = nextBattleEvent.type switch
                 {
+                    BattleEventType.EnemyMove => ActionExecutionSpeed / 3,
                     _ => ActionExecutionSpeed
                 };
                 yield return new WaitForSeconds(waitTime);
             }
+        }
+        
+        private IEnumerator InitializeBattle()
+        {
+            Debug.Log("------ Starting battle ------");
+            yield return 0;
+            var startBattleEvents = BattleEventsManager.Current.StartBattle();
+            yield return StartCoroutine(VisualiseBattleEvents(new Queue<BattleEvent>(startBattleEvents)));
+            SetToPlayersTurn();
+        }
+
+        private IEnumerator NextEnemyTurn()
+        {
+            GameState = GameState.EnemyTurn;
+            
+            Debug.Log("------ Processing Next Enemy Turn ------");
+            var battleActions = BattleEventsManager.Current.GetNextTurn();
+            var battleActionQueue = new Queue<BattleEvent>(battleActions);
+            yield return StartCoroutine(VisualiseBattleEvents(battleActionQueue));
+            Turn++;
+            SetToPlayersTurn();
+        }
+
+        private IEnumerator EndBattle()
+        {
+            var endBattleEvents = BattleEventsManager.Current.EndBattle();
+            yield return StartCoroutine(VisualiseBattleEvents(new Queue<BattleEvent>(endBattleEvents)));
+            GameState = GameState.Rewards;
+            CreateEndOfBattlePopup();
+        }
+        
+        private void SetToPlayersTurn()
+        {
+            GameState = GameState.PlayerTurn;
+            Debug.Log("------ PLAYERS TURN! ------");
         }
 
         private void CreateEndOfBattlePopup()

@@ -27,7 +27,8 @@ namespace Items.Items
         protected override BattleEvent GetResponse(BattleEvent battleEvent)
         {
             Board.Current.RandomisePlanks();
-            return BattleEvent.None;
+            // TODO: Change this to "Item moved plank"
+            return new BattleEvent(BattleEventType.PlankMoved);
         }
     }
 }

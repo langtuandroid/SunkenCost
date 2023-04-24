@@ -51,17 +51,17 @@ public class CucungerEnemy : Enemy, IStartOfTurnAbilityHolder
     {
         var response = new List<BattleEvent>();
         
-        var speakText = (abilityCooldown - cooldownCounter).ToString();
-        if (speakText == "0")
-            speakText = "X";
-
-        UI.Speak(speakText);
-        response.Add(CreateEvent(BattleEventType.EnemySpeaking));
+        var speech = (abilityCooldown - cooldownCounter).ToString();
+        if (speech == "0")
+            speech = "X";
+        
+        response.AddRange(Speak(speech));
         
         if (cooldownCounter >= abilityCooldown && PlankNum != Board.Current.PlankCount - 1)
         {
             cooldownCounter = 0;
-            response.Add(PlankFactory.Current.DestroyPlank(DamageSource.EnemyAbility, Board.Current.PlankCount - 1));
+            response.AddRange(PlankFactory.Current.DestroyPlank
+                (DamageSource.EnemyAbility, Board.Current.PlankCount - 1));
         }
         else
         {

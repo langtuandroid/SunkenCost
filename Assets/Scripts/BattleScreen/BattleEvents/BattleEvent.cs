@@ -6,6 +6,7 @@ using Damage;
 using Enemies;
 using Etchings;
 using Items.Items;
+using UnityEngine;
 
 namespace BattleScreen
 {
@@ -44,6 +45,7 @@ namespace BattleScreen
         PlayerGainedLife,
         PlayerDied,
         PlankCreated,
+        PlankMoved,
         DesignModified,
     }
     
@@ -67,6 +69,10 @@ namespace BattleScreen
         {
             this.type = type;
             this.creator = creator;
+
+            var name = creator is not null ? " by " + creator.name : "";
+            
+            Debug.Log(type + name);
         }
         
         public static BattleEvent None => new BattleEvent(BattleEventType.None);

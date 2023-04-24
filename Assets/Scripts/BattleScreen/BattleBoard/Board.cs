@@ -9,7 +9,7 @@ namespace BattleScreen.BattleBoard
 {
     public class Board : MonoBehaviour
     {
-        [SerializeField] private LayoutGroup _plankArea;
+        [SerializeField] private GridLayoutGroup _plankArea;
         [SerializeField] private Transform _island;
 
         public static Board Current;
@@ -29,6 +29,10 @@ namespace BattleScreen.BattleBoard
         
         public int PlankCount => _cachedPlanks.Count;
         public List<Plank> PlanksInOrder => _cachedPlanks.OrderBy(p => p.transform.GetSiblingIndex()).ToList();
+
+        public int BoardSize =>
+            (int) ((_plankArea.cellSize.x * Content.childCount) +
+                   (_plankArea.spacing.x * Content.childCount - 1));
 
         private void Awake()
         {

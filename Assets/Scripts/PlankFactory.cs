@@ -43,7 +43,7 @@ public class PlankFactory : MonoBehaviour
         return newPlank.GetComponent<Plank>();
     }
 
-    public BattleEvent DestroyPlank(DamageSource source, int plankPosition = -1, Plank plank = null)
+    public List<BattleEvent> DestroyPlank(DamageSource source, int plankPosition = -1, Plank plank = null)
     {
         if (plankPosition != -1)
             plank = _board.GetPlank(plankPosition);
@@ -53,9 +53,7 @@ public class PlankFactory : MonoBehaviour
             throw new Exception("Trying to destroy plank that isn't there!");
         }
         
-        plank.Destroy(source);
-
-        return new BattleEvent(BattleEventType.PlankDestroyed);
+        return plank.Destroy(source);
     }
     
     private IEnumerator WaitForPlankDestruction(PlankDisplay plankDisplay)
