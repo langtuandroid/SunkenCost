@@ -28,9 +28,9 @@ public class GrouldEnemy : Enemy, IStartOfTurnAbilityHolder
     public List<BattleEvent> GetStartOfTurnAbility()
     {
         var response = new List<BattleEvent>();
-        var deactivate = Plank.Etching.Deactivate(DamageSource.EnemyAbility);
-        deactivate.enemyAffector = this;
-        response.Add(deactivate);
+        var stun = Plank.Etching.Stun(DamageSource.EnemyAbility);
+        stun.enemyAffector = this;
+        response.Add(stun);
         return response;
     }
 }

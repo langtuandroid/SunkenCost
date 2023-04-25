@@ -25,19 +25,13 @@ namespace Items.Items
         {
             ItemInstance = itemInstance;
         }
-        
-        public void StartVisualisationCoroutine(BattleEvent battleEvent)
-        {
-            // Glow the icon
-            ItemIconsDisplay.Current.ActivateItemDisplay(ItemInstance);
-        }
-        
+
         public bool GetIfUpdating(BattleEvent battleEvent)
         {
             return battleEvent.item.ItemInstance == ItemInstance;
         }
 
-        public void SaveCurrentState()
+        public void SaveStateResponse(BattleEventType battleEventType)
         {
             var state = new ItemDisplayState(ItemInstance.Title, ItemInstance.Description);
             _savedStates.Enqueue(state);

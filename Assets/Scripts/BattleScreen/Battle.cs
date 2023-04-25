@@ -74,7 +74,7 @@ namespace BattleScreen
 
                 foreach (var visualiser in nextBattleEvent.visualisers)
                 {
-                    Debug.Log(visualiser + " loading state");
+                     Debug.Log(visualiser + " loading state");
                     visualiser.LoadNextState();
                 }
 

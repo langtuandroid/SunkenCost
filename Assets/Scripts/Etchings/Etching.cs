@@ -2,6 +2,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using BattleScreen;
+using BattleScreen.BattleBoard;
 using BattleScreen.BattleEvents;
 using BattleScreen.Events;
 using Designs;
@@ -15,11 +16,12 @@ namespace Etchings
     public abstract class Etching : BattleEventResponder
     {
         public Design design;
-        public PlankDisplay PlankDisplay { get; protected set; }
-        protected bool deactivated;
+        protected bool stunned;
+
+        private Plank _plank;
 
         protected int UsesPerTurn => design.GetStat(StatType.UsesPerTurn);
-        protected int PlankNum => PlankDisplay.GetPlankNum();
+        protected int PlankNum => Board.Current.PlanksInOrder.IndexOf(_plank);
 
         protected int UsesUsedThisTurn
         {
@@ -27,9 +29,9 @@ namespace Etchings
             set => design.UsesUsedThisTurn = value;
         }
 
-        protected void Awake()
+        public void Awake()
         {
-            PlankDisplay = transform.parent.parent.GetComponent<PlankDisplay>();
+            _plank = GetComponentInParent<Plank>();
         }
 
         protected int GetStatValue(StatType statType)
@@ -38,11 +40,16 @@ namespace Etchings
             return -1;
         }
 
-        public BattleEvent Deactivate(DamageSource source)
+        private BattleEvent UnStun()
         {
-            PlankDisplay.SetActiveColor(false);
-            deactivated = true;
-            return CreateEvent(BattleEventType.PlankDeactivated, source);
+            stunned = false;
+            return CreateEvent(BattleEventType.EtchingUnStunned);
+        }
+
+        public BattleEvent Stun(DamageSource source)
+        {
+            stunned = true;
+            return CreateEvent(BattleEventType.EtchingStunned, source);
         }
 
         public override bool GetIfRespondingToBattleEvent(BattleEvent battleEvent)
@@ -50,7 +57,7 @@ namespace Etchings
             if (battleEvent.type == BattleEventType.EndedEnemyTurn)
             {
                 UsesUsedThisTurn = 0;
-                if (deactivated) return true;
+                if (stunned) return true;
             }
 
             return GetIfDesignIsRespondingToEvent(battleEvent);
@@ -58,10 +65,10 @@ namespace Etchings
 
         public override List<BattleEvent> GetResponseToBattleEvent(BattleEvent battleEvent)
         {
-            if (battleEvent.type == BattleEventType.EndedEnemyTurn && deactivated)
+            if (battleEvent.type == BattleEventType.EndedEnemyTurn && stunned)
             {
-                deactivated = false;
-                return new List<BattleEvent>() {new BattleEvent(BattleEventType.EtchingActivated)};
+                stunned = false;
+                return new List<BattleEvent>() {UnStun()};
             }
 
             var response = new List<BattleEvent>();

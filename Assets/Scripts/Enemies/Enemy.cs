@@ -25,8 +25,6 @@ namespace Enemies
         public int TurnOrder { get; private set; }
         public float Size { get; protected set; } = 1;
 
-        public bool Moving { get; private set; } = false;
-
         public bool IsDestroyed { get; private set; } = false;
 
         public string Speech { get; private set; } = "";
@@ -83,9 +81,8 @@ namespace Enemies
         {
             // Change my stick
             Mover.Move();
-
-            // TEMPORARY Destroy if at end
-            if (PlankNum >= Board.Current.PlankCount - 1)
+            
+            if (PlankNum >= Board.Current.PlankCount)
             {
                 var response = CreateEventAndResponses(BattleEventType.EnemyReachedBoat);
                 response.AddRange(DestroySelf(DamageSource.Boat));
@@ -198,7 +195,6 @@ namespace Enemies
         public List<BattleEvent> DestroySelf(DamageSource damageSource)
         {
             IsDestroyed = true;
-            Moving = false;
             
             return CreateEventAndResponses(BattleEventType.EnemyKilled, damageSource: damageSource);
         }

@@ -27,6 +27,7 @@ namespace BattleScreen.BattleBoard
         private bool _isDragging;
         
         public Etching Etching { get; private set; }
+        public int PlankNum => transform.GetSiblingIndex();
 
         private void Awake()
         {
@@ -40,7 +41,7 @@ namespace BattleScreen.BattleBoard
             _layoutElement.preferredHeight = rect.size.y;
         }
 
-        public void Init(BattleBoard.Board board)
+        public void Init(Board board)
         {
             _board = board;
         }

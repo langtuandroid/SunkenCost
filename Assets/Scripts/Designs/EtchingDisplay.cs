@@ -12,15 +12,16 @@ namespace Designs
     {
         protected bool colorWhenActivated = false;
         private Color _normalColor;
+
+        private Etching _etching;
         
-                
-        private Queue<DesignDisplayState> _queuedStates = new Queue<DesignDisplayState>();
+        private Queue<EtchingDisplayState> _queuedStates = new Queue<EtchingDisplayState>();
 
         protected override void Start()
         {
             BattleEventsManager.Current.RegisterUIUpdater(this);
-            
-            design = GetComponent<Etching>().design;
+            _etching = GetComponent<Etching>();
+            design = _etching.design;
             base.Start();
         }
         
@@ -39,24 +40,38 @@ namespace Designs
 
         public bool GetIfUpdating(BattleEvent battleEvent)
         {
-            return battleEvent.type == BattleEventType.DesignModified ||
-                   battleEvent.type == BattleEventType.EtchingActivated;
+            return (battleEvent.type == BattleEventType.DesignModified ||
+                    battleEvent.type == BattleEventType.EtchingActivated) && battleEvent.etching == _etching;
         }
 
-        public void SaveCurrentState()
+        public void SaveStateResponse(BattleEventType battleEventType)
         {
-            
-            _queuedStates.Enqueue(GetDisplayState());
+            var etchingDisplayState = new EtchingDisplayState(battleEventType, GetDisplayState());
+            _queuedStates.Enqueue(etchingDisplayState);
         }
 
         public void LoadNextState()
         {
-            UpdateDisplay(_queuedStates.Dequeue());
+            var state = _queuedStates.Dequeue();
+            if (state.battleEventType == BattleEventType.EtchingActivated) StartCoroutine(ColorForActivate());
+            UpdateDisplay(state.designDisplayState);
         }
 
         private void OnDestroy()
         {
             BattleEventsManager.Current.DeregisterUIUpdater(this);
+        }
+
+        private readonly struct EtchingDisplayState
+        {
+            public readonly BattleEventType battleEventType;
+            public readonly DesignDisplayState designDisplayState;
+
+            public EtchingDisplayState(BattleEventType battleEventType, DesignDisplayState designDisplayState)
+            {
+                this.battleEventType = battleEventType;
+                this.designDisplayState = designDisplayState;
+            }
         }
     }
 }

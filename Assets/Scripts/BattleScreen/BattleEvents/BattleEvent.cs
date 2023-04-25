@@ -32,8 +32,8 @@ namespace BattleScreen
         EnemyKilled,
         EnemyReachedBoat,
         EtchingActivated,
-        PlankDeactivated,
-        PlankDestroyed,
+        EtchingStunned,
+        EtchingUnStunned,
         GenericItemActivation,
         TryGainedGold,
         GainedGold,
@@ -45,6 +45,7 @@ namespace BattleScreen
         PlayerGainedLife,
         PlayerDied,
         PlankCreated,
+        PlankDestroyed,
         PlankMoved,
         DesignModified,
     }
@@ -63,7 +64,7 @@ namespace BattleScreen
         public Etching etching;
         public EquippedItem item;
         public Enemy enemyAffector;
-        public int[] plankVisuals;
+        public List<PlankDisplay> plankDisplays = new List<PlankDisplay>();
 
         public BattleEvent(BattleEventType type, BattleEventResponder creator = null)
         {

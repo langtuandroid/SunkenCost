@@ -36,7 +36,7 @@ namespace Etchings
         
         protected override bool TestStickMovementActivatedEffect(BattleEvent battleEvent)
         {
-            if (deactivated)
+            if (stunned)
             {
                 if (modsActive) ClearMods();
                 return false;

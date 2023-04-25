@@ -8,7 +8,7 @@ namespace Etchings
     {
         protected override bool GetIfDesignIsRespondingToEvent(BattleEvent battleEvent)
         {
-            if (deactivated || battleEvent.type != GetEventType()) return false;
+            if (stunned || battleEvent.type != GetEventType()) return false;
 
             var enemy = battleEvent.enemyAffectee;
             

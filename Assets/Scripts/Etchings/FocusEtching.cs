@@ -23,7 +23,7 @@ namespace Etchings
         {
             // Only affects etching damage on level 0
             if (battleEventToModify.damageSource != DamageSource.Etching && design.Level < 1) return false;
-            return !deactivated && battleEventToModify.enemyAffectee.PlankNum == PlankNum;
+            return !stunned && battleEventToModify.enemyAffectee.PlankNum == PlankNum;
         }
 
         public DamageModification GetDamageMultiplier(BattleEvent battleEventToModify)

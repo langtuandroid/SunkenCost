@@ -16,10 +16,10 @@ namespace Etchings
         protected override List<BattleEvent> GetDesignResponsesToEvent(BattleEvent battleEvent)
         {
             var plankNums = new List<int>();
-            for (var i = PlankNum - MaxRange; i <= PlankNum + MaxRange && i < Board.Current.PlankCount; i++)
+            for (var i = PlankNum - MaxRange; i <= PlankNum + MaxRange && i <= Board.Current.PlankCount + 1; i++)
             {
-                if (i <= 0) 
-                    i = 1;
+                if (i < 0) 
+                    i = 0;
                 plankNums.Add(i);
             }
 

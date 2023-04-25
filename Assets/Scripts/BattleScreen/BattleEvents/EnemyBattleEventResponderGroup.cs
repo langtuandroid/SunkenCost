@@ -19,7 +19,6 @@ namespace BattleScreen.BattleEvents
             if (previousBattleEvent.type == BattleEventType.EnemyKilled)
             {
                 RemoveResponder(previousBattleEvent.enemyAffectee);
-                Destroy(previousBattleEvent.enemyAffectee.gameObject);
             }
             
             return base.GetEventResponders(previousBattleEvent);

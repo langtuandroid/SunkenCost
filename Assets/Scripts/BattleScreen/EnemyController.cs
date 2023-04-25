@@ -66,13 +66,11 @@ namespace BattleScreen
                 // Move sequence
                 while (EnemyIsAlive(enemy) && !enemy.FinishedMoving)
                 {
-                    
                     // Move
                     turn.AddRange(enemy.MoveStep());
                 }
                 
-                // TODO: End of turn processing
-                turn.AddRange(enemy.EndTurn());
+                if (EnemyIsAlive(enemy)) turn.AddRange(enemy.EndTurn());
 
                 currentEnemyTurnOrder++;
             }

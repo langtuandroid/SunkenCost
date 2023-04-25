@@ -28,7 +28,7 @@ namespace BattleScreen.BattleBoard
         public bool CanMovePlanks => !Player.Current.IsOutOfMoves && Battle.Current.GameState == GameState.PlayerTurn;
         
         public int PlankCount => _cachedPlanks.Count;
-        public List<Plank> PlanksInOrder => _cachedPlanks.OrderBy(p => p.transform.GetSiblingIndex()).ToList();
+        public List<Plank> PlanksInOrder => _cachedPlanks.OrderBy(p => p.PlankNum).ToList();
 
         public int BoardSize =>
             (int) ((_plankArea.cellSize.x * Content.childCount) +

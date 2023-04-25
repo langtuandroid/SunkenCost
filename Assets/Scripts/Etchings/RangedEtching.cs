@@ -11,7 +11,7 @@ namespace Etchings
     {
         protected override bool TestCharMovementActivatedEffect(Enemy enemy)
         {
-            if (enemy.PlankNum == 0 || enemy.PlankNum >= Board.Current.PlankCount) return false;
+            if (enemy.PlankNum < 0 || enemy.PlankNum > Board.Current.PlankCount) return false;
             return Math.Abs(enemy.PlankNum - PlankNum) >= MinRange &&
                    Math.Abs(enemy.PlankNum - PlankNum) <= MaxRange;
         }
