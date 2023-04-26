@@ -4,7 +4,6 @@ using System.Collections.Generic;
 using System.Linq;
 using BattleScreen;
 using BattleScreen.BattleEvents;
-using BattleScreen.Events;
 using Etchings;
 using UnityEngine;
 using UnityEngine.UI;
@@ -18,13 +17,9 @@ public class PlankDisplay : MonoBehaviour, IBattleEventUpdatedUI
     [SerializeField] private Image _plankImage;
     [SerializeField] private Image _washImage;
 
-    private Color _nextColor;
-    private Queue<PlankDisplayState> _displayStates = new Queue<PlankDisplayState>();
-    
-
     private void Awake()
     {
-        BattleEventsManager.Current.RegisterUIUpdater(this);
+        BattleRenderer.Current.RegisterUIUpdater(this);
     }
 
     public void BeginDrag()
@@ -55,50 +50,15 @@ public class PlankDisplay : MonoBehaviour, IBattleEventUpdatedUI
         _plankImage.color = Color.white;
     }
 
-    public bool GetIfUpdating(BattleEvent battleEvent)
+    public void RespondToBattleEvent(BattleEvent battleEvent)
     {
-        if (!battleEvent.plankDisplays.Contains(this)) return false;
-        
-        _nextColor = battleEvent.type == BattleEventType.EtchingActivated
-            ? battleEvent.etching.design.Color
-            : Color.white;
+        if (!battleEvent.plankDisplays.Contains(this)) return;
 
-        return true;
-
-    }
-
-    public void SaveStateResponse(BattleEventType battleEventType)
-    {
-        _displayStates.Enqueue(new PlankDisplayState(battleEventType, _nextColor));
-    }
-
-    public void LoadNextState()
-    {
-        var state = _displayStates.Dequeue();
-
-        switch (state.type)
-        {
-            case BattleEventType.EtchingStunned:
-                SetAsStunned();
-                break;
-            case BattleEventType.EtchingUnStunned:
-                SetAsUnStunned();
-                break;
-            case BattleEventType.EnemyDamaged:
-                StartCoroutine(ColorForAttackOnThisPlank(state.attackColor));
-                break;
-        }
-    }
-
-    private readonly struct PlankDisplayState
-    {
-        public readonly BattleEventType type;
-        public readonly Color attackColor;
-
-        public PlankDisplayState(BattleEventType type, Color attackColor)
-        {
-            this.type = type;
-            this.attackColor = attackColor;
-        }
+        if (battleEvent.type == BattleEventType.EtchingStunned)
+            SetAsStunned();
+        else if (battleEvent.type == BattleEventType.EtchingUnStunned)
+            SetAsUnStunned();
+        else if (battleEvent.type == BattleEventType.EnemyDamaged) 
+            StartCoroutine(ColorForAttackOnThisPlank(battleEvent.etching.design.Color));
     }
 }

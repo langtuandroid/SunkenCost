@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections;
 using BattleScreen;
+using BattleScreen.BattleEvents;
 using Damage;
 
 namespace Items.Items
@@ -9,17 +10,17 @@ namespace Items.Items
     {
         private int _turnPlayerLastLostLife = -1;
 
-        public override bool GetIfRespondingToBattleEvent(BattleEvent battleEvent)
+        protected override bool GetIfRespondingToBattleEvent(BattleEvent battleEvent)
         {
             if (battleEvent.type == BattleEventType.PlayerLostLife)
                 _turnPlayerLastLostLife = Battle.Current.Turn;
 
-            return false;
+            return true;
         }
 
-        protected override BattleEvent GetResponse(BattleEvent battleEvent)
+        protected override BattleEventPackage GetResponse(BattleEvent battleEvent)
         {
-            throw new NotImplementedException();
+            return BattleEventPackage.Empty;
         }
 
         public bool CanModify(BattleEvent battleEventToModify)

@@ -2,6 +2,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using BattleScreen;
+using BattleScreen.BattleEvents;
 using Enemies;
 using UnityEngine;
 
@@ -28,15 +29,9 @@ public class AxolitlEnemy : Enemy, IStartOfTurnAbilityHolder
         return Health < MaxHealth;
     }
 
-    public List<BattleEvent> GetStartOfTurnAbility()
+    public BattleEventPackage GetStartOfTurnAbility()
     {
-        var response = new List<BattleEvent>
-        {
-            MaxHealth - _healingAmount > _healingAmount
-                ? Heal(_healingAmount)
-                : Heal(MaxHealth - Health)
-        };
-        
-        return response;
+        return new BattleEventPackage(MaxHealth - _healingAmount > _healingAmount
+            ? Heal(_healingAmount) : Heal(MaxHealth - Health));
     }
 }

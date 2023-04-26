@@ -10,7 +10,7 @@ namespace Etchings
 
         private readonly Stack<StatModifier> _statModifiers = new Stack<StatModifier>();
         
-        public override bool GetIfRespondingToBattleEvent(BattleEvent battleEvent)
+        protected override bool GetIfDesignIsRespondingToEvent(BattleEvent battleEvent)
         {
             switch (battleEvent.type)
             {
@@ -22,7 +22,7 @@ namespace Etchings
                     break;
             }
 
-            return base.GetIfRespondingToBattleEvent(battleEvent);
+            return base.GetIfDesignIsRespondingToEvent(battleEvent);
         }
 
         private void UpdateDamage()

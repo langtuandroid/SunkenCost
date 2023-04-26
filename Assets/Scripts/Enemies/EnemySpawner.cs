@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using System.Linq;
 using BattleScreen;
 using BattleScreen.BattleBoard;
+using BattleScreen.BattleEvents;
 using Enemies;
 using UnityEngine;
 using UnityEngine.Rendering;
@@ -20,6 +21,8 @@ public class EnemySpawner : MonoBehaviour
     private Dictionary<string, GameObject> enemyDictionary = new Dictionary<string, GameObject>();
 
     private Scenario _scenario;
+
+    private EnemyBattleEventResponderGroup _enemyBattleEventResponderGroup;
 
     private void Awake()
     {
@@ -38,31 +41,28 @@ public class EnemySpawner : MonoBehaviour
         {
             enemyDictionary.Add(enemyNames[i], enemyPrefabs[i]);
         }
-    }
-
-    public void StartBattle()
-    {
+        
         _scenario = ScenarioManager.GetScenario(RunProgress.BattleNumber);
     }
 
-    public List<BattleEvent> SpawnNewTurn()
+    public BattleEventPackage SpawnNewTurn()
     {
-        var battleEvents = new List<BattleEvent>();
-        
         var enemyTypes = _scenario.GetRound(Battle.Current.Turn);
         var newEnemies = enemyTypes.Select(enemyType => Enum.GetName(typeof(EnemyType), enemyType)).ToList();
 
-        if (newEnemies.Count == 0) return battleEvents;
+        if (newEnemies.Count == 0) return BattleEventPackage.Empty;
+
+        var battleEvents = new List<BattleEvent>();
 
         foreach (var enemyName in newEnemies)
         {
             var enemy = SpawnEnemyOnIsland(enemyName);
             enemy.MaxHealthStat.AddModifier(new StatModifier(_scenario.scaledDifficulty, StatModType.PercentMult));
-            enemy.Mover.AddMovementModifier((int)(_scenario.scaledDifficulty / 2f));
+            enemy.Mover.AddMovementModifier((int) (_scenario.scaledDifficulty / 2f));
             battleEvents.Add(new BattleEvent(BattleEventType.EnemySpawned) {enemyAffectee = enemy});
         }
 
-        return battleEvents;
+        return new BattleEventPackage(battleEvents);
     }
 
     public Enemy SpawnEnemyOnIsland(string enemyName)
@@ -87,7 +87,7 @@ public class EnemySpawner : MonoBehaviour
         newEnemyObject.transform.localScale = new Vector3(1, 1, 1);
         
         var newEnemy = newEnemyObject.GetComponent<Enemy>();
-        EnemyController.Current.AddEnemy(newEnemy);
+        EnemySequencer.Current.AddEnemy(newEnemy);
         return newEnemy;
     }
 }

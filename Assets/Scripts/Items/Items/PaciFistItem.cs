@@ -9,13 +9,13 @@ namespace Items.Items
     {
         private bool _hasKilledEnemyThisBattle = false;
 
-        public override bool GetIfRespondingToBattleEvent(BattleEvent battleEvent)
+        protected override bool GetIfRespondingToBattleEvent(BattleEvent battleEvent)
         {
             return battleEvent.type == BattleEventType.EnemyKilled ||
                    battleEvent.type == BattleEventType.EndedBattle;
         }
         
-        protected override BattleEvent GetResponse(BattleEvent battleEvent)
+        protected override BattleEventPackage GetResponse(BattleEvent battleEvent)
         {
             switch (battleEvent.type)
             {
@@ -23,13 +23,13 @@ namespace Items.Items
                     _hasKilledEnemyThisBattle = true;
                     break;
                 case BattleEventType.EndedBattle:
-                    if (!_hasKilledEnemyThisBattle) return new BattleEvent(BattleEventType.TryGainedGold, this) {modifier = Amount};
+                    if (!_hasKilledEnemyThisBattle) return new BattleEventPackage(new BattleEvent(BattleEventType.TryGainedGold, this) {modifier = Amount});
                     else break;
                 default:
                     throw new UnexpectedBattleEventException(battleEvent);
             }
 
-            return BattleEvent.None;
+            return BattleEventPackage.Empty;
         }
     }
 }

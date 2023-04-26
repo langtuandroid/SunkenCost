@@ -5,7 +5,6 @@ using System.Linq;
 using BattleScreen;
 using BattleScreen.BattleBoard;
 using BattleScreen.BattleEvents;
-using BattleScreen.Events;
 using Etchings;
 using UnityEngine;
 using UnityEngine.Serialization;
@@ -43,7 +42,7 @@ public class PlankFactory : MonoBehaviour
         return newPlank.GetComponent<Plank>();
     }
 
-    public List<BattleEvent> DestroyPlank(DamageSource source, int plankPosition = -1, Plank plank = null)
+    public BattleEvent DestroyPlank(DamageSource source, int plankPosition = -1, Plank plank = null)
     {
         if (plankPosition != -1)
             plank = _board.GetPlank(plankPosition);

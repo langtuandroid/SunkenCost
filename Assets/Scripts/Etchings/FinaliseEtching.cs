@@ -12,7 +12,7 @@ namespace Etchings
         {
             var currentMovingEnemy = battleEvent.enemyAffectee;
 
-            var enemiesOnPlanks = EnemyController.Current.AllEnemies.Where(e => e.PlankNum != 0).ToArray();
+            var enemiesOnPlanks = EnemySequencer.Current.AllEnemies.Where(e => e.PlankNum != 0).ToArray();
 
             var response = enemiesOnPlanks.Select(DamageEnemy).ToList();
             

@@ -1,29 +1,26 @@
 ﻿using System;
 using System.Linq;
 using BattleScreen.BattleBoard;
-using BattleScreen.BattleEvents;
-using Etchings;
-using UnityEngine;
 
-namespace BattleScreen.Events
+namespace BattleScreen.BattleEvents
 {
     public class EtchingBattleEventResponderGroup : BattleEventResponderGroup
     {
-        public override BattleEventResponder[] GetEventResponders(BattleEvent previousBattleEvent)
+
+        public override BattleEventPackage GetNextResponse(BattleEvent battleEventToRespondTo)
         {
-            if (previousBattleEvent.type == BattleEventType.StartedBattle ||
-                previousBattleEvent.type == BattleEventType.PlayerMovedPlank ||
-                previousBattleEvent.type == BattleEventType.PlankCreated ||
-                previousBattleEvent.type == BattleEventType.PlankDestroyed ||
-                previousBattleEvent.type == BattleEventType.StartedEnemyTurn)
+            if (battleEventToRespondTo.type == BattleEventType.StartedBattle ||
+                battleEventToRespondTo.type == BattleEventType.PlankMoved ||
+                battleEventToRespondTo.type == BattleEventType.PlankCreated ||
+                battleEventToRespondTo.type == BattleEventType.PlankDestroyed ||
+                battleEventToRespondTo.type == BattleEventType.StartedNextTurn)
             {
-                
                 RefreshEtchingResponderOrder();
             }
-
-            return base.GetEventResponders(previousBattleEvent);
+            
+            return base.GetNextResponse(battleEventToRespondTo);
         }
-
+        
         private void RefreshEtchingResponderOrder()
         {
             ClearResponders();

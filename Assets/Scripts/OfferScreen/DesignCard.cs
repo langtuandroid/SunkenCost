@@ -101,7 +101,7 @@ namespace OfferScreen
                 mergeButton.Refresh(_mergeableDesignCard.Design.Cost);
             }
 
-            _designDisplay.UpdateDisplayWithCurrentState();
+            _designDisplay.UpdateDisplay();
 
             costDisplay.Refresh(Design.Cost);
 

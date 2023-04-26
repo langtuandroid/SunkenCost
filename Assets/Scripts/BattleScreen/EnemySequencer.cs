@@ -10,39 +10,61 @@ using UnityEngine.Serialization;
 
 namespace BattleScreen
 {
-    public class EnemyController : MonoBehaviour
+    public class EnemySequencer : MonoBehaviour
     {
-        public static EnemyController Current;
+        public static EnemySequencer Current;
         
         private List<Enemy> _enemies = new List<Enemy>();
         private Queue<Enemy> _enemyCurrentTurnMoveQueue = new Queue<Enemy>();
 
         public int NumberOfEnemies => _enemies.Count;
         public ReadOnlyCollection<Enemy> AllEnemies => new ReadOnlyCollection<Enemy>(_enemies);
-
-        private EnemyBattleEventResponderGroup _enemyBattleEventResponderGroup;
+        public bool HasEnemyToMove => _enemyCurrentTurnMoveQueue.Count > 0;
 
         private void Awake()
         {
-            if (Current) Destroy(Current.gameObject);
-            Current = this;
+            if (Current)
+            {
+                Destroy(Current.gameObject);
+            }
 
-            _enemyBattleEventResponderGroup = GetComponent<EnemyBattleEventResponderGroup>();
+            Current = this;
+        }
+
+        public void SetNextEnemyTurnSequence()
+        {
+            _enemyCurrentTurnMoveQueue = new Queue<Enemy>(_enemies);
+        }
+
+        public Enemy GetNextEnemyToMove()
+        {
+            return _enemyCurrentTurnMoveQueue.Dequeue();
         }
 
         public void AddEnemy(Enemy enemy)
         {
             _enemies.Add(enemy);
+            
+            // This will be overwritten if this function is not called during the enemy move period
             _enemyCurrentTurnMoveQueue.Enqueue(enemy);
+            
             enemy.SetTurnOrder(_enemies.Count);
-            _enemyBattleEventResponderGroup.EnemySpawned(enemy);
         }
 
+        public void RemoveEnemy(Enemy enemy)
+        {
+            _enemies.Remove(enemy);
+            
+            _enemyCurrentTurnMoveQueue = new Queue<Enemy>(_enemyCurrentTurnMoveQueue.Where(e => e != enemy));
+            enemy.SetTurnOrder(_enemies.Count);
+        }
+        
         public Enemy GetRandomEnemy()
         {
             return _enemies.GetRandom();
         }
 
+        /*
         public List<BattleEvent> GetMovements()
         {
             var turn = new List<BattleEvent>();
@@ -77,6 +99,7 @@ namespace BattleScreen
 
             return turn;
         }
+        */
         
         public List<Enemy> GetEnemiesOnPlank(int plankNum)
         {

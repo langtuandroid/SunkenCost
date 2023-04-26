@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using BattleScreen;
 using BattleScreen.BattleBoard;
+using BattleScreen.BattleEvents;
 
 namespace Items.Items
 {
@@ -19,16 +20,16 @@ namespace Items.Items
             RunProgress.PlayerStats.maxPlanks.RemoveModifier(_extraPlank);
         }
 
-        public override bool GetIfRespondingToBattleEvent(BattleEvent battleEvent)
+        protected override bool GetIfRespondingToBattleEvent(BattleEvent battleEvent)
         {
             return battleEvent.type == BattleEventType.StartedBattle;
         }
 
-        protected override BattleEvent GetResponse(BattleEvent battleEvent)
+        protected override BattleEventPackage GetResponse(BattleEvent battleEvent)
         {
             Board.Current.RandomisePlanks();
             // TODO: Change this to "Item moved plank"
-            return new BattleEvent(BattleEventType.PlankMoved);
+            return new BattleEventPackage(new BattleEvent(BattleEventType.PlankMoved));
         }
     }
 }

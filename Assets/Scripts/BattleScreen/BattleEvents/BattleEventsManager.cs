@@ -6,6 +6,23 @@ using UnityEngine;
 
 namespace BattleScreen.BattleEvents
 {
+    public readonly struct BattleEventPackage
+    {
+        public readonly BattleEvent[] battleEvents;
+
+        public static BattleEventPackage Empty => new BattleEventPackage(BattleEvent.None);
+        public bool IsEmpty => battleEvents[0].type == BattleEventType.None;
+
+        public BattleEventPackage(params BattleEvent[] battleEvents)
+        {
+            this.battleEvents = battleEvents;
+        }
+
+        public BattleEventPackage(IEnumerable<BattleEvent> battleEventsList) : this(battleEventsList.ToArray())
+        {
+        }
+    }
+    
     public class BattleEventsManager : MonoBehaviour
     {
         public static BattleEventsManager Current;
@@ -14,12 +31,12 @@ namespace BattleScreen.BattleEvents
         [SerializeField] private BattleEventResponderGroup _enemiesManager;
         [SerializeField] private BattleEventResponderGroup _etchingManager;
         [SerializeField] private BattleEventResponder _player;
-        [SerializeField] private EnemyController _enemyController;
+        [SerializeField] private EnemySequencer _enemySequencer;
         
-        private BattleEventResponderGroup[] _responderOrder;
+        private BattleEventResponderGroup[] _responderGroupOrder;
+        
+        private readonly BattleEventResponderTracker _battleEventResponderTracker = new BattleEventResponderTracker();
 
-        private List<IBattleEventUpdatedUI> _eventRespondingUI = new List<IBattleEventUpdatedUI>();
-        
         private void Awake()
         {
             if (Current)
@@ -29,9 +46,37 @@ namespace BattleScreen.BattleEvents
 
             Current = this;
 
-            _responderOrder = new []{_enemiesManager, _etchingManager, _itemManager};
+            _responderGroupOrder = new []{_enemiesManager, _etchingManager, _itemManager};
+        }
+        
+        public BattleEventPackage GetNextResponse(BattleEvent battleEvent)
+        {
+            var index = _battleEventResponderTracker.GetIndex(battleEvent);
+
+            while (index < _responderGroupOrder.Length)
+            {
+                var responsePackage = _responderGroupOrder[index].GetNextResponse(battleEvent);
+                if (!responsePackage.IsEmpty) return responsePackage;
+
+                index++;
+                _battleEventResponderTracker.SetIndex(battleEvent, index);
+            }
+
+            return BattleEventPackage.Empty;
+        }
+        
+        public DamageModificationPackage GetDamageModifiers(BattleEvent battleEvent)
+        {
+            var modifiers = _responderGroupOrder.Select
+                (g => g.GetDamageModifiers(battleEvent)).ToList();
+            
+            var flatTotal = modifiers.SelectMany(package => package.flatModifications).ToList();
+            var multiTotal = modifiers.SelectMany(package => package.multiModifications).ToList();
+            
+            return new DamageModificationPackage(flatTotal, multiTotal);
         }
 
+        /*
         public List<BattleEvent> StartBattle()
         {
             var startBattleEvents = GetEventAndResponsesList(new BattleEvent(BattleEventType.StartedBattle, null));
@@ -67,7 +112,7 @@ namespace BattleScreen.BattleEvents
             return GetEventAndResponsesList(new BattleEvent(BattleEventType.EndedBattle, null));
         }
 
-        public List<BattleEvent> GetEventAndResponsesList(BattleEvent battleEvent)
+        private List<BattleEvent> GetEventAndResponsesList(BattleEvent battleEvent)
         {
             foreach (var ui in _eventRespondingUI.Where(ui => ui.GetIfUpdating(battleEvent)))
             {
@@ -90,26 +135,7 @@ namespace BattleScreen.BattleEvents
             return responses;
         }
 
-        public DamageModificationPackage GetDamageModifiers(BattleEvent battleEvent)
-        {
-            var modifiers = _responderOrder.Select
-                (g => g.GetDamageModifiers(battleEvent)).ToList();
-            
-            var flatTotal = modifiers.SelectMany(package => package.flatModifications).ToList();
-            var multiTotal = modifiers.SelectMany(package => package.multiModifications).ToList();
-            
-            return new DamageModificationPackage(flatTotal, multiTotal);
-        }
-
-        public void RegisterUIUpdater(IBattleEventUpdatedUI ui)
-        {
-            _eventRespondingUI.Add(ui);
-        }
         
-        public void DeregisterUIUpdater(IBattleEventUpdatedUI ui)
-        {
-            _eventRespondingUI.Remove(ui);
-        }
 
         private List<BattleEvent> GetResponsesFromGroup(BattleEventResponderGroup group,
             BattleEvent battleEvent)
@@ -140,5 +166,7 @@ namespace BattleScreen.BattleEvents
 
             return battleEvents;
         }
+        
+        */
     }
 }

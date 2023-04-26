@@ -643,6 +643,7 @@
               <e p="BattleEvent.cs" t="Include" />
               <e p="BattleEventResponder.cs" t="Include" />
               <e p="BattleEventResponderGroup.cs" t="Include" />
+              <e p="BattleEventResponderTracker.cs" t="Include" />
               <e p="BattleEventsManager.cs" t="Include" />
               <e p="EnemyBattleEventResponderGroup.cs" t="Include" />
               <e p="EtchingBattleEventResponderGroup.cs" t="Include" />
@@ -652,10 +653,10 @@
             </e>
             <e p="BattleHUDManager.cs" t="Include" />
             <e p="BattleManager.cs" t="Include" />
+            <e p="BattleRenderer.cs" t="Include" />
             <e p="EndOfBattlePopup.cs" t="Include" />
-            <e p="EnemyController.cs" t="Include" />
+            <e p="EnemySequencer.cs" t="Include" />
             <e p="Player.cs" t="Include" />
-            <e p="PlayerTurnEvents.cs" t="Include" />
           </e>
           <e p="ChallengeLoader.cs" t="Include" />
           <e p="Damage" t="Include">

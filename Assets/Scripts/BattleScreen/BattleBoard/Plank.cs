@@ -130,25 +130,13 @@ namespace BattleScreen.BattleBoard
             // Only counts as a move if the planks have been rearranged
             if (_lastSiblingIndex == newSiblingIndex) return;
             
-            PlayerTurnEvents.Current.InvokeEvent(new BattleEvent(BattleEventType.PlayerMovedPlank));
-            PlayerTurnEvents.Current.InvokeEvent(new BattleEvent(BattleEventType.PlankMoved));
+            Battle.Current.InvokeResponsesToPlayerTurnEvent(new BattleEvent(BattleEventType.PlayerMovedPlank));
         }
         
-        public List<BattleEvent> Destroy(DamageSource source)
+        public BattleEvent Destroy(DamageSource source)
         {
-            var response = new List<BattleEvent>();
-            var enemies = EnemyController.Current.GetEnemiesOnPlank(transform.GetSiblingIndex());
-
-            foreach (var enemy in enemies)
-            {
-               response.AddRange(enemy.DestroySelf(source));
-            }
-            
-            response.AddRange(BattleEventsManager.Current
-                .GetEventAndResponsesList(new BattleEvent(BattleEventType.PlankDestroyed)));
-            
             Destroy(gameObject);
-            return response;
+            return new BattleEvent(BattleEventType.PlankDestroyed);
         }
     }
 }

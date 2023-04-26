@@ -97,7 +97,7 @@ public class BattleHUDManager : MonoBehaviour
             case BattleEventType.EndedBattle:
                 EndedBattle();
                 break;
-            case BattleEventType.StartedEnemyTurn:
+            case BattleEventType.StartedNextTurn:
                 StartEnemyTurn();
                 break;
             case BattleEventType.EndedEnemyTurn:

@@ -4,7 +4,6 @@ using System.Collections.Generic;
 using BattleScreen;
 using BattleScreen.BattleBoard;
 using BattleScreen.BattleEvents;
-using BattleScreen.Events;
 using Designs;
 using Enemies;
 using TMPro;
@@ -21,7 +20,7 @@ namespace Etchings
         private Plank _plank;
 
         protected int UsesPerTurn => design.GetStat(StatType.UsesPerTurn);
-        protected int PlankNum => Board.Current.PlanksInOrder.IndexOf(_plank);
+        protected int PlankNum => _plank.PlankNum;
 
         protected int UsesUsedThisTurn
         {
@@ -52,37 +51,28 @@ namespace Etchings
             return CreateEvent(BattleEventType.EtchingStunned, source);
         }
 
-        public override bool GetIfRespondingToBattleEvent(BattleEvent battleEvent)
+        public override BattleEventPackage GetResponseToBattleEvent(BattleEvent battleEvent)
         {
             if (battleEvent.type == BattleEventType.EndedEnemyTurn)
             {
                 UsesUsedThisTurn = 0;
-                if (stunned) return true;
+
+                if (stunned)
+                {
+                    stunned = false;
+                    return new BattleEventPackage(UnStun());
+                } 
             }
-
-            return GetIfDesignIsRespondingToEvent(battleEvent);
-        }
-
-        public override List<BattleEvent> GetResponseToBattleEvent(BattleEvent battleEvent)
-        {
-            if (battleEvent.type == BattleEventType.EndedEnemyTurn && stunned)
+            
+            if (GetIfDesignIsRespondingToEvent(battleEvent))
             {
-                stunned = false;
-                return new List<BattleEvent>() {UnStun()};
+                UsesUsedThisTurn++;
+                var response = new List<BattleEvent> {CreateEvent(BattleEventType.EtchingActivated)};
+                response.AddRange(GetDesignResponsesToEvent(battleEvent));
+                return new BattleEventPackage(response.ToArray());
             }
-
-            var response = new List<BattleEvent>();
-            var plankActivation = CreateEvent(BattleEventType.EtchingActivated);
-            response.AddRange(BattleEventsManager.Current.GetEventAndResponsesList(plankActivation));
-
-            var designResponses = GetDesignResponsesToEvent(battleEvent);
-            foreach (var designResponse in designResponses)
-            {
-                response.AddRange(BattleEventsManager.Current.GetEventAndResponsesList(designResponse));
-            }
-
-            UsesUsedThisTurn++;
-            return response;
+            
+            return BattleEventPackage.Empty;
         }
 
         protected BattleEvent CreateEvent(BattleEventType type, DamageSource source = DamageSource.None, Enemy enemy = null, int modifier = 0)

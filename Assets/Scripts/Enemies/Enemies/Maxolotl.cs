@@ -1,6 +1,7 @@
 ﻿using System.Collections.Generic;
 using System.Linq;
 using BattleScreen;
+using BattleScreen.BattleEvents;
 
 namespace Enemies.Enemies
 {
@@ -28,10 +29,10 @@ namespace Enemies.Enemies
             return true;
         }
 
-        public List<BattleEvent> GetStartOfTurnAbility()
+        public BattleEventPackage GetStartOfTurnAbility()
         {
-            return EnemyController.Current.AllEnemies.Select
-                (enemy => enemy.Heal(HEALING_AMOUNT)).ToList();
+            return new BattleEventPackage(EnemySequencer.Current.AllEnemies.Select
+                (enemy => enemy.Heal(HEALING_AMOUNT)));
         }
     }
 }

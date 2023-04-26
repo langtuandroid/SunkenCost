@@ -23,7 +23,7 @@ namespace Etchings
                 plankNums.Add(i);
             }
 
-            var enemies = EnemyController.Current.GetEnemiesOnPlanks(plankNums);
+            var enemies = EnemySequencer.Current.GetEnemiesOnPlanks(plankNums);
 
             return enemies.Select(DamageEnemy).ToList();
         }

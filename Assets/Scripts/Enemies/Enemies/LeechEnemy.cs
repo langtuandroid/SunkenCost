@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using BattleScreen;
+using BattleScreen.BattleEvents;
 
 namespace Enemies.Enemies
 {
@@ -33,17 +34,14 @@ namespace Enemies.Enemies
             return (_steelo && !_steelo.IsDestroyed && MaxHealth - Health > 0);
         }
 
-        public List<BattleEvent> GetStartOfTurnAbility()
+        public BattleEventPackage GetStartOfTurnAbility()
         {
             var damage = MaxHealth - Health;
 
             if (_steelo.Health < damage) damage = _steelo.Health;
-
-            var response = new List<BattleEvent>();
             
-            response.Add(DamageHandler.DamageEnemy(damage, _steelo, DamageSource.EnemyAbility));
-            response.Add(Heal(damage));
-            return response;
+            return new BattleEventPackage(DamageHandler.DamageEnemy(damage, _steelo, DamageSource.EnemyAbility),
+                Heal(damage));
         }
     }
 }

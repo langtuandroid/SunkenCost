@@ -3,6 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using BattleScreen;
 using BattleScreen.BattleBoard;
+using BattleScreen.BattleEvents;
 using Enemies;
 using UnityEngine;
 
@@ -47,7 +48,7 @@ public class CucungerEnemy : Enemy, IStartOfTurnAbilityHolder
         return true;
     }
 
-    public List<BattleEvent> GetStartOfTurnAbility()
+    public BattleEventPackage GetStartOfTurnAbility()
     {
         var response = new List<BattleEvent>();
         
@@ -55,12 +56,12 @@ public class CucungerEnemy : Enemy, IStartOfTurnAbilityHolder
         if (speech == "0")
             speech = "X";
         
-        response.AddRange(Speak(speech));
+        response.Add(Speak(speech));
         
         if (cooldownCounter >= abilityCooldown && PlankNum != Board.Current.PlankCount - 1)
         {
             cooldownCounter = 0;
-            response.AddRange(PlankFactory.Current.DestroyPlank
+            response.Add(PlankFactory.Current.DestroyPlank
                 (DamageSource.EnemyAbility, Board.Current.PlankCount - 1));
         }
         else
@@ -68,6 +69,6 @@ public class CucungerEnemy : Enemy, IStartOfTurnAbilityHolder
             cooldownCounter++;
         }
 
-        return response;
+        return new BattleEventPackage(response);
     }
 }

@@ -1,4 +1,5 @@
 ﻿using BattleScreen;
+using BattleScreen.BattleEvents;
 using Disturbances;
 
 namespace Items.Items
@@ -10,12 +11,12 @@ namespace Items.Items
             DisturbanceManager.ModifyDisturbanceAsset(DisturbanceType.GoldRush, Amount);
         }
 
-        public override bool GetIfRespondingToBattleEvent(BattleEvent battleEvent)
+        protected override bool GetIfRespondingToBattleEvent(BattleEvent battleEvent)
         {
             return false;
         }
 
-        protected override BattleEvent GetResponse(BattleEvent battleEvent)
+        protected override BattleEventPackage GetResponse(BattleEvent battleEvent)
         {
             throw new System.NotImplementedException();
         }

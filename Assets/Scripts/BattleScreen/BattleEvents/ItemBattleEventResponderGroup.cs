@@ -1,4 +1,5 @@
 using System;
+using BattleScreen.BattleEvents;
 using UnityEngine;
 
 namespace BattleScreen
@@ -11,6 +12,11 @@ namespace BattleScreen
             {
                 AddResponder(item);
             }
+        }
+
+        public override BattleEventPackage GetNextResponse(BattleEvent battleEventToRespondTo)
+        {
+            return base.GetNextResponse(battleEventToRespondTo);
         }
     }
 }

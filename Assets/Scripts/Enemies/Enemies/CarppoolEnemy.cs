@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using BattleScreen;
+using BattleScreen.BattleEvents;
 using UnityEngine;
 
 namespace Enemies.Enemies
@@ -26,13 +27,13 @@ namespace Enemies.Enemies
             return true;
         }
 
-        public List<BattleEvent> GetStartOfTurnAbility()
+        public BattleEventPackage GetStartOfTurnAbility()
         {
             var newBullCarp = EnemySpawner.Instance.SpawnEnemyOnPlank("BullCarp", PlankNum);
             var newEvent = CreateEvent(BattleEventType.EnemySpawned);
             newEvent.enemyAffectee = newBullCarp;
             newEvent.enemyAffector = this;
-            return new List<BattleEvent>(){newEvent};
+            return new BattleEventPackage(newEvent);
         }
     }
 }

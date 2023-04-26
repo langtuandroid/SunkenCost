@@ -77,31 +77,25 @@ public class Player : BattleEventResponder
         return new BattleEvent(BattleEventType.GainedGold, this);
     }
 
-    public override bool GetIfRespondingToBattleEvent(BattleEvent battleEvent)
+    public override BattleEventPackage GetResponseToBattleEvent(BattleEvent previousBattleEvent)
     {
-        switch (battleEvent.type)
+        if (previousBattleEvent.type == BattleEventType.EndedEnemyTurn)
         {
-            case BattleEventType.EndedEnemyTurn:
-                ResetMoves();
-                break;
-            case BattleEventType.PlayerMovedPlank: case BattleEventType.EnemyReachedBoat: 
-            case BattleEventType.PlayerLostLife: case BattleEventType.PlayerGainedLife: 
-            case BattleEventType.TryGainedGold:
-                return true;
+            ResetMoves();
+            return BattleEventPackage.Empty;
         }
-
-        return false;
-    }
-
-    protected override BattleEvent GetResponse(BattleEvent battleEvent)
-    {
-        return battleEvent.type switch
+        
+        var battleEvent = previousBattleEvent.type switch
         {
             BattleEventType.PlayerMovedPlank => UsedMove(),
             BattleEventType.EnemyReachedBoat => EnemyReachedEnd(),
-            BattleEventType.PlayerLifeModified => ModifyLife(battleEvent),
-            BattleEventType.TryGainedGold => TryGainGold(battleEvent),
+            BattleEventType.PlayerLifeModified => ModifyLife(previousBattleEvent),
+            BattleEventType.TryGainedGold => TryGainGold(previousBattleEvent),
             _ => throw new Exception("Unexpected BattleEventType")
         };
+
+        return previousBattleEvent.type == BattleEventType.PlayerMovedPlank 
+            ? new BattleEventPackage(battleEvent, new BattleEvent(BattleEventType.PlayerMovedPlank))
+            : new BattleEventPackage(battleEvent);
     }
 }

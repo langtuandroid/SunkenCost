@@ -2046,7 +2046,6 @@ GameObject:
   m_Component:
   - component: {fileID: 1085348330}
   - component: {fileID: 1085348329}
-  - component: {fileID: 1085348331}
   m_Layer: 0
   m_Name: PlayerController
   m_TagString: Untagged
@@ -2081,18 +2080,6 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 6
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &1085348331
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1085348328}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: c853ba0163c5478c8372dcc74bc71ce7, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1 &1105249584
 GameObject:
   m_ObjectHideFlags: 0
@@ -2296,8 +2283,8 @@ MonoBehaviour:
   m_ChildAlignment: 4
   m_StartCorner: 0
   m_StartAxis: 0
-  m_CellSize: {x: 250, y: 1000}
-  m_Spacing: {x: 50, y: 0}
+  m_CellSize: {x: 260, y: 1000}
+  m_Spacing: {x: 30, y: 0}
   m_Constraint: 2
   m_ConstraintCount: 1
 --- !u!114 &1186376512
@@ -2541,6 +2528,7 @@ GameObject:
   - component: {fileID: 1647991296}
   - component: {fileID: 1647991295}
   - component: {fileID: 1647991294}
+  - component: {fileID: 1647991298}
   m_Layer: 0
   m_Name: Battle
   m_TagString: Untagged
@@ -2721,7 +2709,19 @@ MonoBehaviour:
   _enemiesManager: {fileID: 1647991294}
   _etchingManager: {fileID: 1647991295}
   _player: {fileID: 1085348329}
-  _enemyController: {fileID: 1647991296}
+  _enemySequencer: {fileID: 0}
+--- !u!114 &1647991298
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1647991287}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: db6bd56d4d584c62a398465110d38926, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1668536690
 GameObject:
   m_ObjectHideFlags: 0
@@ -3473,11 +3473,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3739874107440994272, guid: 753e431c20e8b5d45a1560f4e9ca944f, type: 3}
       propertyPath: m_AnchoredPosition.x
-      value: 968.3965
+      value: 947.8599
       objectReference: {fileID: 0}
     - target: {fileID: 3739874107440994272, guid: 753e431c20e8b5d45a1560f4e9ca944f, type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: 1182.9739
+      value: 1176.6537
       objectReference: {fileID: 0}
     - target: {fileID: 3739874107924409688, guid: 753e431c20e8b5d45a1560f4e9ca944f, type: 3}
       propertyPath: m_Pivot.x

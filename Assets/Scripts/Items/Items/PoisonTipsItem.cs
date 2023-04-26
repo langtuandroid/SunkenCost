@@ -7,14 +7,14 @@ namespace Items.Items
 {
     public class PoisonTipsItem : EquippedItem
     {
-        public override bool GetIfRespondingToBattleEvent(BattleEvent battleEvent)
+        protected override bool GetIfRespondingToBattleEvent(BattleEvent battleEvent)
         {
             return battleEvent.type == BattleEventType.EnemyDamaged && battleEvent.damageSource == DamageSource.Etching;
         }
 
-        protected override BattleEvent GetResponse(BattleEvent battleEvent)
+        protected override BattleEventPackage GetResponse(BattleEvent battleEvent)
         {
-            return battleEvent.enemyAffectee.stats.AddPoison(Amount);
+            return new BattleEventPackage(battleEvent.enemyAffectee.stats.AddPoison(Amount));
         }
     }
 }

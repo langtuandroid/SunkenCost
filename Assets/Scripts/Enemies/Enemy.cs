@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
 using BattleScreen;
 using BattleScreen.BattleBoard;
 using BattleScreen.BattleEvents;
@@ -15,6 +16,10 @@ namespace Enemies
     public abstract class Enemy : BattleEventResponder
     {
         public EnemyStats stats;
+        
+        private bool _yetToApplyPoisonThisTurn;
+        private bool _yetToExecuteStartOfTurnAbilityThisTurn;
+        private bool _yetToExecuteEndOfTurnAbilityThisTurn;
         
         public string Name { get; protected set; }
         
@@ -54,54 +59,61 @@ namespace Enemies
             // TODO: APPLY MODIFIERS
             MaxHealthStat = new Stat(health);
         }
-        
-        public List<BattleEvent> StartTurn()
+
+        public void CalculateActionsForTurn()
         {
-            var startTurnEvents = CreateEventAndResponses(BattleEventType.StartedIndividualEnemyTurn);
-            
-            // Apply poison
-            if (stats.Poison > 0)
+            _yetToApplyPoisonThisTurn = stats.Poison > 0;
+            _yetToExecuteStartOfTurnAbilityThisTurn = this is IStartOfTurnAbilityHolder holder && holder.GetIfUsingStartOfTurnAbility();
+            _yetToExecuteEndOfTurnAbilityThisTurn = false;
+        }
+        
+        public BattleEventPackage GetNextAction()
+        {
+            if (_yetToApplyPoisonThisTurn)
             {
-                startTurnEvents.AddRange(DealPoison());
+                _yetToApplyPoisonThisTurn = false;
+                return new BattleEventPackage(DealPoisonDamage());
             }
 
-            if (this is IStartOfTurnAbilityHolder startOfTurnAbilityHolder
-                && startOfTurnAbilityHolder.GetIfUsingStartOfTurnAbility())
+            if (_yetToExecuteStartOfTurnAbilityThisTurn)
             {
-                foreach (var battleEvent in startOfTurnAbilityHolder.GetStartOfTurnAbility())
+                if (this is IStartOfTurnAbilityHolder startOfTurnAbilityHolder)
                 {
-                    startTurnEvents.AddRange(BattleEventsManager.Current.GetEventAndResponsesList(battleEvent));
+                    _yetToExecuteStartOfTurnAbilityThisTurn = false;
+                    return startOfTurnAbilityHolder.GetStartOfTurnAbility();
                 }
+                
+                throw new Exception("Should not be executing a start of turn ability when this is not capable!");
             }
 
-            return startTurnEvents;
+            if (!FinishedMoving)
+            {
+                return MoveStep();
+            }
+
+            if (_yetToExecuteEndOfTurnAbilityThisTurn)
+            {
+                throw new NotImplementedException();
+            }
+
+            Mover.EndTurn();
+            return new BattleEventPackage(CreateEvent(BattleEventType.EndedIndivdualEnemyMove));
         }
 
-        public List<BattleEvent> MoveStep()
+        private BattleEventPackage MoveStep()
         {
             // Change my stick
             Mover.Move();
             
-            if (PlankNum >= Board.Current.PlankCount)
-            {
-                var response = CreateEventAndResponses(BattleEventType.EnemyReachedBoat);
-                response.AddRange(DestroySelf(DamageSource.Boat));
-            }
-            
-            return CreateEventAndResponses(BattleEventType.EnemyMove);
+            return PlankNum >= Board.Current.PlankCount 
+                ? new BattleEventPackage(CreateEvent(BattleEventType.EnemyReachedBoat), DestroySelf(DamageSource.Boat)) 
+                : new BattleEventPackage(CreateEvent(BattleEventType.EnemyMove));
         }
 
-        public List<BattleEvent> EndTurn()
+        private BattleEvent DealPoisonDamage()
         {
-            Mover.EndTurn();
-            return CreateEventAndResponses(BattleEventType.EnemyEndMyMove);
-        }
-
-        private List<BattleEvent> DealPoison()
-        {
-            return BattleEventsManager.Current.GetEventAndResponsesList(DamageHandler.DamageEnemy
-                (stats.Poison, this, DamageSource.Poison));
-            
+            return DamageHandler.DamageEnemy
+                (stats.Poison, this, DamageSource.Poison);
         }
 
         public BattleEvent Block(int blockAmount)
@@ -145,58 +157,47 @@ namespace Enemies
             ChangeHealth(0);
         }
 
-        private void ChangeHealth(int amount)
-        {
-            Health += amount;
-        }
-
         public void SetTurnOrder(int turnOrder)
         {
             TurnOrder = turnOrder;
         }
 
         public abstract string GetDescription();
-        
-        public override bool GetIfRespondingToBattleEvent(BattleEvent battleEvent)
+
+        public override BattleEventPackage GetResponseToBattleEvent(BattleEvent previousBattleEvent)
         {
-            if (battleEvent.type == BattleEventType.PlankMoved) RefreshMoverPlankNum();
-            return false;
+            if (previousBattleEvent.type == BattleEventType.PlankMoved) RefreshMoverPlankNum();
+            return BattleEventPackage.Empty;
         }
 
-        protected List<BattleEvent> Speak(string text)
+        protected BattleEvent Speak(string text)
         {
             Speech = text;
-            var speechEventAndResponses = CreateEventAndResponses(BattleEventType.EnemySpeaking);
-            Speech = "";
-
-            return speechEventAndResponses;
+            return CreateEvent(BattleEventType.EnemySpeaking);
         }
 
         protected BattleEvent CreateEvent(BattleEventType type, int modifier = 0,
             DamageSource damageSource = DamageSource.None)
         {
-            return new BattleEvent(type) 
+            return new BattleEvent(type, this) 
                 {enemyAffectee = this, modifier = modifier, damageSource = damageSource};
         }
-
-        private List<BattleEvent> CreateEventAndResponses(BattleEventType type, int modifier = 0, 
-            DamageSource damageSource = DamageSource.None)
-        {
-            var battleEvent = CreateEvent(type, modifier, damageSource);
-            return BattleEventsManager.Current.GetEventAndResponsesList(battleEvent);
-        }
         
+        private void ChangeHealth(int amount)
+        {
+            Health += amount;
+        }
+
         private void RefreshMoverPlankNum()
         {
             if (Mover.PlankNum == -1) return;
             Mover.SetPlankNum(transform.parent.GetSiblingIndex());
         }
 
-        public List<BattleEvent> DestroySelf(DamageSource damageSource)
+        private BattleEvent DestroySelf(DamageSource damageSource)
         {
             IsDestroyed = true;
-            
-            return CreateEventAndResponses(BattleEventType.EnemyKilled, damageSource: damageSource);
+            return CreateEvent(BattleEventType.EnemyKilled, damageSource: damageSource);
         }
     }
 }
