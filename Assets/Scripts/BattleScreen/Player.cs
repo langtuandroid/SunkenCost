@@ -91,11 +91,13 @@ public class Player : BattleEventResponder
             BattleEventType.EnemyReachedBoat => EnemyReachedEnd(),
             BattleEventType.PlayerLifeModified => ModifyLife(previousBattleEvent),
             BattleEventType.TryGainedGold => TryGainGold(previousBattleEvent),
-            _ => throw new Exception("Unexpected BattleEventType")
+            _ => BattleEvent.None
         };
+        
+        if (battleEvent.type == BattleEventType.None) return BattleEventPackage.Empty;
 
         return previousBattleEvent.type == BattleEventType.PlayerMovedPlank 
-            ? new BattleEventPackage(battleEvent, new BattleEvent(BattleEventType.PlayerMovedPlank))
+            ? new BattleEventPackage(battleEvent, new BattleEvent(BattleEventType.PlankMoved))
             : new BattleEventPackage(battleEvent);
     }
 }

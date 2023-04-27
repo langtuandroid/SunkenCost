@@ -74,10 +74,8 @@ public static class DamageHandler
             damageModifications.multiModifications.Aggregate
                 (flatTotal, (current, mod) => mod.modificationAmount * current);
 
-        Debug.Log("Base damage: " + directDamage);
-        Debug.Log("Total damage: " + multiTotal);
-        
-        enemy.TakeDamage(multiTotal, source);
+        //Debug.Log("Base damage: " + directDamage);
+        //Debug.Log("Total damage: " + multiTotal);
 
         return new BattleEvent(BattleEventType.EnemyDamaged, battleResponder)
         {

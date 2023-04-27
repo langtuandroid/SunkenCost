@@ -35,21 +35,26 @@ namespace BattleScreen
 
         public virtual BattleEventPackage GetNextResponse(BattleEvent battleEventToRespondTo)
         {
+            // Works much like the Battle Event Manager's GetNextResponse function, but this only checks each responder
+            // Once per battle event
             var index = _indexTracker.GetIndex(battleEventToRespondTo);
 
-            var responsePackage = BattleEventPackage.Empty;
-            for (; index < _battleEventResponders.Count; index++)
+            while (index < _battleEventResponders.Count)
             {
-                var nextResponder = _battleEventResponders[index];
-                if (!nextResponder) continue;
+                var responsePackage = _battleEventResponders[index].GetResponseToBattleEvent(battleEventToRespondTo);
                 
-                responsePackage = nextResponder.GetResponseToBattleEvent(battleEventToRespondTo);
-                if (!responsePackage.IsEmpty) break;
+                index++;
+                _indexTracker.SetIndex(battleEventToRespondTo, index);
+
+                if (responsePackage.IsEmpty) continue;
+                
+                Debug.Log(GetType().Name + " " + index + "/" + _battleEventResponders.Count + " responding to: " 
+                          + battleEventToRespondTo.type + " with " + responsePackage.battleEvents[0].type);
+                
+                return responsePackage;
             }
-            
-            _indexTracker.SetIndex(battleEventToRespondTo, index);
-            Debug.Log(GetType().Name + " " + index + "/" + _battleEventResponders.Count + " responding to: " + battleEventToRespondTo.type + " with " + responsePackage.battleEvents[0].type);
-            return responsePackage;
+
+            return BattleEventPackage.Empty;
         }
         
         public DamageModificationPackage GetDamageModifiers(BattleEvent battleEvent)

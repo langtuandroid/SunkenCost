@@ -19,11 +19,14 @@ namespace BattleScreen
             Current = this;
         }
 
-        public void RenderEvent(BattleEvent battleEvent)
+        public void RenderEventPackage(BattleEventPackage battleEventPackage)
         {
-            foreach (var respondingUI in _eventRespondingUI)
+            foreach (var battleEvent in battleEventPackage.battleEvents)
             {
-                respondingUI.RespondToBattleEvent(battleEvent);
+                foreach (var respondingUI in _eventRespondingUI)
+                {
+                    respondingUI.RespondToBattleEvent(battleEvent);
+                }
             }
         }
 

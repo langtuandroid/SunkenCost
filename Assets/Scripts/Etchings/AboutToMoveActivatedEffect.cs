@@ -6,7 +6,7 @@ namespace Etchings
     {
         protected override BattleEventType GetEventType()
         {
-            return BattleEventType.EnemyStartMove;
+            return BattleEventType.EnemyAboutToMove;
         }
     }
 }

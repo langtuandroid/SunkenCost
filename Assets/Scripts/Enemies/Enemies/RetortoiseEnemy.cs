@@ -16,6 +16,7 @@
             return "Gets faster each time it's attacked";
         }
 
+        /*
         public override void TakeDamage(int damage, DamageSource damageSource)
         {
             if (damageSource != DamageSource.Etching) return;
@@ -24,5 +25,6 @@
 
             base.TakeDamage(damage, damageSource);
         }
+        */
     }
 }

@@ -13,7 +13,7 @@ namespace Etchings
             var enemy = battleEvent.enemyAffectee;
             
             // Enemy reached end
-            if (enemy.PlankNum >= Board.Current.PlankCount + 1) return false;
+            if (enemy.PlankNum > Board.Current.PlankCount) return false;
 
             return ((design.Limitless || UsesUsedThisTurn < UsesPerTurn) && TestCharMovementActivatedEffect(enemy));
         }

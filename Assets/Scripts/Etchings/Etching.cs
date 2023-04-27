@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
 using BattleScreen;
 using BattleScreen.BattleBoard;
 using BattleScreen.BattleEvents;
@@ -20,7 +21,7 @@ namespace Etchings
         private Plank _plank;
 
         protected int UsesPerTurn => design.GetStat(StatType.UsesPerTurn);
-        protected int PlankNum => _plank.PlankNum;
+        public int PlankNum => _plank.PlankNum;
 
         protected int UsesUsedThisTurn
         {
@@ -67,8 +68,20 @@ namespace Etchings
             if (GetIfDesignIsRespondingToEvent(battleEvent))
             {
                 UsesUsedThisTurn++;
-                var response = new List<BattleEvent> {CreateEvent(BattleEventType.EtchingActivated)};
-                response.AddRange(GetDesignResponsesToEvent(battleEvent));
+
+                var designResponseEvents = GetDesignResponsesToEvent(battleEvent);
+
+                var planksToColor = designResponseEvents.Select
+                    (designResponseEvent => designResponseEvent.type == BattleEventType.EnemyDamaged
+                        ? designResponseEvent.enemyAffectee.PlankNum
+                        : PlankNum).ToList();
+
+                var etchingActivatedEvent = CreateEvent(BattleEventType.EtchingActivated);
+                etchingActivatedEvent.planksToColor = planksToColor;
+                
+                var response = new List<BattleEvent>();
+                response.Add(etchingActivatedEvent);
+                response.AddRange(designResponseEvents);
                 return new BattleEventPackage(response.ToArray());
             }
             

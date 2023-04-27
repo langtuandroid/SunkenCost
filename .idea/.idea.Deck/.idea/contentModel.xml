@@ -641,6 +641,7 @@
             </e>
             <e p="BattleEvents" t="Include">
               <e p="BattleEvent.cs" t="Include" />
+              <e p="BattleEventPackage.cs" t="Include" />
               <e p="BattleEventResponder.cs" t="Include" />
               <e p="BattleEventResponderGroup.cs" t="Include" />
               <e p="BattleEventResponderTracker.cs" t="Include" />
@@ -649,6 +650,7 @@
               <e p="EtchingBattleEventResponderGroup.cs" t="Include" />
               <e p="IBattleEventUpdatedUI.cs" t="Include" />
               <e p="ItemBattleEventResponderGroup.cs" t="Include" />
+              <e p="PlayerBattleEventResponderGroup.cs" t="Include" />
               <e p="UnexpectedBattleEventException.cs" t="Include" />
             </e>
             <e p="BattleHUDManager.cs" t="Include" />
@@ -752,7 +754,6 @@
             <e p="ReverseEtching.cs" t="Include" />
             <e p="StickMovementActivatedEtching.cs" t="Include" />
           </e>
-          <e p="EtchingTurnProcess.cs" t="Include" />
           <e p="Extensions.cs" t="Include" />
           <e p="GlobalEvents.cs" t="Include" />
           <e p="ItemLoader.cs" t="Include" />

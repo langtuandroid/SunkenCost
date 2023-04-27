@@ -10,7 +10,7 @@ using UnityEngine;
 using UnityEngine.Serialization;
 using UnityEngine.UI;
 
-public class BattleHUDManager : MonoBehaviour
+public class BattleHUDManager : MonoBehaviour, IBattleEventUpdatedUI
 {
     [SerializeField] private Hearts _hearts;
     [SerializeField] private LoseLifeShaderController _loseLifeShaderController;
@@ -25,6 +25,8 @@ public class BattleHUDManager : MonoBehaviour
 
     private void Start()
     {
+        BattleRenderer.Current.RegisterUIUpdater(this);
+        
         UpdateLives();
         UpdateMovesText();
     }
@@ -71,6 +73,7 @@ public class BattleHUDManager : MonoBehaviour
     {
         _turnFrame.EndEnemyTurn();
         _whosTurnText.EndEnemyTurn();
+        UpdateMovesText();
     }
 
     private void PlankAddedOrRemoved()
@@ -78,9 +81,9 @@ public class BattleHUDManager : MonoBehaviour
         ZoomManager.current.SetStickScale();
     }
 
-    public void UpdateDisplay(BattleEventType battleEventType)
+    public void RespondToBattleEvent(BattleEvent battleEvent)
     {
-        switch (battleEventType)
+        switch (battleEvent.type)
         {
             case BattleEventType.GainedGold:
                 UpdateGoldText();

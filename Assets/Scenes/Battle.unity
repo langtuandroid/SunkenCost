@@ -2669,6 +2669,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9b1ac4b18ac142b1b1b83929c3cf465c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _enemySpawner: {fileID: 145267313}
+  _enemySequencer: {fileID: 1647991296}
 --- !u!114 &1647991295
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2708,8 +2710,6 @@ MonoBehaviour:
   _itemManager: {fileID: 1647991292}
   _enemiesManager: {fileID: 1647991294}
   _etchingManager: {fileID: 1647991295}
-  _player: {fileID: 1085348329}
-  _enemySequencer: {fileID: 0}
 --- !u!114 &1647991298
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3473,11 +3473,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3739874107440994272, guid: 753e431c20e8b5d45a1560f4e9ca944f, type: 3}
       propertyPath: m_AnchoredPosition.x
-      value: 947.8599
+      value: 1125.3229
       objectReference: {fileID: 0}
     - target: {fileID: 3739874107440994272, guid: 753e431c20e8b5d45a1560f4e9ca944f, type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: 1176.6537
+      value: 1157.2603
       objectReference: {fileID: 0}
     - target: {fileID: 3739874107924409688, guid: 753e431c20e8b5d45a1560f4e9ca944f, type: 3}
       propertyPath: m_Pivot.x

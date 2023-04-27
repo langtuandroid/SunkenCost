@@ -16,11 +16,15 @@ namespace Enemies
     public abstract class Enemy : BattleEventResponder
     {
         public EnemyStats stats;
+
+        private bool _isMyTurn;
+        private BattleEvent _lastEventRespondedToDuringMyTurn;
         
         private bool _yetToApplyPoisonThisTurn;
         private bool _yetToExecuteStartOfTurnAbilityThisTurn;
         private bool _yetToExecuteEndOfTurnAbilityThisTurn;
-        
+        private bool _finishedStartOfTurnActions;
+
         public string Name { get; protected set; }
         
         public Stat MaxHealthStat { get; private set; }
@@ -60,46 +64,6 @@ namespace Enemies
             MaxHealthStat = new Stat(health);
         }
 
-        public void CalculateActionsForTurn()
-        {
-            _yetToApplyPoisonThisTurn = stats.Poison > 0;
-            _yetToExecuteStartOfTurnAbilityThisTurn = this is IStartOfTurnAbilityHolder holder && holder.GetIfUsingStartOfTurnAbility();
-            _yetToExecuteEndOfTurnAbilityThisTurn = false;
-        }
-        
-        public BattleEventPackage GetNextAction()
-        {
-            if (_yetToApplyPoisonThisTurn)
-            {
-                _yetToApplyPoisonThisTurn = false;
-                return new BattleEventPackage(DealPoisonDamage());
-            }
-
-            if (_yetToExecuteStartOfTurnAbilityThisTurn)
-            {
-                if (this is IStartOfTurnAbilityHolder startOfTurnAbilityHolder)
-                {
-                    _yetToExecuteStartOfTurnAbilityThisTurn = false;
-                    return startOfTurnAbilityHolder.GetStartOfTurnAbility();
-                }
-                
-                throw new Exception("Should not be executing a start of turn ability when this is not capable!");
-            }
-
-            if (!FinishedMoving)
-            {
-                return MoveStep();
-            }
-
-            if (_yetToExecuteEndOfTurnAbilityThisTurn)
-            {
-                throw new NotImplementedException();
-            }
-
-            Mover.EndTurn();
-            return new BattleEventPackage(CreateEvent(BattleEventType.EndedIndivdualEnemyMove));
-        }
-
         private BattleEventPackage MoveStep()
         {
             // Change my stick
@@ -121,17 +85,7 @@ namespace Enemies
             Mover.Block(blockAmount);
             return CreateEvent(BattleEventType.EnemyBlocked, blockAmount);
         }
-
-        public virtual void TakeDamage(int damage, DamageSource damageSource)
-        {
-            ChangeHealth(-damage);
-            
-            if (Health <= 0)
-            {
-                DestroySelf(damageSource);
-            }
-        }
-    
+        
         public BattleEvent Heal(int amount)
         {
             var healAmount = amount;
@@ -163,10 +117,100 @@ namespace Enemies
         }
 
         public abstract string GetDescription();
+        
+        public void RefreshPlankNum()
+        {
+            if (Mover.PlankNum == -1) return;
+            Mover.SetPlankNum(transform.parent.GetSiblingIndex());
+        }
 
         public override BattleEventPackage GetResponseToBattleEvent(BattleEvent previousBattleEvent)
         {
-            if (previousBattleEvent.type == BattleEventType.PlankMoved) RefreshMoverPlankNum();
+            // Damaged
+            if (previousBattleEvent.type == BattleEventType.EnemyDamaged && previousBattleEvent.enemyAffectee == this)
+            {
+                ChangeHealth(-previousBattleEvent.modifier);
+                
+                // Killed 
+                if (Health <= 0)
+                {
+                    // If it's my turn, I also need to tell everyone that I've finished my turn
+                    var responseList = new List<BattleEvent> {DestroySelf(previousBattleEvent.damageSource)};
+                    if (_isMyTurn) responseList.Add(CreateEvent(BattleEventType.EndedIndivdualEnemyMove));
+                    return new BattleEventPackage(responseList);
+                }
+            }
+            
+            if (!_isMyTurn && previousBattleEvent.type == BattleEventType.SelectedNextEnemy &&
+                previousBattleEvent.enemyAffectee == this)
+            {
+                _isMyTurn = true;
+                CalculateActionsForTurn();
+                _finishedStartOfTurnActions = false;
+                _lastEventRespondedToDuringMyTurn = previousBattleEvent;
+                return new BattleEventPackage(CreateEvent(BattleEventType.StartedIndividualEnemyTurn));
+            }
+            
+            if (_isMyTurn && previousBattleEvent.type == BattleEventType.FinishedRespondingToEnemy)
+            {
+                var nextTurnAction = GetNextTurnAction(_lastEventRespondedToDuringMyTurn);
+                _lastEventRespondedToDuringMyTurn = nextTurnAction.battleEvents[0];
+                return nextTurnAction;
+            }
+            
+            return BattleEventPackage.Empty;
+        }
+
+        public BattleEventPackage GetNextTurnAction(BattleEvent eventRespondingTo)
+        {
+            if (!_finishedStartOfTurnActions)
+            {
+                var startOfTurnAction = GetNextStartOfTurnEffect(eventRespondingTo);
+                if (!startOfTurnAction.IsEmpty) return startOfTurnAction;
+                _finishedStartOfTurnActions = true;
+            }
+            
+            // Start move
+            if (!FinishedMoving)
+            {
+                if (eventRespondingTo.type != BattleEventType.EnemyAboutToMove)
+                    return new BattleEventPackage(CreateEvent(BattleEventType.EnemyAboutToMove));
+
+                return MoveStep();
+            }
+            
+            if (_yetToExecuteEndOfTurnAbilityThisTurn)
+            {
+                throw new NotImplementedException();
+            }
+            
+            Mover.EndTurn();
+            _isMyTurn = false;
+            return new BattleEventPackage(CreateEvent(BattleEventType.EndedIndivdualEnemyMove));
+        }
+
+        private BattleEventPackage GetNextStartOfTurnEffect(BattleEvent previousBattleEvent)
+        {
+            if (_yetToApplyPoisonThisTurn)
+            {
+                _yetToApplyPoisonThisTurn = false;
+                return new BattleEventPackage(
+                    DealPoisonDamage(), CreateEvent(BattleEventType.EnemyStartOfTurnEffect));
+            }
+                
+            if (_yetToExecuteStartOfTurnAbilityThisTurn)
+            {
+                if (this is IStartOfTurnAbilityHolder startOfTurnAbilityHolder)
+                {
+                    _yetToExecuteStartOfTurnAbilityThisTurn = false;
+                    var abilityEvents = (startOfTurnAbilityHolder.GetStartOfTurnAbility()).battleEvents.ToList();
+                    abilityEvents.Add(CreateEvent(BattleEventType.EnemyStartOfTurnEffect));
+                    return new BattleEventPackage(abilityEvents);
+                }
+                            
+                throw new Exception("Should not be executing a start of turn ability when this is not capable!");
+            }
+            
             return BattleEventPackage.Empty;
         }
 
@@ -182,21 +226,23 @@ namespace Enemies
             return new BattleEvent(type, this) 
                 {enemyAffectee = this, modifier = modifier, damageSource = damageSource};
         }
-        
+
         private void ChangeHealth(int amount)
         {
             Health += amount;
         }
-
-        private void RefreshMoverPlankNum()
+        
+        private void CalculateActionsForTurn()
         {
-            if (Mover.PlankNum == -1) return;
-            Mover.SetPlankNum(transform.parent.GetSiblingIndex());
+            _yetToApplyPoisonThisTurn = stats.Poison > 0;
+            _yetToExecuteStartOfTurnAbilityThisTurn = this is IStartOfTurnAbilityHolder holder && holder.GetIfUsingStartOfTurnAbility();
+            _yetToExecuteEndOfTurnAbilityThisTurn = false;
         }
 
         private BattleEvent DestroySelf(DamageSource damageSource)
         {
             IsDestroyed = true;
+            Destroy(gameObject);
             return CreateEvent(BattleEventType.EnemyKilled, damageSource: damageSource);
         }
     }

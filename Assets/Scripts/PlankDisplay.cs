@@ -13,13 +13,19 @@ using UnityEngine.Serialization;
 public class PlankDisplay : MonoBehaviour, IBattleEventUpdatedUI
 {
     private static Color _stunnedColor = new Color(0.65f, 0.65f, 0.65f);
+    private Color _originalColor;
     
     [SerializeField] private Image _plankImage;
     [SerializeField] private Image _washImage;
 
+    private int PlankNum => transform.GetSiblingIndex();
+
     private void Awake()
     {
         BattleRenderer.Current.RegisterUIUpdater(this);
+        _originalColor = _plankImage.color;
+        
+        Debug.Log(PlankNum);
     }
 
     public void BeginDrag()
@@ -34,10 +40,9 @@ public class PlankDisplay : MonoBehaviour, IBattleEventUpdatedUI
 
     private IEnumerator ColorForAttackOnThisPlank(Color color)
     {
-        var oldColor = _plankImage.color;
         _plankImage.color = color;
         yield return new WaitForSeconds(Battle.ActionExecutionSpeed);
-        _plankImage.color = oldColor;
+        _plankImage.color = _originalColor;
     }
 
     private void SetAsStunned()
@@ -52,13 +57,18 @@ public class PlankDisplay : MonoBehaviour, IBattleEventUpdatedUI
 
     public void RespondToBattleEvent(BattleEvent battleEvent)
     {
-        if (!battleEvent.plankDisplays.Contains(this)) return;
-
-        if (battleEvent.type == BattleEventType.EtchingStunned)
-            SetAsStunned();
-        else if (battleEvent.type == BattleEventType.EtchingUnStunned)
-            SetAsUnStunned();
-        else if (battleEvent.type == BattleEventType.EnemyDamaged) 
+        if (battleEvent.etching && battleEvent.etching.PlankNum == PlankNum)
+        {
+            if (battleEvent.type == BattleEventType.EtchingStunned)
+                SetAsStunned();
+            else if (battleEvent.type == BattleEventType.EtchingUnStunned)
+                SetAsUnStunned();
+        }
+        
+        if (battleEvent.type == BattleEventType.EtchingActivated && battleEvent.planksToColor.Contains(PlankNum))
+        {
+            StopAllCoroutines();
             StartCoroutine(ColorForAttackOnThisPlank(battleEvent.etching.design.Color));
+        }
     }
 }

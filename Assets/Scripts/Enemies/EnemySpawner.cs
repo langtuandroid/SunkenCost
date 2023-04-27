@@ -11,7 +11,7 @@ using UnityEngine.Rendering;
 using Random = UnityEngine.Random;
 
 
-public class EnemySpawner : MonoBehaviour
+public class EnemySpawner : BattleEventResponder
 {
     public static EnemySpawner Instance;
     
@@ -89,5 +89,13 @@ public class EnemySpawner : MonoBehaviour
         var newEnemy = newEnemyObject.GetComponent<Enemy>();
         EnemySequencer.Current.AddEnemy(newEnemy);
         return newEnemy;
+    }
+
+    public override BattleEventPackage GetResponseToBattleEvent(BattleEvent previousBattleEvent)
+    {
+        if (!(previousBattleEvent.type == BattleEventType.StartedBattle 
+              || previousBattleEvent.type == BattleEventType.EndedEnemyTurn)) return BattleEventPackage.Empty;
+
+        return SpawnNewTurn();
     }
 }

@@ -274,7 +274,6 @@ GameObject:
   m_Component:
   - component: {fileID: 7647985522836604427}
   - component: {fileID: 7647985522836604420}
-  - component: {fileID: 3371556800221959100}
   m_Layer: 5
   m_Name: StickImage
   m_TagString: Untagged
@@ -313,20 +312,6 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 7647985522836604424}
   m_CullTransparentMesh: 0
---- !u!114 &3371556800221959100
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7647985522836604424}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 334e499b2e731f14b969e3b6305c33a0, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _plankImage: {fileID: 7905115717290506676}
-  _washImage: {fileID: 1942026083861046546}
 --- !u!1001 &8304403275848715925
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -444,17 +429,6 @@ PrefabInstance:
       objectReference: {fileID: 2100000, guid: 27219bdd9d5370046a1b5f2d03984ebd, type: 2}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 3173bfd90d2c9514d915452a47f713e6, type: 3}
---- !u!114 &1942026083861046546 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 7623570150043233159, guid: 3173bfd90d2c9514d915452a47f713e6, type: 3}
-  m_PrefabInstance: {fileID: 8304403275848715925}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!224 &1942026083861046548 stripped
 RectTransform:
   m_CorrespondingSourceObject: {fileID: 7623570150043233153, guid: 3173bfd90d2c9514d915452a47f713e6, type: 3}

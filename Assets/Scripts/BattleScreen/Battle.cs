@@ -71,7 +71,8 @@ namespace BattleScreen
         {
             Debug.Log("------ Starting battle ------");
             yield return 0;
-            
+            yield return 0;
+
             var startBattle = new BattleEvent(BattleEventType.StartedBattle);
             yield return StartCoroutine(Tick(startBattle));
             
@@ -108,28 +109,27 @@ namespace BattleScreen
         
         private IEnumerator Tick(BattleEvent previousBattleEvent)
         {
-            Debug.Log("Now responding to : " + previousBattleEvent.type);
-            BattleRenderer.Current.RenderEvent(previousBattleEvent);
-            
+            //Debug.Log("Now responding to : " + previousBattleEvent.type);
+
             for (var i = 0; i < 1000; i++)
             {
-                var nextResponse = BattleEventsManager.Current.GetNextResponse(previousBattleEvent);
-                if (nextResponse.IsEmpty) yield break;
-                
-                Debug.Log(previousBattleEvent.type + " triggered " + nextResponse.battleEvents[0].type);
-                
-                yield return new WaitForSeconds(ActionExecutionSpeed);
-                
-                foreach (var battleEvent in nextResponse.battleEvents)
+                var response = BattleEventsManager.Current.GetNextResponse(previousBattleEvent);
+                if (response.IsEmpty) yield break;
+                BattleRenderer.Current.RenderEventPackage(response);
+
+                foreach (var battleEvent in response.battleEvents)
                 {
+                    if (battleEvent.type == BattleEventType.EnemyAboutToMove ||
+                        battleEvent.type == BattleEventType.EnemyMove ||
+                        battleEvent.type == BattleEventType.EtchingActivated)
+                        yield return new WaitForSecondsRealtime(ActionExecutionSpeed);
+                    
                     yield return StartCoroutine(Tick(battleEvent));
+                    Debug.Log("Finished " + battleEvent.type + ". Back to " + previousBattleEvent.type);
                 }
             }
-            
-            Debug.Log("Why the fuck have we done 1000 iterations?");
         }
 
-        
         private void SetToPlayersTurn()
         {
             GameState = GameState.PlayerTurn;

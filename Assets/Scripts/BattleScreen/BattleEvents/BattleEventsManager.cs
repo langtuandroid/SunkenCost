@@ -6,23 +6,6 @@ using UnityEngine;
 
 namespace BattleScreen.BattleEvents
 {
-    public readonly struct BattleEventPackage
-    {
-        public readonly BattleEvent[] battleEvents;
-
-        public static BattleEventPackage Empty => new BattleEventPackage(BattleEvent.None);
-        public bool IsEmpty => battleEvents[0].type == BattleEventType.None;
-
-        public BattleEventPackage(params BattleEvent[] battleEvents)
-        {
-            this.battleEvents = battleEvents;
-        }
-
-        public BattleEventPackage(IEnumerable<BattleEvent> battleEventsList) : this(battleEventsList.ToArray())
-        {
-        }
-    }
-    
     public class BattleEventsManager : MonoBehaviour
     {
         public static BattleEventsManager Current;
@@ -30,8 +13,7 @@ namespace BattleScreen.BattleEvents
         [SerializeField] private BattleEventResponderGroup _itemManager;
         [SerializeField] private BattleEventResponderGroup _enemiesManager;
         [SerializeField] private BattleEventResponderGroup _etchingManager;
-        [SerializeField] private BattleEventResponder _player;
-        [SerializeField] private EnemySequencer _enemySequencer;
+        [SerializeField] private BattleEventResponderGroup _playerManager;
         
         private BattleEventResponderGroup[] _responderGroupOrder;
         
@@ -46,13 +28,14 @@ namespace BattleScreen.BattleEvents
 
             Current = this;
 
-            _responderGroupOrder = new []{_enemiesManager, _etchingManager, _itemManager};
+            _responderGroupOrder = new []{_playerManager, _enemiesManager, _etchingManager, _itemManager};
         }
         
         public BattleEventPackage GetNextResponse(BattleEvent battleEvent)
         {
             var index = _battleEventResponderTracker.GetIndex(battleEvent);
 
+            // Check each of the responder groups
             while (index < _responderGroupOrder.Length)
             {
                 var responsePackage = _responderGroupOrder[index].GetNextResponse(battleEvent);
@@ -60,6 +43,15 @@ namespace BattleScreen.BattleEvents
 
                 index++;
                 _battleEventResponderTracker.SetIndex(battleEvent, index);
+                
+                if (index == _responderGroupOrder.Length &&
+                    (battleEvent.type == BattleEventType.StartedIndividualEnemyTurn ||
+                    battleEvent.type == BattleEventType.EnemyAboutToMove ||
+                    battleEvent.type == BattleEventType.EnemyMove ||
+                    battleEvent.type == BattleEventType.EnemyStartOfTurnEffect))
+                {
+                    return new BattleEventPackage(new BattleEvent(BattleEventType.FinishedRespondingToEnemy));
+                }
             }
 
             return BattleEventPackage.Empty;
@@ -75,98 +67,6 @@ namespace BattleScreen.BattleEvents
             
             return new DamageModificationPackage(flatTotal, multiTotal);
         }
-
-        /*
-        public List<BattleEvent> StartBattle()
-        {
-            var startBattleEvents = GetEventAndResponsesList(new BattleEvent(BattleEventType.StartedBattle, null));
-
-            EnemySpawner.Instance.StartBattle();
-            startBattleEvents.AddRange(SpawnEnemies());
-            return startBattleEvents;
-        }
-
-        public List<BattleEvent> GetNextTurn()
-        {
-            var turnEvents = new List<BattleEvent>();
-            
-            // Start of turn processing
-            var startTurnBattleEvents = GetEventAndResponsesList(new BattleEvent(BattleEventType.StartedEnemyTurn, null));
-
-            // Iterate through the enemies' moves
-            var movementBattleEvents = _enemyController.GetMovements();
-            
-            // End of turn
-            var endTurnBattleEvents = GetEventAndResponsesList(new BattleEvent(BattleEventType.EndedEnemyTurn, null));
-
-            turnEvents.AddRange(startTurnBattleEvents);
-            turnEvents.AddRange(movementBattleEvents);
-            turnEvents.AddRange(endTurnBattleEvents);
-            turnEvents.AddRange(SpawnEnemies());
-
-            return turnEvents;
-        }
-
-        public List<BattleEvent> EndBattle()
-        {
-            return GetEventAndResponsesList(new BattleEvent(BattleEventType.EndedBattle, null));
-        }
-
-        private List<BattleEvent> GetEventAndResponsesList(BattleEvent battleEvent)
-        {
-            foreach (var ui in _eventRespondingUI.Where(ui => ui.GetIfUpdating(battleEvent)))
-            {
-                Debug.Log(ui + " saving state!");
-                ui.SaveStateResponse(battleEvent.type);
-                battleEvent.visualisers.Add(ui);
-            }
-            
-            var responses = new List<BattleEvent> {battleEvent};
-
-            foreach (var responderGroup in _responderOrder)
-            {
-                var groupResponses = GetResponsesFromGroup(responderGroup, battleEvent);
-                responses.AddRange(groupResponses);
-            }
-            
-            if (_player.GetIfRespondingToBattleEvent(battleEvent))
-                responses.AddRange(_player.GetResponseToBattleEvent(battleEvent));
-
-            return responses;
-        }
-
         
-
-        private List<BattleEvent> GetResponsesFromGroup(BattleEventResponderGroup group,
-            BattleEvent battleEvent)
-        {
-            var groupResponse = new List<BattleEvent>();
-
-            if (battleEvent.type == BattleEventType.PlayerDied || battleEvent.type == BattleEventType.EndedBattle)
-                return groupResponse;
-            
-            var responders = group.GetEventResponders(battleEvent);
-
-            foreach (var turnActionResponder in responders)
-            {
-                groupResponse.AddRange(turnActionResponder.GetResponseToBattleEvent(battleEvent));
-            }
-
-            return groupResponse;
-        }
-
-
-        private List<BattleEvent> SpawnEnemies()
-        {
-            var battleEvents = new List<BattleEvent>();
-            foreach (var enemySpawnEvent in EnemySpawner.Instance.SpawnNewTurn())
-            {
-                battleEvents.AddRange(GetEventAndResponsesList(enemySpawnEvent));
-            }
-
-            return battleEvents;
-        }
-        
-        */
     }
 }

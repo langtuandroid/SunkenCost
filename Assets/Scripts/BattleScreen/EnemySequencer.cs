@@ -10,7 +10,7 @@ using UnityEngine.Serialization;
 
 namespace BattleScreen
 {
-    public class EnemySequencer : MonoBehaviour
+    public class EnemySequencer : BattleEventResponder
     {
         public static EnemySequencer Current;
         
@@ -19,7 +19,10 @@ namespace BattleScreen
 
         public int NumberOfEnemies => _enemies.Count;
         public ReadOnlyCollection<Enemy> AllEnemies => new ReadOnlyCollection<Enemy>(_enemies);
-        public bool HasEnemyToMove => _enemyCurrentTurnMoveQueue.Count > 0;
+        
+        private bool HasEnemyToMove => _enemyCurrentTurnMoveQueue.Count > 0;
+        public Enemy CurrentEnemy { get; private set; }
+        public bool HasCurrentEnemy { get; private set; }
 
         private void Awake()
         {
@@ -29,16 +32,6 @@ namespace BattleScreen
             }
 
             Current = this;
-        }
-
-        public void SetNextEnemyTurnSequence()
-        {
-            _enemyCurrentTurnMoveQueue = new Queue<Enemy>(_enemies);
-        }
-
-        public Enemy GetNextEnemyToMove()
-        {
-            return _enemyCurrentTurnMoveQueue.Dequeue();
         }
 
         public void AddEnemy(Enemy enemy)
@@ -64,43 +57,6 @@ namespace BattleScreen
             return _enemies.GetRandom();
         }
 
-        /*
-        public List<BattleEvent> GetMovements()
-        {
-            var turn = new List<BattleEvent>();
-            
-            RefreshEnemies();
-            _enemyCurrentTurnMoveQueue = new Queue<Enemy>(_enemies);
-            var enemyCount = _enemies.Count;
-            var currentEnemyTurnOrder = 1;
-
-            while (_enemyCurrentTurnMoveQueue.Count > 0)
-            {
-                var enemy = _enemyCurrentTurnMoveQueue.Dequeue();
-
-                if (!EnemyIsAlive(enemy)) continue;
-                
-                enemy.SetTurnOrder(currentEnemyTurnOrder);
-                
-                // Apply any start-of effects on the enemy
-                turn.AddRange(enemy.StartTurn());
-                
-                // Move sequence
-                while (EnemyIsAlive(enemy) && !enemy.FinishedMoving)
-                {
-                    // Move
-                    turn.AddRange(enemy.MoveStep());
-                }
-                
-                if (EnemyIsAlive(enemy)) turn.AddRange(enemy.EndTurn());
-
-                currentEnemyTurnOrder++;
-            }
-
-            return turn;
-        }
-        */
-        
         public List<Enemy> GetEnemiesOnPlank(int plankNum)
         {
             var enemies = new List<Enemy>();
@@ -119,6 +75,16 @@ namespace BattleScreen
 
             return enemies;
         }
+        
+        private void SetNextEnemyTurnSequence()
+        {
+            _enemyCurrentTurnMoveQueue = new Queue<Enemy>(_enemies);
+        }
+
+        private void SelectNextEnemy()
+        {
+            CurrentEnemy = _enemyCurrentTurnMoveQueue.Dequeue();
+        }
 
         private void RefreshEnemies()
         {
@@ -128,6 +94,31 @@ namespace BattleScreen
         private static bool EnemyIsAlive(Enemy enemy)
         {
             return enemy && !enemy.IsDestroyed;
+        }
+
+        public override BattleEventPackage GetResponseToBattleEvent(BattleEvent previousBattleEvent)
+        {
+            switch (previousBattleEvent.type)
+            {
+                case BattleEventType.StartedNextTurn:
+                    SetNextEnemyTurnSequence();
+                    break;
+                case BattleEventType.PlankMoved:
+                    foreach (var enemy in _enemies)
+                        enemy.RefreshPlankNum();
+                    break;
+                case BattleEventType.StartedEnemyMovementPeriod:
+                case BattleEventType.EndedIndivdualEnemyMove when HasEnemyToMove:
+                    SelectNextEnemy();
+                    HasCurrentEnemy = true;
+                    return new BattleEventPackage(new BattleEvent(BattleEventType.SelectedNextEnemy) 
+                        {enemyAffectee = CurrentEnemy});
+                case BattleEventType.EndedIndivdualEnemyMove when !HasEnemyToMove:
+                    HasCurrentEnemy = false;
+                    break;
+            }
+
+            return BattleEventPackage.Empty;
         }
     }
 }

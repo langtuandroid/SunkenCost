@@ -18,8 +18,10 @@ namespace BattleScreen
         StartedEnemyMovementPeriod,
         EndedEnemyTurn,
         EndedBattle,
+        SelectedNextEnemy,
         StartedIndividualEnemyTurn,
-        EnemyStartMove,
+        EnemyStartOfTurnEffect,
+        EnemyAboutToMove,
         EnemyMove,
         EndedIndivdualEnemyMove,
         EnemyMovementModified,
@@ -49,6 +51,7 @@ namespace BattleScreen
         PlankDestroyed,
         PlankMoved,
         DesignModified,
+        FinishedRespondingToEnemy,
     }
     
     
@@ -57,15 +60,15 @@ namespace BattleScreen
     {
         public readonly BattleEventType type;
         public readonly BattleEventResponder creator;
+        public bool finished = false;
         public int modifier;
-        public List<IBattleEventUpdatedUI> visualisers = new List<IBattleEventUpdatedUI>();
         public DamageSource damageSource;
         public DamageModificationPackage damageModificationPackage;
         public Enemy enemyAffectee;
         public Etching etching;
         public EquippedItem item;
         public Enemy enemyAffector;
-        public List<PlankDisplay> plankDisplays = new List<PlankDisplay>();
+        public List<int> planksToColor = new List<int>();
 
         public BattleEvent(BattleEventType type, BattleEventResponder creator = null)
         {
@@ -74,7 +77,7 @@ namespace BattleScreen
 
             var name = creator is not null ? " by " + creator.name : "";
             
-            Debug.Log(type + name);
+            //Debug.Log("Created battle event: " + type + name);
         }
         
         public static BattleEvent None => new BattleEvent(BattleEventType.None);
