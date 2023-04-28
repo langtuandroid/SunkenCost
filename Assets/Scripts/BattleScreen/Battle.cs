@@ -19,7 +19,7 @@ namespace BattleScreen
     
     public class Battle : MonoBehaviour
     {
-        public const float ActionExecutionSpeed = 0.3f;
+        public const float ActionExecutionSpeed = 0.6f;
         
         public static Battle Current;
         
@@ -74,7 +74,7 @@ namespace BattleScreen
             yield return 0;
 
             var startBattle = new BattleEvent(BattleEventType.StartedBattle);
-            yield return StartCoroutine(Tick(startBattle));
+            yield return StartCoroutine(StartChainOfEvents(startBattle));
             
             SetToPlayersTurn();
         }
@@ -82,7 +82,7 @@ namespace BattleScreen
         private IEnumerator ExecutePlayerTurnEvents(BattleEvent battleEvent)
         {
             GameState = GameState.ExecutingPlayerTurnEvents;
-            yield return StartCoroutine(Tick(battleEvent));
+            yield return StartCoroutine(StartChainOfEvents(battleEvent));
             GameState = GameState.PlayerTurn;
         }
         
@@ -91,10 +91,11 @@ namespace BattleScreen
             GameState = GameState.EnemyTurn;
             
             Debug.Log("------ Starting Enemy Turn ------");
-            yield return StartCoroutine(Tick(new BattleEvent(BattleEventType.StartedNextTurn)));
-            yield return StartCoroutine(Tick(new BattleEvent(BattleEventType.StartedEnemyMovementPeriod)));
+            yield return StartCoroutine(StartChainOfEvents(new BattleEvent(BattleEventType.StartedNextTurn)));
+            yield return StartCoroutine(StartChainOfEvents(new BattleEvent(BattleEventType.StartedEnemyMovementPeriod)));
             Debug.Log("------ Ending Enemy Turn ------");
-            yield return StartCoroutine(Tick(new BattleEvent(BattleEventType.EndedEnemyTurn)));
+            yield return new WaitForSecondsRealtime(ActionExecutionSpeed);
+            yield return StartCoroutine(StartChainOfEvents(new BattleEvent(BattleEventType.EndedEnemyTurn)));
             Turn++;
             SetToPlayersTurn();
         }
@@ -102,9 +103,15 @@ namespace BattleScreen
         private IEnumerator EndBattle()
         {
             Debug.Log("------ Ending Battle ------");
-            yield return StartCoroutine(Tick(new BattleEvent(BattleEventType.EndedBattle)));
+            yield return StartCoroutine(StartChainOfEvents(new BattleEvent(BattleEventType.EndedBattle)));
             GameState = GameState.Rewards;
             CreateEndOfBattlePopup();
+        }
+
+        private IEnumerator StartChainOfEvents(BattleEvent battleEvent)
+        {
+            BattleRenderer.Current.RenderEventPackage(new BattleEventPackage(battleEvent));
+            yield return StartCoroutine(Tick(battleEvent));
         }
         
         private IEnumerator Tick(BattleEvent previousBattleEvent)
@@ -114,20 +121,33 @@ namespace BattleScreen
             for (var i = 0; i < 1000; i++)
             {
                 var response = BattleEventsManager.Current.GetNextResponse(previousBattleEvent);
-                if (response.IsEmpty) yield break;
+                if (response.IsEmpty) break;
                 BattleRenderer.Current.RenderEventPackage(response);
 
                 foreach (var battleEvent in response.battleEvents)
                 {
-                    if (battleEvent.type == BattleEventType.EnemyAboutToMove ||
-                        battleEvent.type == BattleEventType.EnemyMove ||
-                        battleEvent.type == BattleEventType.EtchingActivated)
-                        yield return new WaitForSecondsRealtime(ActionExecutionSpeed);
+                    var waitTime = GetAnimationTime(battleEvent.type);
+                    if (waitTime > 0f)
+                        yield return new WaitForSecondsRealtime(waitTime * ActionExecutionSpeed);
                     
                     yield return StartCoroutine(Tick(battleEvent));
                     Debug.Log("Finished " + battleEvent.type + ". Back to " + previousBattleEvent.type);
                 }
             }
+        }
+
+        private float GetAnimationTime(BattleEventType type)
+        {
+            switch (type)
+            {
+                case BattleEventType.EnemyAboutToMove:
+                case BattleEventType.EtchingActivated:
+                    return 1f;
+                case BattleEventType.EnemyStartOfTurnEffect:
+                    return 0.5f;
+            }
+
+            return 0f;
         }
 
         private void SetToPlayersTurn()

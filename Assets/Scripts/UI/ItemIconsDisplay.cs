@@ -72,7 +72,7 @@ namespace UI
         private static IEnumerator SetTempColor(ItemDisplay itemDisplay)
         {
             itemDisplay.SetColor(Color.green);
-            yield return new WaitForSeconds(Battle.ActionExecutionSpeed);
+            yield return new WaitForSecondsRealtime(Battle.ActionExecutionSpeed);
             itemDisplay.SetColor(Color.white);
         }
     }

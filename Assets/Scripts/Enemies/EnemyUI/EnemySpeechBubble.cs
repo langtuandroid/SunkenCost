@@ -28,7 +28,7 @@ public class EnemySpeechBubble : MonoBehaviour
         _textMeshProUGUI.enabled = true;
         _image.enabled = true;
         
-        yield return new WaitForSeconds(Battle.ActionExecutionSpeed * 1.5f);
+        yield return new WaitForSecondsRealtime(Battle.ActionExecutionSpeed * 1.5f);
 
         _textMeshProUGUI.enabled = false;
         _image.enabled = false;

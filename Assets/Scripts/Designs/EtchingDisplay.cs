@@ -31,14 +31,19 @@ namespace Designs
 
         private void OnDestroy()
         {
-            BattleRenderer.Current.DeregisterUIUpdater(this);
+            if (BattleRenderer.Current)
+                BattleRenderer.Current.DeregisterUIUpdater(this);
         }
 
         public void RespondToBattleEvent(BattleEvent battleEvent)
         {
-            if ((battleEvent.type == BattleEventType.DesignModified ||
-                 battleEvent.type == BattleEventType.EtchingActivated) && battleEvent.etching == _etching)
+            if (battleEvent.type == BattleEventType.DesignModified)
             {
+                UpdateDisplay();
+            }
+            if ((battleEvent.type == BattleEventType.EtchingActivated) && battleEvent.etching == _etching)
+            {
+                StartCoroutine(ColorForActivate());
                 UpdateDisplay();
             }
         }
@@ -46,7 +51,7 @@ namespace Designs
         private IEnumerator ColorForActivate()
         {
             TitleText.color = Color.green;
-            yield return new WaitForSeconds(Battle.ActionExecutionSpeed);
+            yield return new WaitForSecondsRealtime(Battle.ActionExecutionSpeed);
             TitleText.color = _normalColor;
         }
     }

@@ -53,7 +53,7 @@ public static class DamageHandler
             _ => throw new ArgumentException()
         };
 
-        var preModDamageBattleAction = new BattleEvent(BattleEventType.EnemyDamaged, battleResponder)
+        var preModDamageBattleAction = new BattleEvent(BattleEventType.EnemyAttacked, battleResponder)
         {
             modifier = damage,
             enemyAffectee = enemy,
@@ -77,7 +77,7 @@ public static class DamageHandler
         //Debug.Log("Base damage: " + directDamage);
         //Debug.Log("Total damage: " + multiTotal);
 
-        return new BattleEvent(BattleEventType.EnemyDamaged, battleResponder)
+        return new BattleEvent(BattleEventType.EnemyAttacked, battleResponder)
         {
             modifier = multiTotal,
             enemyAffectee = enemy,

@@ -30,7 +30,7 @@ public class WhosTurnText : MonoBehaviour
         
         if (turn < amountOfTurns)
         {
-            _textMeshProUGUI.text = "TURNS LEFT: " + (amountOfTurns + 1 - turn);
+            _textMeshProUGUI.text = "TURNS LEFT: " + (amountOfTurns - turn);
         }
         else if (turn == amountOfTurns)
         {

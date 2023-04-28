@@ -24,8 +24,12 @@ public class PlankDisplay : MonoBehaviour, IBattleEventUpdatedUI
     {
         BattleRenderer.Current.RegisterUIUpdater(this);
         _originalColor = _plankImage.color;
-        
-        Debug.Log(PlankNum);
+    }
+    
+    private void OnDestroy()
+    {
+        if (BattleRenderer.Current)
+            BattleRenderer.Current.DeregisterUIUpdater(this);
     }
 
     public void BeginDrag()
@@ -41,7 +45,7 @@ public class PlankDisplay : MonoBehaviour, IBattleEventUpdatedUI
     private IEnumerator ColorForAttackOnThisPlank(Color color)
     {
         _plankImage.color = color;
-        yield return new WaitForSeconds(Battle.ActionExecutionSpeed);
+        yield return new WaitForSecondsRealtime(Battle.ActionExecutionSpeed);
         _plankImage.color = _originalColor;
     }
 
@@ -67,6 +71,7 @@ public class PlankDisplay : MonoBehaviour, IBattleEventUpdatedUI
         
         if (battleEvent.type == BattleEventType.EtchingActivated && battleEvent.planksToColor.Contains(PlankNum))
         {
+            Debug.Log("activating");
             StopAllCoroutines();
             StartCoroutine(ColorForAttackOnThisPlank(battleEvent.etching.design.Color));
         }

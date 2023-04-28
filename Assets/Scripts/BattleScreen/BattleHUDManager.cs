@@ -29,6 +29,7 @@ public class BattleHUDManager : MonoBehaviour, IBattleEventUpdatedUI
         
         UpdateLives();
         UpdateMovesText();
+        _whosTurnText.EndEnemyTurn();
     }
 
     public void UpdateMovesText()

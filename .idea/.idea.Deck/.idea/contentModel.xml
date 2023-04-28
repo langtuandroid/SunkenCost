@@ -711,6 +711,7 @@
             <e p="EnemyLoader.cs" t="Include" />
             <e p="EnemyMover.cs" t="Include" />
             <e p="EnemyPlaceholder.cs" t="Include" />
+            <e p="EnemyPlankArranger.cs" t="Include" />
             <e p="EnemySpawner.cs" t="Include" />
             <e p="EnemyStats.cs" t="Include" />
             <e p="EnemyUI" t="Include">
@@ -718,7 +719,6 @@
               <e p="EnemyMovementText.cs" t="Include" />
               <e p="EnemyPoisonDisplay.cs" t="Include" />
               <e p="EnemySpeechBubble.cs" t="Include" />
-              <e p="EnemyTransformPositioner.cs" t="Include" />
               <e p="EnemyTurnOrderText.cs" t="Include" />
               <e p="EnemyUI.cs" t="Include" />
               <e p="EnemyUIText.cs" t="Include" />

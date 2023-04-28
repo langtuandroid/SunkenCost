@@ -1,5 +1,4 @@
-﻿using Microsoft.Unity.VisualStudio.Editor;
-using TMPro;
+﻿using TMPro;
 using UnityEngine;
 
 namespace Enemies.EnemyUI

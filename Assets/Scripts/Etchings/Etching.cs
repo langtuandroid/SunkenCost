@@ -72,7 +72,7 @@ namespace Etchings
                 var designResponseEvents = GetDesignResponsesToEvent(battleEvent);
 
                 var planksToColor = designResponseEvents.Select
-                    (designResponseEvent => designResponseEvent.type == BattleEventType.EnemyDamaged
+                    (designResponseEvent => designResponseEvent.type == BattleEventType.EnemyAttacked
                         ? designResponseEvent.enemyAffectee.PlankNum
                         : PlankNum).ToList();
 
@@ -80,8 +80,8 @@ namespace Etchings
                 etchingActivatedEvent.planksToColor = planksToColor;
                 
                 var response = new List<BattleEvent>();
-                response.Add(etchingActivatedEvent);
                 response.AddRange(designResponseEvents);
+                response.Add(etchingActivatedEvent);
                 return new BattleEventPackage(response.ToArray());
             }
             

@@ -30,6 +30,7 @@ namespace BattleScreen
         EnemyHealed,
         EnemyMaxHealthModified,
         EnemyPoisoned,
+        EnemyAttacked,
         EnemyDamaged,
         EnemySpawned,
         EnemyKilled,

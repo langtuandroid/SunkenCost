@@ -18,4 +18,4 @@ MonoBehaviour:
   round3: 01000000
   round4: 04000000
   round5: 01000000
-  scaledDifficulty: 1
+  scaledDifficulty: 0

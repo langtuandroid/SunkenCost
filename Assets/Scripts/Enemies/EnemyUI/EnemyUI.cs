@@ -12,7 +12,6 @@ namespace Enemies.EnemyUI
     public class EnemyUI : MonoBehaviour, IBattleEventUpdatedUI
     {
         [SerializeField] private CanvasGroup _canvasGroup;
-        [SerializeField] private EnemyTransformPositioner _enemyTransformPositioner;
 
         [SerializeField] private TooltipTrigger _tooltipTrigger;
         
@@ -23,16 +22,19 @@ namespace Enemies.EnemyUI
         [SerializeField] private EnemySpeechBubble _speechBubble;
 
         private Enemy _enemy;
+        private EnemyMover _mover;
 
         private void Awake()
         {
             _enemy = GetComponent<Enemy>();
+            _mover = _enemy.Mover;
             BattleRenderer.Current.RegisterUIUpdater(this);
         }
 
         private void OnDestroy()
         {
-            BattleRenderer.Current.DeregisterUIUpdater(this);
+            if (BattleRenderer.Current)
+                BattleRenderer.Current.DeregisterUIUpdater(this);
         }
 
         public void RespondToBattleEvent(BattleEvent battleEvent)
@@ -43,9 +45,6 @@ namespace Enemies.EnemyUI
             {
                 case BattleEventType.EnemyKilled:
                     return;
-                case BattleEventType.EnemyMove:
-                    _enemyTransformPositioner.UpdatePosition(_enemy.PlankNum, _enemy.TurnOrder);
-                    break;
                 case BattleEventType.EnemySpeaking:
                     _speechBubble.DisplayText(_enemy.Speech);
                     break;
@@ -55,10 +54,10 @@ namespace Enemies.EnemyUI
             _tooltipTrigger.content = _enemy.GetDescription();
             _healthText.AlterHealth(_enemy.Health, _enemy.MaxHealth);
             _turnOrderText.SetTurnOrder(_enemy.TurnOrder);
-
-            var currentMove = _enemy.Mover.CurrentMove;
-            _movementText.UpdateMovementText(currentMove.movementType, currentMove.magnitude);
+            _movementText.UpdateMovementText(_mover.CurrentMove.movementType, _mover.AmountOfMovesLeftThisTurn);
             _poisonDisplay.UpdateDisplay(_enemy.stats.Poison);
+            
+            Debug.Log(battleEvent.type + " " + _enemy.Health);
         }
     }
 }

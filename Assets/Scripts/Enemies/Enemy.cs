@@ -127,7 +127,7 @@ namespace Enemies
         public override BattleEventPackage GetResponseToBattleEvent(BattleEvent previousBattleEvent)
         {
             // Damaged
-            if (previousBattleEvent.type == BattleEventType.EnemyDamaged && previousBattleEvent.enemyAffectee == this)
+            if (previousBattleEvent.type == BattleEventType.EnemyAttacked && previousBattleEvent.enemyAffectee == this)
             {
                 ChangeHealth(-previousBattleEvent.modifier);
                 
@@ -139,7 +139,11 @@ namespace Enemies
                     if (_isMyTurn) responseList.Add(CreateEvent(BattleEventType.EndedIndivdualEnemyMove));
                     return new BattleEventPackage(responseList);
                 }
-            }
+
+                var damagedEvent = CreateEvent
+                    (BattleEventType.EnemyDamaged, previousBattleEvent.modifier, previousBattleEvent.damageSource);
+                return new BattleEventPackage(damagedEvent);
+        }
             
             if (!_isMyTurn && previousBattleEvent.type == BattleEventType.SelectedNextEnemy &&
                 previousBattleEvent.enemyAffectee == this)
