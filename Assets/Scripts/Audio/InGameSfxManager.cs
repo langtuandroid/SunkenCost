@@ -106,7 +106,7 @@ public class InGameSfxManager : MonoBehaviour
 
     private IEnumerator WaitToBeginTurn()
     {
-        yield return new WaitForSeconds(0.2f);
+        yield return new WaitForSecondsRealtime(0.2f);
         _beginTurnSound.Play();
     }
 }

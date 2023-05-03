@@ -26,9 +26,10 @@ namespace Enemies.EnemyUI
 
         private void Awake()
         {
-            _enemy = GetComponent<Enemy>();
-            _mover = _enemy.Mover;
             BattleRenderer.Current.RegisterUIUpdater(this);
+            _enemy = GetComponent<Enemy>();
+            _tooltipTrigger.header = _enemy.Name;
+            _mover = _enemy.Mover;
         }
 
         private void OnDestroy()
@@ -39,25 +40,18 @@ namespace Enemies.EnemyUI
 
         public void RespondToBattleEvent(BattleEvent battleEvent)
         {
-            if (battleEvent.enemyAffectee != _enemy && battleEvent.enemyAffector != _enemy) return;
-            
-            switch (battleEvent.type)
-            {
-                case BattleEventType.EnemyKilled:
-                    return;
-                case BattleEventType.EnemySpeaking:
-                    _speechBubble.DisplayText(_enemy.Speech);
-                    break;
-            }
-            
-            _tooltipTrigger.header = _enemy.Name;
+            if (_enemy.IsDestroyed) return;
+            if (battleEvent.type != BattleEventType.StartNextPlayerTurn
+                && battleEvent.affectedResponderID != _enemy.ResponderID 
+                && battleEvent.affectingResponderID != _enemy.ResponderID) return;
+
+            if (battleEvent.type == BattleEventType.EnemySpeaking) _speechBubble.DisplayText(_enemy.Speech);
+
             _tooltipTrigger.content = _enemy.GetDescription();
-            _healthText.AlterHealth(_enemy.Health, _enemy.MaxHealth);
             _turnOrderText.SetTurnOrder(_enemy.TurnOrder);
             _movementText.UpdateMovementText(_mover.CurrentMove.movementType, _mover.AmountOfMovesLeftThisTurn);
+            _healthText.AlterHealth(_enemy.Health, _enemy.MaxHealth);
             _poisonDisplay.UpdateDisplay(_enemy.stats.Poison);
-            
-            Debug.Log(battleEvent.type + " " + _enemy.Health);
         }
     }
 }

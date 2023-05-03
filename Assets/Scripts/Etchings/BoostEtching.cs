@@ -41,10 +41,11 @@ namespace Etchings
                 if (modsActive) ClearMods();
                 return false;
             }
-            
+
+            if (battleEvent.affectedResponderID == ResponderID) return false;
             return battleEvent.type switch
             {
-                BattleEventType.EndedEnemyTurn => true,
+                BattleEventType.StartNextPlayerTurn => true,
                 BattleEventType.EndedBattle => true,
                 BattleEventType.PlankDestroyed => true,
                 BattleEventType.PlayerMovedPlank => true,
@@ -87,7 +88,7 @@ namespace Etchings
             foreach (var etching in _boostedEtchings)
             {
                 etching.ModifyStat(StatType.Damage, +_boostAmount);
-                events.Add(CreateEvent(BattleEventType.DesignModified));
+                events.Add(new BattleEvent(BattleEventType.DesignModified, etching.ResponderID));
             }
 
             return events;

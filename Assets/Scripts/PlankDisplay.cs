@@ -61,19 +61,29 @@ public class PlankDisplay : MonoBehaviour, IBattleEventUpdatedUI
 
     public void RespondToBattleEvent(BattleEvent battleEvent)
     {
-        if (battleEvent.etching && battleEvent.etching.PlankNum == PlankNum)
+        switch (battleEvent.type)
         {
-            if (battleEvent.type == BattleEventType.EtchingStunned)
-                SetAsStunned();
-            else if (battleEvent.type == BattleEventType.EtchingUnStunned)
-                SetAsUnStunned();
-        }
-        
-        if (battleEvent.type == BattleEventType.EtchingActivated && battleEvent.planksToColor.Contains(PlankNum))
-        {
-            Debug.Log("activating");
-            StopAllCoroutines();
-            StartCoroutine(ColorForAttackOnThisPlank(battleEvent.etching.design.Color));
+            case BattleEventType.EtchingStunned:
+            {
+                var etching = BattleEventsManager.Current.GetEtchingByResponderID(battleEvent.affectedResponderID);
+                if (etching.PlankNum == PlankNum)
+                    SetAsStunned();
+                break;
+            }
+            case BattleEventType.EtchingUnStunned:
+            {
+                var etching = BattleEventsManager.Current.GetEtchingByResponderID(battleEvent.affectedResponderID);
+                if (etching.PlankNum == PlankNum)
+                    SetAsUnStunned();
+                break;
+            }
+            case BattleEventType.EtchingActivated when battleEvent.planksToColor.Contains(PlankNum):
+            {
+                var etching = BattleEventsManager.Current.GetEtchingByResponderID(battleEvent.affectedResponderID);
+                StopAllCoroutines();
+                StartCoroutine(ColorForAttackOnThisPlank(etching.design.Color));
+                break;
+            }
         }
     }
 }

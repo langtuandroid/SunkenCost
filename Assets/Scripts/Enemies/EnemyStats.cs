@@ -6,19 +6,20 @@ using UnityEngine;
 
 public class EnemyStats
 {
+    private readonly int _enemyResponderID;
+    
     private Stat _poisonStat = new Stat(0);
-    private Enemy _enemy;
     public int Poison => _poisonStat.Value;
 
-    public EnemyStats(Enemy enemy)
+    public EnemyStats(int enemyResponderID)
     {
-        _enemy = enemy;
+        _enemyResponderID = enemyResponderID;
     }
 
     public BattleEvent AddPoison(int amount)
     {
         _poisonStat.AddModifier(new StatModifier(amount, StatModType.Flat));
-        return new BattleEvent(BattleEventType.EnemyPoisoned) {enemyAffectee = _enemy, modifier = amount};
+        return new BattleEvent(BattleEventType.EnemyPoisoned) {affectedResponderID = _enemyResponderID, modifier = amount};
     }
 
     /*

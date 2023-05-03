@@ -22,7 +22,7 @@ public class NextTurnButton : InGameButton
 
     protected override bool TryClick()
     {
-        if (Battle.Current.GameState == GameState.PlayerTurn)
+        if (Battle.Current.GameState == GameState.PlayerActionPeriod)
         {
             Battle.Current.ClickedNextTurn();
             return true;

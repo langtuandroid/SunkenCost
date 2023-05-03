@@ -2,6 +2,8 @@
 using System.Collections.Generic;
 using BattleScreen;
 using BattleScreen.BattleEvents;
+using Damage;
+using Enemies;
 
 namespace Items.Items
 {
@@ -21,7 +23,7 @@ namespace Items.Items
             {
                 if (!enemies[i] || enemies[i].IsDestroyed) continue;
 
-                var damageEvent = DamageHandler.DamageEnemy(Amount, enemies[i], DamageSource.Item);
+                var damageEvent = DamageHandler.DamageEnemy(Amount, enemies[i].ResponderID, DamageSource.Item);
                 responses.Add(damageEvent);
             }
 

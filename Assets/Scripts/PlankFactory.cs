@@ -5,6 +5,7 @@ using System.Linq;
 using BattleScreen;
 using BattleScreen.BattleBoard;
 using BattleScreen.BattleEvents;
+using Damage;
 using Etchings;
 using UnityEngine;
 using UnityEngine.Serialization;

@@ -24,7 +24,7 @@ namespace Items.Items
             if (GetIfRespondingToBattleEvent(previousBattleEvent))
             {
                 ItemIconsDisplay.Current.ActivateItemDisplay(ItemInstance);
-                return GetResponse(previousBattleEvent);
+                return GetResponse(previousBattleEvent).WithIdentifier(BattleEventType.ItemActivated, ResponderID);
             }
             
             return BattleEventPackage.Empty;

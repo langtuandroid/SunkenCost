@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using BattleScreen;
 using BattleScreen.BattleEvents;
+using Damage;
 
 namespace Items.Items
 {
@@ -14,7 +15,7 @@ namespace Items.Items
         protected override BattleEventPackage GetResponse(BattleEvent battleEvent)
         {
             return new BattleEventPackage(DamageHandler.DamageEnemy
-                (Amount, battleEvent.enemyAffectee, DamageSource.Item, item: this));
+                (Amount, battleEvent.affectedResponderID, DamageSource.Item));
         }
     }
 }

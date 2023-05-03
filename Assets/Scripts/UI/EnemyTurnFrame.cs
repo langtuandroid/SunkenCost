@@ -34,19 +34,14 @@ public class EnemyTurnFrame : MonoBehaviour
 
         _running = true;
         
-
-        //if (_material.GetFloat("_FadeAmount") > 0.5f) yield break; 
-        
         var progress = 0f;
 
         while (progress < 1f)
         {
             _material.SetFloat("_FadeAmount", progress);
             progress += 0.05f;
-            yield return new WaitForSeconds(0.01f);
+            yield return new WaitForSecondsRealtime(0.01f);
         }
-        
-        Debug.Log("Player turn");
 
         _image.enabled = false;
 
@@ -68,11 +63,9 @@ public class EnemyTurnFrame : MonoBehaviour
         {
             _material.SetFloat("_FadeAmount", 1f-progress);
             progress += 0.1f;
-            yield return new WaitForSeconds(0.001f);
+            yield return new WaitForSecondsRealtime(0.001f);
         }
         
-        
-        Debug.Log("Enemy turn");
         _running = false;
     }
 }

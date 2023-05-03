@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using BattleScreen;
 using BattleScreen.BattleEvents;
+using Damage;
 
 namespace Enemies.Enemies
 {
@@ -40,7 +41,7 @@ namespace Enemies.Enemies
 
             if (_steelo.Health < damage) damage = _steelo.Health;
             
-            return new BattleEventPackage(DamageHandler.DamageEnemy(damage, _steelo, DamageSource.EnemyAbility),
+            return new BattleEventPackage(DamageHandler.DamageEnemy(damage, _steelo.ResponderID, DamageSource.EnemyAbility),
                 Heal(damage));
         }
     }

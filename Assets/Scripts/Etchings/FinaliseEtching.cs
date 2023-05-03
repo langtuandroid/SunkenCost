@@ -10,15 +10,15 @@ namespace Etchings
     {
         protected override List<BattleEvent> GetDesignResponsesToEvent(BattleEvent battleEvent)
         {
-            var currentMovingEnemy = battleEvent.enemyAffectee;
+            var currentMovingEnemy = battleEvent.affectedResponderID;
 
             var enemiesOnPlanks = EnemySequencer.Current.AllEnemies.Where(e => e.PlankNum != 0).ToArray();
 
-            var response = enemiesOnPlanks.Select(DamageEnemy).ToList();
+            var response = enemiesOnPlanks.Select(e => DamageEnemy(e.ResponderID)).ToList();
             
             if (enemiesOnPlanks.Any(e => !e.IsDestroyed))
             {
-                response.Add(CreateEvent(BattleEventType.PlayerLifeModified, modifier: -1));
+                response.Add(new BattleEvent(BattleEventType.PlayerLifeModified) {modifier = -1});
             }
 
             return response;

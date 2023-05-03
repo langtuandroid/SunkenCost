@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using BattleScreen;
 using BattleScreen.BattleBoard;
 using BattleScreen.BattleEvents;
+using Damage;
 using Enemies;
 using UnityEngine;
 

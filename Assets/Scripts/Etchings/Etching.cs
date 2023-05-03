@@ -5,6 +5,7 @@ using System.Linq;
 using BattleScreen;
 using BattleScreen.BattleBoard;
 using BattleScreen.BattleEvents;
+using Damage;
 using Designs;
 using Enemies;
 using TMPro;
@@ -29,8 +30,9 @@ namespace Etchings
             set => design.UsesUsedThisTurn = value;
         }
 
-        public void Awake()
+        protected override void Awake()
         {
+            base.Awake();
             _plank = GetComponentInParent<Plank>();
         }
 
@@ -43,18 +45,18 @@ namespace Etchings
         private BattleEvent UnStun()
         {
             stunned = false;
-            return CreateEvent(BattleEventType.EtchingUnStunned);
+            return new BattleEvent(BattleEventType.EtchingUnStunned) {affectedResponderID = ResponderID};
         }
 
         public BattleEvent Stun(DamageSource source)
         {
             stunned = true;
-            return CreateEvent(BattleEventType.EtchingStunned, source);
+            return new BattleEvent(BattleEventType.EtchingStunned) {source =  source, affectedResponderID = ResponderID};
         }
 
         public override BattleEventPackage GetResponseToBattleEvent(BattleEvent battleEvent)
         {
-            if (battleEvent.type == BattleEventType.EndedEnemyTurn)
+            if (battleEvent.type == BattleEventType.StartNextPlayerTurn)
             {
                 UsesUsedThisTurn = 0;
 
@@ -73,11 +75,13 @@ namespace Etchings
 
                 var planksToColor = designResponseEvents.Select
                     (designResponseEvent => designResponseEvent.type == BattleEventType.EnemyAttacked
-                        ? designResponseEvent.enemyAffectee.PlankNum
-                        : PlankNum).ToList();
+                        ? BattleEventsManager.Current.GetEnemyByResponderID(battleEvent.affectedResponderID).PlankNum
+                        : PlankNum);
 
-                var etchingActivatedEvent = CreateEvent(BattleEventType.EtchingActivated);
-                etchingActivatedEvent.planksToColor = planksToColor;
+                var etchingActivatedEvent = new BattleEvent(BattleEventType.EtchingActivated, planksToColor.ToArray())
+                {
+                    affectedResponderID = ResponderID
+                };
                 
                 var response = new List<BattleEvent>();
                 response.AddRange(designResponseEvents);
@@ -86,11 +90,6 @@ namespace Etchings
             }
             
             return BattleEventPackage.Empty;
-        }
-
-        protected BattleEvent CreateEvent(BattleEventType type, DamageSource source = DamageSource.None, Enemy enemy = null, int modifier = 0)
-        {
-            return new BattleEvent(type, this) {etching = this, damageSource = source, enemyAffectee = enemy, modifier = modifier};
         }
         
         protected abstract bool GetIfDesignIsRespondingToEvent(BattleEvent battleEvent);

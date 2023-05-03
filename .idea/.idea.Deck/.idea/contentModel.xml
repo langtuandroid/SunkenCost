@@ -616,15 +616,15 @@
           </e>
         </e>
         <e p="RenderTextures" t="Include" />
-        <e p="Resources" t="Include" />
-        <e p="Scenes" t="Include" />
-        <e p="ScriptableObjects" t="Include">
-          <e p="BattleScenarios" t="Include" />
-          <e p="ChallengeRewards" t="Include" />
-          <e p="Designs" t="Include" />
-          <e p="Disturbances" t="Include" />
-          <e p="Items" t="Include" />
+        <e p="Resources" t="Include">
+          <e p="ScriptableObjects" t="Include">
+            <e p="BattleScenarios" t="Include" />
+            <e p="Designs" t="Include" />
+            <e p="Disturbances" t="Include" />
+            <e p="Items" t="Include" />
+          </e>
         </e>
+        <e p="Scenes" t="Include" />
         <e p="Scripts" t="Include">
           <e p="Audio" t="Include">
             <e p="InGameSfxManager.cs" t="Include" />
@@ -654,10 +654,8 @@
               <e p="UnexpectedBattleEventException.cs" t="Include" />
             </e>
             <e p="BattleHUDManager.cs" t="Include" />
-            <e p="BattleManager.cs" t="Include" />
             <e p="BattleRenderer.cs" t="Include" />
             <e p="EndOfBattlePopup.cs" t="Include" />
-            <e p="EnemySequencer.cs" t="Include" />
             <e p="Player.cs" t="Include" />
           </e>
           <e p="ChallengeLoader.cs" t="Include" />
@@ -691,6 +689,7 @@
           <e p="EditorInit.cs" t="Include" />
           <e p="Enemies" t="Include">
             <e p="ActiveEnemiesManager.cs" t="Include" />
+            <e p="CurrentEnemy.cs" t="Include" />
             <e p="Enemies" t="Include">
               <e p="AxolitlEnemy.cs" t="Include" />
               <e p="BullCarpEnemy.cs" t="Include" />
@@ -712,6 +711,7 @@
             <e p="EnemyMover.cs" t="Include" />
             <e p="EnemyPlaceholder.cs" t="Include" />
             <e p="EnemyPlankArranger.cs" t="Include" />
+            <e p="EnemySequencer.cs" t="Include" />
             <e p="EnemySpawner.cs" t="Include" />
             <e p="EnemyStats.cs" t="Include" />
             <e p="EnemyUI" t="Include">
@@ -759,6 +759,8 @@
           <e p="ItemLoader.cs" t="Include" />
           <e p="Items" t="Include">
             <e p="ItemAsset.cs" t="Include" />
+            <e p="ItemDisplay.cs" t="Include" />
+            <e p="ItemIconsDisplay.cs" t="Include" />
             <e p="ItemInstance.cs" t="Include" />
             <e p="ItemInventory.cs" t="Include" />
             <e p="ItemOffer.cs" t="Include" />
@@ -774,6 +776,7 @@
               <e p="RedressItem.cs" t="Include" />
               <e p="ShortFuseItem.cs" t="Include" />
             </e>
+            <e p="ItemShaderDisplay.cs" t="Include" />
           </e>
           <e p="Log.cs" t="Include" />
           <e p="MainManager.cs" t="Include" />
@@ -826,8 +829,6 @@
             <e p="Heart.cs" t="Include" />
             <e p="Hearts.cs" t="Include" />
             <e p="InGameButton.cs" t="Include" />
-            <e p="ItemDisplay.cs" t="Include" />
-            <e p="ItemIconsDisplay.cs" t="Include" />
             <e p="LoseLifeShaderController.cs" t="Include" />
             <e p="MainMenu.cs" t="Include" />
             <e p="MoveText.cs" t="Include" />

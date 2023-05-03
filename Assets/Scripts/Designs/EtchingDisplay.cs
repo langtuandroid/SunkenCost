@@ -41,7 +41,7 @@ namespace Designs
             {
                 UpdateDisplay();
             }
-            if ((battleEvent.type == BattleEventType.EtchingActivated) && battleEvent.etching == _etching)
+            if ((battleEvent.type == BattleEventType.EtchingActivated) && battleEvent.affectedResponderID == _etching.ResponderID)
             {
                 StartCoroutine(ColorForActivate());
                 UpdateDisplay();

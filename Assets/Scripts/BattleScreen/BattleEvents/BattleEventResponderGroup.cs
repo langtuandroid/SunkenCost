@@ -1,4 +1,5 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using BattleScreen.BattleEvents;
@@ -37,43 +38,45 @@ namespace BattleScreen
         {
             // Works much like the Battle Event Manager's GetNextResponse function, but this only checks each responder
             // Once per battle event
-            var index = _indexTracker.GetIndex(battleEventToRespondTo);
+            var index = _indexTracker.GetOrCreateIndex(battleEventToRespondTo);
 
             while (index < _battleEventResponders.Count)
             {
                 var responsePackage = _battleEventResponders[index].GetResponseToBattleEvent(battleEventToRespondTo);
                 
+                if (!responsePackage.IsEmpty)
+                     Debug.Log(_battleEventResponders[index].GetType().Name + " responding to: " 
+                          + battleEventToRespondTo.type + " with " + String.Join(", ", 
+                              responsePackage.battleEvents.ConvertAll(i => i.type.ToString()).ToArray()));
+                
                 index++;
                 _indexTracker.SetIndex(battleEventToRespondTo, index);
 
                 if (responsePackage.IsEmpty) continue;
-                
-                Debug.Log(GetType().Name + " " + index + "/" + _battleEventResponders.Count + " responding to: " 
-                          + battleEventToRespondTo.type + " with " + responsePackage.battleEvents[0].type);
-                
+
                 return responsePackage;
             }
 
             return BattleEventPackage.Empty;
         }
         
-        public DamageModificationPackage GetDamageModifiers(BattleEvent battleEvent)
+        public DamageModificationPackage GetDamageModifiers(EnemyDamage damage)
         {
             var flatModifiers = 
                 _battleEventResponders.OfType<IDamageFlatModifier>();
             
             var flatModifications = 
                 (from modifier in flatModifiers 
-                    where modifier.CanModify(battleEvent) 
-                    select modifier.GetDamageAddition(battleEvent)).ToList();
+                    where modifier.CanModify(damage) 
+                    select modifier.GetDamageAddition(damage)).ToList();
             
             var multiModifiers = 
                 _battleEventResponders.OfType<IDamageMultiplierModifier>();
             
             var multiModifications = 
                 (from modifier in multiModifiers
-                    where modifier.CanModify(battleEvent) 
-                    select modifier.GetDamageMultiplier(battleEvent)).ToList();
+                    where modifier.CanModify(damage) 
+                    select modifier.GetDamageMultiplier(damage)).ToList();
             
             
             return new DamageModificationPackage(flatModifications, multiModifications);

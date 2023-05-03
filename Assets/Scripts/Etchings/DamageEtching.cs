@@ -1,4 +1,5 @@
 ﻿using BattleScreen;
+using Damage;
 using Designs;
 using Enemies;
 
@@ -10,9 +11,9 @@ namespace Etchings
         protected int MinRange => GetStatValue(StatType.MinRange);
         protected int MaxRange => GetStatValue(StatType.MaxRange);
 
-        protected virtual BattleEvent DamageEnemy(Enemy enemy)
+        protected virtual BattleEvent DamageEnemy(int enemyResponderID)
         {
-            return DamageHandler.DamageEnemy(Damage, enemy, DamageSource.Etching, this);
+            return DamageHandler.DamageEnemy(Damage, enemyResponderID, DamageSource.Etching);
         }
 
         public void ModifyStat(StatType stat, int amount)

@@ -37,7 +37,7 @@ public class GoldText : MonoBehaviour
     private IEnumerator MakeRed()
     {
         _text.color = Color.red;
-        yield return new WaitForSeconds(0.8f);
+        yield return new WaitForSecondsRealtime(0.8f);
         _text.color = _defaultColor;
     }
 }

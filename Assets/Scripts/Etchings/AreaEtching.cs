@@ -25,7 +25,7 @@ namespace Etchings
 
             var enemies = EnemySequencer.Current.GetEnemiesOnPlanks(plankNums);
 
-            return enemies.Select(DamageEnemy).ToList();
+            return enemies.Select(e => DamageEnemy(e.ResponderID)).ToList();
         }
 
         protected override bool TestCharMovementActivatedEffect(Enemy enemy)

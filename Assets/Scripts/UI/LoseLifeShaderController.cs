@@ -34,7 +34,7 @@ public class LoseLifeShaderController : MonoBehaviour
             transform.localScale = new Vector3(vectorVals, vectorVals, 1);
 
             progress += 0.05f;
-            yield return new WaitForSeconds(0.01f);
+            yield return new WaitForSecondsRealtime(0.01f);
         }
 
         progress = 0f;
@@ -42,7 +42,7 @@ public class LoseLifeShaderController : MonoBehaviour
         {
             _material.SetFloat("_FadeAmount", progress);
             progress += 0.02f;
-            yield return new WaitForSeconds(0.01f);
+            yield return new WaitForSecondsRealtime(0.01f);
         }
 
         _image.enabled = false;

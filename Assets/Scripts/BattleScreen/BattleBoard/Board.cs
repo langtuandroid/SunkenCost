@@ -25,7 +25,7 @@ namespace BattleScreen.BattleBoard
 
         public Transform Island => _island;
         
-        public bool CanMovePlanks => !Player.Current.IsOutOfMoves && Battle.Current.GameState == GameState.PlayerTurn;
+        public bool CanMovePlanks => !Player.Current.IsOutOfMoves && Battle.Current.GameState == GameState.PlayerActionPeriod;
         
         public int PlankCount => _cachedPlanks.Count;
         public List<Plank> PlanksInOrder => _cachedPlanks.OrderBy(p => p.PlankNum).ToList();

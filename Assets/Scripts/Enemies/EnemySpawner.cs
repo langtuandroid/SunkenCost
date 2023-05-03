@@ -7,9 +7,6 @@ using BattleScreen.BattleBoard;
 using BattleScreen.BattleEvents;
 using Enemies;
 using UnityEngine;
-using UnityEngine.Rendering;
-using Random = UnityEngine.Random;
-
 
 public class EnemySpawner : BattleEventResponder
 {
@@ -24,7 +21,7 @@ public class EnemySpawner : BattleEventResponder
 
     private EnemyBattleEventResponderGroup _enemyBattleEventResponderGroup;
 
-    private void Awake()
+    protected override void Awake()
     {
         if (Instance)
         {
@@ -33,6 +30,7 @@ public class EnemySpawner : BattleEventResponder
         }
         
         Instance = this;
+        base.Awake();
     }
 
     private void Start()
@@ -45,9 +43,14 @@ public class EnemySpawner : BattleEventResponder
         _scenario = ScenarioManager.GetScenario(RunProgress.BattleNumber);
     }
 
+    private void OnEnable()
+    {
+        _enemyBattleEventResponderGroup = FindObjectOfType<EnemyBattleEventResponderGroup>();
+    }
+
     public BattleEventPackage SpawnNewTurn()
     {
-        var enemyTypes = _scenario.GetRound(Battle.Current.Turn);
+        var enemyTypes = _scenario.GetSpawns(Battle.Current.Turn);
         var newEnemies = enemyTypes.Select(enemyType => Enum.GetName(typeof(EnemyType), enemyType)).ToList();
 
         if (newEnemies.Count == 0) return BattleEventPackage.Empty;
@@ -59,7 +62,7 @@ public class EnemySpawner : BattleEventResponder
             var enemy = SpawnEnemyOnIsland(enemyName);
             enemy.MaxHealthStat.AddModifier(new StatModifier(_scenario.scaledDifficulty, StatModType.PercentMult));
             enemy.Mover.AddMovementModifier((int) (_scenario.scaledDifficulty / 2f));
-            battleEvents.Add(new BattleEvent(BattleEventType.EnemySpawned) {enemyAffectee = enemy});
+            battleEvents.Add(new BattleEvent(BattleEventType.EnemySpawned) {affectedResponderID = enemy.ResponderID});
         }
 
         return new BattleEventPackage(battleEvents);
@@ -93,9 +96,7 @@ public class EnemySpawner : BattleEventResponder
 
     public override BattleEventPackage GetResponseToBattleEvent(BattleEvent previousBattleEvent)
     {
-        if (!(previousBattleEvent.type == BattleEventType.StartedBattle 
-              || previousBattleEvent.type == BattleEventType.EndedEnemyTurn)) return BattleEventPackage.Empty;
-
-        return SpawnNewTurn();
+        return previousBattleEvent.type == BattleEventType.StartNextPlayerTurn 
+            ? SpawnNewTurn() : BattleEventPackage.Empty;
     }
 }

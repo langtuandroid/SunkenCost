@@ -11,12 +11,12 @@ public class EnemyAnimationController : MonoBehaviour, IBattleEventUpdatedUI
     [SerializeField] private Animator _animator;
     [SerializeField] private Animator _healAnimator;
 
-    private Enemy _enemy;
+    private int _responderID;
 
     private void Awake()
     {
         BattleRenderer.Current.RegisterUIUpdater(this);
-        _enemy = GetComponent<Enemy>();
+        _responderID = GetComponent<Enemy>().ResponderID;
     }
 
     private void OnDestroy()
@@ -27,7 +27,7 @@ public class EnemyAnimationController : MonoBehaviour, IBattleEventUpdatedUI
 
     public void RespondToBattleEvent(BattleEvent battleEvent)
     {
-        if (battleEvent.enemyAffectee != _enemy) return;
+        if (battleEvent.affectedResponderID != _responderID) return;
 
         switch (battleEvent.type)
         {

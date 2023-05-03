@@ -49,31 +49,12 @@ namespace UI
         {
             if (_itemDisplaysAndInstances.TryGetValue(itemInstance, out var itemDisplay))
             {
-                StartCoroutine(SetTempColor(itemDisplay));
+                itemDisplay.Activate();
             }
             else
             {
                 throw new Exception("Couldn't activate " + itemInstance.Title + "'s display");
             }
-        }
-
-        public void RefreshItem(ItemInstance itemInstance, ItemDisplayState itemDisplayState)
-        {
-            if (_itemDisplaysAndInstances.TryGetValue(itemInstance, out var display))
-            {
-                display.UpdateDisplay(itemDisplayState);
-            }
-            else
-            {
-                throw new ArgumentException(itemInstance.Title + " not in display?");
-            }
-        }
-
-        private static IEnumerator SetTempColor(ItemDisplay itemDisplay)
-        {
-            itemDisplay.SetColor(Color.green);
-            yield return new WaitForSecondsRealtime(Battle.ActionExecutionSpeed);
-            itemDisplay.SetColor(Color.white);
         }
     }
 }

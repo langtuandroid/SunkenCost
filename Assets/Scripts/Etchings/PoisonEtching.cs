@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using BattleScreen;
+using BattleScreen.BattleEvents;
 using Designs;
 using Enemies;
 
@@ -17,8 +18,10 @@ namespace Etchings
 
         protected override List<BattleEvent> GetDesignResponsesToEvent(BattleEvent battleEvent)
         {
+            var enemy = BattleEventsManager.Current.GetEnemyByResponderID(battleEvent.affectedResponderID);
+            
             return new List<BattleEvent>() 
-                {battleEvent.enemyAffectee.stats.AddPoison(_poisonStat.Value)};
+                {enemy.stats.AddPoison(_poisonStat.Value)};
         }
 
         protected override bool TestCharMovementActivatedEffect(Enemy enemy)

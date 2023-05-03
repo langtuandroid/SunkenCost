@@ -29,6 +29,7 @@ public class BattleHUDManager : MonoBehaviour, IBattleEventUpdatedUI
         
         UpdateLives();
         UpdateMovesText();
+        UpdateGoldText();
         _whosTurnText.EndEnemyTurn();
     }
 
@@ -61,7 +62,7 @@ public class BattleHUDManager : MonoBehaviour, IBattleEventUpdatedUI
 
     private void UpdateGoldText()
     {
-        _goldDisplay.UpdateText(RunProgress.PlayerStats.Gold);
+        _goldDisplay.UpdateText(Player.Current.Gold);
     }
 
     private void StartEnemyTurn()
@@ -101,10 +102,10 @@ public class BattleHUDManager : MonoBehaviour, IBattleEventUpdatedUI
             case BattleEventType.EndedBattle:
                 EndedBattle();
                 break;
-            case BattleEventType.StartedNextTurn:
+            case BattleEventType.StartedEnemyTurn:
                 StartEnemyTurn();
                 break;
-            case BattleEventType.EndedEnemyTurn:
+            case BattleEventType.StartNextPlayerTurn:
                 EndEnemyTurn();
                 break;
             case BattleEventType.PlankCreated: case BattleEventType.PlankDestroyed:

@@ -6,7 +6,7 @@ namespace BattleScreen.BattleEvents
     {
         private Dictionary<BattleEvent, int> _iterationTracker = new Dictionary<BattleEvent, int>();
         
-        public int GetIndex(BattleEvent battleEvent)
+        public int GetOrCreateIndex(BattleEvent battleEvent)
         {
             if (_iterationTracker.TryGetValue(battleEvent, out var iterations))
             {

@@ -22,7 +22,8 @@ namespace Etchings
 
         protected override List<BattleEvent> GetDesignResponsesToEvent(BattleEvent battleEvent)
         {
-            return new List<BattleEvent>(){CreateEvent(BattleEventType.PlayerLifeModified, modifier: _healAmountStat.Value)};
+            return new List<BattleEvent>(){new BattleEvent(BattleEventType.PlayerLifeModified) 
+                {modifier = _healAmountStat.Value}};
         }
     }
 }

@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
 using BattleScreen.BattleEvents;
 using Damage;
 using Enemies;
@@ -14,16 +15,17 @@ namespace BattleScreen
     {
         None,
         StartedBattle,
-        StartedNextTurn,
+        StartedEnemyTurn,
         StartedEnemyMovementPeriod,
         EndedEnemyTurn,
+        StartNextPlayerTurn,
         EndedBattle,
         SelectedNextEnemy,
         StartedIndividualEnemyTurn,
         EnemyStartOfTurnEffect,
         EnemyAboutToMove,
         EnemyMove,
-        EndedIndivdualEnemyMove,
+        EndedIndividualEnemyTurn,
         EnemyMovementModified,
         EnemyBlocked,
         EnemySpeaking,
@@ -38,7 +40,7 @@ namespace BattleScreen
         EtchingActivated,
         EtchingStunned,
         EtchingUnStunned,
-        GenericItemActivation,
+        ItemActivated,
         TryGainedGold,
         GainedGold,
         PlayerMovedPlank,
@@ -52,7 +54,6 @@ namespace BattleScreen
         PlankDestroyed,
         PlankMoved,
         DesignModified,
-        FinishedRespondingToEnemy,
     }
     
     
@@ -60,25 +61,17 @@ namespace BattleScreen
     public class BattleEvent
     {
         public readonly BattleEventType type;
-        public readonly BattleEventResponder creator;
-        public bool finished = false;
         public int modifier;
-        public DamageSource damageSource;
+        public DamageSource source;
         public DamageModificationPackage damageModificationPackage;
-        public Enemy enemyAffectee;
-        public Etching etching;
-        public EquippedItem item;
-        public Enemy enemyAffector;
-        public List<int> planksToColor = new List<int>();
+        public int affectedResponderID;
+        public int affectingResponderID;
+        public int[] planksToColor;
 
-        public BattleEvent(BattleEventType type, BattleEventResponder creator = null)
+        public BattleEvent(BattleEventType type, params int[] planksToColor)
         {
             this.type = type;
-            this.creator = creator;
-
-            var name = creator is not null ? " by " + creator.name : "";
-            
-            //Debug.Log("Created battle event: " + type + name);
+            this.planksToColor = planksToColor;
         }
         
         public static BattleEvent None => new BattleEvent(BattleEventType.None);

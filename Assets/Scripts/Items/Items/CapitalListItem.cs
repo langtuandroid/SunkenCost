@@ -2,6 +2,8 @@
 using System.Collections;
 using BattleScreen;
 using BattleScreen.BattleEvents;
+using Damage;
+using Enemies;
 
 namespace Items.Items
 {
@@ -17,7 +19,7 @@ namespace Items.Items
         {
             var randomEnemy = EnemySequencer.Current.GetRandomEnemy();
             if (!randomEnemy) throw new Exception("Somehow there is no active enemy?");
-            return new BattleEventPackage(DamageHandler.DamageEnemy(Amount, randomEnemy, DamageSource.Item, item: this));
+            return new BattleEventPackage(DamageHandler.DamageEnemy(Amount, randomEnemy.ResponderID, DamageSource.Item));
         }
     }
 }

@@ -2,25 +2,25 @@
 using System.Collections;
 using BattleScreen;
 using BattleScreen.BattleEvents;
+using Damage;
 
 public class Player : BattleEventResponder
 {
     public static Player Current;
-    
-    public int MovesUsedThisTurn { get; private set; } = 0;
-    public int MovesPerTurn { get; set; }
-    
+
     private int _baseMovesPerTurn;
     
     public int Gold { get; private set; }
 
     public int Lives { get; private set; }
     private int MaxLives { get; set; }
+    public int MovesUsedThisTurn { get; private set; } = 0;
+    public int MovesPerTurn { get; set; }
     
     public bool IsOutOfMoves => MovesUsedThisTurn >= MovesPerTurn;
     public int MovesRemaining => MovesPerTurn - MovesUsedThisTurn;
 
-    private void Awake()
+    protected override void Awake()
     {
         if (Current)
             Destroy(Current.gameObject);
@@ -32,6 +32,7 @@ public class Player : BattleEventResponder
         MaxLives = RunProgress.PlayerStats.MaxLives;
         _baseMovesPerTurn = RunProgress.PlayerStats.MovesPerTurn;
         MovesPerTurn = _baseMovesPerTurn;
+        base.Awake();
     }
 
     private void ResetMoves()
@@ -41,8 +42,8 @@ public class Player : BattleEventResponder
 
     private BattleEvent EnemyReachedEnd()
     {
-        return new BattleEvent(BattleEventType.PlayerLifeModified, this) 
-            {modifier = -1, damageSource = DamageSource.Boat};
+        return new BattleEvent(BattleEventType.PlayerLifeModified) 
+            {modifier = -1, source = DamageSource.Boat};
     }
 
     private BattleEvent ModifyLife(BattleEvent battleEvent)
@@ -51,16 +52,16 @@ public class Player : BattleEventResponder
         Lives += battleEvent.modifier;
 
         if (Lives <= 0)
-            return new BattleEvent(BattleEventType.PlayerDied, this);
+            return new BattleEvent(BattleEventType.PlayerDied);
         
         if (Lives < previousLives)
-            return new BattleEvent(BattleEventType.PlayerGainedLife, this);
+            return new BattleEvent(BattleEventType.PlayerLostLife);
         
         if (Lives > MaxLives)
             Lives = MaxLives;
         
         if (Lives > previousLives)
-            return new BattleEvent(BattleEventType.PlayerGainedLife, this);
+            return new BattleEvent(BattleEventType.PlayerGainedLife);
         
         return BattleEvent.None;
     }
@@ -68,18 +69,18 @@ public class Player : BattleEventResponder
     private BattleEvent UsedMove()
     {
         MovesUsedThisTurn += 1;
-        return new BattleEvent(BattleEventType.PlayerUsedMove, this);
+        return new BattleEvent(BattleEventType.PlayerUsedMove);
     }
 
     private BattleEvent TryGainGold(BattleEvent battleEvent)
     {
         Gold += battleEvent.modifier;
-        return new BattleEvent(BattleEventType.GainedGold, this);
+        return new BattleEvent(BattleEventType.GainedGold);
     }
 
     public override BattleEventPackage GetResponseToBattleEvent(BattleEvent previousBattleEvent)
     {
-        if (previousBattleEvent.type == BattleEventType.EndedEnemyTurn)
+        if (previousBattleEvent.type == BattleEventType.StartNextPlayerTurn)
         {
             ResetMoves();
             return BattleEventPackage.Empty;

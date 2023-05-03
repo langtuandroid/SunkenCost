@@ -11,7 +11,7 @@ namespace BattleScreen
     {
         Loading,
         Paused,
-        PlayerTurn,
+        PlayerActionPeriod,
         ExecutingPlayerTurnEvents,
         EnemyTurn,
         Rewards
@@ -19,15 +19,14 @@ namespace BattleScreen
     
     public class Battle : MonoBehaviour
     {
-        public const float ActionExecutionSpeed = 0.6f;
+        public const float ActionExecutionSpeed = 0.525f;
         
         public static Battle Current;
-        
-        
+
         [SerializeField] private EndOfBattlePopup _endOfBattlePopup;
         [SerializeField] private BattleHUDManager _hudManager;
 
-        public int Turn { get; private set; } = 1;
+        public int Turn { get; private set; } = 0;
         public GameState GameState { get; private set; } = GameState.Loading;
         
         private void Awake()
@@ -52,9 +51,8 @@ namespace BattleScreen
 
         public void ClickedNextTurn()
         {
-            if (GameState != GameState.PlayerTurn) return;
-
-            StartCoroutine(Turn < RunProgress.PlayerStats.NumberOfTurns ? NextEnemyTurn() : EndBattle());
+            if (GameState != GameState.PlayerActionPeriod) return;
+            StartCoroutine(NextEnemyTurn());
         }
         
         public void ClickedQuit()
@@ -70,34 +68,46 @@ namespace BattleScreen
         private IEnumerator InitializeBattle()
         {
             Debug.Log("------ Starting battle ------");
+            // Gives other initialisers a clear frame to initialise
             yield return 0;
             yield return 0;
 
             var startBattle = new BattleEvent(BattleEventType.StartedBattle);
             yield return StartCoroutine(StartChainOfEvents(startBattle));
-            
-            SetToPlayersTurn();
+            yield return StartCoroutine(NextPlayerTurn());
+        }
+        
+        private IEnumerator NextPlayerTurn()
+        {
+            Turn++;
+            if (Turn <= RunProgress.PlayerStats.NumberOfTurns)
+            {
+                Debug.Log("------ PLAYERS TURN! ------");
+                yield return StartCoroutine(StartChainOfEvents(new BattleEvent(BattleEventType.StartNextPlayerTurn)));
+                GameState = GameState.PlayerActionPeriod;
+            }
+            else
+            {
+                yield return StartCoroutine(EndBattle());
+            }
         }
 
         private IEnumerator ExecutePlayerTurnEvents(BattleEvent battleEvent)
         {
             GameState = GameState.ExecutingPlayerTurnEvents;
             yield return StartCoroutine(StartChainOfEvents(battleEvent));
-            GameState = GameState.PlayerTurn;
+            GameState = GameState.PlayerActionPeriod;
         }
         
         private IEnumerator NextEnemyTurn()
         {
             GameState = GameState.EnemyTurn;
-            
             Debug.Log("------ Starting Enemy Turn ------");
-            yield return StartCoroutine(StartChainOfEvents(new BattleEvent(BattleEventType.StartedNextTurn)));
+            yield return StartCoroutine(StartChainOfEvents(new BattleEvent(BattleEventType.StartedEnemyTurn)));
             yield return StartCoroutine(StartChainOfEvents(new BattleEvent(BattleEventType.StartedEnemyMovementPeriod)));
-            Debug.Log("------ Ending Enemy Turn ------");
-            yield return new WaitForSecondsRealtime(ActionExecutionSpeed);
             yield return StartCoroutine(StartChainOfEvents(new BattleEvent(BattleEventType.EndedEnemyTurn)));
-            Turn++;
-            SetToPlayersTurn();
+            Debug.Log("------ Ending Enemy Turn ------");
+            yield return StartCoroutine(NextPlayerTurn());
         }
 
         private IEnumerator EndBattle()
@@ -116,9 +126,7 @@ namespace BattleScreen
         
         private IEnumerator Tick(BattleEvent previousBattleEvent)
         {
-            //Debug.Log("Now responding to : " + previousBattleEvent.type);
-
-            for (var i = 0; i < 1000; i++)
+            while(true)
             {
                 var response = BattleEventsManager.Current.GetNextResponse(previousBattleEvent);
                 if (response.IsEmpty) break;
@@ -140,20 +148,20 @@ namespace BattleScreen
         {
             switch (type)
             {
+                case BattleEventType.PlayerLostLife:
+                    return 1.3f;
+                case BattleEventType.EtchingActivated: //case BattleEventType.ItemActivated:
+                    return 1.3f;
                 case BattleEventType.EnemyAboutToMove:
-                case BattleEventType.EtchingActivated:
+                case BattleEventType.EndedEnemyTurn: 
                     return 1f;
                 case BattleEventType.EnemyStartOfTurnEffect:
                     return 0.5f;
+                case BattleEventType.EnemyMove:
+                    return 0.3f;
             }
 
-            return 0f;
-        }
-
-        private void SetToPlayersTurn()
-        {
-            GameState = GameState.PlayerTurn;
-            Debug.Log("------ PLAYERS TURN! ------");
+            return -1f;
         }
 
         private void CreateEndOfBattlePopup()
@@ -167,9 +175,9 @@ namespace BattleScreen
 
         private void LeaveBattle()
         {
-            DisturbanceManager.ExecuteEndOfBattleDisturbanceAction(RunProgress.CurrentDisturbance);
             RunProgress.PlayerStats.Gold = Player.Current.Gold;
             RunProgress.PlayerStats.Lives = Player.Current.Lives;
+            DisturbanceManager.ExecuteEndOfBattleDisturbanceAction(RunProgress.CurrentDisturbance);
             MainManager.Current.LoadOfferScreen();
             Destroy(gameObject);
         }

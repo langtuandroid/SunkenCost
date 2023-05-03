@@ -43,9 +43,11 @@ public class Scenario : ScriptableObject
 
     public float scaledDifficulty;
 
-    public List<EnemyType> GetRound(int round)
+    public List<EnemyType> GetSpawns(int turn)
     {
-        switch (round)
+        if (turn >= RunProgress.PlayerStats.NumberOfTurns) return new List<EnemyType>();
+        
+        switch (turn)
         {
             case 1: 
                 return round1;
@@ -58,7 +60,7 @@ public class Scenario : ScriptableObject
             case 5: 
                 return round5;
             default:
-                Debug.Log("Round " + round + " not found!");
+                Debug.Log("Round " + turn + " not found!");
                 return new List<EnemyType>();
         }
     }

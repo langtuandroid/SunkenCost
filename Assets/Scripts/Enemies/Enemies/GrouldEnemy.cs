@@ -3,6 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using BattleScreen;
 using BattleScreen.BattleEvents;
+using Damage;
 using Enemies;
 using UnityEngine;
 
@@ -29,7 +30,7 @@ public class GrouldEnemy : Enemy, IStartOfTurnAbilityHolder
     public BattleEventPackage GetStartOfTurnAbility()
     {
         var stun = Plank.Etching.Stun(DamageSource.EnemyAbility);
-        stun.enemyAffector = this;
+        stun.affectingResponderID = ResponderID;
         return new BattleEventPackage(stun);
     }
 }

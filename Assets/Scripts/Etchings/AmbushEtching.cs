@@ -1,5 +1,6 @@
 ﻿using System.Collections.Generic;
 using BattleScreen;
+using BattleScreen.BattleEvents;
 using Designs;
 
 namespace Etchings
@@ -14,10 +15,12 @@ namespace Etchings
         {
             switch (battleEvent.type)
             {
-                case BattleEventType.EndedEnemyTurn:
+                case BattleEventType.StartNextPlayerTurn:
                     UpdateDamage();
-                    break;
-                case BattleEventType.EnemyMove when battleEvent.enemyAffectee.PlankNum == PlankNum:
+                    return false;
+                case BattleEventType.EnemyMove
+                    when BattleEventsManager.Current.GetEnemyByResponderID(battleEvent.affectedResponderID).PlankNum ==
+                         PlankNum:
                     _hadEnemyOnPlankThisTurn = true;
                     break;
             }

@@ -13,7 +13,7 @@ namespace BattleScreen.BattleEvents
                 battleEventToRespondTo.type == BattleEventType.PlankMoved ||
                 battleEventToRespondTo.type == BattleEventType.PlankCreated ||
                 battleEventToRespondTo.type == BattleEventType.PlankDestroyed ||
-                battleEventToRespondTo.type == BattleEventType.StartedNextTurn)
+                battleEventToRespondTo.type == BattleEventType.StartedEnemyTurn)
             {
                 RefreshEtchingResponderOrder();
             }

@@ -5,6 +5,7 @@ using System.Linq;
 using BattleScreen;
 using BattleScreen.BattleBoard;
 using BattleScreen.BattleEvents;
+using Damage;
 using Enemies.EnemyUI;
 using TMPro;
 using UnityEngine;
@@ -16,15 +17,6 @@ namespace Enemies
     public abstract class Enemy : BattleEventResponder
     {
         public EnemyStats stats;
-
-        private bool _isMyTurn;
-        private BattleEvent _lastEventRespondedToDuringMyTurn;
-        
-        private bool _yetToApplyPoisonThisTurn;
-        private bool _yetToExecuteStartOfTurnAbilityThisTurn;
-        private bool _yetToExecuteEndOfTurnAbilityThisTurn;
-        private bool _finishedStartOfTurnActions;
-
         public string Name { get; protected set; }
         
         public Stat MaxHealthStat { get; private set; }
@@ -32,6 +24,7 @@ namespace Enemies
         public int Health { get; private set; }
         
         public int TurnOrder { get; private set; }
+        public bool IsMyTurn { get; set; }
         public float Size { get; protected set; } = 1;
 
         public bool IsDestroyed { get; private set; } = false;
@@ -47,9 +40,10 @@ namespace Enemies
 
         public bool FinishedMoving => Mover.FinishedMoving;
 
-        protected virtual void Awake()
+        protected override void Awake()
         {
-            stats = new EnemyStats(this);
+            base.Awake();
+            stats = new EnemyStats(ResponderID);
 
             Init();
             Mover.Init();
@@ -64,20 +58,10 @@ namespace Enemies
             MaxHealthStat = new Stat(health);
         }
 
-        private BattleEventPackage MoveStep()
-        {
-            // Change my stick
-            Mover.Move();
-            
-            return PlankNum >= Board.Current.PlankCount 
-                ? new BattleEventPackage(CreateEvent(BattleEventType.EnemyReachedBoat), DestroySelf(DamageSource.Boat)) 
-                : new BattleEventPackage(CreateEvent(BattleEventType.EnemyMove));
-        }
-
-        private BattleEvent DealPoisonDamage()
+        public BattleEvent DealPoisonDamage()
         {
             return DamageHandler.DamageEnemy
-                (stats.Poison, this, DamageSource.Poison);
+                (stats.Poison, ResponderID, DamageSource.Poison);
         }
 
         public BattleEvent Block(int blockAmount)
@@ -127,92 +111,25 @@ namespace Enemies
         public override BattleEventPackage GetResponseToBattleEvent(BattleEvent previousBattleEvent)
         {
             // Damaged
-            if (previousBattleEvent.type == BattleEventType.EnemyAttacked && previousBattleEvent.enemyAffectee == this)
+            if (previousBattleEvent.type == BattleEventType.EnemyAttacked 
+                && previousBattleEvent.affectedResponderID == ResponderID)
             {
                 ChangeHealth(-previousBattleEvent.modifier);
                 
                 // Killed 
                 if (Health <= 0)
                 {
-                    // If it's my turn, I also need to tell everyone that I've finished my turn
-                    var responseList = new List<BattleEvent> {DestroySelf(previousBattleEvent.damageSource)};
-                    if (_isMyTurn) responseList.Add(CreateEvent(BattleEventType.EndedIndivdualEnemyMove));
-                    return new BattleEventPackage(responseList);
+                    return Die(previousBattleEvent.source);
                 }
 
                 var damagedEvent = CreateEvent
-                    (BattleEventType.EnemyDamaged, previousBattleEvent.modifier, previousBattleEvent.damageSource);
+                    (BattleEventType.EnemyDamaged, previousBattleEvent.modifier, previousBattleEvent.source);
                 return new BattleEventPackage(damagedEvent);
-        }
-            
-            if (!_isMyTurn && previousBattleEvent.type == BattleEventType.SelectedNextEnemy &&
-                previousBattleEvent.enemyAffectee == this)
-            {
-                _isMyTurn = true;
-                CalculateActionsForTurn();
-                _finishedStartOfTurnActions = false;
-                _lastEventRespondedToDuringMyTurn = previousBattleEvent;
-                return new BattleEventPackage(CreateEvent(BattleEventType.StartedIndividualEnemyTurn));
             }
-            
-            if (_isMyTurn && previousBattleEvent.type == BattleEventType.FinishedRespondingToEnemy)
-            {
-                var nextTurnAction = GetNextTurnAction(_lastEventRespondedToDuringMyTurn);
-                _lastEventRespondedToDuringMyTurn = nextTurnAction.battleEvents[0];
-                return nextTurnAction;
-            }
-            
-            return BattleEventPackage.Empty;
-        }
 
-        public BattleEventPackage GetNextTurnAction(BattleEvent eventRespondingTo)
-        {
-            if (!_finishedStartOfTurnActions)
+            if (previousBattleEvent.type == BattleEventType.EndedEnemyTurn)
             {
-                var startOfTurnAction = GetNextStartOfTurnEffect(eventRespondingTo);
-                if (!startOfTurnAction.IsEmpty) return startOfTurnAction;
-                _finishedStartOfTurnActions = true;
-            }
-            
-            // Start move
-            if (!FinishedMoving)
-            {
-                if (eventRespondingTo.type != BattleEventType.EnemyAboutToMove)
-                    return new BattleEventPackage(CreateEvent(BattleEventType.EnemyAboutToMove));
-
-                return MoveStep();
-            }
-            
-            if (_yetToExecuteEndOfTurnAbilityThisTurn)
-            {
-                throw new NotImplementedException();
-            }
-            
-            Mover.EndTurn();
-            _isMyTurn = false;
-            return new BattleEventPackage(CreateEvent(BattleEventType.EndedIndivdualEnemyMove));
-        }
-
-        private BattleEventPackage GetNextStartOfTurnEffect(BattleEvent previousBattleEvent)
-        {
-            if (_yetToApplyPoisonThisTurn)
-            {
-                _yetToApplyPoisonThisTurn = false;
-                return new BattleEventPackage(
-                    DealPoisonDamage(), CreateEvent(BattleEventType.EnemyStartOfTurnEffect));
-            }
-                
-            if (_yetToExecuteStartOfTurnAbilityThisTurn)
-            {
-                if (this is IStartOfTurnAbilityHolder startOfTurnAbilityHolder)
-                {
-                    _yetToExecuteStartOfTurnAbilityThisTurn = false;
-                    var abilityEvents = (startOfTurnAbilityHolder.GetStartOfTurnAbility()).battleEvents.ToList();
-                    abilityEvents.Add(CreateEvent(BattleEventType.EnemyStartOfTurnEffect));
-                    return new BattleEventPackage(abilityEvents);
-                }
-                            
-                throw new Exception("Should not be executing a start of turn ability when this is not capable!");
+                Mover.EndTurn();
             }
             
             return BattleEventPackage.Empty;
@@ -227,27 +144,29 @@ namespace Enemies
         protected BattleEvent CreateEvent(BattleEventType type, int modifier = 0,
             DamageSource damageSource = DamageSource.None)
         {
-            return new BattleEvent(type, this) 
-                {enemyAffectee = this, modifier = modifier, damageSource = damageSource};
+            return new BattleEvent(type) 
+                {affectedResponderID = ResponderID, modifier = modifier, source = damageSource};
         }
 
         private void ChangeHealth(int amount)
         {
             Health += amount;
         }
-        
-        private void CalculateActionsForTurn()
-        {
-            _yetToApplyPoisonThisTurn = stats.Poison > 0;
-            _yetToExecuteStartOfTurnAbilityThisTurn = this is IStartOfTurnAbilityHolder holder && holder.GetIfUsingStartOfTurnAbility();
-            _yetToExecuteEndOfTurnAbilityThisTurn = false;
-        }
 
-        private BattleEvent DestroySelf(DamageSource damageSource)
+        public BattleEventPackage Die(DamageSource source)
         {
+            var eventList = new List<BattleEvent>
+            {
+                CreateEvent(BattleEventType.EnemyKilled, damageSource: source),
+                CreateEvent(BattleEventType.TryGainedGold, Gold, source)
+            };
+            
+            if (source == DamageSource.Boat) eventList.Add(CreateEvent(BattleEventType.EnemyReachedBoat));
+            if (IsMyTurn) eventList.Add(CreateEvent(BattleEventType.EndedIndividualEnemyTurn));
+            
             IsDestroyed = true;
             Destroy(gameObject);
-            return CreateEvent(BattleEventType.EnemyKilled, damageSource: damageSource);
+            return new BattleEventPackage(eventList);
         }
     }
 }

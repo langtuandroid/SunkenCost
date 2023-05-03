@@ -1,5 +1,6 @@
 ﻿using System.Collections.Generic;
 using BattleScreen;
+using BattleScreen.BattleEvents;
 using Designs;
 using Enemies;
 using UnityEngine;
@@ -10,7 +11,7 @@ namespace Etchings
     {
         protected override List<BattleEvent> GetDesignResponsesToEvent(BattleEvent battleEvent)
         {
-            var enemy = battleEvent.enemyAffectee;
+            var enemy = BattleEventsManager.Current.GetEnemyByResponderID(battleEvent.affectedResponderID);
             var amountToHeal = enemy.MaxHealth - enemy.Health;
 
             var responses = new List<BattleEvent>();
@@ -20,7 +21,7 @@ namespace Etchings
             var timesMetRequirement = (int)Mathf.Floor(((float)amountToHeal / GetStatValue(StatType.IntRequirement)));
             var amountOfGoldToGive = timesMetRequirement * GetStatValue(StatType.Gold);
             
-            responses.Add(CreateEvent(BattleEventType.TryGainedGold, modifier: amountOfGoldToGive));
+            responses.Add(new BattleEvent(BattleEventType.TryGainedGold) {modifier = amountOfGoldToGive});
 
             return responses;
         }

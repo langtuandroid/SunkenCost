@@ -53,7 +53,7 @@ public class PlayerStats
     {
         var initialDeck = new string[]
         {
-            "Stab", "Hurl", "Impede"
+            "Focus", "Hurl", "Pelt"
         };
 
         foreach (var name in initialDeck)

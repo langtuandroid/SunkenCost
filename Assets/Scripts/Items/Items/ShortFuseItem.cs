@@ -23,12 +23,12 @@ namespace Items.Items
             return BattleEventPackage.Empty;
         }
 
-        public bool CanModify(BattleEvent battleEventToModify)
+        public bool CanModify(EnemyDamage enemyDamage)
         {
             return (Battle.Current.Turn == _turnPlayerLastLostLife);
         }
 
-        public DamageModification GetDamageMultiplier(BattleEvent battleEvent)
+        public DamageModification GetDamageMultiplier(EnemyDamage enemyDamage)
         {
             return new DamageModification(this, Amount);
         }

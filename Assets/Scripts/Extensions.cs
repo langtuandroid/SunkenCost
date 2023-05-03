@@ -50,22 +50,8 @@ public static class Extensions
     
     public static T[] LoadScriptableObjects<T>() where T : ScriptableObject
     {
-        var assets = GetAllInstancesOrNull<T>();
+        var assets = Resources.LoadAll<T>("ScriptableObjects");
         return InstantiateAssets(assets);
-    }
-    
-    private static T[] GetAllInstancesOrNull<T>() where T : ScriptableObject
-    {
-        var guids = AssetDatabase.FindAssets("t:"+ typeof(T).Name);
-        var a = new T[guids.Length];
-        for(var i = 0; i < guids.Length; i++)
-        {
-            var path = AssetDatabase.GUIDToAssetPath(guids[i]);
-            a[i] = AssetDatabase.LoadAssetAtPath<T>(path);
-        }
- 
-        return a;
- 
     }
     
     private static T[] InstantiateAssets<T>(T[] array) where T : ScriptableObject

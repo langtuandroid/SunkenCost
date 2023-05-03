@@ -74,6 +74,9 @@ public class RunProgress : MonoBehaviour
         _itemInventory = transform.GetChild(0).gameObject.AddComponent<ItemInventory>();
         _battleNumber = 0;
         _currentDisturbance = null;
+        
+        AddItem(typeof(PoisonTipsItem));
+        AddItem(typeof(ExpiredMedicineItem));
     }
 
     // Used to test Items - add to initialise run

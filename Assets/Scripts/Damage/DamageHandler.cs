@@ -4,88 +4,80 @@ using System.Collections.Generic;
 using System.Linq;
 using BattleScreen;
 using BattleScreen.BattleEvents;
-using Damage;
 using Enemies;
 using Etchings;
 using Items.Items;
 using UnityEngine;
 
-public enum DamageSource 
+namespace Damage
 {
-    None,
-    Etching,
-    Poison,
-    Item,
-    Self,
-    EnemyAbility,
-    Boat,
-}
-
-public interface IDamageFlatModifier
-{
-    public bool CanModify(BattleEvent battleEventToModify);
-    
-    public DamageModification GetDamageAddition(BattleEvent battleEventToModify);
-}
-    
-public interface IDamageMultiplierModifier
-{
-    public bool CanModify(BattleEvent battleEventToModify);
-    public DamageModification GetDamageMultiplier(BattleEvent battleEventToModify);
-}
-
-public static class DamageHandler
-{
-    public static BattleEvent DamageEnemy(int directDamage, Enemy enemy, DamageSource source,
-        Etching etching = null, EquippedItem item = null, Enemy enemyDamaging = null)
+    public enum DamageSource 
     {
-        var damage = directDamage;
+        None,
+        Etching,
+        Poison,
+        Item,
+        Self,
+        EnemyAbility,
+        Boat,
+    }
 
-        var battleResponder = source switch
+    public interface IDamageFlatModifier
+    {
+        public bool CanModify(EnemyDamage enemyDamage);
+    
+        public DamageModification GetDamageAddition(EnemyDamage enemyDamage);
+    }
+    
+    public interface IDamageMultiplierModifier
+    {
+        public bool CanModify(EnemyDamage enemyDamage);
+        public DamageModification GetDamageMultiplier(EnemyDamage enemyDamage);
+    }
+
+    public struct EnemyDamage
+    {
+        public int baseDamage;
+        public Enemy affectedEnemy;
+        public DamageSource source;
+        public Enemy affectingEnemy;
+    }
+
+    public static class DamageHandler
+    {
+        public static BattleEvent DamageEnemy(int directDamage, int enemyResponderID, DamageSource source, Enemy enemyDamaging = null)
         {
-            DamageSource.None => throw new ArgumentException(),
-            DamageSource.Etching => etching as BattleEventResponder,
-            DamageSource.Poison => enemy as BattleEventResponder,
-            DamageSource.Item => item as BattleEventResponder,
-            DamageSource.Self => enemy as BattleEventResponder,
-            DamageSource.EnemyAbility => enemyDamaging as BattleEventResponder,
-            DamageSource.Boat => null,
-            _ => throw new ArgumentException()
-        };
+            var damage = new EnemyDamage()
+            {
+                baseDamage = directDamage,
+                affectedEnemy = BattleEventsManager.Current.GetEnemyByResponderID(enemyResponderID),
+                source = source,
+                affectingEnemy = enemyDamaging
+            };
+            
 
-        var preModDamageBattleAction = new BattleEvent(BattleEventType.EnemyAttacked, battleResponder)
-        {
-            modifier = damage,
-            enemyAffectee = enemy,
-            damageSource = source,
-            damageModificationPackage = DamageModificationPackage.Empty(),
-            etching = etching,
-            item = item,
-            enemyAffector = enemyDamaging
-        };
+            var damageModifications = 
+                BattleEventsManager.Current.GetDamageModifiers(damage);
 
-        var damageModifications = 
-            BattleEventsManager.Current.GetDamageModifiers(preModDamageBattleAction);
-
-        var flatTotal = directDamage + 
-                        damageModifications.flatModifications.Sum(d => d.modificationAmount);
+            var flatTotal = directDamage + 
+                            damageModifications.flatModifications.Sum(d => d.modificationAmount);
         
-        var multiTotal =
-            damageModifications.multiModifications.Aggregate
-                (flatTotal, (current, mod) => mod.modificationAmount * current);
+            var multiTotal =
+                damageModifications.multiModifications.Aggregate
+                    (flatTotal, (current, mod) => mod.modificationAmount * current);
 
-        //Debug.Log("Base damage: " + directDamage);
-        //Debug.Log("Total damage: " + multiTotal);
+            var damageEvent = new BattleEvent(BattleEventType.EnemyAttacked)
+            {
+                modifier = multiTotal,
+                affectedResponderID = enemyResponderID,
+                source = source,
+                damageModificationPackage = damageModifications
+            };
 
-        return new BattleEvent(BattleEventType.EnemyAttacked, battleResponder)
-        {
-            modifier = multiTotal,
-            enemyAffectee = enemy,
-            damageSource = source,
-            damageModificationPackage = damageModifications,
-            etching = etching,
-            item = item,
-            enemyAffector = enemyDamaging
-        };
+            if (enemyDamaging is not null)
+                damageEvent.affectingResponderID = enemyDamaging.ResponderID;
+
+            return damageEvent;
+        }
     }
 }

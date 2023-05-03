@@ -19,14 +19,14 @@ namespace Etchings
             throw new System.NotImplementedException();
         }
 
-        public bool CanModify(BattleEvent battleEventToModify)
+        public bool CanModify(EnemyDamage enemyDamage)
         {
             // Only affects etching damage on level 0
-            if (battleEventToModify.damageSource != DamageSource.Etching && design.Level < 1) return false;
-            return !stunned && battleEventToModify.enemyAffectee.PlankNum == PlankNum;
+            if (enemyDamage.source != DamageSource.Etching && design.Level < 1) return false;
+            return !stunned && enemyDamage.affectedEnemy.PlankNum == PlankNum;
         }
 
-        public DamageModification GetDamageMultiplier(BattleEvent battleEventToModify)
+        public DamageModification GetDamageMultiplier(EnemyDamage enemyDamage)
         {
             return new DamageModification(this, design.GetStat(StatType.StatMultiplier));
         }

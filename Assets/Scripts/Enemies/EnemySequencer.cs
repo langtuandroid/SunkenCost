@@ -1,14 +1,10 @@
-﻿using System;
-using System.Collections;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Linq;
+using BattleScreen;
 using BattleScreen.BattleEvents;
-using Enemies;
-using UnityEngine;
-using UnityEngine.Serialization;
 
-namespace BattleScreen
+namespace Enemies
 {
     public class EnemySequencer : BattleEventResponder
     {
@@ -20,11 +16,9 @@ namespace BattleScreen
         public int NumberOfEnemies => _enemies.Count;
         public ReadOnlyCollection<Enemy> AllEnemies => new ReadOnlyCollection<Enemy>(_enemies);
         
-        private bool HasEnemyToMove => _enemyCurrentTurnMoveQueue.Count > 0;
-        public Enemy CurrentEnemy { get; private set; }
-        public bool HasCurrentEnemy { get; private set; }
+        public bool HasEnemyToMove => _enemyCurrentTurnMoveQueue.Count > 0;
 
-        private void Awake()
+        protected override void Awake()
         {
             if (Current)
             {
@@ -32,6 +26,7 @@ namespace BattleScreen
             }
 
             Current = this;
+            base.Awake();
         }
 
         public void AddEnemy(Enemy enemy)
@@ -47,7 +42,6 @@ namespace BattleScreen
         public void RemoveEnemy(Enemy enemy)
         {
             _enemies.Remove(enemy);
-            
             _enemyCurrentTurnMoveQueue = new Queue<Enemy>(_enemyCurrentTurnMoveQueue.Where(e => e != enemy));
             enemy.SetTurnOrder(_enemies.Count);
         }
@@ -75,50 +69,42 @@ namespace BattleScreen
 
             return enemies;
         }
-        
-        private void SetNextEnemyTurnSequence()
-        {
-            _enemyCurrentTurnMoveQueue = new Queue<Enemy>(_enemies);
-        }
 
-        private void SelectNextEnemy()
+        public Enemy SelectNextEnemy()
         {
-            CurrentEnemy = _enemyCurrentTurnMoveQueue.Dequeue();
-        }
-
-        private void RefreshEnemies()
-        {
-            _enemies = _enemies.Where(EnemyIsAlive).ToList();
-        }
-
-        private static bool EnemyIsAlive(Enemy enemy)
-        {
-            return enemy && !enemy.IsDestroyed;
+            return _enemyCurrentTurnMoveQueue.Dequeue();
         }
 
         public override BattleEventPackage GetResponseToBattleEvent(BattleEvent previousBattleEvent)
         {
             switch (previousBattleEvent.type)
             {
-                case BattleEventType.StartedNextTurn:
+                case BattleEventType.EnemyKilled:
+                    var deadEnemy =
+                        BattleEventsManager.Current.GetEnemyByResponderID(previousBattleEvent.affectedResponderID);
+
+                    foreach (var enemy in _enemies.Where(enemy => enemy.TurnOrder > deadEnemy.TurnOrder))
+                    {
+                        enemy.SetTurnOrder(enemy.TurnOrder - 1);
+                    }
+                    
+                    RemoveEnemy(deadEnemy);
+                    break;
+                case BattleEventType.StartedEnemyTurn:
                     SetNextEnemyTurnSequence();
                     break;
                 case BattleEventType.PlankMoved:
-                    foreach (var enemy in _enemies)
-                        enemy.RefreshPlankNum();
-                    break;
-                case BattleEventType.StartedEnemyMovementPeriod:
-                case BattleEventType.EndedIndivdualEnemyMove when HasEnemyToMove:
-                    SelectNextEnemy();
-                    HasCurrentEnemy = true;
-                    return new BattleEventPackage(new BattleEvent(BattleEventType.SelectedNextEnemy) 
-                        {enemyAffectee = CurrentEnemy});
-                case BattleEventType.EndedIndivdualEnemyMove when !HasEnemyToMove:
-                    HasCurrentEnemy = false;
+                    foreach (var e in _enemies)
+                        e.RefreshPlankNum();
                     break;
             }
 
             return BattleEventPackage.Empty;
+        }
+        
+        private void SetNextEnemyTurnSequence()
+        {
+            _enemyCurrentTurnMoveQueue = new Queue<Enemy>(_enemies);
         }
     }
 }

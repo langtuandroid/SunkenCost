@@ -266,9 +266,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 37b77e9fca1348bc9355b47f2ed39b9c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  backgroundImage: {fileID: 3572904816238135375}
-  image: {fileID: 3572904816238135375}
-  tooltipTrigger: {fileID: 8713723538579498856}
+  _image: {fileID: 3572904816238135375}
+  _itemShaderDisplay: {fileID: 8418718194525332170}
+  _tooltipTrigger: {fileID: 8713723538579498856}
 --- !u!114 &8713723538579498856
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -283,6 +283,19 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   content: 
   header: 
+--- !u!114 &8418718194525332170
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3572904816238135373}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 96ad29fe4ca34536a7b7fac6e9090583, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _image: {fileID: 3572904816238135375}
 --- !u!224 &3572904816238135374 stripped
 RectTransform:
   m_CorrespondingSourceObject: {fileID: 4202200882642939485, guid: caf43998dc516d54bb25c2ecac156361, type: 3}

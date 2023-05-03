@@ -18,7 +18,7 @@ namespace Etchings
 
         protected override List<BattleEvent> GetDesignResponsesToEvent(BattleEvent battleEvent)
         {
-            return new List<BattleEvent>(){DamageEnemy(battleEvent.enemyAffectee)};
+            return new List<BattleEvent>(){DamageEnemy(battleEvent.affectedResponderID)};
         }
     }
 }

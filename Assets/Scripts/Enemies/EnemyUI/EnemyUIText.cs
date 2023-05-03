@@ -30,7 +30,7 @@ public abstract class EnemyUIText : MonoBehaviour
         
         _text.color = color;
         _changingColor = true;
-        yield return new WaitForSeconds(ColorChangeTime);
+        yield return new WaitForSecondsRealtime(ColorChangeTime);
         _text.color = defaultColor;
         _changingColor = false;
     }

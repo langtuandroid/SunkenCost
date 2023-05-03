@@ -9,9 +9,13 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 1ce21ef09b6141939fbf00d53209d4b8, type: 3}
-  m_Name: Move
+  m_Script: {fileID: 11500000, guid: e88836627efa4444288b773536f04a36, type: 3}
+  m_Name: Easy3
   m_EditorClassIdentifier: 
-  challengeRewardType: 1
-  title: +1 Move
-  sprite: {fileID: 21300000, guid: 10b827e06f49de946b28d238c9f00130, type: 3}
+  scenarioType: 0
+  round1: 08000000
+  round2: 01000000
+  round3: 
+  round4: 01000000
+  round5: 04000000
+  scaledDifficulty: 0

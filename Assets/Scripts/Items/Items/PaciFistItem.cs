@@ -23,7 +23,7 @@ namespace Items.Items
                     _hasKilledEnemyThisBattle = true;
                     break;
                 case BattleEventType.EndedBattle:
-                    if (!_hasKilledEnemyThisBattle) return new BattleEventPackage(new BattleEvent(BattleEventType.TryGainedGold, this) {modifier = Amount});
+                    if (!_hasKilledEnemyThisBattle) return new BattleEventPackage(new BattleEvent(BattleEventType.TryGainedGold) {modifier = Amount});
                     else break;
                 default:
                     throw new UnexpectedBattleEventException(battleEvent);

@@ -31,8 +31,8 @@ namespace Enemies.Enemies
         {
             var newBullCarp = EnemySpawner.Instance.SpawnEnemyOnPlank("BullCarp", PlankNum);
             var newEvent = CreateEvent(BattleEventType.EnemySpawned);
-            newEvent.enemyAffectee = newBullCarp;
-            newEvent.enemyAffector = this;
+            newEvent.affectedResponderID = newBullCarp.ResponderID;
+            newEvent.affectingResponderID = ResponderID;
             return new BattleEventPackage(newEvent);
         }
     }

@@ -1,5 +1,6 @@
 ﻿using BattleScreen;
 using BattleScreen.BattleBoard;
+using BattleScreen.BattleEvents;
 using Enemies;
 
 namespace Etchings
@@ -10,7 +11,9 @@ namespace Etchings
         {
             if (stunned || battleEvent.type != GetEventType()) return false;
 
-            var enemy = battleEvent.enemyAffectee;
+            var enemy = BattleEventsManager.Current.GetEnemyByResponderID(battleEvent.affectedResponderID);
+
+            if (enemy.IsDestroyed) return false;
             
             // Enemy reached end
             if (enemy.PlankNum > Board.Current.PlankCount) return false;
