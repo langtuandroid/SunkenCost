@@ -38,7 +38,9 @@ namespace UI
 
         public void AddItemToDisplay(ItemInstance itemInstance)
         {
-            var newItemIconGameObject = Instantiate(itemIconDisplayPrefab, displayGrid);
+            var containerGameObject = Instantiate(new GameObject(), displayGrid);
+            var containerRectTransform = containerGameObject.AddComponent<RectTransform>();
+            var newItemIconGameObject = Instantiate(itemIconDisplayPrefab, containerRectTransform);
             var newItemDisplay = newItemIconGameObject.GetComponent<ItemDisplay>();
             newItemDisplay.SetItemInstance(itemInstance);
             

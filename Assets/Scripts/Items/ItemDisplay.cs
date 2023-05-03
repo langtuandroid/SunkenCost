@@ -5,6 +5,7 @@ using BattleScreen.BattleEvents;
 using Items;
 using TMPro;
 using UnityEngine;
+using UnityEngine.Serialization;
 using UnityEngine.UI;
 
 namespace UI
@@ -13,7 +14,7 @@ namespace UI
     public class ItemDisplay : MonoBehaviour
     {
         [SerializeField] private Image _image;
-        [SerializeField] private ItemShaderDisplay _itemShaderDisplay;
+        [FormerlySerializedAs("_itemShaderDisplay")] [SerializeField] private BattleActivationShaderDisplay _battleActivationShaderDisplay;
         
         [SerializeField] private TooltipTrigger _tooltipTrigger;
 
@@ -43,7 +44,7 @@ namespace UI
         
         public void Activate()
         {
-            _itemShaderDisplay.Activate();
+            _battleActivationShaderDisplay.Activate();
         }
 
         private void SetTitle(string title)

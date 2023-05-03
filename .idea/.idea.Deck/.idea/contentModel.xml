@@ -619,6 +619,7 @@
         <e p="Resources" t="Include">
           <e p="ScriptableObjects" t="Include">
             <e p="BattleScenarios" t="Include" />
+            <e p="ChallengeRewards" t="Include" />
             <e p="Designs" t="Include" />
             <e p="Disturbances" t="Include" />
             <e p="Items" t="Include" />
@@ -758,6 +759,7 @@
           <e p="GlobalEvents.cs" t="Include" />
           <e p="ItemLoader.cs" t="Include" />
           <e p="Items" t="Include">
+            <e p="BattleActivationShaderDisplay.cs" t="Include" />
             <e p="ItemAsset.cs" t="Include" />
             <e p="ItemDisplay.cs" t="Include" />
             <e p="ItemIconsDisplay.cs" t="Include" />
@@ -776,7 +778,6 @@
               <e p="RedressItem.cs" t="Include" />
               <e p="ShortFuseItem.cs" t="Include" />
             </e>
-            <e p="ItemShaderDisplay.cs" t="Include" />
           </e>
           <e p="Log.cs" t="Include" />
           <e p="MainManager.cs" t="Include" />

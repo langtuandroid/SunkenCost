@@ -264,4 +264,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 96ad29fe4ca34536a7b7fac6e9090583, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _tweenTime: 3.76
   _image: {fileID: 2606534716927327379}

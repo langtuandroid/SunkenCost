@@ -49,13 +49,8 @@ public class PlayerStats
         Lives = MaxLives;
     }
 
-    public void InitialiseDeck()
+    public void InitialiseDeck(params string[] initialDeck)
     {
-        var initialDeck = new string[]
-        {
-            "Focus", "Hurl", "Pelt"
-        };
-
         foreach (var name in initialDeck)
         {
             Deck.Add(DesignFactory.InstantiateDesignFromString(name));
