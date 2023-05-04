@@ -11,6 +11,8 @@ namespace OfferScreen
 
         protected int Cost { get; private set; }
 
+        private bool CanBuy => Cost <= OfferManager.Current.BuyerSeller.Gold;
+
         private void Awake()
         {
             button.onClick.AddListener(Clicked);
@@ -19,12 +21,12 @@ namespace OfferScreen
         public void UpdateCost(int cost)
         {
             Cost = cost;
-            costDisplay.Refresh(cost);
+            costDisplay.Refresh(cost, CanBuy);
         }
 
         private void Clicked()
         {
-            if (Cost <= OfferManager.Current.BuyerSeller.Gold)
+            if (CanBuy)
                 Buy();
         }
 

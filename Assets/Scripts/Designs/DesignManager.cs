@@ -127,6 +127,7 @@ public class DesignManager : MonoBehaviour
         design.Stats.TryGetValue(StatType.StatMultiplier, out var statMultiplier);
         design.Stats.TryGetValue(StatType.Gold, out var gold);
         design.Stats.TryGetValue(StatType.IntRequirement, out var intRequirement);
+        design.Stats.TryGetValue(StatType.ModifyPlayerHealth, out var modifyPlayerHealth);
 
         switch (design.Type)
         {
@@ -197,7 +198,7 @@ public class DesignManager : MonoBehaviour
                 break;
             case DesignType.Finalise:
                 description = "When enemies land on this plank, deal " + damage?.Value +
-                              " damage to all enemies on every plank. If any survive, lose a life";
+                              " damage to all enemies on every plank. If any survive, lose " + Math.Abs(modifyPlayerHealth.Value) + " lives";
                 break;
             case DesignType.Cauterize:
                 var multiplier = statMultiplier?.Value;
@@ -208,7 +209,7 @@ public class DesignManager : MonoBehaviour
             case DesignType.Research:
                 description = "When enemies land on this plank, heal them to full health. Gain " + gold?.Value + 
                     " gold ";
-                if (design.Level == 0)
+                if (design.Level < 2)
                 {
                     description += "if " + intRequirement?.Value + " or more health is healed";
                 }

@@ -9,13 +9,12 @@ namespace Etchings
 {
     public class BlockEtching : AboutToMoveActivatedEffect
     {
-        protected override List<BattleEvent> GetDesignResponsesToEvent(BattleEvent battleEvent)
+        protected override DesignResponse GetDesignResponsesToEvent(BattleEvent battleEvent)
         {
-            return new List<BattleEvent>()
-            {
-                BattleEventsManager.Current.GetEnemyByResponderID(battleEvent.affectedResponderID)
-                    .Block(design.GetStat(StatType.Block))
-            };
+            var response = BattleEventsManager.Current.GetEnemyByResponderID(battleEvent.affectedResponderID)
+                    .Block(design.GetStat(StatType.Block));
+            
+            return new DesignResponse(PlankNum, response);
         }
 
         protected override bool TestCharMovementActivatedEffect(Enemy enemy)

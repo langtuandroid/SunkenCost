@@ -13,7 +13,7 @@ namespace Etchings
         //TEST INFLUENCE
         //return Math.Abs(PlankNum - battleEvent.enemyAffected.PlankNum) <= MaxRange;
 
-        protected override List<BattleEvent> GetDesignResponsesToEvent(BattleEvent battleEvent)
+        protected override DesignResponse GetDesignResponsesToEvent(BattleEvent battleEvent)
         {
             var plankNums = new List<int>();
             for (var i = PlankNum - MaxRange; i <= PlankNum + MaxRange && i <= Board.Current.PlankCount + 1; i++)
@@ -25,7 +25,7 @@ namespace Etchings
 
             var enemies = EnemySequencer.Current.GetEnemiesOnPlanks(plankNums);
 
-            return enemies.Select(e => DamageEnemy(e.ResponderID)).ToList();
+            return new DesignResponse(plankNums, enemies.Select(e => DamageEnemy(e.ResponderID)).ToList());
         }
 
         protected override bool TestCharMovementActivatedEffect(Enemy enemy)

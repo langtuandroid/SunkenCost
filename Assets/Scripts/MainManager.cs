@@ -37,6 +37,11 @@ public class MainManager : MonoBehaviour
         }
     }
 
+    public void LoadMenu()
+    {
+        ChangeScene(0);
+    }
+
     public void LoadMap()
     {
         ChangeScene(1);
@@ -52,7 +57,7 @@ public class MainManager : MonoBehaviour
         ChangeScene(3);
     }
 
-    public void StartRun()
+    public void StartNewRun()
     {
         RunProgress.Initialise();
         LoadOfferScreen();

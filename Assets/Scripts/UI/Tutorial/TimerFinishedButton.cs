@@ -26,7 +26,7 @@ public class TimerFinishedButton : MonoBehaviour
 
     private void Update()
     {
-        if (Player.Current.Lives < _playerLives)
+        if (Player.Current.Health < _playerLives)
         {
             _playerLives--;
 

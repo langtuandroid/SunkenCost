@@ -611,6 +611,7 @@
           <e p="Map" t="Include" />
           <e p="OfferScreen" t="Include" />
           <e p="UI" t="Include">
+            <e p="New Folder" t="Include" />
             <e p="OfferPanel" t="Include" />
             <e p="Tutorial" t="Include" />
           </e>
@@ -825,6 +826,7 @@
           <e p="Stat.cs" t="Include" />
           <e p="StatModifier.cs" t="Include" />
           <e p="UI" t="Include">
+            <e p="BoatHealthMeter.cs" t="Include" />
             <e p="EnemyTurnFrame.cs" t="Include" />
             <e p="GoldText.cs" t="Include" />
             <e p="Heart.cs" t="Include" />
@@ -834,6 +836,7 @@
             <e p="MainMenu.cs" t="Include" />
             <e p="MoveText.cs" t="Include" />
             <e p="NextTurnButton.cs" t="Include" />
+            <e p="PlayerDeathPopup.cs" t="Include" />
             <e p="PlayGameButton.cs" t="Include" />
             <e p="QuitButton.cs" t="Include" />
             <e p="QuitButtonFilm.cs" t="Include" />

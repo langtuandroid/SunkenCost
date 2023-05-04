@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
 using System.Security.Cryptography.X509Certificates;
 using BattleScreen;
 using BattleScreen.BattleBoard;
@@ -55,7 +56,7 @@ namespace Etchings
             };
         }
 
-        protected override List<BattleEvent> GetDesignResponsesToEvent(BattleEvent battleEvent)
+        protected override DesignResponse GetDesignResponsesToEvent(BattleEvent battleEvent)
         {
             if (modsActive) ClearMods();
 
@@ -81,17 +82,21 @@ namespace Etchings
                 }
             }
 
-            if (_boostedEtchings.Count == 0) return new List<BattleEvent>() {BattleEvent.None};
+            if (_boostedEtchings.Count == 0) 
+                return new DesignResponse(-1, new List<BattleEvent>() {BattleEvent.None});
 
-            var events = new List<BattleEvent>();
+            var responses = new List<BattleEvent>();
 
             foreach (var etching in _boostedEtchings)
             {
                 etching.ModifyStat(StatType.Damage, +_boostAmount);
-                events.Add(new BattleEvent(BattleEventType.DesignModified, etching.ResponderID));
+                responses.Add(new BattleEvent(BattleEventType.DesignModified, etching.ResponderID));
             }
 
-            return events;
+            var planksToColor = new List<int>() {PlankNum};
+            planksToColor.AddRange(_boostedEtchings.Select(e => e.PlankNum));
+            
+            return new DesignResponse(planksToColor, responses);
         }
     }
 }

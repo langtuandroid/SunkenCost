@@ -29,7 +29,7 @@ namespace Enemies.Enemies
 
         public BattleEventPackage GetStartOfTurnAbility()
         {
-            var newBullCarp = EnemySpawner.Instance.SpawnEnemyOnPlank("BullCarp", PlankNum);
+            var newBullCarp = EnemySpawner.Instance.SpawnEnemyDuringTurn("BullCarp", PlankNum);
             var newEvent = CreateEvent(BattleEventType.EnemySpawned);
             newEvent.affectedResponderID = newBullCarp.ResponderID;
             newEvent.affectingResponderID = ResponderID;

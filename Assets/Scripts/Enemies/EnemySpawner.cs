@@ -48,7 +48,12 @@ public class EnemySpawner : BattleEventResponder
         _enemyBattleEventResponderGroup = FindObjectOfType<EnemyBattleEventResponderGroup>();
     }
 
-    public BattleEventPackage SpawnNewTurn()
+    public Enemy SpawnEnemyDuringTurn(string enemyName, int plankNum)
+    {
+        return plankNum == -1 ? SpawnEnemyOnIsland(enemyName) : SpawnEnemyOnPlank(enemyName, plankNum);
+    }
+
+    private BattleEventPackage SpawnNewTurn()
     {
         var enemyTypes = _scenario.GetSpawns(Battle.Current.Turn);
         var newEnemies = enemyTypes.Select(enemyType => Enum.GetName(typeof(EnemyType), enemyType)).ToList();
@@ -68,14 +73,14 @@ public class EnemySpawner : BattleEventResponder
         return new BattleEventPackage(battleEvents);
     }
 
-    public Enemy SpawnEnemyOnIsland(string enemyName)
+    private Enemy SpawnEnemyOnIsland(string enemyName)
     {
         var enemy = SpawnEnemy(enemyName, Board.Current.Island);
         enemy.Mover.SetPlankNum(-1);
         return enemy;
     }
     
-    public Enemy SpawnEnemyOnPlank(string enemyName, int plankNum)
+    private Enemy SpawnEnemyOnPlank(string enemyName, int plankNum)
     {
         var enemy = SpawnEnemy(enemyName, Board.Current.GetPlank(plankNum).transform);
         enemy.Mover.SetPlankNum(plankNum);

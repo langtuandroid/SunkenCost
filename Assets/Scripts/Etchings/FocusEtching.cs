@@ -14,7 +14,7 @@ namespace Etchings
             return false;
         }
 
-        protected override List<BattleEvent> GetDesignResponsesToEvent(BattleEvent battleEvent)
+        protected override DesignResponse GetDesignResponsesToEvent(BattleEvent battleEvent)
         {
             throw new System.NotImplementedException();
         }

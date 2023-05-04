@@ -104,7 +104,7 @@ namespace BattleScreen.BattleEvents
                 return enemy;
             }
             
-            throw new Exception("Battle responder is not enemy!");
+            throw new Exception("Battle responder is not enemy! Instead it's " + responder.GetType().Name);
         }
         
         public Etching GetEtchingByResponderID(int id)

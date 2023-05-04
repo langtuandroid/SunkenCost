@@ -6,7 +6,7 @@ using OfferScreen;
 public class PlayerStats
 {
     private const int INIT_MAX_PLANKS = 3;
-    private const int INIT_MAX_LIVES = 3;
+    private const int INIT_MAX_HEALTH = 30;
     private const int INIT_GOLD = 5;
     private const int INIT_MOVES_PER_TURN = 1;
     private const int INIT_NUM_OF_TURNS = 5;
@@ -25,8 +25,8 @@ public class PlayerStats
 
     public int PlanksBought { get; private set; } = 0;
     public int MovesBought { get; private set; } = 0;
-    public int Lives { get; set; }
-    public int MaxLives { get; private set; }
+    public int Health { get; set; }
+    public int MaxHealth { get; private set; }
     public int Gold { get; set; }
     public int MovesPerTurn { get; set; }
     public int NumberOfTurns { get; private set; }
@@ -38,7 +38,7 @@ public class PlayerStats
     public PlayerStats()
     {
         maxPlanks = new Stat(INIT_MAX_PLANKS);
-        MaxLives = INIT_MAX_LIVES;
+        MaxHealth = INIT_MAX_HEALTH;
         Gold = INIT_GOLD;
         MovesPerTurn = INIT_MOVES_PER_TURN;
         NumberOfTurns = INIT_NUM_OF_TURNS;
@@ -46,7 +46,7 @@ public class PlayerStats
         NumberOfItemsToOffer = INIT_NUM_OF_ITEM_OFFERS;
         NumberOfChallengesToOffer = INIT_NUM_OF_CHALLENGE_OFFERS;
         
-        Lives = MaxLives;
+        Health = MaxHealth;
     }
 
     public void InitialiseDeck(params string[] initialDeck)

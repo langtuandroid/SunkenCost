@@ -21,11 +21,13 @@ namespace OfferScreen
         private DesignDisplay _designDisplay;
         private DesignCard _mergeableDesignCard;
         private IOffer _offerImplementation;
-        private bool _canBeLocked = false;
+        private bool _inOfferRow = false;
         private bool _pointerInside = false;
 
         public Design Design => _designDisplay.design;
         private bool HasMergeableDesignCard => _mergeableDesignCard != null;
+
+        private bool CanBuy => !_inOfferRow || Design.Cost <= OfferManager.Current.BuyerSeller.Gold;
         
         private void Awake()
         {
@@ -46,7 +48,7 @@ namespace OfferScreen
         {
             _pointerInside = true;
             
-            if (_canBeLocked)
+            if (_inOfferRow)
             {
                 lockButton.Show();
             }
@@ -61,19 +63,19 @@ namespace OfferScreen
         public void HideButtons()
         {
             mergeButton.gameObject.SetActive(false);
-            _canBeLocked = false;
+            _inOfferRow = false;
             lockButton.Hide();
         }
 
         public void PreventLocking()
         {
             isLocked = false;
-            _canBeLocked = false;
+            _inOfferRow = false;
         }
 
         public void AllowLocking()
         {
-            _canBeLocked = true;
+            _inOfferRow = true;
 
             if (_pointerInside)
             {
@@ -98,12 +100,12 @@ namespace OfferScreen
             mergeButton.gameObject.SetActive(HasMergeableDesignCard);
             if (HasMergeableDesignCard)
             {
-                mergeButton.Refresh(_mergeableDesignCard.Design.Cost);
+                mergeButton.Refresh(_mergeableDesignCard.Design.Cost, _mergeableDesignCard.Design.Cost <= OfferManager.Current.BuyerSeller.Gold);
             }
 
             _designDisplay.UpdateDisplay();
 
-            costDisplay.Refresh(Design.Cost);
+            costDisplay.Refresh(Design.Cost, CanBuy);
 
             cardBackgroundImage.color = isLocked ? lockedColor : Color.white;
         }

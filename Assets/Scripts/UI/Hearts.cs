@@ -11,12 +11,12 @@ namespace UI
 
         private void Awake()
         {
-            for (var i = 0; i < RunProgress.PlayerStats.MaxLives; i++)
+            for (var i = 0; i < RunProgress.PlayerStats.MaxHealth; i++)
             {
                 CreateHeart();
             }
             
-            UpdateLives(RunProgress.PlayerStats.Lives);
+            UpdateLives(RunProgress.PlayerStats.Health);
         }
 
         public void UpdateLives(int lives)

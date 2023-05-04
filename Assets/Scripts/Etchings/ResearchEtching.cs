@@ -9,21 +9,21 @@ namespace Etchings
 {
     public class ResearchEtching : LandedOnPlankActivatedEtching
     {
-        protected override List<BattleEvent> GetDesignResponsesToEvent(BattleEvent battleEvent)
+        protected override DesignResponse GetDesignResponsesToEvent(BattleEvent battleEvent)
         {
             var enemy = BattleEventsManager.Current.GetEnemyByResponderID(battleEvent.affectedResponderID);
             var amountToHeal = enemy.MaxHealth - enemy.Health;
 
-            var responses = new List<BattleEvent>();
+            var responses = new List<BattleEvent> {enemy.Heal(amountToHeal)};
             
-            responses.Add(enemy.Heal(amountToHeal));
-
+            var goldAmount = GetStatValue(StatType.Gold);
+            
             var timesMetRequirement = (int)Mathf.Floor(((float)amountToHeal / GetStatValue(StatType.IntRequirement)));
-            var amountOfGoldToGive = timesMetRequirement * GetStatValue(StatType.Gold);
+            var amountOfGoldToGive = design.Level > 1 ? timesMetRequirement * goldAmount : goldAmount;
             
             responses.Add(new BattleEvent(BattleEventType.TryGainedGold) {modifier = amountOfGoldToGive});
 
-            return responses;
+            return new DesignResponse(PlankNum, responses);
         }
 
         protected override bool TestCharMovementActivatedEffect(Enemy enemy)

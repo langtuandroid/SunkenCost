@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using BattleScene;
 using BattleScreen.BattleEvents;
 using Disturbances;
+using UI;
 using UnityEngine;
 
 namespace BattleScreen
@@ -14,7 +15,8 @@ namespace BattleScreen
         PlayerActionPeriod,
         ExecutingPlayerTurnEvents,
         EnemyTurn,
-        Rewards
+        Rewards,
+        PlayerDied
     }
     
     public class Battle : MonoBehaviour
@@ -24,6 +26,7 @@ namespace BattleScreen
         public static Battle Current;
 
         [SerializeField] private EndOfBattlePopup _endOfBattlePopup;
+        [SerializeField] private PlayerDeathPopup _playerDeathPopup;
         [SerializeField] private BattleHUDManager _hudManager;
 
         public int Turn { get; private set; } = 0;
@@ -126,6 +129,13 @@ namespace BattleScreen
         
         private IEnumerator Tick(BattleEvent previousBattleEvent)
         {
+            if (previousBattleEvent.type == BattleEventType.PlayerDied)
+            {
+                GameState = GameState.PlayerDied;
+                _playerDeathPopup.gameObject.SetActive(true);
+                StopAllCoroutines();
+            }
+            
             while(true)
             {
                 var response = BattleEventsManager.Current.GetNextResponse(previousBattleEvent);
@@ -152,7 +162,7 @@ namespace BattleScreen
                     return 1.3f;
                 case BattleEventType.EtchingActivated: //case BattleEventType.ItemActivated:
                     return 1.3f;
-                case BattleEventType.EnemyAboutToMove:
+                case BattleEventType.StartedIndividualEnemyTurn:
                 case BattleEventType.EndedEnemyTurn: 
                     return 1f;
                 case BattleEventType.EnemyStartOfTurnEffect:
@@ -176,7 +186,7 @@ namespace BattleScreen
         private void LeaveBattle()
         {
             RunProgress.PlayerStats.Gold = Player.Current.Gold;
-            RunProgress.PlayerStats.Lives = Player.Current.Lives;
+            RunProgress.PlayerStats.Health = Player.Current.Health;
             DisturbanceManager.ExecuteEndOfBattleDisturbanceAction(RunProgress.CurrentDisturbance);
             MainManager.Current.LoadOfferScreen();
             Destroy(gameObject);

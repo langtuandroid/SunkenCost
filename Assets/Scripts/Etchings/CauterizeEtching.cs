@@ -14,7 +14,7 @@ namespace Etchings
             return enemy.PlankNum == PlankNum && enemy.stats.Poison > 0;
         }
 
-        protected override List<BattleEvent> GetDesignResponsesToEvent(BattleEvent battleEvent)
+        protected override DesignResponse GetDesignResponsesToEvent(BattleEvent battleEvent)
         {
             var enemy = BattleEventsManager.Current.GetEnemyByResponderID(battleEvent.affectedResponderID);
             var poison = enemy.stats.Poison;
@@ -22,8 +22,13 @@ namespace Etchings
             var newStatMod = new StatModifier
                 (-poison * GetStatValue(StatType.StatMultiplier), StatModType.Flat);
             enemy.AddMaxHealthModifier(newStatMod);
-            return new List<BattleEvent>(){new BattleEvent(BattleEventType.EnemyMaxHealthModified) 
-                {affectedResponderID = battleEvent.affectedResponderID}};
+
+            var response = new BattleEvent(BattleEventType.EnemyMaxHealthModified)
+            {
+                affectedResponderID = battleEvent.affectedResponderID
+            };
+            
+            return new DesignResponse(PlankNum, response);
         }
     }
 }

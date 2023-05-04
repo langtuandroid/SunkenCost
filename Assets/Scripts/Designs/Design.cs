@@ -20,7 +20,7 @@ namespace Designs
         HealPlayer,
         DamageFlatModifier,
         MovementBoost,
-        DamagePlayer,
+        ModifyPlayerHealth,
         HealEnemy,
         Gold,
         IntRequirement

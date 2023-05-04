@@ -23,21 +23,73 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="50470089-3e0c-4487-973b-9d375622b070" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/Assets/Prefabs/BattleScene/PlayerDeathPopup.prefab" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/Prefabs/BattleScene/PlayerDeathPopup.prefab.meta" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/Resources/ScriptableObjects/ChallengeRewards.meta" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/Scripts/Items/BattleActivationShaderDisplay.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/AllIn1SpriteShader/Materials/BoatHealth.mat" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/AllIn1SpriteShader/Materials/BoatHealth.mat.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Prefabs/Map/SmallDisturbance.prefab" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Prefabs/Map/SmallDisturbance.prefab.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Prefabs/UI/New Folder.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Scripts/UI/BoatHealthMeter.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Scripts/UI/BoatHealthMeter.cs.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Scripts/UI/PlayerDeathPopup.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Scripts/UI/PlayerDeathPopup.cs.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Sprites/BoatMask.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Sprites/BoatMask.png.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Sprites/BoatMeter.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Sprites/BoatMeter.png.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/~$Bugs.docx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/.idea.Deck/.idea/contentModel.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.Deck/.idea/contentModel.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/.idea.Deck/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.Deck/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/BattleScene/EndOfBattlePopup.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Prefabs/BattleScene/EndOfBattlePopup.prefab" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/BattleScene/PlayerDeathPopup.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Prefabs/BattleScene/PlayerDeathPopup.prefab" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/Boat.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Prefabs/Boat.prefab" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/Enemies/Enemy.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Prefabs/Enemies/Enemy.prefab" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/GoldDisplay.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Prefabs/GoldDisplay.prefab" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Prefabs/ItemDisplay.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Prefabs/ItemDisplay.prefab" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/UI/ItemGrid.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Prefabs/UI/ItemGrid.prefab" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Items/ItemDisplay.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Items/ItemDisplay.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Items/ItemIconsDisplay.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Items/ItemIconsDisplay.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Items/ItemShaderDisplay.cs" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Items/ItemShaderDisplay.cs.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Items/BattleActivationShaderDisplay.cs.meta" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/OfferScreen/CostDisplay.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Prefabs/OfferScreen/CostDisplay.prefab" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/OfferScreen/MergeButton.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Prefabs/OfferScreen/MergeButton.prefab" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/UI/MenuButton.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Prefabs/UI/MenuButton.prefab" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Resources/ScriptableObjects/Designs/Research.asset" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Resources/ScriptableObjects/Designs/Research.asset" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scenes/Battle.unity" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scenes/Battle.unity" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scenes/OfferScreen.unity" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scenes/OfferScreen.unity" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/BattleScreen/Battle.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/BattleScreen/Battle.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/BattleScreen/BattleEvents/BattleEventPackage.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/BattleScreen/BattleEvents/BattleEventPackage.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/BattleScreen/BattleEvents/BattleEventsManager.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/BattleScreen/BattleEvents/BattleEventsManager.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/BattleScreen/BattleHUDManager.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/BattleScreen/BattleHUDManager.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/BattleScreen/Player.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/BattleScreen/Player.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Designs/Design.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Designs/Design.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Designs/DesignManager.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Designs/DesignManager.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Disturbances/DisturbanceManager.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Disturbances/DisturbanceManager.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Enemies/Enemies/AxolitlEnemy.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Enemies/Enemies/AxolitlEnemy.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Enemies/Enemies/CarppoolEnemy.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Enemies/Enemies/CarppoolEnemy.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Enemies/EnemySpawner.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Enemies/EnemySpawner.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Etchings/AmbushEtching.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Etchings/AmbushEtching.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Etchings/AreaEtching.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Etchings/AreaEtching.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Etchings/BlockEtching.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Etchings/BlockEtching.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Etchings/BoostEtching.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Etchings/BoostEtching.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Etchings/CauterizeEtching.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Etchings/CauterizeEtching.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Etchings/Etching.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Etchings/Etching.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Etchings/FinaliseEtching.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Etchings/FinaliseEtching.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Etchings/FocusEtching.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Etchings/FocusEtching.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Etchings/HopEtching.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Etchings/HopEtching.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Etchings/LoneWolfEtching.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Etchings/LoneWolfEtching.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Etchings/MeleeEtching.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Etchings/MeleeEtching.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Etchings/PoisonEtching.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Etchings/PoisonEtching.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Etchings/RangedEtching.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Etchings/RangedEtching.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Etchings/ResearchEtching.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Etchings/ResearchEtching.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Etchings/RestEtching.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Etchings/RestEtching.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Etchings/ReverseEtching.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Etchings/ReverseEtching.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/MainManager.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/MainManager.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/OfferScreen/CostDisplay.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/OfferScreen/CostDisplay.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/OfferScreen/DesignCard.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/OfferScreen/DesignCard.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/OfferScreen/DesignCardRow.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/OfferScreen/DesignCardRow.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/OfferScreen/GoldDisplay.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/OfferScreen/GoldDisplay.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/OfferScreen/ItemOfferDisplay.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/OfferScreen/ItemOfferDisplay.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/OfferScreen/UpgradeOffer.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/OfferScreen/UpgradeOffer.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Scripts/PlayerStats.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/PlayerStats.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/RunProgress.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/RunProgress.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/UI/Hearts.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/UI/Hearts.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/UI/MainMenu.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/UI/MainMenu.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/UI/Tutorial/TimerFinishedButton.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/UI/Tutorial/TimerFinishedButton.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Bugs.docx" beforeDir="false" afterPath="$PROJECT_DIR$/Bugs.docx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/UserSettings/EditorUserSettings.asset" beforeDir="false" afterPath="$PROJECT_DIR$/UserSettings/EditorUserSettings.asset" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -62,6 +114,7 @@
     <setting file="file://$USER_HOME$/Dropbox/Ben/Uni/COS30019 Artificial Intelligence/AI Assignment 2/AI Assignment 2/Program.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Scripts/Damage/DamageHandler.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Scripts/Enemies/Enemies/RatEnemy.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Library/PackageCache/com.unity.ugui@1.0.0/Runtime/UI/Core/StencilMaterial.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Scripts/MapScreen/DisturbanceEvent.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Library/PackageCache/com.unity.services.core@1.6.0/Editor/Core/Build/ProjectUnlinkBuildWarning.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Scripts/OfferScreen/OfferManager.cs" root0="FORCE_HIGHLIGHTING" />
@@ -79,46 +132,11 @@
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/Assets/Scripts/Etchings/CauterizeEtching.cs" />
-        <option value="$PROJECT_DIR$/Assets/Scripts/Etchings/FinaliseEtching.cs" />
-        <option value="$PROJECT_DIR$/Assets/Scripts/Etchings/FocusEtching.cs" />
-        <option value="$PROJECT_DIR$/Assets/Scripts/Etchings/HopEtching.cs" />
-        <option value="$PROJECT_DIR$/Assets/Scripts/Etchings/PoisonEtching.cs" />
-        <option value="$PROJECT_DIR$/Assets/Scripts/Etchings/RaidEtching.cs" />
-        <option value="$PROJECT_DIR$/Assets/Scripts/Etchings/ResearchEtching.cs" />
-        <option value="$PROJECT_DIR$/Assets/Scripts/Etchings/RestEtching.cs" />
-        <option value="$PROJECT_DIR$/Assets/Scripts/Etchings/ReverseEtching.cs" />
-        <option value="$PROJECT_DIR$/Assets/Scripts/Items/Items/CapitalListItem.cs" />
-        <option value="$PROJECT_DIR$/Assets/Scripts/Items/Items/ExpiredMedicineItem.cs" />
-        <option value="$PROJECT_DIR$/Assets/Scripts/Items/Items/PaciFistItem.cs" />
-        <option value="$PROJECT_DIR$/Assets/Scripts/Items/Items/PoisonTipsItem.cs" />
-        <option value="$PROJECT_DIR$/Assets/Scripts/Items/Items/ReDressItem.cs" />
-        <option value="$PROJECT_DIR$/Assets/Scripts/Items/Items/ShortFuseItem.cs" />
-        <option value="$PROJECT_DIR$/Assets/Scripts/BattleScreen/EnemySequencer.cs" />
-        <option value="$PROJECT_DIR$/Assets/Scripts/Enemies/EnemySpawner.cs" />
-        <option value="$PROJECT_DIR$/Assets/Scripts/BattleScreen/BattleEvents/BattleEventResponder.cs" />
-        <option value="$PROJECT_DIR$/Assets/Scripts/BattleScreen/BattleEvents/EnemyBattleEventResponderGroup.cs" />
-        <option value="$PROJECT_DIR$/Assets/Scripts/Etchings/Etching.cs" />
-        <option value="$PROJECT_DIR$/Assets/Scripts/Etchings/BoostEtching.cs" />
-        <option value="$PROJECT_DIR$/Assets/Scripts/BattleScreen/BattleEvents/BattleEvent.cs" />
-        <option value="$PROJECT_DIR$/Assets/Scripts/Etchings/MovementActivatedEtching.cs" />
-        <option value="$PROJECT_DIR$/Assets/Scripts/Enemies/EnemySequencer.cs" />
-        <option value="$PROJECT_DIR$/Assets/Scripts/Enemies/Enemy.cs" />
-        <option value="$PROJECT_DIR$/Assets/Scripts/Enemies/EnemyUI/EnemyUI.cs" />
-        <option value="$PROJECT_DIR$/Assets/Scripts/BattleScreen/BattleEvents/BattleEventsManager.cs" />
-        <option value="$PROJECT_DIR$/Assets/Scripts/BattleScreen/BattleHUDManager.cs" />
-        <option value="$PROJECT_DIR$/Assets/Scripts/BattleScreen/Player.cs" />
-        <option value="$PROJECT_DIR$/Assets/Scripts/Enemies/Scenarios/Scenario.cs" />
-        <option value="$PROJECT_DIR$/Assets/Scripts/Damage/DamageHandler.cs" />
-        <option value="$PROJECT_DIR$/Assets/Scripts/BattleScreen/BattleEvents/BattleEventPackage.cs" />
-        <option value="$PROJECT_DIR$/Assets/Scripts/Items/Items/EquippedItem.cs" />
         <option value="$PROJECT_DIR$/Assets/Scripts/Enemies/CurrentEnemy.cs" />
         <option value="$PROJECT_DIR$/Assets/Scripts/UI/ItemDisplay.cs" />
         <option value="$PROJECT_DIR$/Assets/Scripts/UI/ItemIconsDisplay.cs" />
         <option value="$PROJECT_DIR$/Assets/Scripts/BattleScreen/BattleEvents/BattleEventResponderGroup.cs" />
-        <option value="$PROJECT_DIR$/Assets/Scripts/BattleScreen/Battle.cs" />
         <option value="$PROJECT_DIR$/Assets/Scripts/Items/ItemDisplay.cs" />
-        <option value="$PROJECT_DIR$/Assets/Scripts/UI/LoseLifeShaderController.cs" />
         <option value="$PROJECT_DIR$/Assets/Scripts/Audio/InGameSfxManager.cs" />
         <option value="$PROJECT_DIR$/Assets/Scripts/Enemies/EnemyUI/EnemyUIText.cs" />
         <option value="$PROJECT_DIR$/Assets/Scripts/Enemies/EnemyPlankArranger.cs" />
@@ -127,9 +145,44 @@
         <option value="$PROJECT_DIR$/Assets/Scripts/UI/MoveText.cs" />
         <option value="$PROJECT_DIR$/Assets/Scripts/Items/ItemIconsDisplay.cs" />
         <option value="$PROJECT_DIR$/Assets/Scripts/Items/ItemShaderDisplay.cs" />
-        <option value="$PROJECT_DIR$/Assets/Scripts/PlayerStats.cs" />
-        <option value="$PROJECT_DIR$/Assets/Scripts/RunProgress.cs" />
         <option value="$PROJECT_DIR$/Assets/Scripts/Items/BattleActivationShaderDisplay.cs" />
+        <option value="$PROJECT_DIR$/Assets/Scripts/UI/PlayerDeathPopup.cs" />
+        <option value="$PROJECT_DIR$/Assets/Scripts/BattleScreen/BattleHUDManager.cs" />
+        <option value="$PROJECT_DIR$/Assets/Scripts/UI/LoseLifeShaderController.cs" />
+        <option value="$PROJECT_DIR$/Assets/Scripts/OfferScreen/GoldDisplay.cs" />
+        <option value="$PROJECT_DIR$/Assets/Scripts/BattleScreen/Battle.cs" />
+        <option value="$PROJECT_DIR$/Assets/Scripts/OfferScreen/DesignCardRow.cs" />
+        <option value="$PROJECT_DIR$/Assets/Scripts/OfferScreen/CostDisplay.cs" />
+        <option value="$PROJECT_DIR$/Assets/Scripts/OfferScreen/UpgradeOffer.cs" />
+        <option value="$PROJECT_DIR$/Assets/Scripts/OfferScreen/ItemOfferDisplay.cs" />
+        <option value="$PROJECT_DIR$/Assets/Scripts/UI/BoatHealthMeter.cs" />
+        <option value="$PROJECT_DIR$/Assets/Scripts/OfferScreen/DesignCard.cs" />
+        <option value="$PROJECT_DIR$/Assets/Scripts/Etchings/BoostEtching.cs" />
+        <option value="$PROJECT_DIR$/Assets/Scripts/Etchings/AreaEtching.cs" />
+        <option value="$PROJECT_DIR$/Assets/Scripts/Etchings/FocusEtching.cs" />
+        <option value="$PROJECT_DIR$/Assets/Scripts/Etchings/LoneWolfEtching.cs" />
+        <option value="$PROJECT_DIR$/Assets/Scripts/Etchings/MeleeEtching.cs" />
+        <option value="$PROJECT_DIR$/Assets/Scripts/Etchings/PoisonEtching.cs" />
+        <option value="$PROJECT_DIR$/Assets/Scripts/Etchings/HopEtching.cs" />
+        <option value="$PROJECT_DIR$/Assets/Scripts/Etchings/CauterizeEtching.cs" />
+        <option value="$PROJECT_DIR$/Assets/Scripts/Etchings/BlockEtching.cs" />
+        <option value="$PROJECT_DIR$/Assets/Scripts/Etchings/RangedEtching.cs" />
+        <option value="$PROJECT_DIR$/Assets/Scripts/Etchings/ResearchEtching.cs" />
+        <option value="$PROJECT_DIR$/Assets/Scripts/Etchings/RestEtching.cs" />
+        <option value="$PROJECT_DIR$/Assets/Scripts/Etchings/ReverseEtching.cs" />
+        <option value="$PROJECT_DIR$/Assets/Scripts/Enemies/Enemies/CarppoolEnemy.cs" />
+        <option value="$PROJECT_DIR$/Assets/Scripts/BattleScreen/BattleEvents/BattleEventsManager.cs" />
+        <option value="$PROJECT_DIR$/Assets/Scripts/Etchings/AmbushEtching.cs" />
+        <option value="$PROJECT_DIR$/Assets/Scripts/Etchings/Etching.cs" />
+        <option value="$PROJECT_DIR$/Assets/Scripts/Enemies/EnemySpawner.cs" />
+        <option value="$PROJECT_DIR$/Assets/Scripts/RunProgress.cs" />
+        <option value="$PROJECT_DIR$/Assets/Scripts/Enemies/Enemies/AxolitlEnemy.cs" />
+        <option value="$PROJECT_DIR$/Assets/Scripts/BattleScreen/BattleEvents/BattleEventPackage.cs" />
+        <option value="$PROJECT_DIR$/Assets/Scripts/BattleScreen/Player.cs" />
+        <option value="$PROJECT_DIR$/Assets/Scripts/MainManager.cs" />
+        <option value="$PROJECT_DIR$/Assets/Scripts/PlayerStats.cs" />
+        <option value="$PROJECT_DIR$/Assets/Scripts/Etchings/FinaliseEtching.cs" />
+        <option value="$PROJECT_DIR$/Assets/Scripts/Designs/DesignManager.cs" />
       </list>
     </option>
   </component>
@@ -262,7 +315,7 @@
       <workItem from="1682374213923" duration="32267000" />
       <workItem from="1682514844429" duration="45018000" />
       <workItem from="1682901798470" duration="25682000" />
-      <workItem from="1683084544483" duration="4610000" />
+      <workItem from="1683084544483" duration="19966000" />
     </task>
     <servers />
   </component>
@@ -323,11 +376,11 @@
     </state>
     <state x="532" y="0" width="840" height="1034" key="run.anything.popup/0.0.1920.1040@0.0.1920.1040" timestamp="1675489416658" />
     <state x="1064" y="0" width="1680" height="2148" key="run.anything.popup/0.0.3840.2160@0.0.3840.2160" timestamp="1683005088590" />
-    <state x="891" y="69" width="1680" height="2148" key="search.everywhere.popup" timestamp="1683085551339">
+    <state x="891" y="69" width="1680" height="2148" key="search.everywhere.popup" timestamp="1683197311937">
       <screen x="0" y="0" width="3840" height="2160" />
     </state>
     <state x="539" y="5" width="840" height="1034" key="search.everywhere.popup/0.0.1920.1040@0.0.1920.1040" timestamp="1675255493675" />
-    <state x="891" y="69" width="1680" height="2148" key="search.everywhere.popup/0.0.3840.2160@0.0.3840.2160" timestamp="1683085551339" />
+    <state x="891" y="69" width="1680" height="2148" key="search.everywhere.popup/0.0.3840.2160@0.0.3840.2160" timestamp="1683197311937" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -344,6 +397,19 @@
             </endOffsets>
           </properties>
           <option name="timeStamp" value="3" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="DotNet Breakpoints">
+          <url>file://$PROJECT_DIR$/Assets/Scripts/Etchings/FocusEtching.cs</url>
+          <line>22</line>
+          <properties documentPath="C:\Users\bensa\Documents\GitHub\Deck\Assets\Scripts\Etchings\FocusEtching.cs" initialLine="22">
+            <startOffsets>
+              <option value="580" />
+            </startOffsets>
+            <endOffsets>
+              <option value="581" />
+            </endOffsets>
+          </properties>
+          <option name="timeStamp" value="4" />
         </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>

@@ -9,18 +9,17 @@ namespace OfferScreen
 {
     public class ItemOfferDisplay : MonoBehaviour, IOffer
     {
-
         [SerializeField] private TextMeshProUGUI titleText;
-
         [SerializeField] private ItemDisplay itemDisplay;
         [SerializeField] private CostDisplay costDisplay;
         [SerializeField] private LockButton lockButton;
         [SerializeField] private Color lockColor;
         
-        public ItemOffer ItemOffer { get; set; }
-
         public bool isLocked = false;
 
+        public ItemOffer ItemOffer { get; set; }
+
+        private bool CanBuy => ItemOffer.Cost <= OfferManager.Current.BuyerSeller.Gold;
         private void Start()
         {
             var itemInstance = ItemOffer.itemInstance;
@@ -60,7 +59,7 @@ namespace OfferScreen
 
         private void OffersRefreshed()
         {
-            costDisplay.Refresh(ItemOffer.Cost);
+            costDisplay.Refresh(ItemOffer.Cost, CanBuy);
         }
     }
 }

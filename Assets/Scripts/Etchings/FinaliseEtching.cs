@@ -1,6 +1,8 @@
 using System.Collections.Generic;
 using System.Linq;
 using BattleScreen;
+using BattleScreen.BattleBoard;
+using Designs;
 using Enemies;
 using UnityEngine;
 
@@ -8,25 +10,38 @@ namespace Etchings
 {
     public class FinaliseEtching : DamageEtching
     {
-        protected override List<BattleEvent> GetDesignResponsesToEvent(BattleEvent battleEvent)
-        {
-            var currentMovingEnemy = battleEvent.affectedResponderID;
-
-            var enemiesOnPlanks = EnemySequencer.Current.AllEnemies.Where(e => e.PlankNum != 0).ToArray();
-
-            var response = enemiesOnPlanks.Select(e => DamageEnemy(e.ResponderID)).ToList();
-            
-            if (enemiesOnPlanks.Any(e => !e.IsDestroyed))
-            {
-                response.Add(new BattleEvent(BattleEventType.PlayerLifeModified) {modifier = -1});
-            }
-
-            return response;
-        }
-
         protected override bool TestCharMovementActivatedEffect(Enemy enemy)
         {
             return enemy.PlankNum == PlankNum;
+        }
+        
+        protected override DesignResponse GetDesignResponsesToEvent(BattleEvent battleEvent)
+        {
+            var enemiesOnPlanks = EnemySequencer.Current.AllEnemies.Where(e => e.PlankNum > -1).ToArray();
+
+            var response = new List<BattleEvent>();
+            var anEnemyWillSurvive = false;
+
+            foreach (var enemy in enemiesOnPlanks)
+            {
+                var damageEvent = DamageEnemy(enemy.ResponderID);
+                response.Add(damageEvent);
+                
+                if (enemy.Health > damageEvent.modifier)
+                    anEnemyWillSurvive = true;
+            }
+            
+            if (anEnemyWillSurvive)
+            {
+                response.Add(new BattleEvent(BattleEventType.PlayerLifeModified) {modifier = design.GetStat(StatType.ModifyPlayerHealth)});
+            }
+
+            var allPlanks = new List<int>();
+            for (var i = 0; i < Board.Current.PlankCount; i++)
+            {
+                allPlanks.Add(i);
+            }
+            return new DesignResponse(allPlanks, response);
         }
     }
 }

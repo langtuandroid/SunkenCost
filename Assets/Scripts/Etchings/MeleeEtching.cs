@@ -13,9 +13,9 @@ namespace Etchings
             return enemy.PlankNum == PlankNum;
         }
         
-        protected override List<BattleEvent> GetDesignResponsesToEvent(BattleEvent battleEvent)
+        protected override DesignResponse GetDesignResponsesToEvent(BattleEvent battleEvent)
         {
-            return new List<BattleEvent>() {DamageEnemy(battleEvent.affectedResponderID)};
+            return new DesignResponse(PlankNum, DamageEnemy(battleEvent.affectedResponderID));
         }
     }
 }

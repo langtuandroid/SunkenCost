@@ -222,6 +222,7 @@ GameObject:
   m_Component:
   - component: {fileID: 5891915919942667590}
   - component: {fileID: 5891915919942667585}
+  - component: {fileID: 5085049157644285181}
   m_Layer: 5
   m_Name: GoldDisplay
   m_TagString: Untagged
@@ -262,5 +263,22 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f1f3bd5132f04885bd1fd64e816853e8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _shaderDisplay: {fileID: 5085049157644285181}
   _goodColor: {fileID: 11400000, guid: 01f391a85e9c013498d04702b95bfa19, type: 2}
   _badColor: {fileID: 11400000, guid: cab51499b16a6144bad2fa958e3f58fd, type: 2}
+--- !u!114 &5085049157644285181
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5891915919942667591}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 96ad29fe4ca34536a7b7fac6e9090583, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _tweenTime: 0.3
+  _zoomScale: 1.25
+  _yOffset: -25
+  _image: {fileID: 5891915919914201735}

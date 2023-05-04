@@ -51,7 +51,7 @@ namespace Disturbances
                     RunProgress.PlayerStats.Gold += disturbance.Modifier;
                     break;
                 case DisturbanceType.Heart:
-                    RunProgress.PlayerStats.Lives += disturbance.Modifier;
+                    RunProgress.PlayerStats.Health += disturbance.Modifier;
                     break;
                 case DisturbanceType.None:
                     break;

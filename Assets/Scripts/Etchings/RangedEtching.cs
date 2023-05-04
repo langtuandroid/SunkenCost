@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using BattleScreen;
 using BattleScreen.BattleBoard;
+using BattleScreen.BattleEvents;
 using Enemies;
 using UnityEngine;
 
@@ -16,9 +17,10 @@ namespace Etchings
                    Math.Abs(enemy.PlankNum - PlankNum) <= MaxRange;
         }
 
-        protected override List<BattleEvent> GetDesignResponsesToEvent(BattleEvent battleEvent)
+        protected override DesignResponse GetDesignResponsesToEvent(BattleEvent battleEvent)
         {
-            return new List<BattleEvent>(){DamageEnemy(battleEvent.affectedResponderID)};
+            var enemy = BattleEventsManager.Current.GetEnemyByResponderID(battleEvent.affectedResponderID);
+            return new DesignResponse(enemy.PlankNum, DamageEnemy(battleEvent.affectedResponderID));
         }
     }
 }

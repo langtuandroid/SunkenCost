@@ -16,12 +16,11 @@ namespace Etchings
             _poisonStat = new Stat(design.GetStat(StatType.Poison));
         }
 
-        protected override List<BattleEvent> GetDesignResponsesToEvent(BattleEvent battleEvent)
+        protected override DesignResponse GetDesignResponsesToEvent(BattleEvent battleEvent)
         {
             var enemy = BattleEventsManager.Current.GetEnemyByResponderID(battleEvent.affectedResponderID);
             
-            return new List<BattleEvent>() 
-                {enemy.stats.AddPoison(_poisonStat.Value)};
+            return new DesignResponse(PlankNum, enemy.stats.AddPoison(_poisonStat.Value));
         }
 
         protected override bool TestCharMovementActivatedEffect(Enemy enemy)

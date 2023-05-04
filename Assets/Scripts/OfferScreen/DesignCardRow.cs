@@ -35,8 +35,10 @@ namespace OfferScreen
             var designCardRowDroppedInto = reorderableListEventStruct.ToList.GetComponent<DesignCardRow>();
 
             if (!designCardRowDroppedInto.IsDeckRow)
+            {
                 designCard.AllowLocking();
-            
+            }
+
             // Buy or sell
             if (reorderableListEventStruct.ToList != reorderableListEventStruct.FromList)
             {

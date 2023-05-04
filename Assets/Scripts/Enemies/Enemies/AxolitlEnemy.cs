@@ -8,14 +8,14 @@ using UnityEngine;
 
 public class AxolitlEnemy : Enemy, IStartOfTurnAbilityHolder
 {
-    private int _healingAmount = 5;
+    private int _healingAmount = 3;
     
     protected override void Init()
     {
         Name = "Axolitl";
         Mover.AddMove(1);
         Mover.AddMove(2);
-        SetInitialHealth(25);
+        SetInitialHealth(21);
         Gold = 1;
     }
     

@@ -12,7 +12,7 @@ using UnityEngine.UI;
 
 public class BattleHUDManager : MonoBehaviour, IBattleEventUpdatedUI
 {
-    [SerializeField] private Hearts _hearts;
+    [SerializeField] private BoatHealthMeter _boatHealthMeter;
     [SerializeField] private LoseLifeShaderController _loseLifeShaderController;
     
     [SerializeField] private TextMeshProUGUI _movesText;
@@ -57,7 +57,7 @@ public class BattleHUDManager : MonoBehaviour, IBattleEventUpdatedUI
 
     private void UpdateLives()
     {
-        _hearts.UpdateLives(Player.Current.Lives);
+        _boatHealthMeter.RefreshMeter(Player.Current.Health, RunProgress.PlayerStats.MaxHealth);
     }
 
     private void UpdateGoldText()

@@ -1,4 +1,5 @@
-﻿using TMPro;
+﻿using Items;
+using TMPro;
 using UnityEngine;
 
 namespace OfferScreen
@@ -7,8 +8,11 @@ namespace OfferScreen
     {
         private TextMeshProUGUI _textMeshProUGUI;
 
+        [SerializeField] private BattleActivationShaderDisplay _shaderDisplay;
         [SerializeField] private TMP_ColorGradient _goodColor;
         [SerializeField] private TMP_ColorGradient _badColor;
+
+        private int _currentGold = -1;
 
         private void Awake()
         {
@@ -21,6 +25,9 @@ namespace OfferScreen
             _textMeshProUGUI.text = "<font=\"GrapeSoda SDF\"><cspace=-0.2em>$ </cspace></font>" 
                                     + goldAmount.ToString();
             _textMeshProUGUI.colorGradientPreset = goldAmount >= 0 ? _goodColor : _badColor;
+            
+            if (_currentGold != goldAmount && _currentGold != -1) _shaderDisplay.Activate();
+            _currentGold = goldAmount;
         }
     }
 }

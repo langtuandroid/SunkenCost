@@ -25,6 +25,4 @@ MonoBehaviour:
   firstLevelUpStatMods:
   - _statType: 15
     _magnitude: 1
-  secondLevelUpStatMods:
-  - _statType: 15
-    _magnitude: 1
+  secondLevelUpStatMods: []

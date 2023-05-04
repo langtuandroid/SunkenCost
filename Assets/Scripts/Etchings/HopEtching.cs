@@ -9,12 +9,15 @@ namespace Etchings
 {
     public class HopEtching : AboutToMoveActivatedEffect
     {
-        protected override List<BattleEvent> GetDesignResponsesToEvent(BattleEvent battleEvent)
+        protected override DesignResponse GetDesignResponsesToEvent(BattleEvent battleEvent)
         {
             var enemy = BattleEventsManager.Current.GetEnemyByResponderID(battleEvent.affectedResponderID);
             enemy.Mover.AddSkip(GetStatValue(StatType.Hop));
-            return new List<BattleEvent>(){new BattleEvent(BattleEventType.EnemyMovementModified)
-                {affectedResponderID = battleEvent.affectedResponderID}};
+            
+            var response = new BattleEvent(BattleEventType.EnemyMovementModified)
+                    {affectedResponderID = battleEvent.affectedResponderID};
+            
+            return new DesignResponse(PlankNum, response);;
         }
 
         protected override bool TestCharMovementActivatedEffect(Enemy enemy)

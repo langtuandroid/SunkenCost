@@ -3,6 +3,7 @@ using System.Collections;
 using BattleScreen;
 using BattleScreen.BattleEvents;
 using Damage;
+using Enemies;
 
 public class Player : BattleEventResponder
 {
@@ -12,8 +13,8 @@ public class Player : BattleEventResponder
     
     public int Gold { get; private set; }
 
-    public int Lives { get; private set; }
-    private int MaxLives { get; set; }
+    public int Health { get; private set; }
+    private int MaxHealth { get; set; }
     public int MovesUsedThisTurn { get; private set; } = 0;
     public int MovesPerTurn { get; set; }
     
@@ -28,8 +29,8 @@ public class Player : BattleEventResponder
         Current = this;
 
         Gold = RunProgress.PlayerStats.Gold;
-        Lives = RunProgress.PlayerStats.Lives;
-        MaxLives = RunProgress.PlayerStats.MaxLives;
+        Health = RunProgress.PlayerStats.Health;
+        MaxHealth = RunProgress.PlayerStats.MaxHealth;
         _baseMovesPerTurn = RunProgress.PlayerStats.MovesPerTurn;
         MovesPerTurn = _baseMovesPerTurn;
         base.Awake();
@@ -40,27 +41,27 @@ public class Player : BattleEventResponder
         MovesUsedThisTurn = 0;
     }
 
-    private BattleEvent EnemyReachedEnd()
+    private BattleEvent EnemyReachedEnd(Enemy enemy)
     {
         return new BattleEvent(BattleEventType.PlayerLifeModified) 
-            {modifier = -1, source = DamageSource.Boat};
+            {modifier = -enemy.Health, source = DamageSource.Boat};
     }
 
     private BattleEvent ModifyLife(BattleEvent battleEvent)
     {
-        var previousLives = Lives;
-        Lives += battleEvent.modifier;
+        var previousHealth = Health;
+        Health += battleEvent.modifier;
 
-        if (Lives <= 0)
+        if (Health <= 0)
             return new BattleEvent(BattleEventType.PlayerDied);
         
-        if (Lives < previousLives)
+        if (Health < previousHealth)
             return new BattleEvent(BattleEventType.PlayerLostLife);
         
-        if (Lives > MaxLives)
-            Lives = MaxLives;
+        if (Health > MaxHealth)
+            Health = MaxHealth;
         
-        if (Lives > previousLives)
+        if (Health > previousHealth)
             return new BattleEvent(BattleEventType.PlayerGainedLife);
         
         return BattleEvent.None;
@@ -89,7 +90,8 @@ public class Player : BattleEventResponder
         var battleEvent = previousBattleEvent.type switch
         {
             BattleEventType.PlayerMovedPlank => UsedMove(),
-            BattleEventType.EnemyReachedBoat => EnemyReachedEnd(),
+            BattleEventType.EnemyReachedBoat => 
+                EnemyReachedEnd(BattleEventsManager.Current.GetEnemyByResponderID(previousBattleEvent.affectedResponderID)),
             BattleEventType.PlayerLifeModified => ModifyLife(previousBattleEvent),
             BattleEventType.TryGainedGold => TryGainGold(previousBattleEvent),
             _ => BattleEvent.None

@@ -271,4 +271,4 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 572c8538a7b04dd7953a427a7eb64c52, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  costText: {fileID: 8895990806632426760}
+  _costText: {fileID: 8895990806632426760}

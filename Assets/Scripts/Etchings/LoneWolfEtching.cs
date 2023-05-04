@@ -19,7 +19,7 @@ namespace Etchings
             _baseDamageModifier = new Stat(design.GetStat(StatType.DamageFlatModifier));
         }
 
-        protected override List<BattleEvent> GetDesignResponsesToEvent(BattleEvent battleEvent)
+        protected override DesignResponse GetDesignResponsesToEvent(BattleEvent battleEvent)
         {
             var responses = new List<BattleEvent>();
 
@@ -32,8 +32,8 @@ namespace Etchings
                     break;
             }
             
-            responses.AddRange(base.GetDesignResponsesToEvent(battleEvent));
-            return responses;
+            responses.AddRange(base.GetDesignResponsesToEvent(battleEvent).response);
+            return new DesignResponse(PlankNum, responses);
         }
 
         private BattleEvent UpdateDamage()

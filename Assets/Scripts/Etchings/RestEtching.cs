@@ -20,10 +20,11 @@ namespace Etchings
             return battleEvent.type == BattleEventType.EndedBattle;
         }
 
-        protected override List<BattleEvent> GetDesignResponsesToEvent(BattleEvent battleEvent)
+        protected override DesignResponse GetDesignResponsesToEvent(BattleEvent battleEvent)
         {
-            return new List<BattleEvent>(){new BattleEvent(BattleEventType.PlayerLifeModified) 
-                {modifier = _healAmountStat.Value}};
+            var response = new BattleEvent(BattleEventType.PlayerLifeModified)
+                {modifier = _healAmountStat.Value};
+            return new DesignResponse(PlankNum, response);
         }
     }
 }

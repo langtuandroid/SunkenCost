@@ -71,22 +71,16 @@ namespace Etchings
             {
                 UsesUsedThisTurn++;
 
-                var designResponseEvents = GetDesignResponsesToEvent(battleEvent);
-
-                var planksToColor = designResponseEvents.Select
-                    (designResponseEvent => designResponseEvent.type == BattleEventType.EnemyAttacked
-                        ? BattleEventsManager.Current.GetEnemyByResponderID(battleEvent.affectedResponderID).PlankNum
-                        : PlankNum);
-
-                var etchingActivatedEvent = new BattleEvent(BattleEventType.EtchingActivated, planksToColor.ToArray())
+                var designResponse = GetDesignResponsesToEvent(battleEvent);
+                var planksToColor = designResponse.planksToColor;
+                if (planksToColor.Contains(-1)) planksToColor = new int[0];
+                var etchingActivatedEvent = new BattleEvent(BattleEventType.EtchingActivated, planksToColor)
                 {
                     affectedResponderID = ResponderID
                 };
-                
-                var response = new List<BattleEvent>();
-                response.AddRange(designResponseEvents);
-                response.Add(etchingActivatedEvent);
-                return new BattleEventPackage(response.ToArray());
+
+                var response = new List<BattleEvent>(designResponse.response) {etchingActivatedEvent};
+                return new BattleEventPackage(response);
             }
             
             return BattleEventPackage.Empty;
@@ -94,6 +88,28 @@ namespace Etchings
         
         protected abstract bool GetIfDesignIsRespondingToEvent(BattleEvent battleEvent);
 
-        protected abstract List<BattleEvent> GetDesignResponsesToEvent(BattleEvent battleEvent);
+        protected abstract DesignResponse GetDesignResponsesToEvent(BattleEvent battleEvent);
+
+        protected readonly struct DesignResponse
+        {
+            public readonly int[] planksToColor;
+            public readonly List<BattleEvent> response;
+
+            public DesignResponse(List<int> planksToColor, List<BattleEvent> response)
+            {
+                this.planksToColor = planksToColor.ToArray();
+                this.response = response;
+            }
+
+            public DesignResponse(int plankToColor, List<BattleEvent> response) : this(new List<int> {plankToColor},
+                response)
+            {
+            }
+
+            public DesignResponse(int plankToColor, BattleEvent response) : this(new List<int> {plankToColor},
+                new List<BattleEvent> {response})
+            {
+            }
+        }
     }
 }
