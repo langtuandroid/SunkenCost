@@ -36,12 +36,6 @@ namespace Etchings
             _plank = GetComponentInParent<Plank>();
         }
 
-        protected int GetStatValue(StatType statType)
-        {
-            if (design.Stats.ContainsKey(statType)) return design.Stats[statType].Value;
-            return -1;
-        }
-
         private BattleEvent UnStun()
         {
             stunned = false;

@@ -20,7 +20,7 @@ namespace Etchings
             var poison = enemy.stats.Poison;
 
             var newStatMod = new StatModifier
-                (-poison * GetStatValue(StatType.StatMultiplier), StatModType.Flat);
+                (-poison * design.GetStat(StatType.StatMultiplier), StatModType.Flat);
             enemy.AddMaxHealthModifier(newStatMod);
 
             var response = new BattleEvent(BattleEventType.EnemyMaxHealthModified)

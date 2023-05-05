@@ -15,9 +15,9 @@ namespace Etchings
             if (enemy.Plank.Etching is not DamageEtching)
             {
                 var statMod = new StatModifier(design.GetStat(StatType.StatMultiplier) - 1, StatModType.PercentMult);
-                design.Stats[StatType.Damage].AddModifier(statMod);
+                design.AddStatModifier(StatType.Damage, statMod);
                 battleEvent = base.DamageEnemy(enemyResponderID);
-                design.Stats[StatType.Damage].RemoveModifier(statMod);
+                design.RemoveStatModifier(StatType.Damage, statMod);
             }
             else
             {

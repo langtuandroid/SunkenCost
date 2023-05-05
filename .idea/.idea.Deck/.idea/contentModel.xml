@@ -857,6 +857,7 @@
             <e p="VolumeSlider.cs" t="Include" />
             <e p="WhosTurnText.cs" t="Include" />
           </e>
+          <e p="UnexpectedStatException.cs" t="Include" />
           <e p="ZoomManager.cs" t="Include" />
         </e>
         <e p="Sprites" t="Include">

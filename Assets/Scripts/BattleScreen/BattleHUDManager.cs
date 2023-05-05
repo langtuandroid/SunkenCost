@@ -13,7 +13,6 @@ using UnityEngine.UI;
 public class BattleHUDManager : MonoBehaviour, IBattleEventUpdatedUI
 {
     [SerializeField] private BoatHealthMeter _boatHealthMeter;
-    [SerializeField] private LoseLifeShaderController _loseLifeShaderController;
     
     [SerializeField] private TextMeshProUGUI _movesText;
 
@@ -52,7 +51,6 @@ public class BattleHUDManager : MonoBehaviour, IBattleEventUpdatedUI
     private void LostLife()
     {
         UpdateLives();
-        _loseLifeShaderController.PlayerLostLife();
     }
 
     private void UpdateLives()

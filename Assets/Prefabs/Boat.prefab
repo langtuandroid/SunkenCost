@@ -711,5 +711,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2127c5d888f34f2dbe512714a2d9f5c2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _healthMeterRectTransform: {fileID: 4425034063246363018}
+  _healthMeter: {fileID: 449081355083363874}
   _healthText: {fileID: 5011094118315800803}

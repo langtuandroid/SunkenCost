@@ -1,53 +1,52 @@
 using System.Collections;
-using System.Collections.Generic;
-using AllIn1SpriteShader;
+using Items;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class LoseLifeShaderController : MonoBehaviour
+namespace UI
 {
-    private Image _image;
-    private Material _material;
+    public class LoseLifeShaderController : MonoBehaviour
+    {
+        [SerializeField] private BattleActivationShaderDisplay _battleActivationShaderDisplay;
     
-    private void Start()
-    {
-        _image = GetComponent<Image>();
-        _image.enabled = false;
-        _material = _image.material;
-    }
+        private Image _image;
+        private Material _material;
 
-    public void PlayerLostLife()
-    {
-        StartCoroutine(ShowHeart());
-    }
-
-    private IEnumerator ShowHeart()
-    {
-        _image.enabled = true;
-
-        var progress = 0f;
-
-        while (progress < 0.7f)
+        private void Start()
         {
-            _material.SetFloat("_Alpha", progress);
-            var vectorVals = progress * 40 + 1f;
-            transform.localScale = new Vector3(vectorVals, vectorVals, 1);
-
-            progress += 0.05f;
-            yield return new WaitForSecondsRealtime(0.01f);
+            _image = GetComponent<Image>();
+            _image.enabled = false;
+            _material = _image.material;
         }
 
-        progress = 0f;
-        while (progress < 1f)
+        public void PlayerLostLife()
         {
-            _material.SetFloat("_FadeAmount", progress);
-            progress += 0.02f;
-            yield return new WaitForSecondsRealtime(0.01f);
+            StartCoroutine(ShowHeart());
         }
 
-        _image.enabled = false;
-        transform.localScale = new Vector3(1, 1, 1);
-        _material.SetFloat("_Alpha", 0f);
-        _material.SetFloat("_FadeAmount", 0f);
+        private IEnumerator ShowHeart()
+        {
+            _image.enabled = true;
+            _battleActivationShaderDisplay.Activate();
+        
+            _material.EnableKeyword("FADE_ON");
+            _material.EnableKeyword("HITEFFECT_ON");
+            
+            _material.SetFloat("_Alpha", 1f);
+            _material.SetFloat("_FadeAmount", 0f);
+
+            var progress = 0f;
+            
+            while (progress < 1f)
+            {
+                _material.SetFloat("_FadeAmount", progress);
+                progress += 0.02f;
+                yield return new WaitForSecondsRealtime(0.01f);
+            }
+
+            _image.enabled = false;
+            _material.DisableKeyword("FADE_ON");
+            _material.DisableKeyword("HITEFFECT_ON");
+        }
     }
 }

@@ -35,9 +35,9 @@ namespace Etchings
             if (battleEvent.type == BattleEventType.StartNextPlayerTurn)
             {
                 _hadEnemyOnPlankThisTurn = false; 
-                var increase = new StatModifier(design.GetStat(StatType.DamageFlatModifier), StatModType.Flat);
-                _statModifiers.Push(increase); 
-                design.Stats[StatType.Damage].AddModifier(increase);
+                var newStatMod = new StatModifier(design.GetStat(StatType.DamageFlatModifier), StatModType.Flat);
+                _statModifiers.Push(newStatMod); 
+                design.AddStatModifier(StatType.Damage, newStatMod);
                 var response = new BattleEvent(BattleEventType.DesignModified) {affectedResponderID = ResponderID};
                 return new DesignResponse(-1, response);
             }
@@ -46,16 +46,11 @@ namespace Etchings
             return base.GetDesignResponsesToEvent(battleEvent);
         }
 
-        private void UpdateDamage()
-        {
-            
-        }
-
         private void OnDestroy()
         {
-            foreach (var statModifier in _statModifiers)
+            foreach (var statMod in _statModifiers)
             {
-                design.Stats[StatType.Damage].RemoveModifier(statModifier);
+                design.AddStatModifier(StatType.Damage, statMod);
             }
         }
     }

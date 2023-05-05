@@ -117,25 +117,14 @@ public class DesignManager : MonoBehaviour
     public static string GetDescription(Design design)
     {
         var description = "";
-        design.Stats.TryGetValue(StatType.MinRange, out var minRange);
-        design.Stats.TryGetValue(StatType.MaxRange, out var maxRange);
-        design.Stats.TryGetValue(StatType.Damage, out var damage);
-        design.Stats.TryGetValue(StatType.Boost, out var boost);
-        design.Stats.TryGetValue(StatType.Block, out var block);
-        design.Stats.TryGetValue(StatType.Poison, out var poison);
-        design.Stats.TryGetValue(StatType.HealPlayer, out var healPlayer);
-        design.Stats.TryGetValue(StatType.StatMultiplier, out var statMultiplier);
-        design.Stats.TryGetValue(StatType.Gold, out var gold);
-        design.Stats.TryGetValue(StatType.IntRequirement, out var intRequirement);
-        design.Stats.TryGetValue(StatType.ModifyPlayerHealth, out var modifyPlayerHealth);
 
         switch (design.Type)
         {
-            case DesignType.Melee: case DesignType.LoneWolf: case DesignType.Ambush:  
-                description = "Attacks enemies landing on this plank for " + damage?.Value + " damage";
+            case DesignType.Melee: case DesignType.LoneWolf: case DesignType.Ambush:
+                description = "Attacks enemies landing on this plank for " + design.GetStat(StatType.Damage) + " damage";
                 if (design.Type == DesignType.LoneWolf)
                 {
-                    description += ". " + design.Stats[StatType.DamageFlatModifier].Value + 
+                    description += ". " + design.GetStat(StatType.DamageFlatModifier) + 
                                   " damage for each other plank you have";
                 }
 
@@ -146,34 +135,44 @@ public class DesignManager : MonoBehaviour
                 }
 
                 break;
-            case DesignType.Ranged: case DesignType.Raid:
+            case DesignType.Ranged:
+            case DesignType.Raid:
+            {
                 var range = "";
-                if (minRange?.Value == maxRange?.Value)
+                var minRange = design.GetStat(StatType.MinRange);
+                var maxRange = design.GetStat(StatType.MaxRange);
+                if (minRange == maxRange)
                 {
-                    range = minRange?.Value.ToString() + " plank";
-                    if (minRange?.Value != 1) range += "s";
+                    range = design.GetStat(StatType.Damage) + " plank";
+                    if (minRange != 1) range += "s";
                 }
                 else
                 {
-                    range = minRange?.Value + "-" + maxRange?.Value + " planks";
+                    range = minRange + "-" + maxRange + " planks";
                 }
-                
-                description = "Attacks enemies landing " + range + " away for " + damage?.Value + " damage";
+
+                description = "Attacks enemies landing " + range + " away for " + design.GetStat(StatType.Damage) +
+                              " damage";
 
                 if (design.Type == DesignType.Raid)
-                    description += ". Deal " + statMultiplier?.Value + "x damage on non-Attack planks";
+                    description += ". Deal " + design.GetStat(StatType.StatMultiplier) +
+                                   "x damage on non-Attack planks";
                 break;
+            }
             case DesignType.Area:
-                var distance = maxRange?.Value + " plank";
-                if (maxRange?.Value != 1) distance += "s";
+            {
+                var maxRange = design.GetStat(StatType.MaxRange);
+                var distance = maxRange + " plank";
+                if (maxRange != 1) distance += "s";
                 description = "Attacks all enemies up to " + distance +
-                              " away for " + damage?.Value + " damage when an enemy lands within that range";
+                              " away for " + design.GetStat(StatType.Damage) + " damage when an enemy lands within that range";
                 break;
+            }
             case DesignType.Block: 
-                description = "Removes " + block?.Value + " movement from enemies leaving this plank";
+                description = "Removes " + design.GetStat(StatType.Block) + " movement from enemies leaving this plank";
                 break;
             case DesignType.Boost: 
-                description = "Boosts damage of adjacent Attack planks by " + boost?.Value;
+                description = "Boosts damage of adjacent Attack planks by " + design.GetStat(StatType.StatFlatModifier);
                 break;
             case DesignType.Hop:
                 description = "Enemies leaving this plank skip the next plank";
@@ -185,37 +184,38 @@ public class DesignManager : MonoBehaviour
                 description += " an enemy leaving this plank";
                 break;
             case DesignType.Poison:
-                description = "Applies " + poison?.Value + " poison to enemies landing on this plank";
+                description = "Applies " + design.GetStat(StatType.Poison) + " poison to enemies landing on this plank";
                 break;
             case DesignType.Focus:
-                description = "Enemies on this plank take " + statMultiplier?.Value + " damage";
+                description = "Enemies on this plank take " + design.GetStat(StatType.StatMultiplier) + "x damage";
                 if (design.Level < 2) description += "from Attacks";
                 break;
             case DesignType.Rest:
-                description = "At the end of the battle, recover " + healPlayer?.Value;
-                if (healPlayer?.Value > 1) description += " lives";
-                else description += " life";
+            {
+                var playerHealthModifier = design.GetStat(StatType.PlayerHealthModifier);
+                description = "At the end of the battle, recover " + playerHealthModifier + " health";
                 break;
+            }
             case DesignType.Finalise:
-                description = "When enemies land on this plank, deal " + damage?.Value +
-                              " damage to all enemies on every plank. If any survive, lose " + Math.Abs(modifyPlayerHealth.Value) + " lives";
+                description = "When enemies land on this plank, deal " + design.GetStat(StatType.Damage) +
+                              " damage to all enemies on every plank. If any survive, lose " + Math.Abs(design.GetStat(StatType.PlayerHealthModifier)) + " lives";
                 break;
             case DesignType.Cauterize:
-                var multiplier = statMultiplier?.Value;
+                var multiplier = design.GetStat(StatType.StatMultiplier);
                 var multiText = multiplier > 1 ? multiplier + "x " : "";
                 description = "When enemies land on this plank, lower their maximum health by " + multiText +
                               "their poison amount";
                 break;
             case DesignType.Research:
-                description = "When enemies land on this plank, heal them to full health. Gain " + gold?.Value + 
+                description = "When enemies land on this plank, heal them to full health. Gain " + design.GetStat(StatType.Gold) + 
                     " gold ";
                 if (design.Level < 2)
                 {
-                    description += "if " + intRequirement?.Value + " or more health is healed";
+                    description += "if " + design.GetStat(StatType.IntRequirement) + " or more health is healed";
                 }
                 else
                 {
-                    description += "per " + intRequirement?.Value + " health healed";
+                    description += "per " + design.GetStat(StatType.IntRequirement) + " health healed";
                 }
                 break;
         }
@@ -223,14 +223,15 @@ public class DesignManager : MonoBehaviour
         description = description.Replace("2x", "double");
         description = description.Replace("3x", "triple");
 
-        if (design.Stats.TryGetValue(StatType.UsesPerTurn, out var usesPerTurn))
+        if (design.HasStat(StatType.UsesPerTurn))
         {
-            var usesText = usesPerTurn?.Value switch
+            var usesPerTurn = design.GetStat(StatType.UsesPerTurn);
+            var usesText = usesPerTurn switch
             {
                 1 => "once",
                 2 => "twice",
                 3 => "triple",
-                _ => usesPerTurn?.Value + "x"
+                _ => usesPerTurn + "x"
             };
             description += " (" + usesText + " per turn)";
         }

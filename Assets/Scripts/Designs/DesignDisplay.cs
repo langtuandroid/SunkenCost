@@ -61,7 +61,8 @@ namespace Designs
             descriptionText.text = descriptionWithSprites
                 .Replace("all", "<color=#" + allColor + ">all<color=#" + defaultColor + ">");
             
-            usesText.text = design.Limitless ? "" : design.Stats[StatType.UsesPerTurn].Value - design.UsesUsedThisTurn + "/" + design.Stats[StatType.UsesPerTurn].Value;
+            usesText.text = design.Limitless ? "" : design.GetStat(StatType.UsesPerTurn) - design.UsesUsedThisTurn 
+                                                    + "/" + design.GetStat(StatType.UsesPerTurn);
         }
     }
 }

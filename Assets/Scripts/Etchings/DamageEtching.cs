@@ -7,20 +7,13 @@ namespace Etchings
 {
     public abstract class DamageEtching : LandedOnPlankActivatedEtching
     {
-        protected int Damage => GetStatValue(StatType.Damage);
-        protected int MinRange => GetStatValue(StatType.MinRange);
-        protected int MaxRange => GetStatValue(StatType.MaxRange);
+        private int Damage => design.GetStat(StatType.Damage);
+        protected int MinRange => design.GetStat(StatType.MinRange);
+        protected int MaxRange => design.GetStat(StatType.MaxRange);
 
         protected virtual BattleEvent DamageEnemy(int enemyResponderID)
         {
             return DamageHandler.DamageEnemy(Damage, enemyResponderID, DamageSource.Etching);
-        }
-
-        public void ModifyStat(StatType stat, int amount)
-        {
-            if (!design.Stats.ContainsKey(stat)) return;
-        
-            design.Stats[stat].AddModifier(new StatModifier(amount, StatModType.Flat));
         }
     }
 }

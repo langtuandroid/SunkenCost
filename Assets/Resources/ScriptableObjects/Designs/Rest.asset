@@ -12,17 +12,17 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 942f8b137e054c4f96a7f159489a25ee, type: 3}
   m_Name: Rest
   m_EditorClassIdentifier: 
-  _designType: 9
-  _title: Rest
-  _sprite: {fileID: 21300000, guid: aebfbe60762b0ef4086c52317d594a32, type: 3}
-  _color: {r: 0.6666667, g: 0.2, b: 0.26666668, a: 1}
-  _rarity: 1
-  _initialStats:
-  - _statType: 10
-    _magnitude: 1
-  _firstLevelUpStatMods:
-  - _statType: 10
-    _magnitude: 1
-  _secondLevelUpStatMods:
-  - _statType: 10
-    _magnitude: 1
+  designType: 9
+  title: Rest
+  sprite: {fileID: 21300000, guid: aebfbe60762b0ef4086c52317d594a32, type: 3}
+  _color: {r: 0.26842916, g: 1, b: 0, a: 1}
+  rarity: 2
+  initialStats:
+  - _statType: 13
+    _magnitude: 5
+  firstLevelUpStatMods:
+  - _statType: 13
+    _magnitude: 5
+  secondLevelUpStatMods:
+  - _statType: 13
+    _magnitude: 5

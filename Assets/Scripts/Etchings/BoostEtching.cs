@@ -14,24 +14,18 @@ namespace Etchings
     public class BoostEtching : StickMovementActivatedEtching
     {
         private readonly List<DamageEtching> _boostedEtchings = new List<DamageEtching>();
-        private Stat _boostAmountStat;
-        private int _boostAmount => _boostAmountStat.Value;
-        private bool modsActive = false;
-
-        protected void Start()
-        {
-            _boostAmountStat = new Stat(design.GetStat(StatType.Boost));
-        }
-
+        private StatModifier _boostMod;
+        private bool _modsActive = false;
+        
         private void ClearMods()
         {
             // Clear stored etchings
             foreach (var etching in _boostedEtchings)
             {
-                etching.ModifyStat(StatType.Damage, -_boostAmount);
+                etching.design.RemoveStatModifier(StatType.Damage, _boostMod);
             }
 
-            modsActive = false;
+            _modsActive = false;
             _boostedEtchings.Clear();
         }
         
@@ -39,7 +33,7 @@ namespace Etchings
         {
             if (stunned)
             {
-                if (modsActive) ClearMods();
+                if (_modsActive) ClearMods();
                 return false;
             }
 
@@ -58,7 +52,7 @@ namespace Etchings
 
         protected override DesignResponse GetDesignResponsesToEvent(BattleEvent battleEvent)
         {
-            if (modsActive) ClearMods();
+            if (_modsActive) ClearMods();
 
             // Etching to the left
             if (PlankNum > 1)
@@ -67,7 +61,7 @@ namespace Etchings
                 if (leftPlank && leftPlank.Etching && leftPlank.Etching is DamageEtching damageEtching)
                 {
                     _boostedEtchings.Add(damageEtching);
-                    modsActive = true;
+                    _modsActive = true;
                 }
             }
             
@@ -78,7 +72,7 @@ namespace Etchings
                 if (rightPlank && rightPlank.Etching && rightPlank.Etching is DamageEtching damageEtching)
                 {
                     _boostedEtchings.Add(damageEtching);
-                    modsActive = true;
+                    _modsActive = true;
                 }
             }
 
@@ -86,10 +80,12 @@ namespace Etchings
                 return new DesignResponse(-1, new List<BattleEvent>() {BattleEvent.None});
 
             var responses = new List<BattleEvent>();
+            
+            _boostMod = new StatModifier(design.GetStat(StatType.DamageFlatModifier), StatModType.Flat);
 
             foreach (var etching in _boostedEtchings)
             {
-                etching.ModifyStat(StatType.Damage, +_boostAmount);
+                etching.design.AddStatModifier(StatType.Damage, _boostMod);
                 responses.Add(new BattleEvent(BattleEventType.DesignModified, etching.ResponderID));
             }
 

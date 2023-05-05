@@ -17,7 +17,7 @@ namespace Etchings
             
             // Set the new goal stick as the opposite direction
             enemy.Mover.Reverse();
-            enemy.Mover.AddMovement(GetStatValue(StatType.MovementBoost));
+            enemy.Mover.AddMovement(design.GetStat(StatType.MovementBoost));
             var response = new BattleEvent(BattleEventType.EnemyMovementModified) 
                 {source = DamageSource.Etching, affectedResponderID = battleEvent.affectedResponderID};
             

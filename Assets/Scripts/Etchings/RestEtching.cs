@@ -8,13 +8,6 @@ namespace Etchings
 {
     public class RestEtching : Etching
     {
-        private Stat _healAmountStat;
-        
-        private void Start()
-        {
-            _healAmountStat = new Stat(design.GetStat(StatType.HealPlayer));
-        }
-
         protected override bool GetIfDesignIsRespondingToEvent(BattleEvent battleEvent)
         {
             return battleEvent.type == BattleEventType.EndedBattle;
@@ -23,7 +16,7 @@ namespace Etchings
         protected override DesignResponse GetDesignResponsesToEvent(BattleEvent battleEvent)
         {
             var response = new BattleEvent(BattleEventType.PlayerLifeModified)
-                {modifier = _healAmountStat.Value};
+                {modifier = design.GetStat(StatType.PlayerHealthModifier)};
             return new DesignResponse(PlankNum, response);
         }
     }

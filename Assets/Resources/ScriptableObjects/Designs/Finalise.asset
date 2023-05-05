@@ -12,19 +12,19 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 942f8b137e054c4f96a7f159489a25ee, type: 3}
   m_Name: Finalise
   m_EditorClassIdentifier: 
-  _designType: 11
-  _title: Finalise
-  _sprite: {fileID: 21300000, guid: 08871885d88539a4b946dd558635b26f, type: 3}
+  designType: 11
+  title: Finalise
+  sprite: {fileID: 21300000, guid: 08871885d88539a4b946dd558635b26f, type: 3}
   _color: {r: 0, g: 1, b: 1, a: 1}
-  _rarity: 2
-  _initialStats:
+  rarity: 2
+  initialStats:
   - _statType: 2
     _magnitude: 12
   - _statType: 13
-    _magnitude: 1
-  _firstLevelUpStatMods:
+    _magnitude: -10
+  firstLevelUpStatMods:
   - _statType: 2
     _magnitude: 3
-  _secondLevelUpStatMods:
+  secondLevelUpStatMods:
   - _statType: 2
     _magnitude: 5

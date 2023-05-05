@@ -1,6 +1,7 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using BattleScreen.BattleEvents;
 using UnityEngine;
 
 namespace Designs
@@ -12,7 +13,7 @@ namespace Designs
         Damage,
         MinRange,
         MaxRange,
-        Boost,
+        StatFlatModifier,
         Poison,
         Hop,
         Block,
@@ -20,7 +21,7 @@ namespace Designs
         HealPlayer,
         DamageFlatModifier,
         MovementBoost,
-        ModifyPlayerHealth,
+        PlayerHealthModifier,
         HealEnemy,
         Gold,
         IntRequirement
@@ -43,7 +44,7 @@ namespace Designs
 
         public int Cost { get; private set; }
 
-        public Dictionary<StatType, Stat> Stats { get; private set; } = new Dictionary<StatType, Stat>();
+        private readonly Dictionary<StatType, Stat> _stats = new Dictionary<StatType, Stat>();
 
         public Design(DesignAsset designAsset)
         {
@@ -55,21 +56,12 @@ namespace Designs
             }
         
             // Limitless
-            if (!Stats.ContainsKey(StatType.UsesPerTurn))
+            if (!_stats.ContainsKey(StatType.UsesPerTurn))
             {
                 Limitless = true;
             }
         
             Cost = RunProgress.PlayerStats.PriceHandler.GetCardCost(this.designAsset.rarity);
-        }
-
-        public int GetStat(StatType statType)
-        {
-            Stats.TryGetValue(statType, out var stat);
-            if (stat != null) return stat.Value;
-        
-            Debug.Log("Stat " + statType + " not found on design " + Title);
-            return -1;
         }
 
         public void LevelUp()
@@ -83,15 +75,37 @@ namespace Designs
         
             foreach (var statSetter in levelUpStatMods)
             {
-                if (Stats.ContainsKey(statSetter.StatType))
+                if (_stats.ContainsKey(statSetter.StatType))
                 {
-                    ModifyStat(statSetter.StatType, statSetter.Magnitude);
+                    ModifyStatBaseValue(statSetter.StatType, statSetter.Magnitude);
                 }
                 else
                 {
                     AddStat(statSetter.StatType, statSetter.Magnitude);
                 }
             }
+        }
+        
+        public bool HasStat(StatType statType) => _stats.ContainsKey(statType);
+
+        public int GetStat(StatType statType)
+        {
+            if (_stats.TryGetValue(statType, out var stat)) return stat.Value;
+        
+            Debug.Log("Stat " + statType + " not found on design " + Title);
+            throw new UnexpectedStatException(statType);
+        }
+
+        public void AddStatModifier(StatType statType, StatModifier statMod)
+        {
+            if (!HasStat(statType)) throw new UnexpectedStatException(statType);
+            _stats[statType].AddModifier(statMod);
+        }
+        
+        public void RemoveStatModifier(StatType statType, StatModifier statMod)
+        {
+            if (!HasStat(statType)) throw new UnexpectedStatException(statType);
+            _stats[statType].RemoveModifier(statMod);
         }
 
         public void SetCost(int cost)
@@ -101,12 +115,12 @@ namespace Designs
 
         private void AddStat(StatType statType, int value) 
         {
-            Stats.Add(statType, new Stat(value));
+            _stats.Add(statType, new Stat(value));
         }
 
-        private void ModifyStat(StatType statType, int value)
+        private void ModifyStatBaseValue(StatType statType, int value)
         {
-            Stats[statType].ModifyBaseValue(value);
+            _stats[statType].ModifyBaseValue(value);
         }
     }
 }

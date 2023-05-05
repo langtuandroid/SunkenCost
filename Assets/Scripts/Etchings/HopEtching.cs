@@ -12,7 +12,7 @@ namespace Etchings
         protected override DesignResponse GetDesignResponsesToEvent(BattleEvent battleEvent)
         {
             var enemy = BattleEventsManager.Current.GetEnemyByResponderID(battleEvent.affectedResponderID);
-            enemy.Mover.AddSkip(GetStatValue(StatType.Hop));
+            enemy.Mover.AddSkip(design.GetStat(StatType.Hop));
             
             var response = new BattleEvent(BattleEventType.EnemyMovementModified)
                     {affectedResponderID = battleEvent.affectedResponderID};

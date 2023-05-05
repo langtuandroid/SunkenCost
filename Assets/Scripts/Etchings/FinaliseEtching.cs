@@ -33,7 +33,7 @@ namespace Etchings
             
             if (anEnemyWillSurvive)
             {
-                response.Add(new BattleEvent(BattleEventType.PlayerLifeModified) {modifier = design.GetStat(StatType.ModifyPlayerHealth)});
+                response.Add(new BattleEvent(BattleEventType.PlayerLifeModified) {modifier = design.GetStat(StatType.PlayerHealthModifier)});
             }
 
             var allPlanks = new List<int>();

@@ -16,9 +16,9 @@ namespace Etchings
 
             var responses = new List<BattleEvent> {enemy.Heal(amountToHeal)};
             
-            var goldAmount = GetStatValue(StatType.Gold);
+            var goldAmount = design.GetStat(StatType.Gold);
             
-            var timesMetRequirement = (int)Mathf.Floor(((float)amountToHeal / GetStatValue(StatType.IntRequirement)));
+            var timesMetRequirement = (int)Mathf.Floor((float)amountToHeal / design.GetStat(StatType.IntRequirement));
             var amountOfGoldToGive = design.Level > 1 ? timesMetRequirement * goldAmount : goldAmount;
             
             responses.Add(new BattleEvent(BattleEventType.TryGainedGold) {modifier = amountOfGoldToGive});
