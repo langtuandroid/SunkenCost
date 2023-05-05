@@ -384,7 +384,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _plankArea: {fileID: 1186376511}
-  _island: {fileID: 1155358484}
+  _islandTransform: {fileID: 1155358484}
+  _boatTransform: {fileID: 1789173348}
 --- !u!224 &109192786 stripped
 RectTransform:
   m_CorrespondingSourceObject: {fileID: 1210558848469399205, guid: 7e05e520579b24a45a28a9993e09aa39, type: 3}
@@ -425,7 +426,7 @@ MonoBehaviour:
   - Axolitl
   - Cucunger
   - Rat
-  - FlyingFish
+  - FlightingFish
   - Steelo
   - Leech
   - Crib
@@ -799,10 +800,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1223569416}
     m_Modifications:
-    - target: {fileID: 5085049157644285181, guid: e3cc4f2c33cfd684c8636588f351035d, type: 3}
-      propertyPath: _zoomScale
-      value: 1
-      objectReference: {fileID: 0}
     - target: {fileID: 5891915919942667590, guid: e3cc4f2c33cfd684c8636588f351035d, type: 3}
       propertyPath: m_Pivot.x
       value: 1
@@ -2110,7 +2107,7 @@ MonoBehaviour:
   m_ChildAlignment: 4
   m_StartCorner: 0
   m_StartAxis: 0
-  m_CellSize: {x: 260, y: 1000}
+  m_CellSize: {x: 270, y: 1000}
   m_Spacing: {x: 30, y: 0}
   m_Constraint: 2
   m_ConstraintCount: 1
@@ -2602,23 +2599,6 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 980, y: 1000}
   m_Pivot: {x: 0.5, y: 0.5}
---- !u!1 &1706768434 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 2969082296994940522, guid: 2a4706dcc81855544b586c44db24c662, type: 3}
-  m_PrefabInstance: {fileID: 2969082297371688470}
-  m_PrefabAsset: {fileID: 0}
---- !u!114 &1706768439
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1706768434}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: a79441f348de89743a2939f4d699eac1, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1 &1789173347
 GameObject:
   m_ObjectHideFlags: 0
@@ -3436,7 +3416,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 3739874107440994272, guid: 753e431c20e8b5d45a1560f4e9ca944f, type: 3}
       propertyPath: m_Pivot.x
-      value: 1.01
+      value: -0.1
       objectReference: {fileID: 0}
     - target: {fileID: 3739874107440994272, guid: 753e431c20e8b5d45a1560f4e9ca944f, type: 3}
       propertyPath: m_Pivot.y
@@ -3456,11 +3436,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3739874107440994272, guid: 753e431c20e8b5d45a1560f4e9ca944f, type: 3}
       propertyPath: m_AnchoredPosition.x
-      value: 1916.1638
+      value: 927.37195
       objectReference: {fileID: 0}
     - target: {fileID: 3739874107440994272, guid: 753e431c20e8b5d45a1560f4e9ca944f, type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: 3158.122
+      value: 1579.3011
       objectReference: {fileID: 0}
     - target: {fileID: 3739874107924409688, guid: 753e431c20e8b5d45a1560f4e9ca944f, type: 3}
       propertyPath: m_Pivot.x

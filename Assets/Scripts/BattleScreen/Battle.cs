@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using BattleScene;
 using BattleScreen.BattleEvents;
+using Damage;
 using Disturbances;
 using UI;
 using UnityEngine;
@@ -118,6 +119,7 @@ namespace BattleScreen
             Debug.Log("------ Ending Battle ------");
             yield return StartCoroutine(StartChainOfEvents(new BattleEvent(BattleEventType.EndedBattle)));
             GameState = GameState.Rewards;
+            yield return new WaitForSecondsRealtime(ActionExecutionSpeed);
             CreateEndOfBattlePopup();
         }
 
@@ -144,7 +146,7 @@ namespace BattleScreen
 
                 foreach (var battleEvent in response.battleEvents)
                 {
-                    var waitTime = GetAnimationTime(battleEvent.type);
+                    var waitTime = GetAnimationTime(battleEvent);
                     if (waitTime > 0f)
                         yield return new WaitForSecondsRealtime(waitTime * ActionExecutionSpeed);
                     
@@ -154,17 +156,22 @@ namespace BattleScreen
             }
         }
 
-        private float GetAnimationTime(BattleEventType type)
+        private float GetAnimationTime(BattleEvent battleEvent)
         {
+            var type = battleEvent.type;
+            
             switch (type)
             {
                 case BattleEventType.PlayerLostLife:
                     return 1.3f;
                 case BattleEventType.EtchingActivated: //case BattleEventType.ItemActivated:
-                    return 1.3f;
-                case BattleEventType.StartedIndividualEnemyTurn:
+                    return battleEvent.showResponse ? 1.3f : -1f;
                 case BattleEventType.EndedEnemyTurn: 
+                case BattleEventType.EnemyReachedBoat:
+                case BattleEventType.EnemyAboutToMove:
                     return 1f;
+                case BattleEventType.EnemyKilled when battleEvent.source != DamageSource.Boat:
+                    return 0.75f;
                 case BattleEventType.EnemyStartOfTurnEffect:
                     return 0.5f;
                 case BattleEventType.EnemyMove:

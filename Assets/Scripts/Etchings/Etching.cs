@@ -36,18 +36,6 @@ namespace Etchings
             _plank = GetComponentInParent<Plank>();
         }
 
-        private BattleEvent UnStun()
-        {
-            stunned = false;
-            return new BattleEvent(BattleEventType.EtchingUnStunned) {affectedResponderID = ResponderID};
-        }
-
-        public BattleEvent Stun(DamageSource source)
-        {
-            stunned = true;
-            return new BattleEvent(BattleEventType.EtchingStunned) {source =  source, affectedResponderID = ResponderID};
-        }
-
         public override BattleEventPackage GetResponseToBattleEvent(BattleEvent battleEvent)
         {
             if (battleEvent.type == BattleEventType.StartNextPlayerTurn)
@@ -70,7 +58,8 @@ namespace Etchings
                 if (planksToColor.Contains(-1)) planksToColor = new int[0];
                 var etchingActivatedEvent = new BattleEvent(BattleEventType.EtchingActivated, planksToColor)
                 {
-                    affectedResponderID = ResponderID
+                    affectedResponderID = ResponderID,
+                    showResponse = designResponse.showResponse
                 };
 
                 var response = new List<BattleEvent>(designResponse.response) {etchingActivatedEvent};
@@ -80,28 +69,54 @@ namespace Etchings
             return BattleEventPackage.Empty;
         }
         
+        public BattleEvent Stun(DamageSource source)
+        {
+            stunned = true;
+            return new BattleEvent(BattleEventType.EtchingStunned) {source =  source, affectedResponderID = ResponderID};
+        }
+
+        public BattleEvent AddStatModifier(StatType statType, StatModifier mod)
+        {
+            design.AddStatModifier(statType, mod);
+            return new BattleEvent(BattleEventType.DesignModified) {affectedResponderID = ResponderID};
+        }
+        
+        public BattleEvent RemoveStatModifier(StatType statType, StatModifier mod)
+        {
+            design.RemoveStatModifier(statType, mod);
+            return new BattleEvent(BattleEventType.DesignModified) {affectedResponderID = ResponderID};
+        }
+        
         protected abstract bool GetIfDesignIsRespondingToEvent(BattleEvent battleEvent);
 
         protected abstract DesignResponse GetDesignResponsesToEvent(BattleEvent battleEvent);
+
+        private BattleEvent UnStun()
+        {
+            stunned = false;
+            return new BattleEvent(BattleEventType.EtchingUnStunned) {affectedResponderID = ResponderID};
+        }
 
         protected readonly struct DesignResponse
         {
             public readonly int[] planksToColor;
             public readonly List<BattleEvent> response;
+            public readonly bool showResponse;
 
-            public DesignResponse(List<int> planksToColor, List<BattleEvent> response)
+            public DesignResponse(List<int> planksToColor, List<BattleEvent> response, bool showResponse = true)
             {
                 this.planksToColor = planksToColor.ToArray();
                 this.response = response;
+                this.showResponse = showResponse;
             }
 
-            public DesignResponse(int plankToColor, List<BattleEvent> response) : this(new List<int> {plankToColor},
-                response)
+            public DesignResponse(int plankToColor, List<BattleEvent> response, bool showResponse = true) : this(new List<int> {plankToColor},
+                response, showResponse)
             {
             }
 
-            public DesignResponse(int plankToColor, BattleEvent response) : this(new List<int> {plankToColor},
-                new List<BattleEvent> {response})
+            public DesignResponse(int plankToColor, BattleEvent response, bool showResponse = true) : this(new List<int> {plankToColor},
+                new List<BattleEvent> {response}, showResponse)
             {
             }
         }

@@ -1,21 +1,18 @@
-﻿using System;
-using System.Collections;
-using System.Collections.Generic;
-using Enemies;
-using UnityEngine;
-
-public class RatEnemy : Enemy
+﻿namespace Enemies.Enemies
 {
-    protected override void Init()
+    public class RatEnemy : Enemy
     {
-        Name = "Scrat";
-        Mover.AddMove(2);
-        SetInitialHealth(10);
-        Gold = 1;
-    }
+        protected override void Init()
+        {
+            Name = "Scrat";
+            Mover.AddMove(2);
+            SetInitialHealth(10);
+            Gold = 1;
+        }
     
-    public override string GetDescription()
-    {
-        return "Scurries along steadily";
+        public override string GetDescription()
+        {
+            return "Scurries along steadily";
+        }
     }
 }

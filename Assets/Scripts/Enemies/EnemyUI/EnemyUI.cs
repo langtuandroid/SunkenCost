@@ -21,6 +21,8 @@ namespace Enemies.EnemyUI
         [SerializeField] private EnemyPoisonDisplay _poisonDisplay;
         [SerializeField] private EnemySpeechBubble _speechBubble;
 
+        [SerializeField] private EnemyDestroyAnimation _destroyAnimation;
+
         private Enemy _enemy;
         private EnemyMover _mover;
 
@@ -40,6 +42,13 @@ namespace Enemies.EnemyUI
 
         public void RespondToBattleEvent(BattleEvent battleEvent)
         {
+            if (battleEvent.type == BattleEventType.EnemyKilled &&
+                battleEvent.affectedResponderID == _enemy.ResponderID)
+            {
+                _destroyAnimation.StartAnimation();
+                return;
+            }
+            
             if (_enemy.IsDestroyed) return;
             if (battleEvent.type != BattleEventType.StartNextPlayerTurn
                 && battleEvent.affectedResponderID != _enemy.ResponderID 

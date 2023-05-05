@@ -75,7 +75,7 @@ public class EnemySpawner : BattleEventResponder
 
     private Enemy SpawnEnemyOnIsland(string enemyName)
     {
-        var enemy = SpawnEnemy(enemyName, Board.Current.Island);
+        var enemy = SpawnEnemy(enemyName, Board.Current.IslandTransform);
         enemy.Mover.SetPlankNum(-1);
         return enemy;
     }

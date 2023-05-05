@@ -33,11 +33,11 @@ RectTransform:
   m_Father: {fileID: 7218503433987872770}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0.5, y: 0}
-  m_AnchorMax: {x: 0.5, y: 0}
-  m_AnchoredPosition: {x: -0.000015258789, y: 0}
-  m_SizeDelta: {x: 27.8, y: 29.9}
-  m_Pivot: {x: 0.5, y: 0}
+  m_AnchorMin: {x: 0, y: 0.5}
+  m_AnchorMax: {x: 0, y: 0.5}
+  m_AnchoredPosition: {x: 21.25, y: 0}
+  m_SizeDelta: {x: 27.8, y: 29.900002}
+  m_Pivot: {x: 0, y: 0.5}
 --- !u!222 &3778701601933790722
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -148,6 +148,7 @@ GameObject:
   - component: {fileID: 8434244612522797590}
   - component: {fileID: 7729284425644849085}
   - component: {fileID: 375557261626533298}
+  - component: {fileID: 3006126132754637293}
   m_Layer: 5
   m_Name: EnemyImage
   m_TagString: Untagged
@@ -249,6 +250,19 @@ MonoBehaviour:
   normalStrength: 5
   normalSmoothing: 1
   computingNormal: 0
+--- !u!114 &3006126132754637293
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 636320641471793274}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6aa02b8113d8402e95df5834adb81f28, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _image: {fileID: 7729284425644849085}
 --- !u!1 &1447995094553525929
 GameObject:
   m_ObjectHideFlags: 0
@@ -681,11 +695,11 @@ RectTransform:
   m_Father: {fileID: 7218503433987872770}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0.5, y: 1}
-  m_AnchorMax: {x: 0.5, y: 1}
-  m_AnchoredPosition: {x: -0.000015258789, y: 0}
+  m_AnchorMin: {x: 0, y: 0.5}
+  m_AnchorMax: {x: 0, y: 0.5}
+  m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 20, y: 20}
-  m_Pivot: {x: 0.5, y: 1}
+  m_Pivot: {x: 0, y: 0.5}
 --- !u!222 &6726341935503381047
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -866,7 +880,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 1, y: 0.5}
   m_AnchorMax: {x: 1, y: 0.5}
-  m_AnchoredPosition: {x: 5, y: -12.5}
+  m_AnchoredPosition: {x: 5, y: -8}
   m_SizeDelta: {x: 32, y: 46.1}
   m_Pivot: {x: 0, y: 0.5}
 --- !u!225 &6424907138871017342
@@ -987,6 +1001,7 @@ MonoBehaviour:
   _movementText: {fileID: 4158527831319826515}
   _poisonDisplay: {fileID: 1280331486218307287}
   _speechBubble: {fileID: 100436974548953825}
+  _destroyAnimation: {fileID: 3006126132754637293}
 --- !u!1 &6651237443550581794
 GameObject:
   m_ObjectHideFlags: 0

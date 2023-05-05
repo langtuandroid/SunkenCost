@@ -604,6 +604,7 @@
             <e p="BattleRenderer.cs" t="Include" />
             <e p="EndOfBattlePopup.cs" t="Include" />
             <e p="Player.cs" t="Include" />
+            <e p="UI" t="Include" />
           </e>
           <e p="ChallengeLoader.cs" t="Include" />
           <e p="Damage" t="Include">
@@ -644,7 +645,7 @@
               <e p="ClausEnemy.cs" t="Include" />
               <e p="CribEnemy.cs" t="Include" />
               <e p="CucungerEnemy.cs" t="Include" />
-              <e p="FlyingFishEnemy.cs" t="Include" />
+              <e p="FlightingFishEnemy.cs" t="Include" />
               <e p="GrouldEnemy.cs" t="Include" />
               <e p="LeechEnemy.cs" t="Include" />
               <e p="Maxolotl.cs" t="Include" />
@@ -662,6 +663,7 @@
             <e p="EnemySpawner.cs" t="Include" />
             <e p="EnemyStats.cs" t="Include" />
             <e p="EnemyUI" t="Include">
+              <e p="EnemyDestroyAnimation.cs" t="Include" />
               <e p="EnemyHealthText.cs" t="Include" />
               <e p="EnemyMovementText.cs" t="Include" />
               <e p="EnemyPoisonDisplay.cs" t="Include" />
@@ -705,7 +707,6 @@
           <e p="GlobalEvents.cs" t="Include" />
           <e p="ItemLoader.cs" t="Include" />
           <e p="Items" t="Include">
-            <e p="BattleActivationShaderDisplay.cs" t="Include" />
             <e p="ItemAsset.cs" t="Include" />
             <e p="ItemDisplay.cs" t="Include" />
             <e p="ItemIconsDisplay.cs" t="Include" />
@@ -770,6 +771,7 @@
           <e p="Stat.cs" t="Include" />
           <e p="StatModifier.cs" t="Include" />
           <e p="UI" t="Include">
+            <e p="BattleActivationShaderDisplay.cs" t="Include" />
             <e p="BoatHealthMeter.cs" t="Include" />
             <e p="EnemyTurnFrame.cs" t="Include" />
             <e p="GoldText.cs" t="Include" />

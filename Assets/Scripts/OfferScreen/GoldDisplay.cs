@@ -25,8 +25,12 @@ namespace OfferScreen
             _textMeshProUGUI.text = "<font=\"GrapeSoda SDF\"><cspace=-0.2em>$ </cspace></font>" 
                                     + goldAmount.ToString();
             _textMeshProUGUI.colorGradientPreset = goldAmount >= 0 ? _goodColor : _badColor;
-            
-            if (_currentGold != goldAmount && _currentGold != -1) _shaderDisplay.Activate();
+
+            if (_currentGold != goldAmount && _currentGold != -1)
+            {
+                Debug.Log(_currentGold + " to " + goldAmount);
+                _shaderDisplay.Activate();
+            }
             _currentGold = goldAmount;
         }
     }

@@ -38,11 +38,11 @@ namespace MapScreen
                 
                 return;
             }
-
-            var bpd = ScenarioManager.BATTLES_PER_DIFFICULTY;
-            var eliteRound = RunProgress.BattleNumber % bpd == bpd - 1;
+            
+            var isEliteRound = RunProgress.BattleNumber % ScenarioManager.BATTLES_PER_DIFFICULTY 
+                             == ScenarioManager.BATTLES_PER_DIFFICULTY - 1;
         
-            var weightings = eliteRound
+            var weightings = isEliteRound
                 ? EliteWeightings
                 : NormalWeightings;
             
@@ -56,7 +56,7 @@ namespace MapScreen
             {
                 if (i == 999)
                 {
-                    Debug.Log("Couldn't generate a disturbance!!");
+                    Debug.Log("Couldn't generate a disturbance!");
                 }
             
                 // Duplicates of items or cards are ok, but not anything else

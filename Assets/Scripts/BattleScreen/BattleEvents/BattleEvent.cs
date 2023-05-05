@@ -61,12 +61,13 @@ namespace BattleScreen
     public class BattleEvent
     {
         public readonly BattleEventType type;
-        public int modifier;
+        public readonly int[] planksToColor;
+        public bool showResponse = true;
+        public int modifier = 0;
         public DamageSource source;
         public DamageModificationPackage damageModificationPackage;
         public int affectedResponderID;
         public int affectingResponderID;
-        public int[] planksToColor;
 
         public BattleEvent(BattleEventType type, params int[] planksToColor)
         {

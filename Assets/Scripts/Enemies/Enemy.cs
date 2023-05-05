@@ -155,17 +155,16 @@ namespace Enemies
 
         public BattleEventPackage Die(DamageSource source)
         {
-            var eventList = new List<BattleEvent>
-            {
-                CreateEvent(BattleEventType.EnemyKilled, damageSource: source),
-                CreateEvent(BattleEventType.TryGainedGold, Gold, source)
-            };
+            var eventList = new List<BattleEvent>();
             
             if (source == DamageSource.Boat) eventList.Add(CreateEvent(BattleEventType.EnemyReachedBoat));
+
+            eventList.Add(CreateEvent(BattleEventType.EnemyKilled, damageSource: source));
+            eventList.Add(CreateEvent(BattleEventType.TryGainedGold, Gold, source));
+
             if (IsMyTurn) eventList.Add(CreateEvent(BattleEventType.EndedIndividualEnemyTurn));
             
             IsDestroyed = true;
-            Destroy(gameObject);
             return new BattleEventPackage(eventList);
         }
     }

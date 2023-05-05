@@ -89,6 +89,7 @@ namespace Enemies
                     }
                     
                     RemoveEnemy(deadEnemy);
+                    Destroy(deadEnemy.gameObject);
                     break;
                 case BattleEventType.StartedEnemyTurn:
                     SetNextEnemyTurnSequence();

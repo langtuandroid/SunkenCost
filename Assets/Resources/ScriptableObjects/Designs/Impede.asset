@@ -19,9 +19,9 @@ MonoBehaviour:
   rarity: 1
   initialStats:
   - _statType: 8
-    _magnitude: 2
-  - _statType: 1
     _magnitude: 1
+  - _statType: 1
+    _magnitude: 2
   firstLevelUpStatMods:
   - _statType: 8
     _magnitude: 1

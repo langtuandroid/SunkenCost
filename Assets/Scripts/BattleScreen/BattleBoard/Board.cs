@@ -10,7 +10,8 @@ namespace BattleScreen.BattleBoard
     public class Board : MonoBehaviour
     {
         [SerializeField] private GridLayoutGroup _plankArea;
-        [SerializeField] private Transform _island;
+        [SerializeField] private Transform _islandTransform;
+        [SerializeField] private Transform _boatTransform;
 
         public static Board Current;
         
@@ -23,7 +24,8 @@ namespace BattleScreen.BattleBoard
         public RectTransform Content { get; private set; }
         public RectTransform Rect { get; private set; }
 
-        public Transform Island => _island;
+        public Transform IslandTransform => _islandTransform;
+        public Transform BoatTransform => _boatTransform;
         
         public bool CanMovePlanks => !Player.Current.IsOutOfMoves && Battle.Current.GameState == GameState.PlayerActionPeriod;
         

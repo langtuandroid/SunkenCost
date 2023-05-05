@@ -20,6 +20,8 @@ namespace Enemies
         private const float IslandYOffset = -400f;
         private const float PlankXOffset = 0f;
         private const float PlankYOffset = -400f;
+        private const float BoatXOffset = 0f;
+        private const float BoatYOffset = -400f;
         
         private float _moveVelocityX = 0f;
         private float _moveVelocityY = 0f;
@@ -31,9 +33,15 @@ namespace Enemies
         
         public void RespondToBattleEvent(BattleEvent battleEvent)
         {
-            if (battleEvent.type == BattleEventType.EnemyMove ||
-                (battleEvent.type == BattleEventType.EnemyKilled && battleEvent.source != DamageSource.Boat) ||
-                battleEvent.type == BattleEventType.EnemySpawned)
+            if (battleEvent.type == BattleEventType.EnemyReachedBoat)
+            {
+                var enemy = BattleEventsManager.Current.GetEnemyByResponderID(battleEvent.affectedResponderID);
+                var aimPosition = new Vector2(BoatXOffset, BoatYOffset);
+                StartCoroutine(MoveTransform(Board.Current.BoatTransform, enemy, aimPosition));
+            }
+            else if (battleEvent.type == BattleEventType.EnemyMove ||
+               (battleEvent.type == BattleEventType.EnemyKilled && battleEvent.source != DamageSource.Boat) ||
+               battleEvent.type == BattleEventType.EnemySpawned)
             {
                 var enemy = BattleEventsManager.Current.GetEnemyByResponderID(battleEvent.affectedResponderID);
                 UpdatePosition(enemy.PlankNum);
@@ -41,7 +49,7 @@ namespace Enemies
             
         }
 
-        public void UpdatePosition(int plankNum)
+        private void UpdatePosition(int plankNum)
         {
             var isOnIsland = plankNum == -1;
 
@@ -54,7 +62,7 @@ namespace Enemies
 
             var offsetFromEnemiesAbove = 0f;
 
-            var plankTransform = isOnIsland ? Board.Current.Island : Board.Current.Content.GetChild(plankNum);
+            var plankTransform = isOnIsland ? Board.Current.IslandTransform : Board.Current.Content.GetChild(plankNum);
             
             foreach (var enemy in enemiesInOrder)
             {

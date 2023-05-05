@@ -10,6 +10,7 @@ Material:
   m_Name: EnemyImage
   m_Shader: {fileID: 4800000, guid: a36b7719ff0465b42ab1407d67672c5f, type: 3}
   m_ValidKeywords:
+  - FADE_ON
   - OUTTEX_ON
   m_InvalidKeywords: []
   m_LightmapFlags: 4
@@ -58,7 +59,7 @@ Material:
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _OutlineTex:
-        m_Texture: {fileID: 2800000, guid: 74087f6d03f233e4a8a142fa01f9e5cf, type: 3}
+        m_Texture: {fileID: 2800000, guid: 253ade5030af1b643bf9a54cceb26f01, type: 3}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _OverlayTex:
@@ -106,17 +107,17 @@ Material:
     - _DistortTexYSpeed: 5
     - _EditorDrawers: 6
     - _FadeAmount: -0.1
-    - _FadeBurnGlow: 2
-    - _FadeBurnTransition: 0.075
-    - _FadeBurnWidth: 0.025
+    - _FadeBurnGlow: 81.3
+    - _FadeBurnTransition: 0.281
+    - _FadeBurnWidth: 0
     - _FishEyeUvAmount: 0.35
     - _FlickerAlpha: 0
-    - _FlickerFreq: 0.2
-    - _FlickerPercent: 0.05
+    - _FlickerFreq: 1.93
+    - _FlickerPercent: 0.75
     - _GhostBlend: 1
-    - _GhostColorBoost: 1
+    - _GhostColorBoost: 0
     - _GhostTransparency: 0
-    - _GlitchAmount: 3
+    - _GlitchAmount: 0.54
     - _GlitchSize: 1
     - _Glow: 10
     - _GlowGlobal: 1
@@ -152,7 +153,7 @@ Material:
     - _MaxYUV: 1
     - _MinXUV: 0
     - _MinYUV: 0
-    - _MotionBlurAngle: 0.1
+    - _MotionBlurAngle: -1
     - _MotionBlurDist: 1.25
     - _MyDstMode: 10
     - _MySrcMode: 5
@@ -161,27 +162,27 @@ Material:
     - _OffsetUvY: 0
     - _OnlyInnerOutline: 0
     - _OnlyOutline: 0
-    - _OutlineAlpha: 0.412
+    - _OutlineAlpha: 0
     - _OutlineDistortAmount: 0.5
     - _OutlineDistortTexXSpeed: 5
     - _OutlineDistortTexYSpeed: 5
-    - _OutlineGlow: 1.5
+    - _OutlineGlow: 1
     - _OutlinePixelWidth: 1
     - _OutlineTexXSpeed: 10
     - _OutlineTexYSpeed: 0
-    - _OutlineWidth: 0.004
+    - _OutlineWidth: 0.0019
     - _OverlayBlend: 1
     - _OverlayGlow: 1
-    - _PinchUvAmount: 0.35
+    - _PinchUvAmount: 0.099
     - _PixelateSize: 512
     - _PosterizeGamma: 0.75
     - _PosterizeNumColors: 8
     - _PosterizeOutline: 0
     - _RandomSeed: 0
-    - _RectSize: 1
+    - _RectSize: 1.2
     - _RotateUvAmount: 0
     - _RoundWaveSpeed: 2
-    - _RoundWaveStrength: 0.7
+    - _RoundWaveStrength: 1
     - _ShadowAlpha: 0.5
     - _ShadowX: 0.1
     - _ShadowY: -0.05
@@ -194,7 +195,7 @@ Material:
     - _ShineWidth: 0.088
     - _TextureScrollXSpeed: 1
     - _TextureScrollYSpeed: 0
-    - _TwistUvAmount: 1
+    - _TwistUvAmount: 0
     - _TwistUvPosX: 0.5
     - _TwistUvPosY: 0.5
     - _TwistUvRadius: 0.75
@@ -205,7 +206,7 @@ Material:
     - _WaveY: 0.5
     - _ZTestMode: 4
     - _ZWrite: 0
-    - _ZoomUvAmount: 0.5
+    - _ZoomUvAmount: 0.1
     m_Colors:
     - _AlphaOutlineColor: {r: 1, g: 1, b: 1, a: 1}
     - _Color: {r: 1, g: 1, b: 1, a: 1}
@@ -218,7 +219,7 @@ Material:
     - _ColorSwapBlue: {r: 1, g: 1, b: 1, a: 1}
     - _ColorSwapGreen: {r: 1, g: 1, b: 1, a: 1}
     - _ColorSwapRed: {r: 1, g: 1, b: 1, a: 1}
-    - _FadeBurnColor: {r: 1, g: 1, b: 0, a: 1}
+    - _FadeBurnColor: {r: 1, g: 0, b: 0.06537819, a: 1}
     - _GlowColor: {r: 1, g: 1, b: 1, a: 1}
     - _GradBotLeftCol: {r: 0, g: 0, b: 1, a: 1}
     - _GradBotRightCol: {r: 0, g: 1, b: 0, a: 1}
@@ -228,7 +229,7 @@ Material:
     - _HitEffectColor: {r: 0, g: 0.22, b: 0.000010346466, a: 1}
     - _HologramStripeColor: {r: 0, g: 1, b: 1, a: 1}
     - _InnerOutlineColor: {r: 1, g: 0, b: 0, a: 1}
-    - _OutlineColor: {r: 1, g: 1, b: 1, a: 1}
+    - _OutlineColor: {r: 1, g: 0, b: 0, a: 1}
     - _OverlayColor: {r: 1, g: 1, b: 1, a: 1}
     - _ShadowColor: {r: 0, g: 0, b: 0, a: 1}
     - _ShineColor: {r: 0.45586988, g: 0.6792453, b: 0.40690637, a: 0}

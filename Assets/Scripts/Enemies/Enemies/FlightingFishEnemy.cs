@@ -2,7 +2,7 @@
 
 namespace Enemies.Enemies
 {
-    public class FlyingFishEnemy : Enemy
+    public class FlightingFishEnemy : Enemy
     {
         protected override void Init()
         {
