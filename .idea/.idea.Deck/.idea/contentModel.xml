@@ -46,61 +46,6 @@
           <e p="EnemyEffects" t="Include" />
         </e>
         <e p="Audio" t="Include" />
-        <e p="Beautify" t="Include">
-          <e p="_README FIRST!.txt" t="Include" />
-          <e p="Builtin" t="Include" />
-          <e p="Documentation" t="Include" />
-          <e p="Editor" t="Include">
-            <e p="BeautifyEffectInspector.cs" t="Include" />
-            <e p="BeautifyProfileInspector.cs" t="Include" />
-            <e p="BeautifySAdvancedOptionsInfo.cs" t="Include" />
-            <e p="BeautifySInfo.cs" t="Include" />
-            <e p="CubeLUTImporter.cs" t="Include" />
-            <e p="FrameBrowser.cs" t="Include" />
-            <e p="LUTBrowser.cs" t="Include" />
-            <e p="Resources" t="Include">
-              <e p="FrameThumbnail.shader" t="Include" />
-              <e p="LUTThumbnail.shader" t="Include" />
-            </e>
-            <e p="VRCheck.cs" t="Include" />
-          </e>
-          <e p="ReadMe.txt" t="Include" />
-          <e p="Resources" t="Include">
-            <e p="Materials" t="Include" />
-            <e p="Particles" t="Include">
-              <e p="ParticleBlendZBuffer.shader" t="Include" />
-            </e>
-            <e p="Shaders" t="Include">
-              <e p="Beautify.cginc" t="Include" />
-              <e p="Beautify.shader" t="Include" />
-              <e p="BeautifyACESFitted.cginc" t="Include" />
-              <e p="BeautifyAdvancedParams.cginc" t="Include" />
-              <e p="BeautifyBasic.cginc" t="Include" />
-              <e p="BeautifyBasic.shader" t="Include" />
-              <e p="BeautifyCAberration.cginc" t="Include" />
-              <e p="BeautifyCommon.cginc" t="Include" />
-              <e p="BeautifyDistortion.cginc" t="Include" />
-              <e p="BeautifyDoF.cginc" t="Include" />
-              <e p="BeautifyEA.cginc" t="Include" />
-              <e p="BeautifyLum.cginc" t="Include" />
-              <e p="BeautifyMobile.cginc" t="Include" />
-              <e p="BeautifyMobile.shader" t="Include" />
-              <e p="BeautifyOrtho.cginc" t="Include" />
-              <e p="BeautifyOutline.cginc" t="Include" />
-              <e p="BeautifySF.cginc" t="Include" />
-              <e p="CopyDepth.shader" t="Include" />
-              <e p="CopyDepthBiased.shader" t="Include" />
-            </e>
-            <e p="Textures" t="Include">
-              <e p="README Textures.txt" t="Include" />
-            </e>
-          </e>
-          <e p="Scripts" t="Include">
-            <e p="Beautify.cs" t="Include" />
-            <e p="Beautify.ShaderParams.cs" t="Include" />
-            <e p="BeautifyProfile.cs" t="Include" />
-          </e>
-        </e>
         <e p="com.unity.uiextensions" t="Include">
           <e p="Editor" t="Include">
             <e p="AccordionElementEditor.cs" t="Include" />
@@ -822,7 +767,6 @@
             <e p="ReorderableListElement.cs" t="Include" />
           </e>
           <e p="RunProgress.cs" t="Include" />
-          <e p="SerializedDictionary.cs" t="Include" />
           <e p="Stat.cs" t="Include" />
           <e p="StatModifier.cs" t="Include" />
           <e p="UI" t="Include">

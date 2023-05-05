@@ -16,7 +16,7 @@ namespace Etchings
         private void Start()
         {
             _baseDamage = new Stat(design.GetStat(StatType.Damage));
-            _baseDamageModifier = new Stat(design.GetStat(StatType.DamageFlatModifier));
+            _baseDamageModifier = new Stat(design.GetStat(StatType.StatFlatModifier));
         }
 
         protected override DesignResponse GetDesignResponsesToEvent(BattleEvent battleEvent)

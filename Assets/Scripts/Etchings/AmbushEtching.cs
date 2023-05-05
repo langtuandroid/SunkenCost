@@ -35,7 +35,7 @@ namespace Etchings
             if (battleEvent.type == BattleEventType.StartNextPlayerTurn)
             {
                 _hadEnemyOnPlankThisTurn = false; 
-                var newStatMod = new StatModifier(design.GetStat(StatType.DamageFlatModifier), StatModType.Flat);
+                var newStatMod = new StatModifier(design.GetStat(StatType.StatFlatModifier), StatModType.Flat);
                 _statModifiers.Push(newStatMod); 
                 design.AddStatModifier(StatType.Damage, newStatMod);
                 var response = new BattleEvent(BattleEventType.DesignModified) {affectedResponderID = ResponderID};

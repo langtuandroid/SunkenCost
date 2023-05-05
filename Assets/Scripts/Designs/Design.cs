@@ -18,11 +18,11 @@ namespace Designs
         Hop,
         Block,
         StatMultiplier,
-        HealPlayer,
-        DamageFlatModifier,
+        SOMETHINGELSEHERE,
+        SOMETHINGELSEHERE2,
         MovementBoost,
         PlayerHealthModifier,
-        HealEnemy,
+        SOMETHINGELSEHERE3,
         Gold,
         IntRequirement
     }

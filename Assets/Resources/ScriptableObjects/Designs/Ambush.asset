@@ -20,11 +20,11 @@ MonoBehaviour:
   initialStats:
   - _statType: 2
     _magnitude: 3
-  - _statType: 11
-    _magnitude: 4
+  - _statType: 5
+    _magnitude: 3
   firstLevelUpStatMods:
-  - _statType: 11
+  - _statType: 5
     _magnitude: 2
   secondLevelUpStatMods:
-  - _statType: 11
+  - _statType: 5
     _magnitude: 5

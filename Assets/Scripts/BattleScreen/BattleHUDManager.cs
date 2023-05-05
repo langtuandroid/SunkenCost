@@ -26,7 +26,6 @@ public class BattleHUDManager : MonoBehaviour, IBattleEventUpdatedUI
     {
         BattleRenderer.Current.RegisterUIUpdater(this);
         
-        UpdateLives();
         UpdateMovesText();
         UpdateGoldText();
         _whosTurnText.EndEnemyTurn();

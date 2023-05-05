@@ -124,13 +124,13 @@ public class DesignManager : MonoBehaviour
                 description = "Attacks enemies landing on this plank for " + design.GetStat(StatType.Damage) + " damage";
                 if (design.Type == DesignType.LoneWolf)
                 {
-                    description += ". " + design.GetStat(StatType.DamageFlatModifier) + 
+                    description += ". " + design.GetStat(StatType.StatFlatModifier) + 
                                   " damage for each other plank you have";
                 }
 
                 if (design.Type == DesignType.Ambush)
                 {
-                    description += ". Increase by " + design.GetStat(StatType.DamageFlatModifier) +
+                    description += ". Increase by " + design.GetStat(StatType.StatFlatModifier) +
                                    " each turn it doesn't attack";
                 }
 

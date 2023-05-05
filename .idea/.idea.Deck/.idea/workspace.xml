@@ -23,34 +23,150 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="50470089-3e0c-4487-973b-9d375622b070" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/Assets/Scripts/UnexpectedStatException.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/Scripts/UnexpectedStatException.cs.meta" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/.idea.Deck/.idea/contentModel.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.Deck/.idea/contentModel.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/AllIn1SpriteShader/Materials/AskingToPress.mat" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/AllIn1SpriteShader/Materials/AskingToPress.mat.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/RenderTextures/RenderPipelineAsset.asset" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/RenderTextures/RenderPipelineAsset.asset.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/RenderTextures/RenderPipelineAssetRenderer.asset" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/RenderTextures/RenderPipelineAssetRenderer.asset.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/UniversalRenderPipelineGlobalSettings.asset" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/UniversalRenderPipelineGlobalSettings.asset.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/ProjectSettings/ShaderGraphSettings.asset" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/ProjectSettings/URPProjectSettings.asset" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/.idea.Deck/.idea/indexLayout.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.Deck/.idea/indexLayout.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/.idea.Deck/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.Deck/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/AllIn1SpriteShader/Materials/EnemyTurnFrame.mat" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/AllIn1SpriteShader/Materials/EnemyTurnFrame.mat" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/AllIn1SpriteShader/Materials/Panel.mat" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/AllIn1SpriteShader/Materials/Panel.mat" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/Boat.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Prefabs/Boat.prefab" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Resources/ScriptableObjects/Designs/Finalise.asset" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Resources/ScriptableObjects/Designs/Finalise.asset" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Resources/ScriptableObjects/Designs/Rest.asset" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Resources/ScriptableObjects/Designs/Rest.asset" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Resources/ScriptableObjects/Disturbances/Heart.asset" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Resources/ScriptableObjects/Disturbances/Heart.asset" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Beautify.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Beautify/Builtin.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Beautify/Builtin/BeautifyBuiltinPipeline.unitypackage.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Beautify/Documentation.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Beautify/Documentation/Documentation.url" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Beautify/Documentation/Documentation.url.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Beautify/Documentation/Kronnect Assets.url" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Beautify/Documentation/Kronnect Assets.url.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Beautify/Editor.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Beautify/Editor/BeautifyEffectInspector.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Beautify/Editor/BeautifyEffectInspector.cs.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Beautify/Editor/BeautifyProfileInspector.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Beautify/Editor/BeautifyProfileInspector.cs.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Beautify/Editor/BeautifySAdvancedOptionsInfo.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Beautify/Editor/BeautifySAdvancedOptionsInfo.cs.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Beautify/Editor/BeautifySInfo.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Beautify/Editor/BeautifySInfo.cs.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Beautify/Editor/CubeLUTImporter.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Beautify/Editor/CubeLUTImporter.cs.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Beautify/Editor/FrameBrowser.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Beautify/Editor/FrameBrowser.cs.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Beautify/Editor/LUTBrowser.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Beautify/Editor/LUTBrowser.cs.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Beautify/Editor/Resources.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Beautify/Editor/Resources/FrameThumbnail.shader" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Beautify/Editor/Resources/FrameThumbnail.shader.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Beautify/Editor/Resources/LUTThumbnail.shader" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Beautify/Editor/Resources/LUTThumbnail.shader.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Beautify/Editor/Resources/beautifyHeader.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Beautify/Editor/Resources/beautifyHeader.png.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Beautify/Editor/VRCheck.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Beautify/Editor/VRCheck.cs.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Beautify/README.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Beautify/README.txt.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Beautify/Resources.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Beautify/Resources/Materials.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Beautify/Resources/Materials/flareNoise.mat" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Beautify/Resources/Materials/flareNoise.mat.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Beautify/Resources/Particles.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Beautify/Resources/Particles/ParticleBlendZBuffer.mat" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Beautify/Resources/Particles/ParticleBlendZBuffer.mat.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Beautify/Resources/Particles/ParticleBlendZBuffer.shader" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Beautify/Resources/Particles/ParticleBlendZBuffer.shader.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Beautify/Resources/Shaders.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Beautify/Resources/Shaders/Beautify.cginc" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Beautify/Resources/Shaders/Beautify.cginc.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Beautify/Resources/Shaders/Beautify.shader" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Beautify/Resources/Shaders/Beautify.shader.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Beautify/Resources/Shaders/BeautifyACESFitted.cginc" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Beautify/Resources/Shaders/BeautifyACESFitted.cginc.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Beautify/Resources/Shaders/BeautifyAdvancedParams.cginc" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Beautify/Resources/Shaders/BeautifyAdvancedParams.cginc.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Beautify/Resources/Shaders/BeautifyBasic.cginc" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Beautify/Resources/Shaders/BeautifyBasic.cginc.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Beautify/Resources/Shaders/BeautifyBasic.shader" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Beautify/Resources/Shaders/BeautifyBasic.shader.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Beautify/Resources/Shaders/BeautifyCAberration.cginc" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Beautify/Resources/Shaders/BeautifyCAberration.cginc.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Beautify/Resources/Shaders/BeautifyCommon.cginc" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Beautify/Resources/Shaders/BeautifyCommon.cginc.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Beautify/Resources/Shaders/BeautifyDistortion.cginc" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Beautify/Resources/Shaders/BeautifyDistortion.cginc.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Beautify/Resources/Shaders/BeautifyDoF.cginc" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Beautify/Resources/Shaders/BeautifyDoF.cginc.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Beautify/Resources/Shaders/BeautifyEA.cginc" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Beautify/Resources/Shaders/BeautifyEA.cginc.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Beautify/Resources/Shaders/BeautifyLum.cginc" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Beautify/Resources/Shaders/BeautifyLum.cginc.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Beautify/Resources/Shaders/BeautifyMobile.cginc" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Beautify/Resources/Shaders/BeautifyMobile.cginc.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Beautify/Resources/Shaders/BeautifyMobile.shader" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Beautify/Resources/Shaders/BeautifyMobile.shader.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Beautify/Resources/Shaders/BeautifyOrtho.cginc" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Beautify/Resources/Shaders/BeautifyOrtho.cginc.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Beautify/Resources/Shaders/BeautifyOutline.cginc" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Beautify/Resources/Shaders/BeautifyOutline.cginc.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Beautify/Resources/Shaders/BeautifySF.cginc" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Beautify/Resources/Shaders/BeautifySF.cginc.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Beautify/Resources/Shaders/CopyDepth.shader" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Beautify/Resources/Shaders/CopyDepth.shader.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Beautify/Resources/Shaders/CopyDepthBiased.shader" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Beautify/Resources/Shaders/CopyDepthBiased.shader.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Beautify/Resources/Textures.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Beautify/Resources/Textures/LUTNeutral.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Beautify/Resources/Textures/LUTNeutral.png.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Beautify/Resources/Textures/LUTSepia.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Beautify/Resources/Textures/LUTSepia.png.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Beautify/Resources/Textures/README Textures.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Beautify/Resources/Textures/README Textures.txt.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Beautify/Resources/Textures/dirt1.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Beautify/Resources/Textures/dirt1.png.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Beautify/Resources/Textures/dirt2.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Beautify/Resources/Textures/dirt2.png.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Beautify/Resources/Textures/dirt3.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Beautify/Resources/Textures/dirt3.png.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Beautify/Resources/Textures/dirt4.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Beautify/Resources/Textures/dirt4.png.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Beautify/Resources/Textures/dirt5.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Beautify/Resources/Textures/dirt5.png.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Beautify/Resources/Textures/flareNoise.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Beautify/Resources/Textures/flareNoise.png.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Beautify/Resources/Textures/grungeBorder.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Beautify/Resources/Textures/grungeBorder.png.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Beautify/Scripts.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Beautify/Scripts/Beautify.ShaderParams.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Beautify/Scripts/Beautify.ShaderParams.cs.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Beautify/Scripts/Beautify.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Beautify/Scripts/Beautify.cs.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Beautify/Scripts/BeautifyProfile.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Beautify/Scripts/BeautifyProfile.cs.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Beautify/_README FIRST!.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Beautify/_README FIRST!.txt.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/MainCamera.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Prefabs/MainCamera.prefab" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Resources/ScriptableObjects/Designs/Ambush.asset" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Resources/ScriptableObjects/Designs/Ambush.asset" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Resources/ScriptableObjects/Designs/LoneWolf.asset" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Resources/ScriptableObjects/Designs/LoneWolf.asset" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Scenes/Battle.unity" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scenes/Battle.unity" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Scripts/BattleScreen/BattleHUDManager.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/BattleScreen/BattleHUDManager.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Scripts/Designs/Design.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Designs/Design.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Designs/DesignDisplay.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Designs/DesignDisplay.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Scripts/Designs/DesignManager.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Designs/DesignManager.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Scripts/Etchings/AmbushEtching.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Etchings/AmbushEtching.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Scripts/Etchings/BoostEtching.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Etchings/BoostEtching.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Etchings/CauterizeEtching.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Etchings/CauterizeEtching.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Etchings/DamageEtching.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Etchings/DamageEtching.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Etchings/Etching.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Etchings/Etching.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Etchings/FinaliseEtching.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Etchings/FinaliseEtching.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Etchings/HopEtching.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Etchings/HopEtching.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Etchings/RaidEtching.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Etchings/RaidEtching.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Etchings/ResearchEtching.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Etchings/ResearchEtching.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Etchings/RestEtching.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Etchings/RestEtching.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Etchings/ReverseEtching.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Etchings/ReverseEtching.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/UI/BoatHealthMeter.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/UI/BoatHealthMeter.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/UI/LoseLifeShaderController.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/UI/LoseLifeShaderController.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Etchings/LoneWolfEtching.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Etchings/LoneWolfEtching.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/SerializedDictionary.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/SerializedDictionary.cs.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Sprites/NextRoundButton.png" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Sprites/NextRoundButton.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Packages/manifest.json" beforeDir="false" afterPath="$PROJECT_DIR$/Packages/manifest.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Packages/packages-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/Packages/packages-lock.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ProjectSettings/GraphicsSettings.asset" beforeDir="false" afterPath="$PROJECT_DIR$/ProjectSettings/GraphicsSettings.asset" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/UserSettings/EditorUserSettings.asset" beforeDir="false" afterPath="$PROJECT_DIR$/UserSettings/EditorUserSettings.asset" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/UserSettings/Layouts/CurrentMaximizeLayout.dwlt" beforeDir="false" afterPath="$PROJECT_DIR$/UserSettings/Layouts/CurrentMaximizeLayout.dwlt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/UserSettings/Layouts/default-2021.dwlt" beforeDir="false" afterPath="$PROJECT_DIR$/UserSettings/Layouts/default-2021.dwlt" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -87,7 +203,6 @@
     <setting file="file://$PROJECT_DIR$/Assets/Scripts/PlayerStats.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Library/PackageCache/com.unity.ugui@1.0.0/Runtime/EventSystem/EventSystem.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Scripts/Etchings/FinaliseEtching.cs" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/Assets/Scripts/SerializedDictionary.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Scripts/MapScreen/DisturbanceGenerator.cs" root0="FORCE_HIGHLIGHTING" />
   </component>
   <component name="IdeDocumentHistory">
@@ -112,7 +227,6 @@
         <option value="$PROJECT_DIR$/Assets/Scripts/OfferScreen/DesignCard.cs" />
         <option value="$PROJECT_DIR$/Assets/Scripts/Etchings/AreaEtching.cs" />
         <option value="$PROJECT_DIR$/Assets/Scripts/Etchings/FocusEtching.cs" />
-        <option value="$PROJECT_DIR$/Assets/Scripts/Etchings/LoneWolfEtching.cs" />
         <option value="$PROJECT_DIR$/Assets/Scripts/Etchings/MeleeEtching.cs" />
         <option value="$PROJECT_DIR$/Assets/Scripts/Etchings/PoisonEtching.cs" />
         <option value="$PROJECT_DIR$/Assets/Scripts/Etchings/BlockEtching.cs" />
@@ -129,8 +243,6 @@
         <option value="$PROJECT_DIR$/Assets/Scripts/Etchings/FinaliseEtching.cs" />
         <option value="$PROJECT_DIR$/Assets/Scripts/Designs/DesignDisplay.cs" />
         <option value="$PROJECT_DIR$/Assets/Scripts/UnexpectedStatException.cs" />
-        <option value="$PROJECT_DIR$/Assets/Scripts/Etchings/AmbushEtching.cs" />
-        <option value="$PROJECT_DIR$/Assets/Scripts/Etchings/BoostEtching.cs" />
         <option value="$PROJECT_DIR$/Assets/Scripts/Etchings/Etching.cs" />
         <option value="$PROJECT_DIR$/Assets/Scripts/Etchings/CauterizeEtching.cs" />
         <option value="$PROJECT_DIR$/Assets/Scripts/Etchings/DamageEtching.cs" />
@@ -139,11 +251,14 @@
         <option value="$PROJECT_DIR$/Assets/Scripts/Etchings/ResearchEtching.cs" />
         <option value="$PROJECT_DIR$/Assets/Scripts/Etchings/ReverseEtching.cs" />
         <option value="$PROJECT_DIR$/Assets/Scripts/Etchings/RestEtching.cs" />
-        <option value="$PROJECT_DIR$/Assets/Scripts/Designs/Design.cs" />
         <option value="$PROJECT_DIR$/Assets/Scripts/UI/LoseLifeShaderController.cs" />
-        <option value="$PROJECT_DIR$/Assets/Scripts/BattleScreen/BattleHUDManager.cs" />
         <option value="$PROJECT_DIR$/Assets/Scripts/UI/BoatHealthMeter.cs" />
+        <option value="$PROJECT_DIR$/Assets/Scripts/Etchings/BoostEtching.cs" />
+        <option value="$PROJECT_DIR$/Assets/Scripts/Designs/Design.cs" />
         <option value="$PROJECT_DIR$/Assets/Scripts/Designs/DesignManager.cs" />
+        <option value="$PROJECT_DIR$/Assets/Scripts/Etchings/LoneWolfEtching.cs" />
+        <option value="$PROJECT_DIR$/Assets/Scripts/Etchings/AmbushEtching.cs" />
+        <option value="$PROJECT_DIR$/Assets/Scripts/BattleScreen/BattleHUDManager.cs" />
       </list>
     </option>
   </component>
@@ -276,7 +391,7 @@
       <workItem from="1682374213923" duration="32267000" />
       <workItem from="1682514844429" duration="45018000" />
       <workItem from="1682901798470" duration="25682000" />
-      <workItem from="1683084544483" duration="25918000" />
+      <workItem from="1683084544483" duration="28034000" />
     </task>
     <servers />
   </component>

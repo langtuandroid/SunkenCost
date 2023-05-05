@@ -81,7 +81,7 @@ namespace Etchings
 
             var responses = new List<BattleEvent>();
             
-            _boostMod = new StatModifier(design.GetStat(StatType.DamageFlatModifier), StatModType.Flat);
+            _boostMod = new StatModifier(design.GetStat(StatType.StatFlatModifier), StatModType.Flat);
 
             foreach (var etching in _boostedEtchings)
             {
