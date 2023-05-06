@@ -77,7 +77,7 @@ public class BattleHUDManager : MonoBehaviour, IBattleEventUpdatedUI
 
     private void PlankAddedOrRemoved()
     {
-        ZoomManager.current.SetStickScale();
+        BoardScaler.current.SetBoardScale();
     }
 
     public void RespondToBattleEvent(BattleEvent battleEvent)

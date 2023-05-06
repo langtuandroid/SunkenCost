@@ -143,7 +143,7 @@ public class DesignManager : MonoBehaviour
                 var maxRange = design.GetStat(StatType.MaxRange);
                 if (minRange == maxRange)
                 {
-                    range = design.GetStat(StatType.Damage) + " plank";
+                    range = design.GetStat(StatType.MinRange) + " plank";
                     if (minRange != 1) range += "s";
                 }
                 else

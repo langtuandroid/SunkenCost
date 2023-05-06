@@ -982,6 +982,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _animator: {fileID: 8434244612522797590}
   _healAnimator: {fileID: 2732373047387415667}
+  _destroyAnimation: {fileID: 3006126132754637293}
 --- !u!114 &6343256771185614035
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -994,14 +995,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: aae86cc000b7424485ecb265c55ad76d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _canvasGroup: {fileID: 8939885515697747817}
   _tooltipTrigger: {fileID: 1879409556900183149}
   _turnOrderText: {fileID: 8745471203706988776}
   _healthText: {fileID: 5273272120716782114}
   _movementText: {fileID: 4158527831319826515}
   _poisonDisplay: {fileID: 1280331486218307287}
   _speechBubble: {fileID: 100436974548953825}
-  _destroyAnimation: {fileID: 3006126132754637293}
 --- !u!1 &6651237443550581794
 GameObject:
   m_ObjectHideFlags: 0

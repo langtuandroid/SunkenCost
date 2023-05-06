@@ -606,6 +606,7 @@
             <e p="Player.cs" t="Include" />
             <e p="UI" t="Include" />
           </e>
+          <e p="BoardScaler.cs" t="Include" />
           <e p="ChallengeLoader.cs" t="Include" />
           <e p="Damage" t="Include">
             <e p="DamageHandler.cs" t="Include" />
@@ -663,10 +664,10 @@
             <e p="EnemySpawner.cs" t="Include" />
             <e p="EnemyStats.cs" t="Include" />
             <e p="EnemyUI" t="Include">
-              <e p="EnemyDestroyAnimation.cs" t="Include" />
               <e p="EnemyHealthText.cs" t="Include" />
               <e p="EnemyMovementText.cs" t="Include" />
               <e p="EnemyPoisonDisplay.cs" t="Include" />
+              <e p="EnemyShaderAnimation.cs" t="Include" />
               <e p="EnemySpeechBubble.cs" t="Include" />
               <e p="EnemyTurnOrderText.cs" t="Include" />
               <e p="EnemyUI.cs" t="Include" />
@@ -804,7 +805,6 @@
             <e p="WhosTurnText.cs" t="Include" />
           </e>
           <e p="UnexpectedStatException.cs" t="Include" />
-          <e p="ZoomManager.cs" t="Include" />
         </e>
         <e p="Sprites" t="Include">
           <e p="DesignLogos" t="Include" />

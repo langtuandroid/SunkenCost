@@ -13,14 +13,17 @@ namespace Items.Items
         protected override bool GetIfRespondingToBattleEvent(BattleEvent battleEvent)
         {
             if (battleEvent.type == BattleEventType.PlayerLostLife)
+            {
                 _turnPlayerLastLostLife = Battle.Current.Turn;
+                return true;
+            }
 
-            return true;
+            return false;
         }
 
         protected override BattleEventPackage GetResponse(BattleEvent battleEvent)
         {
-            return BattleEventPackage.Empty;
+            return new BattleEventPackage(BattleEvent.None);
         }
 
         public bool CanModify(EnemyDamage enemyDamage)

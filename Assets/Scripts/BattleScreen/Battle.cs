@@ -126,7 +126,12 @@ namespace BattleScreen
         private IEnumerator StartChainOfEvents(BattleEvent battleEvent)
         {
             BattleRenderer.Current.RenderEventPackage(new BattleEventPackage(battleEvent));
-            yield return StartCoroutine(Tick(battleEvent));
+            
+            var sequenceOfResponses = Tick(battleEvent);
+            while (sequenceOfResponses.MoveNext()) 
+            {
+                yield return sequenceOfResponses.Current;
+            }
         }
         
         private IEnumerator Tick(BattleEvent previousBattleEvent)
@@ -138,7 +143,7 @@ namespace BattleScreen
                 StopAllCoroutines();
             }
             
-            while(true)
+            while (true)
             {
                 var response = BattleEventsManager.Current.GetNextResponse(previousBattleEvent);
                 if (response.IsEmpty) break;
@@ -146,11 +151,20 @@ namespace BattleScreen
 
                 foreach (var battleEvent in response.battleEvents)
                 {
+                    // Skip events that are only used for rendering
+                    if (battleEvent.type == BattleEventType.EtchingActivated && !battleEvent.showResponse)
+                        continue;
+                    
                     var waitTime = GetAnimationTime(battleEvent);
                     if (waitTime > 0f)
                         yield return new WaitForSecondsRealtime(waitTime * ActionExecutionSpeed);
                     
-                    yield return StartCoroutine(Tick(battleEvent));
+                    var sequenceOfResponses = Tick(battleEvent);
+                    while (sequenceOfResponses.MoveNext()) 
+                    {
+                        yield return sequenceOfResponses.Current;
+                    }
+                    
                     Debug.Log("Finished " + battleEvent.type + ". Back to " + previousBattleEvent.type);
                 }
             }
@@ -164,7 +178,7 @@ namespace BattleScreen
             {
                 case BattleEventType.PlayerLostLife:
                     return 1.3f;
-                case BattleEventType.EtchingActivated: //case BattleEventType.ItemActivated:
+                case BattleEventType.EtchingActivated: case BattleEventType.ItemActivated:
                     return battleEvent.showResponse ? 1.3f : -1f;
                 case BattleEventType.EndedEnemyTurn: 
                 case BattleEventType.EnemyReachedBoat:

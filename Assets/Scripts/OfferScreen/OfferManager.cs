@@ -107,7 +107,7 @@ public class OfferManager : MonoBehaviour
     private void UpdateBuyPlankCost()
     {
         buyPlankOffer.UpdateCost((RunProgress.PlayerStats.PlanksBought + 1)
-            * 10);
+            * 20);
     }
     
     private void UpdateBuyMoveCost()

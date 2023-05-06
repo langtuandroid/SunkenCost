@@ -3,13 +3,17 @@ using System.Collections;
 using System.Collections.Generic;
 using BattleScreen;
 using BattleScreen.BattleEvents;
+using Damage;
 using Enemies;
+using Enemies.EnemyUI;
 using UnityEngine;
+using UnityEngine.Serialization;
 
 public class EnemyAnimationController : MonoBehaviour, IBattleEventUpdatedUI
 {
     [SerializeField] private Animator _animator;
     [SerializeField] private Animator _healAnimator;
+    [FormerlySerializedAs("_destroyAnimation")] [SerializeField] private EnemyShaderAnimation _shaderAnimation;
 
     private int _responderID;
 
@@ -33,13 +37,19 @@ public class EnemyAnimationController : MonoBehaviour, IBattleEventUpdatedUI
         {
             case BattleEventType.EnemyDamaged:
                 Damage();
-                return;
+                break;
             case BattleEventType.EnemyHealed:
                 Heal();
-                return;
+                break;
             case BattleEventType.StartedIndividualEnemyTurn:
                 WiggleBeforeMoving();
-                return;
+                break;
+            case BattleEventType.EnemyReachedBoat:
+                Die();
+                break;
+            case BattleEventType.EnemyKilled when battleEvent.source != DamageSource.Boat:
+                Die();
+                break;
         }
     }
     
@@ -56,5 +66,10 @@ public class EnemyAnimationController : MonoBehaviour, IBattleEventUpdatedUI
     private void Heal()
     {
         _healAnimator.Play("Heal");
+    }
+
+    private void Die()
+    {
+        _shaderAnimation.StartDeathAnimation();
     }
 }

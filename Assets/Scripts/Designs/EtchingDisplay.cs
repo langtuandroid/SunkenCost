@@ -41,10 +41,11 @@ namespace Designs
             {
                 UpdateDisplay();
             }
-            if ((battleEvent.type == BattleEventType.EtchingActivated) && battleEvent.affectedResponderID == _etching.ResponderID)
+            else if ((battleEvent.type == BattleEventType.EtchingActivated) && battleEvent.affectedResponderID == _etching.ResponderID)
             {
-                if (battleEvent.modifier != -1)
+                if (battleEvent.showResponse)
                     StartCoroutine(ColorForActivate());
+                
                 UpdateDisplay();
             }
         }

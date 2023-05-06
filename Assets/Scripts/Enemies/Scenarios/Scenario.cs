@@ -10,7 +10,7 @@ public enum EnemyType
     Axolitl,
     Cucunger,
     Rat,
-    FlyingFish,
+    FlightingFish,
     Steelo,
     Leech,
     Crib,

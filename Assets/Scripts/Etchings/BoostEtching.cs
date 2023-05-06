@@ -40,9 +40,10 @@ namespace Etchings
         {
             var responses = new List<BattleEvent>();
 
-            if (_modsActive || battleEvent.type == BattleEventType.EndedBattle) 
+            if (_modsActive) 
                 responses.AddRange(ClearMods());
-            if (stunned) return new DesignResponse(-1, responses);
+            if (stunned || battleEvent.type == BattleEventType.EndedBattle) 
+                return new DesignResponse(-1, responses, false);
 
             // Etching to the left
             if (PlankNum > 0)
@@ -68,7 +69,7 @@ namespace Etchings
             
             // Didn't find any
             if (_boostedEtchings.Count == 0) 
-                return new DesignResponse(-1, responses, true);
+                return new DesignResponse(-1, responses, false);
 
             
             // Boost etchings
@@ -79,17 +80,11 @@ namespace Etchings
                 responses.Add(etching.AddStatModifier(StatType.Damage, boostMod));
             }
 
-            // Only show when we've moved or altered planks in battle
-            if (battleEvent.type == BattleEventType.StartNextPlayerTurn
-                || battleEvent.type == BattleEventType.DesignModified)
-            {
-                Debug.Log("WEJ");
-                return new DesignResponse(-1, responses, false);
-            }
+            // Only display when we've moved or altered planks in battle
+            var showResponse = battleEvent.type != BattleEventType.StartNextPlayerTurn
+                                && battleEvent.type != BattleEventType.DesignModified;
 
-
-            var planksToColor = _boostedEtchings.Select(e => e.PlankNum).ToList();
-            return new DesignResponse(planksToColor, responses);
+            return new DesignResponse(-1, responses, showResponse);
 
         }
         
