@@ -69,13 +69,11 @@ public class RunProgress : MonoBehaviour
         DisturbanceManager.LoadDisturbanceAssets();
 
         _playerStats = new PlayerStats();
-        _playerStats.InitialiseDeck("Stab", "Poison", "Poison");
+        _playerStats.InitialiseDeck("Stab", "Hurl", "Impede");
         _offerStorage = new OfferStorage();
         _itemInventory = transform.GetChild(0).gameObject.AddComponent<ItemInventory>();
         _battleNumber = 0;
         _currentDisturbance = null;
-        
-        AddItem(typeof(ShortFuseItem));
     }
 
     // Used to test Items - add to initialise run

@@ -99,6 +99,13 @@ namespace BattleScreen
         private IEnumerator ExecutePlayerTurnEvents(BattleEvent battleEvent)
         {
             GameState = GameState.ExecutingPlayerTurnEvents;
+            
+            // Give the board time to refresh if the player moved a plank
+            if (battleEvent.type == BattleEventType.PlayerMovedPlank)
+            {
+                yield return 0;
+            }
+
             yield return StartCoroutine(StartChainOfEvents(battleEvent));
             GameState = GameState.PlayerActionPeriod;
         }
@@ -180,14 +187,14 @@ namespace BattleScreen
                     return 1.3f;
                 case BattleEventType.EtchingActivated: case BattleEventType.ItemActivated:
                     return battleEvent.showResponse ? 1.3f : -1f;
-                case BattleEventType.EndedEnemyTurn: 
-                case BattleEventType.EnemyReachedBoat:
+                case BattleEventType.EndedEnemyTurn:
                 case BattleEventType.EnemyAboutToMove:
                     return 1f;
+                case BattleEventType.EnemyReachedBoat:
                 case BattleEventType.EnemyKilled when battleEvent.source != DamageSource.Boat:
                     return 0.75f;
                 case BattleEventType.EnemyStartOfTurnEffect:
-                    return 0.5f;
+                    return 1f;
                 case BattleEventType.EnemyMove:
                     return 0.3f;
             }

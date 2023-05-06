@@ -3,6 +3,7 @@ using System.Collections.ObjectModel;
 using System.Linq;
 using BattleScreen;
 using BattleScreen.BattleEvents;
+using UnityEngine;
 
 namespace Enemies
 {
@@ -95,6 +96,7 @@ namespace Enemies
                     SetNextEnemyTurnSequence();
                     break;
                 case BattleEventType.PlankMoved:
+                    Debug.Log("Plank moved");
                     foreach (var e in _enemies)
                         e.RefreshPlankNum();
                     break;

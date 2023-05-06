@@ -278,7 +278,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 96ad29fe4ca34536a7b7fac6e9090583, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _tweenTime: 0.3
+  _tweenTime: 0.25
   _zoomScale: 1.1
   _yOffset: -5
   _image: {fileID: 5891915919914201735}

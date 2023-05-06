@@ -48,6 +48,10 @@ namespace Designs
                 
                 UpdateDisplay();
             }
+            else if (battleEvent.type == BattleEventType.StartNextPlayerTurn)
+            {
+                UpdateDisplay();
+            }
         }
         
         private IEnumerator ColorForActivate()

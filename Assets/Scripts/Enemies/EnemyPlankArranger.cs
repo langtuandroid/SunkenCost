@@ -61,7 +61,7 @@ namespace Enemies
             var baseYOffset = isOnIsland ? IslandYOffset : PlankYOffset;
 
             var offsetFromEnemiesAbove = 0f;
-
+            
             var plankTransform = isOnIsland ? Board.Current.IslandTransform : Board.Current.Content.GetChild(plankNum);
             
             foreach (var enemy in enemiesInOrder)
