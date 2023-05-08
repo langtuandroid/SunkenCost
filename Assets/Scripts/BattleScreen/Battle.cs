@@ -22,7 +22,7 @@ namespace BattleScreen
     
     public class Battle : MonoBehaviour
     {
-        public const float ActionExecutionSpeed = 0.525f;
+        public const float ActionExecutionSpeed = 0.65f;
         
         public static Battle Current;
 
@@ -126,7 +126,7 @@ namespace BattleScreen
             Debug.Log("------ Ending Battle ------");
             yield return StartCoroutine(StartChainOfEvents(new BattleEvent(BattleEventType.EndedBattle)));
             GameState = GameState.Rewards;
-            yield return new WaitForSecondsRealtime(ActionExecutionSpeed);
+            yield return new WaitForSecondsRealtime(ActionExecutionSpeed / 2f);
             CreateEndOfBattlePopup();
         }
 
@@ -185,18 +185,20 @@ namespace BattleScreen
             {
                 case BattleEventType.PlayerLostLife:
                     return 1.3f;
-                case BattleEventType.EtchingActivated: case BattleEventType.ItemActivated:
-                    return battleEvent.showResponse ? 1.3f : -1f;
+                case BattleEventType.EtchingActivated when battleEvent.showResponse:
+                    return 0.7f;
+                case BattleEventType.ItemActivated when battleEvent.showResponse:
                 case BattleEventType.EndedEnemyTurn:
-                case BattleEventType.EnemyAboutToMove:
+                case BattleEventType.StartedIndividualEnemyTurn:
+                case BattleEventType.EnemyDamaged:
+                case BattleEventType.EtchingStunned:
+                case BattleEventType.EnemyHealed:
                     return 1f;
                 case BattleEventType.EnemyReachedBoat:
                 case BattleEventType.EnemyKilled when battleEvent.source != DamageSource.Boat:
                     return 0.75f;
-                case BattleEventType.EnemyStartOfTurnEffect:
-                    return 1f;
                 case BattleEventType.EnemyMove:
-                    return 0.3f;
+                    return 0.5f;
             }
 
             return -1f;
@@ -215,7 +217,7 @@ namespace BattleScreen
         {
             RunProgress.PlayerStats.Gold = Player.Current.Gold;
             RunProgress.PlayerStats.Health = Player.Current.Health;
-            DisturbanceManager.ExecuteEndOfBattleDisturbanceAction(RunProgress.CurrentDisturbance);
+            DisturbanceLoader.ExecuteEndOfBattleDisturbanceAction(RunProgress.CurrentDisturbance);
             MainManager.Current.LoadOfferScreen();
             Destroy(gameObject);
         }

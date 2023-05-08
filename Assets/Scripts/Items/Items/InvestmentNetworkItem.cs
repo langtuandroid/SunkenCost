@@ -8,7 +8,7 @@ namespace Items.Items
     {
         public void OnPickup()
         {
-            DisturbanceManager.ModifyDisturbanceAsset(DisturbanceType.GoldRush, Amount);
+            DisturbanceLoader.ModifyDisturbanceAsset(DisturbanceType.GoldRush, Amount);
         }
 
         protected override bool GetIfRespondingToBattleEvent(BattleEvent battleEvent)

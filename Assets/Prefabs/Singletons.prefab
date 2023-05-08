@@ -99,7 +99,7 @@ GameObject:
   - component: {fileID: 5699943836172560093}
   - component: {fileID: 8406422205135410899}
   m_Layer: 0
-  m_Name: PersistentManagers
+  m_Name: Singletons
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -238,7 +238,7 @@ GameObject:
   - component: {fileID: 6074709828410030489}
   - component: {fileID: 5261053441696992977}
   m_Layer: 0
-  m_Name: Disturbances
+  m_Name: DisturbanceLoader
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -326,7 +326,7 @@ GameObject:
   - component: {fileID: 2229243425509765493}
   - component: {fileID: 1938535952050793049}
   m_Layer: 0
-  m_Name: DesignManager
+  m_Name: DesignLoader
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

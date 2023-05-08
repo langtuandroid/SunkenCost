@@ -7,11 +7,11 @@ using UnityEditor;
 using UnityEngine;
 using Random = UnityEngine.Random;
 
-public class ScenarioManager : MonoBehaviour
+public class ScenarioLoader : MonoBehaviour
 {
     public const int BATTLES_PER_DIFFICULTY = 5;
     
-    private static ScenarioManager _current;
+    private static ScenarioLoader _current;
 
     private Dictionary<ScenarioType, List<Scenario>> scenariosByDifficulty { get; set; }= new Dictionary<ScenarioType, List<Scenario>>();
     

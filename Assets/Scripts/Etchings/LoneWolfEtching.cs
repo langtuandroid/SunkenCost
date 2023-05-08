@@ -9,16 +9,7 @@ namespace Etchings
 {
     public class LoneWolfEtching : MeleeEtching
     {
-        private Stat _baseDamage;
-        private Stat _baseDamageModifier;
         private StatModifier _damageMod;
-
-        private void Start()
-        {
-            _baseDamage = new Stat(design.GetStat(StatType.Damage));
-            _baseDamageModifier = new Stat(design.GetStat(StatType.StatFlatModifier));
-        }
-
         protected override DesignResponse GetDesignResponsesToEvent(BattleEvent battleEvent)
         {
             var responses = new List<BattleEvent>();
@@ -39,12 +30,12 @@ namespace Etchings
         private BattleEvent UpdateDamage()
         {
             if (_damageMod is not null)
-                _baseDamage.RemoveModifier(_damageMod);
+                design.RemoveStatModifier(StatType.Damage, _damageMod);
 
-            var penalty = _baseDamageModifier.Value * (Board.Current.PlankCount - 2);
+            var penalty = design.GetStat(StatType.Damage) * (Board.Current.PlankCount - 1);
 
             _damageMod = new StatModifier(penalty, StatModType.Flat);
-            _baseDamage.AddModifier(_damageMod);
+            design.AddStatModifier(StatType.Damage, _damageMod);
 
             return new BattleEvent(BattleEventType.DesignModified);
         }

@@ -39,8 +39,8 @@ namespace MapScreen
                 return;
             }
             
-            var isEliteRound = RunProgress.BattleNumber % ScenarioManager.BATTLES_PER_DIFFICULTY 
-                             == ScenarioManager.BATTLES_PER_DIFFICULTY - 1;
+            var isEliteRound = RunProgress.BattleNumber % ScenarioLoader.BATTLES_PER_DIFFICULTY 
+                             == ScenarioLoader.BATTLES_PER_DIFFICULTY - 1;
         
             var weightings = isEliteRound
                 ? EliteWeightings
@@ -85,7 +85,7 @@ namespace MapScreen
 
                 if (rand <= weighting)
                 {
-                    var disturbanceAsset = DisturbanceManager.GetDisturbance(kvp.Key);
+                    var disturbanceAsset = DisturbanceLoader.GetDisturbance(kvp.Key);
 
                     switch (disturbanceAsset.disturbanceType)
                     {

@@ -66,7 +66,7 @@ public class RunProgress : MonoBehaviour
     
     private void InitialiseRun()
     {
-        DisturbanceManager.LoadDisturbanceAssets();
+        DisturbanceLoader.LoadDisturbanceAssets();
 
         _playerStats = new PlayerStats();
         _playerStats.InitialiseDeck("Stab", "Hurl", "Impede");

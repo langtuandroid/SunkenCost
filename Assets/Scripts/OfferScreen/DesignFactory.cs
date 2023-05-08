@@ -12,7 +12,7 @@ namespace OfferScreen
 
         public static Design InstantiateDesignFromString(string designAssetName)
         {
-            var designAsset = DesignManager.AllDesignAssetsByName[designAssetName];
+            var designAsset = DesignLoader.AllDesignAssetsByName[designAssetName];
             if (designAsset is null)
             {
                 throw new Exception("No design asset by the name " + designAssetName + " found!");
@@ -60,17 +60,17 @@ namespace OfferScreen
 
         public static Design GenerateRandomCommonDesign()
         {
-            return InstantiateDesign(DesignManager.CommonDesigns.GetRandomElement());
+            return InstantiateDesign(DesignLoader.CommonDesigns.GetRandomElement());
         }
         
         public static Design GenerateRandomUncommonDesign()
         {
-            return InstantiateDesign(DesignManager.UncommonDesigns.GetRandomElement());
+            return InstantiateDesign(DesignLoader.UncommonDesigns.GetRandomElement());
         }
         
         public static Design GenerateRandomRareDesign()
         {
-            return InstantiateDesign(DesignManager.RareDesigns.GetRandomElement());
+            return InstantiateDesign(DesignLoader.RareDesigns.GetRandomElement());
         }
         
         private static Design InstantiateDesign(DesignAsset designAsset)

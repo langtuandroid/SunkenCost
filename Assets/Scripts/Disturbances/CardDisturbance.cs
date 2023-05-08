@@ -21,7 +21,7 @@ namespace Disturbances
 
         public override string GetDescription()
         {
-            return DesignManager.GetDescription(Design);
+            return DesignLoader.GetDescription(Design);
         }
         
         public override Sprite GetSprite()

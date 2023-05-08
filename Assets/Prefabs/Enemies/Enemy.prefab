@@ -982,7 +982,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _animator: {fileID: 8434244612522797590}
   _healAnimator: {fileID: 2732373047387415667}
-  _destroyAnimation: {fileID: 3006126132754637293}
+  _shaderAnimation: {fileID: 3006126132754637293}
 --- !u!114 &6343256771185614035
 MonoBehaviour:
   m_ObjectHideFlags: 0

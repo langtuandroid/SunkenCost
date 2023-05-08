@@ -29,9 +29,9 @@ public enum DesignType
     Research
 }
 
-public class DesignManager : MonoBehaviour
+public class DesignLoader : MonoBehaviour
 {
-    private static DesignManager _current;
+    private static DesignLoader _current;
 
     public static ReadOnlyDictionary<DesignAsset, Type> DesignAssetToEtchingTypeDict;
 

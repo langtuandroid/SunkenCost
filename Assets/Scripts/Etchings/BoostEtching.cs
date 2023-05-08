@@ -80,11 +80,7 @@ namespace Etchings
                 responses.Add(etching.AddStatModifier(StatType.Damage, boostMod));
             }
 
-            // Only display when we've moved or altered planks in battle
-            var showResponse = battleEvent.type != BattleEventType.StartNextPlayerTurn
-                                && battleEvent.type != BattleEventType.DesignModified;
-
-            return new DesignResponse(-1, responses, showResponse);
+            return new DesignResponse(-1, responses, false);
 
         }
         

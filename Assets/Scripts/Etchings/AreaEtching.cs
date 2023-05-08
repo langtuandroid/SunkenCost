@@ -12,6 +12,11 @@ namespace Etchings
     {
         //TEST INFLUENCE
         //return Math.Abs(PlankNum - battleEvent.enemyAffected.PlankNum) <= MaxRange;
+        
+        protected override bool TestCharMovementActivatedEffect(Enemy enemy)
+        {
+            return Math.Abs(enemy.PlankNum - PlankNum) <= MaxRange;
+        }
 
         protected override DesignResponse GetDesignResponsesToEvent(BattleEvent battleEvent)
         {
@@ -26,13 +31,6 @@ namespace Etchings
             var enemies = EnemySequencer.Current.GetEnemiesOnPlanks(plankNums);
 
             return new DesignResponse(plankNums, enemies.Select(e => DamageEnemy(e.ResponderID)).ToList());
-        }
-
-        protected override bool TestCharMovementActivatedEffect(Enemy enemy)
-        {
-            if (Math.Abs(enemy.PlankNum - PlankNum) > MaxRange) return false;
-            UsesUsedThisTurn++;
-            return true;
         }
     }
 }

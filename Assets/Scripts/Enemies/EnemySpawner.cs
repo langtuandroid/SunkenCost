@@ -40,7 +40,7 @@ public class EnemySpawner : BattleEventResponder
             enemyDictionary.Add(enemyNames[i], enemyPrefabs[i]);
         }
         
-        _scenario = ScenarioManager.GetScenario(RunProgress.BattleNumber);
+        _scenario = ScenarioLoader.GetScenario(RunProgress.BattleNumber);
     }
 
     private void OnEnable()

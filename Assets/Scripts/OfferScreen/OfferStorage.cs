@@ -32,7 +32,6 @@ namespace OfferScreen
                 if (designOffer.isLocked)
                 {
                     LockedDesignOffers.Add(design);
-                    design.SetCost(design.Cost + 1);
                 }
                 else
                 {

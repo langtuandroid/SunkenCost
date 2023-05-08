@@ -31,7 +31,7 @@ public class EtchingFactory : MonoBehaviour
         }
 
         var newEtching = Instantiate(_etchingPrefab, etchingSlot);
-        var etching = newEtching.AddComponent(DesignManager.DesignAssetToEtchingTypeDict[design.designAsset])
+        var etching = newEtching.AddComponent(DesignLoader.DesignAssetToEtchingTypeDict[design.designAsset])
             .GetComponent<Etching>();
         etching.design = design;
     }

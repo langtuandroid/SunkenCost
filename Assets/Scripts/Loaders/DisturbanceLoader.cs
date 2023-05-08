@@ -4,11 +4,11 @@ using UnityEngine;
 
 namespace Disturbances
 {
-    public class DisturbanceManager : MonoBehaviour
+    public class DisturbanceLoader : MonoBehaviour
     {
-        private static DisturbanceManager _current;
+        private static DisturbanceLoader _current;
         private readonly Dictionary<DisturbanceType, DisturbanceAsset> _disturbances = new Dictionary<DisturbanceType, DisturbanceAsset>();
-        
+
         private void Awake()
         {
             if (_current)

@@ -49,7 +49,7 @@ namespace Designs
             if (design.Level == 1) titleText.text += " +";
             else if (design.Level == 2) titleText.text += " X";
             
-            var rawDescription = DesignManager.GetDescription(design);
+            var rawDescription = DesignLoader.GetDescription(design);
 
             var descriptionWithSprites = rawDescription
                 .Replace("damage", "<sprite=0>")
