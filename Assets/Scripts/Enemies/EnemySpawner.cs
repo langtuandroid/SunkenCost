@@ -67,7 +67,11 @@ public class EnemySpawner : BattleEventResponder
             var enemy = SpawnEnemyOnIsland(enemyName);
             enemy.MaxHealthStat.AddModifier(new StatModifier(_scenario.scaledDifficulty, StatModType.PercentMult));
             enemy.Mover.AddMovementModifier((int) (_scenario.scaledDifficulty / 2f));
-            battleEvents.Add(new BattleEvent(BattleEventType.EnemySpawned) {affectedResponderID = enemy.ResponderID});
+            battleEvents.Add(new BattleEvent(BattleEventType.EnemySpawned)
+            {
+                affectedResponderID = enemy.ResponderID, 
+                showResponse =  false
+            });
         }
 
         return new BattleEventPackage(battleEvents);

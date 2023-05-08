@@ -11,7 +11,7 @@ namespace Items.Items
     {
         protected override bool GetIfRespondingToBattleEvent(BattleEvent battleEvent)
         {
-            return battleEvent.type == BattleEventType.EnemyReachedBoat;
+            return battleEvent.type == BattleEventType.EnemyReachedBoat && EnemySequencer.Current.NumberOfEnemies > 0;;
         }
 
         protected override BattleEventPackage GetResponse(BattleEvent battleEvent)

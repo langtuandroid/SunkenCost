@@ -26,6 +26,9 @@ namespace BattleScreen
         
         public static Battle Current;
 
+        private InGameSfxManager _sfxManager;
+        private BattleRenderer _battleRenderer;
+
         [SerializeField] private EndOfBattlePopup _endOfBattlePopup;
         [SerializeField] private PlayerDeathPopup _playerDeathPopup;
         [SerializeField] private BattleHUDManager _hudManager;
@@ -43,6 +46,9 @@ namespace BattleScreen
 
         private void Start()
         {
+            _sfxManager = InGameSfxManager.current;
+            _battleRenderer = BattleRenderer.Current;
+
             foreach (var design in RunProgress.PlayerStats.Deck)
             {
                 var plank = PlankFactory.Current.CreatePlank();
@@ -132,13 +138,19 @@ namespace BattleScreen
 
         private IEnumerator StartChainOfEvents(BattleEvent battleEvent)
         {
-            BattleRenderer.Current.RenderEventPackage(new BattleEventPackage(battleEvent));
-            
+            ExecuteAudioVisualCues(new BattleEventPackage(battleEvent));
+
             var sequenceOfResponses = Tick(battleEvent);
             while (sequenceOfResponses.MoveNext()) 
             {
                 yield return sequenceOfResponses.Current;
             }
+        }
+
+        private void ExecuteAudioVisualCues(BattleEventPackage battleEventPackage)
+        {
+            _battleRenderer.RenderEventPackage(battleEventPackage);
+            _sfxManager.TriggerAudio(battleEventPackage);
         }
         
         private IEnumerator Tick(BattleEvent previousBattleEvent)
@@ -152,11 +164,11 @@ namespace BattleScreen
             
             while (true)
             {
-                var response = BattleEventsManager.Current.GetNextResponse(previousBattleEvent);
-                if (response.IsEmpty) break;
-                BattleRenderer.Current.RenderEventPackage(response);
+                var responsePackage = BattleEventsManager.Current.GetNextResponse(previousBattleEvent);
+                if (responsePackage.IsEmpty) break;
+                ExecuteAudioVisualCues(responsePackage);
 
-                foreach (var battleEvent in response.battleEvents)
+                foreach (var battleEvent in responsePackage.battleEvents)
                 {
                     // Skip events that are only used for rendering
                     if (battleEvent.type == BattleEventType.EtchingActivated && !battleEvent.showResponse)
@@ -188,6 +200,7 @@ namespace BattleScreen
                 case BattleEventType.EtchingActivated when battleEvent.showResponse:
                     return 0.7f;
                 case BattleEventType.ItemActivated when battleEvent.showResponse:
+                case BattleEventType.EnemySpawned when battleEvent.showResponse:
                 case BattleEventType.EndedEnemyTurn:
                 case BattleEventType.StartedIndividualEnemyTurn:
                 case BattleEventType.EnemyDamaged:

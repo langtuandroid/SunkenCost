@@ -14,7 +14,7 @@ namespace Enemies
         private List<Enemy> _enemies = new List<Enemy>();
         private Queue<Enemy> _enemyCurrentTurnMoveQueue = new Queue<Enemy>();
 
-        public int NumberOfEnemies => _enemies.Count;
+        public int NumberOfEnemies => _enemies.Count(e => !e.IsDestroyed);
         public ReadOnlyCollection<Enemy> AllEnemies => new ReadOnlyCollection<Enemy>(_enemies);
         
         public bool HasEnemyToMove => _enemyCurrentTurnMoveQueue.Count > 0;
@@ -49,7 +49,7 @@ namespace Enemies
         
         public Enemy GetRandomEnemy()
         {
-            return _enemies.GetRandom();
+            return _enemies.GetRandom(e => !e.IsDestroyed);
         }
 
         public List<Enemy> GetEnemiesOnPlank(int plankNum)

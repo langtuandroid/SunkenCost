@@ -29,10 +29,14 @@ public static class Extensions
         return originalCollection.Where(filter).ToList().AsReadOnly();
     }
 
-    public static T GetRandom<T>([NotNull] this IEnumerable<T> collectionToCheck)
+    public static T GetRandom<T>([NotNull] this IEnumerable<T> collectionToCheck, Func<T, bool> filter = null)
     {
         var toCheck = collectionToCheck as T[] ?? collectionToCheck.ToArray();
-        return toCheck.ElementAt(Random.Range(0, toCheck.Length));
+        
+        filter ??= x => true;
+        var filteredCollection = toCheck.Where(filter).ToArray();
+        
+        return toCheck.ElementAt(Random.Range(0, filteredCollection.Length));
     }
     
     public static T GetRandomNonDuplicate<T>([NotNull] this IEnumerable<T> collectionToCheck,

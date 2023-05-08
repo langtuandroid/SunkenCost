@@ -10,7 +10,6 @@ namespace Items
     {
         [SerializeField] private float _tweenTime = 0.3f;
         [SerializeField] private float _zoomScale = 0.75f;
-        [SerializeField] private float _yOffset = -25f;
 
         [SerializeField] private Image _image;
 
@@ -18,7 +17,6 @@ namespace Items
         private RectTransform _rectTransform;
 
         private Vector3 _defaultLocalScale;
-        private Vector3 _defaultLocalPosition;
 
         private void Awake()
         {
@@ -30,32 +28,34 @@ namespace Items
 
         private void Start()
         {
-            _defaultLocalPosition = _rectTransform.localPosition;
-            _defaultLocalScale = _rectTransform.localScale;
+            // If the transform is a child of a layoutGroup, this gives it time to snap to position
+            Invoke(nameof(GetRectVariables), 0.01f);
         }
-
-        private void Tween()
-        {
-            LeanTween.cancel(gameObject);
-
-            _rectTransform.localScale = _defaultLocalScale;
-            _rectTransform.localPosition = _defaultLocalPosition;
-
-            LeanTween.scale(_rectTransform, 
-                new Vector3(_zoomScale * _defaultLocalScale.x, _zoomScale * _defaultLocalScale.y, 1), _tweenTime).setLoopPingPong(1);
-            LeanTween.moveLocal(gameObject, new Vector3(_defaultLocalPosition.x, _defaultLocalPosition.y + _yOffset, 1), _tweenTime).setLoopPingPong(1);
-            
-            
-        }
-
+        
         public void Activate()
         {
-            Tween();
+            TweenScale();
             
             StopCoroutine(Shine());
             StartCoroutine(Shine());
         }
 
+        private void GetRectVariables()
+        {
+            _defaultLocalScale = _rectTransform.localScale;
+        }
+
+
+        private void TweenScale()
+        {
+            LeanTween.cancel(gameObject);
+
+            _rectTransform.localScale = _defaultLocalScale;
+
+            LeanTween.scale(_rectTransform, 
+                new Vector3(_zoomScale * _defaultLocalScale.x, _zoomScale * _defaultLocalScale.y, 1), _tweenTime).setLoopPingPong(1);
+        }
+        
         private IEnumerator Shine()
         {
             _material.EnableKeyword("SHINE_ON");

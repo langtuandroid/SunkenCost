@@ -155,6 +155,8 @@ namespace Enemies
 
         public BattleEventPackage Die(DamageSource source)
         {
+            IsDestroyed = true;
+            
             var eventList = new List<BattleEvent>();
             
             eventList.Add(CreateEvent(BattleEventType.TryGainedGold, Gold, source));
@@ -163,8 +165,6 @@ namespace Enemies
             eventList.Add(CreateEvent(BattleEventType.EnemyKilled, damageSource: source));
 
             if (IsMyTurn) eventList.Add(CreateEvent(BattleEventType.EndedIndividualEnemyTurn));
-            
-            IsDestroyed = true;
             return new BattleEventPackage(eventList);
         }
     }

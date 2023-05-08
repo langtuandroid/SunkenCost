@@ -1,10 +1,14 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using BattleScreen;
+using BattleScreen.BattleEvents;
+using Enemies;
 using UnityEngine;
 using Random = UnityEngine.Random;
 using FMOD.Studio;
 using FMODUnity;
+using UnityEngine.Serialization;
 
 public class InGameSfxManager : MonoBehaviour
 {
@@ -15,7 +19,7 @@ public class InGameSfxManager : MonoBehaviour
     [SerializeField] private StudioEventEmitter _successfulBuyPlankSound;
     [SerializeField] private StudioEventEmitter _goodClickSound;
     [SerializeField] private StudioEventEmitter _badClickSound;
-    [SerializeField] private StudioEventEmitter _stickMovementSound;
+    [FormerlySerializedAs("_stickMovementSound")] [SerializeField] private StudioEventEmitter _plankMovementSound;
     [SerializeField] private StudioEventEmitter _charMovementSound;
     [SerializeField] private StudioEventEmitter _damageSound;
     [SerializeField] private StudioEventEmitter _slimedSound;
@@ -38,17 +42,50 @@ public class InGameSfxManager : MonoBehaviour
         current = this;
         _audioSource = GetComponent<AudioSource>();
     }
+
+    public void TriggerAudio(BattleEventPackage battleEventPackage)
+    {
+        foreach (var battleEvent in battleEventPackage.battleEvents)
+        {
+            switch (battleEvent.type)
+            {
+                case BattleEventType.EnemyDamaged:
+                    DamagedEnemy();
+                    break;
+                case BattleEventType.EtchingStunned:
+                    Slimed();
+                    break;
+                case BattleEventType.EnemyMove:
+                    EnemyMoved();
+                    break;
+                case BattleEventType.EnemyPoisoned:
+                    Poisoned();
+                    break;
+                case BattleEventType.EnemyHealed:
+                    Healed();
+                    break;
+                case BattleEventType.EnemyKilled:
+                    Death();
+                    break;
+                case BattleEventType.PlankDestroyed:
+                    DestroyedPlank();
+                    break;
+                case BattleEventType.PlankMoved:
+                    MovedPlank();
+                    break;
+                case BattleEventType.PlankCreated:
+                    CreatedPlank();
+                    break;
+                case BattleEventType.StartNextPlayerTurn:
+                    StartPlayerTurn();
+                    break;
+                case BattleEventType.StartedEnemyTurn:
+                    StartEnemyTurn();
+                    break;
+            }
+        }
+    }
     
-    private void OfferedDesigns()
-    {
-        _successfulBuyPlankSound.Play();
-    }
-
-    private void MovedStick()
-    {
-        _stickMovementSound.Play();
-    }
-
     public void GoodClick()
     {
         _goodClickSound.Play();
@@ -58,55 +95,59 @@ public class InGameSfxManager : MonoBehaviour
     {
         _badClickSound.Play();
     }
+    
+    private void CreatedPlank()
+    {
+        _successfulBuyPlankSound.Play();
+    }
 
-    public void EnemyMoved()
+    private void MovedPlank()
+    {
+        _plankMovementSound.Play();
+    }
+
+    private void EnemyMoved()
     {
         _charMovementSound.Play();
     }
 
-    public void DamagedEnemy()
+    private void DamagedEnemy()
     {
         _damageSound.Play();
     }
 
-    public void Slimed()
+    private void Slimed()
     {
         _slimedSound.Play();
     }
 
-    public void Poisoned()
+    private void Poisoned()
     {
         _poisonSound.Play();
     }
 
-    public void Healed()
+    private void Healed()
     {
         _healSound.Play();
     }
 
-    public void Death()
+    private void Death()
     {
         _deathSound.Play();
     }
 
-    public void DestroyedPlank()
+    private void DestroyedPlank()
     {
         _destroyedPlankSound.Play();
     }
 
-    public void NextTurn()
+    private void StartEnemyTurn()
     {
         _nextTurnSound.Play();
     }
     
-    public void BeginTurn()
+    private void StartPlayerTurn()
     {
-        StartCoroutine(WaitToBeginTurn());
-    }
-
-    private IEnumerator WaitToBeginTurn()
-    {
-        yield return new WaitForSecondsRealtime(0.2f);
         _beginTurnSound.Play();
     }
 }

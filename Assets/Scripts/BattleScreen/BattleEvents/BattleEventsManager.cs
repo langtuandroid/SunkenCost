@@ -14,6 +14,7 @@ namespace BattleScreen.BattleEvents
         public static BattleEventsManager Current;
         
         private EnemySequencer _enemySequencer;
+        
         [SerializeField] private BattleEventResponderGroup _itemManager;
         [SerializeField] private BattleEventResponderGroup _enemiesManager;
         [SerializeField] private BattleEventResponderGroup _etchingManager;
