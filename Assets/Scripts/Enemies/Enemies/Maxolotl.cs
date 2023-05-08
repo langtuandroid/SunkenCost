@@ -7,7 +7,7 @@ namespace Enemies.Enemies
 {
     public class Maxolotl : Enemy, IStartOfTurnAbilityHolder
     {
-        private const int HEALING_AMOUNT = 5;
+        private const int HEALING_AMOUNT = 10;
         
         protected override void Init()
         {

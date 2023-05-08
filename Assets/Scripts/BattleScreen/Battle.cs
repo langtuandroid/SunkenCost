@@ -26,12 +26,12 @@ namespace BattleScreen
         
         public static Battle Current;
 
-        private InGameSfxManager _sfxManager;
-        private BattleRenderer _battleRenderer;
-
         [SerializeField] private EndOfBattlePopup _endOfBattlePopup;
         [SerializeField] private PlayerDeathPopup _playerDeathPopup;
         [SerializeField] private BattleHUDManager _hudManager;
+        
+        private InGameSfxManager _sfxManager;
+        private BattleRenderer _battleRenderer;
 
         public int Turn { get; private set; } = 0;
         public GameState GameState { get; private set; } = GameState.Loading;
@@ -132,7 +132,7 @@ namespace BattleScreen
             Debug.Log("------ Ending Battle ------");
             yield return StartCoroutine(StartChainOfEvents(new BattleEvent(BattleEventType.EndedBattle)));
             GameState = GameState.Rewards;
-            yield return new WaitForSecondsRealtime(ActionExecutionSpeed / 2f);
+            yield return new WaitForSecondsRealtime(ActionExecutionSpeed / 3f);
             CreateEndOfBattlePopup();
         }
 
@@ -161,11 +161,16 @@ namespace BattleScreen
                 _playerDeathPopup.gameObject.SetActive(true);
                 StopAllCoroutines();
             }
+
+            var hasHadAnyResponse = false;
             
             while (true)
             {
                 var responsePackage = BattleEventsManager.Current.GetNextResponse(previousBattleEvent);
                 if (responsePackage.IsEmpty) break;
+
+                hasHadAnyResponse = true;
+                
                 ExecuteAudioVisualCues(responsePackage);
 
                 foreach (var battleEvent in responsePackage.battleEvents)
@@ -187,9 +192,18 @@ namespace BattleScreen
                     Debug.Log("Finished " + battleEvent.type + ". Back to " + previousBattleEvent.type);
                 }
             }
+
+            if (hasHadAnyResponse) yield break;
+            
+            // Only wait if no etching, enemy or item have done anything since the last move - this stops
+            // the enemy from jumping straight to the next plank
+            if (previousBattleEvent.type == BattleEventType.EnemyMove)
+            {
+                yield return new WaitForSecondsRealtime(ActionExecutionSpeed);
+            }
         }
 
-        private float GetAnimationTime(BattleEvent battleEvent)
+        public static float GetAnimationTime(BattleEvent battleEvent)
         {
             var type = battleEvent.type;
             
@@ -211,7 +225,7 @@ namespace BattleScreen
                 case BattleEventType.EnemyKilled when battleEvent.source != DamageSource.Boat:
                     return 0.75f;
                 case BattleEventType.EnemyMove:
-                    return 0.5f;
+                    return 0.3f;
             }
 
             return -1f;

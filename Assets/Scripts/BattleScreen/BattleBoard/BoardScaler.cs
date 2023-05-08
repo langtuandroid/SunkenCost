@@ -8,8 +8,6 @@ using UnityEngine.UI.Extensions;
 
 public class BoardScaler : MonoBehaviour
 {
-    [SerializeField] private Transform _boardContentTransform;
-    
     public static BoardScaler current;
 
     private float _plankScale = 1f;
@@ -36,6 +34,6 @@ public class BoardScaler : MonoBehaviour
     {
         var stickCount = Board.Current.PlankCount;
         _plankScale = stickCount <= 3 ? 1 : 1.025f - (stickCount - 3) * 0.1f;
-        _boardContentTransform.localScale =  new Vector3(_plankScale, _plankScale, 1);
+        transform.localScale =  new Vector3(_plankScale, _plankScale, 1);
     }
 }

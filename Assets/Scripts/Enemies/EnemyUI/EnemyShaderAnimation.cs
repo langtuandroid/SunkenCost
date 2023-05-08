@@ -38,7 +38,7 @@ namespace Enemies.EnemyUI
                 _material.SetFloat("_FadeAmount", progress);
                 _material.SetFloat("_FadeBurnTransition", progress);
                 _material.SetFloat("_OutlineAlpha",  progress + 0.5f);
-                progress += 0.05f;
+                progress += 0.1f;
                 
                 yield return new WaitForSecondsRealtime(0.001f);
             }

@@ -12,6 +12,11 @@ namespace Etchings
 
         private readonly Stack<StatModifier> _statModifiers = new Stack<StatModifier>();
         
+        private void OnDestroy()
+        {
+            RemoveAllStatMods();
+        }
+
         protected override bool GetIfDesignIsRespondingToEvent(BattleEvent battleEvent)
         {
             switch (battleEvent.type)
@@ -24,6 +29,9 @@ namespace Etchings
                     when BattleEventsManager.Current.GetEnemyByResponderID(battleEvent.affectedResponderID).PlankNum ==
                          PlankNum:
                     _hadEnemyOnPlankThisTurn = true;
+                    break;
+                case BattleEventType.EndedBattle:
+                    RemoveAllStatMods();
                     break;
             }
 
@@ -45,12 +53,12 @@ namespace Etchings
             Debug.Log("responding to " + battleEvent.type);
             return base.GetDesignResponsesToEvent(battleEvent);
         }
-
-        private void OnDestroy()
+        
+        private void RemoveAllStatMods()
         {
             foreach (var statMod in _statModifiers)
             {
-                design.AddStatModifier(StatType.Damage, statMod);
+                design.RemoveStatModifier(StatType.Damage, statMod);
             }
         }
     }

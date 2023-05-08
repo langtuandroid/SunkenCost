@@ -40,11 +40,14 @@ namespace Enemies
                 StartCoroutine(MoveTransform(Board.Current.BoatTransform, enemy, aimPosition));
             }
             else if (battleEvent.type == BattleEventType.EnemyMove ||
-               (battleEvent.type == BattleEventType.EnemyKilled && battleEvent.source != DamageSource.Boat) ||
                battleEvent.type == BattleEventType.EnemySpawned)
             {
                 var enemy = BattleEventsManager.Current.GetEnemyByResponderID(battleEvent.affectedResponderID);
                 UpdatePosition(enemy.PlankNum);
+            }
+            else if (battleEvent.type == BattleEventType.EnemyKilled && battleEvent.source != DamageSource.Boat)
+            {
+                StartCoroutine(WaitForEnemyDeath(battleEvent));
             }
             
         }
@@ -73,6 +76,18 @@ namespace Enemies
                 //Debug.Log("Moving " + enemy.Name + " to (" + aimPosition.x + ", " + aimPosition.y + ")");
                 StartCoroutine(MoveTransform(plankTransform, enemy, aimPosition));
             }
+        }
+
+        private IEnumerator WaitForEnemyDeath(BattleEvent battleEvent)
+        {
+            var enemy = BattleEventsManager.Current.GetEnemyByResponderID(battleEvent.affectedResponderID);
+            var plankNum = enemy.PlankNum;
+
+            // Wait for just a little bit shorter time than the game logic
+            var waitTime = Battle.ActionExecutionSpeed * Battle.GetAnimationTime(battleEvent) - 0.01f;
+            
+            yield return new WaitForSecondsRealtime(waitTime);
+            UpdatePosition(plankNum);
         }
 
         private IEnumerator MoveTransform(Transform plankTransform, Enemy enemy, Vector2 aimPosition)

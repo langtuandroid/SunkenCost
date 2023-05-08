@@ -584,6 +584,7 @@
             <e p="BattleBoard" t="Include">
               <e p="Board.cs" t="Include" />
               <e p="BoardPositioner.cs" t="Include" />
+              <e p="BoardScaler.cs" t="Include" />
               <e p="Plank.cs" t="Include" />
             </e>
             <e p="BattleEvents" t="Include">
@@ -606,7 +607,6 @@
             <e p="Player.cs" t="Include" />
             <e p="UI" t="Include" />
           </e>
-          <e p="BoardScaler.cs" t="Include" />
           <e p="ChallengeLoader.cs" t="Include" />
           <e p="Damage" t="Include">
             <e p="DamageHandler.cs" t="Include" />
