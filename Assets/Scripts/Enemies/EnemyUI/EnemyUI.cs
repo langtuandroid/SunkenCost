@@ -15,12 +15,15 @@ namespace Enemies.EnemyUI
         
         [SerializeField] private EnemyTurnOrderText _turnOrderText;
         [SerializeField] private EnemyHealthText _healthText;
+        [SerializeField] private Image _healthSlider;
+        
         [SerializeField] private EnemyMovementText _movementText;
         [SerializeField] private EnemyPoisonDisplay _poisonDisplay;
         [SerializeField] private EnemySpeechBubble _speechBubble;
 
         private Enemy _enemy;
         private EnemyMover _mover;
+        
 
         private void Awake()
         {
@@ -59,6 +62,7 @@ namespace Enemies.EnemyUI
             _turnOrderText.SetTurnOrder(_enemy.TurnOrder);
             _movementText.UpdateMovementText(_mover.CurrentMove.movementType, _mover.AmountOfMovesLeftThisTurn);
             _healthText.AlterHealth(_enemy.Health, _enemy.MaxHealth);
+            _healthSlider.fillAmount = (float)_enemy.Health / _enemy.MaxHealth;
             _poisonDisplay.UpdateDisplay(_enemy.stats.Poison);
         }
     }

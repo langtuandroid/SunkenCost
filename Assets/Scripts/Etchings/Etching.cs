@@ -38,7 +38,7 @@ namespace Etchings
 
         public override BattleEventPackage GetResponseToBattleEvent(BattleEvent battleEvent)
         {
-            if (battleEvent.type == BattleEventType.StartNextPlayerTurn)
+            if (battleEvent.type == BattleEventType.EndedEnemyTurn)
             {
                 UsesUsedThisTurn = 0;
 

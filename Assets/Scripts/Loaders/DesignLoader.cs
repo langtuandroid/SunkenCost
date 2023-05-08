@@ -230,7 +230,6 @@ public class DesignLoader : MonoBehaviour
             {
                 1 => "once",
                 2 => "twice",
-                3 => "triple",
                 _ => usesPerTurn + "x"
             };
             description += " (" + usesText + " per turn)";

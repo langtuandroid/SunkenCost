@@ -35,7 +35,7 @@ public class EnemyAnimationController : MonoBehaviour, IBattleEventUpdatedUI
 
         switch (battleEvent.type)
         {
-            case BattleEventType.EnemyDamaged:
+            case BattleEventType.EnemyAttacked:
                 Damage();
                 break;
             case BattleEventType.EnemyHealed:

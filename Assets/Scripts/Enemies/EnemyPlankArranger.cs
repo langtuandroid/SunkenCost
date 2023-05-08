@@ -33,7 +33,13 @@ namespace Enemies
         
         public void RespondToBattleEvent(BattleEvent battleEvent)
         {
-            if (battleEvent.type == BattleEventType.EnemyReachedBoat)
+            if (battleEvent.type == BattleEventType.EnemySpawned && !battleEvent.showResponse)
+            {
+                var enemy = BattleEventsManager.Current.GetEnemyByResponderID(battleEvent.affectedResponderID);
+                UpdatePosition(enemy.PlankNum, true);
+            }
+            
+            else if (battleEvent.type == BattleEventType.EnemyReachedBoat)
             {
                 var enemy = BattleEventsManager.Current.GetEnemyByResponderID(battleEvent.affectedResponderID);
                 var aimPosition = new Vector2(BoatXOffset, BoatYOffset);
@@ -43,7 +49,7 @@ namespace Enemies
                battleEvent.type == BattleEventType.EnemySpawned)
             {
                 var enemy = BattleEventsManager.Current.GetEnemyByResponderID(battleEvent.affectedResponderID);
-                UpdatePosition(enemy.PlankNum);
+                UpdatePosition(enemy.PlankNum, false);
             }
             else if (battleEvent.type == BattleEventType.EnemyKilled && battleEvent.source != DamageSource.Boat)
             {
@@ -52,7 +58,7 @@ namespace Enemies
             
         }
 
-        private void UpdatePosition(int plankNum)
+        private void UpdatePosition(int plankNum, bool doImmediately)
         {
             var isOnIsland = plankNum == -1;
 
@@ -74,7 +80,10 @@ namespace Enemies
                 
                 var aimPosition = new Vector2(baseXOffset, yOffset);
                 //Debug.Log("Moving " + enemy.Name + " to (" + aimPosition.x + ", " + aimPosition.y + ")");
-                StartCoroutine(MoveTransform(plankTransform, enemy, aimPosition));
+                if (doImmediately)
+                    enemy.GetComponent<RectTransform>().anchoredPosition = new Vector2(aimPosition.x, aimPosition.y);
+                else
+                    StartCoroutine(MoveTransform(plankTransform, enemy, aimPosition));
             }
         }
 
@@ -87,13 +96,14 @@ namespace Enemies
             var waitTime = Battle.ActionExecutionSpeed * Battle.GetAnimationTime(battleEvent) - 0.01f;
             
             yield return new WaitForSecondsRealtime(waitTime);
-            UpdatePosition(plankNum);
+            UpdatePosition(plankNum, false);
         }
 
         private IEnumerator MoveTransform(Transform plankTransform, Enemy enemy, Vector2 aimPosition)
         {
             var enemyRectTransform = enemy.GetComponent<RectTransform>();
             enemyRectTransform.SetParent(plankTransform);
+            enemyRectTransform.SetAsLastSibling();
             
             while (Vector3.Distance(enemyRectTransform.anchoredPosition, aimPosition) > 0.01f)
             {

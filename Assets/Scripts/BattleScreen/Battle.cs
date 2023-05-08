@@ -1,5 +1,6 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
 using BattleScene;
 using BattleScreen.BattleEvents;
 using Damage;
@@ -173,13 +174,27 @@ namespace BattleScreen
                 
                 ExecuteAudioVisualCues(responsePackage);
 
-                foreach (var battleEvent in responsePackage.battleEvents)
+                // Remove events that were only used for rendering
+                var battleEventsList = responsePackage.battleEvents.Where
+                (b => !((b.type == BattleEventType.EtchingActivated || b.type == BattleEventType.ItemActivated) 
+                    && !b.showResponse));
+                
+                var battleEventsQueue = new Queue<BattleEvent>(battleEventsList);
+                
+                while (battleEventsQueue.Count > 0)
                 {
-                    // Skip events that are only used for rendering
-                    if (battleEvent.type == BattleEventType.EtchingActivated && !battleEvent.showResponse)
-                        continue;
+                    var battleEvent = battleEventsQueue.Dequeue();
                     
-                    var waitTime = GetAnimationTime(battleEvent);
+                    var waitTime = -1f;
+                    
+                    // Only add wait time to the last in a batch event (e.g. multiple enemies getting hit at once)
+                    if (battleEventsQueue.Count(b => b.type == battleEvent.type) == 0)
+                        waitTime = GetAnimationTime(battleEvent);
+                    else
+                    {
+                        Debug.Log("Multiple " + battleEvent.type);
+                    }
+                    
                     if (waitTime > 0f)
                         yield return new WaitForSecondsRealtime(waitTime * ActionExecutionSpeed);
                     
@@ -217,7 +232,7 @@ namespace BattleScreen
                 case BattleEventType.EnemySpawned when battleEvent.showResponse:
                 case BattleEventType.EndedEnemyTurn:
                 case BattleEventType.StartedIndividualEnemyTurn:
-                case BattleEventType.EnemyDamaged:
+                case BattleEventType.EnemyAttacked:
                 case BattleEventType.EtchingStunned:
                 case BattleEventType.EnemyHealed:
                     return 1f;

@@ -290,6 +290,7 @@ GameObject:
   - component: {fileID: 67896348}
   - component: {fileID: 67896349}
   - component: {fileID: 67896350}
+  - component: {fileID: 67896351}
   m_Layer: 5
   m_Name: Board
   m_TagString: Untagged
@@ -386,6 +387,18 @@ MonoBehaviour:
   _plankArea: {fileID: 1186376511}
   _islandTransform: {fileID: 1155358484}
   _boatTransform: {fileID: 1789173348}
+--- !u!114 &67896351
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 67896341}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 835683803785d984880eb7f4ef71eb5a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!224 &109192786 stripped
 RectTransform:
   m_CorrespondingSourceObject: {fileID: 1210558848469399205, guid: 7e05e520579b24a45a28a9993e09aa39, type: 3}
@@ -3405,7 +3418,8 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 2969082296994940520, guid: 2a4706dcc81855544b586c44db24c662, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: 2a4706dcc81855544b586c44db24c662, type: 3}
 --- !u!1001 &3739874108654006557
 PrefabInstance:
@@ -3436,11 +3450,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3739874107440994272, guid: 753e431c20e8b5d45a1560f4e9ca944f, type: 3}
       propertyPath: m_AnchoredPosition.x
-      value: 1120.9524
+      value: 1076
       objectReference: {fileID: 0}
     - target: {fileID: 3739874107440994272, guid: 753e431c20e8b5d45a1560f4e9ca944f, type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: 1299.0476
+      value: 1149
       objectReference: {fileID: 0}
     - target: {fileID: 3739874107924409688, guid: 753e431c20e8b5d45a1560f4e9ca944f, type: 3}
       propertyPath: m_Pivot.x

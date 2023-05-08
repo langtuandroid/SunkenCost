@@ -10,9 +10,6 @@ namespace Etchings
 {
     public class AreaEtching : DamageEtching
     {
-        //TEST INFLUENCE
-        //return Math.Abs(PlankNum - battleEvent.enemyAffected.PlankNum) <= MaxRange;
-        
         protected override bool TestCharMovementActivatedEffect(Enemy enemy)
         {
             return Math.Abs(enemy.PlankNum - PlankNum) <= MaxRange;

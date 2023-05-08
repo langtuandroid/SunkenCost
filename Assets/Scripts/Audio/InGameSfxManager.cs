@@ -49,8 +49,8 @@ public class InGameSfxManager : MonoBehaviour
         {
             switch (battleEvent.type)
             {
-                case BattleEventType.EnemyDamaged:
-                    DamagedEnemy();
+                case BattleEventType.EnemyAttacked:
+                    AttackedEnemy();
                     break;
                 case BattleEventType.EtchingStunned:
                     Slimed();
@@ -111,7 +111,7 @@ public class InGameSfxManager : MonoBehaviour
         _charMovementSound.Play();
     }
 
-    private void DamagedEnemy()
+    private void AttackedEnemy()
     {
         _damageSound.Play();
     }
