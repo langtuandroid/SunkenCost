@@ -2,6 +2,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using BattleScreen;
+using BattleScreen.BattleBoard;
 using BattleScreen.BattleEvents;
 using OfferScreen;
 using TMPro;
@@ -39,7 +40,6 @@ public class BattleHUDManager : MonoBehaviour, IBattleEventUpdatedUI
 
     private void EndedBattle()
     {
-        _nextTurnButton.UpdateText();
     }
 
     private void GainedLife()
@@ -77,7 +77,7 @@ public class BattleHUDManager : MonoBehaviour, IBattleEventUpdatedUI
 
     private void PlankAddedOrRemoved()
     {
-        BoardScaler.current.SetBoardScale();
+        BoardScaler.current.SetBoardScale(Board.Current.PlankCount);
     }
 
     public void RespondToBattleEvent(BattleEvent battleEvent)

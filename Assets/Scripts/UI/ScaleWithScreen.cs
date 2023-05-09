@@ -17,17 +17,6 @@ public class ScaleWithScreen : MonoBehaviour
         _rectTransform = GetComponent<RectTransform>();
         SetScale();
     }
- 
-    private void Update ()
-    {
-        if (Math.Abs(_resolution.x - Screen.width) > 1 || Math.Abs(_resolution.y - Screen.height) > 1)
-        {
-            // do your stuff
-            SetScale();
-            _resolution.x = Screen.width;
-            _resolution.y = Screen.height;
-        }
-    }
 
     private void SetScale()
     {

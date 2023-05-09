@@ -25,15 +25,15 @@ public class BoardScaler : MonoBehaviour
         current = this;
     }
 
-    void Start()
+    private void Start()
     {
-        SetBoardScale();
+        SetBoardScale(RunProgress.PlayerStats.Deck.Count);
     }
 
-    public void SetBoardScale()
+    public void SetBoardScale(int plankCount)
     {
-        var stickCount = Board.Current.PlankCount;
-        _plankScale = stickCount <= 3 ? 1 : 1.025f - (stickCount - 3) * 0.1f;
+        Debug.Log(plankCount);
+        _plankScale = plankCount <= 3 ? 1 : 1.025f - (plankCount - 3) * 0.1f;
         transform.localScale =  new Vector3(_plankScale, _plankScale, 1);
     }
 }

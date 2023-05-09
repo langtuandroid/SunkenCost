@@ -14,12 +14,6 @@ public class NextTurnButton : InGameButton
         _textMeshProUGUI = GetComponentInChildren<TextMeshProUGUI>();
         base.Awake();
     }
-
-    public void UpdateText()
-    {
-        _textMeshProUGUI.text = "END BATTLE";
-    }
-
     protected override bool TryClick()
     {
         if (Battle.Current.GameState == GameState.PlayerActionPeriod)

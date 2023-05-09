@@ -241,6 +241,8 @@ namespace BattleScreen
                     return 0.75f;
                 case BattleEventType.EnemyMove:
                     return 0.3f;
+                case BattleEventType.EtchingMoved:
+                    return 0.0001f;
             }
 
             return -1f;

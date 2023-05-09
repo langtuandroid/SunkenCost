@@ -35,10 +35,10 @@ namespace OfferScreen
                     cost += 10;
                     break;
                 case Rarity.Uncommon:
-                    cost += 20;
+                    cost += 17;
                     break;
                 case Rarity.Rare:
-                    cost += 30;
+                    cost += 25;
                     break;
                 case Rarity.ElitePickup:
                 default:

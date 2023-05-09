@@ -46,9 +46,7 @@ public class OfferManager : MonoBehaviour
 
     private void Start()
     {
-        UpdateBuyMoveCost();
         UpdateBuyPlankCost();
-        OfferScreenEvents.Current.OnGridsUpdated += UpdateBuyMoveCost;
         OfferScreenEvents.Current.OnGridsUpdated += UpdateBuyPlankCost;
         
         _itemOfferGenerator.Initialise();
@@ -108,12 +106,6 @@ public class OfferManager : MonoBehaviour
     {
         buyPlankOffer.UpdateCost((RunProgress.PlayerStats.PlanksBought + 1)
             * 20);
-    }
-    
-    private void UpdateBuyMoveCost()
-    {
-        buyMoveOffer.UpdateCost((RunProgress.PlayerStats.MovesBought + 1)
-            * 5);
     }
 
     private IEnumerator WaitForDesignCardsToInitialise()

@@ -19,9 +19,9 @@ public class EtchingFactory : MonoBehaviour
         Current = this;
     }
 
-    public void CreateEtching(Plank plankDisplay, Design design)
+    public void CreateEtching(Plank plank, Design design)
     {
-        var etchingSlot = plankDisplay.transform.GetChild(1);
+        var etchingSlot = GetEtchingSlot(plank);
         
         if (etchingSlot.childCount > 0)
         {
@@ -34,5 +34,19 @@ public class EtchingFactory : MonoBehaviour
         var etching = newEtching.AddComponent(DesignLoader.DesignAssetToEtchingTypeDict[design.designAsset])
             .GetComponent<Etching>();
         etching.design = design;
+    }
+
+    public void MoveEtching(Plank plankToMoveTo, Etching etching)
+    {
+        var etchingSlot = GetEtchingSlot(plankToMoveTo);
+        var etchingRectTransform = etching.GetComponent<RectTransform>();
+        
+        etchingRectTransform.SetParent(etchingSlot);
+        etchingRectTransform.anchoredPosition = new Vector3(0, 0, 1);
+    }
+
+    private Transform GetEtchingSlot(Plank plank)
+    {
+        return plank.transform.GetChild(1);
     }
 }

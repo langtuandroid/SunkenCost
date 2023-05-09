@@ -8,12 +8,11 @@ public class PlayerStats
     private const int INIT_MAX_PLANKS = 3;
     private const int INIT_MAX_HEALTH = 30;
     private const int INIT_GOLD = 5;
-    private const int INIT_MOVES_PER_TURN = 10;
+    private const int INIT_MOVES_PER_TURN = -1;
     private const int INIT_NUM_OF_TURNS = 5;
     
     private const int INIT_NUM_OF_CARD_OFFERS = 3;
-    private const int INIT_NUM_OF_ITEM_OFFERS = 1;
-    private const int INIT_NUM_OF_CHALLENGE_OFFERS = 2;
+    private const int INIT_NUM_OF_ITEM_OFFERS = 2;
     
     public List<Design> Deck { get; private set; }= new List<Design>();
 
@@ -32,8 +31,6 @@ public class PlayerStats
     public int NumberOfTurns { get; private set; }
     public int NumberOfCardsToOffer { get; private set; }
     public int NumberOfItemsToOffer { get; private set; }
-    
-    public int NumberOfChallengesToOffer { get; private set; }
 
     public PlayerStats()
     {
@@ -44,7 +41,6 @@ public class PlayerStats
         NumberOfTurns = INIT_NUM_OF_TURNS;
         NumberOfCardsToOffer = INIT_NUM_OF_CARD_OFFERS;
         NumberOfItemsToOffer = INIT_NUM_OF_ITEM_OFFERS;
-        NumberOfChallengesToOffer = INIT_NUM_OF_CHALLENGE_OFFERS;
         
         Health = MaxHealth;
     }

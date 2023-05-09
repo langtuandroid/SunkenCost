@@ -9,11 +9,11 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: df20449da52bf174cb531673cb4069a9, type: 3}
-  m_Name: Move
+  m_Script: {fileID: 11500000, guid: a37d5dce21df4a2e9cf1cad81cd13ca6, type: 3}
+  m_Name: MeasuredTouch
   m_EditorClassIdentifier: 
-  disturbanceType: 600
+  title: Measured Touch
+  description: +@ Plank, but you can only move one plank per turn
   sprite: {fileID: 21300000, guid: 78d798399d0aa9a4799caad82bbeda74, type: 3}
-  title: Dexterity
-  description: +1 Move per turn
-  amount: 1
+  modifier: 1
+  rarity: 4

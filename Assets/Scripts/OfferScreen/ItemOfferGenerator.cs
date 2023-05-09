@@ -19,7 +19,7 @@ namespace OfferScreen
             var offeredItemAssets = new List<ItemAsset>();
             
             // Don't show the already equipped items
-            offeredItemAssets.AddRange(RunProgress.ItemInventory.ItemAssets);
+            //offeredItemAssets.AddRange(RunProgress.ItemInventory.ItemAssets);
 
             // Load locked items
             foreach (var itemOffer in RunProgress.OfferStorage.LockedItemOffers)

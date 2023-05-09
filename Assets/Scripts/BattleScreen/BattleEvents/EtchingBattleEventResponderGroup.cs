@@ -11,6 +11,7 @@ namespace BattleScreen.BattleEvents
         {
             if (battleEventToRespondTo.type == BattleEventType.StartedBattle ||
                 battleEventToRespondTo.type == BattleEventType.PlankMoved ||
+                battleEventToRespondTo.type == BattleEventType.EtchingMoved ||
                 battleEventToRespondTo.type == BattleEventType.PlankCreated ||
                 battleEventToRespondTo.type == BattleEventType.PlankDestroyed ||
                 battleEventToRespondTo.type == BattleEventType.StartedEnemyTurn)

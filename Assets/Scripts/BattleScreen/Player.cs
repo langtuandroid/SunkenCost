@@ -17,9 +17,9 @@ public class Player : BattleEventResponder
     private int MaxHealth { get; set; }
     public int MovesUsedThisTurn { get; private set; } = 0;
     public int MovesPerTurn { get; set; }
-    
+
+    public bool HasMovesLimit => MovesPerTurn > -1;
     public bool IsOutOfMoves => MovesUsedThisTurn >= MovesPerTurn;
-    public int MovesRemaining => MovesPerTurn - MovesUsedThisTurn;
 
     protected override void Awake()
     {
@@ -69,7 +69,7 @@ public class Player : BattleEventResponder
     
     private BattleEvent UsedMove()
     {
-        MovesUsedThisTurn += 1;
+        if (HasMovesLimit) MovesUsedThisTurn += 1;
         return new BattleEvent(BattleEventType.PlayerUsedMove);
     }
 

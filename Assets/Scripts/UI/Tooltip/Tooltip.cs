@@ -47,7 +47,7 @@ public class Tooltip : MonoBehaviour
 
 
     
-        if (pivotX < 0.9) //If mouse on left of screen move tooltip to right of cursor and vice vera
+        if (pivotX < 0.8) //If mouse on left of screen move tooltip to right of cursor and vice vera
         {
             finalPivotX = -0.1f;
         }
@@ -59,7 +59,7 @@ public class Tooltip : MonoBehaviour
 
        
 
-        if (pivotY < 0.1) //If mouse on lower bit of screen move tooltip above cursor and vice versa
+        if (pivotY < 0.2) //If mouse on lower bit of screen move tooltip above cursor and vice versa
         {
             finalPivotY = 0;
         }

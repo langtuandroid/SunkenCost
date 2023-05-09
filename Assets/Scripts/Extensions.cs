@@ -29,13 +29,20 @@ public static class Extensions
         return originalCollection.Where(filter).ToList().AsReadOnly();
     }
 
+    public static IEnumerable<T> Shuffle<T>([NotNull] this IEnumerable<T> collectionToRandomise)
+    {
+        var collectionAsArray = collectionToRandomise as T[] ?? collectionToRandomise.ToArray();
+        var length = collectionAsArray.Length;
+        return collectionAsArray.OrderBy(e => Random.Range(0, length));
+    }
+
     public static T GetRandom<T>([NotNull] this IEnumerable<T> collectionToCheck, Func<T, bool> filter = null)
     {
         var toCheck = collectionToCheck as T[] ?? collectionToCheck.ToArray();
         
         filter ??= x => true;
         var filteredCollection = toCheck.Where(filter).ToArray();
-        
+
         return toCheck.ElementAt(Random.Range(0, filteredCollection.Length));
     }
     

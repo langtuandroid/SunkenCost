@@ -74,7 +74,7 @@ public class RunProgress : MonoBehaviour
         _itemInventory = transform.GetChild(0).gameObject.AddComponent<ItemInventory>();
         _battleNumber = 0;
         _currentDisturbance = null;
-        AddItem(typeof(ReDressItem));
+        AddItem(typeof(ConfusedItem));
     }
 
     // Used to test Items - add to initialise run

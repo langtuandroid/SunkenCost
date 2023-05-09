@@ -265,6 +265,5 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _tweenTime: 0.25
-  _zoomScale: 1.5
-  _yOffset: -25
+  _zoomScale: 2
   _image: {fileID: 2606534716927327379}
