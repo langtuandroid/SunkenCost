@@ -3,28 +3,28 @@ using BattleScreen.BattleEvents;
 
 namespace Items.Items
 {
-    public class MeasuredTouchItem : ExtraPlankItem
+    public class BellsAndWhistlesItem : ExtraPlankItem
     {
         public override void OnPickup()
         {
-            RunProgress.PlayerStats.MovesPerTurn = 1;
+            RunProgress.PlayerStats.EnemyMovementModifier += 2;
             base.OnPickup();
         }
-        
+
         public override void OnDestroy()
         {
-            RunProgress.PlayerStats.MovesPerTurn = -1;
+            RunProgress.PlayerStats.EnemyMovementModifier -= 2;
             base.OnDestroy();
         }
 
         protected override bool GetIfRespondingToBattleEvent(BattleEvent previousBattleEvent)
         {
-            return previousBattleEvent.type == BattleEventType.PlayerMovedPlank;
+            return false;
         }
 
         protected override BattleEventPackage GetResponse(BattleEvent battleEvent)
         {
-            return new BattleEventPackage(BattleEvent.None);
+            throw new System.NotImplementedException();
         }
     }
 }

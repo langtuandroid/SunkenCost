@@ -2748,10 +2748,6 @@ PrefabInstance:
       propertyPath: m_Name
       value: PlayerDeathPopup
       objectReference: {fileID: 0}
-    - target: {fileID: 4141841303104870381, guid: 2d3383dce2e2f0146bcddacddcf60775, type: 3}
-      propertyPath: m_IsActive
-      value: 0
-      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 2d3383dce2e2f0146bcddacddcf60775, type: 3}
 --- !u!1 &1845736589
@@ -3450,11 +3446,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3739874107440994272, guid: 753e431c20e8b5d45a1560f4e9ca944f, type: 3}
       propertyPath: m_AnchoredPosition.x
-      value: 1076
+      value: 1195.2832
       objectReference: {fileID: 0}
     - target: {fileID: 3739874107440994272, guid: 753e431c20e8b5d45a1560f4e9ca944f, type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: 1149
+      value: 1257.9884
       objectReference: {fileID: 0}
     - target: {fileID: 3739874107924409688, guid: 753e431c20e8b5d45a1560f4e9ca944f, type: 3}
       propertyPath: m_Pivot.x

@@ -11,25 +11,15 @@ namespace Items.Items
 
         protected override bool GetIfRespondingToBattleEvent(BattleEvent battleEvent)
         {
-            return battleEvent.type == BattleEventType.EnemyKilled ||
-                   battleEvent.type == BattleEventType.EndedBattle;
+            if (battleEvent.type == BattleEventType.EnemyKilled)
+                _hasKilledEnemyThisBattle = true;
+            
+            return battleEvent.type == BattleEventType.EndedBattle && !_hasKilledEnemyThisBattle;
         }
         
         protected override BattleEventPackage GetResponse(BattleEvent battleEvent)
         {
-            switch (battleEvent.type)
-            {
-                case BattleEventType.EnemyKilled:
-                    _hasKilledEnemyThisBattle = true;
-                    break;
-                case BattleEventType.EndedBattle:
-                    if (!_hasKilledEnemyThisBattle) return new BattleEventPackage(new BattleEvent(BattleEventType.TryGainedGold) {modifier = Amount});
-                    else break;
-                default:
-                    throw new UnexpectedBattleEventException(battleEvent);
-            }
-
-            return BattleEventPackage.Empty;
+            return new BattleEventPackage(new BattleEvent(BattleEventType.TryGainedGold) {modifier = Amount});
         }
     }
 }

@@ -15,27 +15,13 @@ namespace Enemies
         Wait
     }
 
-    public struct EnemyMove
-    {
-        public MovementType movementType;
-        public int magnitude;
-
-        public void IncreaseMagnitude(int amountToIncrease)
-        {
-            if (magnitude == 0) return;
-
-            if (magnitude > 0) magnitude += amountToIncrease;
-            else magnitude -= amountToIncrease;
-        }
-    }
-    
     public class EnemyMover
     {
         public int AmountOfMovesLeftThisTurn { get; private set; }
         private int _lastMove;
         private int _skips;
 
-        private List<EnemyMove> moveSet = new List<EnemyMove>();
+        private readonly List<EnemyMove> _moveSet = new List<EnemyMove>();
         private int _moveIndex;
 
         
@@ -43,7 +29,7 @@ namespace Enemies
 
         public bool FinishedMoving => AmountOfMovesLeftThisTurn == 0;
 
-        public EnemyMove CurrentMove => moveSet[_moveIndex];
+        public EnemyMove CurrentMove => _moveSet[_moveIndex];
 
         public int LastDirection
         {
@@ -68,7 +54,7 @@ namespace Enemies
         public void Init()
         {
             // Randomise first move
-            _moveIndex = Random.Range(0, moveSet.Count);
+            _moveIndex = Random.Range(0, _moveSet.Count);
             SetNextMoveSequence();
         }
         
@@ -80,10 +66,10 @@ namespace Enemies
             _skips = 0;
         }
 
-        public void AddMove(MovementType moveType, int magnitude)
+        public void AddMove(MovementType movementType, int magnitude)
         {
-            var move = new EnemyMove {movementType = moveType, magnitude = magnitude};
-            moveSet.Add(move);
+            var move = new EnemyMove(movementType, magnitude);
+            _moveSet.Add(move);
         }
 
         public void AddMove(int magnitude)
@@ -124,15 +110,15 @@ namespace Enemies
         {
             AmountOfMovesLeftThisTurn += amount * NextDirection;
             
-            if (AmountOfMovesLeftThisTurn <= -PlankNum) AmountOfMovesLeftThisTurn = -PlankNum;
+            if (AmountOfMovesLeftThisTurn < -PlankNum - 1) AmountOfMovesLeftThisTurn = -PlankNum - 1;
         }
 
         public void AddMovementModifier(int amount)
         {
-            for (var i = 0; i < moveSet.Count; i++)
+            for (var i = 0; i < _moveSet.Count; i++)
             {
-                var move = moveSet.ElementAt(i);
-                if (move.movementType == MovementType.Wait) continue;
+                var move = _moveSet.ElementAt(i);
+                if (move.MovementType == MovementType.Wait) continue;
                 move.IncreaseMagnitude(amount);
             }
         }
@@ -147,16 +133,17 @@ namespace Enemies
             for (var i = 0; i < 100; i++)
             {
                 _moveIndex++;
-                if (_moveIndex >= moveSet.Count) _moveIndex = 0;
+                if (_moveIndex >= _moveSet.Count) _moveIndex = 0;
 
                 // Always move off starting stick
-                if (moveSet[_moveIndex].magnitude <= 0 && PlankNum == 0)
+                if (_moveSet[_moveIndex].Magnitude <= 0 && PlankNum == -1)
                 {
                     continue;
                 }
-
-                AmountOfMovesLeftThisTurn = CurrentMove.magnitude;
-                _skips = CurrentMove.movementType == MovementType.Skip ? CurrentMove.magnitude - 1 : 0;
+                
+                Debug.Log(CurrentMove.Magnitude);
+                AmountOfMovesLeftThisTurn = CurrentMove.Magnitude;
+                _skips = CurrentMove.MovementType == MovementType.Skip ? CurrentMove.Magnitude - 1 : 0;
                 break;
             }
         }

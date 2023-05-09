@@ -17,10 +17,9 @@ namespace MapScreen
         private static readonly Dictionary<DisturbanceType, float> NormalWeightings = new Dictionary<DisturbanceType, float>()
         {
             {DisturbanceType.GoldRush, 0.35f},
-            {DisturbanceType.Heart, 0.2f},
-            {DisturbanceType.Move, 0.15f},
-            {DisturbanceType.Card, 0.15f},
-            {DisturbanceType.Item, 0.15f}
+            {DisturbanceType.Heart, 0.25f},
+            {DisturbanceType.Card, 0.2f},
+            {DisturbanceType.Item, 0.2f}
         };
     
         private static readonly Dictionary<DisturbanceType, float> EliteWeightings = new Dictionary<DisturbanceType, float>()

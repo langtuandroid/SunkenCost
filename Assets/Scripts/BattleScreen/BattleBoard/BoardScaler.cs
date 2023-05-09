@@ -32,7 +32,6 @@ public class BoardScaler : MonoBehaviour
 
     public void SetBoardScale(int plankCount)
     {
-        Debug.Log(plankCount);
         _plankScale = plankCount <= 3 ? 1 : 1.025f - (plankCount - 3) * 0.1f;
         transform.localScale =  new Vector3(_plankScale, _plankScale, 1);
     }

@@ -7,21 +7,8 @@ using BattleScreen.BattleEvents;
 
 namespace Items.Items
 {
-    public class ConfusedItem : EquippedItem, IHasPickupAction
+    public class ConfusedItem : ExtraPlankItem
     {
-        private StatModifier _extraPlank;
-
-        public void OnPickup()
-        {
-            _extraPlank = new StatModifier(Amount, StatModType.Flat);
-            RunProgress.PlayerStats.maxPlanks.AddModifier(_extraPlank);
-        }
-        
-        public void OnDestroy()
-        {
-            RunProgress.PlayerStats.maxPlanks.RemoveModifier(_extraPlank);
-        }
-
         protected override bool GetIfRespondingToBattleEvent(BattleEvent battleEvent)
         {
             return battleEvent.type == BattleEventType.EndedEnemyTurn || battleEvent.type == BattleEventType.StartedBattle;
@@ -39,7 +26,6 @@ namespace Items.Items
             for (var i = 0; i < planksInOrder.Count; i++)
             {
                 etchingFactory.MoveEtching(planksInOrder[i], shuffledEtchings[i]);
-                
                 responses.Add(new BattleEvent(BattleEventType.EtchingMoved) {modifier = i});
             }
             

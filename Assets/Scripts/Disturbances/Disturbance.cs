@@ -11,7 +11,6 @@ namespace Disturbances
         UpgradeCard = 300,
         Card = 400,
         Item = 500,
-        Move = 600,
 
         // Elite
         EliteItem = 1000,

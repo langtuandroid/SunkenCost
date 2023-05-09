@@ -31,6 +31,7 @@ public class PlayerStats
     public int NumberOfTurns { get; private set; }
     public int NumberOfCardsToOffer { get; private set; }
     public int NumberOfItemsToOffer { get; private set; }
+    public int EnemyMovementModifier { get; set; } = 0;
 
     public PlayerStats()
     {

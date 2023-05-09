@@ -46,11 +46,15 @@ namespace Enemies
             stats = new EnemyStats(ResponderID);
 
             Init();
-            Mover.Init();
             ChangeHealth(MaxHealthStat.Value);
         }
 
         protected abstract void Init();
+
+        private void Start()
+        {
+            Mover.Init();
+        }
 
         protected void SetInitialHealth(int health)
         {

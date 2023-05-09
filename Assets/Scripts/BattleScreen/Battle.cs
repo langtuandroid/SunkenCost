@@ -232,13 +232,14 @@ namespace BattleScreen
                 case BattleEventType.EnemySpawned when battleEvent.showResponse:
                 case BattleEventType.EndedEnemyTurn:
                 case BattleEventType.StartedIndividualEnemyTurn:
-                case BattleEventType.EnemyAttacked:
                 case BattleEventType.EtchingStunned:
                 case BattleEventType.EnemyHealed:
                     return 1f;
                 case BattleEventType.EnemyReachedBoat:
                 case BattleEventType.EnemyKilled when battleEvent.source != DamageSource.Boat:
                     return 0.75f;
+                case BattleEventType.EnemyAttacked: case BattleEventType.EnemyDamaged:
+                    return 0.5f;
                 case BattleEventType.EnemyMove:
                     return 0.3f;
                 case BattleEventType.EtchingMoved:

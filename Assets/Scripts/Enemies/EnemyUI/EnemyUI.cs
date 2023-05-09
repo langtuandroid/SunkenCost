@@ -33,6 +33,11 @@ namespace Enemies.EnemyUI
             _mover = _enemy.Mover;
         }
 
+        private void Start()
+        {
+            Invoke(nameof(UpdateUI), 0.01f);
+        }
+
         private void OnDestroy()
         {
             if (BattleRenderer.Current)
@@ -57,10 +62,15 @@ namespace Enemies.EnemyUI
             if (_enemy.IsDestroyed) return;
             
             if (battleEvent.type == BattleEventType.EnemySpeaking) _speechBubble.DisplayText(_enemy.Speech);
+            
+            UpdateUI();
+        }
 
+        private void UpdateUI()
+        {
             _tooltipTrigger.content = _enemy.GetDescription();
             _turnOrderText.SetTurnOrder(_enemy.TurnOrder);
-            _movementText.UpdateMovementText(_mover.CurrentMove.movementType, _mover.AmountOfMovesLeftThisTurn);
+            _movementText.UpdateMovementText(_mover.CurrentMove.MovementType, _mover.AmountOfMovesLeftThisTurn);
             _healthText.AlterHealth(_enemy.Health, _enemy.MaxHealth);
             _healthSlider.fillAmount = (float)_enemy.Health / _enemy.MaxHealth;
             _poisonDisplay.UpdateDisplay(_enemy.stats.Poison);

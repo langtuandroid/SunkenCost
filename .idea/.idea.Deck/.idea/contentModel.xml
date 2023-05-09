@@ -654,6 +654,7 @@
             </e>
             <e p="Enemy.cs" t="Include" />
             <e p="EnemyAnimationController.cs" t="Include" />
+            <e p="EnemyMove.cs" t="Include" />
             <e p="EnemyMover.cs" t="Include" />
             <e p="EnemyPlaceholder.cs" t="Include" />
             <e p="EnemyPlankArranger.cs" t="Include" />
@@ -710,10 +711,12 @@
             <e p="ItemInventory.cs" t="Include" />
             <e p="ItemOffer.cs" t="Include" />
             <e p="Items" t="Include">
+              <e p="BellsAndWhistlesItem.cs" t="Include" />
               <e p="CapitalListItem.cs" t="Include" />
               <e p="ConfusedItem.cs" t="Include" />
               <e p="EquippedItem.cs" t="Include" />
               <e p="ExpiredMedicineItem.cs" t="Include" />
+              <e p="ExtraPlankItem.cs" t="Include" />
               <e p="IHasPickupAction.cs" t="Include" />
               <e p="InvestmentNetworkItem.cs" t="Include" />
               <e p="MeasuredTouchItem.cs" t="Include" />

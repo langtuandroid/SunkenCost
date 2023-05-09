@@ -356,7 +356,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &1946351542553527060
 RectTransform:
   m_ObjectHideFlags: 0
@@ -394,6 +394,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _menuButton: {fileID: 2484863012637359348}
   _newRunButton: {fileID: 8951100471175425267}
+  _detailsText: {fileID: 7714254866650221721}
 --- !u!1 &5236158339505757608
 GameObject:
   m_ObjectHideFlags: 0
@@ -590,10 +591,10 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: 'You killed some enemies, I have no idea how many yet.
+  m_text: 'You lasted @ battles.
 
-    You lasted
-    some rounds, I dunno how many yet.
+    You killed some enemies, I have no idea how
+    many yet.
 
     It might be a high score? Who knows really'
   m_isRightToLeft: 0

@@ -13,17 +13,26 @@ using UnityEngine.Serialization;
 public class PlankDisplay : MonoBehaviour, IBattleEventUpdatedUI
 {
     private static Color _stunnedColor = new Color(0.65f, 0.65f, 0.65f);
-    private Color _originalColor;
-    
+
     [SerializeField] private Image _plankImage;
     [SerializeField] private Image _washImage;
+    [SerializeField] private Image _indicatorImage;
+
+    private Color _originalPlankColor;
+    private Color _originalIndicatorColor;
+    private float _originalIndicatorAlpha;
+    
+    private bool _isStunned;
 
     private int PlankNum => transform.GetSiblingIndex();
 
     private void Awake()
     {
         BattleRenderer.Current.RegisterUIUpdater(this);
-        _originalColor = _plankImage.color;
+        _originalPlankColor = _plankImage.color;
+        _originalIndicatorColor = _indicatorImage.color;
+        _originalIndicatorAlpha = _originalIndicatorColor.a;
+        _isStunned = false;
     }
     
     private void OnDestroy()
@@ -44,19 +53,24 @@ public class PlankDisplay : MonoBehaviour, IBattleEventUpdatedUI
 
     private IEnumerator ColorForAttackOnThisPlank(Color color)
     {
-        _plankImage.color = color;
+        _indicatorImage.color = new Color(color.r, color.g, color.b, _originalIndicatorAlpha);
         yield return new WaitForSecondsRealtime(Battle.ActionExecutionSpeed);
-        _plankImage.color = _originalColor;
+        _indicatorImage.color = _isStunned? new Color(0, 0, 0, 0) : _originalIndicatorColor;
+        
     }
 
     private void SetAsStunned()
     {
+        _isStunned = true;
         _plankImage.color = _stunnedColor;
+        _indicatorImage.color = new Color(0, 0, 0, 0);
     }
 
     private void SetAsUnStunned()
     {
-        _plankImage.color = Color.white;
+        _isStunned = false;
+        _plankImage.color = _originalPlankColor;
+        _indicatorImage.color = _originalIndicatorColor;
     }
 
     public void RespondToBattleEvent(BattleEvent battleEvent)
