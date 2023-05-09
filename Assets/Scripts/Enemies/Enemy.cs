@@ -46,7 +46,6 @@ namespace Enemies
             stats = new EnemyStats(ResponderID);
 
             Init();
-            ChangeHealth(MaxHealthStat.Value);
         }
 
         protected abstract void Init();
@@ -54,6 +53,7 @@ namespace Enemies
         private void Start()
         {
             Mover.Init();
+            ChangeHealth(MaxHealthStat.Value);
         }
 
         protected void SetInitialHealth(int health)
@@ -162,12 +162,10 @@ namespace Enemies
             IsDestroyed = true;
             
             var eventList = new List<BattleEvent>();
-            
-            eventList.Add(CreateEvent(BattleEventType.TryGainedGold, Gold, source));
-            
+
             if (source == DamageSource.Boat) eventList.Add(CreateEvent(BattleEventType.EnemyReachedBoat));
             eventList.Add(CreateEvent(BattleEventType.EnemyKilled, damageSource: source));
-
+            eventList.Add(CreateEvent(BattleEventType.TryGainedGold, Gold, source));
             if (IsMyTurn) eventList.Add(CreateEvent(BattleEventType.EndedIndividualEnemyTurn));
             return new BattleEventPackage(eventList);
         }

@@ -25,7 +25,7 @@ public class PlayerStats
     public int PlanksBought { get; private set; } = 0;
     public int MovesBought { get; private set; } = 0;
     public int Health { get; set; }
-    public int MaxHealth { get; private set; }
+    public int MaxHealth { get; set; }
     public int Gold { get; set; }
     public int MovesPerTurn { get; set; }
     public int NumberOfTurns { get; private set; }
@@ -78,5 +78,14 @@ public class PlayerStats
     {
         MovesBought++;
         MovesPerTurn++;
+    }
+
+    public void Heal(int amount)
+    {
+        var healthDifference = RunProgress.PlayerStats.MaxHealth - RunProgress.PlayerStats.Health;
+        if (healthDifference < amount)
+            Health += healthDifference;
+        else
+            Health += amount;
     }
 }

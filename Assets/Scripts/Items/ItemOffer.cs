@@ -13,5 +13,10 @@
             
             Cost = RunProgress.PlayerStats.PriceHandler.GetItemCost(itemInstance.Rarity);
         }
+
+        public void SetCost(int cost)
+        {
+            Cost = cost;
+        }
     }
 }

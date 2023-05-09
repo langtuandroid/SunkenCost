@@ -51,11 +51,7 @@ namespace Disturbances
                     RunProgress.PlayerStats.Gold += disturbance.Modifier;
                     break;
                 case DisturbanceType.Heart:
-                    var amount = disturbance.Modifier;
-                    var healthDifference = RunProgress.PlayerStats.MaxHealth - RunProgress.PlayerStats.Health;
-                    if (healthDifference < amount)
-                        amount = healthDifference;
-                    RunProgress.PlayerStats.Health += amount;
+                    RunProgress.PlayerStats.Heal(disturbance.Modifier);
                     break;
                 case DisturbanceType.None:
                     break;
@@ -73,6 +69,10 @@ namespace Disturbances
                         if (!(disturbance is ItemDisturbance itemDisturbance)) throw new Exception();
                         RunProgress.ItemInventory.AddItem(itemDisturbance.ItemInstance);
                         break;
+                case DisturbanceType.MaxHealth:
+                    RunProgress.PlayerStats.MaxHealth += disturbance.Modifier;
+                    RunProgress.PlayerStats.Heal(disturbance.Modifier);
+                    break;
                 default:
                     throw new ArgumentOutOfRangeException();
             }

@@ -56,6 +56,7 @@ public class RunProgress : MonoBehaviour
         _current._currentDisturbance = disturbance;
         _current._battleNumber++;
         _current._hasGeneratedMapEvents = false;
+        _current._offerStorage.IncreaseCostOfLockedOffers();
     }
 
     public static void HaveGeneratedDisturbanceEvents(List<Disturbance> disturbances)
@@ -69,7 +70,7 @@ public class RunProgress : MonoBehaviour
         DisturbanceLoader.LoadDisturbanceAssets();
 
         _playerStats = new PlayerStats();
-        _playerStats.InitialiseDeck("Stab", "Hurl", "Impede");
+        _playerStats.InitialiseDeck("LoneWolf", "Hurl", "Impede");
         _offerStorage = new OfferStorage();
         _itemInventory = transform.GetChild(0).gameObject.AddComponent<ItemInventory>();
         _battleNumber = 0;

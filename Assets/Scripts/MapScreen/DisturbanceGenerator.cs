@@ -24,8 +24,9 @@ namespace MapScreen
     
         private static readonly Dictionary<DisturbanceType, float> EliteWeightings = new Dictionary<DisturbanceType, float>()
         {
-            {DisturbanceType.EliteItem, 0.7f},
-            {DisturbanceType.EliteCard, 0.3f}
+            {DisturbanceType.EliteItem, 0.34f},
+            {DisturbanceType.EliteCard, 0.33f},
+            {DisturbanceType.MaxHealth, 0.33f}
         };
 
         private void Awake()

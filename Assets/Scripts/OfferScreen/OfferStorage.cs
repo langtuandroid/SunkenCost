@@ -53,5 +53,18 @@ namespace OfferScreen
                 }
             }
         }
+
+        public void IncreaseCostOfLockedOffers()
+        {
+            foreach (var design in LockedDesignOffers)
+            {
+                design.SetCost(design.Cost + 1);
+            }
+
+            foreach (var itemOffer in LockedItemOffers)
+            {
+                itemOffer.SetCost(itemOffer.Cost + 1);
+            }
+        }
     }
 }

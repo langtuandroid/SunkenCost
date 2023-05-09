@@ -15,6 +15,7 @@ namespace Disturbances
         // Elite
         EliteItem = 1000,
         EliteCard = 1200,
+        MaxHealth = 1300,
     }
     
     public class Disturbance
