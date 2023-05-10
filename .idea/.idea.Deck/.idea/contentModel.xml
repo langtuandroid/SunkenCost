@@ -619,9 +619,13 @@
           <e p="Designs" t="Include">
             <e p="Design.cs" t="Include" />
             <e p="DesignAsset.cs" t="Include" />
-            <e p="DesignDisplay.cs" t="Include" />
-            <e p="EtchingDisplay.cs" t="Include" />
             <e p="ListExtensions.cs" t="Include" />
+            <e p="UI" t="Include">
+              <e p="DesignCategoryDisplay.cs" t="Include" />
+              <e p="DesignDamageAndRangeDisplay.cs" t="Include" />
+              <e p="DesignDisplay.cs" t="Include" />
+              <e p="EtchingDisplay.cs" t="Include" />
+            </e>
           </e>
           <e p="Disturbances" t="Include">
             <e p="CardDisturbance.cs" t="Include" />
@@ -813,7 +817,9 @@
           <e p="UnexpectedStatException.cs" t="Include" />
         </e>
         <e p="Sprites" t="Include">
-          <e p="DesignLogos" t="Include" />
+          <e p="DesignLogos" t="Include">
+            <e p="DamageAndRange" t="Include" />
+          </e>
           <e p="Effects" t="Include" />
           <e p="Enemies" t="Include" />
           <e p="Items" t="Include" />

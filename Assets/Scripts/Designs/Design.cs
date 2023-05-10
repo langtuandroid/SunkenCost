@@ -34,6 +34,7 @@ namespace Designs
         public string Title => designAsset.title;
         public Sprite Sprite => designAsset.sprite;
         public DesignType Type => designAsset.designType;
+        public DesignCategory Category => designAsset.designCategory;
 
         public Color Color => designAsset._color;
         public bool Limitless { get; private set; }

@@ -1129,7 +1129,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a5d2ec47f0feef841921b34a08b1cb28, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _etchingPrefab: {fileID: 2408865919859290242, guid: 2dbabf55a8946b942bce533800c40806, type: 3}
+  _etchingPrefab: {fileID: 7580135351571841622, guid: 2a28aa0869b405343a7dddb238c0df45, type: 3}
 --- !u!1 &513419357
 GameObject:
   m_ObjectHideFlags: 0
@@ -3446,11 +3446,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3739874107440994272, guid: 753e431c20e8b5d45a1560f4e9ca944f, type: 3}
       propertyPath: m_AnchoredPosition.x
-      value: 1208.6012
+      value: 1200.2781
       objectReference: {fileID: 0}
     - target: {fileID: 3739874107440994272, guid: 753e431c20e8b5d45a1560f4e9ca944f, type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: 1259.0983
+      value: 1270.3591
       objectReference: {fileID: 0}
     - target: {fileID: 3739874107924409688, guid: 753e431c20e8b5d45a1560f4e9ca944f, type: 3}
       propertyPath: m_Pivot.x

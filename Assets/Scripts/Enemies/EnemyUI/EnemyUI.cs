@@ -29,12 +29,12 @@ namespace Enemies.EnemyUI
         {
             BattleRenderer.Current.RegisterUIUpdater(this);
             _enemy = GetComponent<Enemy>();
-            _tooltipTrigger.header = _enemy.Name;
             _mover = _enemy.Mover;
         }
 
         private void Start()
         {
+            _tooltipTrigger.header = _enemy.Name;
             Invoke(nameof(UpdateUI), 0.01f);
         }
 

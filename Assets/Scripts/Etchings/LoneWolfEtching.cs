@@ -23,18 +23,15 @@ namespace Etchings
 
         protected override DesignResponse GetDesignResponsesToEvent(BattleEvent battleEvent)
         {
-            var responses = new List<BattleEvent>();
-
             switch (battleEvent.type)
             {
                 case BattleEventType.PlankCreated:
                 case BattleEventType.PlankDestroyed:
                 case BattleEventType.StartedBattle:
-                    return new DesignResponse(-1, UpdateDamage());
+                    return new DesignResponse(-1, UpdateDamage(), showResponse: false);
             }
             
-            responses.AddRange(base.GetDesignResponsesToEvent(battleEvent).response);
-            return new DesignResponse(PlankNum, responses);
+            return base.GetDesignResponsesToEvent(battleEvent);
         }
 
         private BattleEvent UpdateDamage()
@@ -47,7 +44,10 @@ namespace Etchings
             _damageMod = new StatModifier(penalty, StatModType.Flat);
             design.AddStatModifier(StatType.Damage, _damageMod);
 
-            return new BattleEvent(BattleEventType.DesignModified) {affectedResponderID = ResponderID, showResponse = false};
+            return new BattleEvent(BattleEventType.DesignModified)
+            {
+                affectedResponderID = ResponderID, showResponse = false
+            };
         }
     }
 }

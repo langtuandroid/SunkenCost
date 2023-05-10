@@ -20,6 +20,7 @@ namespace Designs
     public class DesignAsset : ScriptableObject
     {
         [FormerlySerializedAs("_designType")] [SerializeField] public DesignType designType;
+        [SerializeField] public DesignCategory designCategory;
         [FormerlySerializedAs("_title")] [SerializeField] public string title;
         [FormerlySerializedAs("_sprite")] [SerializeField] public Sprite sprite;
         [SerializeField] public Color _color;
@@ -28,5 +29,13 @@ namespace Designs
         [FormerlySerializedAs("_firstLevelUpStatMods")] [SerializeField] public List<StatSetter> firstLevelUpStatMods = new List<StatSetter>();
         [FormerlySerializedAs("_secondLevelUpStatMods")] [SerializeField] public List<StatSetter> secondLevelUpStatMods = new List<StatSetter>();
         
+    }
+
+    public enum DesignCategory
+    {
+        MeleeAttack,
+        RangedAttack,
+        AreaAttack,
+        Effect,
     }
 }

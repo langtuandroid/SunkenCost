@@ -121,16 +121,15 @@ public class DesignLoader : MonoBehaviour
         switch (design.Type)
         {
             case DesignType.Melee: case DesignType.LoneWolf: case DesignType.Ambush:
-                description = "Attacks enemies landing on this plank for " + design.GetStat(StatType.Damage) + " damage";
                 if (design.Type == DesignType.LoneWolf)
                 {
-                    description += ". " + design.GetStat(StatType.StatFlatModifier) + 
+                    description += design.GetStat(StatType.StatFlatModifier) + 
                                   " damage for each other plank you have";
                 }
 
                 if (design.Type == DesignType.Ambush)
                 {
-                    description += ". Increase by " + design.GetStat(StatType.StatFlatModifier) +
+                    description += "Increase damage by " + design.GetStat(StatType.StatFlatModifier) +
                                    " each turn it doesn't attack";
                 }
 
@@ -138,22 +137,6 @@ public class DesignLoader : MonoBehaviour
             case DesignType.Ranged:
             case DesignType.Raid:
             {
-                var range = "";
-                var minRange = design.GetStat(StatType.MinRange);
-                var maxRange = design.GetStat(StatType.MaxRange);
-                if (minRange == maxRange)
-                {
-                    range = design.GetStat(StatType.MinRange) + " plank";
-                    if (minRange != 1) range += "s";
-                }
-                else
-                {
-                    range = minRange + "-" + maxRange + " planks";
-                }
-
-                description = "Attacks enemies landing " + range + " away for " + design.GetStat(StatType.Damage) +
-                              " damage";
-
                 if (design.Type == DesignType.Raid)
                     description += ". Deal " + design.GetStat(StatType.StatMultiplier) +
                                    "x damage on non-Attack planks";
@@ -161,11 +144,6 @@ public class DesignLoader : MonoBehaviour
             }
             case DesignType.Area:
             {
-                var maxRange = design.GetStat(StatType.MaxRange);
-                var distance = maxRange + " plank";
-                if (maxRange != 1) distance += "s";
-                description = "Attacks all enemies up to " + distance +
-                              " away for " + design.GetStat(StatType.Damage) + " damage when an enemy lands within that range";
                 break;
             }
             case DesignType.Block: 
@@ -197,8 +175,8 @@ public class DesignLoader : MonoBehaviour
                 break;
             }
             case DesignType.Finalise:
-                description = "When enemies land on this plank, deal " + design.GetStat(StatType.Damage) +
-                              " damage to all enemies on every plank. If any survive, lose " + Math.Abs(design.GetStat(StatType.PlayerHealthModifier)) + " lives";
+                description = "Deal " + design.GetStat(StatType.Damage) + " damage to all enemies on every plank. " +
+                              "If any survive, lose " + Math.Abs(design.GetStat(StatType.PlayerHealthModifier)) + " lives";
                 break;
             case DesignType.Cauterize:
                 var multiplier = design.GetStat(StatType.StatMultiplier);

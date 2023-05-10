@@ -111,6 +111,7 @@ public class OfferManager : MonoBehaviour
     private IEnumerator WaitForDesignCardsToInitialise()
     {
         yield return 0;
+        yield return 0;
         OfferScreenEvents.Current.RefreshOffers();
     }
 }

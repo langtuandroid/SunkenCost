@@ -1098,7 +1098,7 @@ CanvasGroup:
   m_Enabled: 1
   m_Alpha: 1
   m_Interactable: 1
-  m_BlocksRaycasts: 1
+  m_BlocksRaycasts: 0
   m_IgnoreParentGroups: 0
 --- !u!114 &1280331486218307287
 MonoBehaviour:
@@ -1123,7 +1123,6 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 3264974893376807372}
-  - component: {fileID: 8939885515697747817}
   - component: {fileID: 8806261042712515228}
   - component: {fileID: 6343256771185614035}
   m_Layer: 5
@@ -1161,18 +1160,6 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 100, y: 100}
   m_Pivot: {x: 0.5, y: 1}
---- !u!225 &8939885515697747817
-CanvasGroup:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6499902039103880501}
-  m_Enabled: 1
-  m_Alpha: 1
-  m_Interactable: 1
-  m_BlocksRaycasts: 0
-  m_IgnoreParentGroups: 0
 --- !u!114 &8806261042712515228
 MonoBehaviour:
   m_ObjectHideFlags: 0

@@ -1,10 +1,9 @@
 using System.Collections;
-using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
 
-namespace Designs
+namespace Designs.UI
 {
     public class DesignDisplay : MonoBehaviour
     {
@@ -13,6 +12,8 @@ namespace Designs
         [SerializeField] private TextMeshProUGUI descriptionText;
         [SerializeField] private TextMeshProUGUI usesText;
         [SerializeField] private Image image;
+        [SerializeField] private DesignCategoryDisplay _categoryDisplay;
+        [SerializeField] private DesignDamageAndRangeDisplay _damageAndRangeDisplay;
         
         public Design design;
         private CanvasGroup _canvasGroup;
@@ -38,9 +39,27 @@ namespace Designs
         protected virtual void Init()
         {
             TitleText.text = design.Title;
-            UpdateDisplay();
+            _categoryDisplay.Init(design.Category);
+
+            if (design.Category != DesignCategory.Effect)
+            {
+                _damageAndRangeDisplay.Init(design);
+            }
+            else
+            {
+                _damageAndRangeDisplay.gameObject.SetActive(false);
+                var descRectTransform = descriptionText.GetComponent<RectTransform>();
+                var anchoredPosition = descRectTransform.anchoredPosition;
+                descRectTransform.anchoredPosition = new Vector3(anchoredPosition.x, anchoredPosition.y + 25, 1);
+            }
+
             image.sprite = design.Sprite;
             _canvasGroup.alpha = 1;
+            
+            // Allows the tooltipTrigger to be triggered
+            _canvasGroup.enabled = false;
+            
+            UpdateDisplay();
         }
 
         public void UpdateDisplay()
@@ -63,6 +82,9 @@ namespace Designs
             
             usesText.text = design.Limitless ? "" : design.GetStat(StatType.UsesPerTurn) - design.UsesUsedThisTurn 
                                                     + "/" + design.GetStat(StatType.UsesPerTurn);
+
+            if (design.Category != DesignCategory.Effect)
+                _damageAndRangeDisplay.RefreshInfo();
         }
     }
 }

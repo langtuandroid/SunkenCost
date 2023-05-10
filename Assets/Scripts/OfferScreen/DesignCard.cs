@@ -1,6 +1,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using Designs;
+using Designs.UI;
 using UnityEngine;
 using UnityEngine.EventSystems;
 using UnityEngine.Serialization;
@@ -98,6 +99,7 @@ namespace OfferScreen
         {
             _mergeableDesignCard = GetAnyMergeableDesignCard();
             mergeButton.gameObject.SetActive(HasMergeableDesignCard);
+            
             if (HasMergeableDesignCard)
             {
                 mergeButton.Refresh(_mergeableDesignCard.Design.Cost, _mergeableDesignCard.Design.Cost <= OfferManager.Current.BuyerSeller.Gold);

@@ -3,6 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using BattleScreen;
 using BattleScreen.BattleEvents;
+using Designs.UI;
 using Etchings;
 using UnityEngine;
 
@@ -10,7 +11,6 @@ namespace Designs
 {
     public class EtchingDisplay : DesignDisplay, IBattleEventUpdatedUI
     {
-        protected bool colorWhenActivated = false;
         private Color _normalColor;
 
         private Etching _etching;

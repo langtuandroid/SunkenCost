@@ -13,6 +13,7 @@ MonoBehaviour:
   m_Name: Stomp
   m_EditorClassIdentifier: 
   designType: 2
+  designCategory: 2
   title: Stomp
   sprite: {fileID: 21300000, guid: 28a0543dfb02cfe43abec410d3463c07, type: 3}
   _color: {r: 1, g: 0.92156863, b: 0.015686275, a: 1}

@@ -12,21 +12,22 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 942f8b137e054c4f96a7f159489a25ee, type: 3}
   m_Name: Snipe
   m_EditorClassIdentifier: 
-  _designType: 1
-  _title: Snipe
-  _sprite: {fileID: 21300000, guid: 04b966b030cc5f8458ac126563c2af2a, type: 3}
+  designType: 1
+  designCategory: 1
+  title: Snipe
+  sprite: {fileID: 21300000, guid: 04b966b030cc5f8458ac126563c2af2a, type: 3}
   _color: {r: 1, g: 0, b: 0, a: 1}
-  _rarity: 1
-  _initialStats:
+  rarity: 1
+  initialStats:
   - _statType: 2
     _magnitude: 7
   - _statType: 3
     _magnitude: 3
   - _statType: 4
     _magnitude: 3
-  _firstLevelUpStatMods:
+  firstLevelUpStatMods:
   - _statType: 2
     _magnitude: 3
-  _secondLevelUpStatMods:
+  secondLevelUpStatMods:
   - _statType: 2
     _magnitude: 5
