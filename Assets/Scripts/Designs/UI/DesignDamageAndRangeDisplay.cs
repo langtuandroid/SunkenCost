@@ -14,12 +14,23 @@ namespace Designs.UI
 
             if (design.Category != DesignCategory.MeleeAttack)
             {
-                var minRange = design.HasStat(StatType.MinRange) ? design.GetStat(StatType.MinRange).ToString() : "0";
-                var maxRange = design.HasStat(StatType.MaxRange)
-                    ? design.GetStat(StatType.MaxRange).ToString()
-                    : "\u221E";
+                var minRange = design.HasStat(StatType.MinRange) 
+                    ? design.GetStat(StatType.MinRange).ToString() : "0";
+                var maxRange = design.HasStat(StatType.MaxRange) 
+                    ? design.GetStat(StatType.MaxRange).ToString() : "\u221E";
 
-                text += "    <sprite=1> " + minRange + "-" + maxRange;
+                string fullRange;
+                
+                if ((minRange == "0" && maxRange == "\u221E") || minRange == maxRange)
+                {
+                    fullRange = maxRange;
+                }
+                else
+                {
+                    fullRange = minRange + "-" + maxRange;
+                }
+
+                text += "    <sprite=1> " + fullRange;
             }
 
             _textMeshProUGUI.text = text;

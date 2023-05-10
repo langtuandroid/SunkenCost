@@ -18,7 +18,9 @@ namespace Designs.UI
         public Design design;
         private CanvasGroup _canvasGroup;
 
-        public void Awake()
+        protected virtual float DescriptionYOffset { get; set; } = 37.5f;
+
+        protected virtual void Awake()
         {
             _canvasGroup = GetComponent<CanvasGroup>();
             _canvasGroup.alpha = 0f;
@@ -47,7 +49,10 @@ namespace Designs.UI
                 _damageAndRangeDisplay.gameObject.SetActive(false);
                 var descRectTransform = descriptionText.GetComponent<RectTransform>();
                 var anchoredPosition = descRectTransform.anchoredPosition;
-                descRectTransform.anchoredPosition = new Vector3(anchoredPosition.x, anchoredPosition.y + 25, 1);
+                descRectTransform.anchoredPosition = new Vector3(anchoredPosition.x, anchoredPosition.y + DescriptionYOffset, 1);
+            }
+            else
+            {
             }
 
             image.sprite = design.Sprite;

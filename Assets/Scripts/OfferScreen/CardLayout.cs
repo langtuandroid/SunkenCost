@@ -13,10 +13,13 @@ namespace OfferScreen
 
         private ReorderableListContent _reorderableListContent;
 
+        private float _gridChildWidth;
+
         private void Awake()
         {
             _gridLayoutGroup = GetComponent<GridLayoutGroup>();
             _width = GetComponent<RectTransform>().rect.width;
+            _gridChildWidth = _gridLayoutGroup.cellSize.x;
         }
 
         private void Start()
@@ -35,7 +38,7 @@ namespace OfferScreen
 
             if (childCount > childrenBeforeSpacing)
             {
-                var totalOverflow = _width - (230 * childCount);
+                var totalOverflow = _width - (_gridChildWidth * childCount);
                 var spacing = (float) totalOverflow / (childCount - 1);
                 _gridLayoutGroup.spacing = new Vector2(spacing, 0);
             }

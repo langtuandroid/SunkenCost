@@ -15,11 +15,18 @@ namespace Designs
 
         private Etching _etching;
 
+        protected override void Awake()
+        {
+            DescriptionYOffset = 25f;
+            base.Awake();
+        }
+        
         protected override void Start()
         {
             BattleRenderer.Current.RegisterUIUpdater(this);
             _etching = GetComponent<Etching>();
             design = _etching.design;
+            
             base.Start();
         }
 

@@ -33,6 +33,11 @@ namespace Designs.UI
                     description = "Attacks all enemies in range when an enemy lands within range";
                     color = new Color(0.5f, 0.5f, 0f);
                     break;
+                case DesignCategory.SpecialAttack:
+                    title = "Special Attack";
+                    color = new Color(0.1f, 0.5f, 0.1f);
+                    _tooltipTrigger.enabled = false;
+                    break;
                 case DesignCategory.Effect:
                     title = "Effect";
                     color = new Color(0.5f, 0f, 0.5f);

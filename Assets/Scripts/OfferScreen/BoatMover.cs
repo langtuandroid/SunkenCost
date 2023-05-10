@@ -11,8 +11,8 @@ namespace OfferScreen
             var childCount = transform.childCount;
 
             var boatPosition = boatTransform.localPosition;
-            boatPosition = childCount < 6 
-                ? new Vector3(115 * childCount, boatPosition.y, 0) 
+            boatPosition = childCount < 5 
+                ? new Vector3(125 * childCount, boatPosition.y, 0) 
                 : new Vector3(615, boatPosition.y, 0);
             boatTransform.localPosition = boatPosition;
         }

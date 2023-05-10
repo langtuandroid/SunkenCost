@@ -36,6 +36,7 @@ namespace Designs
         MeleeAttack,
         RangedAttack,
         AreaAttack,
+        SpecialAttack,
         Effect,
     }
 }
