@@ -44,31 +44,23 @@ public class ScenarioLoader : MonoBehaviour
     public static Scenario GetScenario(int battle)
     {
         ScenarioType scenarioType;
-        switch (battle)
-        { 
-            case (< BATTLES_PER_DIFFICULTY):
-                scenarioType = ScenarioType.Easy;
-                break;
-            case (BATTLES_PER_DIFFICULTY):
-                scenarioType = ScenarioType.EasyElite;
-                break;
-            case (<BATTLES_PER_DIFFICULTY * 2):
-                scenarioType = ScenarioType.Medium;
-                break;
-            case (BATTLES_PER_DIFFICULTY * 2):
-                scenarioType = ScenarioType.MediumElite;
-                break;
-            case (< BATTLES_PER_DIFFICULTY * 3):
-                scenarioType = ScenarioType.Hard;
-                break;
-            case (BATTLES_PER_DIFFICULTY * 3):
-                scenarioType = ScenarioType.HardElite;
-                break;
-            default:
-                Debug.Log(BATTLES_PER_DIFFICULTY);
-                scenarioType = ScenarioType.Easy;
-                break;
+
+        var stage = (int)Mathf.Floor((float)battle / BATTLES_PER_DIFFICULTY);
+        Debug.Log("Battle: " + battle + ", stage: " + stage);
+
+        var placeInDifficulty = battle % BATTLES_PER_DIFFICULTY;
+
+        if (placeInDifficulty == 0)
+        {
+            scenarioType = (ScenarioType) (9 + stage);
         }
+        else
+        {
+            scenarioType = placeInDifficulty <= (BATTLES_PER_DIFFICULTY / 2) ? (ScenarioType) stage : (ScenarioType) stage + 1;
+            
+        }
+        
+        Debug.Log(scenarioType);
 
         var scenarioOptions = _current.scenariosByDifficulty.
             Where(p => p.Key == scenarioType).

@@ -22,7 +22,7 @@ namespace BattleScreen
         EndedBattle,
         SelectedNextEnemy,
         StartedIndividualEnemyTurn,
-        EnemyStartOfTurnEffect,
+        EnemyEffect,
         EnemyAboutToMove,
         EnemyMove,
         EndedIndividualEnemyTurn,

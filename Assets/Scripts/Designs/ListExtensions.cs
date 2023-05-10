@@ -5,7 +5,7 @@ using System.Collections.Generic;
  
 public static class ListExtensions  
 {
-    
+    /*
     public static void Shuffle<T>(this IList<T> list) 
     {
         for (var i = 0; i < list.Count; i++)
@@ -18,4 +18,5 @@ public static class ListExtensions
         list[i] = list[j];
         list[j] = temp;
     }
+    */
 }

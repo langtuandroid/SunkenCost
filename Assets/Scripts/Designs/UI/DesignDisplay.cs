@@ -41,11 +41,8 @@ namespace Designs.UI
             TitleText.text = design.Title;
             _categoryDisplay.Init(design.Category);
 
-            if (design.Category != DesignCategory.Effect)
-            {
-                _damageAndRangeDisplay.Init(design);
-            }
-            else
+            // Remove the damage / range area from the design if not applicable
+            if (design.Category == DesignCategory.Effect)
             {
                 _damageAndRangeDisplay.gameObject.SetActive(false);
                 var descRectTransform = descriptionText.GetComponent<RectTransform>();
@@ -70,21 +67,19 @@ namespace Designs.UI
             
             var rawDescription = DesignLoader.GetDescription(design);
 
-            var descriptionWithSprites = rawDescription
-                .Replace("damage", "<sprite=0>")
-                .Replace("movement", "<sprite=1>");
+            
 
             var defaultColor = ColorUtility.ToHtmlStringRGB(descriptionText.color);
             var allColor = ColorUtility.ToHtmlStringRGB(new Color(0.6f, 0.58f, 0.3f));
 
-            descriptionText.text = descriptionWithSprites
+            descriptionText.text = rawDescription
                 .Replace("all", "<color=#" + allColor + ">all<color=#" + defaultColor + ">");
             
             usesText.text = design.Limitless ? "" : design.GetStat(StatType.UsesPerTurn) - design.UsesUsedThisTurn 
                                                     + "/" + design.GetStat(StatType.UsesPerTurn);
 
             if (design.Category != DesignCategory.Effect)
-                _damageAndRangeDisplay.RefreshInfo();
+                _damageAndRangeDisplay.RefreshInfo(design);
         }
     }
 }

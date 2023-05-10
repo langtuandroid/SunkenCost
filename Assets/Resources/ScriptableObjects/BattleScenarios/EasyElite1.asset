@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e88836627efa4444288b773536f04a36, type: 3}
   m_Name: EasyElite1
   m_EditorClassIdentifier: 
-  scenarioType: 1
+  scenarioType: 10
   round1: 0b000000
   round2: 
   round3: 

@@ -114,28 +114,35 @@ namespace Enemies
 
         public override BattleEventPackage GetResponseToBattleEvent(BattleEvent previousBattleEvent)
         {
-            // Damaged
-            if (previousBattleEvent.type == BattleEventType.EnemyAttacked 
-                && previousBattleEvent.affectedResponderID == ResponderID)
+            switch (previousBattleEvent.type)
             {
-                ChangeHealth(-previousBattleEvent.modifier);
-                
-                // Killed 
-                if (Health <= 0)
+                case BattleEventType.EnemySpawned when previousBattleEvent.affectedResponderID == ResponderID
+                                                       && this is ISpawnAbilityHolder abilityHolder:
                 {
-                    return Die(previousBattleEvent.source);
+                    return abilityHolder.GetSpawnAbility();
                 }
 
-                var damagedEvent = CreateEvent
-                    (BattleEventType.EnemyDamaged, previousBattleEvent.modifier, previousBattleEvent.source);
-                return new BattleEventPackage(damagedEvent);
+                // Damaged
+                case BattleEventType.EnemyAttacked when previousBattleEvent.affectedResponderID == ResponderID:
+                {
+                    ChangeHealth(-previousBattleEvent.modifier);
+                
+                    // Killed 
+                    if (Health <= 0)
+                    {
+                        return Die(previousBattleEvent.source);
+                    }
+
+                    var damagedEvent = CreateEvent
+                        (BattleEventType.EnemyDamaged, previousBattleEvent.modifier, previousBattleEvent.source);
+                    return new BattleEventPackage(damagedEvent);
+                }
+                
+                case BattleEventType.EndedEnemyTurn:
+                    Mover.EndTurn();
+                    break;
             }
 
-            if (previousBattleEvent.type == BattleEventType.EndedEnemyTurn)
-            {
-                Mover.EndTurn();
-            }
-            
             return BattleEventPackage.Empty;
         }
 

@@ -10,12 +10,12 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: e88836627efa4444288b773536f04a36, type: 3}
-  m_Name: Easy0
+  m_Name: LateEasy1
   m_EditorClassIdentifier: 
-  scenarioType: 0
-  round1: 01000000
-  round2: 04000000
-  round3: 01000000
+  scenarioType: 1
+  round1: 00000000
+  round2: 00000000
+  round3: 04000000
   round4: 04000000
   round5: 04000000
   scaledDifficulty: 0

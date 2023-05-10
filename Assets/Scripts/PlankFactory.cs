@@ -53,12 +53,7 @@ public class PlankFactory : MonoBehaviour
             throw new Exception("Trying to destroy plank that isn't there!");
         }
         
-        return plank.Destroy(source);
-    }
-    
-    private IEnumerator WaitForPlankDestruction(PlankDisplay plankDisplay)
-    {
-        yield return 0;
         _board.Refresh();
+        return plank.Destroy(source);
     }
 }

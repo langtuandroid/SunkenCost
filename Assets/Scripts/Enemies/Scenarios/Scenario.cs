@@ -16,17 +16,22 @@ public enum EnemyType
     Crib,
     Retortoise,
     Maxolotl,
-    Carppool
+    Carppool,
+    Octopurse
 }
 
 public enum ScenarioType
 {
-    Easy,
-    EasyElite,
-    Medium,
-    MediumElite,
-    Hard,
-    HardElite,
+    EarlyEasy = 0,
+    LateEasy = 1,
+    EarlyMedium = 2,
+    LateMedium = 3,
+    EarlyHard = 4,
+    LateHard = 5,
+    
+    EasyElite = 10,
+    MediumElite = 11,
+    HardElite = 12,
 }
 
 [CreateAssetMenu(menuName = "Battles/Scenario")]

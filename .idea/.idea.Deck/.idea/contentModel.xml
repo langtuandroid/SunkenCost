@@ -652,6 +652,7 @@
               <e p="GrouldEnemy.cs" t="Include" />
               <e p="LeechEnemy.cs" t="Include" />
               <e p="Maxolotl.cs" t="Include" />
+              <e p="OctopurseEnemy.cs" t="Include" />
               <e p="RatEnemy.cs" t="Include" />
               <e p="RetortoiseEnemy.cs" t="Include" />
               <e p="SteeloEnemy.cs" t="Include" />
@@ -675,6 +676,7 @@
               <e p="EnemyUI.cs" t="Include" />
               <e p="EnemyUIText.cs" t="Include" />
             </e>
+            <e p="ISpawnAbilityHolder.cs" t="Include" />
             <e p="IStartOfTurnAbilityHolder.cs" t="Include" />
             <e p="Scenarios" t="Include">
               <e p="Scenario.cs" t="Include" />

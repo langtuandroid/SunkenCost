@@ -242,8 +242,11 @@ namespace BattleScreen
                     return 0.5f;
                 case BattleEventType.EnemyMove:
                     return 0.3f;
-                case BattleEventType.EtchingMoved:
-                    return 0.0001f;
+                
+                // Some things need a frame to process
+                case BattleEventType.EtchingMoved: case BattleEventType.PlankDestroyed: 
+                case BattleEventType.PlankCreated: case BattleEventType.PlankMoved:
+                    return 0.001f;
             }
 
             return -1f;

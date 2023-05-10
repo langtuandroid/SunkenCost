@@ -17,8 +17,15 @@ namespace Items.Items
         protected override BattleEventPackage GetResponse(BattleEvent battleEvent)
         {
             var planksInOrder = Board.Current.PlanksInOrder;
-            var etchingsInOrder = planksInOrder.Select(p => p.Etching);
+            var etchingsInOrder = planksInOrder.Select(p => p.Etching).ToList();
             var shuffledEtchings = etchingsInOrder.Shuffle().ToList();
+            
+            // Never get the same sequence
+            while (etchingsInOrder.SequenceEqual(shuffledEtchings))
+            {
+                shuffledEtchings = etchingsInOrder.Shuffle().ToList();
+            }
+            
 
             var etchingFactory = EtchingFactory.Current;
             var responses = new List<BattleEvent>();

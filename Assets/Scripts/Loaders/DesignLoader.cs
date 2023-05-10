@@ -138,7 +138,7 @@ public class DesignLoader : MonoBehaviour
             case DesignType.Raid:
             {
                 if (design.Type == DesignType.Raid)
-                    description += ". Deal " + design.GetStat(StatType.StatMultiplier) +
+                    description += "Deal " + design.GetStat(StatType.StatMultiplier) +
                                    "x damage on non-Attack planks";
                 break;
             }
@@ -213,6 +213,11 @@ public class DesignLoader : MonoBehaviour
             description += " (" + usesText + " per turn)";
         }
         
-        return description;
+        var descriptionWithSprites = description
+            .Replace("damage", "<sprite=0>")
+            .Replace("range", "<sprite=1>")
+            .Replace("movement", "<sprite=2>");
+        
+        return descriptionWithSprites;
     }
 }

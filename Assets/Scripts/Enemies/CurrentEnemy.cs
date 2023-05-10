@@ -33,7 +33,7 @@ namespace Enemies
 
                 if (_enemy.stats.Poison > 0)
                     return new BattleEventPackage(_enemy.DealPoisonDamage())
-                        .WithIdentifier(BattleEventType.EnemyStartOfTurnEffect, _responderID);
+                        .WithIdentifier(BattleEventType.EnemyEffect, _responderID);
             }
             
             if (!_hasExecutedStartOfTurnAbility)
@@ -46,7 +46,7 @@ namespace Enemies
                     // TODO: Battle event packages should be mergeable
                     var abilityEvents = (startOfTurnAbilityHolder.GetStartOfTurnAbility()).battleEvents.ToList();
                     return new BattleEventPackage(abilityEvents)
-                        .WithIdentifier(BattleEventType.EnemyStartOfTurnEffect, _responderID);
+                        .WithIdentifier(BattleEventType.EnemyEffect, _responderID);
                 }
             }
 

@@ -76,7 +76,7 @@ public class RunProgress : MonoBehaviour
         _battleNumber = 0;
         _currentDisturbance = null;
         
-        //AddItem(typeof(BellsAndWhistlesItem));
+        AddItem(typeof(ConfusedItem));
     }
 
     // Used to test Items - add to initialise run

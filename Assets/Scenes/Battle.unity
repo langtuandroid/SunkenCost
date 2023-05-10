@@ -447,6 +447,7 @@ MonoBehaviour:
   - Maxolotl
   - Carppool
   - BullCarp
+  - Octopurse
   enemyPrefabs:
   - {fileID: 7923812371195210878, guid: 5ef39fbf033852144bcb8f3c74d2d860, type: 3}
   - {fileID: 1231011296041315399, guid: 71cc31b502beb3046aa91f95e616019f, type: 3}
@@ -461,6 +462,7 @@ MonoBehaviour:
   - {fileID: 2655713838273099450, guid: 66ee7a8dc0a242242aab3a8b0ee4afe2, type: 3}
   - {fileID: 5482310750778572484, guid: 2b30edcb4ac596f49b8f01dcda88313d, type: 3}
   - {fileID: 7816918493809717753, guid: 6f8dac1e479046f41947ad946ad5d707, type: 3}
+  - {fileID: 5288099224730438730, guid: d93e412c35fd0bb47889d0e27a717349, type: 3}
 --- !u!4 &145267314
 Transform:
   m_ObjectHideFlags: 0
@@ -3446,11 +3448,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3739874107440994272, guid: 753e431c20e8b5d45a1560f4e9ca944f, type: 3}
       propertyPath: m_AnchoredPosition.x
-      value: 1200.2781
+      value: 1084
       objectReference: {fileID: 0}
     - target: {fileID: 3739874107440994272, guid: 753e431c20e8b5d45a1560f4e9ca944f, type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: 1270.3591
+      value: 1143.5
       objectReference: {fileID: 0}
     - target: {fileID: 3739874107924409688, guid: 753e431c20e8b5d45a1560f4e9ca944f, type: 3}
       propertyPath: m_Pivot.x

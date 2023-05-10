@@ -9,7 +9,10 @@ namespace Items.Items
     {
         protected override bool GetIfRespondingToBattleEvent(BattleEvent battleEvent)
         {
-            return battleEvent.type == BattleEventType.EnemyHealed;
+            if (battleEvent.type != BattleEventType.EnemyHealed) return false;
+
+            var enemy = BattleEventsManager.Current.GetEnemyByResponderID(battleEvent.affectedResponderID);
+            return !enemy.IsDestroyed;
         }
 
         protected override BattleEventPackage GetResponse(BattleEvent battleEvent)

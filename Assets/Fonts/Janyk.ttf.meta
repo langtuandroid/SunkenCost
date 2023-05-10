@@ -3,7 +3,7 @@ guid: b1a71c028d4fd5c4a849858fc2ff4124
 TrueTypeFontImporter:
   externalObjects: {}
   serializedVersion: 4
-  fontSize: 12
+  fontSize: 16
   forceTextureCase: -2
   characterSpacing: 0
   characterPadding: 1
@@ -12,7 +12,7 @@ TrueTypeFontImporter:
   - Janyk
   fallbackFontReferences: []
   customCharacters: 
-  fontRenderingMode: 1
+  fontRenderingMode: 2
   ascentCalculationMode: 1
   useLegacyBoundsCalculation: 0
   shouldRoundAdvanceValue: 1

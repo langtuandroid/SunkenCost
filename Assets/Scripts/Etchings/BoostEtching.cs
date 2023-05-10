@@ -26,7 +26,8 @@ namespace Etchings
                 case BattleEventType.StartNextPlayerTurn:
                 case BattleEventType.EndedBattle:
                 case BattleEventType.PlankDestroyed:
-                case BattleEventType.PlayerMovedPlank:
+                case BattleEventType.PlankMoved:
+                case BattleEventType.EtchingMoved:
                 case BattleEventType.PlankCreated:
                     return true;
                 case BattleEventType.DesignModified:

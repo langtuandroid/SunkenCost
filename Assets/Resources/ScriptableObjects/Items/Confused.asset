@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: Confused
   m_EditorClassIdentifier: 
   title: Confused Craftsmen
-  description: +@ Plank, but your designs randomise their order at the start of each
+  description: +@ Plank, but your designs randomise their order at the start of your
     turn
   sprite: {fileID: 21300000, guid: 3788e22a2a464bd40976ecb5dbb296b0, type: 3}
   modifier: 1

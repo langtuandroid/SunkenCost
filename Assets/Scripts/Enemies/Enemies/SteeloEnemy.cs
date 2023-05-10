@@ -9,7 +9,7 @@ namespace Enemies.Enemies
             Size = 1.2f;
             Name = "Steelo";
             Mover.AddMove(1);
-            SetInitialHealth(100);
+            SetInitialHealth(120);
             Gold = 2;
         }
 
