@@ -18,6 +18,12 @@ MonoBehaviour:
   sprite: {fileID: 21300000, guid: 8ad2dfc81df1ced4d8efa3216f6ad7d4, type: 3}
   _color: {r: 0.40784314, g: 0.6666667, b: 0, a: 1}
   rarity: 1
+  description: Applies @ poison to enemies landing on this plank
+  notUpgradedText: 
+  firstUpgradeText: 
+  secondUpgradeText: 
+  extraTextSetting: 0
+  replacementStats: 06000000
   initialStats:
   - _statType: 6
     _magnitude: 3

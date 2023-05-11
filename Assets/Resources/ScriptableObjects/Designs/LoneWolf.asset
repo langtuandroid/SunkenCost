@@ -13,10 +13,17 @@ MonoBehaviour:
   m_Name: LoneWolf
   m_EditorClassIdentifier: 
   designType: 10
+  designCategory: 0
   title: Lone Wolf
   sprite: {fileID: 21300000, guid: 6f533f2fe7178644c87abb5b522243cc, type: 3}
   _color: {r: 0, g: 1, b: 1, a: 1}
   rarity: 3
+  description: Loses @ damage for each other plank you have
+  notUpgradedText: 
+  firstUpgradeText: 
+  secondUpgradeText: 
+  extraTextSetting: 0
+  replacementStats: 05000000
   initialStats:
   - _statType: 2
     _magnitude: 50

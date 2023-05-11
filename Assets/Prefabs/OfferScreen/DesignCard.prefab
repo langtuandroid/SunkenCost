@@ -354,38 +354,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 3236138630613875172}
     m_Modifications:
-    - target: {fileID: 851332457630332839, guid: 5b45ea61aef23744bb904d7a9704fadd, type: 3}
-      propertyPath: m_SizeDelta.x
-      value: 180
-      objectReference: {fileID: 0}
-    - target: {fileID: 851332457630332839, guid: 5b45ea61aef23744bb904d7a9704fadd, type: 3}
-      propertyPath: m_SizeDelta.y
-      value: 60
-      objectReference: {fileID: 0}
-    - target: {fileID: 851332457630332839, guid: 5b45ea61aef23744bb904d7a9704fadd, type: 3}
-      propertyPath: m_AnchoredPosition.y
-      value: 30
-      objectReference: {fileID: 0}
-    - target: {fileID: 1916807807220796082, guid: 5b45ea61aef23744bb904d7a9704fadd, type: 3}
-      propertyPath: m_text
-      value: 10/10
-      objectReference: {fileID: 0}
-    - target: {fileID: 1916807807220796082, guid: 5b45ea61aef23744bb904d7a9704fadd, type: 3}
-      propertyPath: m_Enabled
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 1916807807220796082, guid: 5b45ea61aef23744bb904d7a9704fadd, type: 3}
-      propertyPath: m_fontSize
-      value: 14
-      objectReference: {fileID: 0}
-    - target: {fileID: 1916807807220796082, guid: 5b45ea61aef23744bb904d7a9704fadd, type: 3}
-      propertyPath: m_fontSizeBase
-      value: 14
-      objectReference: {fileID: 0}
-    - target: {fileID: 1916807807220796082, guid: 5b45ea61aef23744bb904d7a9704fadd, type: 3}
-      propertyPath: m_HorizontalAlignment
-      value: 2
-      objectReference: {fileID: 0}
     - target: {fileID: 2408865919859290242, guid: 5b45ea61aef23744bb904d7a9704fadd, type: 3}
       propertyPath: m_Name
       value: Design
@@ -473,63 +441,6 @@ PrefabInstance:
     - target: {fileID: 2557697647054745887, guid: 5b45ea61aef23744bb904d7a9704fadd, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 5512949704870331333, guid: 5b45ea61aef23744bb904d7a9704fadd, type: 3}
-      propertyPath: m_fontSizeBase
-      value: 16
-      objectReference: {fileID: 0}
-    - target: {fileID: 6075731662041657764, guid: 5b45ea61aef23744bb904d7a9704fadd, type: 3}
-      propertyPath: m_text
-      value: Attacks an enemy landing 1-2 planks away for 4 damage 3x per turn gotr
-        kgorgk sokg spog opkspgrok poskgpofgkspodgk
-      objectReference: {fileID: 0}
-    - target: {fileID: 6075731662041657764, guid: 5b45ea61aef23744bb904d7a9704fadd, type: 3}
-      propertyPath: m_fontSize
-      value: 14
-      objectReference: {fileID: 0}
-    - target: {fileID: 6444370984846981011, guid: 5b45ea61aef23744bb904d7a9704fadd, type: 3}
-      propertyPath: m_SizeDelta.x
-      value: 46.5
-      objectReference: {fileID: 0}
-    - target: {fileID: 6444370984846981011, guid: 5b45ea61aef23744bb904d7a9704fadd, type: 3}
-      propertyPath: m_AnchoredPosition.x
-      value: -12
-      objectReference: {fileID: 0}
-    - target: {fileID: 6444370984846981011, guid: 5b45ea61aef23744bb904d7a9704fadd, type: 3}
-      propertyPath: m_AnchoredPosition.y
-      value: -40
-      objectReference: {fileID: 0}
-    - target: {fileID: 7066286240104770247, guid: 5b45ea61aef23744bb904d7a9704fadd, type: 3}
-      propertyPath: m_text
-      value: FOFEMFE DFOKDFO
-      objectReference: {fileID: 0}
-    - target: {fileID: 7066286240104770247, guid: 5b45ea61aef23744bb904d7a9704fadd, type: 3}
-      propertyPath: m_fontSizeBase
-      value: 28
-      objectReference: {fileID: 0}
-    - target: {fileID: 8046365872129453427, guid: 5b45ea61aef23744bb904d7a9704fadd, type: 3}
-      propertyPath: m_SizeDelta.x
-      value: 190
-      objectReference: {fileID: 0}
-    - target: {fileID: 8046365872129453427, guid: 5b45ea61aef23744bb904d7a9704fadd, type: 3}
-      propertyPath: m_AnchoredPosition.y
-      value: -60
-      objectReference: {fileID: 0}
-    - target: {fileID: 8514739886270676073, guid: 5b45ea61aef23744bb904d7a9704fadd, type: 3}
-      propertyPath: m_Pivot.y
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 8514739886270676073, guid: 5b45ea61aef23744bb904d7a9704fadd, type: 3}
-      propertyPath: m_AnchorMax.y
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 8514739886270676073, guid: 5b45ea61aef23744bb904d7a9704fadd, type: 3}
-      propertyPath: m_AnchorMin.y
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 8514739886270676073, guid: 5b45ea61aef23744bb904d7a9704fadd, type: 3}
-      propertyPath: m_AnchoredPosition.y
-      value: -15
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 5b45ea61aef23744bb904d7a9704fadd, type: 3}

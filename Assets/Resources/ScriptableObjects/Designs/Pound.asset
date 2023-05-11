@@ -13,10 +13,17 @@ MonoBehaviour:
   m_Name: Pound
   m_EditorClassIdentifier: 
   designType: 0
+  designCategory: 0
   title: Pound
   sprite: {fileID: 21300000, guid: ff19f45423553e7448d7f49e99ccd44f, type: 3}
   _color: {r: 0, g: 0.7254902, b: 0.7254902, a: 1}
   rarity: 1
+  description: Whacks an enemy landing on this plank
+  notUpgradedText: 
+  firstUpgradeText: 
+  secondUpgradeText: 
+  extraTextSetting: 0
+  replacementStats: 
   initialStats:
   - _statType: 2
     _magnitude: 12

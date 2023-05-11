@@ -9,33 +9,25 @@ using UnityEngine;
 
 namespace Designs
 {
-    public class EtchingDisplay : DesignDisplay, IBattleEventUpdatedUI
+    public class EtchingDisplay : MonoBehaviour, IBattleEventUpdatedUI
     {
         private Color _normalColor;
 
         private Etching _etching;
+        private DesignDisplay _designDisplay;
 
-        protected override void Awake()
-        {
-            DescriptionYOffset = 25f;
-            base.Awake();
-        }
-        
-        protected override void Start()
+        private void Start()
         {
             BattleRenderer.Current.RegisterUIUpdater(this);
-            _etching = GetComponent<Etching>();
-            design = _etching.design;
             
-            base.Start();
-        }
+            _etching = GetComponent<Etching>();
+            _designDisplay = GetComponent<DesignDisplay>();
+            _designDisplay.design = _etching.design;
+            _designDisplay.MaxDescriptionHeight = 85f;
 
-        protected override void Init()
-        {
-            _normalColor = TitleText.color;
-            base.Init();
+            _normalColor = _designDisplay.TitleText.color;
         }
-
+        
         private void OnDestroy()
         {
             if (BattleRenderer.Current)
@@ -44,28 +36,24 @@ namespace Designs
 
         public void RespondToBattleEvent(BattleEvent battleEvent)
         {
-            if (battleEvent.type == BattleEventType.DesignModified)
+            if (battleEvent.type == BattleEventType.DesignModified || battleEvent.type == BattleEventType.StartNextPlayerTurn)
             {
-                UpdateDisplay();
+                _designDisplay.UpdateDisplay();
             }
             else if ((battleEvent.type == BattleEventType.EtchingActivated) && battleEvent.affectedResponderID == _etching.ResponderID)
             {
                 if (battleEvent.showResponse)
                     StartCoroutine(ColorForActivate());
                 
-                UpdateDisplay();
-            }
-            else if (battleEvent.type == BattleEventType.StartNextPlayerTurn)
-            {
-                UpdateDisplay();
+                _designDisplay.UpdateDisplay();
             }
         }
         
         private IEnumerator ColorForActivate()
         {
-            TitleText.color = Color.green;
+            _designDisplay.TitleText.color = Color.green;
             yield return new WaitForSecondsRealtime(Battle.ActionExecutionSpeed);
-            TitleText.color = _normalColor;
+            _designDisplay.TitleText.color = _normalColor;
         }
     }
 }

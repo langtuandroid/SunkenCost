@@ -18,6 +18,13 @@ MonoBehaviour:
   sprite: {fileID: 21300000, guid: 08871885d88539a4b946dd558635b26f, type: 3}
   _color: {r: 0, g: 1, b: 1, a: 1}
   rarity: 2
+  description: When an enemy lands on this plank, attack all enemies. If any survive,
+    lose @ health
+  notUpgradedText: 
+  firstUpgradeText: 
+  secondUpgradeText: 
+  extraTextSetting: 0
+  replacementStats: 0d000000
   initialStats:
   - _statType: 2
     _magnitude: 12

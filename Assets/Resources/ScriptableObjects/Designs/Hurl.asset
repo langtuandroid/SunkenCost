@@ -18,6 +18,12 @@ MonoBehaviour:
   sprite: {fileID: 21300000, guid: 04b966b030cc5f8458ac126563c2af2a, type: 3}
   _color: {r: 1, g: 0, b: 0, a: 1}
   rarity: 1
+  description: Attacks enemies landing on adjacent planks
+  notUpgradedText: 
+  firstUpgradeText: 
+  secondUpgradeText: 
+  extraTextSetting: 0
+  replacementStats: 
   initialStats:
   - _statType: 2
     _magnitude: 4

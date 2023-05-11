@@ -19,7 +19,7 @@ namespace Enemies
         private const float IslandXOffset = 200f;
         private const float IslandYOffset = -400f;
         private const float PlankXOffset = 0f;
-        private const float PlankYOffset = -400f;
+        private const float PlankYOffset = -425f;
         private const float BoatXOffset = 15f;
         private const float BoatYOffset = -400f;
         

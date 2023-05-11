@@ -18,6 +18,12 @@ MonoBehaviour:
   sprite: {fileID: 21300000, guid: e4e0d1508bb461e47918c85dd5a07c9f, type: 3}
   _color: {r: 0, g: 0.7176471, b: 0.54901963, a: 1}
   rarity: 3
+  description: 'Reverses the direction '
+  notUpgradedText: of an enemy leaving this plank
+  firstUpgradeText: and adds 1 movement to an enemy leaving this plank
+  secondUpgradeText: and adds 1 movement to an enemy leaving this plank
+  extraTextSetting: 0
+  replacementStats: 
   initialStats:
   - _statType: 12
     _magnitude: 0

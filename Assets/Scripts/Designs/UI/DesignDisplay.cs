@@ -18,7 +18,7 @@ namespace Designs.UI
         public Design design;
         private CanvasGroup _canvasGroup;
 
-        protected virtual float DescriptionYOffset { get; set; } = 37.5f;
+        public float MaxDescriptionHeight { get; set; } = 100f;
 
         protected virtual void Awake()
         {
@@ -48,8 +48,11 @@ namespace Designs.UI
             {
                 _damageAndRangeDisplay.gameObject.SetActive(false);
                 var descRectTransform = descriptionText.GetComponent<RectTransform>();
+                var sizeDelta = descRectTransform.sizeDelta;
+                descRectTransform.sizeDelta = new Vector2(sizeDelta.x, MaxDescriptionHeight);;
+
                 var anchoredPosition = descRectTransform.anchoredPosition;
-                descRectTransform.anchoredPosition = new Vector3(anchoredPosition.x, anchoredPosition.y + DescriptionYOffset, 1);
+                descRectTransform.anchoredPosition = new Vector3(anchoredPosition.x, anchoredPosition.y + 37.5f, 1);
             }
             else
             {
@@ -70,7 +73,7 @@ namespace Designs.UI
             if (design.Level == 1) titleText.text += " +";
             else if (design.Level == 2) titleText.text += " X";
             
-            var rawDescription = DesignLoader.GetDescription(design);
+            var rawDescription = design.designAsset.GetDescription(design);
 
             
 
