@@ -27,7 +27,7 @@ RectTransform:
   m_GameObject: {fileID: 3236138630374459447}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 0.95, y: 0.95, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 3236138630613875172}
@@ -320,6 +320,18 @@ PrefabInstance:
     - target: {fileID: 3949269581276300300, guid: 99414dded1171714a804c3636c4aab23, type: 3}
       propertyPath: m_Enabled
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3949269581276300300, guid: 99414dded1171714a804c3636c4aab23, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 5797796011412658082}
+    - target: {fileID: 3949269581276300300, guid: 99414dded1171714a804c3636c4aab23, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: Merge
+      objectReference: {fileID: 0}
+    - target: {fileID: 3949269581276300300, guid: 99414dded1171714a804c3636c4aab23, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
+      value: OfferScreen.DesignCard, Assembly-CSharp
       objectReference: {fileID: 0}
     - target: {fileID: 5733871584198404838, guid: 99414dded1171714a804c3636c4aab23, type: 3}
       propertyPath: m_Name

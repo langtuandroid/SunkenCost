@@ -39,8 +39,8 @@ namespace MapScreen
                 return;
             }
             
-            var isEliteRound = RunProgress.BattleNumber % ScenarioLoader.BATTLES_PER_DIFFICULTY 
-                             == ScenarioLoader.BATTLES_PER_DIFFICULTY - 1;
+            var isEliteRound = RunProgress.BattleNumber % ScenarioLoader.BattlesPerDifficulty 
+                             == ScenarioLoader.BattlesPerDifficulty - 1;
         
             var weightings = isEliteRound
                 ? EliteWeightings

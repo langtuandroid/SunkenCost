@@ -667,6 +667,7 @@
             <e p="EnemySpawner.cs" t="Include" />
             <e p="EnemyStats.cs" t="Include" />
             <e p="EnemyUI" t="Include">
+              <e p="EnemyAnimator.cs" t="Include" />
               <e p="EnemyHealthText.cs" t="Include" />
               <e p="EnemyMovementText.cs" t="Include" />
               <e p="EnemyPoisonDisplay.cs" t="Include" />

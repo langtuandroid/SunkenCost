@@ -9,7 +9,7 @@ using Random = UnityEngine.Random;
 
 public class ScenarioLoader : MonoBehaviour
 {
-    public const int BATTLES_PER_DIFFICULTY = 5;
+    public const int BattlesPerDifficulty = 5;
     
     private static ScenarioLoader _current;
 
@@ -45,10 +45,10 @@ public class ScenarioLoader : MonoBehaviour
     {
         ScenarioType scenarioType;
 
-        var stage = (int)Mathf.Floor((float)battle / BATTLES_PER_DIFFICULTY);
-        Debug.Log("Battle: " + battle + ", stage: " + stage);
+        var stage = (int)Mathf.Floor((float)battle / BattlesPerDifficulty);
 
-        var placeInDifficulty = battle % BATTLES_PER_DIFFICULTY;
+        var placeInDifficulty = battle % BattlesPerDifficulty;
+        Debug.Log("Battle: " + battle + ", stage: " + stage + ", place:" + placeInDifficulty);
 
         if (placeInDifficulty == 0)
         {
@@ -56,7 +56,8 @@ public class ScenarioLoader : MonoBehaviour
         }
         else
         {
-            scenarioType = placeInDifficulty <= (BATTLES_PER_DIFFICULTY / 2) ? (ScenarioType) stage : (ScenarioType) stage + 1;
+            scenarioType = placeInDifficulty <= ((float)BattlesPerDifficulty / 2) 
+                ? (ScenarioType) (stage * 2) : (ScenarioType) ((stage * 2) + 1);
             
         }
         

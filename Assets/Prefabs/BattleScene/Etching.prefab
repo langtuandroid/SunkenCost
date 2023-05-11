@@ -7,6 +7,14 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 1916807807220796082, guid: 5b45ea61aef23744bb904d7a9704fadd, type: 3}
+      propertyPath: m_Enabled
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1916807807220796082, guid: 5b45ea61aef23744bb904d7a9704fadd, type: 3}
+      propertyPath: m_fontSize
+      value: 17.25
+      objectReference: {fileID: 0}
     - target: {fileID: 2408865919859290242, guid: 5b45ea61aef23744bb904d7a9704fadd, type: 3}
       propertyPath: m_Name
       value: Etching

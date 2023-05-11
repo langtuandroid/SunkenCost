@@ -52,12 +52,9 @@ namespace Designs.UI
                 descRectTransform.sizeDelta = new Vector2(sizeDelta.x, MaxDescriptionHeight);;
 
                 var anchoredPosition = descRectTransform.anchoredPosition;
-                descRectTransform.anchoredPosition = new Vector3(anchoredPosition.x, anchoredPosition.y + 37.5f, 1);
+                descRectTransform.anchoredPosition = new Vector3(anchoredPosition.x, anchoredPosition.y + 32.5f, 1);
             }
-            else
-            {
-            }
-
+            
             image.sprite = design.Sprite;
             _canvasGroup.alpha = 1;
             

@@ -1,5 +1,6 @@
 ﻿using BattleScreen;
 using BattleScreen.BattleEvents;
+using Damage;
 
 namespace Enemies.Enemies
 {
@@ -10,7 +11,7 @@ namespace Enemies.Enemies
             Name = "Octopurse";
             Mover.AddMove(2);
             Mover.AddMove(3);
-            SetInitialHealth(10);
+            SetInitialHealth(0);
             Gold = 1;
         }
     
@@ -22,6 +23,9 @@ namespace Enemies.Enemies
         public BattleEventPackage GetSpawnAbility()
         {
             var maxHealthModifier = new StatModifier(8 * Player.Current.Gold, StatModType.Flat);
+
+            if (maxHealthModifier.Value == 0) return Die(DamageSource.Self);
+            
             AddMaxHealthModifier(maxHealthModifier);
             return new BattleEventPackage(CreateEvent(BattleEventType.EnemyEffect));
         }

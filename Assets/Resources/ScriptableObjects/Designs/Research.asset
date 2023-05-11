@@ -18,8 +18,7 @@ MonoBehaviour:
   sprite: {fileID: 21300000, guid: abb3dc196b12d754c98646e474402cfc, type: 3}
   _color: {r: 0.60784316, g: 0.34901962, b: 0.6666667, a: 1}
   rarity: 1
-  description: 'When enemies land on this plank, heal them to full health. Gain @
-    Gold '
+  description: 'Heal enemies that land on this plank to full health. Gain @ Gold '
   notUpgradedText: if # or more health is healed
   firstUpgradeText: if # or more health is healed
   secondUpgradeText: per # health is healed

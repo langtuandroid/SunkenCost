@@ -70,7 +70,7 @@ public class RunProgress : MonoBehaviour
         DisturbanceLoader.LoadDisturbanceAssets();
 
         _playerStats = new PlayerStats();
-        _playerStats.InitialiseDeck("Research", "Hurl", "Impede");
+        _playerStats.InitialiseDeck("Stab", "Hurl", "Impede");
         _offerStorage = new OfferStorage();
         _itemInventory = transform.GetChild(0).gameObject.AddComponent<ItemInventory>();
         _battleNumber = 0;
