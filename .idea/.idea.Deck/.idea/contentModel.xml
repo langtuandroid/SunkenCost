@@ -570,6 +570,9 @@
             <e p="Disturbances" t="Include" />
             <e p="Items" t="Include" />
           </e>
+          <e p="Sprites" t="Include">
+            <e p="Enemies" t="Include" />
+          </e>
         </e>
         <e p="Scenes" t="Include" />
         <e p="Scripts" t="Include">
@@ -648,10 +651,11 @@
               <e p="ClausEnemy.cs" t="Include" />
               <e p="CribEnemy.cs" t="Include" />
               <e p="CucungerEnemy.cs" t="Include" />
+              <e p="EliteEnemy.cs" t="Include" />
               <e p="FlightingFishEnemy.cs" t="Include" />
               <e p="GrouldEnemy.cs" t="Include" />
               <e p="LeechEnemy.cs" t="Include" />
-              <e p="Maxolotl.cs" t="Include" />
+              <e p="MaxolotlEnemy.cs" t="Include" />
               <e p="OctopurseEnemy.cs" t="Include" />
               <e p="RatEnemy.cs" t="Include" />
               <e p="RetortoiseEnemy.cs" t="Include" />
@@ -673,6 +677,7 @@
               <e p="EnemyPoisonDisplay.cs" t="Include" />
               <e p="EnemyShaderAnimation.cs" t="Include" />
               <e p="EnemySpeechBubble.cs" t="Include" />
+              <e p="EnemyTooltipTrigger.cs" t="Include" />
               <e p="EnemyTurnOrderText.cs" t="Include" />
               <e p="EnemyUI.cs" t="Include" />
               <e p="EnemyUIText.cs" t="Include" />
@@ -802,7 +807,6 @@
             <e p="QuitButtonFilm.cs" t="Include" />
             <e p="ScaleWithScreen.cs" t="Include" />
             <e p="Tooltip" t="Include">
-              <e p="EnemyTooltipTrigger.cs" t="Include" />
               <e p="ToolTip.cs" t="Include" />
               <e p="TooltipSystem.cs" t="Include" />
               <e p="TooltipTrigger.cs" t="Include" />

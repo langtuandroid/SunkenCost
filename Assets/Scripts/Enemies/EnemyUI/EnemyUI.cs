@@ -11,7 +11,11 @@ namespace Enemies.EnemyUI
 {
     public class EnemyUI : MonoBehaviour, IBattleEventUpdatedUI
     {
+        [SerializeField] private CanvasGroup _visualsGroup;
+        
         [SerializeField] private TooltipTrigger _tooltipTrigger;
+
+        [SerializeField] private EnemyAnimator _enemyAnimator;
         
         [SerializeField] private EnemyTurnOrderText _turnOrderText;
         [SerializeField] private EnemyHealthText _healthText;
@@ -23,19 +27,30 @@ namespace Enemies.EnemyUI
 
         private Enemy _enemy;
         private EnemyMover _mover;
-        
 
         private void Awake()
         {
-            BattleRenderer.Current.RegisterUIUpdater(this);
-            _enemy = GetComponent<Enemy>();
-            _mover = _enemy.Mover;
+            _visualsGroup.alpha = 0f;
         }
 
         private void Start()
         {
+            StartCoroutine(Init());
+            
+            BattleRenderer.Current.RegisterUIUpdater(this);
+            _enemy = GetComponent<Enemy>();
+            _enemyAnimator.Init(_enemy.GetType().Name);
+            _mover = _enemy.Mover;
+            
             _tooltipTrigger.header = _enemy.Name;
             Invoke(nameof(UpdateUI), 0.01f);
+        }
+
+        private IEnumerator Init()
+        {
+            yield return 0;
+            _visualsGroup.alpha = 1f;
+            _visualsGroup.enabled = false;
         }
 
         private void OnDestroy()

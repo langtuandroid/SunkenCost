@@ -6,7 +6,7 @@ using Damage;
 
 namespace Enemies.Enemies
 {
-    public class LeechEnemy : Enemy, IStartOfTurnAbilityHolder
+    public class LeechEnemy : EliteEnemy, IStartOfTurnAbilityHolder
     {
         private SteeloEnemy _steelo;
         

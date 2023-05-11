@@ -17,7 +17,7 @@ public class EnemyAnimationController : MonoBehaviour, IBattleEventUpdatedUI
 
     private int _responderID;
 
-    private void Awake()
+    private void Start()
     {
         BattleRenderer.Current.RegisterUIUpdater(this);
         _responderID = GetComponent<Enemy>().ResponderID;

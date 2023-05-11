@@ -1,6 +1,6 @@
 ﻿namespace Enemies.Enemies
 {
-    public class RetortoiseEnemy : Enemy
+    public class RetortoiseEnemy : EliteEnemy
     {
         protected override void Init()
         {

@@ -7,7 +7,7 @@
             Name = "Crib";
             Mover.AddMove(2);
             Mover.AddMove(-1);
-            SetInitialHealth(35);
+            SetInitialHealth(40);
             Gold = 1;
         }
     

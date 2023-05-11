@@ -6,7 +6,7 @@
         {
             Name = "Scrat";
             Mover.AddMove(2);
-            SetInitialHealth(10);
+            SetInitialHealth(15);
             Gold = 1;
         }
     

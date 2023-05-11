@@ -5,7 +5,7 @@ using BattleScreen.BattleEvents;
 
 namespace Enemies.Enemies
 {
-    public class Maxolotl : Enemy, IStartOfTurnAbilityHolder
+    public class MaxolotlEnemy : EliteEnemy, IStartOfTurnAbilityHolder
     {
         private const int HEALING_AMOUNT = 10;
         

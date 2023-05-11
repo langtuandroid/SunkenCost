@@ -2,7 +2,7 @@
 
 namespace Enemies.Enemies
 {
-    public class SteeloEnemy : Enemy
+    public class SteeloEnemy : EliteEnemy
     {
         protected override void Init()
         {

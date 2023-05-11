@@ -1,4 +1,5 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Configuration.Assemblies;
 using System.Collections.Generic;
 using System.Linq;
@@ -8,19 +9,22 @@ using UnityEngine;
 
 public class EnemyLoader : MonoBehaviour
 {
-    private static EnemyLoader _current;
+    public static EnemyLoader Current;
     
-    public static readonly List<string> EnemiesList = new List<string>();
+    public static readonly Dictionary<string, Type> AllEnemyTypesByName = new Dictionary<string, Type>();
+
+    private static readonly Dictionary<string, EnemySpritePack> EnemySpritePacks =
+        new Dictionary<string, EnemySpritePack>(); 
     
     private void Awake()
     {
-        if (_current)
+        if (Current)
         {
             Destroy(gameObject);
             return;
         }
         
-        _current = this;
+        Current = this;
     }
     
     void Start()
@@ -32,8 +36,47 @@ public class EnemyLoader : MonoBehaviour
         foreach (var type in enemiesEnumerable)
         {
             // Remove the 'Enemy' from the end of file name
-            var enemyName = type.FullName.Remove(type.FullName.Length - 5, 5);
-            EnemiesList.Add(enemyName);
+            var enemyName = StripEnemyTypeName(type.Name);
+            AllEnemyTypesByName.Add(enemyName, type);
+
+            EnemySpritePacks.Add(enemyName, CreateSpritePack(enemyName));
         }
+    }
+    
+    public EnemySpritePack GetEnemySpritePack(string enemyTypeName)
+    {
+        var strippedName = StripEnemyTypeName(enemyTypeName);
+        if (EnemySpritePacks.TryGetValue(strippedName, out var enemySpritePack))
+        {
+            return enemySpritePack;
+        }
+        
+        throw new Exception("No EnemySpritePack for " + strippedName + " found!");
+    }
+
+    private static string StripEnemyTypeName(string typeName)
+    {
+        return typeName.Remove(typeName.Length - 5, 5);
+    }
+
+    private EnemySpritePack CreateSpritePack(string enemyName)
+    {
+        var lowerCaseEnemyName = enemyName.ToLower();
+        var idleSprites = Resources.LoadAll<Sprite>("Sprites/Enemies/" + lowerCaseEnemyName + "_idle");
+        
+        if (idleSprites.Length == 0)
+            throw new Exception("No idles sprites for " + enemyName + " found!");
+
+        return new EnemySpritePack(idleSprites);
+    }
+}
+
+public class EnemySpritePack
+{
+    public readonly Sprite[] idleSprites;
+
+    public EnemySpritePack(Sprite[] idleSprites)
+    {
+        this.idleSprites = idleSprites;
     }
 }

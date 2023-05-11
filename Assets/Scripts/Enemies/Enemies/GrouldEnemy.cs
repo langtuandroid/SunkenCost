@@ -13,7 +13,7 @@ public class GrouldEnemy : Enemy, IStartOfTurnAbilityHolder
     {
         Name = "Grould";
         Mover.AddMove(1);
-        SetInitialHealth(25);
+        SetInitialHealth(20);
         Gold = 1;
     }
     

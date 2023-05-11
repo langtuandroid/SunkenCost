@@ -6,16 +6,15 @@ using BattleScreen;
 using BattleScreen.BattleBoard;
 using BattleScreen.BattleEvents;
 using Enemies;
+using Enemies.Enemies;
 using UnityEngine;
 
 public class EnemySpawner : BattleEventResponder
 {
     public static EnemySpawner Instance;
-    
-    [SerializeField] private List<string> enemyNames = new List<string>();
-    [SerializeField] private List<GameObject> enemyPrefabs = new List<GameObject>();
 
-    private Dictionary<string, GameObject> enemyDictionary = new Dictionary<string, GameObject>();
+    [SerializeField] private GameObject _enemyPrefab;
+    [SerializeField] private GameObject _elitePrefab;
 
     private Scenario _scenario;
 
@@ -35,11 +34,6 @@ public class EnemySpawner : BattleEventResponder
 
     private void Start()
     {
-        for (var i = 0; i < enemyNames.Count; i++)
-        {
-            enemyDictionary.Add(enemyNames[i], enemyPrefabs[i]);
-        }
-        
         _scenario = ScenarioLoader.GetScenario(RunProgress.BattleNumber);
     }
 
@@ -94,12 +88,14 @@ public class EnemySpawner : BattleEventResponder
 
     private Enemy SpawnEnemy(string enemyName, Transform parentTransform)
     {
-        var enemyPrefab = enemyDictionary[enemyName];
-        var newEnemyObject = Instantiate(enemyPrefab, parentTransform, true);
+        var enemyType = EnemyLoader.AllEnemyTypesByName[enemyName];
+        var prefab = enemyType.IsSubclassOf(typeof(EliteEnemy)) ? _elitePrefab : _enemyPrefab;
+
+        var newEnemyObject = Instantiate(prefab, parentTransform, true);
         newEnemyObject.transform.localPosition = Vector3.zero;
         newEnemyObject.transform.localScale = new Vector3(1, 1, 1);
-        
-        var newEnemy = newEnemyObject.GetComponent<Enemy>();
+
+        var newEnemy = newEnemyObject.AddComponent(enemyType).GetComponent<Enemy>();
         EnemySequencer.Current.AddEnemy(newEnemy);
         return newEnemy;
     }

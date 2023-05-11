@@ -12,7 +12,7 @@ public class ClausEnemy : Enemy
         Name = "C'laus";
         Mover.AddMove(2);
         Mover.AddMove(3);
-        SetInitialHealth(20);
+        SetInitialHealth(25);
         Gold = 1;
     }
     

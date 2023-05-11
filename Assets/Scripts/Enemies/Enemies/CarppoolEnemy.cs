@@ -6,7 +6,7 @@ using UnityEngine;
 
 namespace Enemies.Enemies
 {
-    public class CarppoolEnemy : Enemy, IStartOfTurnAbilityHolder
+    public class CarppoolEnemy : EliteEnemy, IStartOfTurnAbilityHolder
     {
         protected override void Init()
         {

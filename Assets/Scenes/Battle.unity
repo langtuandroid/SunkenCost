@@ -433,36 +433,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8b880125b6001f84bbc0079fb7a1928a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  enemyNames:
-  - Grould
-  - Claus
-  - Axolitl
-  - Cucunger
-  - Rat
-  - FlightingFish
-  - Steelo
-  - Leech
-  - Crib
-  - Retortoise
-  - Maxolotl
-  - Carppool
-  - BullCarp
-  - Octopurse
-  enemyPrefabs:
-  - {fileID: 7923812371195210878, guid: 5ef39fbf033852144bcb8f3c74d2d860, type: 3}
-  - {fileID: 1231011296041315399, guid: 71cc31b502beb3046aa91f95e616019f, type: 3}
-  - {fileID: 5450485110028922466, guid: 5a6e0485318cb964aa6eb07b2cc18160, type: 3}
-  - {fileID: 579701072732020445, guid: b0f72fa65bfa1f54d80b438c25b4bb59, type: 3}
-  - {fileID: 1298086995011842886, guid: 3384cdbddab22f84f975346a5ded1168, type: 3}
-  - {fileID: 5288099224730438730, guid: 3d3c41a808c243643858858cd90c514a, type: 3}
-  - {fileID: 8314594908150161230, guid: ae7658d326292384b9ab1395a07fc00b, type: 3}
-  - {fileID: 5091051104102662340, guid: 3f3034f0c8deb5447a7930214de2a74a, type: 3}
-  - {fileID: 5288099224730438730, guid: bdacb69a8e31880418e285c60a947363, type: 3}
-  - {fileID: 7985317729966621086, guid: 91c04533e32111d408cd2024ed2cb8a3, type: 3}
-  - {fileID: 2655713838273099450, guid: 66ee7a8dc0a242242aab3a8b0ee4afe2, type: 3}
-  - {fileID: 5482310750778572484, guid: 2b30edcb4ac596f49b8f01dcda88313d, type: 3}
-  - {fileID: 7816918493809717753, guid: 6f8dac1e479046f41947ad946ad5d707, type: 3}
-  - {fileID: 5288099224730438730, guid: d93e412c35fd0bb47889d0e27a717349, type: 3}
+  _enemyPrefab: {fileID: 6499902039103880501, guid: 612507e68b4c9e94191816346f3cc3e8, type: 3}
+  _elitePrefab: {fileID: 1170859387670971612, guid: 17683bbd3efedb545885e8c490e37d9c, type: 3}
 --- !u!4 &145267314
 Transform:
   m_ObjectHideFlags: 0
@@ -3448,11 +3420,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3739874107440994272, guid: 753e431c20e8b5d45a1560f4e9ca944f, type: 3}
       propertyPath: m_AnchoredPosition.x
-      value: 1084
+      value: 1105.6965
       objectReference: {fileID: 0}
     - target: {fileID: 3739874107440994272, guid: 753e431c20e8b5d45a1560f4e9ca944f, type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: 1143.5
+      value: 1126.1538
       objectReference: {fileID: 0}
     - target: {fileID: 3739874107924409688, guid: 753e431c20e8b5d45a1560f4e9ca944f, type: 3}
       propertyPath: m_Pivot.x
