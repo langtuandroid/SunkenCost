@@ -8,32 +8,33 @@ public class TooltipTrigger : MonoBehaviour, IPointerEnterHandler, IPointerExitH
 {
     public string content;
     public string header;
-
-    private static LTDescr _delay;
     
+    private void OnDestroy()
+    {
+        StopAllCoroutines();
+        TooltipSystem.Hide();
+    }
+
     public void OnPointerEnter(PointerEventData eventData)
     {
-        _delay = LeanTween.delayedCall(0.5f, () =>
-        {
-            TooltipSystem.Show(GetContent(), header);
-        });
-
+        StopAllCoroutines();
+        StartCoroutine(ShowAfterDelay());
     }
 
     public void OnPointerExit(PointerEventData eventData)
     {
-        LeanTween.cancel(_delay.uniqueId);
-        TooltipSystem.Hide();
-    }
-
-    private void OnDestroy()
-    {
-        if (_delay is not null) LeanTween.cancel(_delay.uniqueId);
+        StopAllCoroutines();
         TooltipSystem.Hide();
     }
 
     protected virtual string GetContent()
     {
         return content;
+    }
+
+    private IEnumerator ShowAfterDelay()
+    {
+        yield return new WaitForSecondsRealtime(0.5f);
+        TooltipSystem.Show(GetContent(), header);
     }
 }

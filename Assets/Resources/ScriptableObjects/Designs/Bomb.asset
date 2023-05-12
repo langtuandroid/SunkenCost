@@ -17,7 +17,7 @@ MonoBehaviour:
   title: Bomb
   sprite: {fileID: 21300000, guid: 28a0543dfb02cfe43abec410d3463c07, type: 3}
   _color: {r: 1, g: 0.92156863, b: 0.015686275, a: 1}
-  rarity: 2
+  rarity: 1
   description: Attacks every enemy in range when an enemy lands within range
   notUpgradedText: 
   firstUpgradeText: 
@@ -26,14 +26,14 @@ MonoBehaviour:
   replacementStats: 
   initialStats:
   - _statType: 2
-    _magnitude: 7
+    _magnitude: 6
   - _statType: 4
     _magnitude: 2
   - _statType: 1
     _magnitude: 1
   firstLevelUpStatMods:
   - _statType: 2
-    _magnitude: 3
+    _magnitude: 2
   secondLevelUpStatMods:
   - _statType: 2
-    _magnitude: 5
+    _magnitude: 2

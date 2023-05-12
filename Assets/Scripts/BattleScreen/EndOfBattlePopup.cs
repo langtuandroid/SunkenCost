@@ -1,3 +1,4 @@
+using Designs.UI;
 using Disturbances;
 using TMPro;
 using UnityEngine;
@@ -8,26 +9,36 @@ namespace BattleScene
 {
     public class EndOfBattlePopup : MonoBehaviour
     {
-        [SerializeField] private TextMeshProUGUI headerText;
+        [SerializeField] private TextMeshProUGUI _headerText;
 
-        [SerializeField] private GameObject reward;
-        [SerializeField] private Image rewardImage;
-        [SerializeField] private TextMeshProUGUI rewardTitle;
-        [SerializeField] private TextMeshProUGUI rewardText;
+
+        [SerializeField] private GameObject _designDisplay;
+        [SerializeField] private GameObject _reward;
+        [SerializeField] private Image _rewardImage;
+        [SerializeField] private TextMeshProUGUI _rewardTitle;
+        [SerializeField] private TextMeshProUGUI _rewardText;
         
-        [SerializeField] private Button button;
+        [SerializeField] private Button _button;
 
         public void SetReward(Disturbance disturbance)
         {
-            rewardImage.sprite = disturbance.GetSprite();
-            rewardTitle.text = disturbance.GetTitle();
-            rewardText.text = disturbance.GetDescription();
+            _rewardImage.sprite = disturbance.GetSprite();
+            _rewardTitle.text = disturbance.GetTitle();
+            _rewardText.text = disturbance.GetDescription();
+            
+            if (disturbance.DisturbanceType == DisturbanceType.Card ||
+                disturbance.DisturbanceType == DisturbanceType.EliteCard)
+            {
+                _reward.SetActive(false);
+                _designDisplay.SetActive(true);
+                _designDisplay.GetComponent<DesignDisplay>().design = (disturbance as CardDisturbance)?.Design;
+            }
         }
 
         public void SetButtonAction(UnityAction action)
         {
-            button.onClick.RemoveAllListeners();
-            button.onClick.AddListener(action);
+            _button.onClick.RemoveAllListeners();
+            _button.onClick.AddListener(action);
         }
     }
 }

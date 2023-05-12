@@ -6,7 +6,7 @@ namespace Enemies.EnemyUI
 
         private void Start()
         {
-            _enemy = transform.parent.GetComponent<Enemy>();
+            _enemy = transform.parent.parent.GetComponent<Enemy>();
         }
     
         protected override string GetContent()

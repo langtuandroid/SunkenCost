@@ -145,6 +145,22 @@ namespace Enemies
 
             return BattleEventPackage.Empty;
         }
+        
+        public BattleEventPackage Die(DamageSource source)
+        {
+            IsDestroyed = true;
+            
+            var eventList = new List<BattleEvent>();
+
+            if (source == DamageSource.Boat)
+            {
+                eventList.Add(CreateEvent(BattleEventType.EnemyReachedBoat, GetBoatDamage()));
+            }
+            eventList.Add(CreateEvent(BattleEventType.EnemyKilled, damageSource: source));
+            eventList.Add(CreateEvent(BattleEventType.TryGainedGold, Gold, source));
+            if (IsMyTurn) eventList.Add(CreateEvent(BattleEventType.EndedIndividualEnemyTurn));
+            return new BattleEventPackage(eventList);
+        }
 
         protected BattleEvent Speak(string text)
         {
@@ -158,23 +174,15 @@ namespace Enemies
             return new BattleEvent(type) 
                 {affectedResponderID = ResponderID, modifier = modifier, source = damageSource};
         }
+        
+        protected virtual int GetBoatDamage()
+        {
+            return Health;
+        }
 
         private void ChangeHealth(int amount)
         {
             Health += amount;
-        }
-
-        public BattleEventPackage Die(DamageSource source)
-        {
-            IsDestroyed = true;
-            
-            var eventList = new List<BattleEvent>();
-
-            if (source == DamageSource.Boat) eventList.Add(CreateEvent(BattleEventType.EnemyReachedBoat));
-            eventList.Add(CreateEvent(BattleEventType.EnemyKilled, damageSource: source));
-            eventList.Add(CreateEvent(BattleEventType.TryGainedGold, Gold, source));
-            if (IsMyTurn) eventList.Add(CreateEvent(BattleEventType.EndedIndividualEnemyTurn));
-            return new BattleEventPackage(eventList);
         }
     }
 }

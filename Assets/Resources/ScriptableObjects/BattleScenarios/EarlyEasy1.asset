@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e88836627efa4444288b773536f04a36, type: 3}
   m_Name: EarlyEasy1
   m_EditorClassIdentifier: 
-  scenarioType: 1
+  scenarioType: 0
   round1: 00000000
   round2: 04000000
   round3: 

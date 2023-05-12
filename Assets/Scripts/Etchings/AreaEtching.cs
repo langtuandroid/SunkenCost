@@ -12,7 +12,7 @@ namespace Etchings
     {
         protected override bool TestCharMovementActivatedEffect(Enemy enemy)
         {
-            return Math.Abs(enemy.PlankNum - PlankNum) <= MaxRange;
+            return enemy.PlankNum != -1 && Math.Abs(enemy.PlankNum - PlankNum) <= MaxRange;
         }
 
         protected override DesignResponse GetDesignResponsesToEvent(BattleEvent battleEvent)

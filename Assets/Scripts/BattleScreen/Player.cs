@@ -41,10 +41,10 @@ public class Player : BattleEventResponder
         MovesUsedThisTurn = 0;
     }
 
-    private BattleEvent EnemyReachedEnd(Enemy enemy)
+    private BattleEvent EnemyReachedEnd(int damage)
     {
         return new BattleEvent(BattleEventType.PlayerLifeModified) 
-            {modifier = -enemy.Health, source = DamageSource.Boat};
+            {modifier = damage, source = DamageSource.Boat};
     }
 
     private BattleEvent ModifyLife(BattleEvent battleEvent)
@@ -90,8 +90,7 @@ public class Player : BattleEventResponder
         var battleEvent = previousBattleEvent.type switch
         {
             BattleEventType.PlayerMovedPlank => UsedMove(),
-            BattleEventType.EnemyReachedBoat => 
-                EnemyReachedEnd(BattleEventsManager.Current.GetEnemyByResponderID(previousBattleEvent.affectedResponderID)),
+            BattleEventType.EnemyReachedBoat => EnemyReachedEnd(-previousBattleEvent.modifier),
             BattleEventType.PlayerLifeModified => ModifyLife(previousBattleEvent),
             BattleEventType.TryGainedGold => TryGainGold(previousBattleEvent),
             _ => BattleEvent.None

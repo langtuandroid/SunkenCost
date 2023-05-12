@@ -660,6 +660,7 @@
               <e p="RatEnemy.cs" t="Include" />
               <e p="RetortoiseEnemy.cs" t="Include" />
               <e p="SteeloEnemy.cs" t="Include" />
+              <e p="SwordfistEnemy.cs" t="Include" />
             </e>
             <e p="Enemy.cs" t="Include" />
             <e p="EnemyAnimationController.cs" t="Include" />

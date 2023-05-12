@@ -17,7 +17,8 @@ public enum EnemyType
     Retortoise,
     Maxolotl,
     Carppool,
-    Octopurse
+    Octopurse,
+    Swordfist
 }
 
 public enum ScenarioType
