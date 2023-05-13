@@ -16,9 +16,9 @@ namespace Enemies.EnemyUI
 
         private EnemyAnimation _idleAnimation;
 
-        public void Init(string enemyName)
+        public void Init(EnemySpritePack enemySpritePack)
         {
-            var spritePack = EnemyLoader.Current.GetEnemySpritePack(enemyName);
+            var spritePack = enemySpritePack;
             _idleAnimation = new EnemyAnimation(spritePack.idleSprites, true);
         }
 

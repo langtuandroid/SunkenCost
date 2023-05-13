@@ -9,14 +9,6 @@ using UnityEngine;
 
 public class GrouldEnemy : Enemy, IStartOfTurnAbilityHolder
 {
-    protected override void Init()
-    {
-        Name = "Grould";
-        Mover.AddMove(1);
-        SetInitialHealth(20);
-        Gold = 1;
-    }
-    
     public override string GetDescription()
     {
         return "Disables the plank it starts each turn on";
@@ -30,7 +22,7 @@ public class GrouldEnemy : Enemy, IStartOfTurnAbilityHolder
     public BattleEventPackage GetStartOfTurnAbility()
     {
         var stun = Plank.Etching.Stun(DamageSource.EnemyAbility);
-        stun.affectingResponderID = ResponderID;
+        stun.secondaryResponderID = ResponderID;
         return new BattleEventPackage(stun);
     }
 }

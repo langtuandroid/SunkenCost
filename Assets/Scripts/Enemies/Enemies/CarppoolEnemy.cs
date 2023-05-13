@@ -8,15 +8,6 @@ namespace Enemies.Enemies
 {
     public class CarppoolEnemy : EliteEnemy, IStartOfTurnAbilityHolder
     {
-        protected override void Init()
-        {
-            Size = 1.2f;
-            Name = "Carppool";
-            Mover.AddMove(1);
-            SetInitialHealth(50);
-            Gold = 10;
-        }
-        
         public override string GetDescription()
         {
             return "Spawns a Bull Carp every turn";
@@ -29,10 +20,10 @@ namespace Enemies.Enemies
 
         public BattleEventPackage GetStartOfTurnAbility()
         {
-            var newBullCarp = EnemySpawner.Instance.SpawnEnemyDuringTurn("BullCarp", PlankNum);
+            var newBullCarp = EnemySpawner.Instance.SpawnEnemyDuringTurn(EnemyType.BullCarp, PlankNum);
             var newEvent = CreateEvent(BattleEventType.EnemySpawned);
-            newEvent.affectedResponderID = newBullCarp.ResponderID;
-            newEvent.affectingResponderID = ResponderID;
+            newEvent.primaryResponderID = newBullCarp.ResponderID;
+            newEvent.secondaryResponderID = ResponderID;
             return new BattleEventPackage(newEvent);
         }
     }

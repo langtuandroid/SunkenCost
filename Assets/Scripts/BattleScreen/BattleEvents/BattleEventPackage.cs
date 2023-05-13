@@ -16,7 +16,7 @@ namespace BattleScreen.BattleEvents
 
         public BattleEventPackage WithIdentifier(BattleEventType battleEventType, int responderID)
         {
-            battleEvents.Add(new BattleEvent(battleEventType) {affectedResponderID = responderID});
+            battleEvents.Add(new BattleEvent(battleEventType) {primaryResponderID = responderID});
             return this;
         }
     }

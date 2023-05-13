@@ -70,7 +70,7 @@ namespace BattleScreen.BattleEvents
                 var enemy = _enemySequencer.SelectNextEnemy();
                 _currentEnemy = new CurrentEnemy(enemy);
                 return new BattleEventPackage(new BattleEvent(BattleEventType.StartedIndividualEnemyTurn) 
-                    {affectedResponderID = enemy.ResponderID});
+                    {primaryResponderID = enemy.ResponderID});
             }
             
             var enemyResponse = _currentEnemy.GetNextAction();

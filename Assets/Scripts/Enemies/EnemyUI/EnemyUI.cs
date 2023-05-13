@@ -39,7 +39,7 @@ namespace Enemies.EnemyUI
             
             BattleRenderer.Current.RegisterUIUpdater(this);
             _enemy = GetComponent<Enemy>();
-            _enemyAnimator.Init(_enemy.GetType().Name);
+            _enemyAnimator.Init(_enemy.Asset.SpritePack);
             _mover = _enemy.Mover;
             
             _tooltipTrigger.header = _enemy.Name;
@@ -62,18 +62,9 @@ namespace Enemies.EnemyUI
         public void RespondToBattleEvent(BattleEvent battleEvent)
         {
             if (battleEvent.type != BattleEventType.StartNextPlayerTurn
-                && battleEvent.affectedResponderID != _enemy.ResponderID 
-                && battleEvent.affectingResponderID != _enemy.ResponderID) return;
+                && battleEvent.primaryResponderID != _enemy.ResponderID 
+                && battleEvent.secondaryResponderID != _enemy.ResponderID) return;
 
-            if (battleEvent.type == BattleEventType.EnemyReachedBoat)
-            {
-                _turnOrderText.gameObject.SetActive(false);
-                _movementText.gameObject.SetActive(false);
-                _healthText.gameObject.SetActive(false);
-                _poisonDisplay.gameObject.SetActive(false);
-                return;
-            }
-            
             if (_enemy.IsDestroyed) return;
             
             if (battleEvent.type == BattleEventType.EnemySpeaking) _speechBubble.DisplayText(_enemy.Speech);

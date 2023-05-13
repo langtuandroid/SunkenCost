@@ -46,7 +46,7 @@ namespace Etchings
 
             return new BattleEvent(BattleEventType.DesignModified)
             {
-                affectedResponderID = ResponderID, showResponse = false
+                primaryResponderID = ResponderID, showResponse = false
             };
         }
     }

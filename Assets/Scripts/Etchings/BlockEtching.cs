@@ -11,10 +11,7 @@ namespace Etchings
     {
         protected override DesignResponse GetDesignResponsesToEvent(BattleEvent battleEvent)
         {
-            var response = BattleEventsManager.Current.GetEnemyByResponderID(battleEvent.affectedResponderID)
-                    .Block(design.GetStat(StatType.Block));
-            
-            return new DesignResponse(PlankNum, response);
+            return new DesignResponse(PlankNum, battleEvent.Enemy.Block(design.GetStat(StatType.Block)));
         }
 
         protected override bool TestCharMovementActivatedEffect(Enemy enemy)

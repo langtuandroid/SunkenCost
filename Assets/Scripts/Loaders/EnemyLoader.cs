@@ -10,12 +10,9 @@ using UnityEngine;
 public class EnemyLoader : MonoBehaviour
 {
     public static EnemyLoader Current;
-    
-    public static readonly Dictionary<string, Type> AllEnemyTypesByName = new Dictionary<string, Type>();
 
-    private static readonly Dictionary<string, EnemySpritePack> EnemySpritePacks =
-        new Dictionary<string, EnemySpritePack>(); 
-    
+    public static readonly List<EnemyAsset> EnemyAssets = new List<EnemyAsset>();
+
     private void Awake()
     {
         if (Current)
@@ -29,29 +26,26 @@ public class EnemyLoader : MonoBehaviour
     
     void Start()
     {
-        // Get the enemies
-        var enemiesEnumerable =
+        // Get the Enemy assets
+        var enemyAssets = Extensions.LoadScriptableObjects<EnemyAsset>();
+        
+        // Get the Enemy classes by type
+        var enemyTypes =
             Extensions.GetAllChildrenOfClassOrNull<Enemy>();
 
-        foreach (var type in enemiesEnumerable)
+        foreach (var type in enemyTypes)
         {
             // Remove the 'Enemy' from the end of file name
             var enemyName = StripEnemyTypeName(type.Name);
-            AllEnemyTypesByName.Add(enemyName, type);
+            
+            var correspondingAsset = enemyAssets.FirstOrDefault(asset => asset.name == enemyName);
+            if (correspondingAsset is null) throw new Exception("No asset found for " + enemyName);
 
-            EnemySpritePacks.Add(enemyName, CreateSpritePack(enemyName));
+            correspondingAsset.Class = type;
+            correspondingAsset.SpritePack = CreateSpritePack(enemyName);
+            
+            EnemyAssets.Add(correspondingAsset);
         }
-    }
-    
-    public EnemySpritePack GetEnemySpritePack(string enemyTypeName)
-    {
-        var strippedName = StripEnemyTypeName(enemyTypeName);
-        if (EnemySpritePacks.TryGetValue(strippedName, out var enemySpritePack))
-        {
-            return enemySpritePack;
-        }
-        
-        throw new Exception("No EnemySpritePack for " + strippedName + " found!");
     }
 
     private static string StripEnemyTypeName(string typeName)

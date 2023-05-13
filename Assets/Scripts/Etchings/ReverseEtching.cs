@@ -13,13 +13,13 @@ namespace Etchings
     {
         protected override DesignResponse GetDesignResponsesToEvent(BattleEvent battleEvent)
         {
-            var enemy = BattleEventsManager.Current.GetEnemyByResponderID(battleEvent.affectedResponderID);
+            var enemy = battleEvent.Enemy;
             
             // Set the new goal stick as the opposite direction
             enemy.Mover.Reverse();
             enemy.Mover.AddMovement(design.GetStat(StatType.MovementBoost));
             var response = new BattleEvent(BattleEventType.EnemyMovementModified) 
-                {source = DamageSource.Etching, affectedResponderID = battleEvent.affectedResponderID};
+                {source = DamageSource.Etching, primaryResponderID = battleEvent.primaryResponderID};
             
             return new DesignResponse(PlankNum, response);
         }

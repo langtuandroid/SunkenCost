@@ -23,12 +23,12 @@ namespace BattleScreen.BattleEvents
                 // Register / Deregister enemies
                 case BattleEventType.EnemySpawned:
                     var spawnedEnemy = BattleEventResponder.AllBattleEventRespondersByID[battleEventToRespondTo
-                        .affectedResponderID];
+                        .primaryResponderID];
                     if (!HasResponder(spawnedEnemy)) AddResponder(spawnedEnemy);
                     break;
                 case BattleEventType.EnemyKilled:
                     var killedEnemy = BattleEventResponder.AllBattleEventRespondersByID[battleEventToRespondTo
-                        .affectedResponderID];
+                        .primaryResponderID];
                     if (HasResponder(killedEnemy)) RemoveResponder(killedEnemy);
                     break;
             }

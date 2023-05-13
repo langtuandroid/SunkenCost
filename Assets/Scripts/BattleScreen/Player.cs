@@ -90,7 +90,7 @@ public class Player : BattleEventResponder
         var battleEvent = previousBattleEvent.type switch
         {
             BattleEventType.PlayerMovedPlank => UsedMove(),
-            BattleEventType.EnemyReachedBoat => EnemyReachedEnd(-previousBattleEvent.modifier),
+            BattleEventType.EnemyAttackedBoat => EnemyReachedEnd(-previousBattleEvent.modifier),
             BattleEventType.PlayerLifeModified => ModifyLife(previousBattleEvent),
             BattleEventType.TryGainedGold => TryGainGold(previousBattleEvent),
             _ => BattleEvent.None

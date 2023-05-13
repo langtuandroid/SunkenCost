@@ -1,7 +1,9 @@
 ﻿using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using System.Linq;
+using BattleScreen.BattleBoard;
 using Newtonsoft.Json.Bson;
 using UnityEngine;
 using Random = UnityEngine.Random;
@@ -18,28 +20,15 @@ namespace Enemies
     public class EnemyMover
     {
         public int AmountOfMovesLeftThisTurn { get; private set; }
-        private int _lastMove;
-        private int _skips;
 
-        private readonly List<EnemyMove> _moveSet = new List<EnemyMove>();
+        private List<EnemyMove> _moveSet = new List<EnemyMove>();
         private int _moveIndex;
 
-        
         public int PlankNum { get; private set; }
 
         public bool FinishedMoving => AmountOfMovesLeftThisTurn == 0;
 
-        public EnemyMove CurrentMove => _moveSet[_moveIndex];
-
-        public int LastDirection
-        {
-            get
-            {
-                // -1 if moved backwards, 0 if didn't move, 1 if moved forwards
-                if (_lastMove == 0) return 0;
-                return _lastMove / Math.Abs(_lastMove);
-            }
-        }
+        public EnemyMove CurrentMove { get; private set; }
 
         public int NextDirection
         {
@@ -50,20 +39,36 @@ namespace Enemies
                 return AmountOfMovesLeftThisTurn / Math.Abs(AmountOfMovesLeftThisTurn);
             }
         }
-        
-        public void Init()
+
+        public bool WouldMoveOntoBoat => NextDirection + PlankNum >= Board.Current.PlankCount;
+
+        public void Init(IEnumerable<EnemyMove> moveSet)
         {
+            _moveSet = moveSet.ToList();
+            
             // Randomise first move
             _moveIndex = Random.Range(0, _moveSet.Count);
-            SetNextMoveSequence();
+            SetNextMove();
         }
         
-        public void Move()
+        public void MoveToNextPlank()
         {
-            _lastMove = AmountOfMovesLeftThisTurn;
-            PlankNum += LastDirection + (LastDirection * _skips);
-            AmountOfMovesLeftThisTurn -= LastDirection + (LastDirection * _skips);
-            _skips = 0;
+            if (CurrentMove.MovementType == MovementType.Skip)
+            {
+                while (AmountOfMovesLeftThisTurn + PlankNum >= Board.Current.PlankCount) AmountOfMovesLeftThisTurn--;
+                PlankNum += AmountOfMovesLeftThisTurn;
+            }
+            else
+            {
+                PlankNum += NextDirection;
+            }
+            
+            UseStep();
+        }
+
+        public void AttackBoat()
+        {
+            UseStep();
         }
 
         public void AddMove(MovementType movementType, int magnitude)
@@ -72,33 +77,14 @@ namespace Enemies
             _moveSet.Add(move);
         }
 
-        public void AddMove(int magnitude)
-        {
-            AddMove(MovementType.Walk, magnitude);
-        }
-
         public void SetPlankNum(int plankNum)
         {
             PlankNum = plankNum;
         }
-
-        public void AddSkip(int amount)
-        {
-            _skips += amount;
-        }
-
+        
         public void Block(int amount)
         {
-            if (AmountOfMovesLeftThisTurn > 0)
-            {
-                AmountOfMovesLeftThisTurn -= amount;
-                if (AmountOfMovesLeftThisTurn < 0) AmountOfMovesLeftThisTurn = 0;
-            }
-            else
-            {
-                AmountOfMovesLeftThisTurn += amount;
-                if (AmountOfMovesLeftThisTurn > 0) AmountOfMovesLeftThisTurn = 0;
-            }
+            AmountOfMovesLeftThisTurn -= amount * NextDirection;
         }
 
         public void Reverse()
@@ -119,33 +105,41 @@ namespace Enemies
             {
                 var move = _moveSet.ElementAt(i);
                 if (move.MovementType == MovementType.Wait) continue;
-                move.IncreaseMagnitude(amount);
+                move.AlterMagnitude(amount);
             }
         }
 
         public void EndTurn() 
         {
-            SetNextMoveSequence();
+            SetNextMove();
         }
 
-        private void SetNextMoveSequence()
+        private void UseStep()
+        {
+            if (CurrentMove.MovementType == MovementType.Skip) AmountOfMovesLeftThisTurn = 0;
+            else AmountOfMovesLeftThisTurn -= NextDirection;
+        }
+
+        private void SetNextMove()
         {
             for (var i = 0; i < 100; i++)
             {
                 _moveIndex++;
                 if (_moveIndex >= _moveSet.Count) _moveIndex = 0;
 
+                CurrentMove = _moveSet[_moveIndex];
+
                 // Always move off starting stick
-                if (_moveSet[_moveIndex].Magnitude <= 0 && PlankNum == -1)
+                if (CurrentMove.MovementType != MovementType.Wait && CurrentMove.Magnitude <= 0 && PlankNum == -1)
                 {
                     continue;
                 }
                 
-                Debug.Log(CurrentMove.Magnitude);
                 AmountOfMovesLeftThisTurn = CurrentMove.Magnitude;
-                _skips = CurrentMove.MovementType == MovementType.Skip ? CurrentMove.Magnitude - 1 : 0;
-                break;
+                return;
             }
+            
+            throw new Exception("Couldn't find a move that moves off the island!");
         }
     }
 }

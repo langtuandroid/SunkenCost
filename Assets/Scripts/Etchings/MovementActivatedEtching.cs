@@ -11,7 +11,7 @@ namespace Etchings
         {
             if (stunned || battleEvent.type != GetEventType()) return false;
 
-            var enemy = BattleEventsManager.Current.GetEnemyByResponderID(battleEvent.affectedResponderID);
+            var enemy = battleEvent.Enemy;
 
             if (enemy.IsDestroyed) return false;
             

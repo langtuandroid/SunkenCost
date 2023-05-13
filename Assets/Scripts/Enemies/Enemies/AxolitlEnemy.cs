@@ -4,24 +4,14 @@ using System.Collections.Generic;
 using BattleScreen;
 using BattleScreen.BattleEvents;
 using Enemies;
+using Stats;
 using UnityEngine;
 
 public class AxolitlEnemy : Enemy, IStartOfTurnAbilityHolder
 {
-    private int _healingAmount = 5;
-    
-    protected override void Init()
-    {
-        Name = "Axolitl";
-        Mover.AddMove(1);
-        Mover.AddMove(2);
-        SetInitialHealth(25);
-        Gold = 1;
-    }
-    
     public override string GetDescription()
     {
-        return "Heals " + _healingAmount + " health each turn";
+        return "Heals " + stats.GetModifier(EnemyModifierType.Health) + " health each turn";
     }
 
     public bool GetIfUsingStartOfTurnAbility()
@@ -31,7 +21,9 @@ public class AxolitlEnemy : Enemy, IStartOfTurnAbilityHolder
 
     public BattleEventPackage GetStartOfTurnAbility()
     {
-        return new BattleEventPackage(MaxHealth - _healingAmount > _healingAmount
-            ? Heal(_healingAmount) : Heal(MaxHealth - Health));
+        var healingAmount = stats.GetModifier(EnemyModifierType.Health);
+        
+        return new BattleEventPackage(MaxHealth - healingAmount > healingAmount
+            ? Heal(healingAmount) : Heal(MaxHealth - Health));
     }
 }

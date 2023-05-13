@@ -9,16 +9,9 @@ namespace Enemies.Enemies
     public class LeechEnemy : EliteEnemy, IStartOfTurnAbilityHolder
     {
         private SteeloEnemy _steelo;
-        
-        protected override void Init()
-        {
-            Size = 1.2f;
-            Name = "Leech";
-            Mover.AddMove(2);
-            Mover.AddMove(3);
-            SetInitialHealth(60);
-            Gold = 3;
 
+        private void Start()
+        {
             _steelo = FindObjectOfType<SteeloEnemy>();
             if (!_steelo)
             {

@@ -35,21 +35,20 @@ namespace Enemies
         {
             if (battleEvent.type == BattleEventType.EnemySpawned && !battleEvent.showResponse)
             {
-                var enemy = BattleEventsManager.Current.GetEnemyByResponderID(battleEvent.affectedResponderID);
-                UpdatePosition(enemy.PlankNum, true);
+                UpdatePosition(battleEvent.Enemy.PlankNum, true);
             }
-            
+            /*
             else if (battleEvent.type == BattleEventType.EnemyReachedBoat)
             {
                 var enemy = BattleEventsManager.Current.GetEnemyByResponderID(battleEvent.affectedResponderID);
                 var aimPosition = new Vector2(BoatXOffset, BoatYOffset);
                 StartCoroutine(MoveTransform(Board.Current.BoatTransform, enemy, aimPosition));
             }
+            */
             else if (battleEvent.type == BattleEventType.EnemyMove ||
                battleEvent.type == BattleEventType.EnemySpawned)
             {
-                var enemy = BattleEventsManager.Current.GetEnemyByResponderID(battleEvent.affectedResponderID);
-                UpdatePosition(enemy.PlankNum, false);
+                UpdatePosition(battleEvent.Enemy.PlankNum, false);
             }
             else if (battleEvent.type == BattleEventType.EnemyKilled && battleEvent.source != DamageSource.Boat)
             {
@@ -89,8 +88,7 @@ namespace Enemies
 
         private IEnumerator WaitForEnemyDeath(BattleEvent battleEvent)
         {
-            var enemy = BattleEventsManager.Current.GetEnemyByResponderID(battleEvent.affectedResponderID);
-            var plankNum = enemy.PlankNum;
+            var plankNum = battleEvent.Enemy.PlankNum;
 
             // Wait for just a little bit shorter time than the game logic
             var waitTime = Battle.ActionExecutionSpeed * Battle.GetAnimationTime(battleEvent) - 0.01f;

@@ -9,7 +9,7 @@ public enum EnemyType
     Claus,
     Axolitl,
     Cucunger,
-    Rat,
+    WhattaRat,
     FlightingFish,
     Steelo,
     Leech,
@@ -18,7 +18,9 @@ public enum EnemyType
     Maxolotl,
     Carppool,
     Octopurse,
-    Swordfist
+    Swordfist,
+    BullCarp,
+    Staffish
 }
 
 public enum ScenarioType

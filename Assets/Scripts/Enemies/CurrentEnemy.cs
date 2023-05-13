@@ -1,4 +1,5 @@
-﻿using System.Linq;
+﻿using System;
+using System.Linq;
 using BattleScreen;
 using BattleScreen.BattleBoard;
 using BattleScreen.BattleEvents;
@@ -9,6 +10,7 @@ namespace Enemies
     public class CurrentEnemy
     {
         private readonly Enemy _enemy;
+        private readonly EnemyMover _mover;
         private readonly int _responderID;
         
         private bool _hasDealtPoison;
@@ -20,6 +22,7 @@ namespace Enemies
         public CurrentEnemy(Enemy enemy)
         {
             _enemy = enemy;
+            _mover = enemy.Mover;
             _responderID = enemy.ResponderID;
         }
 
@@ -50,7 +53,7 @@ namespace Enemies
                 }
             }
 
-            if (!_enemy.Mover.FinishedMoving)
+            if (!_mover.FinishedMoving)
             {
                 // Tell everyone I'm about to move before each move
                 if (!_hasToldEveryoneImAboutToMove)
@@ -59,15 +62,21 @@ namespace Enemies
                     return new BattleEventPackage(CreateEvent(BattleEventType.EnemyAboutToMove));
                 }
 
-                _hasToldEveryoneImAboutToMove = false;
+                // Will always attack boat if on the last plank
+                if (_mover.WouldMoveOntoBoat)
+                {
+                    _mover.AttackBoat();
+                    var boatDamageEvent = CreateEvent(BattleEventType.EnemyAttackedBoat, _enemy.GetBoatDamage());
+                    return new BattleEventPackage(boatDamageEvent);
+                }
                 
+                _hasToldEveryoneImAboutToMove = false;
+
                 // Change my plank
-                _enemy.Mover.Move();
+                _mover.MoveToNextPlank();
                 
                 // I've either moved a plank or reached the boat and died
-                return (_enemy.PlankNum >= Board.Current.PlankCount)
-                    ? _enemy.Die(DamageSource.Boat)
-                    : new BattleEventPackage(CreateEvent(BattleEventType.EnemyMove));
+                return new BattleEventPackage(CreateEvent(BattleEventType.EnemyMove));
             }
             
             //TODO: Add EndOfTurnAbility processing here
@@ -76,9 +85,9 @@ namespace Enemies
             return new BattleEventPackage(CreateEvent(BattleEventType.EndedIndividualEnemyTurn));
         }
 
-        private BattleEvent CreateEvent(BattleEventType battleEventType)
+        private BattleEvent CreateEvent(BattleEventType battleEventType, int modifier = 0)
         {
-            return new BattleEvent(battleEventType) { affectedResponderID = _responderID };
+            return new BattleEvent(battleEventType) { primaryResponderID = _responderID, modifier = modifier};
         }
     }
 }

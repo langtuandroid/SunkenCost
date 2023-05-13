@@ -10,15 +10,13 @@ namespace Items.Items
         protected override bool GetIfRespondingToBattleEvent(BattleEvent battleEvent)
         {
             if (battleEvent.type != BattleEventType.EnemyHealed) return false;
-
-            var enemy = BattleEventsManager.Current.GetEnemyByResponderID(battleEvent.affectedResponderID);
-            return !enemy.IsDestroyed;
+            return !battleEvent.Enemy.IsDestroyed;
         }
 
         protected override BattleEventPackage GetResponse(BattleEvent battleEvent)
         {
             return new BattleEventPackage(DamageHandler.DamageEnemy
-                (Amount, battleEvent.affectedResponderID, DamageSource.Item));
+                (Amount, battleEvent.primaryResponderID, DamageSource.Item));
         }
     }
 }

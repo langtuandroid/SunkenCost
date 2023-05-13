@@ -31,22 +31,24 @@ public class EnemyAnimationController : MonoBehaviour, IBattleEventUpdatedUI
 
     public void RespondToBattleEvent(BattleEvent battleEvent)
     {
-        if (battleEvent.affectedResponderID != _responderID) return;
+        if (battleEvent.primaryResponderID != _responderID) return;
 
         switch (battleEvent.type)
         {
-            case BattleEventType.EnemyAttacked:
+            case BattleEventType.EnemyAttacked: case BattleEventType.EnemyMaxHealthModified when battleEvent.modifier < 0:
                 Damage();
                 break;
-            case BattleEventType.EnemyHealed:
+            case BattleEventType.EnemyHealed: case BattleEventType.EnemyMaxHealthModified when battleEvent.modifier > 0:
                 Heal();
                 break;
             case BattleEventType.StartedIndividualEnemyTurn:
                 WiggleBeforeMoving();
                 break;
+            /*
             case BattleEventType.EnemyReachedBoat:
                 Die();
                 break;
+                */
             case BattleEventType.EnemyKilled when battleEvent.source != DamageSource.Boat:
                 Die();
                 break;

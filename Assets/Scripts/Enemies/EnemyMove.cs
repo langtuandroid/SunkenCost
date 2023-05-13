@@ -1,22 +1,29 @@
-﻿namespace Enemies
+﻿using System;
+using UnityEngine;
+
+namespace Enemies
 {
+    [Serializable]
     public class EnemyMove
     {
-        public MovementType MovementType { get; private set; }
-        public int Magnitude { get; private set; }
+        [SerializeField] private MovementType _movementType;
+        [SerializeField] private int _magnitude;
+
+        public MovementType MovementType => _movementType;
+        public int Magnitude => _magnitude;
 
         public EnemyMove(MovementType movementType, int magnitude)
         {
-            MovementType = movementType;
-            Magnitude = magnitude;
+            _movementType = movementType;
+            _magnitude = magnitude;
         }
 
-        public void IncreaseMagnitude(int amountToIncrease)
+        public void AlterMagnitude(int amountToIncrease)
         {
-            if (Magnitude == 0) return;
+            if (_magnitude == 0) return;
 
-            if (Magnitude > 0) Magnitude += amountToIncrease;
-            else Magnitude -= amountToIncrease;
+            if (_magnitude > 0) _magnitude += amountToIncrease;
+            else _magnitude -= amountToIncrease;
         }
     }
 }

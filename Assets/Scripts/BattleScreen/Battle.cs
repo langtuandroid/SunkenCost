@@ -233,9 +233,9 @@ namespace BattleScreen
                 case BattleEventType.EndedEnemyTurn:
                 case BattleEventType.StartedIndividualEnemyTurn:
                 case BattleEventType.EtchingStunned:
-                case BattleEventType.EnemyHealed:
+                case BattleEventType.EnemyHealed: case BattleEventType.EnemyMaxHealthModified:
                     return 1f;
-                case BattleEventType.EnemyReachedBoat:
+                case BattleEventType.EnemyAttackedBoat:
                 case BattleEventType.EnemyKilled when battleEvent.source != DamageSource.Boat:
                     return 0.75f;
                 case BattleEventType.EnemyAttacked: case BattleEventType.EnemyDamaged:

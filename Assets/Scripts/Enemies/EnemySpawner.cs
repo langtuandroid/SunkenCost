@@ -42,29 +42,28 @@ public class EnemySpawner : BattleEventResponder
         _enemyBattleEventResponderGroup = FindObjectOfType<EnemyBattleEventResponderGroup>();
     }
 
-    public Enemy SpawnEnemyDuringTurn(string enemyName, int plankNum)
+    public Enemy SpawnEnemyDuringTurn(EnemyType enemyType, int plankNum)
     {
-        return plankNum == -1 ? SpawnEnemyOnIsland(enemyName) : SpawnEnemyOnPlank(enemyName, plankNum);
+        return plankNum == -1 ? SpawnEnemyOnIsland(enemyType) : SpawnEnemyOnPlank(enemyType, plankNum);
     }
 
     private BattleEventPackage SpawnNewTurn()
     {
         var enemyTypes = _scenario.GetSpawns(Battle.Current.Turn);
-        var newEnemies = enemyTypes.Select(enemyType => Enum.GetName(typeof(EnemyType), enemyType)).ToList();
 
-        if (newEnemies.Count == 0) return BattleEventPackage.Empty;
+        if (enemyTypes.Count == 0) return BattleEventPackage.Empty;
 
         var battleEvents = new List<BattleEvent>();
 
-        foreach (var enemyName in newEnemies)
+        foreach (var enemyType in enemyTypes)
         {
-            var enemy = SpawnEnemyOnIsland(enemyName);
+            var enemy = SpawnEnemyOnIsland(enemyType);
             enemy.MaxHealthStat.AddModifier(new StatModifier(_scenario.scaledDifficulty, StatModType.PercentMult));
             enemy.Mover.AddMovementModifier((int) (_scenario.scaledDifficulty / 2f)
                                             + RunProgress.PlayerStats.EnemyMovementModifier);
             battleEvents.Add(new BattleEvent(BattleEventType.EnemySpawned)
             {
-                affectedResponderID = enemy.ResponderID, 
+                primaryResponderID = enemy.ResponderID, 
                 showResponse =  false
             });
         }
@@ -72,30 +71,31 @@ public class EnemySpawner : BattleEventResponder
         return new BattleEventPackage(battleEvents);
     }
 
-    private Enemy SpawnEnemyOnIsland(string enemyName)
+    private Enemy SpawnEnemyOnIsland(EnemyType enemyType)
     {
-        var enemy = SpawnEnemy(enemyName, Board.Current.IslandTransform);
+        var enemy = SpawnEnemy(enemyType, Board.Current.IslandTransform);
         enemy.Mover.SetPlankNum(-1);
         return enemy;
     }
     
-    private Enemy SpawnEnemyOnPlank(string enemyName, int plankNum)
+    private Enemy SpawnEnemyOnPlank(EnemyType enemyType, int plankNum)
     {
-        var enemy = SpawnEnemy(enemyName, Board.Current.GetPlank(plankNum).transform);
+        var enemy = SpawnEnemy(enemyType, Board.Current.GetPlank(plankNum).transform);
         enemy.Mover.SetPlankNum(plankNum);
         return enemy;
     }
 
-    private Enemy SpawnEnemy(string enemyName, Transform parentTransform)
+    private Enemy SpawnEnemy(EnemyType enemyType, Transform parentTransform)
     {
-        var enemyType = EnemyLoader.AllEnemyTypesByName[enemyName];
-        var prefab = enemyType.IsSubclassOf(typeof(EliteEnemy)) ? _elitePrefab : _enemyPrefab;
+        var enemyAsset = EnemyLoader.EnemyAssets.First(a => a.EnemyType == enemyType);
+        var enemyClass = enemyAsset.Class;
+        var prefab = enemyClass.IsSubclassOf(typeof(EliteEnemy)) ? _elitePrefab : _enemyPrefab;
 
         var newEnemyObject = Instantiate(prefab, parentTransform, true);
         newEnemyObject.transform.localPosition = Vector3.zero;
         newEnemyObject.transform.localScale = new Vector3(1, 1, 1);
 
-        var newEnemy = newEnemyObject.AddComponent(enemyType).GetComponent<Enemy>();
+        var newEnemy = newEnemyObject.AddComponent(enemyClass).GetComponent<Enemy>();
         EnemySequencer.Current.AddEnemy(newEnemy);
         return newEnemy;
     }

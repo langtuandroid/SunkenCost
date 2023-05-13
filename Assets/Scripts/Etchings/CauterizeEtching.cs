@@ -16,7 +16,7 @@ namespace Etchings
 
         protected override DesignResponse GetDesignResponsesToEvent(BattleEvent battleEvent)
         {
-            var enemy = BattleEventsManager.Current.GetEnemyByResponderID(battleEvent.affectedResponderID);
+            var enemy = battleEvent.Enemy;
             var poison = enemy.stats.Poison;
 
             var newStatMod = new StatModifier
@@ -25,7 +25,7 @@ namespace Etchings
 
             var response = new BattleEvent(BattleEventType.EnemyMaxHealthModified)
             {
-                affectedResponderID = battleEvent.affectedResponderID
+                primaryResponderID = battleEvent.primaryResponderID
             };
             
             return new DesignResponse(PlankNum, response);

@@ -17,10 +17,13 @@ namespace Enemies
     public abstract class Enemy : BattleEventResponder
     {
         public EnemyStats stats;
+        
+        public EnemyAsset Asset { get; private set; }
+        
         public string Name { get; protected set; }
         
         public Stat MaxHealthStat { get; private set; }
-        public int Gold { get; protected set; }
+        public int Gold { get; protected set; } = 1;
         public int Health { get; private set; }
         
         public int TurnOrder { get; private set; }
@@ -43,23 +46,22 @@ namespace Enemies
         protected override void Awake()
         {
             base.Awake();
-            stats = new EnemyStats(ResponderID);
-
-            Init();
+            Asset = EnemyLoader.EnemyAssets.First(a => a.Class == GetType());
+            stats = new EnemyStats(ResponderID, Asset.Modifiers);
+            Name = Asset.Name;
+            SetInitialHealth(Asset.MaxHealth);
+            Mover.Init(Asset.Moves);
         }
 
-        protected abstract void Init();
-
-        private void Start()
+        protected virtual void SetInitialHealth(int health)
         {
-            Mover.Init();
-            ChangeHealth(MaxHealthStat.Value);
-        }
-
-        protected void SetInitialHealth(int health)
-        {
-            // TODO: APPLY MODIFIERS
             MaxHealthStat = new Stat(health);
+            Health = MaxHealthStat.Value;
+        }
+        
+        public virtual int GetBoatDamage()
+        {
+            return Health;
         }
 
         public BattleEvent DealPoisonDamage()
@@ -85,12 +87,16 @@ namespace Enemies
             return CreateEvent(BattleEventType.EnemyHealed, healAmount);
         }
 
-        public void AddMaxHealthModifier(StatModifier statModifier)
+        public BattleEvent AddMaxHealthModifier(StatModifier statModifier)
         {
             MaxHealthStat.AddModifier(statModifier);
             var overHeal = Health - MaxHealthStat.Value;
             
             ChangeHealth(overHeal > 0 ? -overHeal : 0);
+
+            var maxHealthModifiedEvent = CreateEvent(BattleEventType.EnemyMaxHealthModified);
+            maxHealthModifiedEvent.modifier = (int)statModifier.Value;
+            return maxHealthModifiedEvent;
         }
 
         public void RemoveMaxHealthModifier(StatModifier statModifier)
@@ -116,14 +122,14 @@ namespace Enemies
         {
             switch (previousBattleEvent.type)
             {
-                case BattleEventType.EnemySpawned when previousBattleEvent.affectedResponderID == ResponderID
+                case BattleEventType.EnemySpawned when previousBattleEvent.primaryResponderID == ResponderID
                                                        && this is ISpawnAbilityHolder abilityHolder:
                 {
                     return abilityHolder.GetSpawnAbility();
                 }
 
                 // Damaged
-                case BattleEventType.EnemyAttacked when previousBattleEvent.affectedResponderID == ResponderID:
+                case BattleEventType.EnemyAttacked when previousBattleEvent.primaryResponderID == ResponderID:
                 {
                     ChangeHealth(-previousBattleEvent.modifier);
                 
@@ -151,11 +157,7 @@ namespace Enemies
             IsDestroyed = true;
             
             var eventList = new List<BattleEvent>();
-
-            if (source == DamageSource.Boat)
-            {
-                eventList.Add(CreateEvent(BattleEventType.EnemyReachedBoat, GetBoatDamage()));
-            }
+            
             eventList.Add(CreateEvent(BattleEventType.EnemyKilled, damageSource: source));
             eventList.Add(CreateEvent(BattleEventType.TryGainedGold, Gold, source));
             if (IsMyTurn) eventList.Add(CreateEvent(BattleEventType.EndedIndividualEnemyTurn));
@@ -172,12 +174,7 @@ namespace Enemies
             DamageSource damageSource = DamageSource.None)
         {
             return new BattleEvent(type) 
-                {affectedResponderID = ResponderID, modifier = modifier, source = damageSource};
-        }
-        
-        protected virtual int GetBoatDamage()
-        {
-            return Health;
+                {primaryResponderID = ResponderID, modifier = modifier, source = damageSource};
         }
 
         private void ChangeHealth(int amount)

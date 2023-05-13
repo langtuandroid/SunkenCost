@@ -2,11 +2,8 @@
 {
     public class BullCarpEnemy : Enemy
     {
-        protected override void Init()
+        private void Start()
         {
-            Name = "Bull Carp";
-            Mover.AddMove(2);
-            SetInitialHealth(20);
             Gold = 0;
         }
 

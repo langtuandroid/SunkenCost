@@ -3,28 +3,18 @@ using BattleScreen;
 using BattleScreen.BattleBoard;
 using BattleScreen.BattleEvents;
 using Damage;
+using Stats;
 using UnityEngine;
 
 namespace Enemies.Enemies
 {
     public class CucungerEnemy : EliteEnemy, IStartOfTurnAbilityHolder
     {
-        // Smashes the last stick every X turns
-        private static int abilityCooldown = 1;
-        [SerializeField] private int cooldownCounter = 0;
+        private int _cooldownCounter = 0;
 
-        protected override void Init()
-        {
-            Size = 1.2f;
-            Name = "Cucunger";
-            Mover.AddMove(1);
-            SetInitialHealth(100);
-            Gold = 10;
-        }
-    
         public override string GetDescription()
         {
-            var turns = abilityCooldown - cooldownCounter;
+            var turns = stats.GetModifier(EnemyModifierType.Cooldown) - _cooldownCounter;
 
             var turnText = "";
             switch (turns)
@@ -51,8 +41,10 @@ namespace Enemies.Enemies
         public BattleEventPackage GetStartOfTurnAbility()
         {
             var response = new List<BattleEvent>();
+
+            var abilityCooldown = stats.GetModifier(EnemyModifierType.Cooldown);
         
-            var speech = (abilityCooldown - cooldownCounter).ToString();
+            var speech = (abilityCooldown - _cooldownCounter).ToString();
             if (speech == "0")
                 speech = "X";
             else if (speech == "1")
@@ -60,15 +52,15 @@ namespace Enemies.Enemies
 
             response.Add(Speak(speech));
         
-            if (cooldownCounter >= abilityCooldown && PlankNum != Board.Current.PlankCount - 1)
+            if (_cooldownCounter >= abilityCooldown && PlankNum != Board.Current.PlankCount - 1)
             {
-                cooldownCounter = 0;
+                _cooldownCounter = 0;
                 response.Add(PlankFactory.Current.DestroyPlank
                     (DamageSource.EnemyAbility, Board.Current.PlankCount - 1));
             }
             else
             {
-                cooldownCounter++;
+                _cooldownCounter++;
             }
 
             return new BattleEventPackage(response);

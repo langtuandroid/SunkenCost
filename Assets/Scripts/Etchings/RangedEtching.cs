@@ -19,8 +19,7 @@ namespace Etchings
 
         protected override DesignResponse GetDesignResponsesToEvent(BattleEvent battleEvent)
         {
-            var enemy = BattleEventsManager.Current.GetEnemyByResponderID(battleEvent.affectedResponderID);
-            return new DesignResponse(enemy.PlankNum, DamageEnemy(battleEvent.affectedResponderID));
+            return new DesignResponse(battleEvent.Enemy.PlankNum, DamageEnemy(battleEvent.primaryResponderID));
         }
     }
 }

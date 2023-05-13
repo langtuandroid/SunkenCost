@@ -11,23 +11,12 @@ namespace Items.Items
     {
         protected override bool GetIfRespondingToBattleEvent(BattleEvent battleEvent)
         {
-            return battleEvent.type == BattleEventType.EnemyReachedBoat && EnemySequencer.Current.NumberOfEnemies > 0;;
+            return battleEvent.type == BattleEventType.EnemyAttackedBoat && !battleEvent.Enemy.IsDestroyed;
         }
 
         protected override BattleEventPackage GetResponse(BattleEvent battleEvent)
         {
-            var responses = new List<BattleEvent>();
-            
-            var enemies = EnemySequencer.Current.AllEnemies;
-            for (var i = enemies.Count - 1 ; i > 0; i--)
-            {
-                if (!enemies[i] || enemies[i].IsDestroyed) continue;
-
-                var damageEvent = DamageHandler.DamageEnemy(Amount, enemies[i].ResponderID, DamageSource.Item);
-                responses.Add(damageEvent);
-            }
-
-            return new BattleEventPackage(responses);
+            return new BattleEventPackage(DamageHandler.DamageEnemy(Amount, battleEvent.primaryResponderID, DamageSource.Item));
         }
     }
 }

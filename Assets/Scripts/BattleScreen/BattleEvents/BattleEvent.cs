@@ -36,7 +36,7 @@ namespace BattleScreen
         EnemyDamaged,
         EnemySpawned,
         EnemyKilled,
-        EnemyReachedBoat,
+        EnemyAttackedBoat,
         EtchingActivated,
         EtchingStunned,
         EtchingUnStunned,
@@ -66,8 +66,8 @@ namespace BattleScreen
         public int modifier = 0;
         public DamageSource source;
         public DamageModificationPackage damageModificationPackage;
-        public int affectedResponderID;
-        public int affectingResponderID;
+        public int primaryResponderID;
+        public int secondaryResponderID;
 
         public BattleEvent(BattleEventType type, params int[] planksToColor)
         {
@@ -76,5 +76,6 @@ namespace BattleScreen
         }
         
         public static BattleEvent None => new BattleEvent(BattleEventType.None);
+        public Enemy Enemy => BattleEventsManager.Current.GetEnemyByResponderID(primaryResponderID);
     }
 }

@@ -81,8 +81,7 @@ namespace Enemies
             switch (previousBattleEvent.type)
             {
                 case BattleEventType.EnemyKilled:
-                    var deadEnemy =
-                        BattleEventsManager.Current.GetEnemyByResponderID(previousBattleEvent.affectedResponderID);
+                    var deadEnemy = previousBattleEvent.Enemy;
 
                     foreach (var enemy in _enemies.Where(enemy => enemy.TurnOrder > deadEnemy.TurnOrder))
                     {

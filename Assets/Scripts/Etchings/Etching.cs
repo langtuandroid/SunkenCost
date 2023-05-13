@@ -58,7 +58,7 @@ namespace Etchings
                 if (planksToColor.Contains(-1)) planksToColor = new int[0];
                 var etchingActivatedEvent = new BattleEvent(BattleEventType.EtchingActivated, planksToColor)
                 {
-                    affectedResponderID = ResponderID,
+                    primaryResponderID = ResponderID,
                     showResponse = designResponse.showResponse
                 };
 
@@ -72,19 +72,19 @@ namespace Etchings
         public BattleEvent Stun(DamageSource source)
         {
             stunned = true;
-            return new BattleEvent(BattleEventType.EtchingStunned) {source =  source, affectedResponderID = ResponderID};
+            return new BattleEvent(BattleEventType.EtchingStunned) {source =  source, primaryResponderID = ResponderID};
         }
 
         public BattleEvent AddStatModifier(StatType statType, StatModifier mod)
         {
             design.AddStatModifier(statType, mod);
-            return new BattleEvent(BattleEventType.DesignModified) {affectedResponderID = ResponderID};
+            return new BattleEvent(BattleEventType.DesignModified) {primaryResponderID = ResponderID};
         }
         
         public BattleEvent RemoveStatModifier(StatType statType, StatModifier mod)
         {
             design.RemoveStatModifier(statType, mod);
-            return new BattleEvent(BattleEventType.DesignModified) {affectedResponderID = ResponderID};
+            return new BattleEvent(BattleEventType.DesignModified) {primaryResponderID = ResponderID};
         }
         
         protected abstract bool GetIfDesignIsRespondingToEvent(BattleEvent battleEvent);
@@ -94,7 +94,7 @@ namespace Etchings
         private BattleEvent UnStun()
         {
             stunned = false;
-            return new BattleEvent(BattleEventType.EtchingUnStunned) {affectedResponderID = ResponderID};
+            return new BattleEvent(BattleEventType.EtchingUnStunned) {primaryResponderID = ResponderID};
         }
 
         protected readonly struct DesignResponse

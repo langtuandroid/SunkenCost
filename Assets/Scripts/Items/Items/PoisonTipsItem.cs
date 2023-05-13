@@ -15,8 +15,7 @@ namespace Items.Items
 
         protected override BattleEventPackage GetResponse(BattleEvent battleEvent)
         {
-            var enemy = BattleEventsManager.Current.GetEnemyByResponderID(battleEvent.affectedResponderID);
-            return new BattleEventPackage(enemy.stats.AddPoison(Amount));
+            return new BattleEventPackage(battleEvent.Enemy.stats.AddPoison(Amount));
         }
     }
 }

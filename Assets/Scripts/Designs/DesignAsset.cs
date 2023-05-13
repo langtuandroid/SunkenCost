@@ -2,22 +2,13 @@
 using System.Collections.Generic;
 using System.Linq;
 using Items;
+using Stats;
 using UnityEngine;
 using UnityEngine.Serialization;
 using UnityEngine.Video;
 
 namespace Designs
 {
-    [Serializable]
-    public class StatSetter
-    {
-        [SerializeField] private StatType _statType;
-        [SerializeField] private int _magnitude;
-
-        public StatType StatType => _statType;
-        public int Magnitude => _magnitude;
-    }
-    
     [CreateAssetMenu(menuName = "Design")]
     public class DesignAsset : ScriptableObject
     {

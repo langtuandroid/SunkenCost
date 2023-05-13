@@ -25,9 +25,7 @@ namespace Etchings
                     var hadEnemyOnPlankThisTurn = _hadEnemyOnPlankThisTurn;
                     _hadEnemyOnPlankThisTurn = false;
                     return (!hadEnemyOnPlankThisTurn && Battle.Current.Turn > 1);
-                case BattleEventType.EnemyMove
-                    when BattleEventsManager.Current.GetEnemyByResponderID(battleEvent.affectedResponderID).PlankNum ==
-                         PlankNum:
+                case BattleEventType.EnemyMove when battleEvent.Enemy.PlankNum == PlankNum:
                     _hadEnemyOnPlankThisTurn = true;
                     break;
                 case BattleEventType.EndedBattle:
@@ -46,7 +44,7 @@ namespace Etchings
                 var newStatMod = new StatModifier(design.GetStat(StatType.StatFlatModifier), StatModType.Flat);
                 _statModifiers.Push(newStatMod); 
                 design.AddStatModifier(StatType.Damage, newStatMod);
-                var response = new BattleEvent(BattleEventType.DesignModified) {affectedResponderID = ResponderID};
+                var response = new BattleEvent(BattleEventType.DesignModified) {primaryResponderID = ResponderID};
                 return new DesignResponse(-1, response);
             }
             

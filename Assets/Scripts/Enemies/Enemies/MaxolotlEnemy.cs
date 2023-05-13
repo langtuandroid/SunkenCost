@@ -8,16 +8,6 @@ namespace Enemies.Enemies
     public class MaxolotlEnemy : EliteEnemy, IStartOfTurnAbilityHolder
     {
         private const int HEALING_AMOUNT = 10;
-        
-        protected override void Init()
-        {
-            Size = 1.2f;
-            Name = "Maxolotl";
-            Mover.AddMove(2);
-            Mover.AddMove(3);
-            SetInitialHealth(40);
-            Gold = 5;
-        }
 
         public override string GetDescription()
         {
@@ -26,12 +16,13 @@ namespace Enemies.Enemies
 
         public bool GetIfUsingStartOfTurnAbility()
         {
-            return true;
+            return EnemySequencer.Current.AllEnemies.Any(e => e.Health < e.MaxHealth);
         }
 
         public BattleEventPackage GetStartOfTurnAbility()
         {
-            return new BattleEventPackage(EnemySequencer.Current.AllEnemies.Select
+            return new BattleEventPackage(
+                EnemySequencer.Current.AllEnemies.Where(e => e.Health < e.MaxHealth).Select
                 (enemy => enemy.Heal(HEALING_AMOUNT)));
         }
     }

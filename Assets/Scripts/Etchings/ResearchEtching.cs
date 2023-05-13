@@ -11,7 +11,7 @@ namespace Etchings
     {
         protected override DesignResponse GetDesignResponsesToEvent(BattleEvent battleEvent)
         {
-            var enemy = BattleEventsManager.Current.GetEnemyByResponderID(battleEvent.affectedResponderID);
+            var enemy = battleEvent.Enemy;
             var amountToHeal = enemy.MaxHealth - enemy.Health;
 
             var responses = new List<BattleEvent> {enemy.Heal(amountToHeal)};

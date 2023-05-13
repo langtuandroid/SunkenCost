@@ -31,7 +31,7 @@ namespace Etchings
                 case BattleEventType.PlankCreated:
                     return true;
                 case BattleEventType.DesignModified:
-                    return battleEvent.affectedResponderID == ResponderID;
+                    return battleEvent.primaryResponderID == ResponderID;
                 default:
                     return false;
             }
