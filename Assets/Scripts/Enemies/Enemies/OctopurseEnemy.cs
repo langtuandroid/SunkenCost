@@ -15,7 +15,7 @@ namespace Enemies.Enemies
 
         public bool GetIfUsingStartOfTurnAbility()
         {
-            return _hasUsedAbility;
+            return !_hasUsedAbility;
         }
 
         public BattleEventPackage GetStartOfTurnAbility()

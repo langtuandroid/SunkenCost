@@ -5,7 +5,7 @@ using BattleScreen.BattleEvents;
 
 namespace Items.Items
 {
-    public class PaciFistItem : EquippedItem
+    public class PassiveIncomeItem : EquippedItem
     {
         private bool _hasKilledEnemyThisBattle = false;
 

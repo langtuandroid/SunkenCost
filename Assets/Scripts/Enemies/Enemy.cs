@@ -90,7 +90,7 @@ namespace Enemies
         public BattleEvent AddMaxHealthModifier(StatModifier statModifier)
         {
             MaxHealthStat.AddModifier(statModifier);
-            var overHeal = Health - MaxHealthStat.Value;
+            var overHeal = Health - MaxHealth;
             
             ChangeHealth(overHeal > 0 ? -overHeal : 0);
 

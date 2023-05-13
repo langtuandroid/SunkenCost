@@ -67,7 +67,7 @@ public class InGameSfxManager : MonoBehaviour
                 case BattleEventType.EnemyKilled:
                     Death();
                     break;
-                case BattleEventType.PlankDestroyed:
+                case BattleEventType.PlankDestroyed: case BattleEventType.EnemyAttackedBoat:
                     DestroyedPlank();
                     break;
                 case BattleEventType.PlankMoved:
