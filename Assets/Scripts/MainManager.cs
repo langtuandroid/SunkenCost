@@ -1,12 +1,15 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using DefaultNamespace;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
 public class MainManager : MonoBehaviour
 {
     public static MainManager Current;
+    
+    [field: SerializeField] public TestingConfig TestingConfig { get; private set; }
 
     private void Awake()
     {

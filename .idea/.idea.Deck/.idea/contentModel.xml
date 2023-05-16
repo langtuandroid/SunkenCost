@@ -802,6 +802,7 @@
             <e p="StatModifier.cs" t="Include" />
             <e p="StatSetter.cs" t="Include" />
           </e>
+          <e p="TestingConfig.cs" t="Include" />
           <e p="UI" t="Include">
             <e p="BattleActivationShaderDisplay.cs" t="Include" />
             <e p="BoatHealthMeter.cs" t="Include" />

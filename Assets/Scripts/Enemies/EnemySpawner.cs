@@ -51,8 +51,12 @@ public class EnemySpawner : BattleEventResponder
     {
         var enemyTypes = _scenario.GetSpawns(Battle.Current.Turn);
         
-        // OVERRIDE
-        //enemyTypes = new List<EnemyType>() {EnemyType.WhattaRat, EnemyType.WhattaRat, EnemyType.WhattaRat};
+        // TODO: Move this somewhere sexier
+        if (MainManager.Current.TestingConfig.IsActive)
+        {
+            var enemyList = MainManager.Current.TestingConfig.StartingEnemies;
+            if (enemyList.Count > 0) enemyTypes = enemyList;
+        }
 
         if (enemyTypes.Count == 0) return BattleEventPackage.Empty;
 
