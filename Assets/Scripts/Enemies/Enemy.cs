@@ -89,11 +89,19 @@ namespace Enemies
 
         public BattleEvent AddMaxHealthModifier(StatModifier statModifier)
         {
+            var oldMaxHealth = MaxHealth;
             MaxHealthStat.AddModifier(statModifier);
-            var overHeal = Health - MaxHealth;
-            
-            ChangeHealth(overHeal > 0 ? -overHeal : 0);
 
+            var difference = MaxHealth - oldMaxHealth;
+
+            if (difference > 0)
+            {
+                ChangeHealth(difference);
+            }
+
+            if (Health > MaxHealth)
+                Health = MaxHealth;
+            
             var maxHealthModifiedEvent = CreateEvent(BattleEventType.EnemyMaxHealthModified);
             maxHealthModifiedEvent.modifier = (int)statModifier.Value;
             return maxHealthModifiedEvent;

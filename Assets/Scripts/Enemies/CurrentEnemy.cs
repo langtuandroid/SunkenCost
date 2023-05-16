@@ -71,12 +71,16 @@ namespace Enemies
                 }
                 
                 _hasToldEveryoneImAboutToMove = false;
-
+                
+                var previousPlank = _mover.PlankNum;
+                
                 // Change my plank
                 _mover.MoveToNextPlank();
                 
-                // I've either moved a plank or reached the boat and died
-                return new BattleEventPackage(CreateEvent(BattleEventType.EnemyMove));
+                // I've either moved a plank or been blocked by the amount of enemies ahead
+                return previousPlank == _mover.PlankNum 
+                    ? new BattleEventPackage(CreateEvent(BattleEventType.EnemyBlocked)) 
+                    : new BattleEventPackage(CreateEvent(BattleEventType.EnemyMove));
             }
             
             //TODO: Add EndOfTurnAbility processing here

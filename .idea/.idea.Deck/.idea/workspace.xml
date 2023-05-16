@@ -23,25 +23,11 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="50470089-3e0c-4487-973b-9d375622b070" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/Assets/Prefabs/RampImage.prefab" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/Prefabs/RampImage.prefab.meta" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/Sprites/Plank/Ramp.pdn" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/Sprites/Plank/Ramp.pdn.meta" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/Sprites/Plank/RampBottom.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/Sprites/Plank/RampBottom.png.meta" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/Sprites/Plank/RampTop.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/Sprites/Plank/RampTop.png.meta" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/Sprites/Plank/RampWash.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/Sprites/Plank/RampWash.png.meta" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/.idea.Deck/.idea/contentModel.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.Deck/.idea/contentModel.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/.idea.Deck/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.Deck/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Resources/ScriptableObjects/Enemies/FlightingFish.asset" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Resources/ScriptableObjects/Enemies/FlightingFish.asset" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Resources/ScriptableObjects/Items/PassiveIncome.asset" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Resources/ScriptableObjects/Items/PassiveIncome.asset" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Resources/ScriptableObjects/Items/ReDress.asset" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Resources/ScriptableObjects/Items/ReDress.asset" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scenes/Menu.unity" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scenes/Menu.unity" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Enemies/EnemyUI/EnemyHealthText.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Enemies/EnemyUI/EnemyHealthText.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/TextMesh Pro/Resources/Fonts &amp; Materials/LiberationSans SDF - Fallback.asset" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/TextMesh Pro/Resources/Fonts &amp; Materials/LiberationSans SDF - Fallback.asset" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ProjectSettings/ProjectSettings.asset" beforeDir="false" afterPath="$PROJECT_DIR$/ProjectSettings/ProjectSettings.asset" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Enemies/CurrentEnemy.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Enemies/CurrentEnemy.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Enemies/Enemy.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Enemies/Enemy.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Enemies/EnemyMover.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Enemies/EnemyMover.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Enemies/EnemySpawner.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Enemies/EnemySpawner.cs" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -107,10 +93,8 @@
         <option value="$PROJECT_DIR$/Assets/Scripts/BattleScreen/Battle.cs" />
         <option value="$PROJECT_DIR$/Assets/Scripts/Enemies/EnemyAnimationController.cs" />
         <option value="$PROJECT_DIR$/Assets/Scripts/Etchings/HopEtching.cs" />
-        <option value="$PROJECT_DIR$/Assets/Scripts/Enemies/CurrentEnemy.cs" />
         <option value="$PROJECT_DIR$/Assets/Scripts/Enemies/Enemies/FlightingFishEnemy.cs" />
         <option value="$PROJECT_DIR$/Assets/Scripts/Enemies/EnemyUI/EnemyMovementText.cs" />
-        <option value="$PROJECT_DIR$/Assets/Scripts/Enemies/EnemyMover.cs" />
         <option value="$PROJECT_DIR$/Assets/Scripts/Stats/PlayerStats.cs" />
         <option value="$PROJECT_DIR$/Assets/Scripts/RunProgress.cs" />
         <option value="$PROJECT_DIR$/Assets/Scripts/BattleScreen/BattleEvents/BattleEvent.cs" />
@@ -127,13 +111,15 @@
         <option value="$PROJECT_DIR$/Assets/Scripts/Etchings/AmbushEtching.cs" />
         <option value="$PROJECT_DIR$/Assets/Scripts/Etchings/RaidEtching.cs" />
         <option value="$PROJECT_DIR$/Assets/Scripts/Etchings/MovementActivatedEtching.cs" />
-        <option value="$PROJECT_DIR$/Assets/Scripts/Enemies/EnemySpawner.cs" />
-        <option value="$PROJECT_DIR$/Assets/Scripts/Enemies/Enemy.cs" />
         <option value="$PROJECT_DIR$/Assets/Scripts/Enemies/Enemies/OctopurseEnemy.cs" />
         <option value="$PROJECT_DIR$/Assets/Scripts/Audio/InGameSfxManager.cs" />
         <option value="$PROJECT_DIR$/Assets/Scripts/Items/Items/PassiveIncomeItem.cs" />
         <option value="$PROJECT_DIR$/Assets/Scripts/Enemies/EnemyPlankArranger.cs" />
         <option value="$PROJECT_DIR$/Assets/Scripts/Enemies/EnemyUI/EnemyHealthText.cs" />
+        <option value="$PROJECT_DIR$/Assets/Scripts/Enemies/Enemy.cs" />
+        <option value="$PROJECT_DIR$/Assets/Scripts/Enemies/EnemyMover.cs" />
+        <option value="$PROJECT_DIR$/Assets/Scripts/Enemies/CurrentEnemy.cs" />
+        <option value="$PROJECT_DIR$/Assets/Scripts/Enemies/EnemySpawner.cs" />
       </list>
     </option>
   </component>
@@ -267,7 +253,7 @@
       <workItem from="1682514844429" duration="45018000" />
       <workItem from="1682901798470" duration="25682000" />
       <workItem from="1683084544483" duration="111829000" />
-      <workItem from="1683758259216" duration="40806000" />
+      <workItem from="1683758259216" duration="42720000" />
     </task>
     <servers />
   </component>
@@ -327,11 +313,11 @@
     </state>
     <state x="532" y="0" width="840" height="1034" key="run.anything.popup/0.0.1920.1040@0.0.1920.1040" timestamp="1675489416658" />
     <state x="1064" y="0" width="1680" height="2148" key="run.anything.popup/0.0.3840.2160@0.0.3840.2160" timestamp="1683275250960" />
-    <state x="891" y="69" width="1680" height="2148" key="search.everywhere.popup" timestamp="1683852116352">
+    <state x="891" y="69" width="1680" height="2148" key="search.everywhere.popup" timestamp="1684197831691">
       <screen x="0" y="0" width="3840" height="2160" />
     </state>
     <state x="539" y="5" width="840" height="1034" key="search.everywhere.popup/0.0.1920.1040@0.0.1920.1040" timestamp="1675255493675" />
-    <state x="891" y="69" width="1680" height="2148" key="search.everywhere.popup/0.0.3840.2160@0.0.3840.2160" timestamp="1683852116352" />
+    <state x="891" y="69" width="1680" height="2148" key="search.everywhere.popup/0.0.3840.2160@0.0.3840.2160" timestamp="1684197831691" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>

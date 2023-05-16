@@ -50,19 +50,26 @@ namespace Enemies
             _moveIndex = Random.Range(0, _moveSet.Count);
             SetNextMove();
         }
-        
+
         public void MoveToNextPlank()
         {
+            int goalPlank;
+            
             if (CurrentMove.MovementType == MovementType.Skip)
             {
                 while (AmountOfMovesLeftThisTurn + PlankNum >= Board.Current.PlankCount) AmountOfMovesLeftThisTurn--;
-                PlankNum += AmountOfMovesLeftThisTurn;
+                goalPlank = PlankNum + AmountOfMovesLeftThisTurn;
             }
             else
             {
-                PlankNum += NextDirection;
+                goalPlank = PlankNum + NextDirection;
             }
             
+            if (EnemySequencer.Current.AllEnemies.Count(e => e.PlankNum == goalPlank) < 3)
+            {
+                PlankNum = goalPlank;
+            }
+
             UseStep();
         }
 
