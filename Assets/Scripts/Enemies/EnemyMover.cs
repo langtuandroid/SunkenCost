@@ -19,31 +19,32 @@ namespace Enemies
 
     public class EnemyMover
     {
-        public int AmountOfMovesLeftThisTurn { get; private set; }
+        public int MovementRemainingThisTurn { get; private set; }
 
         private List<EnemyMove> _moveSet = new List<EnemyMove>();
         private int _moveIndex;
 
         public int PlankNum { get; private set; }
 
-        public bool FinishedMoving => AmountOfMovesLeftThisTurn == 0;
+        public bool FinishedMoving => MovementRemainingThisTurn == 0;
 
         public EnemyMove CurrentMove { get; private set; }
 
-        public int NextDirection
+        private int NextDirection
         {
             get
             {
-                // -1 if moving backwards, 0 if not moving, 1 if moved forwards
-                if (AmountOfMovesLeftThisTurn == 0) return 0;
-                return AmountOfMovesLeftThisTurn / Math.Abs(AmountOfMovesLeftThisTurn);
+                if (MovementRemainingThisTurn > 0) return 1;
+                if (MovementRemainingThisTurn < 0) return -1;
+                return 0;
             }
         }
 
         public bool WouldMoveOntoBoat => NextDirection + PlankNum >= Board.Current.PlankCount;
 
-        public void Init(IEnumerable<EnemyMove> moveSet)
+        public void Init(IEnumerable<EnemyMove> moveSet, int initialPlankNum)
         {
+            SetPlankNum(initialPlankNum);
             _moveSet = moveSet.ToList();
             
             // Randomise first move
@@ -57,17 +58,17 @@ namespace Enemies
             
             if (CurrentMove.MovementType == MovementType.Skip)
             {
-                while (AmountOfMovesLeftThisTurn + PlankNum >= Board.Current.PlankCount) AmountOfMovesLeftThisTurn--;
-                goalPlank = PlankNum + AmountOfMovesLeftThisTurn;
+                while (MovementRemainingThisTurn + PlankNum >= Board.Current.PlankCount) MovementRemainingThisTurn--;
+                goalPlank = PlankNum + MovementRemainingThisTurn;
             }
             else
             {
                 goalPlank = PlankNum + NextDirection;
             }
             
-            if (EnemySequencer.Current.AllEnemies.Count(e => e.PlankNum == goalPlank) < 3)
+            if (EnemySequencer.Current.GetIfPlankCanBeLandedOn(goalPlank))
             {
-                PlankNum = goalPlank;
+                SetPlankNum(goalPlank);
             }
 
             UseStep();
@@ -75,7 +76,7 @@ namespace Enemies
 
         public void AttackBoat()
         {
-            UseStep();
+            MovementRemainingThisTurn = 0;
         }
 
         public void AddMove(MovementType movementType, int magnitude)
@@ -91,19 +92,28 @@ namespace Enemies
         
         public void Block(int amount)
         {
-            AmountOfMovesLeftThisTurn -= amount * NextDirection;
+            if (NextDirection == 1)
+            {
+                MovementRemainingThisTurn -= amount;
+                if (MovementRemainingThisTurn < 0) MovementRemainingThisTurn = 0;
+            }
+            else
+            {
+                MovementRemainingThisTurn += amount;
+                if (MovementRemainingThisTurn > 0) MovementRemainingThisTurn = 0;
+            }
         }
 
         public void Reverse()
         {
-            AmountOfMovesLeftThisTurn *= -1;
+            MovementRemainingThisTurn *= -1;
         }
 
         public void AddMovement(int amount)
         {
-            AmountOfMovesLeftThisTurn += amount * NextDirection;
+            MovementRemainingThisTurn += amount * NextDirection;
             
-            if (AmountOfMovesLeftThisTurn < -PlankNum - 1) AmountOfMovesLeftThisTurn = -PlankNum - 1;
+            if (MovementRemainingThisTurn < -PlankNum - 1) MovementRemainingThisTurn = -PlankNum - 1;
         }
 
         public void AddMovementModifier(int amount)
@@ -123,13 +133,13 @@ namespace Enemies
 
         private void UseStep()
         {
-            if (CurrentMove.MovementType == MovementType.Skip) AmountOfMovesLeftThisTurn = 0;
-            else AmountOfMovesLeftThisTurn -= NextDirection;
+            if (CurrentMove.MovementType == MovementType.Skip) MovementRemainingThisTurn = 0;
+            else MovementRemainingThisTurn -= NextDirection;
         }
 
         private void SetNextMove()
         {
-            for (var i = 0; i < 100; i++)
+            for (var i = 0; i < 10000; i++)
             {
                 _moveIndex++;
                 if (_moveIndex >= _moveSet.Count) _moveIndex = 0;
@@ -142,7 +152,7 @@ namespace Enemies
                     continue;
                 }
                 
-                AmountOfMovesLeftThisTurn = CurrentMove.Magnitude;
+                MovementRemainingThisTurn = CurrentMove.Magnitude;
                 return;
             }
             

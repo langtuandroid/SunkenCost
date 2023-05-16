@@ -1,0 +1,20 @@
+﻿public enum EnemyType
+{
+    Grould,
+    Claus,
+    Axolitl,
+    Cucunger,
+    WhattaRat,
+    FlightingFish,
+    Steelo,
+    Leech,
+    Crib,
+    Retortoise,
+    Maxolotl,
+    Carppool,
+    Octopurse,
+    Swordfist,
+    BullCarp,
+    Staffish,
+    BufferFish
+}

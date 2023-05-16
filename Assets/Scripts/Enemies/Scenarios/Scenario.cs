@@ -2,27 +2,6 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-
-public enum EnemyType
-{
-    Grould,
-    Claus,
-    Axolitl,
-    Cucunger,
-    WhattaRat,
-    FlightingFish,
-    Steelo,
-    Leech,
-    Crib,
-    Retortoise,
-    Maxolotl,
-    Carppool,
-    Octopurse,
-    Swordfist,
-    BullCarp,
-    Staffish
-}
-
 public enum ScenarioType
 {
     EarlyEasy = 0,

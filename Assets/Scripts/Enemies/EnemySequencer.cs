@@ -71,6 +71,16 @@ namespace Enemies
             return enemies;
         }
 
+        public bool GetIfPlankCanBeLandedOn(int plankNum)
+        {
+            foreach (var landingStopper in GetEnemiesOnPlank(plankNum).OfType<ILandingStopper>())
+            {
+                if (landingStopper.GetIfStoppingEnemyLandingOnPlank(plankNum)) return false;
+            }
+
+            return AllEnemies.Count(e => e.PlankNum == plankNum) < 3;
+        }
+
         public Enemy SelectNextEnemy()
         {
             return _enemyCurrentTurnMoveQueue.Dequeue();
@@ -105,7 +115,7 @@ namespace Enemies
 
             return BattleEventPackage.Empty;
         }
-        
+
         private void SetNextEnemyTurnSequence()
         {
             _enemyCurrentTurnMoveQueue = new Queue<Enemy>(_enemies);

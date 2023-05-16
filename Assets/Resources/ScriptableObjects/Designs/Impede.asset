@@ -28,10 +28,10 @@ MonoBehaviour:
   - _statType: 8
     _magnitude: 1
   - _statType: 1
-    _magnitude: 2
+    _magnitude: 1
   firstLevelUpStatMods:
-  - _statType: 8
+  - _statType: 1
     _magnitude: 1
   secondLevelUpStatMods:
-  - _statType: 1
+  - _statType: 8
     _magnitude: 1

@@ -52,9 +52,8 @@ public class Player : BattleEventResponder
         var previousHealth = Health;
         Health += battleEvent.modifier;
 
-        if (Health <= 0)
-            return new BattleEvent(BattleEventType.PlayerDied);
-        
+        if (Health <= 0) Health = 0;
+
         if (Health < previousHealth)
             return new BattleEvent(BattleEventType.PlayerLostLife);
         
@@ -81,6 +80,9 @@ public class Player : BattleEventResponder
 
     public override BattleEventPackage GetResponseToBattleEvent(BattleEvent previousBattleEvent)
     {
+        if (previousBattleEvent.type == BattleEventType.PlayerLostLife && Health <= 0)
+            return new BattleEventPackage(new BattleEvent(BattleEventType.PlayerDied));
+        
         if (previousBattleEvent.type == BattleEventType.StartNextPlayerTurn)
         {
             ResetMoves();

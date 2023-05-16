@@ -6,7 +6,7 @@ using OfferScreen;
 public class PlayerStats
 {
     private const int INIT_MAX_PLANKS = 3;
-    private const int INIT_MAX_HEALTH = 50;
+    private const int INIT_MAX_HEALTH = 30;
     private const int INIT_GOLD = 5;
     private const int INIT_MOVES_PER_TURN = -1;
     private const int INIT_NUM_OF_TURNS = 5;
@@ -82,10 +82,7 @@ public class PlayerStats
 
     public void Heal(int amount)
     {
-        var healthDifference = RunProgress.PlayerStats.MaxHealth - RunProgress.PlayerStats.Health;
-        if (healthDifference < amount)
-            Health += healthDifference;
-        else
-            Health += amount;
+        Health += amount;
+        if (Health > MaxHealth) Health = MaxHealth;
     }
 }

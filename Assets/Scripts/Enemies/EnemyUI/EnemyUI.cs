@@ -43,7 +43,6 @@ namespace Enemies.EnemyUI
             _mover = _enemy.Mover;
             
             _tooltipTrigger.header = _enemy.Name;
-            Invoke(nameof(UpdateUI), 0.01f);
         }
 
         private IEnumerator Init()
@@ -51,6 +50,7 @@ namespace Enemies.EnemyUI
             yield return 0;
             _visualsGroup.alpha = 1f;
             _visualsGroup.enabled = false;
+            UpdateUI();
         }
 
         private void OnDestroy()
@@ -61,9 +61,10 @@ namespace Enemies.EnemyUI
 
         public void RespondToBattleEvent(BattleEvent battleEvent)
         {
-            if (battleEvent.type != BattleEventType.StartNextPlayerTurn
-                && battleEvent.primaryResponderID != _enemy.ResponderID 
-                && battleEvent.secondaryResponderID != _enemy.ResponderID) return;
+            if (battleEvent.type == BattleEventType.EnemySpawned || 
+                (battleEvent.type != BattleEventType.StartNextPlayerTurn
+                 && battleEvent.primaryResponderID != _enemy.ResponderID
+                 && battleEvent.secondaryResponderID != _enemy.ResponderID)) return;
 
             if (_enemy.IsDestroyed) return;
             
@@ -76,7 +77,7 @@ namespace Enemies.EnemyUI
         {
             _tooltipTrigger.content = _enemy.GetDescription();
             _turnOrderText.SetTurnOrder(_enemy.TurnOrder);
-            _movementText.UpdateMovementText(_mover.CurrentMove.MovementType, _mover.AmountOfMovesLeftThisTurn);
+            _movementText.UpdateMovementText(_mover.CurrentMove.MovementType, _mover.MovementRemainingThisTurn);
             _healthText.AlterHealth(_enemy.Health, _enemy.MaxHealth);
             _healthSlider.fillAmount = (float)_enemy.Health / _enemy.MaxHealth;
             _poisonDisplay.UpdateDisplay(_enemy.stats.Poison);

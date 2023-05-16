@@ -647,6 +647,7 @@
             <e p="CurrentEnemy.cs" t="Include" />
             <e p="Enemies" t="Include">
               <e p="AxolitlEnemy.cs" t="Include" />
+              <e p="BufferFishEnemy.cs" t="Include" />
               <e p="BullCarpEnemy.cs" t="Include" />
               <e p="CarppoolEnemy.cs" t="Include" />
               <e p="ClausEnemy.cs" t="Include" />
@@ -667,12 +668,18 @@
             <e p="Enemy.cs" t="Include" />
             <e p="EnemyAnimationController.cs" t="Include" />
             <e p="EnemyAsset.cs" t="Include" />
+            <e p="EnemyInterfaces" t="Include">
+              <e p="ILandingStopper.cs" t="Include" />
+              <e p="ISpawnAbilityHolder.cs" t="Include" />
+              <e p="IStartOfTurnAbilityHolder.cs" t="Include" />
+            </e>
             <e p="EnemyMove.cs" t="Include" />
             <e p="EnemyMover.cs" t="Include" />
             <e p="EnemyPlaceholder.cs" t="Include" />
             <e p="EnemyPlankArranger.cs" t="Include" />
             <e p="EnemySequencer.cs" t="Include" />
             <e p="EnemySpawner.cs" t="Include" />
+            <e p="EnemyType.cs" t="Include" />
             <e p="EnemyUI" t="Include">
               <e p="EnemyAnimator.cs" t="Include" />
               <e p="EnemyHealthText.cs" t="Include" />
@@ -685,8 +692,6 @@
               <e p="EnemyUI.cs" t="Include" />
               <e p="EnemyUIText.cs" t="Include" />
             </e>
-            <e p="ISpawnAbilityHolder.cs" t="Include" />
-            <e p="IStartOfTurnAbilityHolder.cs" t="Include" />
             <e p="Scenarios" t="Include">
               <e p="Scenario.cs" t="Include" />
             </e>

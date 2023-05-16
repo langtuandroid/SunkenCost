@@ -47,7 +47,7 @@ namespace BattleScreen
                 if (!responsePackage.IsEmpty)
                      Debug.Log(_battleEventResponders[index].GetType().Name + " responding to: " 
                           + battleEventToRespondTo.type + " with " + String.Join(", ", 
-                              responsePackage.battleEvents.ConvertAll(i => i.type.ToString()).ToArray()));
+                              responsePackage.battleEvents.ConvertAll(i => i.type + "(" + i.modifier + ")").ToArray()));
                 
                 index++;
                 _indexTracker.SetIndex(battleEventToRespondTo, index);

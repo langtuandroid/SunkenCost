@@ -10,7 +10,7 @@ using UnityEngine;
 
 namespace BattleScreen
 {
-    public enum GameState
+    public enum BattleState
     {
         Loading,
         Paused,
@@ -35,7 +35,7 @@ namespace BattleScreen
         private BattleRenderer _battleRenderer;
 
         public int Turn { get; private set; } = 0;
-        public GameState GameState { get; private set; } = GameState.Loading;
+        public BattleState BattleState { get; private set; } = BattleState.Loading;
         
         private void Awake()
         {
@@ -62,7 +62,7 @@ namespace BattleScreen
 
         public void ClickedNextTurn()
         {
-            if (GameState != GameState.PlayerActionPeriod) return;
+            if (BattleState != BattleState.PlayerActionPeriod) return;
             StartCoroutine(NextEnemyTurn());
         }
         
@@ -95,7 +95,7 @@ namespace BattleScreen
             {
                 Debug.Log("------ PLAYERS TURN! ------");
                 yield return StartCoroutine(StartChainOfEvents(new BattleEvent(BattleEventType.StartNextPlayerTurn)));
-                GameState = GameState.PlayerActionPeriod;
+                BattleState = BattleState.PlayerActionPeriod;
             }
             else
             {
@@ -105,7 +105,7 @@ namespace BattleScreen
 
         private IEnumerator ExecutePlayerTurnEvents(BattleEvent battleEvent)
         {
-            GameState = GameState.ExecutingPlayerTurnEvents;
+            BattleState = BattleState.ExecutingPlayerTurnEvents;
             
             // Give the board time to refresh if the player moved a plank
             if (battleEvent.type == BattleEventType.PlayerMovedPlank)
@@ -114,12 +114,12 @@ namespace BattleScreen
             }
 
             yield return StartCoroutine(StartChainOfEvents(battleEvent));
-            GameState = GameState.PlayerActionPeriod;
+            BattleState = BattleState.PlayerActionPeriod;
         }
         
         private IEnumerator NextEnemyTurn()
         {
-            GameState = GameState.EnemyTurn;
+            BattleState = BattleState.EnemyTurn;
             Debug.Log("------ Starting Enemy Turn ------");
             yield return StartCoroutine(StartChainOfEvents(new BattleEvent(BattleEventType.StartedEnemyTurn)));
             yield return StartCoroutine(StartChainOfEvents(new BattleEvent(BattleEventType.StartedEnemyMovementPeriod)));
@@ -132,7 +132,7 @@ namespace BattleScreen
         {
             Debug.Log("------ Ending Battle ------");
             yield return StartCoroutine(StartChainOfEvents(new BattleEvent(BattleEventType.EndedBattle)));
-            GameState = GameState.Rewards;
+            BattleState = BattleState.Rewards;
             yield return new WaitForSecondsRealtime(ActionExecutionSpeed / 3f);
             CreateEndOfBattlePopup();
         }
@@ -158,7 +158,7 @@ namespace BattleScreen
         {
             if (previousBattleEvent.type == BattleEventType.PlayerDied)
             {
-                GameState = GameState.PlayerDied;
+                BattleState = BattleState.PlayerDied;
                 _playerDeathPopup.gameObject.SetActive(true);
                 StopAllCoroutines();
             }

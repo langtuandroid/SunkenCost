@@ -16,4 +16,4 @@ MonoBehaviour:
   sprite: {fileID: 21300000, guid: f196bdbfb18ad1e4aae6c35468f3c340, type: 3}
   title: Medical Research
   description: Heal @ health
-  amount: 5
+  amount: 10

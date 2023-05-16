@@ -50,7 +50,11 @@ namespace Enemies
             stats = new EnemyStats(ResponderID, Asset.Modifiers);
             Name = Asset.Name;
             SetInitialHealth(Asset.MaxHealth);
-            Mover.Init(Asset.Moves);
+        }
+
+        public void Initialise(int plankNum)
+        {
+            Mover.Init(Asset.Moves, plankNum);
         }
 
         protected virtual void SetInitialHealth(int health)

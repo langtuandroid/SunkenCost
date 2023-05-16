@@ -76,7 +76,7 @@ namespace BattleScreen.BattleEvents
             var enemyResponse = _currentEnemy.GetNextAction();
             Debug.Log("Current enemy executing actions: " + 
                       String.Join(", ", 
-                          enemyResponse.battleEvents.ConvertAll(i => i.type.ToString()).ToArray()));
+                          enemyResponse.battleEvents.ConvertAll(i => i.type + "(" + i.modifier + ")").ToArray()));
                     
             if (enemyResponse.battleEvents[0].type == BattleEventType.EndedIndividualEnemyTurn)
             {

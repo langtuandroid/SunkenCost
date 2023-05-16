@@ -71,7 +71,7 @@ namespace Disturbances
                         break;
                 case DisturbanceType.MaxHealth:
                     RunProgress.PlayerStats.MaxHealth += disturbance.Modifier;
-                    RunProgress.PlayerStats.Heal(disturbance.Modifier);
+                    RunProgress.PlayerStats.Heal(RunProgress.PlayerStats.MaxHealth);
                     break;
                 default:
                     throw new ArgumentOutOfRangeException();
