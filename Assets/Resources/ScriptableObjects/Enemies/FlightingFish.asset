@@ -16,6 +16,6 @@ MonoBehaviour:
   _name: Flighting Fish
   _maxHealth: 35
   _moves:
-  - _movementType: 0
-    _magnitude: -1
+  - _movementType: 1
+    _magnitude: 2
   _modifierSetters: []

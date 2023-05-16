@@ -12,20 +12,25 @@ public class EnemyHealthText : EnemyUIText
     [SerializeField] private Color damagedColor;
     [SerializeField] private Color healingColor;
 
-    private void Start()
-    {
-        SetText(_health + "/" + _maxHealth);
-    }
-
+    private bool _justSpawned = true;
+    
+    
     public void AlterHealth(int health, int maxHealth)
     {
-        if (health > _health)
+        if (!_justSpawned)
         {
-            StartCoroutine(ChangeColorTemporarily(healingColor));
+            if (health > _health)
+            {
+                StartCoroutine(ChangeColorTemporarily(healingColor));
+            }
+            else if (health < _health)
+            {
+                StartCoroutine(ChangeColorTemporarily(damagedColor));
+            }
         }
-        else if (health < _health)
+        else
         {
-            StartCoroutine(ChangeColorTemporarily(damagedColor));
+            _justSpawned = false;
         }
 
         _health = health;

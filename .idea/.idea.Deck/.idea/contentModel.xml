@@ -734,7 +734,7 @@
               <e p="IHasPickupAction.cs" t="Include" />
               <e p="InvestmentNetworkItem.cs" t="Include" />
               <e p="MeasuredTouchItem.cs" t="Include" />
-              <e p="PacifistItem.cs" t="Include" />
+              <e p="PassiveIncomeItem.cs" t="Include" />
               <e p="PoisonTipsItem.cs" t="Include" />
               <e p="RedressItem.cs" t="Include" />
               <e p="ShortFuseItem.cs" t="Include" />
