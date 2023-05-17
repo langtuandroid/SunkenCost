@@ -7,13 +7,13 @@ namespace Items.Items
     {
         public override void OnPickup()
         {
-            RunProgress.PlayerStats.EnemyMovementModifier += 2;
+            RunProgress.Current.PlayerStats.EnemyMovementModifier += 2;
             base.OnPickup();
         }
 
         public override void OnDestroy()
         {
-            RunProgress.PlayerStats.EnemyMovementModifier -= 2;
+            RunProgress.Current.PlayerStats.EnemyMovementModifier -= 2;
             base.OnDestroy();
         }
 

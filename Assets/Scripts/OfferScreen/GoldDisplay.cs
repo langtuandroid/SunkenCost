@@ -17,7 +17,7 @@ namespace OfferScreen
         private void Awake()
         {
             _textMeshProUGUI = GetComponentInChildren<TextMeshProUGUI>();
-            UpdateText(RunProgress.PlayerStats.Gold);
+            UpdateText(RunProgress.Current.PlayerStats.Gold);
         }
 
         public void UpdateText(int goldAmount)

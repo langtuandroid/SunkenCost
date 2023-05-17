@@ -19,7 +19,7 @@ MonoBehaviour:
   _color: {r: 0, g: 1, b: 1, a: 1}
   rarity: 2
   description: When an enemy lands on this plank, attack all enemies. If any survive,
-    lose @ health
+    lose @ life
   notUpgradedText: 
   firstUpgradeText: 
   secondUpgradeText: 
@@ -29,7 +29,7 @@ MonoBehaviour:
   - _statType: 2
     _magnitude: 12
   - _statType: 13
-    _magnitude: -10
+    _magnitude: -1
   firstLevelUpStatMods:
   - _statType: 2
     _magnitude: 3

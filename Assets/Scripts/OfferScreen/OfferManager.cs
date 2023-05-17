@@ -38,7 +38,7 @@ public class OfferManager : MonoBehaviour
 
         Current = this;
         
-        BuyerSeller = new BuyerSeller(RunProgress.PlayerStats.Gold, goldDisplay);
+        BuyerSeller = new BuyerSeller(RunProgress.Current.PlayerStats.Gold, goldDisplay);
 
         _itemOfferGenerator = GetComponent<ItemOfferGenerator>();
         _designCardOfferGenerator = GetComponent<DesignCardOfferGenerator>();
@@ -57,14 +57,14 @@ public class OfferManager : MonoBehaviour
     public void BackToMap()
     {
         if (BuyerSeller.Gold < 0) return;
-        if (CardsOnTopRow > RunProgress.PlayerStats.MaxPlanks) return;
+        if (CardsOnTopRow > RunProgress.Current.PlayerStats.MaxPlanks) return;
 
         var deckRow = _designCardOfferGenerator.CardsInDeckRow;
         var offerRow = _designCardOfferGenerator.CardsInLeaveRow;
         var itemOfferDisplays = _itemOfferGenerator.ItemOfferDisplays;
         
-        RunProgress.OfferStorage.StoreOffers(deckRow, offerRow, itemOfferDisplays);
-        RunProgress.PlayerStats.Gold = BuyerSeller.Gold;
+        RunProgress.Current.OfferStorage.StoreOffers(deckRow, offerRow, itemOfferDisplays);
+        RunProgress.Current.PlayerStats.Gold = BuyerSeller.Gold;
         MainManager.Current.LoadMap();
     }
 
@@ -82,7 +82,7 @@ public class OfferManager : MonoBehaviour
 
     public void BuyItem(ItemOffer itemOffer)
     {
-        RunProgress.ItemInventory.AddItem(itemOffer.itemInstance);
+        RunProgress.Current.ItemInventory.AddItem(itemOffer.itemInstance);
         BuyerSeller.Buy(itemOffer.Cost);
         OfferScreenEvents.Current.RefreshOffers();
         itemIconsDisplay.AddItemToDisplay(itemOffer.itemInstance);
@@ -91,20 +91,20 @@ public class OfferManager : MonoBehaviour
     public void BuyPlank(int cost)
     {
         BuyerSeller.Buy(cost);
-        RunProgress.PlayerStats.BuyPlank();
+        RunProgress.Current.PlayerStats.BuyPlank();
         OfferScreenEvents.Current.RefreshOffers();
     }
 
     public void BuyMove(int cost)
     {
         BuyerSeller.Buy(cost);
-        RunProgress.PlayerStats.BuyMove();
+        RunProgress.Current.PlayerStats.BuyMove();
         OfferScreenEvents.Current.RefreshOffers();
     }
     
     private void UpdateBuyPlankCost()
     {
-        buyPlankOffer.UpdateCost((RunProgress.PlayerStats.PlanksBought + 1)
+        buyPlankOffer.UpdateCost((RunProgress.Current.PlayerStats.PlanksBought + 1)
             * 25);
     }
 

@@ -91,5 +91,8 @@ namespace BattleScreen
         
         
         */
+        public virtual void RefreshTransforms()
+        {
+        }
     }
 }

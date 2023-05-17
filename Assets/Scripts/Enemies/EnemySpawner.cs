@@ -34,7 +34,7 @@ public class EnemySpawner : BattleEventResponder
 
     private void Start()
     {
-        _scenario = ScenarioLoader.GetScenario(RunProgress.BattleNumber);
+        _scenario = ScenarioLoader.GetScenario(RunProgress.Current.BattleNumber);
     }
 
     private void OnEnable()
@@ -52,10 +52,10 @@ public class EnemySpawner : BattleEventResponder
         var enemyTypes = _scenario.GetSpawns(Battle.Current.Turn);
         
         // TODO: Move this somewhere sexier
-        if (MainManager.Current.TestingConfig.IsActive)
+        if (RunProgress.Current.RunthroughStartingConfig.IsActive)
         {
-            var enemyList = MainManager.Current.TestingConfig.StartingEnemies;
-            if (enemyList.Count > 0) enemyTypes = enemyList;
+            var startingEnemies = RunProgress.Current.RunthroughStartingConfig.StartingEnemies;
+            if (startingEnemies is not null && startingEnemies.Length > 0) enemyTypes = startingEnemies.ToList();
         }
 
         if (enemyTypes.Count == 0) return BattleEventPackage.Empty;
@@ -67,7 +67,7 @@ public class EnemySpawner : BattleEventResponder
             var enemy = SpawnEnemyOnIsland(enemyType);
             enemy.MaxHealthStat.AddModifier(new StatModifier(_scenario.scaledDifficulty, StatModType.PercentMult));
             enemy.Mover.AddMovementModifier((int) (_scenario.scaledDifficulty / 2f)
-                                            + RunProgress.PlayerStats.EnemyMovementModifier);
+                                            + RunProgress.Current.PlayerStats.EnemyMovementModifier);
             battleEvents.Add(new BattleEvent(BattleEventType.EnemySpawned)
             {
                 primaryResponderID = enemy.ResponderID, 

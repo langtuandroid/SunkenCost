@@ -28,10 +28,10 @@ public class Player : BattleEventResponder
 
         Current = this;
 
-        Gold = RunProgress.PlayerStats.Gold;
-        Health = RunProgress.PlayerStats.Health;
-        MaxHealth = RunProgress.PlayerStats.MaxHealth;
-        _baseMovesPerTurn = RunProgress.PlayerStats.MovesPerTurn;
+        Gold = RunProgress.Current.PlayerStats.Gold;
+        Health = RunProgress.Current.PlayerStats.Health;
+        MaxHealth = RunProgress.Current.PlayerStats.MaxHealth;
+        _baseMovesPerTurn = RunProgress.Current.PlayerStats.MovesPerTurn;
         MovesPerTurn = _baseMovesPerTurn;
         base.Awake();
     }

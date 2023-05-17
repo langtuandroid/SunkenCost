@@ -27,7 +27,7 @@ namespace Etchings
                 case BattleEventType.EndedBattle:
                 case BattleEventType.PlankDestroyed:
                 case BattleEventType.PlankMoved:
-                case BattleEventType.EtchingMoved:
+                case BattleEventType.EtchingsOrderChanged:
                 case BattleEventType.PlankCreated:
                     return true;
                 case BattleEventType.DesignModified:
@@ -71,8 +71,10 @@ namespace Etchings
             // Didn't find any
             if (_boostedEtchings.Count == 0) 
                 return new DesignResponse(-1, responses, false);
-
             
+            Debug.Log("Boost etching ("+ PlankNum + ") boosting: " + String.Join(", ", 
+                _boostedEtchings.Select(b => b.design.Title + "(" + b.PlankNum + ")")));
+
             // Boost etchings
             foreach (var etching in _boostedEtchings)
             {
@@ -90,6 +92,9 @@ namespace Etchings
             var responses = _boostedEtchings.Select(
                 (t, i) => t.RemoveStatModifier(StatType.Damage, _boostMods[i])).ToList();
 
+            Debug.Log("Boost etching ("+ PlankNum + ") clearing: " + String.Join(", ", 
+                _boostedEtchings.Select(b => b.design.Title + "(" + b.PlankNum + ")")));
+            
             _modsActive = false;
             _boostedEtchings.Clear();
             _boostMods.Clear();

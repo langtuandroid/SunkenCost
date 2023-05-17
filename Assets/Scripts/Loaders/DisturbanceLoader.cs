@@ -48,10 +48,10 @@ namespace Disturbances
             switch (disturbance.DisturbanceType)
             {
                 case DisturbanceType.GoldRush:
-                    RunProgress.PlayerStats.Gold += disturbance.Modifier;
+                    RunProgress.Current.PlayerStats.Gold += disturbance.Modifier;
                     break;
                 case DisturbanceType.Heart:
-                    RunProgress.PlayerStats.Heal(disturbance.Modifier);
+                    RunProgress.Current.PlayerStats.Heal(disturbance.Modifier);
                     break;
                 case DisturbanceType.None:
                     break;
@@ -62,16 +62,16 @@ namespace Disturbances
                         if (!(disturbance is CardDisturbance cardDisturbance)) throw new Exception();
                         var rewardCard = cardDisturbance.Design;
                         rewardCard.SetCost(0);
-                        RunProgress.OfferStorage.RewardDesignOffers.Add(cardDisturbance.Design);
+                        RunProgress.Current.OfferStorage.RewardDesignOffers.Add(cardDisturbance.Design);
                     break;
                 case DisturbanceType.Item:
                     case DisturbanceType.EliteItem:
                         if (!(disturbance is ItemDisturbance itemDisturbance)) throw new Exception();
-                        RunProgress.ItemInventory.AddItem(itemDisturbance.ItemInstance);
+                        RunProgress.Current.ItemInventory.AddItem(itemDisturbance.ItemInstance);
                         break;
                 case DisturbanceType.MaxHealth:
-                    RunProgress.PlayerStats.MaxHealth += disturbance.Modifier;
-                    RunProgress.PlayerStats.Heal(RunProgress.PlayerStats.MaxHealth);
+                    RunProgress.Current.PlayerStats.MaxHealth += disturbance.Modifier;
+                    RunProgress.Current.PlayerStats.Heal(RunProgress.Current.PlayerStats.MaxHealth);
                     break;
                 default:
                     throw new ArgumentOutOfRangeException();

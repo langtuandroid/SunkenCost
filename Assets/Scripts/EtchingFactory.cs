@@ -40,9 +40,9 @@ public class EtchingFactory : MonoBehaviour
     {
         var etchingSlot = GetEtchingSlot(plankToMoveTo);
         var etchingRectTransform = etching.GetComponent<RectTransform>();
-        
         etchingRectTransform.SetParent(etchingSlot);
         etchingRectTransform.anchoredPosition = new Vector3(0, 0, 1);
+        etching.SetPlank(plankToMoveTo);
     }
 
     private Transform GetEtchingSlot(Plank plank)

@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: LateEasy0
   m_EditorClassIdentifier: 
   scenarioType: 1
-  round1: 0c000000
+  round1: 10000000
   round2: 04000000
   round3: 04000000
   round4: 04000000

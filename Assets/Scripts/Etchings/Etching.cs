@@ -32,8 +32,14 @@ namespace Etchings
 
         protected override void Awake()
         {
+            SetPlank(GetComponentInParent<Plank>());
             base.Awake();
-            _plank = GetComponentInParent<Plank>();
+        }
+
+        public void SetPlank(Plank plank)
+        {
+            _plank = plank;
+            plank.SetEtching(this);
         }
 
         public override BattleEventPackage GetResponseToBattleEvent(BattleEvent battleEvent)

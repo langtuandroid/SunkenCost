@@ -118,5 +118,13 @@ namespace BattleScreen.BattleEvents
             
             throw new Exception("Battle responder is not etching!");
         }
+
+        public void RefreshTransforms()
+        {
+            foreach (var battleEventResponderGroup in _responderGroupOrder)
+            {
+                battleEventResponderGroup.RefreshTransforms();
+            }
+        }
     }
 }

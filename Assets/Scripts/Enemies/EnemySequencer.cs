@@ -105,7 +105,7 @@ namespace Enemies
                     SetNextEnemyTurnSequence();
                     break;
                 case BattleEventType.PlankMoved:
-                case BattleEventType.EtchingMoved:
+                case BattleEventType.EtchingsOrderChanged:
                 case BattleEventType.PlankCreated:
                 case BattleEventType.PlankDestroyed:
                     foreach (var e in _enemies)

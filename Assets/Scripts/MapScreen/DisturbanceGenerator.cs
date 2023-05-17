@@ -1,4 +1,5 @@
 using System.Collections.Generic;
+using Designs;
 using Disturbances;
 using Items;
 using OfferScreen;
@@ -31,15 +32,15 @@ namespace MapScreen
 
         private void Awake()
         {
-            if (RunProgress.HasGeneratedMapEvents)
+            if (RunProgress.Current.HasGeneratedMapEvents)
             {
-                topDisturbanceEvent.Init(RunProgress.GeneratedMapDisturbances[0]);
-                bottomDisturbanceEvent.Init(RunProgress.GeneratedMapDisturbances[1]);
+                topDisturbanceEvent.Init(RunProgress.Current.GeneratedMapDisturbances[0]);
+                bottomDisturbanceEvent.Init(RunProgress.Current.GeneratedMapDisturbances[1]);
                 
                 return;
             }
             
-            var isEliteRound = RunProgress.BattleNumber % ScenarioLoader.BattlesPerDifficulty 
+            var isEliteRound = RunProgress.Current.BattleNumber % ScenarioLoader.BattlesPerDifficulty 
                              == ScenarioLoader.BattlesPerDifficulty - 1;
         
             var weightings = isEliteRound
@@ -70,7 +71,7 @@ namespace MapScreen
                 break;
             }
             
-            RunProgress.HaveGeneratedDisturbanceEvents(generatedDisturbances);
+            RunProgress.Current.HaveGeneratedDisturbanceEvents(generatedDisturbances);
         }
         
 

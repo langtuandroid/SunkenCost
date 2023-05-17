@@ -8,7 +8,7 @@ namespace BattleScreen
     {
         private void Start()
         {
-            foreach (var item in RunProgress.ItemInventory.AllItemsAsBattleEventResponders)
+            foreach (var item in RunProgress.Current.ItemInventory.AllItemsAsBattleEventResponders)
             {
                 AddResponder(item);
             }

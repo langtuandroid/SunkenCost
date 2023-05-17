@@ -11,7 +11,7 @@
             this.itemAsset = itemAsset;
             itemInstance = new ItemInstance(itemAsset, itemAsset.modifier);
             
-            Cost = RunProgress.PlayerStats.PriceHandler.GetItemCost(itemInstance.Rarity);
+            Cost = RunProgress.Current.PlayerStats.PriceHandler.GetItemCost(itemInstance.Rarity);
         }
 
         public void SetCost(int cost)

@@ -62,7 +62,7 @@ namespace Designs
                 Limitless = true;
             }
         
-            Cost = RunProgress.PlayerStats.PriceHandler.GetCardCost(this.designAsset.rarity);
+            Cost = RunProgress.Current.PlayerStats.PriceHandler.GetCardCost(this.designAsset.rarity);
         }
 
         public void LevelUp()

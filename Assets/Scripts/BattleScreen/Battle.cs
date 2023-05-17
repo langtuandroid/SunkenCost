@@ -50,7 +50,7 @@ namespace BattleScreen
             _sfxManager = InGameSfxManager.current;
             _battleRenderer = BattleRenderer.Current;
 
-            foreach (var design in RunProgress.PlayerStats.Deck)
+            foreach (var design in RunProgress.Current.PlayerStats.Deck)
             {
                 var plank = PlankFactory.Current.CreatePlank();
                 EtchingFactory.Current.CreateEtching(plank, design);
@@ -84,6 +84,7 @@ namespace BattleScreen
             yield return 0;
 
             var startBattle = new BattleEvent(BattleEventType.StartedBattle);
+            BattleEventsManager.Current.RefreshTransforms();
             yield return StartCoroutine(StartChainOfEvents(startBattle));
             yield return StartCoroutine(NextPlayerTurn());
         }
@@ -91,7 +92,7 @@ namespace BattleScreen
         private IEnumerator NextPlayerTurn()
         {
             Turn++;
-            if (Turn <= RunProgress.PlayerStats.NumberOfTurns)
+            if (Turn <= RunProgress.Current.PlayerStats.NumberOfTurns)
             {
                 Debug.Log("------ PLAYERS TURN! ------");
                 yield return StartCoroutine(StartChainOfEvents(new BattleEvent(BattleEventType.StartNextPlayerTurn)));
@@ -171,14 +172,22 @@ namespace BattleScreen
                 if (responsePackage.IsEmpty) break;
 
                 hasHadAnyResponse = true;
-                
+
                 ExecuteAudioVisualCues(responsePackage);
 
                 // Remove events that were only used for rendering
                 var battleEventsList = responsePackage.battleEvents.Where
                 (b => !((b.type == BattleEventType.EtchingActivated || b.type == BattleEventType.ItemActivated) 
-                    && !b.showResponse));
+                    && !b.showResponse)).ToList();
                 
+                // Sometimes we need a frame for transforms to change parents etc.
+                if (BattleEventListContainsTransformUpdatingEvent(battleEventsList))
+                {
+                    Debug.Log("Waiting for transforms...");
+                    yield return 0;
+                    BattleEventsManager.Current.RefreshTransforms();
+                }
+
                 var battleEventsQueue = new Queue<BattleEvent>(battleEventsList);
                 
                 while (battleEventsQueue.Count > 0)
@@ -187,7 +196,7 @@ namespace BattleScreen
                     
                     var waitTime = -1f;
                     
-                    // Only add wait time to the last in a batch event (e.g. multiple enemies getting hit at once)
+                    // Only add wait time to the last in a batch event
                     if (battleEventsQueue.Count(b => b.type == battleEvent.type) == 0)
                         waitTime = GetAnimationTime(battleEvent);
                     else
@@ -242,11 +251,6 @@ namespace BattleScreen
                     return 0.5f;
                 case BattleEventType.EnemyMove:
                     return 0.3f;
-                
-                // Some things need a frame to process
-                case BattleEventType.EtchingMoved: case BattleEventType.PlankDestroyed: 
-                case BattleEventType.PlankCreated: case BattleEventType.PlankMoved:
-                    return 0.001f;
             }
 
             return -1f;
@@ -255,7 +259,7 @@ namespace BattleScreen
         private void CreateEndOfBattlePopup()
         {
             _endOfBattlePopup.gameObject.SetActive(true);
-            var disturbance = RunProgress.CurrentDisturbance;
+            var disturbance = RunProgress.Current.CurrentDisturbance;
             _endOfBattlePopup.SetReward(disturbance);
             _endOfBattlePopup.SetButtonAction(LeaveBattle);
         
@@ -263,11 +267,22 @@ namespace BattleScreen
 
         private void LeaveBattle()
         {
-            RunProgress.PlayerStats.Gold = Player.Current.Gold;
-            RunProgress.PlayerStats.Health = Player.Current.Health;
-            DisturbanceLoader.ExecuteEndOfBattleDisturbanceAction(RunProgress.CurrentDisturbance);
+            RunProgress.Current.PlayerStats.Gold = Player.Current.Gold;
+            RunProgress.Current.PlayerStats.Health = Player.Current.Health;
+            DisturbanceLoader.ExecuteEndOfBattleDisturbanceAction(RunProgress.Current.CurrentDisturbance);
             MainManager.Current.LoadOfferScreen();
             Destroy(gameObject);
+        }
+
+        private static bool BattleEventListContainsTransformUpdatingEvent(List<BattleEvent> battleEvents)
+        {
+            return battleEvents.Any(b => 
+                b.type == BattleEventType.StartedBattle ||
+                b.type == BattleEventType.StartNextPlayerTurn ||
+                b.type == BattleEventType.EtchingsOrderChanged ||
+                b.type == BattleEventType.PlankCreated ||
+                b.type == BattleEventType.PlankMoved ||
+                b.type == BattleEventType.PlankDestroyed);
         }
     }
 }

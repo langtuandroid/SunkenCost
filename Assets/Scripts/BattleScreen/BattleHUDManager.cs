@@ -54,7 +54,7 @@ public class BattleHUDManager : MonoBehaviour, IBattleEventUpdatedUI
 
     private void UpdateLives()
     {
-        _boatHealthMeter.RefreshMeter(Player.Current.Health, RunProgress.PlayerStats.MaxHealth);
+        _boatHealthMeter.RefreshMeter(Player.Current.Health, RunProgress.Current.PlayerStats.MaxHealth);
     }
 
     private void UpdateGoldText()

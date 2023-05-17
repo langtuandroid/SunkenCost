@@ -35,7 +35,7 @@ public class DesignLoader : MonoBehaviour
 
     public static ReadOnlyDictionary<DesignAsset, Type> DesignAssetToEtchingTypeDict;
 
-    public static ReadOnlyDictionary<string, DesignAsset> AllDesignAssetsByName;
+    public static readonly List<DesignAsset> AllDesignAssets = new List<DesignAsset>();
     
     public static readonly List<DesignAsset> CommonDesigns = new List<DesignAsset>();
     public static readonly List<DesignAsset> UncommonDesigns = new List<DesignAsset>();
@@ -70,14 +70,11 @@ public class DesignLoader : MonoBehaviour
         
         // Now match all of the designs to their corresponding etching using their DesignType - note the names
         // of the etchings must match the corresponding DesignType!
-        var allDesignAssets = Extensions.LoadScriptableObjects<DesignAsset>();
-        
-        var allDesignAssetsByName = allDesignAssets.ToDictionary(asset => asset.name);
-        AllDesignAssetsByName = new ReadOnlyDictionary<string, DesignAsset>(allDesignAssetsByName);
-        
+        AllDesignAssets.AddRange(Extensions.LoadScriptableObjects<DesignAsset>());
+
         var designAssetToEtchingTypeDict = new Dictionary<DesignAsset, Type>();
 
-        foreach (var designAsset in allDesignAssets)
+        foreach (var designAsset in AllDesignAssets)
         {
             switch (designAsset.rarity)
             {

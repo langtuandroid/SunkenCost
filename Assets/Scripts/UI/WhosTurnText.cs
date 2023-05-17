@@ -26,7 +26,7 @@ public class WhosTurnText : MonoBehaviour
     public void EndEnemyTurn()
     {
         var turn = Battle.Current.Turn;
-        var amountOfTurns = RunProgress.PlayerStats.NumberOfTurns;
+        var amountOfTurns = RunProgress.Current.PlayerStats.NumberOfTurns;
         
         if (turn < amountOfTurns)
         {

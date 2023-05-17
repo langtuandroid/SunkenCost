@@ -1,9 +1,11 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Linq;
 using UnityEngine;
 using UnityEngine.UI;
+using Random = UnityEngine.Random;
 
 namespace BattleScreen.BattleBoard
 {
@@ -81,6 +83,7 @@ namespace BattleScreen.BattleBoard
         
         public Plank GetPlank(int position)
         {
+            Debug.Log("Planks: " + String.Join(", ", PlanksInOrder.Select(p => p.Etching.design.Title + " " + p.PlankNum)));
             return PlanksInOrder[position];
         }
 

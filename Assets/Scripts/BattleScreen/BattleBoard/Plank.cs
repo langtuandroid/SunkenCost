@@ -14,7 +14,7 @@ namespace BattleScreen.BattleBoard
     public class Plank : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDragHandler
     {
         private Canvas _canvas;
-        private BattleBoard.Board _board;
+        private Board _board;
         private CanvasGroup _canvasGroup;
         private RectTransform _rectTransform;
         private PlankDisplay _display;
@@ -47,11 +47,11 @@ namespace BattleScreen.BattleBoard
             _board = board;
         }
 
-        private void Start()
+        public void SetEtching(Etching etching)
         {
-            Etching = GetComponentInChildren<Etching>();
+            Etching = etching;
         }
-
+        
         public void OnBeginDrag(PointerEventData eventData)
         {
             if (eventData.button != PointerEventData.InputButton.Left || !_board.CanMovePlanks) return;

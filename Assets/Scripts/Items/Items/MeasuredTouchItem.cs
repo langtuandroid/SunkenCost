@@ -7,13 +7,13 @@ namespace Items.Items
     {
         public override void OnPickup()
         {
-            RunProgress.PlayerStats.MovesPerTurn = 1;
+            RunProgress.Current.PlayerStats.MovesPerTurn = 1;
             base.OnPickup();
         }
         
         public override void OnDestroy()
         {
-            RunProgress.PlayerStats.MovesPerTurn = -1;
+            RunProgress.Current.PlayerStats.MovesPerTurn = -1;
             base.OnDestroy();
         }
 

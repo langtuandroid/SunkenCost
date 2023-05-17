@@ -26,12 +26,12 @@ MonoBehaviour:
   replacementStats: 05000000
   initialStats:
   - _statType: 2
-    _magnitude: 50
+    _magnitude: 40
   - _statType: 5
     _magnitude: -10
   firstLevelUpStatMods:
   - _statType: 2
-    _magnitude: 10
+    _magnitude: 5
   secondLevelUpStatMods:
   - _statType: 2
-    _magnitude: 10
+    _magnitude: 5

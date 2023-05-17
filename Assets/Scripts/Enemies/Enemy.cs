@@ -65,7 +65,7 @@ namespace Enemies
         
         public virtual int GetBoatDamage()
         {
-            return Health;
+            return 1;
         }
 
         public BattleEvent DealPoisonDamage()

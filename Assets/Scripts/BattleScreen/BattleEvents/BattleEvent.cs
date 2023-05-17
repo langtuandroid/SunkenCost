@@ -45,7 +45,7 @@ namespace BattleScreen
         GainedGold,
         PlayerMovedPlank,
         PlayerUsedMove,
-        EtchingMoved,
+        EtchingsOrderChanged,
         PlayerLifeModified,
         PlayerLostLife,
         PlayerGainedLife,

@@ -11,95 +11,56 @@ using UnityEngine;
 
 public class RunProgress : MonoBehaviour
 {
-    private static RunProgress _current;
-    private PlayerStats _playerStats;
-    private OfferStorage _offerStorage;
-    private ItemInventory _itemInventory;
-
-    private int _battleNumber;
-
-    private Disturbance _currentDisturbance;
-
-    private bool _hasGeneratedMapEvents;
-
-    public static PlayerStats PlayerStats => _current._playerStats;
-    public static OfferStorage OfferStorage => _current._offerStorage;
-
-    public static ItemInventory ItemInventory => _current._itemInventory;
+    [field: SerializeField] public RunthroughStartingConfig RunthroughStartingConfig { get; private set; }
     
-    public static int BattleNumber => _current._battleNumber;
+    public static RunProgress Current;
 
-    public static Disturbance CurrentDisturbance => _current._currentDisturbance;
-
-    public static bool HasGeneratedMapEvents => _current._hasGeneratedMapEvents;
-
-    public static List<Disturbance> GeneratedMapDisturbances { get; private set; }
+    public PlayerStats PlayerStats { get; private set; }
+    public OfferStorage OfferStorage { get; private set; }
+    public ItemInventory ItemInventory { get; private set; }
+    public int BattleNumber { get; private set; }
+    public Disturbance CurrentDisturbance { get; private set; }
+    public bool HasGeneratedMapEvents { get; private set; }
+    public List<Disturbance> GeneratedMapDisturbances { get; private set; }
 
     private void Awake()
     {
-        if (_current)
+        if (Current)
         {
             Destroy(gameObject);
             return;
         }
         
-        _current = this;
+        Current = this;
+    }
+    
+    public void SelectNextBattle(Disturbance disturbance)
+    {
+        CurrentDisturbance = disturbance;
+        BattleNumber++;
+        HasGeneratedMapEvents = false;
+        OfferStorage.IncreaseCostOfLockedOffers();
     }
 
-    public static void Initialise()
+    public void HaveGeneratedDisturbanceEvents(List<Disturbance> disturbances)
     {
-        _current.InitialiseRun();
-    }
-
-    public static void SelectNextBattle(Disturbance disturbance)
-    {
-        _current._currentDisturbance = disturbance;
-        _current._battleNumber++;
-        _current._hasGeneratedMapEvents = false;
-        _current._offerStorage.IncreaseCostOfLockedOffers();
-    }
-
-    public static void HaveGeneratedDisturbanceEvents(List<Disturbance> disturbances)
-    {
-        _current._hasGeneratedMapEvents = true;
+        HasGeneratedMapEvents = true;
         GeneratedMapDisturbances = disturbances;
     }
     
-    private void InitialiseRun()
+    public void InitialiseRun()
     {
         DisturbanceLoader.LoadDisturbanceAssets();
 
-        _playerStats = new PlayerStats();
+        PlayerStats = new PlayerStats();
+        PlayerStats.InitialiseDeck(RunthroughStartingConfig.GetStartingDesigns());
         
-        _offerStorage = new OfferStorage();
-        _itemInventory = transform.GetChild(0).gameObject.AddComponent<ItemInventory>();
-        _battleNumber = 0;
-        _currentDisturbance = null;
+        OfferStorage = new OfferStorage();
         
-        // TODO: Move this somewhere sexier
-        var initialDeck = new [] {"Stab", "Hurl", "Impede"};
-        
-        if (MainManager.Current.TestingConfig.IsActive)
-        {
-            var deck = MainManager.Current.TestingConfig.StartingDeck;
-            if (deck.Count > 0) initialDeck = deck.ToArray();
-            
-            var items = MainManager.Current.TestingConfig.GetStartingItemTypes();
-            foreach (var itemType in items)
-            {
-                AddItem(itemType);
-            }
-        }
-        
-        _playerStats.InitialiseDeck(initialDeck);
-    }
+        ItemInventory = transform.GetChild(0).gameObject.AddComponent<ItemInventory>();
+        foreach (var itemInstance in RunthroughStartingConfig.GetStartingItems()) ItemInventory.AddItem(itemInstance);
 
-    // Used to test Items - add to initialise run
-    private void AddItem(Type t)
-    {
-        var item = ItemLoader.ItemAssetToTypeDict.First
-            (i => i.Value == t).Key;
-        
-        _itemInventory.AddItem(new ItemInstance(item, item.modifier));
+        BattleNumber = 0;
+        CurrentDisturbance = null;
     }
 }

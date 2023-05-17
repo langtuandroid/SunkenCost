@@ -7,12 +7,12 @@
         public virtual void OnPickup()
         {
             _extraPlank = new StatModifier(Amount, StatModType.Flat);
-            RunProgress.PlayerStats.maxPlanks.AddModifier(_extraPlank);
+            RunProgress.Current.PlayerStats.maxPlanks.AddModifier(_extraPlank);
         }
         
         public virtual void OnDestroy()
         {
-            RunProgress.PlayerStats.maxPlanks.RemoveModifier(_extraPlank);
+            RunProgress.Current.PlayerStats.maxPlanks.RemoveModifier(_extraPlank);
         }
     }
 }

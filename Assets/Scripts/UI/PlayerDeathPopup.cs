@@ -17,7 +17,7 @@ namespace UI
             _newRunButton.onClick.AddListener(MainManager.Current.StartNewRun);
 
             var text = _detailsText.text;
-            var updatedText = text.Replace("@", RunProgress.BattleNumber.ToString());
+            var updatedText = text.Replace("@", RunProgress.Current.BattleNumber.ToString());
             _detailsText.text = updatedText;
         }
     }

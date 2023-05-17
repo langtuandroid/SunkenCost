@@ -32,7 +32,7 @@ public class Scenario : ScriptableObject
 
     public List<EnemyType> GetSpawns(int turn)
     {
-        if (turn >= RunProgress.PlayerStats.NumberOfTurns) return new List<EnemyType>();
+        if (turn >= RunProgress.Current.PlayerStats.NumberOfTurns) return new List<EnemyType>();
         
         switch (turn)
         {

@@ -1,25 +1,11 @@
-﻿using System;
-using System.Collections.Generic;
-using Designs;
-using UnityEngine;
-using Random = UnityEngine.Random;
+﻿using Random = UnityEngine.Random;
 
-namespace OfferScreen
+namespace Designs
 {
     public static class DesignFactory
     {
-        private static int Progress => RunProgress.BattleNumber;
-
-        public static Design InstantiateDesignFromString(string designAssetName)
-        {
-            var designAsset = DesignLoader.AllDesignAssetsByName[designAssetName];
-            if (designAsset is null)
-            {
-                throw new Exception("No design asset by the name " + designAssetName + " found!");
-            }
-            return InstantiateDesign(designAsset);
-        }
-
+        private static int Progress => RunProgress.Current.BattleNumber;
+        
         public static Design GenerateStoreDesign()
         {
             const double maxProgress = 15.0;
@@ -73,9 +59,15 @@ namespace OfferScreen
             return InstantiateDesign(DesignLoader.RareDesigns.GetRandomElement());
         }
         
-        private static Design InstantiateDesign(DesignAsset designAsset)
+        public static Design InstantiateDesign(DesignAsset designAsset, int level = 0)
         {
-            return new Design(designAsset);
+            var design = new Design(designAsset);
+            for (var i = 0; i < level; i++)
+            {
+                design.LevelUp();
+            }
+
+            return design;
         }
     }
 }

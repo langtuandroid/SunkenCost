@@ -22,4 +22,4 @@ MonoBehaviour:
     _magnitude: 3
   _modifierSetters:
   - modifierType: 0
-    _magnitude: 10
+    _magnitude: 7

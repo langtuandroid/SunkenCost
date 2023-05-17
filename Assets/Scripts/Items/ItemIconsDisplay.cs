@@ -30,7 +30,7 @@ namespace UI
 
         private void Start()
         {
-            foreach (var itemInstance in RunProgress.ItemInventory.ItemInstances)
+            foreach (var itemInstance in RunProgress.Current.ItemInventory.ItemInstances)
             {
                 AddItemToDisplay(itemInstance);
             }

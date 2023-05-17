@@ -27,7 +27,7 @@ public class BoardScaler : MonoBehaviour
 
     private void Start()
     {
-        SetBoardScale(RunProgress.PlayerStats.Deck.Count);
+        SetBoardScale(RunProgress.Current.PlayerStats.Deck.Count);
     }
 
     public void SetBoardScale(int plankCount)

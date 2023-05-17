@@ -13,12 +13,12 @@ namespace OfferScreen
         private void Awake()
         {
             _textMeshProUGUI = GetComponentInChildren<TextMeshProUGUI>();
-            UpdateText(RunProgress.PlayerStats.Deck.Count);
+            UpdateText(RunProgress.Current.PlayerStats.Deck.Count);
         }
 
         public void UpdateText(int numOfPlanksInDeck)
         {
-            var maxCards = RunProgress.PlayerStats.MaxPlanks;
+            var maxCards = RunProgress.Current.PlayerStats.MaxPlanks;
 
             _textMeshProUGUI.text = numOfPlanksInDeck + "/" + maxCards;
 

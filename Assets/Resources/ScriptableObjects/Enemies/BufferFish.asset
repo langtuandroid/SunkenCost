@@ -12,12 +12,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ec8f01ade65e478abf1e991006506bf2, type: 3}
   m_Name: BufferFish
   m_EditorClassIdentifier: 
-  _enemyType: 8
-  _name: Crib
-  _maxHealth: 40
+  _enemyType: 16
+  _name: Buffer Fish
+  _maxHealth: 60
   _moves:
   - _movementType: 0
-    _magnitude: 2
-  - _movementType: 0
-    _magnitude: -1
+    _magnitude: 1
   _modifierSetters: []

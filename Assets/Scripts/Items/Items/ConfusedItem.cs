@@ -26,17 +26,14 @@ namespace Items.Items
                 shuffledEtchings = etchingsInOrder.Shuffle().ToList();
             }
             
-
             var etchingFactory = EtchingFactory.Current;
-            var responses = new List<BattleEvent>();
 
             for (var i = 0; i < planksInOrder.Count; i++)
             {
                 etchingFactory.MoveEtching(planksInOrder[i], shuffledEtchings[i]);
-                responses.Add(new BattleEvent(BattleEventType.EtchingMoved) {modifier = i});
             }
             
-            return new BattleEventPackage(responses);
+            return new BattleEventPackage(new BattleEvent(BattleEventType.EtchingsOrderChanged));
         }
     }
 }

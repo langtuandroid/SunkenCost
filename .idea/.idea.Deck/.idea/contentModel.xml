@@ -623,6 +623,7 @@
           <e p="Designs" t="Include">
             <e p="Design.cs" t="Include" />
             <e p="DesignAsset.cs" t="Include" />
+            <e p="DesignFactory.cs" t="Include" />
             <e p="ListExtensions.cs" t="Include" />
             <e p="UI" t="Include">
               <e p="DesignCategoryDisplay.cs" t="Include" />
@@ -770,7 +771,6 @@
             <e p="DesignCard.cs" t="Include" />
             <e p="DesignCardOfferGenerator.cs" t="Include" />
             <e p="DesignCardRow.cs" t="Include" />
-            <e p="DesignFactory.cs" t="Include" />
             <e p="GoldDisplay.cs" t="Include" />
             <e p="IOffer.cs" t="Include" />
             <e p="ItemOfferDisplay.cs" t="Include" />
@@ -793,6 +793,7 @@
             <e p="ReorderableListElement.cs" t="Include" />
           </e>
           <e p="RunProgress.cs" t="Include" />
+          <e p="RunthroughStartingConfig.cs" t="Include" />
           <e p="ScreenResolutionSetter.cs" t="Include" />
           <e p="Stats" t="Include">
             <e p="EnemyModifierSetter.cs" t="Include" />
@@ -802,7 +803,6 @@
             <e p="StatModifier.cs" t="Include" />
             <e p="StatSetter.cs" t="Include" />
           </e>
-          <e p="TestingConfig.cs" t="Include" />
           <e p="UI" t="Include">
             <e p="BattleActivationShaderDisplay.cs" t="Include" />
             <e p="BoatHealthMeter.cs" t="Include" />

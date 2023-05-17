@@ -6,7 +6,7 @@ using OfferScreen;
 public class PlayerStats
 {
     private const int INIT_MAX_PLANKS = 3;
-    private const int INIT_MAX_HEALTH = 30;
+    private const int INIT_MAX_HEALTH = 5;
     private const int INIT_GOLD = 5;
     private const int INIT_MOVES_PER_TURN = -1;
     private const int INIT_NUM_OF_TURNS = 5;
@@ -14,7 +14,7 @@ public class PlayerStats
     private const int INIT_NUM_OF_CARD_OFFERS = 3;
     private const int INIT_NUM_OF_ITEM_OFFERS = 2;
     
-    public List<Design> Deck { get; private set; }= new List<Design>();
+    public List<Design> Deck { get; private set; }
 
     public readonly PriceHandler PriceHandler = new PriceHandler();
 
@@ -46,17 +46,9 @@ public class PlayerStats
         Health = MaxHealth;
     }
 
-    public void InitialiseDeck(params string[] initialDeck)
+    public void InitialiseDeck(List<Design> startingDeck)
     {
-        foreach (var name in initialDeck)
-        {
-            Deck.Add(DesignFactory.InstantiateDesignFromString(name));
-        }
-
-        foreach (var design in Deck)
-        {
-            design.SetCost(3);
-        }
+        Deck = startingDeck;
     }
 
     public void SaveDeck(IEnumerable<Design> newDeck)
@@ -64,8 +56,8 @@ public class PlayerStats
         Deck = newDeck.ToList();
         
         // Cut off deck if it's too big
-        if (Deck.Count >= RunProgress.PlayerStats.MaxPlanks) 
-            Deck = Deck.GetRange(0, RunProgress.PlayerStats.MaxPlanks);
+        if (Deck.Count >= RunProgress.Current.PlayerStats.MaxPlanks) 
+            Deck = Deck.GetRange(0, RunProgress.Current.PlayerStats.MaxPlanks);
     }
 
     public void BuyPlank()

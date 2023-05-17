@@ -22,7 +22,7 @@ namespace OfferScreen
             //offeredItemAssets.AddRange(RunProgress.ItemInventory.ItemAssets);
 
             // Load locked items
-            foreach (var itemOffer in RunProgress.OfferStorage.LockedItemOffers)
+            foreach (var itemOffer in RunProgress.Current.OfferStorage.LockedItemOffers)
             {
                 CreateItemOfferDisplay(itemOffer, true);
                 offeredItemAssets.Add(itemOffer.itemAsset);
@@ -30,9 +30,9 @@ namespace OfferScreen
 
             // If we've already generated the items (haven't completed a battle since), load the unlocked items from
             // before. Otherwise, generate new ones
-            if (RunProgress.HasGeneratedMapEvents)
+            if (RunProgress.Current.HasGeneratedMapEvents)
             {
-                foreach (var itemOffer in RunProgress.OfferStorage.UnlockedItemOffers)
+                foreach (var itemOffer in RunProgress.Current.OfferStorage.UnlockedItemOffers)
                 {
                     CreateItemOfferDisplay(itemOffer, false);
                     offeredItemAssets.Add(itemOffer.itemAsset);
@@ -40,8 +40,8 @@ namespace OfferScreen
             }
             else
             {
-                for (var i = RunProgress.OfferStorage.LockedItemOffers.Count;
-                    i < RunProgress.PlayerStats.NumberOfItemsToOffer;
+                for (var i = RunProgress.Current.OfferStorage.LockedItemOffers.Count;
+                    i < RunProgress.Current.PlayerStats.NumberOfItemsToOffer;
                     i++)
                 {
                     var nextItemAsset = ItemLoader.ShopItemAssets.GetRandomNonDuplicate(offeredItemAssets);

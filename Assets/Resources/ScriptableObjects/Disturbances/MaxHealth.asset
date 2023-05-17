@@ -15,5 +15,5 @@ MonoBehaviour:
   disturbanceType: 1300
   sprite: {fileID: 21300000, guid: 9b4df928e25111d40852d752d67215c0, type: 3}
   title: Stronger Boat
-  description: Heal to full health and increase maximum health by @
-  amount: 15
+  description: Recover fully, and increase total lives by @
+  amount: 1

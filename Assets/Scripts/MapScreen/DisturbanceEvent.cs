@@ -39,7 +39,7 @@ namespace MapScreen
         
         public void NextBattle()
         {
-            RunProgress.SelectNextBattle(Disturbance);
+            RunProgress.Current.SelectNextBattle(Disturbance);
             MainManager.Current.LoadNextBattle();
         }
 

@@ -30,8 +30,8 @@ namespace UI
             _healthMeterImage = _healthMeter.GetComponent<Image>();
             
             _defaultColor = _healthText.color;
-            _lastHealth = RunProgress.PlayerStats.Health;
-            _lastMaxHealth = RunProgress.PlayerStats.MaxHealth;
+            _lastHealth = RunProgress.Current.PlayerStats.Health;
+            _lastMaxHealth = RunProgress.Current.PlayerStats.MaxHealth;
 
             UpdateHealthText(_lastHealth, _lastMaxHealth);
 
