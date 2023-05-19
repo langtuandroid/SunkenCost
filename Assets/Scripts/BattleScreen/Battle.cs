@@ -1,4 +1,5 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using BattleScene;
@@ -20,10 +21,17 @@ namespace BattleScreen
         Rewards,
         PlayerDied
     }
+
+    public enum BattleSpeed
+    {
+        Normal,
+        Fast,
+        Ultra,
+    }
     
     public class Battle : MonoBehaviour
     {
-        public const float ActionExecutionSpeed = 0.65f;
+        public static float ActionExecutionSpeed;
         
         public static Battle Current;
 
@@ -74,6 +82,19 @@ namespace BattleScreen
         public void InvokeResponsesToPlayerTurnEvent(BattleEvent battleEvent)
         {
             StartCoroutine(ExecutePlayerTurnEvents(battleEvent));
+        }
+
+        public void SetBattleSpeed(BattleSpeed battleSpeed)
+        {
+            Settings.BattleSpeed = battleSpeed;
+            
+            ActionExecutionSpeed = battleSpeed switch
+            {
+                BattleSpeed.Normal => 0.8f,
+                BattleSpeed.Fast => 0.6f,
+                BattleSpeed.Ultra => 0.3f,
+                _ => throw new ArgumentOutOfRangeException(nameof(battleSpeed), battleSpeed, null)
+            };
         }
 
         private IEnumerator InitializeBattle()
@@ -237,17 +258,19 @@ namespace BattleScreen
                     return 1.3f;
                 case BattleEventType.EtchingActivated when battleEvent.showResponse:
                     return 0.7f;
-                case BattleEventType.ItemActivated when battleEvent.showResponse:
-                case BattleEventType.EnemySpawned when battleEvent.showResponse:
-                case BattleEventType.EndedEnemyTurn:
                 case BattleEventType.StartedIndividualEnemyTurn:
+                case BattleEventType.ItemActivated when battleEvent.showResponse:
                 case BattleEventType.EtchingStunned:
-                case BattleEventType.EnemyHealed: case BattleEventType.EnemyMaxHealthModified:
+                case BattleEventType.EnemyHealed: 
+                case BattleEventType.EnemyMaxHealthModified:
                     return 1f;
+                case BattleEventType.EnemySpawned when battleEvent.showResponse:
                 case BattleEventType.EnemyAttackedBoat:
                 case BattleEventType.EnemyKilled when battleEvent.source != DamageSource.Boat:
                     return 0.75f;
-                case BattleEventType.EnemyAttacked: case BattleEventType.EnemyDamaged:
+                case BattleEventType.EnemyAttacked: 
+                case BattleEventType.EnemyDamaged: 
+                case BattleEventType.EnemyBlocked:
                     return 0.5f;
                 case BattleEventType.EnemyMove:
                     return 0.3f;

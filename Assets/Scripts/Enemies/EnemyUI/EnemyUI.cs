@@ -3,6 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using BattleScreen;
 using BattleScreen.BattleEvents;
+using Damage;
 using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
@@ -20,6 +21,7 @@ namespace Enemies.EnemyUI
         [SerializeField] private EnemyTurnOrderText _turnOrderText;
         [SerializeField] private EnemyHealthText _healthText;
         [SerializeField] private Image _healthSlider;
+        [SerializeField] private DamageVisualiser _damageVisualiser;
         
         [SerializeField] private EnemyMovementText _movementText;
         [SerializeField] private EnemyPoisonDisplay _poisonDisplay;
@@ -38,7 +40,7 @@ namespace Enemies.EnemyUI
             StartCoroutine(Init());
             
             BattleRenderer.Current.RegisterUIUpdater(this);
-            _enemy = GetComponent<Enemy>();
+            _enemy = transform.parent.GetComponent<Enemy>();
             _enemyAnimator.Init(_enemy.Asset.SpritePack);
             _mover = _enemy.Mover;
             
@@ -69,6 +71,11 @@ namespace Enemies.EnemyUI
             if (_enemy.IsDestroyed) return;
             
             if (battleEvent.type == BattleEventType.EnemySpeaking) _speechBubble.DisplayText(_enemy.Speech);
+            
+            if (battleEvent.type == BattleEventType.EnemyAttacked) 
+                _damageVisualiser.Damage(battleEvent.modifier, battleEvent.damageModificationPackage);
+            else if (battleEvent.type == BattleEventType.EnemyHealed)
+                _damageVisualiser.Heal(battleEvent.modifier);
             
             UpdateUI();
         }

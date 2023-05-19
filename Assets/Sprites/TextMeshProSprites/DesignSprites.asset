@@ -1,6 +1,6 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
---- !u!21 &-5885774863700796725
+--- !u!21 &-2741293505164919359
 Material:
   serializedVersion: 8
   m_ObjectHideFlags: 1
@@ -51,7 +51,7 @@ MonoBehaviour:
   m_Name: DesignSprites
   m_EditorClassIdentifier: 
   hashCode: -2066600088
-  material: {fileID: -5885774863700796725}
+  material: {fileID: -2741293505164919359}
   materialHashCode: 0
   m_Version: 1.1.0
   m_FaceInfo:
@@ -95,13 +95,19 @@ MonoBehaviour:
     m_Scale: 1
     m_Name: DesignSprites_2
     m_HashCode: 35365669
+  - m_ElementType: 2
+    m_Unicode: 65534
+    m_GlyphIndex: 3
+    m_Scale: 1
+    m_Name: DesignSprites_3
+    m_HashCode: 35365668
   m_SpriteGlyphTable:
   - m_Index: 0
     m_Metrics:
       m_Width: 16
       m_Height: 16
       m_HorizontalBearingX: -0
-      m_HorizontalBearingY: 16
+      m_HorizontalBearingY: 14.4
       m_HorizontalAdvance: 16
     m_GlyphRect:
       m_X: 0
@@ -116,7 +122,7 @@ MonoBehaviour:
       m_Width: 16
       m_Height: 16
       m_HorizontalBearingX: -0
-      m_HorizontalBearingY: 16
+      m_HorizontalBearingY: 14.4
       m_HorizontalAdvance: 16
     m_GlyphRect:
       m_X: 16
@@ -131,7 +137,7 @@ MonoBehaviour:
       m_Width: 16
       m_Height: 16
       m_HorizontalBearingX: -0
-      m_HorizontalBearingY: 16
+      m_HorizontalBearingY: 14.4
       m_HorizontalAdvance: 16
     m_GlyphRect:
       m_X: 32
@@ -141,5 +147,20 @@ MonoBehaviour:
     m_Scale: 1
     m_AtlasIndex: 0
     sprite: {fileID: 648235581, guid: ff2f43c7497fd7d40880348df5c95e13, type: 3}
+  - m_Index: 3
+    m_Metrics:
+      m_Width: 16
+      m_Height: 16
+      m_HorizontalBearingX: -0
+      m_HorizontalBearingY: 14.4
+      m_HorizontalAdvance: 16
+    m_GlyphRect:
+      m_X: 48
+      m_Y: 0
+      m_Width: 16
+      m_Height: 16
+    m_Scale: 1
+    m_AtlasIndex: 0
+    sprite: {fileID: 1888153275, guid: ff2f43c7497fd7d40880348df5c95e13, type: 3}
   spriteInfoList: []
   fallbackSpriteAssets: []

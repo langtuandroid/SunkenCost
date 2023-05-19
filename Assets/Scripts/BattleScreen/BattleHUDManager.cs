@@ -13,6 +13,7 @@ using UnityEngine.UI;
 
 public class BattleHUDManager : MonoBehaviour, IBattleEventUpdatedUI
 {
+    [SerializeField] private BoatShaker _boatShaker;
     [SerializeField] private BoatHealthMeter _boatHealthMeter;
     
     [SerializeField] private TextMeshProUGUI _movesText;
@@ -54,6 +55,7 @@ public class BattleHUDManager : MonoBehaviour, IBattleEventUpdatedUI
 
     private void UpdateLives()
     {
+        _boatShaker.Shake();
         _boatHealthMeter.RefreshMeter(Player.Current.Health, RunProgress.Current.PlayerStats.MaxHealth);
     }
 

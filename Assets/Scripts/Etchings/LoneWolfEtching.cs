@@ -18,6 +18,8 @@ namespace Etchings
                 battleEvent.type == BattleEventType.StartedBattle)
                 return true;
 
+            if (battleEvent.type == BattleEventType.EndedBattle) RemoveMod();
+
             return base.GetIfDesignIsRespondingToEvent(battleEvent);
         }
 
@@ -36,9 +38,6 @@ namespace Etchings
 
         private BattleEvent UpdateDamage()
         {
-            if (_damageMod is not null)
-                design.RemoveStatModifier(StatType.Damage, _damageMod);
-
             var penalty = design.GetStat(StatType.StatFlatModifier) * (Board.Current.PlankCount - 1);
 
             _damageMod = new StatModifier(penalty, StatModType.Flat);
@@ -48,6 +47,12 @@ namespace Etchings
             {
                 primaryResponderID = ResponderID, showResponse = false
             };
+        }
+
+        private void RemoveMod()
+        {
+            if (_damageMod is not null)
+                design.RemoveStatModifier(StatType.Damage, _damageMod);
         }
     }
 }

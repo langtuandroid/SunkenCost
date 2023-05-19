@@ -60,10 +60,10 @@ namespace Designs
                 };
                 statReplacedDesc += " (" + usesText + " per turn)";
             }
-        
+
             var descriptionWithSprites = statReplacedDesc
                 .Replace("damage", "<sprite=0>")
-                .Replace("movement", "<sprite=2>");
+                .Replace("infinity", "<sprite=3>");
         
             return descriptionWithSprites;
         }

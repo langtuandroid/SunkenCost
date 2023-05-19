@@ -23,7 +23,7 @@ MonoBehaviour:
   firstUpgradeText: 
   secondUpgradeText: 
   extraTextSetting: 0
-  replacementStats: 02000000
+  replacementStats: 05000000
   initialStats:
   - _statType: 2
     _magnitude: 3

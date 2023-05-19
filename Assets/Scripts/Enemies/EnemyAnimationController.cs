@@ -16,6 +16,8 @@ public class EnemyAnimationController : MonoBehaviour, IBattleEventUpdatedUI
     [FormerlySerializedAs("_destroyAnimation")] [SerializeField] private EnemyShaderAnimation _shaderAnimation;
 
     private int _responderID;
+    
+    private static float AnimationSpeed => 0.5f + (1f - Battle.ActionExecutionSpeed);
 
     private void Start()
     {
@@ -54,19 +56,26 @@ public class EnemyAnimationController : MonoBehaviour, IBattleEventUpdatedUI
                 break;
         }
     }
+
+    private void Play(string stateName)
+    {
+        _animator.speed = AnimationSpeed;
+        _animator.Play(stateName);
+    }
     
     private void WiggleBeforeMoving()
     {
-        _animator.Play("WiggleBeforeMoving");
+        Play("WiggleBeforeMoving");
     }
 
     private void Damage()
     {
-        _animator.Play("Damaged");
+        Play("Damaged");
     }
 
     private void Heal()
     {
+        _healAnimator.speed = AnimationSpeed;
         _healAnimator.Play("Heal");
     }
 

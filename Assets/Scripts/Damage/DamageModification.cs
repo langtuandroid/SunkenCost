@@ -1,5 +1,4 @@
-﻿using BattleScreen;
-using BattleScreen.BattleEvents;
+﻿using BattleScreen.BattleEvents;
 
 namespace Damage
 {

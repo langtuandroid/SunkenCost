@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _enemyType: 3
   _name: Cucunger
-  _maxHealth: 100
+  _maxHealth: 60
   _moves:
   - _movementType: 0
     _magnitude: 1

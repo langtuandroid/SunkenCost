@@ -1,9 +1,6 @@
-﻿using System;
-using System.Linq;
+﻿using System.Linq;
 using BattleScreen;
-using BattleScreen.BattleBoard;
 using BattleScreen.BattleEvents;
-using Damage;
 
 namespace Enemies
 {

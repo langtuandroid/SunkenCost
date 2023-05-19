@@ -616,6 +616,8 @@
             <e p="DamageHandler.cs" t="Include" />
             <e p="DamageModification.cs" t="Include" />
             <e p="DamageModificationPackage.cs" t="Include" />
+            <e p="DamageText.cs" t="Include" />
+            <e p="DamageVisualiser.cs" t="Include" />
           </e>
           <e p="Debug" t="Include">
             <e p="ScreenToWorldPoint.cs" t="Include" />
@@ -795,6 +797,7 @@
           <e p="RunProgress.cs" t="Include" />
           <e p="RunthroughStartingConfig.cs" t="Include" />
           <e p="ScreenResolutionSetter.cs" t="Include" />
+          <e p="Settings.cs" t="Include" />
           <e p="Stats" t="Include">
             <e p="EnemyModifierSetter.cs" t="Include" />
             <e p="EnemyStats.cs" t="Include" />
@@ -805,7 +808,9 @@
           </e>
           <e p="UI" t="Include">
             <e p="BattleActivationShaderDisplay.cs" t="Include" />
+            <e p="BattleSpeedButton.cs" t="Include" />
             <e p="BoatHealthMeter.cs" t="Include" />
+            <e p="BoatShaker.cs" t="Include" />
             <e p="EnemyTurnFrame.cs" t="Include" />
             <e p="GoldText.cs" t="Include" />
             <e p="Heart.cs" t="Include" />
@@ -843,6 +848,7 @@
           </e>
           <e p="Effects" t="Include" />
           <e p="Enemies" t="Include" />
+          <e p="GameSpeed" t="Include" />
           <e p="Items" t="Include" />
           <e p="Map" t="Include">
             <e p="Challenges" t="Include" />

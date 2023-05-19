@@ -17,11 +17,11 @@ namespace Designs.UI
                 var minRange = design.HasStat(StatType.MinRange) 
                     ? design.GetStat(StatType.MinRange).ToString() : "0";
                 var maxRange = design.HasStat(StatType.MaxRange) 
-                    ? design.GetStat(StatType.MaxRange).ToString() : "\u221E";
+                    ? design.GetStat(StatType.MaxRange).ToString() : "<sprite=3>";
 
                 string fullRange;
                 
-                if ((minRange == "0" && maxRange == "\u221E") || minRange == maxRange)
+                if ((minRange == "0" && maxRange == "<sprite=3>") || minRange == maxRange)
                 {
                     fullRange = maxRange;
                 }

@@ -1,16 +1,9 @@
-﻿using System;
-using System.Collections;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.Linq;
 using BattleScreen;
 using BattleScreen.BattleBoard;
 using BattleScreen.BattleEvents;
 using Damage;
-using Enemies.EnemyUI;
-using TMPro;
-using UnityEngine;
-using UnityEngine.UI;
-using Random = UnityEngine.Random;
 
 namespace Enemies
 {
@@ -20,14 +13,14 @@ namespace Enemies
         
         public EnemyAsset Asset { get; private set; }
         
-        public string Name { get; protected set; }
+        public string Name { get; private set; }
         
         public Stat MaxHealthStat { get; private set; }
-        public int Gold { get; protected set; } = 1;
+        protected int Gold { get; set; } = 1;
         public int Health { get; private set; }
         
         public int TurnOrder { get; private set; }
-        public bool IsMyTurn { get; set; }
+
         public float Size { get; protected set; } = 1;
 
         public bool IsDestroyed { get; private set; } = false;
@@ -172,7 +165,6 @@ namespace Enemies
             
             eventList.Add(CreateEvent(BattleEventType.EnemyKilled, damageSource: source));
             eventList.Add(CreateEvent(BattleEventType.TryGainedGold, Gold, source));
-            if (IsMyTurn) eventList.Add(CreateEvent(BattleEventType.EndedIndividualEnemyTurn));
             return new BattleEventPackage(eventList);
         }
 

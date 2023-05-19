@@ -9,11 +9,11 @@ using UnityEngine.UI;
 public abstract class InGameButton : MonoBehaviour
 {
     private Button _button;
-    private Image _image;
+    protected Image Image { get; private set; }
 
     protected virtual void Awake()
     {
-        _image = GetComponent<Image>();
+        Image = GetComponent<Image>();
         _button = GetComponent<Button>();
 
         _button.onClick.AddListener(OnClick);
@@ -40,7 +40,7 @@ public abstract class InGameButton : MonoBehaviour
     
     public virtual void CanClick(bool canClick)
     {
-        _image.color = canClick ? Color.white : new Color(0.5f, 0.5f, 0.5f, 1f);
+        Image.color = canClick ? Color.white : new Color(0.5f, 0.5f, 0.5f, 1f);
     }
 
 
