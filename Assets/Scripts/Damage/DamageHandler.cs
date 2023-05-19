@@ -50,14 +50,14 @@ namespace Damage
             var damage = new EnemyDamage()
             {
                 baseDamage = directDamage,
-                affectedEnemy = BattleEventsManager.Current.GetEnemyByResponderID(enemyResponderID),
+                affectedEnemy = BattleEventResponseSequencer.Current.GetEnemyByResponderID(enemyResponderID),
                 source = source,
                 affectingEnemy = enemyDamaging
             };
             
 
             var damageModifications = 
-                BattleEventsManager.Current.GetDamageModifiers(damage);
+                BattleEventResponseSequencer.Current.GetDamageModifiers(damage);
 
             var flatTotal = directDamage + 
                             damageModifications.flatModifications.Sum(d => d.modificationAmount);

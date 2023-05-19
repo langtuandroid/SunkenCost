@@ -11,6 +11,30 @@
       <e p="Assets" t="Include">
         <e p="AllIn1SpriteShader" t="Include">
           <e p="!Start_Here.txt" t="Include" />
+          <e p="2DRenderer_URP" t="Include">
+            <e p="Demo" t="Include">
+              <e p="Animations" t="Include" />
+              <e p="Materials" t="Include" />
+              <e p="Prefabs" t="Include" />
+              <e p="Scripts" t="Include">
+                <e p="All1DemoChangeScene.cs" t="Include" />
+                <e p="All1DemoClaw.cs" t="Include" />
+                <e p="All1DemoRandomZ.cs" t="Include" />
+                <e p="All1DemoUpAndDown.cs" t="Include" />
+                <e p="All1DemoUrpCamMove.cs" t="Include" />
+              </e>
+              <e p="Textures" t="Include" />
+            </e>
+            <e p="Editor" t="Include">
+              <e p="AllIn12DRendererMaterialInspector.cs" t="Include" />
+            </e>
+            <e p="PipelineSetup" t="Include" />
+            <e p="PostProcessing" t="Include" />
+            <e p="Resources" t="Include">
+              <e p="AllIn1OneShaderFunctions.cginc" t="Include" />
+              <e p="AllIn1Urp2dRenderer.shader" t="Include" />
+            </e>
+          </e>
           <e p="AllIn1SpriteShaderAssembly.asmdef" t="Include" />
           <e p="Editor" t="Include">
             <e p="AllIn1ShaderGradientDrawer.cs" t="Include" />
@@ -596,8 +620,8 @@
               <e p="BattleEventPackage.cs" t="Include" />
               <e p="BattleEventResponder.cs" t="Include" />
               <e p="BattleEventResponderGroup.cs" t="Include" />
-              <e p="BattleEventResponderTracker.cs" t="Include" />
-              <e p="BattleEventsManager.cs" t="Include" />
+              <e p="BattleEventResponseIterationTracker.cs" t="Include" />
+              <e p="BattleEventResponseSequencer.cs" t="Include" />
               <e p="EnemyBattleEventResponderGroup.cs" t="Include" />
               <e p="EtchingBattleEventResponderGroup.cs" t="Include" />
               <e p="IBattleEventUpdatedUI.cs" t="Include" />
@@ -605,7 +629,7 @@
               <e p="PlayerBattleEventResponderGroup.cs" t="Include" />
               <e p="UnexpectedBattleEventException.cs" t="Include" />
             </e>
-            <e p="BattleHUDManager.cs" t="Include" />
+            <e p="BattleHUD.cs" t="Include" />
             <e p="BattleRenderer.cs" t="Include" />
             <e p="EndOfBattlePopup.cs" t="Include" />
             <e p="Player.cs" t="Include" />

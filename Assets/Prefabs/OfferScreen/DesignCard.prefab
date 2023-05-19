@@ -144,6 +144,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   isLocked: 0
+  _canvasGroup: {fileID: 6430184492437958513}
   lockedColor: {r: 1, g: 0.9141509, b: 0.6367924, a: 1}
   cardBackgroundImage: {fileID: 3236138630374459465}
   costDisplay: {fileID: 6350772747153434085}

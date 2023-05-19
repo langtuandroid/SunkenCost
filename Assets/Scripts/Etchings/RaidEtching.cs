@@ -9,7 +9,7 @@ namespace Etchings
     {
         protected override BattleEvent DamageEnemy(int enemyResponderID)
         {
-            var enemy = BattleEventsManager.Current.GetEnemyByResponderID(enemyResponderID);
+            var enemy = BattleEventResponseSequencer.Current.GetEnemyByResponderID(enemyResponderID);
             
             BattleEvent battleEvent;
             if (enemy.Plank.Etching is not DamageEtching)

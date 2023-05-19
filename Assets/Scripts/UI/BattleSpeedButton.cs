@@ -15,16 +15,10 @@ namespace UI
 
         private void Start()
         {
-            Battle.Current.SetBattleSpeed(_currentSpeed);
+            SetBattleSpeed(_currentSpeed);
         }
 
         protected override bool TryClick()
-        {
-            SetNextBattleSpeed();
-            return true;
-        }
-
-        private void SetNextBattleSpeed()
         {
             _currentSpeed = _currentSpeed switch
             {
@@ -33,7 +27,21 @@ namespace UI
                 BattleSpeed.Ultra => BattleSpeed.Normal,
                 _ => throw new ArgumentOutOfRangeException()
             };
+            
+            SetBattleSpeed(_currentSpeed);
+            return true;
+        }
+        
+        
 
+        private void SetBattleSpeed(BattleSpeed newBattleSpeed)
+        {
+            Battle.Current.SetBattleSpeed(_currentSpeed);
+            SetSprite(newBattleSpeed);
+        }
+
+        private void SetSprite(BattleSpeed newBattleSpeed)
+        {
             Image.sprite = _currentSpeed switch
             {
                 BattleSpeed.Normal => _playSprite,
@@ -41,8 +49,6 @@ namespace UI
                 BattleSpeed.Ultra => _ultraSprite,
                 _ => throw new ArgumentOutOfRangeException()
             };
-
-            Battle.Current.SetBattleSpeed(_currentSpeed);
         }
     }
 }

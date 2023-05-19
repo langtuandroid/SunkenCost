@@ -8,6 +8,7 @@ using Damage;
 using Disturbances;
 using UI;
 using UnityEngine;
+using UnityEngine.Serialization;
 
 namespace BattleScreen
 {
@@ -37,7 +38,8 @@ namespace BattleScreen
 
         [SerializeField] private EndOfBattlePopup _endOfBattlePopup;
         [SerializeField] private PlayerDeathPopup _playerDeathPopup;
-        [SerializeField] private BattleHUDManager _hudManager;
+        [SerializeField] private PlayerDeathPopup _winPopup;
+        [FormerlySerializedAs("_hudManager")] [SerializeField] private BattleHUD hud;
         
         private InGameSfxManager _sfxManager;
         private BattleRenderer _battleRenderer;
@@ -105,7 +107,7 @@ namespace BattleScreen
             yield return 0;
 
             var startBattle = new BattleEvent(BattleEventType.StartedBattle);
-            BattleEventsManager.Current.RefreshTransforms();
+            BattleEventResponseSequencer.Current.RefreshTransforms();
             yield return StartCoroutine(StartChainOfEvents(startBattle));
             yield return StartCoroutine(NextPlayerTurn());
         }
@@ -189,7 +191,7 @@ namespace BattleScreen
             
             while (true)
             {
-                var responsePackage = BattleEventsManager.Current.GetNextResponse(previousBattleEvent);
+                var responsePackage = BattleEventResponseSequencer.Current.GetNextResponse(previousBattleEvent);
                 if (responsePackage.IsEmpty) break;
 
                 hasHadAnyResponse = true;
@@ -206,7 +208,7 @@ namespace BattleScreen
                 {
                     Debug.Log("Waiting for transforms...");
                     yield return 0;
-                    BattleEventsManager.Current.RefreshTransforms();
+                    BattleEventResponseSequencer.Current.RefreshTransforms();
                 }
 
                 var battleEventsQueue = new Queue<BattleEvent>(battleEventsList);
@@ -281,6 +283,12 @@ namespace BattleScreen
 
         private void CreateEndOfBattlePopup()
         {
+            if (RunProgress.Current.BattleNumber >= 10)
+            {
+                _winPopup.gameObject.SetActive(true);
+                return;
+            }
+            
             _endOfBattlePopup.gameObject.SetActive(true);
             var disturbance = RunProgress.Current.CurrentDisturbance;
             _endOfBattlePopup.SetReward(disturbance);

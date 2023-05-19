@@ -1,3 +1,4 @@
+using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using Designs;
@@ -13,6 +14,7 @@ namespace OfferScreen
     {
         public bool isLocked = false;
 
+        [SerializeField] private CanvasGroup _canvasGroup;
         [SerializeField] private Color lockedColor;
         [SerializeField] private Image cardBackgroundImage;
         [SerializeField] private CostDisplay costDisplay;
@@ -32,12 +34,22 @@ namespace OfferScreen
         
         private void Awake()
         {
+            _canvasGroup.alpha = 0f;
             _designDisplay = GetComponentInChildren<DesignDisplay>();
         }
 
         private void Start()
         {
             OfferScreenEvents.Current.OnGridsUpdated += CardsUpdated;
+            StartCoroutine(Show());
+        }
+
+        private IEnumerator Show()
+        {
+            yield return 0;
+            yield return 0;
+            _canvasGroup.alpha = 1f;
+            _canvasGroup.enabled = false;
         }
         
         private void OnDestroy()

@@ -12,7 +12,7 @@ namespace BattleScreen
     {
         private readonly List<BattleEventResponder> _battleEventResponders = new List<BattleEventResponder>();
 
-        private readonly BattleEventResponderTracker _indexTracker = new BattleEventResponderTracker();
+        private readonly BattleEventResponseIterationTracker _indexTracker = new BattleEventResponseIterationTracker();
 
         protected void AddResponder(BattleEventResponder responder)
         {

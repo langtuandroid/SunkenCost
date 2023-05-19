@@ -26,7 +26,7 @@ MonoBehaviour:
   replacementStats: 
   initialStats:
   - _statType: 2
-    _magnitude: 5
+    _magnitude: 4
   - _statType: 4
     _magnitude: 2
   - _statType: 1
@@ -36,4 +36,4 @@ MonoBehaviour:
     _magnitude: 2
   secondLevelUpStatMods:
   - _statType: 2
-    _magnitude: 3
+    _magnitude: 2

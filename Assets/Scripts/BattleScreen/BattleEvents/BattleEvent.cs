@@ -76,6 +76,6 @@ namespace BattleScreen
         }
         
         public static BattleEvent None => new BattleEvent(BattleEventType.None);
-        public Enemy Enemy => BattleEventsManager.Current.GetEnemyByResponderID(primaryResponderID);
+        public Enemy Enemy => BattleEventResponseSequencer.Current.GetEnemyByResponderID(primaryResponderID);
     }
 }

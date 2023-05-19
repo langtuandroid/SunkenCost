@@ -47,7 +47,7 @@ public class EnemyStats
             return modifier;
         }
 
-        var enemyName = BattleEventsManager.Current.GetEnemyByResponderID(_enemyResponderID).Name;
+        var enemyName = BattleEventResponseSequencer.Current.GetEnemyByResponderID(_enemyResponderID).Name;
         throw new Exception(enemyName + " has no modifier of type " + modifierType);
     }
 }

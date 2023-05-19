@@ -437,6 +437,8 @@ MonoBehaviour:
   _tweenTime: 0.2
   _zoomSize: 3
   _yOffset: 70
+  _healColor: {r: 0, g: 1, b: 0, a: 1}
+  _damageColor: {r: 1, g: 0, b: 0, a: 1}
 --- !u!1 &1447995094553525929
 GameObject:
   m_ObjectHideFlags: 0
@@ -1879,7 +1881,7 @@ GameObject:
   - component: {fileID: 4472826375423803604}
   - component: {fileID: 7069175288739153677}
   - component: {fileID: 387289476161039775}
-  m_Layer: 5
+  m_Layer: 6
   m_Name: DanageText
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1934,7 +1936,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: 4 +3 x3\n= 30
+  m_text: 14
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: b9ad7116cce90bd4299bd085f02dda22, type: 2}
   m_sharedMaterial: {fileID: 2100000, guid: 02d5e4f1db826e040bad6bcba10cce28, type: 2}
@@ -1961,7 +1963,7 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 16.3
+  m_fontSize: 24
   m_fontSizeBase: 36
   m_fontWeight: 400
   m_enableAutoSizing: 1

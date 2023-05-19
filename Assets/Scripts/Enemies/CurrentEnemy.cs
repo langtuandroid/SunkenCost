@@ -69,15 +69,15 @@ namespace Enemies
                 
                 _hasToldEveryoneImAboutToMove = false;
                 
-                var previousPlank = _mover.PlankNum;
+                var previousPlankNum = _mover.PlankNum;
                 
                 // Change my plank
                 _mover.MoveToNextPlank();
                 
                 // I've either moved a plank or been blocked by the amount of enemies ahead
-                return previousPlank == _mover.PlankNum 
+                return previousPlankNum == _mover.PlankNum 
                     ? new BattleEventPackage(CreateEvent(BattleEventType.EnemyBlocked)) 
-                    : new BattleEventPackage(CreateEvent(BattleEventType.EnemyMove));
+                    : new BattleEventPackage(CreateEvent(BattleEventType.EnemyMove, previousPlankNum));
             }
             
             //TODO: Add EndOfTurnAbility processing here

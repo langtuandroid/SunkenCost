@@ -17,8 +17,8 @@ namespace Damage
         [SerializeField] private float _zoomSize;
         [SerializeField] private float _yOffset;
 
-        private Color _healColor = Color.green;
-        private Color _damageColor = Color.red;
+        [SerializeField] private Color _healColor = Color.green;
+        [SerializeField] private Color _damageColor = Color.red;
         
         private RectTransform _rectTransform;
 

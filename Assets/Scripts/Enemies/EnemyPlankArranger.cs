@@ -14,7 +14,6 @@ namespace Enemies
     public class EnemyPlankArranger : MonoBehaviour, IBattleEventUpdatedUI
     {
         private const int EnemyDefaultSize = 125;
-        private const float Smooth = 0.01f;
 
         private const float IslandXOffset = 200f;
         private const float IslandYOffset = -400f;
@@ -23,8 +22,7 @@ namespace Enemies
         private const float BoatXOffset = 15f;
         private const float BoatYOffset = -400f;
         
-        private float _moveVelocityX = 0f;
-        private float _moveVelocityY = 0f;
+        private static float TweenTime => Battle.ActionExecutionSpeed / 5f;
 
         private void Start()
         {
@@ -35,7 +33,7 @@ namespace Enemies
         {
             if (battleEvent.type == BattleEventType.EnemySpawned && !battleEvent.showResponse)
             {
-                UpdatePosition(battleEvent.Enemy.PlankNum, true);
+                ArrangeEnemiesOnPlank(battleEvent.Enemy.PlankNum, true);
             }
             /*
             else if (battleEvent.type == BattleEventType.EnemyReachedBoat)
@@ -48,7 +46,7 @@ namespace Enemies
             else if (battleEvent.type == BattleEventType.EnemyMove ||
                battleEvent.type == BattleEventType.EnemySpawned)
             {
-                UpdatePosition(battleEvent.Enemy.PlankNum, false);
+                ArrangeAllEnemies();
             }
             else if (battleEvent.type == BattleEventType.EnemyKilled && battleEvent.source != DamageSource.Boat)
             {
@@ -57,7 +55,12 @@ namespace Enemies
             
         }
 
-        private void UpdatePosition(int plankNum, bool doImmediately)
+        private void ArrangeAllEnemies()
+        {
+            for (var i = -1; i < Board.Current.PlankCount; i++) ArrangeEnemiesOnPlank(i, false);
+        }
+
+        private void ArrangeEnemiesOnPlank(int plankNum, bool doImmediately)
         {
             var isOnIsland = plankNum == -1;
 
@@ -82,7 +85,7 @@ namespace Enemies
                 if (doImmediately)
                     enemy.GetComponent<RectTransform>().anchoredPosition = new Vector2(aimPosition.x, aimPosition.y);
                 else
-                    StartCoroutine(MoveTransform(plankTransform, enemy, aimPosition));
+                    MoveTransform(plankTransform, enemy, aimPosition);
             }
         }
 
@@ -94,27 +97,17 @@ namespace Enemies
             var waitTime = Battle.ActionExecutionSpeed * Battle.GetAnimationTime(battleEvent) - 0.01f;
             
             yield return new WaitForSecondsRealtime(waitTime);
-            UpdatePosition(plankNum, false);
+            ArrangeEnemiesOnPlank(plankNum, false);
         }
 
-        private IEnumerator MoveTransform(Transform plankTransform, Enemy enemy, Vector2 aimPosition)
+        private void MoveTransform(Transform plankTransform, Enemy enemy, Vector2 aimPosition)
         {
             var enemyRectTransform = enemy.GetComponent<RectTransform>();
             enemyRectTransform.SetParent(plankTransform);
             enemyRectTransform.SetAsLastSibling();
             
-            while (Vector3.Distance(enemyRectTransform.anchoredPosition, aimPosition) > 0.01f)
-            {
-                var anchoredPosition = enemyRectTransform.anchoredPosition;
-                var newPositionX = Mathf.SmoothDamp(
-                    anchoredPosition.x, aimPosition.x, ref _moveVelocityX, Smooth);
-                var newPositionY = Mathf.SmoothDamp(
-                    anchoredPosition.y, aimPosition.y, ref _moveVelocityY, Smooth);
-                enemyRectTransform.anchoredPosition = new Vector3(newPositionX, newPositionY, 0);
-                yield return new WaitForSecondsRealtime(0.01f);
-                
-                if (enemy.IsDestroyed) yield break;
-            }
+            LeanTween.cancel(enemyRectTransform);
+            LeanTween.move(enemyRectTransform, aimPosition, TweenTime);
         }
     }
 }
