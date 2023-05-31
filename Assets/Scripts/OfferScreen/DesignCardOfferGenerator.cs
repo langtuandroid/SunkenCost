@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using Designs;
@@ -26,12 +27,32 @@ namespace OfferScreen
             allCards.AddRange(CreateDeckCards());
             allCards.AddRange(CreateLockedCards());
             allCards.AddRange(CreateRewardCards());
-
+            
             allCards.AddRange(RunProgress.Current.HasGeneratedMapEvents
                 ? CreateSavedUnlockedCards()
-                : GenerateNewUnlockedCards());
+                : GenerateNewUnlockedCards(RunProgress.Current.PlayerStats.NumberOfCardsToOffer - 
+                                           RunProgress.Current.OfferStorage.LockedDesignOffers.Count));
 
             return allCards;
+        }
+
+        public List<DesignCard> ReRoll()
+        {
+            DiscardLockedCards();
+
+            var amountOfLockedCards = FindObjectsOfType<DesignCard>().Count(d => d.isLocked);
+            var amountToCreate = RunProgress.Current.PlayerStats.NumberOfCardsToOffer - amountOfLockedCards;
+            return GenerateNewUnlockedCards(amountToCreate);
+        }
+        
+        private void DiscardLockedCards()
+        {
+            var cards = CardsInLeaveRow.ToArray();
+            foreach (var card in cards)
+            {
+                if (card.isLocked) continue;
+                Destroy(card.gameObject);
+            }
         }
 
         private IEnumerable<DesignCard> CreateBatchOfDesignCards(IEnumerable<Design> designs, Transform row,
@@ -60,12 +81,10 @@ namespace OfferScreen
             return CreateBatchOfDesignCards(RunProgress.Current.OfferStorage.UnlockedDesignOffers, offerRow);
         }
 
-        private List<DesignCard> GenerateNewUnlockedCards()
+        private List<DesignCard> GenerateNewUnlockedCards(int amountToCreate)
         {
             var newCards = new List<DesignCard>();
-            
-            var amountOfLockedCards = RunProgress.Current.OfferStorage.LockedDesignOffers.Count;
-            for (var i = amountOfLockedCards; i < RunProgress.Current.PlayerStats.NumberOfCardsToOffer; i++)
+            for (var i = 0; i < amountToCreate; i++)
             {
                 var design = DesignFactory.GenerateStoreDesign();
                 newCards.Add(CreateDesignCardFromDesign(design, offerRow));

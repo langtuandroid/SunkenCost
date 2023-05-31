@@ -23,177 +23,31 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="50470089-3e0c-4487-973b-9d375622b070" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/Assets/AllIn1SpriteShader/2DRenderer_URP.meta" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/AllIn1SpriteShader/2DRenderer_URP/Demo.meta" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/AllIn1SpriteShader/2DRenderer_URP/Demo/Animations.meta" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/AllIn1SpriteShader/2DRenderer_URP/Demo/Animations/BlurNormals.anim" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/AllIn1SpriteShader/2DRenderer_URP/Demo/Animations/BlurNormals.anim.meta" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/AllIn1SpriteShader/2DRenderer_URP/Demo/Animations/Lighting.anim" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/AllIn1SpriteShader/2DRenderer_URP/Demo/Animations/Lighting.anim.meta" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/AllIn1SpriteShader/2DRenderer_URP/Demo/Animations/Normal Map Blur.controller" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/AllIn1SpriteShader/2DRenderer_URP/Demo/Animations/Normal Map Blur.controller.meta" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/AllIn1SpriteShader/2DRenderer_URP/Demo/Animations/UrpLight.controller" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/AllIn1SpriteShader/2DRenderer_URP/Demo/Animations/UrpLight.controller.meta" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/AllIn1SpriteShader/2DRenderer_URP/Demo/Materials.meta" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/AllIn1SpriteShader/2DRenderer_URP/Demo/Materials/Hologram.mat" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/AllIn1SpriteShader/2DRenderer_URP/Demo/Materials/Hologram.mat.meta" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/AllIn1SpriteShader/2DRenderer_URP/Demo/Materials/LightGlow.mat" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/AllIn1SpriteShader/2DRenderer_URP/Demo/Materials/LightGlow.mat.meta" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/AllIn1SpriteShader/2DRenderer_URP/Demo/Materials/Objects.mat" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/AllIn1SpriteShader/2DRenderer_URP/Demo/Materials/Objects.mat.meta" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/AllIn1SpriteShader/2DRenderer_URP/Demo/Materials/blueGlow.mat" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/AllIn1SpriteShader/2DRenderer_URP/Demo/Materials/blueGlow.mat.meta" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/AllIn1SpriteShader/2DRenderer_URP/Demo/Materials/greenGlow.mat" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/AllIn1SpriteShader/2DRenderer_URP/Demo/Materials/greenGlow.mat.meta" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/AllIn1SpriteShader/2DRenderer_URP/Demo/Materials/greenWater.mat" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/AllIn1SpriteShader/2DRenderer_URP/Demo/Materials/greenWater.mat.meta" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/AllIn1SpriteShader/2DRenderer_URP/Demo/Materials/redGlow.mat" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/AllIn1SpriteShader/2DRenderer_URP/Demo/Materials/redGlow.mat.meta" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/AllIn1SpriteShader/2DRenderer_URP/Demo/Materials/teleporterBase.mat" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/AllIn1SpriteShader/2DRenderer_URP/Demo/Materials/teleporterBase.mat.meta" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/AllIn1SpriteShader/2DRenderer_URP/Demo/Prefabs.meta" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/AllIn1SpriteShader/2DRenderer_URP/Demo/Prefabs/BigContainer.prefab" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/AllIn1SpriteShader/2DRenderer_URP/Demo/Prefabs/BigContainer.prefab.meta" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/AllIn1SpriteShader/2DRenderer_URP/Demo/Prefabs/BigContainer2.prefab" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/AllIn1SpriteShader/2DRenderer_URP/Demo/Prefabs/BigContainer2.prefab.meta" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/AllIn1SpriteShader/2DRenderer_URP/Demo/Prefabs/BigContainer3.prefab" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/AllIn1SpriteShader/2DRenderer_URP/Demo/Prefabs/BigContainer3.prefab.meta" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/AllIn1SpriteShader/2DRenderer_URP/Demo/Prefabs/BlueChest.prefab" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/AllIn1SpriteShader/2DRenderer_URP/Demo/Prefabs/BlueChest.prefab.meta" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/AllIn1SpriteShader/2DRenderer_URP/Demo/Prefabs/ChainedHook.prefab" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/AllIn1SpriteShader/2DRenderer_URP/Demo/Prefabs/ChainedHook.prefab.meta" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/AllIn1SpriteShader/2DRenderer_URP/Demo/Prefabs/Claw.prefab" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/AllIn1SpriteShader/2DRenderer_URP/Demo/Prefabs/Claw.prefab.meta" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/AllIn1SpriteShader/2DRenderer_URP/Demo/Prefabs/ElectricityBox 1.prefab" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/AllIn1SpriteShader/2DRenderer_URP/Demo/Prefabs/ElectricityBox 1.prefab.meta" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/AllIn1SpriteShader/2DRenderer_URP/Demo/Prefabs/ElectricityBox.prefab" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/AllIn1SpriteShader/2DRenderer_URP/Demo/Prefabs/ElectricityBox.prefab.meta" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/AllIn1SpriteShader/2DRenderer_URP/Demo/Prefabs/ElectricitySign.prefab" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/AllIn1SpriteShader/2DRenderer_URP/Demo/Prefabs/ElectricitySign.prefab.meta" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/AllIn1SpriteShader/2DRenderer_URP/Demo/Prefabs/FloorTiles.prefab" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/AllIn1SpriteShader/2DRenderer_URP/Demo/Prefabs/FloorTiles.prefab.meta" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/AllIn1SpriteShader/2DRenderer_URP/Demo/Prefabs/GarageDoor.prefab" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/AllIn1SpriteShader/2DRenderer_URP/Demo/Prefabs/GarageDoor.prefab.meta" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/AllIn1SpriteShader/2DRenderer_URP/Demo/Prefabs/GreenWater.prefab" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/AllIn1SpriteShader/2DRenderer_URP/Demo/Prefabs/GreenWater.prefab.meta" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/AllIn1SpriteShader/2DRenderer_URP/Demo/Prefabs/HologramPlatform.prefab" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/AllIn1SpriteShader/2DRenderer_URP/Demo/Prefabs/HologramPlatform.prefab.meta" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/AllIn1SpriteShader/2DRenderer_URP/Demo/Prefabs/LightBulb.prefab" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/AllIn1SpriteShader/2DRenderer_URP/Demo/Prefabs/LightBulb.prefab.meta" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/AllIn1SpriteShader/2DRenderer_URP/Demo/Prefabs/Machine.prefab" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/AllIn1SpriteShader/2DRenderer_URP/Demo/Prefabs/Machine.prefab.meta" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/AllIn1SpriteShader/2DRenderer_URP/Demo/Prefabs/ToxicCover.prefab" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/AllIn1SpriteShader/2DRenderer_URP/Demo/Prefabs/ToxicCover.prefab.meta" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/AllIn1SpriteShader/2DRenderer_URP/Demo/Prefabs/Tube.prefab" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/AllIn1SpriteShader/2DRenderer_URP/Demo/Prefabs/Tube.prefab.meta" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/AllIn1SpriteShader/2DRenderer_URP/Demo/Prefabs/TubeHead.prefab" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/AllIn1SpriteShader/2DRenderer_URP/Demo/Prefabs/TubeHead.prefab.meta" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/AllIn1SpriteShader/2DRenderer_URP/Demo/Prefabs/WarningSign.prefab" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/AllIn1SpriteShader/2DRenderer_URP/Demo/Prefabs/WarningSign.prefab.meta" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/AllIn1SpriteShader/2DRenderer_URP/Demo/Prefabs/WhiteBox.prefab" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/AllIn1SpriteShader/2DRenderer_URP/Demo/Prefabs/WhiteBox.prefab.meta" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/AllIn1SpriteShader/2DRenderer_URP/Demo/Prefabs/YellowBarrel.prefab" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/AllIn1SpriteShader/2DRenderer_URP/Demo/Prefabs/YellowBarrel.prefab.meta" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/AllIn1SpriteShader/2DRenderer_URP/Demo/Scripts.meta" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/AllIn1SpriteShader/2DRenderer_URP/Demo/Scripts/All1DemoChangeScene.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/AllIn1SpriteShader/2DRenderer_URP/Demo/Scripts/All1DemoChangeScene.cs.meta" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/AllIn1SpriteShader/2DRenderer_URP/Demo/Scripts/All1DemoClaw.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/AllIn1SpriteShader/2DRenderer_URP/Demo/Scripts/All1DemoClaw.cs.meta" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/AllIn1SpriteShader/2DRenderer_URP/Demo/Scripts/All1DemoRandomZ.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/AllIn1SpriteShader/2DRenderer_URP/Demo/Scripts/All1DemoRandomZ.cs.meta" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/AllIn1SpriteShader/2DRenderer_URP/Demo/Scripts/All1DemoUpAndDown.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/AllIn1SpriteShader/2DRenderer_URP/Demo/Scripts/All1DemoUpAndDown.cs.meta" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/AllIn1SpriteShader/2DRenderer_URP/Demo/Scripts/All1DemoUrpCamMove.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/AllIn1SpriteShader/2DRenderer_URP/Demo/Scripts/All1DemoUrpCamMove.cs.meta" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/AllIn1SpriteShader/2DRenderer_URP/Demo/Textures.meta" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/AllIn1SpriteShader/2DRenderer_URP/Demo/Textures/Grass.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/AllIn1SpriteShader/2DRenderer_URP/Demo/Textures/Grass.png.meta" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/AllIn1SpriteShader/2DRenderer_URP/Demo/Textures/UiButton.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/AllIn1SpriteShader/2DRenderer_URP/Demo/Textures/UiButton.png.meta" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/AllIn1SpriteShader/2DRenderer_URP/Demo/Textures/Water.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/AllIn1SpriteShader/2DRenderer_URP/Demo/Textures/Water.png.meta" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/AllIn1SpriteShader/2DRenderer_URP/Demo/Textures/blurredSquare.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/AllIn1SpriteShader/2DRenderer_URP/Demo/Textures/blurredSquare.png.meta" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/AllIn1SpriteShader/2DRenderer_URP/Demo/Textures/greenGradient.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/AllIn1SpriteShader/2DRenderer_URP/Demo/Textures/greenGradient.png.meta" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/AllIn1SpriteShader/2DRenderer_URP/Demo/Textures/greenWater.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/AllIn1SpriteShader/2DRenderer_URP/Demo/Textures/greenWater.png.meta" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/AllIn1SpriteShader/2DRenderer_URP/Demo/Textures/greenWaterEmissive.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/AllIn1SpriteShader/2DRenderer_URP/Demo/Textures/greenWaterEmissive.png.meta" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/AllIn1SpriteShader/2DRenderer_URP/Demo/Textures/sciFiBack.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/AllIn1SpriteShader/2DRenderer_URP/Demo/Textures/sciFiBack.png.meta" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/AllIn1SpriteShader/2DRenderer_URP/Demo/Textures/sciFiBackNormal.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/AllIn1SpriteShader/2DRenderer_URP/Demo/Textures/sciFiBackNormal.png.meta" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/AllIn1SpriteShader/2DRenderer_URP/Demo/Textures/spriteSheetAll1UrpDemo.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/AllIn1SpriteShader/2DRenderer_URP/Demo/Textures/spriteSheetAll1UrpDemo.png.meta" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/AllIn1SpriteShader/2DRenderer_URP/Demo/Textures/spriteSheetAll1UrpDemoEmissive.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/AllIn1SpriteShader/2DRenderer_URP/Demo/Textures/spriteSheetAll1UrpDemoEmissive.png.meta" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/AllIn1SpriteShader/2DRenderer_URP/Demo/Textures/spriteSheetAll1UrpDemoNormals.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/AllIn1SpriteShader/2DRenderer_URP/Demo/Textures/spriteSheetAll1UrpDemoNormals.png.meta" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/AllIn1SpriteShader/2DRenderer_URP/Demo/Textures/spriteSheetUrpNormals.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/AllIn1SpriteShader/2DRenderer_URP/Demo/Textures/spriteSheetUrpNormals.png.meta" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/AllIn1SpriteShader/2DRenderer_URP/DemoLighting.unity" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/AllIn1SpriteShader/2DRenderer_URP/DemoLighting.unity.meta" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/AllIn1SpriteShader/2DRenderer_URP/DemoOriginalUrp.unity" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/AllIn1SpriteShader/2DRenderer_URP/DemoOriginalUrp.unity.meta" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/AllIn1SpriteShader/2DRenderer_URP/Editor.meta" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/AllIn1SpriteShader/2DRenderer_URP/Editor/AllIn12DRendererMaterialInspector.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/AllIn1SpriteShader/2DRenderer_URP/Editor/AllIn12DRendererMaterialInspector.cs.meta" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/AllIn1SpriteShader/2DRenderer_URP/PipelineSetup.meta" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/AllIn1SpriteShader/2DRenderer_URP/PipelineSetup/AllIn12DRenderer.asset" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/AllIn1SpriteShader/2DRenderer_URP/PipelineSetup/AllIn12DRenderer.asset.meta" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/AllIn1SpriteShader/2DRenderer_URP/PipelineSetup/AllIn12DRendererUrpAsset.asset" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/AllIn1SpriteShader/2DRenderer_URP/PipelineSetup/AllIn12DRendererUrpAsset.asset.meta" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/AllIn1SpriteShader/2DRenderer_URP/PostProcessing.meta" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/AllIn1SpriteShader/2DRenderer_URP/PostProcessing/UrpPostProcessing.asset" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/AllIn1SpriteShader/2DRenderer_URP/PostProcessing/UrpPostProcessing.asset.meta" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/AllIn1SpriteShader/2DRenderer_URP/Resources.meta" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/AllIn1SpriteShader/2DRenderer_URP/Resources/AllIn1OneShaderFunctions.cginc" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/AllIn1SpriteShader/2DRenderer_URP/Resources/AllIn1OneShaderFunctions.cginc.meta" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/AllIn1SpriteShader/2DRenderer_URP/Resources/AllIn1Urp2dRenderer.shader" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/AllIn1SpriteShader/2DRenderer_URP/Resources/AllIn1Urp2dRenderer.shader.meta" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/Prefabs/BattleScene/WinPopup.prefab" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/Prefabs/BattleScene/WinPopup.prefab.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Scripts/OfferScreen/ReRollButton.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Scripts/OfferScreen/ReRollButton.cs.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Sprites/ReRoll.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Sprites/ReRoll.png.meta" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/.idea.Deck/.idea/contentModel.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.Deck/.idea/contentModel.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/.idea.Deck/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.Deck/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/AllIn1SpriteShader/Materials/EnemyTurnFrame.mat" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/AllIn1SpriteShader/Materials/EnemyTurnFrame.mat" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/BeautifyProfile.asset" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/BeautifyProfile.asset.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Plugins/FMOD/platforms/win/lib/x86_64/fmodstudio.dll.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Plugins/FMOD/platforms/win/lib/x86_64/fmodstudio.dll.meta" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Prefabs/Enemies/Enemy.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Prefabs/Enemies/Enemy.prefab" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/OfferScreen/DesignCard.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Prefabs/OfferScreen/DesignCard.prefab" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Resources/ScriptableObjects/BattleScenarios/LateMedium1.asset" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Resources/ScriptableObjects/BattleScenarios/LateMedium1.asset" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Resources/ScriptableObjects/Designs/Bomb.asset" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Resources/ScriptableObjects/Designs/Bomb.asset" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/OfferScreen/ItemOffer.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Prefabs/OfferScreen/ItemOffer.prefab" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Scenes/Battle.unity" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scenes/Battle.unity" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scenes/Menu.unity" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scenes/Menu.unity" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Audio/MusicManager.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Audio/MusicManager.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scenes/Map.unity" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scenes/Map.unity" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scenes/OfferScreen.unity" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scenes/OfferScreen.unity" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Scripts/BattleScreen/Battle.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/BattleScreen/Battle.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/BattleScreen/BattleEvents/BattleEvent.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/BattleScreen/BattleEvents/BattleEvent.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/BattleScreen/BattleEvents/BattleEventResponderGroup.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/BattleScreen/BattleEvents/BattleEventResponderGroup.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/BattleScreen/BattleEvents/BattleEventResponderTracker.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/BattleScreen/BattleEvents/BattleEventResponseIterationTracker.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/BattleScreen/BattleEvents/BattleEventResponderTracker.cs.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/BattleScreen/BattleEvents/BattleEventResponseIterationTracker.cs.meta" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/BattleScreen/BattleEvents/BattleEventsManager.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/BattleScreen/BattleEvents/BattleEventResponseSequencer.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/BattleScreen/BattleEvents/BattleEventsManager.cs.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/BattleScreen/BattleEvents/BattleEventResponseSequencer.cs.meta" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/BattleScreen/BattleHUDManager.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/BattleScreen/BattleHUD.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/BattleScreen/BattleHUDManager.cs.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/BattleScreen/BattleHUD.cs.meta" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Damage/DamageHandler.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Damage/DamageHandler.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Damage/DamageText.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Damage/DamageText.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Enemies/CurrentEnemy.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Enemies/CurrentEnemy.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Enemies/EnemyPlankArranger.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Enemies/EnemyPlankArranger.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Etchings/RaidEtching.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Etchings/RaidEtching.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Scripts/OfferScreen/DesignCard.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/OfferScreen/DesignCard.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/PlankDisplay.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/PlankDisplay.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/ScreenResolutionSetter.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/ScreenResolutionSetter.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Stats/EnemyStats.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Stats/EnemyStats.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/UI/BattleSpeedButton.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/UI/BattleSpeedButton.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/TextMesh Pro/Resources/Fonts &amp; Materials/Damage.mat" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/TextMesh Pro/Resources/Fonts &amp; Materials/Damage.mat" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/TextMesh Pro/Resources/Fonts &amp; Materials/Daydream SDF.asset" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/TextMesh Pro/Resources/Fonts &amp; Materials/Daydream SDF.asset" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/TextMesh Pro/Resources/Fonts &amp; Materials/LiberationSans SDF - Fallback.asset" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/TextMesh Pro/Resources/Fonts &amp; Materials/LiberationSans SDF - Fallback.asset" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/UniversalRenderPipelineGlobalSettings.asset" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/UniversalRenderPipelineGlobalSettings.asset.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/ProjectSettings/QualitySettings.asset" beforeDir="false" afterPath="$PROJECT_DIR$/ProjectSettings/QualitySettings.asset" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ProjectSettings/TagManager.asset" beforeDir="false" afterPath="$PROJECT_DIR$/ProjectSettings/TagManager.asset" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/OfferScreen/DesignCardOfferGenerator.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/OfferScreen/DesignCardOfferGenerator.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/OfferScreen/ItemOfferDisplay.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/OfferScreen/ItemOfferDisplay.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/OfferScreen/ItemOfferGenerator.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/OfferScreen/ItemOfferGenerator.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/OfferScreen/OfferManager.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/OfferScreen/OfferManager.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/OfferScreen/OfferScreenEvents.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/OfferScreen/OfferScreenEvents.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Stats/PlayerStats.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Stats/PlayerStats.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Sprites/BackToMapButton.png" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Sprites/BackToMapButton.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Sprites/TutorialBox.png" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Sprites/TutorialBox.png" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/UserSettings/EditorUserSettings.asset" beforeDir="false" afterPath="$PROJECT_DIR$/UserSettings/EditorUserSettings.asset" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/UserSettings/Layouts/CurrentMaximizeLayout.dwlt" beforeDir="false" afterPath="$PROJECT_DIR$/UserSettings/Layouts/CurrentMaximizeLayout.dwlt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/UserSettings/Layouts/default-2021.dwlt" beforeDir="false" afterPath="$PROJECT_DIR$/UserSettings/Layouts/default-2021.dwlt" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -235,15 +89,9 @@
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/Assets/Scripts/Loaders/DisturbanceLoader.cs" />
-        <option value="$PROJECT_DIR$/Assets/Scripts/MapScreen/DisturbanceEvent.cs" />
         <option value="$PROJECT_DIR$/Assets/Scripts/MapScreen/DisturbanceGenerator.cs" />
-        <option value="$PROJECT_DIR$/Assets/Scripts/OfferScreen/DesignCardOfferGenerator.cs" />
         <option value="$PROJECT_DIR$/Assets/Scripts/OfferScreen/GoldDisplay.cs" />
-        <option value="$PROJECT_DIR$/Assets/Scripts/OfferScreen/ItemOfferGenerator.cs" />
         <option value="$PROJECT_DIR$/Assets/Scripts/OfferScreen/MovesDisplay.cs" />
-        <option value="$PROJECT_DIR$/Assets/Scripts/OfferScreen/OfferManager.cs" />
-        <option value="$PROJECT_DIR$/Assets/Scripts/OfferScreen/OfferStorage.cs" />
         <option value="$PROJECT_DIR$/Assets/Scripts/OfferScreen/PlankCount.cs" />
         <option value="$PROJECT_DIR$/Assets/Scripts/MainManager.cs" />
         <option value="$PROJECT_DIR$/Assets/Scripts/UI/Hearts.cs" />
@@ -258,7 +106,6 @@
         <option value="$PROJECT_DIR$/Assets/Scripts/BattleScreen/BattleBoard/Plank.cs" />
         <option value="$PROJECT_DIR$/Assets/Scripts/BattleScreen/BattleEvents/EtchingBattleEventResponderGroup.cs" />
         <option value="$PROJECT_DIR$/Assets/Scripts/BattleScreen/BattleEvents/BattleEventsManager.cs" />
-        <option value="$PROJECT_DIR$/Assets/Scripts/Stats/PlayerStats.cs" />
         <option value="$PROJECT_DIR$/Assets/Scripts/Damage/DamageModification.cs" />
         <option value="$PROJECT_DIR$/Assets/Scripts/Etchings/LoneWolfEtching.cs" />
         <option value="$PROJECT_DIR$/Assets/Scripts/Damage/DamageVisual.cs" />
@@ -280,12 +127,19 @@
         <option value="$PROJECT_DIR$/Assets/Scripts/Enemies/CurrentEnemy.cs" />
         <option value="$PROJECT_DIR$/Assets/Scripts/BattleScreen/BattleEvents/BattleEventResponseIterationTracker.cs" />
         <option value="$PROJECT_DIR$/Assets/Scripts/BattleScreen/BattleEvents/BattleEventResponseSequencer.cs" />
-        <option value="$PROJECT_DIR$/Assets/Scripts/OfferScreen/DesignCard.cs" />
-        <option value="$PROJECT_DIR$/Assets/Scripts/BattleScreen/Battle.cs" />
         <option value="$PROJECT_DIR$/Assets/Scripts/Audio/MusicManager.cs" />
         <option value="$PROJECT_DIR$/Assets/Scripts/ScreenResolutionSetter.cs" />
         <option value="$PROJECT_DIR$/Assets/Scripts/BattleScreen/BattleHUD.cs" />
         <option value="$PROJECT_DIR$/Assets/Scripts/Enemies/EnemyPlankArranger.cs" />
+        <option value="$PROJECT_DIR$/Assets/Scripts/OfferScreen/DesignCard.cs" />
+        <option value="$PROJECT_DIR$/Assets/Scripts/Stats/PlayerStats.cs" />
+        <option value="$PROJECT_DIR$/Assets/Scripts/OfferScreen/ReRollButton.cs" />
+        <option value="$PROJECT_DIR$/Assets/Scripts/OfferScreen/DesignCardOfferGenerator.cs" />
+        <option value="$PROJECT_DIR$/Assets/Scripts/Enemies/EnemyMover.cs" />
+        <option value="$PROJECT_DIR$/Assets/Scripts/OfferScreen/OfferStorage.cs" />
+        <option value="$PROJECT_DIR$/Assets/Scripts/OfferScreen/ItemOfferGenerator.cs" />
+        <option value="$PROJECT_DIR$/Assets/Scripts/OfferScreen/OfferManager.cs" />
+        <option value="$PROJECT_DIR$/Assets/Scripts/BattleScreen/Battle.cs" />
       </list>
     </option>
   </component>
@@ -421,7 +275,8 @@
       <workItem from="1683084544483" duration="111829000" />
       <workItem from="1683758259216" duration="55426000" />
       <workItem from="1684284048445" duration="10888000" />
-      <workItem from="1684368680901" duration="25908000" />
+      <workItem from="1684368680901" duration="31842000" />
+      <workItem from="1685490810298" duration="620000" />
     </task>
     <servers />
   </component>
@@ -467,11 +322,11 @@
       <screen x="0" y="0" width="3840" height="2160" />
     </state>
     <state x="677" y="354" key="SettingsEditor/0.0.3840.2160@0.0.3840.2160" timestamp="1684368699084" />
-    <state x="232" y="0" width="782" height="544" key="VCS.FileHistoryDialog" timestamp="1684536519778">
+    <state x="238" y="0" width="782" height="544" key="VCS.FileHistoryDialog" timestamp="1685405513010">
       <screen x="0" y="0" width="3840" height="2160" />
     </state>
     <state x="49" y="0" width="782" height="544" key="VCS.FileHistoryDialog/0.0.1920.1080@0.0.1920.1080" timestamp="1680091451955" />
-    <state x="232" y="0" width="782" height="544" key="VCS.FileHistoryDialog/0.0.3840.2160@0.0.3840.2160" timestamp="1684536519778" />
+    <state x="238" y="0" width="782" height="544" key="VCS.FileHistoryDialog/0.0.3840.2160@0.0.3840.2160" timestamp="1685405513010" />
     <state x="328" y="757" key="com.intellij.xdebugger.impl.breakpoints.ui.BreakpointsDialogFactory$2" timestamp="1684378051361">
       <screen x="0" y="0" width="3840" height="2160" />
     </state>

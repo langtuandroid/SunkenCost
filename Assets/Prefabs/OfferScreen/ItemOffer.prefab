@@ -11,6 +11,22 @@ PrefabInstance:
       propertyPath: m_Name
       value: LockButton
       objectReference: {fileID: 0}
+    - target: {fileID: 2414966892049940311, guid: 186735b4d8d8fa6448c966ab1a6b9ae9, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 9053059805704872794}
+    - target: {fileID: 2414966892049940311, guid: 186735b4d8d8fa6448c966ab1a6b9ae9, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: ClickedLockButton
+      objectReference: {fileID: 0}
+    - target: {fileID: 2414966892049940311, guid: 186735b4d8d8fa6448c966ab1a6b9ae9, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
+      value: OfferScreen.ItemOfferDisplay, Assembly-CSharp
+      objectReference: {fileID: 0}
+    - target: {fileID: 2414966892049940311, guid: 186735b4d8d8fa6448c966ab1a6b9ae9, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgumentAssemblyTypeName
+      value: UnityEngine.Object, UnityEngine
+      objectReference: {fileID: 0}
     - target: {fileID: 5652944298461188640, guid: 186735b4d8d8fa6448c966ab1a6b9ae9, type: 3}
       propertyPath: m_Pivot.x
       value: 0
@@ -267,8 +283,23 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _image: {fileID: 3572904816238135375}
-  _itemShaderDisplay: {fileID: 8418718194525332170}
+  _battleActivationShaderDisplay: {fileID: 8418718194525332170}
   _tooltipTrigger: {fileID: 8713723538579498856}
+--- !u!114 &8418718194525332170
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3572904816238135373}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 96ad29fe4ca34536a7b7fac6e9090583, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _tweenTime: 0.3
+  _zoomScale: 0.75
+  _image: {fileID: 3572904816238135375}
 --- !u!114 &8713723538579498856
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -283,19 +314,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   content: 
   header: 
---- !u!114 &8418718194525332170
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3572904816238135373}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 96ad29fe4ca34536a7b7fac6e9090583, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _image: {fileID: 3572904816238135375}
 --- !u!224 &3572904816238135374 stripped
 RectTransform:
   m_CorrespondingSourceObject: {fileID: 4202200882642939485, guid: caf43998dc516d54bb25c2ecac156361, type: 3}
@@ -344,7 +362,7 @@ MonoBehaviour:
   itemDisplay: {fileID: 5861141324400653213}
   costDisplay: {fileID: 7571966559546668652}
   lockButton: {fileID: 7532624825152540338}
-  lockColor: {r: 1, g: 0.9137255, b: 0.63529414, a: 1}
+  lockColor: {r: 0.8773585, g: 0.6698113, b: 0, a: 1}
   isLocked: 0
 --- !u!114 &7571966559546668652 stripped
 MonoBehaviour:

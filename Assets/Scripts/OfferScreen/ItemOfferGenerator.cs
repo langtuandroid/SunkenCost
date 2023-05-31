@@ -11,7 +11,6 @@ namespace OfferScreen
     {
         [SerializeField] private GameObject itemOfferPrefab;
         [SerializeField] private Transform itemGrid;
-        
         public IEnumerable<ItemOfferDisplay> ItemOfferDisplays => itemGrid.GetComponentsInChildren<ItemOfferDisplay>();
 
         public void Initialise()
@@ -40,15 +39,38 @@ namespace OfferScreen
             }
             else
             {
-                for (var i = RunProgress.Current.OfferStorage.LockedItemOffers.Count;
-                    i < RunProgress.Current.PlayerStats.NumberOfItemsToOffer;
-                    i++)
+                var amountOfUnlockedOffers = RunProgress.Current.OfferStorage.LockedItemOffers.Count;
+                var amountToOffer = RunProgress.Current.PlayerStats.NumberOfItemsToOffer - amountOfUnlockedOffers;
+                GenerateUnlockedItemOffers(amountToOffer, offeredItemAssets);
+            }
+        }
+
+        public void ReRoll()
+        {
+            var offeredAssets = new List<ItemAsset>();
+            foreach (var itemOfferDisplay in ItemOfferDisplays)
+            {
+                if (itemOfferDisplay.isLocked)
                 {
-                    var nextItemAsset = ItemLoader.ShopItemAssets.GetRandomNonDuplicate(offeredItemAssets);
-                    offeredItemAssets.Add(nextItemAsset);
-                    var newItemOffer = new ItemOffer(nextItemAsset);
-                    CreateItemOfferDisplay(newItemOffer, false);
+                    offeredAssets.Add(itemOfferDisplay.ItemOffer.itemAsset);
+                    continue;
                 }
+                
+                Destroy(itemOfferDisplay.gameObject);
+            }
+
+            var amountToOffer = RunProgress.Current.PlayerStats.NumberOfItemsToOffer - ItemOfferDisplays.Count();
+            GenerateUnlockedItemOffers(amountToOffer, offeredAssets);
+        }
+
+        private void GenerateUnlockedItemOffers(int amountOfNewOffers, ICollection<ItemAsset> offeredItemAssets)
+        {
+            for (var i = 0; i < amountOfNewOffers; i++)
+            {
+                var nextItemAsset = ItemLoader.ShopItemAssets.GetRandomNonDuplicate(offeredItemAssets);
+                offeredItemAssets.Add(nextItemAsset);
+                var newItemOffer = new ItemOffer(nextItemAsset);
+                CreateItemOfferDisplay(newItemOffer, false);
             }
         }
 

@@ -32,6 +32,7 @@ public class PlayerStats
     public int NumberOfCardsToOffer { get; private set; }
     public int NumberOfItemsToOffer { get; private set; }
     public int EnemyMovementModifier { get; set; } = 0;
+    public int ReRollCost { get; private set; } = 0;
 
     public PlayerStats()
     {
@@ -76,5 +77,10 @@ public class PlayerStats
     {
         Health += amount;
         if (Health > MaxHealth) Health = MaxHealth;
+    }
+
+    public void UsedReRoll()
+    {
+        ReRollCost++;
     }
 }

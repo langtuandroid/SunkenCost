@@ -29,7 +29,7 @@ namespace OfferScreen
             
             titleText.text = itemInstance.Title;
             
-            OfferScreenEvents.Current.OnGridsUpdated += OffersRefreshed;
+            OfferScreenEvents.Current.OnOffersRefreshed += OffersRefreshed;
         }
         
         public void OnPointerEnter(PointerEventData eventData)

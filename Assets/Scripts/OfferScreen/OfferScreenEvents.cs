@@ -9,7 +9,7 @@ namespace OfferScreen
     
         public static OfferScreenEvents Current;
 
-        public event Action OnGridsUpdated;
+        public event Action OnOffersRefreshed;
 
         private void Awake()
         {
@@ -23,7 +23,7 @@ namespace OfferScreen
 
         public void RefreshOffers()
         {
-            OnGridsUpdated?.Invoke();
+            OnOffersRefreshed?.Invoke();
             plankCount.UpdateText(OfferManager.CardsOnTopRow);
         }
     }

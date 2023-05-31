@@ -13,7 +13,7 @@ public class OfferManager : MonoBehaviour
 {
     [SerializeField] private GoldDisplay goldDisplay;
     [SerializeField] private ItemIconsDisplay itemIconsDisplay;
-
+    
     [SerializeField] private BuyPlankOffer buyPlankOffer;
     [SerializeField] private BuyMoveOffer buyMoveOffer;
     
@@ -22,8 +22,6 @@ public class OfferManager : MonoBehaviour
     private ItemOfferGenerator _itemOfferGenerator;
     private DesignCardOfferGenerator _designCardOfferGenerator;
 
-    public List<DesignCard> AllDesignCards { get; private set; }
-    
     public BuyerSeller BuyerSeller { get; private set; }
 
 
@@ -47,10 +45,10 @@ public class OfferManager : MonoBehaviour
     private void Start()
     {
         UpdateBuyPlankCost();
-        OfferScreenEvents.Current.OnGridsUpdated += UpdateBuyPlankCost;
+        OfferScreenEvents.Current.OnOffersRefreshed += UpdateBuyPlankCost;
         
         _itemOfferGenerator.Initialise();
-        AllDesignCards = _designCardOfferGenerator.CreateDesignCards();
+        _designCardOfferGenerator.CreateDesignCards();
         StartCoroutine(WaitForDesignCardsToInitialise());
     }
 
@@ -73,8 +71,7 @@ public class OfferManager : MonoBehaviour
         var cost = cardBeingMerged.Design.Cost;
         if (BuyerSeller.Gold < cost) return;
         BuyerSeller.Buy(cost);
-
-        AllDesignCards.Remove(cardBeingMerged);
+        
         Destroy(cardBeingMerged.gameObject);
         cardBeingMergedInto.Design.LevelUp();
         OfferScreenEvents.Current.RefreshOffers();
@@ -100,6 +97,15 @@ public class OfferManager : MonoBehaviour
         BuyerSeller.Buy(cost);
         RunProgress.Current.PlayerStats.BuyMove();
         OfferScreenEvents.Current.RefreshOffers();
+    }
+
+    public void ReRoll(int cost)
+    {
+        BuyerSeller.Buy(cost);
+        _designCardOfferGenerator.ReRoll();
+        _itemOfferGenerator.ReRoll();
+        RunProgress.Current.PlayerStats.UsedReRoll();
+        StartCoroutine(WaitForDesignCardsToInitialise());
     }
     
     private void UpdateBuyPlankCost()

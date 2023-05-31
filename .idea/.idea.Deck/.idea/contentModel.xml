@@ -808,6 +808,7 @@
             <e p="OfferStorage.cs" t="Include" />
             <e p="PlankCount.cs" t="Include" />
             <e p="PriceHandler.cs" t="Include" />
+            <e p="ReRollButton.cs" t="Include" />
             <e p="UpgradeOffer.cs" t="Include" />
           </e>
           <e p="PlankDisplay.cs" t="Include" />

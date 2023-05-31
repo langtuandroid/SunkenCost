@@ -261,7 +261,6 @@ namespace BattleScreen
                 case BattleEventType.EtchingActivated when battleEvent.showResponse:
                     return 0.7f;
                 case BattleEventType.StartedIndividualEnemyTurn:
-                case BattleEventType.ItemActivated when battleEvent.showResponse:
                 case BattleEventType.EtchingStunned:
                 case BattleEventType.EnemyHealed: 
                 case BattleEventType.EnemyMaxHealthModified:
@@ -273,6 +272,7 @@ namespace BattleScreen
                 case BattleEventType.EnemyAttacked: 
                 case BattleEventType.EnemyDamaged: 
                 case BattleEventType.EnemyBlocked:
+                case BattleEventType.ItemActivated when battleEvent.showResponse:
                     return 0.5f;
                 case BattleEventType.EnemyMove:
                     return 0.3f;

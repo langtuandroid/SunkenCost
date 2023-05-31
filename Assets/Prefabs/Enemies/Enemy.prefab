@@ -379,6 +379,7 @@ GameObject:
   - component: {fileID: 4803469335330622159}
   - component: {fileID: 6283974107509979892}
   - component: {fileID: 9200516169837547340}
+  - component: {fileID: 6546886962949171478}
   m_Layer: 5
   m_Name: DamageVisualiser
   m_TagString: Untagged
@@ -436,9 +437,30 @@ MonoBehaviour:
   _textMeshProUGUI: {fileID: 7069175288739153677}
   _tweenTime: 0.2
   _zoomSize: 3
-  _yOffset: 70
+  _yOffset: 80
   _healColor: {r: 0, g: 1, b: 0, a: 1}
   _damageColor: {r: 1, g: 0, b: 0, a: 1}
+--- !u!223 &6546886962949171478
+Canvas:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1273121688038818729}
+  m_Enabled: 1
+  serializedVersion: 3
+  m_RenderMode: 2
+  m_Camera: {fileID: 0}
+  m_PlaneDistance: 100
+  m_PixelPerfect: 0
+  m_ReceivesEvents: 1
+  m_OverrideSorting: 1
+  m_OverridePixelPerfect: 0
+  m_SortingBucketNormalizedSize: 0
+  m_AdditionalShaderChannelsFlag: 25
+  m_SortingLayerID: 0
+  m_SortingOrder: 1
+  m_TargetDisplay: 0
 --- !u!1 &1447995094553525929
 GameObject:
   m_ObjectHideFlags: 0
@@ -1971,7 +1993,7 @@ MonoBehaviour:
   m_fontSizeMax: 24
   m_fontStyle: 0
   m_HorizontalAlignment: 2
-  m_VerticalAlignment: 512
+  m_VerticalAlignment: 256
   m_textAlignment: 65535
   m_characterSpacing: 0
   m_wordSpacing: 0

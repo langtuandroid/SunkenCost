@@ -40,7 +40,7 @@ namespace OfferScreen
 
         private void Start()
         {
-            OfferScreenEvents.Current.OnGridsUpdated += CardsUpdated;
+            OfferScreenEvents.Current.OnOffersRefreshed += CardsUpdated;
             StartCoroutine(Show());
         }
 
@@ -54,7 +54,7 @@ namespace OfferScreen
         
         private void OnDestroy()
         {
-            OfferScreenEvents.Current.OnGridsUpdated -= CardsUpdated;
+            OfferScreenEvents.Current.OnOffersRefreshed -= CardsUpdated;
         }
         
         public void OnPointerEnter(PointerEventData eventData)
@@ -128,7 +128,7 @@ namespace OfferScreen
         {
             if (!Design.Upgradeable || Design.Level >= 2) return null;
             
-            return OfferManager.Current.AllDesignCards
+            return FindObjectsOfType<DesignCard>()
                 .Where(d => d != this)
                 .Where(d => d.Design.Title == Design.Title)
                 .Where(d => !d.HasMergeableDesignCard)
