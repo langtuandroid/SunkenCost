@@ -9,14 +9,8 @@ namespace BattleScreen.BattleEvents
     {
         private void RefreshEtchingResponderOrder()
         {
-            ClearResponders();
-            var etchings = Board.Current.PlanksInOrder.Select(p => p.Etching);
-            Debug.Log(etchings.Count());
-            foreach (var responder in etchings.Select(etching => etching as BattleEventResponder))
-            {
-                if (responder is null) throw new Exception("Etching is not responder!");
-                AddResponder(responder);
-            }
+            var etchings = Board.Current.PlanksInOrder.Select(p => p.Etching as BattleEventResponder).ToList();
+            RefreshResponders(etchings);
         }
 
         public override void RefreshTransforms()

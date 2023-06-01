@@ -10,15 +10,5 @@ namespace Items.Items
         {
             DisturbanceLoader.ModifyDisturbanceAsset(DisturbanceType.GoldRush, Amount);
         }
-
-        protected override bool GetIfRespondingToBattleEvent(BattleEvent battleEvent)
-        {
-            return false;
-        }
-
-        protected override BattleEventPackage GetResponse(BattleEvent battleEvent)
-        {
-            throw new System.NotImplementedException();
-        }
     }
 }

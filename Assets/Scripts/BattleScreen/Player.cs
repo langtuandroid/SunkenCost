@@ -86,7 +86,7 @@ public class Player : BattleEventResponder
 
     private BattleEventPackage PlayerMovedPlank()
     {
-        return new BattleEventPackage(UsedMove(), new BattleEvent(BattleEventType.PlayerMovedPlank));
+        return new BattleEventPackage(UsedMove(), new BattleEvent(BattleEventType.PlankMoved));
     }
     
     private BattleEvent UsedMove()

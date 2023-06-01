@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections;
+using System.Collections.Generic;
 using BattleScreen;
 using BattleScreen.BattleEvents;
 using Damage;
@@ -8,14 +9,14 @@ namespace Items.Items
 {
     public class PoisonTipsItem : EquippedItem
     {
-        protected override bool GetIfRespondingToBattleEvent(BattleEvent battleEvent)
+        protected override List<BattleEventResponseTrigger> GetItemResponseTriggers()
         {
-            return battleEvent.type == BattleEventType.EnemyDamaged && battleEvent.source == DamageSource.Etching;
-        }
-
-        protected override BattleEventPackage GetResponse(BattleEvent battleEvent)
-        {
-            return new BattleEventPackage(battleEvent.Enemy.stats.AddPoison(Amount));
+            return new List<BattleEventResponseTrigger>
+            {
+                PackageResponseTrigger(BattleEventType.EnemyDamaged, 
+                    b => new BattleEventPackage(b.Enemy.stats.AddPoison(Amount)),
+                    b => b.source == DamageSource.Etching)
+            };
         }
     }
 }

@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections;
+using System.Collections.Generic;
 using BattleScreen;
 using BattleScreen.BattleEvents;
 
@@ -9,15 +10,21 @@ namespace Items.Items
     {
         private bool _hasKilledEnemyThisBattle = false;
 
-        protected override bool GetIfRespondingToBattleEvent(BattleEvent battleEvent)
+        protected override List<BattleEventResponseTrigger> GetItemResponseTriggers()
         {
-            if (battleEvent.type == BattleEventType.EnemyKilled)
-                _hasKilledEnemyThisBattle = true;
-            
-            return battleEvent.type == BattleEventType.EndedBattle && !_hasKilledEnemyThisBattle;
+            return new List<BattleEventResponseTrigger>
+            {
+                EventResponseTrigger(BattleEventType.EnemyKilled, b =>
+                {
+                    _hasKilledEnemyThisBattle = true;
+                    return BattleEvent.None;
+                }),
+                PackageResponseTrigger(BattleEventType.EndedBattle, b => GainGold(), 
+                    b => !_hasKilledEnemyThisBattle)
+            };
         }
-        
-        protected override BattleEventPackage GetResponse(BattleEvent battleEvent)
+
+        private BattleEventPackage GainGold()
         {
             return new BattleEventPackage(new BattleEvent(BattleEventType.TryGainedGold) {modifier = Amount});
         }

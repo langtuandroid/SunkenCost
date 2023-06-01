@@ -740,13 +740,13 @@
             <e p="LoneWolfEtching.cs" t="Include" />
             <e p="MeleeEtching.cs" t="Include" />
             <e p="MovementActivatedEtching.cs" t="Include" />
+            <e p="PlankUpdateActivatedEtching.cs" t="Include" />
             <e p="PoisonEtching.cs" t="Include" />
             <e p="RaidEtching.cs" t="Include" />
             <e p="RangedEtching.cs" t="Include" />
             <e p="ResearchEtching.cs" t="Include" />
             <e p="RestEtching.cs" t="Include" />
             <e p="ReverseEtching.cs" t="Include" />
-            <e p="StickMovementActivatedEtching.cs" t="Include" />
           </e>
           <e p="Extensions.cs" t="Include" />
           <e p="GlobalEvents.cs" t="Include" />

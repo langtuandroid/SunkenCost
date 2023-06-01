@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
 using BattleScreen;
 using BattleScreen.BattleEvents;
 using UI;
@@ -19,18 +20,21 @@ namespace Items.Items
             ItemInstance = itemInstance;
         }
 
-        public override BattleEventPackage GetResponseToBattleEvent(BattleEvent previousBattleEvent)
+        public override List<BattleEventResponseTrigger> GetBattleEventResponseTriggers()
         {
-            if (GetIfRespondingToBattleEvent(previousBattleEvent))
-            {
-                ItemIconsDisplay.Current.ActivateItemDisplay(ItemInstance);
-                return GetResponse(previousBattleEvent).WithIdentifier(BattleEventType.ItemActivated, ResponderID);
-            }
-            
-            return BattleEventPackage.Empty;
+            return GetItemResponseTriggers().Select(r => 
+                PackageResponseTrigger(r.battleEventType, b => ActivateItem(b, r.response), r.condition)).ToList();
         }
 
-        protected abstract bool GetIfRespondingToBattleEvent(BattleEvent previousBattleEvent);
-        protected abstract BattleEventPackage GetResponse(BattleEvent battleEvent);
+        private BattleEventPackage ActivateItem(BattleEvent battleEvent, Func<BattleEvent, BattleEventPackage> responseFunc)
+        {
+            ItemIconsDisplay.Current.ActivateItemDisplay(ItemInstance);
+            return responseFunc.Invoke(battleEvent).WithIdentifier(BattleEventType.ItemActivated, ResponderID);
+        }
+
+        protected virtual List<BattleEventResponseTrigger> GetItemResponseTriggers()
+        {
+            return new List<BattleEventResponseTrigger>();
+        }
     }
 }

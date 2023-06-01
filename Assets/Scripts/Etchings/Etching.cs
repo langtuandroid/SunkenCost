@@ -61,41 +61,10 @@ namespace Etchings
                     GetDesignResponse, designResponseTrigger.condition));
             }
             
+            responseTriggers.AddRange(GetDesignActionTriggers());
+            
             return responseTriggers;
         }
-
-        private BattleEventPackage GetDesignResponse(BattleEvent previousBattleEvent)
-        {
-            UsesUsedThisTurn++;
-            
-            var designResponse = _designResponses[previousBattleEvent.type].Invoke(previousBattleEvent);
-            var planksToColor = designResponse.planksToColor;
-            if (planksToColor.Contains(-1)) planksToColor = new int[0];
-            var etchingActivatedEvent = new BattleEvent(BattleEventType.EtchingActivated, planksToColor)
-            {
-                primaryResponderID = ResponderID,
-                showResponse = designResponse.showResponse
-            };
-
-            var response = new List<BattleEvent>(designResponse.response) {etchingActivatedEvent};
-            return new BattleEventPackage(response);
-        }
-
-        protected abstract List<DesignResponseTrigger> GetDesignResponseTriggers();
-
-        private BattleEventPackage ResetForStartOfTurn()
-        {
-            UsesUsedThisTurn = 0;
-
-            if (stunned)
-            {
-                stunned = false;
-                return new BattleEventPackage(UnStun());
-            } 
-            
-            return BattleEventPackage.Empty;
-        }
-        
         public BattleEvent Stun(DamageSource source)
         {
             stunned = true;
@@ -113,10 +82,44 @@ namespace Etchings
             design.RemoveStatModifier(statType, mod);
             return new BattleEvent(BattleEventType.DesignModified) {primaryResponderID = ResponderID};
         }
-        
-        protected abstract bool GetIfDesignIsRespondingToEvent(BattleEvent battleEvent);
 
-        protected abstract DesignResponse GetDesignResponsesToEvent(BattleEvent battleEvent);
+        protected abstract List<DesignResponseTrigger> GetDesignResponseTriggers();
+        
+        protected virtual List<ActionTrigger> GetDesignActionTriggers()
+        {
+            return new List<ActionTrigger>();
+        }
+        
+        private BattleEventPackage GetDesignResponse(BattleEvent previousBattleEvent)
+        {
+            UsesUsedThisTurn++;
+            
+            var designResponse = _designResponses[previousBattleEvent.type].Invoke(previousBattleEvent);
+            var planksToColor = designResponse.planksToColor;
+            if (planksToColor.Contains(-1)) planksToColor = new int[0];
+            var etchingActivatedEvent = new BattleEvent(BattleEventType.EtchingActivated, planksToColor)
+            {
+                primaryResponderID = ResponderID,
+                showResponse = designResponse.showResponse
+            };
+
+            var response = new List<BattleEvent>(designResponse.response) {etchingActivatedEvent};
+            return new BattleEventPackage(response);
+        }
+
+        private BattleEventPackage ResetForStartOfTurn()
+        {
+            UsesUsedThisTurn = 0;
+
+            if (stunned)
+            {
+                stunned = false;
+                return new BattleEventPackage(UnStun());
+            } 
+            
+            return BattleEventPackage.Empty;
+        }
+
 
         private BattleEvent UnStun()
         {
@@ -146,6 +149,8 @@ namespace Etchings
             public readonly List<BattleEvent> response;
             public readonly bool showResponse;
 
+            public bool IsEmpty => response[0].type == BattleEventType.None;
+
             public DesignResponse(List<int> planksToColor, List<BattleEvent> response, bool showResponse = true)
             {
                 this.planksToColor = planksToColor.ToArray();
@@ -162,6 +167,8 @@ namespace Etchings
                 new List<BattleEvent> {response}, showResponse)
             {
             }
+            
+            public static DesignResponse Empty => new DesignResponse(-1, BattleEvent.None);
         }
     }
 }

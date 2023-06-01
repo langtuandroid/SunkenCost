@@ -14,20 +14,20 @@ namespace Etchings
         {
             return enemy.PlankNum == PlankNum;
         }
-        
-        protected override DesignResponse GetDesignResponsesToEvent(BattleEvent battleEvent)
+
+        protected override DesignResponse GetResponseToMovement(Enemy enemy)
         {
             var enemiesOnPlanks = EnemySequencer.Current.AllEnemies.Where(e => e.PlankNum > -1).ToArray();
 
             var response = new List<BattleEvent>();
             var anEnemyWillSurvive = false;
 
-            foreach (var enemy in enemiesOnPlanks)
+            foreach (var e in enemiesOnPlanks)
             {
-                var damageEvent = DamageEnemy(enemy.ResponderID);
+                var damageEvent = DamageEnemy(e.ResponderID);
                 response.Add(damageEvent);
                 
-                if (enemy.Health > damageEvent.modifier)
+                if (e.Health > damageEvent.modifier)
                     anEnemyWillSurvive = true;
             }
             

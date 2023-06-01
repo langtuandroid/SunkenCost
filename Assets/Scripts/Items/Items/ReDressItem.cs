@@ -9,14 +9,14 @@ namespace Items.Items
 {
     public class ReDressItem : EquippedItem
     {
-        protected override bool GetIfRespondingToBattleEvent(BattleEvent battleEvent)
+        protected override List<BattleEventResponseTrigger> GetItemResponseTriggers()
         {
-            return battleEvent.type == BattleEventType.EnemyAttackedBoat && !battleEvent.Enemy.IsDestroyed;
-        }
-
-        protected override BattleEventPackage GetResponse(BattleEvent battleEvent)
-        {
-            return new BattleEventPackage(DamageHandler.DamageEnemy(Amount, battleEvent.primaryResponderID, DamageSource.Item));
+            return new List<BattleEventResponseTrigger>
+            {
+                PackageResponseTrigger(BattleEventType.EnemyAttackedBoat, 
+                    b => new BattleEventPackage(DamageHandler.DamageEnemy(Amount, b.primaryResponderID, DamageSource.Item)),
+                    b => !b.Enemy.IsDestroyed)
+            };
         }
     }
 }

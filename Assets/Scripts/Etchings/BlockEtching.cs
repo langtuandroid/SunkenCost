@@ -9,14 +9,14 @@ namespace Etchings
 {
     public class BlockEtching : AboutToMoveActivatedEffect
     {
-        protected override DesignResponse GetDesignResponsesToEvent(BattleEvent battleEvent)
-        {
-            return new DesignResponse(PlankNum, battleEvent.Enemy.Block(design.GetStat(StatType.Block)));
-        }
-
         protected override bool GetIfRespondingToEnemyMovement(Enemy enemy)
         {
             return (enemy.PlankNum == PlankNum && !enemy.FinishedMoving);
+        }
+
+        protected override DesignResponse GetResponseToMovement(Enemy enemy)
+        {
+            return new DesignResponse(PlankNum, enemy.Block(design.GetStat(StatType.Block)));
         }
     }
 }

@@ -9,15 +9,6 @@ namespace Etchings
 {
     public class FocusEtching : Etching, IDamageMultiplierModifier
     {
-        protected override bool GetIfDesignIsRespondingToEvent(BattleEvent battleEvent)
-        {
-            return false;
-        }
-
-        protected override DesignResponse GetDesignResponsesToEvent(BattleEvent battleEvent)
-        {
-            throw new System.NotImplementedException();
-        }
 
         public bool CanModify(EnemyDamage enemyDamage)
         {
@@ -29,6 +20,11 @@ namespace Etchings
         public DamageModification GetDamageMultiplier(EnemyDamage enemyDamage)
         {
             return new DamageModification(this, design.GetStat(StatType.StatMultiplier));
+        }
+
+        protected override List<DesignResponseTrigger> GetDesignResponseTriggers()
+        {
+            return new List<DesignResponseTrigger>();
         }
     }
 }

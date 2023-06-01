@@ -11,46 +11,28 @@ using UnityEngine;
 
 namespace Etchings
 {
-    public class BoostEtching : StickMovementActivatedEtching
+    public class BoostEtching : PlankUpdateActivatedEtching
     {
         private readonly List<DamageEtching> _boostedEtchings = new List<DamageEtching>();
         private readonly List<StatModifier> _boostMods = new List<StatModifier>();
         private bool _modsActive = false;
-
-        protected override bool TestStickMovementActivatedEffect(BattleEvent battleEvent)
-        {
-            if (stunned && _modsActive) return true;
-            
-            switch (battleEvent.type)
-            {
-                case BattleEventType.StartedNextPlayerTurn:
-                case BattleEventType.EndedBattle:
-                case BattleEventType.PlankDestroyed:
-                case BattleEventType.PlankMoved:
-                case BattleEventType.EtchingsOrderChanged:
-                case BattleEventType.PlankCreated:
-                    return true;
-                case BattleEventType.DesignModified:
-                    return battleEvent.primaryResponderID == ResponderID;
-                default:
-                    return false;
-            }
-        }
         
         protected override List<DesignResponseTrigger> GetDesignResponseTriggers()
         {
-            return new List<DesignResponseTrigger>()
+            var response = new List<DesignResponseTrigger>()
             {
                 new DesignResponseTrigger(BattleEventType.EtchingStunned, 
-                    b => ClearModsWithoutBoosting(), b => _modsActive && GetIfThisIsPrimaryResponder(b)),
-                new DesignResponseTrigger(BattleEventType.StartedNextPlayerTurn, b => RefreshBoosts()),
-                new DesignResponseTrigger(BattleEventType.EndedBattle, b => RefreshBoosts()),
-                new DesignResponseTrigger(BattleEventType.PlankDestroyed, b => RefreshBoosts()),
-                new DesignResponseTrigger(BattleEventType.PlankMoved, b => RefreshBoosts()),
-                new DesignResponseTrigger(BattleEventType.EtchingsOrderChanged, b => RefreshBoosts()),
-                new DesignResponseTrigger(BattleEventType.PlankCreated, b => RefreshBoosts()),
-                new DesignResponseTrigger(BattleEventType.DesignModified, b => RefreshBoosts(), GetIfThisIsPrimaryResponder),
+                    b => ClearModsWithoutBoosting(), 
+                    b => _modsActive && GetIfThisIsPrimaryResponder(b)),
             };
+            
+            response.AddRange(base.GetDesignResponseTriggers());
+            return response;
+        }
+
+        protected override DesignResponse GetPlankUpdateResponse(BattleEvent b)
+        {
+            return RefreshBoosts();
         }
 
         protected override List<ActionTrigger> GetDesignActionTriggers()

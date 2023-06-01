@@ -11,22 +11,20 @@ namespace Etchings
 {
     public class ReverseEtching : AboutToMoveActivatedEffect
     {
-        protected override DesignResponse GetDesignResponsesToEvent(BattleEvent battleEvent)
+        protected override bool GetIfRespondingToEnemyMovement(Enemy enemy)
         {
-            var enemy = battleEvent.Enemy;
-            
+            return enemy.PlankNum == PlankNum && !enemy.FinishedMoving;
+        }
+
+        protected override DesignResponse GetResponseToMovement(Enemy enemy)
+        {
             // Set the new goal stick as the opposite direction
             enemy.Mover.Reverse();
             enemy.Mover.AddMovement(design.GetStat(StatType.MovementBoost));
             var response = new BattleEvent(BattleEventType.EnemyMovementModified) 
-                {source = DamageSource.Etching, primaryResponderID = battleEvent.primaryResponderID};
+                {source = DamageSource.Etching, primaryResponderID = enemy.ResponderID};
             
             return new DesignResponse(PlankNum, response);
-        }
-
-        protected override bool GetIfRespondingToEnemyMovement(Enemy enemy)
-        {
-            return enemy.PlankNum == PlankNum && !enemy.FinishedMoving;
         }
     }
 }

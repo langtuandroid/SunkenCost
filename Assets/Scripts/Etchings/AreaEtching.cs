@@ -10,12 +10,12 @@ namespace Etchings
 {
     public class AreaEtching : DamageEtching
     {
-        protected override bool TestCharMovementActivatedEffect(Enemy enemy)
+        protected override bool GetIfRespondingToEnemyMovement(Enemy enemy)
         {
             return enemy.PlankNum != -1 && Math.Abs(enemy.PlankNum - PlankNum) <= MaxRange;
         }
 
-        protected override DesignResponse GetDesignResponsesToEvent(BattleEvent battleEvent)
+        protected override DesignResponse GetResponseToMovement(Enemy enemy)
         {
             var plankNums = new List<int>();
             for (var i = PlankNum - MaxRange; i <= PlankNum + MaxRange && i <= Board.Current.PlankCount + 1; i++)
@@ -27,7 +27,7 @@ namespace Etchings
 
             var enemies = EnemySequencer.Current.GetEnemiesOnPlanks(plankNums);
 
-            return new DesignResponse(plankNums, enemies.Select(e => DamageEnemy(e.ResponderID)).ToList());
+            return new DesignResponse(plankNums, enemies.Select(DamageEnemy).ToList());
         }
     }
 }

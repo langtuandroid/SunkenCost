@@ -1,4 +1,5 @@
-﻿using BattleScreen;
+﻿using System.Collections.Generic;
+using BattleScreen;
 using BattleScreen.BattleEvents;
 
 namespace Items.Items
@@ -17,14 +18,12 @@ namespace Items.Items
             base.OnDestroy();
         }
 
-        protected override bool GetIfRespondingToBattleEvent(BattleEvent previousBattleEvent)
+        protected override List<BattleEventResponseTrigger> GetItemResponseTriggers()
         {
-            return previousBattleEvent.type == BattleEventType.PlayerMovedPlank;
-        }
-
-        protected override BattleEventPackage GetResponse(BattleEvent battleEvent)
-        {
-            return new BattleEventPackage(BattleEvent.None);
+            return new List<BattleEventResponseTrigger>
+            {
+                PackageResponseTrigger(BattleEventType.PlayerMovedPlank, b => new BattleEventPackage(BattleEvent.None))
+            };
         }
     }
 }

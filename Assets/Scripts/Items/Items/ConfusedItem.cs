@@ -9,12 +9,16 @@ namespace Items.Items
 {
     public class ConfusedItem : ExtraPlankItem
     {
-        protected override bool GetIfRespondingToBattleEvent(BattleEvent battleEvent)
+        protected override List<BattleEventResponseTrigger> GetItemResponseTriggers()
         {
-            return battleEvent.type == BattleEventType.EndedEnemyTurn || battleEvent.type == BattleEventType.StartedBattle;
+            return new List<BattleEventResponseTrigger>
+            {
+                PackageResponseTrigger(BattleEventType.StartedBattle, b=> RandomisePlanks()),
+                PackageResponseTrigger(BattleEventType.EndedEnemyTurn, b=> RandomisePlanks()),
+            };
         }
 
-        protected override BattleEventPackage GetResponse(BattleEvent battleEvent)
+        private BattleEventPackage RandomisePlanks()
         {
             var planksInOrder = Board.Current.PlanksInOrder;
             var etchingsInOrder = planksInOrder.Select(p => p.Etching).ToList();

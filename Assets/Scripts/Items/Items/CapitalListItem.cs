@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections;
+using System.Collections.Generic;
 using BattleScreen;
 using BattleScreen.BattleEvents;
 using Damage;
@@ -9,13 +10,16 @@ namespace Items.Items
 {
     public class CapitalListItem : EquippedItem
     {
-        protected override bool GetIfRespondingToBattleEvent(BattleEvent battleEvent)
+        protected override List<BattleEventResponseTrigger> GetItemResponseTriggers()
         {
-            return battleEvent.type == BattleEventType.GainedGold
-                   && EnemySequencer.Current.NumberOfEnemies > 0;
+            return new List<BattleEventResponseTrigger>
+            {
+                PackageResponseTrigger(BattleEventType.GainedGold, b => DamageRandomEnemy(), 
+                    b => EnemySequencer.Current.NumberOfEnemies > 0)
+            };
         }
 
-        protected override BattleEventPackage GetResponse(BattleEvent battleEvent)
+        private BattleEventPackage DamageRandomEnemy()
         {
             var randomEnemy = EnemySequencer.Current.GetRandomEnemy();
             if (!randomEnemy) throw new Exception("Somehow there is no active enemy?");

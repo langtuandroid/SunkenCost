@@ -1,5 +1,6 @@
 ﻿using System.Collections.Generic;
 using BattleScreen;
+using BattleScreen.BattleEvents;
 using Designs;
 using Enemies;
 using UnityEngine;
@@ -8,12 +9,16 @@ namespace Etchings
 {
     public class RestEtching : Etching
     {
-        protected override bool GetIfDesignIsRespondingToEvent(BattleEvent battleEvent)
+        protected override List<DesignResponseTrigger> GetDesignResponseTriggers()
         {
-            return battleEvent.type == BattleEventType.EndedBattle;
+            return new List<DesignResponseTrigger>
+            {
+                new DesignResponseTrigger(BattleEventType.EndedBattle, b => HealPlayer())
+            };
         }
+        
 
-        protected override DesignResponse GetDesignResponsesToEvent(BattleEvent battleEvent)
+        private DesignResponse HealPlayer()
         {
             var response = new BattleEvent(BattleEventType.PlayerLifeModified)
                 {modifier = design.GetStat(StatType.PlayerHealthModifier)};

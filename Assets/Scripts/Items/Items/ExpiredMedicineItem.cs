@@ -1,22 +1,27 @@
 ﻿using System.Collections;
+using System.Collections.Generic;
 using BattleScreen;
 using BattleScreen.BattleEvents;
 using Damage;
+using Enemies;
 
 namespace Items.Items
 {
     public class ExpiredMedicineItem : EquippedItem
     {
-        protected override bool GetIfRespondingToBattleEvent(BattleEvent battleEvent)
+        protected override List<BattleEventResponseTrigger> GetItemResponseTriggers()
         {
-            if (battleEvent.type != BattleEventType.EnemyHealed) return false;
-            return !battleEvent.Enemy.IsDestroyed;
+            return new List<BattleEventResponseTrigger>
+            {
+                PackageResponseTrigger(BattleEventType.EnemyHealed, b => DamageEnemy(b.primaryResponderID), 
+                    b => !b.Enemy.IsDestroyed)
+            };
         }
 
-        protected override BattleEventPackage GetResponse(BattleEvent battleEvent)
+        private BattleEventPackage DamageEnemy(int enemyResponderID)
         {
             return new BattleEventPackage(DamageHandler.DamageEnemy
-                (Amount, battleEvent.primaryResponderID, DamageSource.Item));
+                (Amount, enemyResponderID, DamageSource.Item));
         }
     }
 }

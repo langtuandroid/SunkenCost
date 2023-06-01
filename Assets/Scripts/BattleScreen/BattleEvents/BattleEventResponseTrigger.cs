@@ -10,12 +10,28 @@ namespace BattleScreen.BattleEvents
         public readonly Func<BattleEvent, BattleEventPackage> response;
 
         public BattleEventResponseTrigger(BattleEventType battleEventType, 
-            int responderID, Func<BattleEvent, bool> condition, Func<BattleEvent, BattleEventPackage> response)
+            int responderID, Func<BattleEvent, BattleEventPackage> response, Func<BattleEvent, bool> condition = null)
         {
             this.battleEventType = battleEventType;
             this.responderID = responderID;
+            condition ??= b => true;
             this.condition = condition;
             this.response = response;
+        }
+    }
+    
+    public class ActionTrigger : BattleEventResponseTrigger
+    {
+        public ActionTrigger(BattleEventType battleEventType, int responderID, 
+            Action<BattleEvent> action, Func<BattleEvent, bool> condition = null) : base(battleEventType, responderID, 
+            b => { action.Invoke(b); return BattleEventPackage.Empty; }, condition)
+        {
+        }
+        
+        public ActionTrigger(BattleEventType battleEventType, int responderID, 
+            Action action, Func<BattleEvent, bool> condition = null) : base(battleEventType, responderID, 
+            b => { action.Invoke(); return BattleEventPackage.Empty; }, condition)
+        {
         }
     }
 }

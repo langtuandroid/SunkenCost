@@ -9,9 +9,13 @@ namespace Etchings
 {
     public class ResearchEtching : LandedOnPlankActivatedEtching
     {
-        protected override DesignResponse GetDesignResponsesToEvent(BattleEvent battleEvent)
+        protected override bool GetIfRespondingToEnemyMovement(Enemy enemy)
         {
-            var enemy = battleEvent.Enemy;
+            return enemy.PlankNum == PlankNum;
+        }
+
+        protected override DesignResponse GetResponseToMovement(Enemy enemy)
+        {
             var amountToHeal = enemy.MaxHealth - enemy.Health;
 
             var responses = new List<BattleEvent> {enemy.Heal(amountToHeal)};
@@ -28,11 +32,6 @@ namespace Etchings
             responses.Add(new BattleEvent(BattleEventType.TryGainedGold) {modifier = amountOfGoldToGive});
 
             return new DesignResponse(PlankNum, responses);
-        }
-
-        protected override bool GetIfRespondingToEnemyMovement(Enemy enemy)
-        {
-            return enemy.PlankNum == PlankNum;
         }
     }
 }

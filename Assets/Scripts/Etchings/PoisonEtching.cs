@@ -9,21 +9,14 @@ namespace Etchings
 {
     public class PoisonEtching : LandedOnPlankActivatedEtching
     {
-        private Stat _poisonStat;
-
-        private void Start()
-        {
-            _poisonStat = new Stat(design.GetStat(StatType.Poison));
-        }
-
-        protected override DesignResponse GetDesignResponsesToEvent(BattleEvent battleEvent)
-        {
-            return new DesignResponse(PlankNum, battleEvent.Enemy.stats.AddPoison(_poisonStat.Value));
-        }
-
         protected override bool GetIfRespondingToEnemyMovement(Enemy enemy)
         {
             return enemy.PlankNum == PlankNum;
+        }
+
+        protected override DesignResponse GetResponseToMovement(Enemy enemy)
+        {
+            return new DesignResponse(PlankNum, enemy.stats.AddPoison(design.GetStat(StatType.Poison)));
         }
     }
 }

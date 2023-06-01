@@ -1,4 +1,5 @@
-﻿using BattleScreen;
+﻿using System.Collections.Generic;
+using BattleScreen;
 using BattleScreen.BattleEvents;
 
 namespace Items.Items
@@ -15,16 +16,6 @@ namespace Items.Items
         {
             RunProgress.Current.PlayerStats.EnemyMovementModifier -= 2;
             base.OnDestroy();
-        }
-
-        protected override bool GetIfRespondingToBattleEvent(BattleEvent previousBattleEvent)
-        {
-            return false;
-        }
-
-        protected override BattleEventPackage GetResponse(BattleEvent battleEvent)
-        {
-            throw new System.NotImplementedException();
         }
     }
 }

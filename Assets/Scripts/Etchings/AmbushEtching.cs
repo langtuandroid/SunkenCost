@@ -17,41 +17,41 @@ namespace Etchings
             RemoveAllStatMods();
         }
 
-        protected override bool GetIfDesignIsRespondingToEvent(BattleEvent battleEvent)
+        protected override List<DesignResponseTrigger> GetDesignResponseTriggers()
         {
-            switch (battleEvent.type)
+            var responses = new List<DesignResponseTrigger>
             {
-                case BattleEventType.StartNextPlayerTurn:
-                    var hadEnemyOnPlankThisTurn = _hadEnemyOnPlankThisTurn;
-                    _hadEnemyOnPlankThisTurn = false;
-                    return (!hadEnemyOnPlankThisTurn && Battle.Current.Turn > 1);
-                case BattleEventType.EnemyMove when battleEvent.Enemy.PlankNum == PlankNum:
-                    _hadEnemyOnPlankThisTurn = true;
-                    break;
-                case BattleEventType.EndedBattle:
-                    RemoveAllStatMods();
-                    break;
-            }
+                new DesignResponseTrigger(BattleEventType.StartedNextPlayerTurn, 
+                    b => UpdateDamage(), 
+                    b => !_hadEnemyOnPlankThisTurn),
+            };
 
-            return base.GetIfDesignIsRespondingToEvent(battleEvent);
-        }
-
-        protected override DesignResponse GetDesignResponsesToEvent(BattleEvent battleEvent)
-        {
-            if (battleEvent.type == BattleEventType.StartNextPlayerTurn)
-            {
-                _hadEnemyOnPlankThisTurn = false; 
-                var newStatMod = new StatModifier(design.GetStat(StatType.StatFlatModifier), StatModType.Flat);
-                _statModifiers.Push(newStatMod); 
-                design.AddStatModifier(StatType.Damage, newStatMod);
-                var response = new BattleEvent(BattleEventType.DesignModified) {primaryResponderID = ResponderID};
-                return new DesignResponse(-1, response);
-            }
+            responses.AddRange(base.GetDesignResponseTriggers());
             
-            Debug.Log("responding to " + battleEvent.type);
-            return base.GetDesignResponsesToEvent(battleEvent);
+            return responses;
         }
         
+        protected override List<ActionTrigger> GetDesignActionTriggers()
+        {
+            return new List<ActionTrigger>
+            {
+                ActionTrigger(BattleEventType.StartedNextPlayerTurn, () => _hadEnemyOnPlankThisTurn = false),
+                ActionTrigger(BattleEventType.EnemyMoved, () => _hadEnemyOnPlankThisTurn = true, 
+                    b => b.Enemy.PlankNum == PlankNum),
+                ActionTrigger(BattleEventType.EndedBattle, RemoveAllStatMods)
+            };
+        }
+
+        private DesignResponse UpdateDamage()
+        {
+            _hadEnemyOnPlankThisTurn = false; 
+            var newStatMod = new StatModifier(design.GetStat(StatType.StatFlatModifier), StatModType.Flat);
+            _statModifiers.Push(newStatMod); 
+            design.AddStatModifier(StatType.Damage, newStatMod);
+            var response = new BattleEvent(BattleEventType.DesignModified) {primaryResponderID = ResponderID};
+            return new DesignResponse(-1, response);
+        }
+
         private void RemoveAllStatMods()
         {
             foreach (var statMod in _statModifiers)

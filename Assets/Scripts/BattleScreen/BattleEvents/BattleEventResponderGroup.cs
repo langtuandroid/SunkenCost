@@ -5,6 +5,7 @@ using System.Linq;
 using BattleScreen.BattleEvents;
 using Damage;
 using UnityEngine;
+using UnityEngine.Assertions;
 
 namespace BattleScreen
 { 
@@ -13,7 +14,7 @@ namespace BattleScreen
         private readonly Dictionary<BattleEvent, IEnumerator<BattleEventPackage>> _enumerators =
             new Dictionary<BattleEvent, IEnumerator<BattleEventPackage>>();
 
-        private readonly Dictionary<BattleEventResponder, List<BattleEventResponseTrigger>> _responderAndTriggersDict =
+        private Dictionary<BattleEventResponder, List<BattleEventResponseTrigger>> _responderAndTriggersDict =
             new Dictionary<BattleEventResponder, List<BattleEventResponseTrigger>>();
 
         protected void AddResponder(BattleEventResponder responder)
@@ -26,14 +27,29 @@ namespace BattleScreen
             _responderAndTriggersDict.Remove(responder);
         }
 
-        protected void ClearResponders()
-        {
-            _responderAndTriggersDict.Clear();
-        }
-        
         protected bool HasResponder(BattleEventResponder responder)
         {
             return _responderAndTriggersDict.ContainsKey(responder);
+        }
+
+        protected void RefreshResponders(List<BattleEventResponder> sortedOrder)
+        {
+            var respondersToRemove = _responderAndTriggersDict.
+                Where(r => !sortedOrder.Contains(r.Key)).
+                Select(r => r.Key);
+            
+            foreach (var responder in respondersToRemove)
+            {
+                RemoveResponder(responder);
+            }
+
+            foreach (var responder in sortedOrder.Where(r => !HasResponder(r)))
+            {
+                AddResponder(responder);
+            }
+
+            _responderAndTriggersDict = new Dictionary<BattleEventResponder, List<BattleEventResponseTrigger>>(
+                _responderAndTriggersDict.OrderBy(kvp => sortedOrder.IndexOf(kvp.Key)));
         }
 
         public virtual BattleEventPackage GetNextResponse(BattleEvent previousBattleEvent)
@@ -49,14 +65,18 @@ namespace BattleScreen
 
         private IEnumerator<BattleEventPackage> GetNextPackage(BattleEvent previousBattleEvent)
         {
-            foreach (var (battleEventResponder, responseTriggers) in _responderAndTriggersDict)
+            for (var i = 0; i < _responderAndTriggersDict.Count; i++)
             {
                 // Find all the matching triggers for the event type
-                var matchingResponseTriggers = responseTriggers
+                var matchingResponseTriggers = _responderAndTriggersDict.ElementAt(i).Value
                     .Where(r => r.battleEventType == previousBattleEvent.type).ToArray();
 
                 foreach (var responseTrigger in matchingResponseTriggers)
                 {
+                    Assert.IsNotNull(responseTrigger);
+                    Assert.IsNotNull(previousBattleEvent);
+                    Assert.IsNotNull(responseTrigger.condition);
+                    
                     // Continue if it doesn't meet the condition
                     if (!responseTrigger.condition.Invoke(previousBattleEvent)) continue;
 
@@ -67,7 +87,7 @@ namespace BattleScreen
                     
                     // The next few lines are just for the debug.log - all that's really happening here is the
                     // returning of the responsePackage
-                    var responder = battleEventResponder.GetType().Name;
+                    var responder = _responderAndTriggersDict.ElementAt(i).Key.GetType().Name;
                     var eventsString = string.Join(", ",
                         responsePackage.battleEvents.ConvertAll(b => $"{b.type} ({b.modifier})").ToArray());
                     Debug.Log($"{responder.GetType().Name} responding to: {previousBattleEvent.type} with {eventsString}");
