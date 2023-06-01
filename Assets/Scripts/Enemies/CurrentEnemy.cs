@@ -77,7 +77,7 @@ namespace Enemies
                 // I've either moved a plank or been blocked by the amount of enemies ahead
                 return previousPlankNum == _mover.PlankNum 
                     ? new BattleEventPackage(CreateEvent(BattleEventType.EnemyBlocked)) 
-                    : new BattleEventPackage(CreateEvent(BattleEventType.EnemyMove, previousPlankNum));
+                    : new BattleEventPackage(CreateEvent(BattleEventType.EnemyMoved, previousPlankNum));
             }
             
             //TODO: Add EndOfTurnAbility processing here

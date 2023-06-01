@@ -4,7 +4,7 @@ namespace BattleScreen.BattleEvents
 {
     public class BattleEventResponseIterationTracker
     {
-        private Dictionary<BattleEvent, int> _iterationTracker = new Dictionary<BattleEvent, int>();
+        private readonly Dictionary<BattleEvent, int> _iterationTracker = new Dictionary<BattleEvent, int>();
         
         public int GetOrCreateIndex(BattleEvent battleEvent)
         {

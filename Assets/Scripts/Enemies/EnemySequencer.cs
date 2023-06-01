@@ -30,6 +30,15 @@ namespace Enemies
             base.Awake();
         }
 
+        public override List<BattleEventResponseTrigger> GetBattleEventResponseTriggers()
+        {
+            return new List<BattleEventResponseTrigger>
+            {
+                ActionTriggerWithArgument(BattleEventType.EnemyKilled,e => KillEnemy(e.Enemy)),
+                ActionTrigger(BattleEventType.StartedEnemyTurn, SetNextEnemyTurnSequence),
+            };
+        }
+
         public void AddEnemy(Enemy enemy)
         {
             _enemies.Add(enemy);
@@ -86,34 +95,15 @@ namespace Enemies
             return _enemyCurrentTurnMoveQueue.Dequeue();
         }
 
-        public override BattleEventPackage GetResponseToBattleEvent(BattleEvent previousBattleEvent)
+        private void KillEnemy(Enemy enemy)
         {
-            switch (previousBattleEvent.type)
+            foreach (var e in _enemies.Where(e => e.TurnOrder > enemy.TurnOrder))
             {
-                case BattleEventType.EnemyKilled:
-                    var deadEnemy = previousBattleEvent.Enemy;
-
-                    foreach (var enemy in _enemies.Where(enemy => enemy.TurnOrder > deadEnemy.TurnOrder))
-                    {
-                        enemy.SetTurnOrder(enemy.TurnOrder - 1);
-                    }
-                    
-                    RemoveEnemy(deadEnemy);
-                    Destroy(deadEnemy.gameObject);
-                    break;
-                case BattleEventType.StartedEnemyTurn:
-                    SetNextEnemyTurnSequence();
-                    break;
-                case BattleEventType.PlankMoved:
-                case BattleEventType.EtchingsOrderChanged:
-                case BattleEventType.PlankCreated:
-                case BattleEventType.PlankDestroyed:
-                    foreach (var e in _enemies)
-                        e.RefreshPlankNum();
-                    break;
+                e.SetTurnOrder(enemy.TurnOrder - 1);
             }
-
-            return BattleEventPackage.Empty;
+                    
+            RemoveEnemy(enemy);
+            Destroy(enemy.gameObject);
         }
 
         private void SetNextEnemyTurnSequence()

@@ -21,6 +21,9 @@ namespace Etchings
 
         private Plank _plank;
 
+        private readonly Dictionary<BattleEventType, Func<BattleEvent, DesignResponse>> _designResponses =
+            new Dictionary<BattleEventType, Func<BattleEvent, DesignResponse>>();
+
         protected int UsesPerTurn => design.GetStat(StatType.UsesPerTurn);
         public int PlankNum => _plank.PlankNum;
 
@@ -42,35 +45,53 @@ namespace Etchings
             plank.SetEtching(this);
         }
 
-        public override BattleEventPackage GetResponseToBattleEvent(BattleEvent battleEvent)
+        public override List<BattleEventResponseTrigger> GetBattleEventResponseTriggers()
         {
-            if (battleEvent.type == BattleEventType.EndedEnemyTurn)
+            var responseTriggers = new List<BattleEventResponseTrigger>
             {
-                UsesUsedThisTurn = 0;
+                PackageResponseTrigger(BattleEventType.EndedEnemyTurn, e => ResetForStartOfTurn())
+            };
 
-                if (stunned)
-                {
-                    stunned = false;
-                    return new BattleEventPackage(UnStun());
-                } 
+            var designResponseTriggers = GetDesignResponseTriggers();
+
+            foreach (var designResponseTrigger in designResponseTriggers)
+            {
+                _designResponses.Add(designResponseTrigger.battleEventType, designResponseTrigger.response);
+                responseTriggers.Add(PackageResponseTrigger(designResponseTrigger.battleEventType, 
+                    GetDesignResponse, designResponseTrigger.condition));
             }
             
-            if (GetIfDesignIsRespondingToEvent(battleEvent))
+            return responseTriggers;
+        }
+
+        private BattleEventPackage GetDesignResponse(BattleEvent previousBattleEvent)
+        {
+            UsesUsedThisTurn++;
+            
+            var designResponse = _designResponses[previousBattleEvent.type].Invoke(previousBattleEvent);
+            var planksToColor = designResponse.planksToColor;
+            if (planksToColor.Contains(-1)) planksToColor = new int[0];
+            var etchingActivatedEvent = new BattleEvent(BattleEventType.EtchingActivated, planksToColor)
             {
-                UsesUsedThisTurn++;
+                primaryResponderID = ResponderID,
+                showResponse = designResponse.showResponse
+            };
 
-                var designResponse = GetDesignResponsesToEvent(battleEvent);
-                var planksToColor = designResponse.planksToColor;
-                if (planksToColor.Contains(-1)) planksToColor = new int[0];
-                var etchingActivatedEvent = new BattleEvent(BattleEventType.EtchingActivated, planksToColor)
-                {
-                    primaryResponderID = ResponderID,
-                    showResponse = designResponse.showResponse
-                };
+            var response = new List<BattleEvent>(designResponse.response) {etchingActivatedEvent};
+            return new BattleEventPackage(response);
+        }
 
-                var response = new List<BattleEvent>(designResponse.response) {etchingActivatedEvent};
-                return new BattleEventPackage(response);
-            }
+        protected abstract List<DesignResponseTrigger> GetDesignResponseTriggers();
+
+        private BattleEventPackage ResetForStartOfTurn()
+        {
+            UsesUsedThisTurn = 0;
+
+            if (stunned)
+            {
+                stunned = false;
+                return new BattleEventPackage(UnStun());
+            } 
             
             return BattleEventPackage.Empty;
         }
@@ -101,6 +122,22 @@ namespace Etchings
         {
             stunned = false;
             return new BattleEvent(BattleEventType.EtchingUnStunned) {primaryResponderID = ResponderID};
+        }
+
+        protected readonly struct DesignResponseTrigger
+        {
+            public readonly BattleEventType battleEventType;
+            public readonly Func<BattleEvent, DesignResponse> response;
+            public readonly Func<BattleEvent, bool> condition;
+
+            public DesignResponseTrigger(BattleEventType battleEventType, Func<BattleEvent, DesignResponse> response, 
+                Func<BattleEvent, bool> condition = null)
+            {
+                this.battleEventType = battleEventType;
+                this.response = response;
+                condition ??= b => true;
+                this.condition = condition;
+            }
         }
 
         protected readonly struct DesignResponse

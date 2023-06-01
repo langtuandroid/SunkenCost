@@ -622,6 +622,7 @@
               <e p="BattleEventResponderGroup.cs" t="Include" />
               <e p="BattleEventResponseIterationTracker.cs" t="Include" />
               <e p="BattleEventResponseSequencer.cs" t="Include" />
+              <e p="BattleEventResponseTrigger.cs" t="Include" />
               <e p="EnemyBattleEventResponderGroup.cs" t="Include" />
               <e p="EtchingBattleEventResponderGroup.cs" t="Include" />
               <e p="IBattleEventUpdatedUI.cs" t="Include" />
@@ -866,6 +867,9 @@
             <e p="WhosTurnText.cs" t="Include" />
           </e>
           <e p="UnexpectedStatException.cs" t="Include" />
+          <e p="Varnishes" t="Include">
+            <e p="Varnish.cs" t="Include" />
+          </e>
         </e>
         <e p="Sprites" t="Include">
           <e p="DesignLogos" t="Include">

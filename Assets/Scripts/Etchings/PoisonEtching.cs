@@ -21,7 +21,7 @@ namespace Etchings
             return new DesignResponse(PlankNum, battleEvent.Enemy.stats.AddPoison(_poisonStat.Value));
         }
 
-        protected override bool TestCharMovementActivatedEffect(Enemy enemy)
+        protected override bool GetIfRespondingToEnemyMovement(Enemy enemy)
         {
             return enemy.PlankNum == PlankNum;
         }

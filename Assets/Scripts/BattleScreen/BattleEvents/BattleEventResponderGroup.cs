@@ -10,60 +10,79 @@ namespace BattleScreen
 { 
     public abstract class BattleEventResponderGroup : MonoBehaviour
     {
-        private readonly List<BattleEventResponder> _battleEventResponders = new List<BattleEventResponder>();
+        private readonly Dictionary<BattleEvent, IEnumerator<BattleEventPackage>> _enumerators =
+            new Dictionary<BattleEvent, IEnumerator<BattleEventPackage>>();
 
-        private readonly BattleEventResponseIterationTracker _indexTracker = new BattleEventResponseIterationTracker();
+        private readonly Dictionary<BattleEventResponder, List<BattleEventResponseTrigger>> _responderAndTriggersDict =
+            new Dictionary<BattleEventResponder, List<BattleEventResponseTrigger>>();
 
         protected void AddResponder(BattleEventResponder responder)
         {
-            _battleEventResponders.Add(responder);
+            _responderAndTriggersDict.Add(responder, responder.GetBattleEventResponseTriggers());
         }
 
         protected void RemoveResponder(BattleEventResponder responder)
         {
-            _battleEventResponders.Remove(responder);
+            _responderAndTriggersDict.Remove(responder);
         }
 
         protected void ClearResponders()
         {
-            _battleEventResponders.Clear();
+            _responderAndTriggersDict.Clear();
         }
         
         protected bool HasResponder(BattleEventResponder responder)
         {
-            return _battleEventResponders.Contains(responder);
+            return _responderAndTriggersDict.ContainsKey(responder);
         }
 
-        public virtual BattleEventPackage GetNextResponse(BattleEvent battleEventToRespondTo)
+        public virtual BattleEventPackage GetNextResponse(BattleEvent previousBattleEvent)
         {
-            // Works much like the Battle Event Manager's GetNextResponse function, but this only checks each responder
-            // Once per battle event
-            var index = _indexTracker.GetOrCreateIndex(battleEventToRespondTo);
-
-            while (index < _battleEventResponders.Count)
+            if (!_enumerators.ContainsKey(previousBattleEvent))
             {
-                var responsePackage = _battleEventResponders[index].GetResponseToBattleEvent(battleEventToRespondTo);
-                
-                if (!responsePackage.IsEmpty)
-                     Debug.Log(_battleEventResponders[index].GetType().Name + " responding to: " 
-                          + battleEventToRespondTo.type + " with " + String.Join(", ", 
-                              responsePackage.battleEvents.ConvertAll(i => i.type + "(" + i.modifier + ")").ToArray()));
-                
-                index++;
-                _indexTracker.SetIndex(battleEventToRespondTo, index);
-
-                if (responsePackage.IsEmpty) continue;
-
-                return responsePackage;
+                _enumerators.Add(previousBattleEvent, GetNextPackage(previousBattleEvent));
             }
-
-            return BattleEventPackage.Empty;
+            
+            var enumerator = _enumerators[previousBattleEvent];
+            return enumerator.MoveNext() ? enumerator.Current : BattleEventPackage.Empty;
         }
-        
+
+        private IEnumerator<BattleEventPackage> GetNextPackage(BattleEvent previousBattleEvent)
+        {
+            foreach (var (battleEventResponder, responseTriggers) in _responderAndTriggersDict)
+            {
+                // Find all the matching triggers for the event type
+                var matchingResponseTriggers = responseTriggers
+                    .Where(r => r.battleEventType == previousBattleEvent.type).ToArray();
+
+                foreach (var responseTrigger in matchingResponseTriggers)
+                {
+                    // Continue if it doesn't meet the condition
+                    if (!responseTrigger.condition.Invoke(previousBattleEvent)) continue;
+
+                    var responsePackage = responseTrigger.response.Invoke(previousBattleEvent);
+
+                    if (responsePackage.IsEmpty) continue;
+                    
+                    
+                    // The next few lines are just for the debug.log - all that's really happening here is the
+                    // returning of the responsePackage
+                    var responder = battleEventResponder.GetType().Name;
+                    var eventsString = string.Join(", ",
+                        responsePackage.battleEvents.ConvertAll(b => $"{b.type} ({b.modifier})").ToArray());
+                    Debug.Log($"{responder.GetType().Name} responding to: {previousBattleEvent.type} with {eventsString}");
+
+                    yield return responsePackage;
+                }
+            }
+        }
+
         public DamageModificationPackage GetDamageModifiers(EnemyDamage damage)
         {
+            var battleEventResponders = _responderAndTriggersDict.Select(kvp => kvp.Key).ToArray();
+            
             var flatModifiers = 
-                _battleEventResponders.OfType<IDamageFlatModifier>();
+                battleEventResponders.OfType<IDamageFlatModifier>();
             
             var flatModifications = 
                 (from modifier in flatModifiers 
@@ -71,7 +90,7 @@ namespace BattleScreen
                     select modifier.GetDamageAddition(damage)).ToList();
             
             var multiModifiers = 
-                _battleEventResponders.OfType<IDamageMultiplierModifier>();
+                battleEventResponders.OfType<IDamageMultiplierModifier>();
             
             var multiModifications = 
                 (from modifier in multiModifiers

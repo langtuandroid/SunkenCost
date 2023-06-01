@@ -15,5 +15,10 @@ namespace Etchings
         {
             return DamageHandler.DamageEnemy(Damage, enemyResponderID, DamageSource.Etching);
         }
+
+        protected virtual BattleEvent DamageEnemy(Enemy enemy)
+        {
+            return DamageEnemy(enemy.ResponderID);
+        }
     }
 }

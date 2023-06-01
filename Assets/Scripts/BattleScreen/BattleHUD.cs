@@ -101,7 +101,7 @@ public class BattleHUD : MonoBehaviour, IBattleEventUpdatedUI
             case BattleEventType.StartedEnemyTurn:
                 StartEnemyTurn();
                 break;
-            case BattleEventType.StartNextPlayerTurn:
+            case BattleEventType.StartedNextPlayerTurn:
                 EndEnemyTurn();
                 break;
             case BattleEventType.PlankCreated: case BattleEventType.PlankDestroyed:

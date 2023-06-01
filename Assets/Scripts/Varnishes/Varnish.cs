@@ -1,7 +1,9 @@
-﻿namespace Varnishes
+﻿using System.Collections.Generic;
+using BattleScreen;
+
+namespace Varnishes
 {
-    public interface Varnish
+    public interface IVarnish
     {
-        
     }
 }

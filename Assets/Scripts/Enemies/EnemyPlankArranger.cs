@@ -43,7 +43,7 @@ namespace Enemies
                 StartCoroutine(MoveTransform(Board.Current.BoatTransform, enemy, aimPosition));
             }
             */
-            else if (battleEvent.type == BattleEventType.EnemyMove ||
+            else if (battleEvent.type == BattleEventType.EnemyMoved ||
                battleEvent.type == BattleEventType.EnemySpawned)
             {
                 ArrangeAllEnemies();

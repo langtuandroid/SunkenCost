@@ -55,7 +55,7 @@ public class InGameSfxManager : MonoBehaviour
                 case BattleEventType.EtchingStunned:
                     Slimed();
                     break;
-                case BattleEventType.EnemyMove:
+                case BattleEventType.EnemyMoved:
                     EnemyMoved();
                     break;
                 case BattleEventType.EnemyPoisoned:
@@ -76,7 +76,7 @@ public class InGameSfxManager : MonoBehaviour
                 case BattleEventType.PlankCreated:
                     CreatedPlank();
                     break;
-                case BattleEventType.StartNextPlayerTurn:
+                case BattleEventType.StartedNextPlayerTurn:
                     StartPlayerTurn();
                     break;
                 case BattleEventType.StartedEnemyTurn:

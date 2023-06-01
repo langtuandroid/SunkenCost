@@ -16,24 +16,24 @@ namespace BattleScreen.BattleEvents
             AddResponder(_enemySequencer);
         }
 
-        public override BattleEventPackage GetNextResponse(BattleEvent battleEventToRespondTo)
+        public override BattleEventPackage GetNextResponse(BattleEvent previousBattleEvent)
         {
-            switch (battleEventToRespondTo.type)
+            switch (previousBattleEvent.type)
             {
                 // Register / Deregister enemies
                 case BattleEventType.EnemySpawned:
-                    var spawnedEnemy = BattleEventResponder.AllBattleEventRespondersByID[battleEventToRespondTo
+                    var spawnedEnemy = BattleEventResponder.AllBattleEventRespondersByID[previousBattleEvent
                         .primaryResponderID];
                     if (!HasResponder(spawnedEnemy)) AddResponder(spawnedEnemy);
                     break;
                 case BattleEventType.EnemyKilled:
-                    var killedEnemy = BattleEventResponder.AllBattleEventRespondersByID[battleEventToRespondTo
+                    var killedEnemy = BattleEventResponder.AllBattleEventRespondersByID[previousBattleEvent
                         .primaryResponderID];
                     if (HasResponder(killedEnemy)) RemoveResponder(killedEnemy);
                     break;
             }
             
-            return base.GetNextResponse(battleEventToRespondTo);
+            return base.GetNextResponse(previousBattleEvent);
         }
     }
 }

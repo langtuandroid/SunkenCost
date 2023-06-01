@@ -10,16 +10,16 @@ namespace Etchings
 {
     public class RangedEtching : DamageEtching
     {
-        protected override bool TestCharMovementActivatedEffect(Enemy enemy)
+        protected override bool GetIfRespondingToEnemyMovement(Enemy enemy)
         {
             if (enemy.PlankNum < 0 || enemy.PlankNum > Board.Current.PlankCount) return false;
             return Math.Abs(enemy.PlankNum - PlankNum) >= MinRange &&
                    Math.Abs(enemy.PlankNum - PlankNum) <= MaxRange;
         }
 
-        protected override DesignResponse GetDesignResponsesToEvent(BattleEvent battleEvent)
+        protected override DesignResponse GetResponseToMovement(Enemy enemy)
         {
-            return new DesignResponse(battleEvent.Enemy.PlankNum, DamageEnemy(battleEvent.primaryResponderID));
+            return new DesignResponse(enemy.PlankNum, DamageEnemy(enemy));
         }
     }
 }

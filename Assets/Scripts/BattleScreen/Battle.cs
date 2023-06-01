@@ -118,7 +118,7 @@ namespace BattleScreen
             if (Turn <= RunProgress.Current.PlayerStats.NumberOfTurns)
             {
                 Debug.Log("------ PLAYERS TURN! ------");
-                yield return StartCoroutine(StartChainOfEvents(new BattleEvent(BattleEventType.StartNextPlayerTurn)));
+                yield return StartCoroutine(StartChainOfEvents(new BattleEvent(BattleEventType.StartedNextPlayerTurn)));
                 BattleState = BattleState.PlayerActionPeriod;
             }
             else
@@ -244,7 +244,7 @@ namespace BattleScreen
             
             // Only wait if no etching, enemy or item have done anything since the last move - this stops
             // the enemy from jumping straight to the next plank
-            if (previousBattleEvent.type == BattleEventType.EnemyMove)
+            if (previousBattleEvent.type == BattleEventType.EnemyMoved)
             {
                 yield return new WaitForSecondsRealtime(ActionExecutionSpeed);
             }
@@ -274,7 +274,7 @@ namespace BattleScreen
                 case BattleEventType.EnemyBlocked:
                 case BattleEventType.ItemActivated when battleEvent.showResponse:
                     return 0.5f;
-                case BattleEventType.EnemyMove:
+                case BattleEventType.EnemyMoved:
                     return 0.3f;
             }
 
@@ -309,7 +309,7 @@ namespace BattleScreen
         {
             return battleEvents.Any(b => 
                 b.type == BattleEventType.StartedBattle ||
-                b.type == BattleEventType.StartNextPlayerTurn ||
+                b.type == BattleEventType.StartedNextPlayerTurn ||
                 b.type == BattleEventType.EtchingsOrderChanged ||
                 b.type == BattleEventType.PlankCreated ||
                 b.type == BattleEventType.PlankMoved ||

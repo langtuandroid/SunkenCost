@@ -8,14 +8,14 @@ namespace Etchings
 {
     public class MeleeEtching : DamageEtching
     {
-        protected override bool TestCharMovementActivatedEffect(Enemy enemy)
+        protected override bool GetIfRespondingToEnemyMovement(Enemy enemy)
         {
             return enemy.PlankNum == PlankNum;
         }
-        
-        protected override DesignResponse GetDesignResponsesToEvent(BattleEvent battleEvent)
+
+        protected override DesignResponse GetResponseToMovement(Enemy enemy)
         {
-            return new DesignResponse(PlankNum, DamageEnemy(battleEvent.primaryResponderID));
+            return new DesignResponse(PlankNum, DamageEnemy(enemy));
         }
     }
 }

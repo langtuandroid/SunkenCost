@@ -9,7 +9,7 @@ namespace Etchings
 {
     public class CauterizeEtching : LandedOnPlankActivatedEtching
     {
-        protected override bool TestCharMovementActivatedEffect(Enemy enemy)
+        protected override bool GetIfRespondingToEnemyMovement(Enemy enemy)
         {
             return enemy.PlankNum == PlankNum && enemy.stats.Poison > 0;
         }

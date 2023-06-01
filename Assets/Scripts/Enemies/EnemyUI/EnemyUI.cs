@@ -64,7 +64,7 @@ namespace Enemies.EnemyUI
         public void RespondToBattleEvent(BattleEvent battleEvent)
         {
             if (battleEvent.type == BattleEventType.EnemySpawned || 
-                (battleEvent.type != BattleEventType.StartNextPlayerTurn
+                (battleEvent.type != BattleEventType.StartedNextPlayerTurn
                  && battleEvent.primaryResponderID != _enemy.ResponderID
                  && battleEvent.secondaryResponderID != _enemy.ResponderID)) return;
 

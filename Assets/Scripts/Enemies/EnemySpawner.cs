@@ -32,6 +32,14 @@ public class EnemySpawner : BattleEventResponder
         base.Awake();
     }
 
+    public override List<BattleEventResponseTrigger> GetBattleEventResponseTriggers()
+    {
+        return new List<BattleEventResponseTrigger>
+        {
+            PackageResponseTrigger(BattleEventType.StartedNextPlayerTurn, e => SpawnNewTurn())
+        };
+    }
+
     private void Start()
     {
         _scenario = ScenarioLoader.GetScenario(RunProgress.Current.BattleNumber);
@@ -105,11 +113,5 @@ public class EnemySpawner : BattleEventResponder
         var newEnemy = newEnemyObject.AddComponent(enemyClass).GetComponent<Enemy>();
         EnemySequencer.Current.AddEnemy(newEnemy);
         return newEnemy;
-    }
-
-    public override BattleEventPackage GetResponseToBattleEvent(BattleEvent previousBattleEvent)
-    {
-        return previousBattleEvent.type == BattleEventType.StartNextPlayerTurn 
-            ? SpawnNewTurn() : BattleEventPackage.Empty;
     }
 }

@@ -42,20 +42,32 @@ namespace Enemies
             Asset = EnemyLoader.EnemyAssets.First(a => a.Class == GetType());
             stats = new EnemyStats(ResponderID, Asset.Modifiers);
             Name = Asset.Name;
-            SetInitialHealth(Asset.MaxHealth);
+            MaxHealthStat = new Stat(Asset.MaxHealth);
+            Health = MaxHealthStat.Value;
         }
 
         public void Initialise(int plankNum)
         {
             Mover.Init(Asset.Moves, plankNum);
         }
-
-        protected virtual void SetInitialHealth(int health)
-        {
-            MaxHealthStat = new Stat(health);
-            Health = MaxHealthStat.Value;
-        }
         
+        public override List<BattleEventResponseTrigger> GetBattleEventResponseTriggers()
+        {
+            var responseTriggers = new List<BattleEventResponseTrigger>
+            {
+                PackageResponseTrigger(BattleEventType.EnemyAttacked, DamageOrDie, GetIfThisIsPrimaryResponder),
+                ActionTrigger(BattleEventType.EndedEnemyTurn, Mover.EndTurn),
+                ActionTrigger(BattleEventType.PlankMoved, RefreshPlankNum),
+                ActionTrigger(BattleEventType.EtchingsOrderChanged, RefreshPlankNum),
+                ActionTrigger(BattleEventType.PlankCreated, RefreshPlankNum),
+                ActionTrigger(BattleEventType.PlankDestroyed, RefreshPlankNum),
+            };
+            
+            responseTriggers.AddRange(GetEnemyBattleEventResponseTriggers());
+
+            return responseTriggers;
+        }
+
         public virtual int GetBoatDamage()
         {
             return 1;
@@ -116,62 +128,10 @@ namespace Enemies
         }
 
         public abstract string GetDescription();
-        
-        public void RefreshPlankNum()
+
+        protected virtual List<BattleEventResponseTrigger> GetEnemyBattleEventResponseTriggers()
         {
-            if (Mover.PlankNum == -1) return;
-            Mover.SetPlankNum(transform.parent.GetSiblingIndex());
-        }
-
-        public override BattleEventPackage GetResponseToBattleEvent(BattleEvent previousBattleEvent)
-        {
-            switch (previousBattleEvent.type)
-            {
-                case BattleEventType.EnemySpawned when previousBattleEvent.primaryResponderID == ResponderID
-                                                       && this is ISpawnAbilityHolder abilityHolder:
-                {
-                    return abilityHolder.GetSpawnAbility();
-                }
-
-                // Damaged
-                case BattleEventType.EnemyAttacked when previousBattleEvent.primaryResponderID == ResponderID:
-                {
-                    ChangeHealth(-previousBattleEvent.modifier);
-                
-                    // Killed 
-                    if (Health <= 0)
-                    {
-                        return Die(previousBattleEvent.source);
-                    }
-
-                    var damagedEvent = CreateEvent
-                        (BattleEventType.EnemyDamaged, previousBattleEvent.modifier, previousBattleEvent.source);
-                    return new BattleEventPackage(damagedEvent);
-                }
-                
-                case BattleEventType.EndedEnemyTurn:
-                    Mover.EndTurn();
-                    break;
-            }
-
-            return BattleEventPackage.Empty;
-        }
-        
-        public BattleEventPackage Die(DamageSource source)
-        {
-            IsDestroyed = true;
-            
-            var eventList = new List<BattleEvent>();
-            
-            eventList.Add(CreateEvent(BattleEventType.EnemyKilled, damageSource: source));
-            eventList.Add(CreateEvent(BattleEventType.TryGainedGold, Gold, source));
-            return new BattleEventPackage(eventList);
-        }
-
-        protected BattleEvent Speak(string text)
-        {
-            Speech = text;
-            return CreateEvent(BattleEventType.EnemySpeaking);
+            return new List<BattleEventResponseTrigger>();
         }
 
         protected BattleEvent CreateEvent(BattleEventType type, int modifier = 0,
@@ -180,10 +140,48 @@ namespace Enemies
             return new BattleEvent(type) 
                 {primaryResponderID = ResponderID, modifier = modifier, source = damageSource};
         }
-
+        
+        protected BattleEvent Speak(string text)
+        {
+            Speech = text;
+            return CreateEvent(BattleEventType.EnemySpeaking);
+        }
+        
+        private void RefreshPlankNum()
+        {
+            if (Mover.PlankNum == -1) return;
+            Mover.SetPlankNum(transform.parent.GetSiblingIndex());
+        }
+        
         private void ChangeHealth(int amount)
         {
             Health += amount;
+        }
+        
+        private BattleEventPackage DamageOrDie(BattleEvent previousBattleEvent)
+        {
+            ChangeHealth(-previousBattleEvent.modifier);
+                
+            // Killed 
+            if (Health <= 0)
+            {
+                return Die(previousBattleEvent.source);
+            }
+
+            var damagedEvent = CreateEvent
+                (BattleEventType.EnemyDamaged, previousBattleEvent.modifier, previousBattleEvent.source);
+            return new BattleEventPackage(damagedEvent);
+        }
+
+        private BattleEventPackage Die(DamageSource source)
+        {
+            IsDestroyed = true;
+            
+            var eventList = new List<BattleEvent>();
+            
+            eventList.Add(CreateEvent(BattleEventType.EnemyKilled, damageSource: source));
+            eventList.Add(CreateEvent(BattleEventType.TryGainedGold, Gold, source));
+            return new BattleEventPackage(eventList);
         }
     }
 }

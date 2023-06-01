@@ -23,7 +23,7 @@ namespace Etchings
             
             switch (battleEvent.type)
             {
-                case BattleEventType.StartNextPlayerTurn:
+                case BattleEventType.StartedNextPlayerTurn:
                 case BattleEventType.EndedBattle:
                 case BattleEventType.PlankDestroyed:
                 case BattleEventType.PlankMoved:
@@ -36,15 +36,45 @@ namespace Etchings
                     return false;
             }
         }
-
-        protected override DesignResponse GetDesignResponsesToEvent(BattleEvent battleEvent)
+        
+        protected override List<DesignResponseTrigger> GetDesignResponseTriggers()
         {
+            return new List<DesignResponseTrigger>()
+            {
+                new DesignResponseTrigger(BattleEventType.EtchingStunned, 
+                    b => ClearModsWithoutBoosting(), b => _modsActive && GetIfThisIsPrimaryResponder(b)),
+                new DesignResponseTrigger(BattleEventType.StartedNextPlayerTurn, b => RefreshBoosts()),
+                new DesignResponseTrigger(BattleEventType.EndedBattle, b => RefreshBoosts()),
+                new DesignResponseTrigger(BattleEventType.PlankDestroyed, b => RefreshBoosts()),
+                new DesignResponseTrigger(BattleEventType.PlankMoved, b => RefreshBoosts()),
+                new DesignResponseTrigger(BattleEventType.EtchingsOrderChanged, b => RefreshBoosts()),
+                new DesignResponseTrigger(BattleEventType.PlankCreated, b => RefreshBoosts()),
+                new DesignResponseTrigger(BattleEventType.DesignModified, b => RefreshBoosts(), GetIfThisIsPrimaryResponder),
+            };
+        }
+
+        protected override List<ActionTrigger> GetDesignActionTriggers()
+        {
+            return new List<ActionTrigger>
+            {
+                ActionTrigger(BattleEventType.EndedBattle, () => ClearModsWithoutBoosting())
+            };
+        }
+
+        private DesignResponse ClearModsWithoutBoosting()
+        {
+            return new DesignResponse(-1, ClearMods(), false);
+        }
+        
+        private DesignResponse RefreshBoosts()
+        {
+            if (stunned)
+                return ClearModsWithoutBoosting();
+            
             var responses = new List<BattleEvent>();
 
             if (_modsActive) 
                 responses.AddRange(ClearMods());
-            if (stunned || battleEvent.type == BattleEventType.EndedBattle) 
-                return new DesignResponse(-1, responses, false);
 
             // Etching to the left
             if (PlankNum > 0)
@@ -84,9 +114,8 @@ namespace Etchings
             }
 
             return new DesignResponse(-1, responses, false);
-
         }
-        
+
         private List<BattleEvent> ClearMods()
         {
             var notDestroyedEtchings =

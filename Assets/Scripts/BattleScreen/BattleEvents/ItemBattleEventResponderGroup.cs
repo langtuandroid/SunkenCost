@@ -14,9 +14,9 @@ namespace BattleScreen
             }
         }
 
-        public override BattleEventPackage GetNextResponse(BattleEvent battleEventToRespondTo)
+        public override BattleEventPackage GetNextResponse(BattleEvent previousBattleEvent)
         {
-            return base.GetNextResponse(battleEventToRespondTo);
+            return base.GetNextResponse(previousBattleEvent);
         }
     }
 }

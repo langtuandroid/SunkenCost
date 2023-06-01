@@ -30,7 +30,7 @@ namespace Etchings
             return new DesignResponse(PlankNum, responses);
         }
 
-        protected override bool TestCharMovementActivatedEffect(Enemy enemy)
+        protected override bool GetIfRespondingToEnemyMovement(Enemy enemy)
         {
             return enemy.PlankNum == PlankNum;
         }

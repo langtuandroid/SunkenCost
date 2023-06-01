@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections;
+using System.Collections.Generic;
 using BattleScreen;
 using BattleScreen.BattleEvents;
 using Damage;
@@ -36,6 +37,23 @@ public class Player : BattleEventResponder
         base.Awake();
     }
 
+    public override List<BattleEventResponseTrigger> GetBattleEventResponseTriggers()
+    {
+        return new List<BattleEventResponseTrigger>
+        {
+            EventResponseTrigger(BattleEventType.PlayerLostLife, 
+                e => new BattleEvent(BattleEventType.PlayerDied),
+                e => Health <= 0),
+            ActionTrigger(BattleEventType.PlayerLostLife, ResetMoves),
+            PackageResponseTrigger(BattleEventType.PlayerMovedPlank, 
+                e => PlayerMovedPlank()),
+            EventResponseTrigger(BattleEventType.EnemyAttackedBoat, 
+                e => EnemyReachedEnd(-e.modifier)),
+            EventResponseTrigger(BattleEventType.PlayerLifeModified, ModifyLife),
+            EventResponseTrigger(BattleEventType.GainedGold, TryGainGold),
+        };
+    }
+
     private void ResetMoves()
     {
         MovesUsedThisTurn = 0;
@@ -65,6 +83,11 @@ public class Player : BattleEventResponder
         
         return BattleEvent.None;
     }
+
+    private BattleEventPackage PlayerMovedPlank()
+    {
+        return new BattleEventPackage(UsedMove(), new BattleEvent(BattleEventType.PlayerMovedPlank));
+    }
     
     private BattleEvent UsedMove()
     {
@@ -76,32 +99,5 @@ public class Player : BattleEventResponder
     {
         Gold += battleEvent.modifier;
         return new BattleEvent(BattleEventType.GainedGold);
-    }
-
-    public override BattleEventPackage GetResponseToBattleEvent(BattleEvent previousBattleEvent)
-    {
-        if (previousBattleEvent.type == BattleEventType.PlayerLostLife && Health <= 0)
-            return new BattleEventPackage(new BattleEvent(BattleEventType.PlayerDied));
-        
-        if (previousBattleEvent.type == BattleEventType.StartNextPlayerTurn)
-        {
-            ResetMoves();
-            return BattleEventPackage.Empty;
-        }
-        
-        var battleEvent = previousBattleEvent.type switch
-        {
-            BattleEventType.PlayerMovedPlank => UsedMove(),
-            BattleEventType.EnemyAttackedBoat => EnemyReachedEnd(-previousBattleEvent.modifier),
-            BattleEventType.PlayerLifeModified => ModifyLife(previousBattleEvent),
-            BattleEventType.TryGainedGold => TryGainGold(previousBattleEvent),
-            _ => BattleEvent.None
-        };
-        
-        if (battleEvent.type == BattleEventType.None) return BattleEventPackage.Empty;
-
-        return previousBattleEvent.type == BattleEventType.PlayerMovedPlank 
-            ? new BattleEventPackage(battleEvent, new BattleEvent(BattleEventType.PlankMoved))
-            : new BattleEventPackage(battleEvent);
     }
 }

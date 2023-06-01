@@ -36,7 +36,7 @@ namespace Designs
 
         public void RespondToBattleEvent(BattleEvent battleEvent)
         {
-            if (battleEvent.type == BattleEventType.DesignModified || battleEvent.type == BattleEventType.StartNextPlayerTurn)
+            if (battleEvent.type == BattleEventType.DesignModified || battleEvent.type == BattleEventType.StartedNextPlayerTurn)
             {
                 _designDisplay.UpdateDisplay();
             }
