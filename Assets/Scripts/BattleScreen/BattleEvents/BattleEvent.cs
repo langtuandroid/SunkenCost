@@ -66,7 +66,7 @@ namespace BattleScreen
         public int modifier = 0;
         public DamageSource source;
         public DamageModificationPackage damageModificationPackage;
-        public int primaryResponderID;
+        public int creatorID;
         public int secondaryResponderID;
 
         public BattleEvent(BattleEventType type, params int[] planksToColor)
@@ -76,6 +76,6 @@ namespace BattleScreen
         }
         
         public static BattleEvent None => new BattleEvent(BattleEventType.None);
-        public Enemy Enemy => BattleEventResponseSequencer.Current.GetEnemyByResponderID(primaryResponderID);
+        public Enemy Enemy => BattleEventResponseSequencer.Current.GetEnemyByResponderID(creatorID);
     }
 }

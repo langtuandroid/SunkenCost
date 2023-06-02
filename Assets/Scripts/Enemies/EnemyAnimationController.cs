@@ -33,7 +33,7 @@ public class EnemyAnimationController : MonoBehaviour, IBattleEventUpdatedUI
 
     public void RespondToBattleEvent(BattleEvent battleEvent)
     {
-        if (battleEvent.primaryResponderID != _responderID) return;
+        if (battleEvent.creatorID != _responderID) return;
 
         switch (battleEvent.type)
         {

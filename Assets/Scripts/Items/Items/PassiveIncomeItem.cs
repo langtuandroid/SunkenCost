@@ -14,12 +14,12 @@ namespace Items.Items
         {
             return new List<BattleEventResponseTrigger>
             {
-                EventResponseTrigger(BattleEventType.EnemyKilled, b =>
+                AddResponseTrigger(BattleEventType.EnemyKilled, b =>
                 {
                     _hasKilledEnemyThisBattle = true;
                     return BattleEvent.None;
                 }),
-                PackageResponseTrigger(BattleEventType.EndedBattle, b => GainGold(), 
+                AddResponseTrigger(BattleEventType.EndedBattle, b => GainGold(), 
                     b => !_hasKilledEnemyThisBattle)
             };
         }

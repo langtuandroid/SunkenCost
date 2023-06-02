@@ -4,13 +4,13 @@ using UnityEngine;
 
 namespace BattleScreen
 {
-    public class ItemBattleEventResponderGroup : BattleEventResponderGroup
+    public class ItemBattleEventHandlerGroup : BattleEventHandlerGroup
     {
         private void Start()
         {
             foreach (var item in RunProgress.Current.ItemInventory.AllItemsAsBattleEventResponders)
             {
-                AddResponder(item);
+                CreateHandler(item);
             }
         }
 

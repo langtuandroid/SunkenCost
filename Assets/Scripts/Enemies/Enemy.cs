@@ -7,7 +7,7 @@ using Damage;
 
 namespace Enemies
 {
-    public abstract class Enemy : BattleEventResponder
+    public abstract class Enemy : BattleEventHandler
     {
         public EnemyStats stats;
         
@@ -55,12 +55,12 @@ namespace Enemies
         {
             var responseTriggers = new List<BattleEventResponseTrigger>
             {
-                PackageResponseTrigger(BattleEventType.EnemyAttacked, DamageOrDie, GetIfThisIsPrimaryResponder),
-                ActionTrigger(BattleEventType.EndedEnemyTurn, Mover.EndTurn),
-                ActionTrigger(BattleEventType.PlankMoved, RefreshPlankNum),
-                ActionTrigger(BattleEventType.EtchingsOrderChanged, RefreshPlankNum),
-                ActionTrigger(BattleEventType.PlankCreated, RefreshPlankNum),
-                ActionTrigger(BattleEventType.PlankDestroyed, RefreshPlankNum),
+                AddResponseTrigger(BattleEventType.EnemyAttacked, DamageOrDie, GetIfThisWasCreatedByMe),
+                AddActionTrigger(BattleEventType.EndedEnemyTurn, Mover.EndTurn),
+                AddActionTrigger(BattleEventType.PlankMoved, RefreshPlankNum),
+                AddActionTrigger(BattleEventType.EtchingsOrderChanged, RefreshPlankNum),
+                AddActionTrigger(BattleEventType.PlankCreated, RefreshPlankNum),
+                AddActionTrigger(BattleEventType.PlankDestroyed, RefreshPlankNum),
             };
             
             responseTriggers.AddRange(GetEnemyBattleEventResponseTriggers());
@@ -138,7 +138,7 @@ namespace Enemies
             DamageSource damageSource = DamageSource.None)
         {
             return new BattleEvent(type) 
-                {primaryResponderID = ResponderID, modifier = modifier, source = damageSource};
+                {creatorID = ResponderID, modifier = modifier, source = damageSource};
         }
         
         protected BattleEvent Speak(string text)

@@ -65,7 +65,7 @@ namespace Enemies.EnemyUI
         {
             if (battleEvent.type == BattleEventType.EnemySpawned || 
                 (battleEvent.type != BattleEventType.StartedNextPlayerTurn
-                 && battleEvent.primaryResponderID != _enemy.ResponderID
+                 && battleEvent.creatorID != _enemy.ResponderID
                  && battleEvent.secondaryResponderID != _enemy.ResponderID)) return;
 
             if (_enemy.IsDestroyed) return;

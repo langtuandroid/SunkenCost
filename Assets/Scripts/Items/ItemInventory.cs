@@ -12,8 +12,8 @@ namespace Items
     {
         private List<EquippedItem> _items = new List<EquippedItem>();
 
-        public IEnumerable<BattleEventResponder> AllItemsAsBattleEventResponders =>
-            _items.Select(i => i as BattleEventResponder);
+        public IEnumerable<BattleEventHandler> AllItemsAsBattleEventResponders =>
+            _items.Select(i => i as BattleEventHandler);
 
         public IEnumerable<ItemInstance> ItemInstances => _items.Select(i => i.ItemInstance).ToArray();
         public IEnumerable<ItemAsset> ItemAssets => _items.Select(i => i.ItemInstance.itemAsset);

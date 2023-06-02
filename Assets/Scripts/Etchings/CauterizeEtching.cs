@@ -24,7 +24,7 @@ namespace Etchings
 
             var response = new BattleEvent(BattleEventType.EnemyMaxHealthModified)
             {
-                primaryResponderID = enemy.ResponderID
+                creatorID = enemy.ResponderID
             };
             
             return new DesignResponse(PlankNum, response);

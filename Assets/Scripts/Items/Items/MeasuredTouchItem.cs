@@ -22,7 +22,7 @@ namespace Items.Items
         {
             return new List<BattleEventResponseTrigger>
             {
-                PackageResponseTrigger(BattleEventType.PlayerMovedPlank, b => new BattleEventPackage(BattleEvent.None))
+                AddResponseTrigger(BattleEventType.PlayerMovedPlank, b => new BattleEventPackage(BattleEvent.None))
             };
         }
     }

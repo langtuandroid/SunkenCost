@@ -5,12 +5,12 @@ using UnityEngine;
 
 namespace BattleScreen.BattleEvents
 {
-    public class EtchingBattleEventResponderGroup : BattleEventResponderGroup
+    public class EtchingBattleEventHandlerGroup : BattleEventHandlerGroup
     {
         private void RefreshEtchingResponderOrder()
         {
-            var etchings = Board.Current.PlanksInOrder.Select(p => p.Etching as BattleEventResponder).ToList();
-            RefreshResponders(etchings);
+            var etchings = Board.Current.PlanksInOrder.Select(p => p.Etching as BattleEventHandler).ToList();
+            RefreshHandlers(etchings);
         }
 
         public override void RefreshTransforms()

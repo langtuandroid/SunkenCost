@@ -14,7 +14,7 @@ namespace Items.Items
         {
             return new List<BattleEventResponseTrigger>
             {
-                PackageResponseTrigger(BattleEventType.GainedGold, b => DamageRandomEnemy(), 
+                AddResponseTrigger(BattleEventType.GainedGold, b => DamageRandomEnemy(), 
                     b => EnemySequencer.Current.NumberOfEnemies > 0)
             };
         }

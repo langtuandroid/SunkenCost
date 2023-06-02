@@ -22,7 +22,7 @@ namespace Etchings
             enemy.Mover.Reverse();
             enemy.Mover.AddMovement(design.GetStat(StatType.MovementBoost));
             var response = new BattleEvent(BattleEventType.EnemyMovementModified) 
-                {source = DamageSource.Etching, primaryResponderID = enemy.ResponderID};
+                {source = DamageSource.Etching, creatorID = enemy.ResponderID};
             
             return new DesignResponse(PlankNum, response);
         }

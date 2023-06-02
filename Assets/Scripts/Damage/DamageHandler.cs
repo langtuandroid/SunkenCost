@@ -69,7 +69,7 @@ namespace Damage
             var damageEvent = new BattleEvent(BattleEventType.EnemyAttacked)
             {
                 modifier = multiTotal,
-                primaryResponderID = enemyResponderID,
+                creatorID = enemyResponderID,
                 source = source,
                 damageModificationPackage = damageModifications
             };

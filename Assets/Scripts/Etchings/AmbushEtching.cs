@@ -35,10 +35,10 @@ namespace Etchings
         {
             return new List<ActionTrigger>
             {
-                ActionTrigger(BattleEventType.StartedNextPlayerTurn, () => _hadEnemyOnPlankThisTurn = false),
-                ActionTrigger(BattleEventType.EnemyMoved, () => _hadEnemyOnPlankThisTurn = true, 
+                AddActionTrigger(BattleEventType.StartedNextPlayerTurn, () => _hadEnemyOnPlankThisTurn = false),
+                AddActionTrigger(BattleEventType.EnemyMoved, () => _hadEnemyOnPlankThisTurn = true, 
                     b => b.Enemy.PlankNum == PlankNum),
-                ActionTrigger(BattleEventType.EndedBattle, RemoveAllStatMods)
+                AddActionTrigger(BattleEventType.EndedBattle, RemoveAllStatMods)
             };
         }
 
@@ -48,7 +48,7 @@ namespace Etchings
             var newStatMod = new StatModifier(design.GetStat(StatType.StatFlatModifier), StatModType.Flat);
             _statModifiers.Push(newStatMod); 
             design.AddStatModifier(StatType.Damage, newStatMod);
-            var response = new BattleEvent(BattleEventType.DesignModified) {primaryResponderID = ResponderID};
+            var response = new BattleEvent(BattleEventType.DesignModified) {creatorID = ResponderID};
             return new DesignResponse(-1, response);
         }
 

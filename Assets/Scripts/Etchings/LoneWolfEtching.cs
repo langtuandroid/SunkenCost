@@ -30,7 +30,7 @@ namespace Etchings
         {
             return new List<ActionTrigger>
             {
-                ActionTrigger(BattleEventType.EndedBattle, RemoveMod)
+                AddActionTrigger(BattleEventType.EndedBattle, RemoveMod)
             };
         }
         
@@ -43,7 +43,7 @@ namespace Etchings
 
             var designModificationEvent = new BattleEvent(BattleEventType.DesignModified)
             {
-                primaryResponderID = ResponderID, showResponse = false
+                creatorID = ResponderID, showResponse = false
             };
             
             return new DesignResponse(-1, designModificationEvent, showResponse: false);

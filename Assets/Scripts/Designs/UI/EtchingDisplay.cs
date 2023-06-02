@@ -40,7 +40,7 @@ namespace Designs
             {
                 _designDisplay.UpdateDisplay();
             }
-            else if ((battleEvent.type == BattleEventType.EtchingActivated) && battleEvent.primaryResponderID == _etching.ResponderID)
+            else if ((battleEvent.type == BattleEventType.EtchingActivated) && battleEvent.creatorID == _etching.ResponderID)
             {
                 if (battleEvent.showResponse)
                     StartCoroutine(ColorForActivate());

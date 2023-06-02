@@ -26,7 +26,7 @@ public class EnemyStats
     public BattleEvent AddPoison(int amount)
     {
         _poisonStat.AddModifier(new StatModifier(amount, StatModType.Flat));
-        return new BattleEvent(BattleEventType.EnemyPoisoned) {primaryResponderID = _enemyResponderID, modifier = amount};
+        return new BattleEvent(BattleEventType.EnemyPoisoned) {creatorID = _enemyResponderID, modifier = amount};
     }
 
     /*

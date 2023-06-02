@@ -15,12 +15,12 @@ namespace BattleScreen.BattleEvents
         
         private EnemySequencer _enemySequencer;
         
-        [SerializeField] private BattleEventResponderGroup _itemManager;
-        [SerializeField] private BattleEventResponderGroup _enemiesManager;
-        [SerializeField] private BattleEventResponderGroup _etchingManager;
-        [SerializeField] private BattleEventResponderGroup _playerManager;
+        [SerializeField] private BattleEventHandlerGroup _itemManager;
+        [SerializeField] private BattleEventHandlerGroup _enemiesManager;
+        [SerializeField] private BattleEventHandlerGroup _etchingManager;
+        [SerializeField] private BattleEventHandlerGroup _playerManager;
         
-        private BattleEventResponderGroup[] _responderGroupOrder;
+        private BattleEventHandlerGroup[] _responderGroupOrder;
         
         private readonly BattleEventResponseIterationTracker _battleEventResponseIterationTracker = new BattleEventResponseIterationTracker();
 
@@ -70,7 +70,7 @@ namespace BattleScreen.BattleEvents
                 var enemy = _enemySequencer.SelectNextEnemy();
                 _currentEnemy = new CurrentEnemy(enemy);
                 return new BattleEventPackage(new BattleEvent(BattleEventType.StartedIndividualEnemyTurn) 
-                    {primaryResponderID = enemy.ResponderID});
+                    {creatorID = enemy.ResponderID});
             }
             
             var enemyResponse = _currentEnemy.GetNextAction();
@@ -99,7 +99,7 @@ namespace BattleScreen.BattleEvents
 
         public Enemy GetEnemyByResponderID(int id)
         {
-            var responder = BattleEventResponder.AllBattleEventRespondersByID[id];
+            var responder = BattleEventHandler.AllBattleEventRespondersByID[id];
             if (responder is Enemy enemy)
             {
                 return enemy;
@@ -110,7 +110,7 @@ namespace BattleScreen.BattleEvents
         
         public Etching GetEtchingByResponderID(int id)
         {
-            var responder = BattleEventResponder.AllBattleEventRespondersByID[id];
+            var responder = BattleEventHandler.AllBattleEventRespondersByID[id];
             if (responder is Etching etching)
             {
                 return etching;

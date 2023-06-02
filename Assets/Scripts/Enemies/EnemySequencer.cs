@@ -7,7 +7,7 @@ using UnityEngine;
 
 namespace Enemies
 {
-    public class EnemySequencer : BattleEventResponder
+    public class EnemySequencer : BattleEventHandler
     {
         public static EnemySequencer Current;
         
@@ -34,8 +34,8 @@ namespace Enemies
         {
             return new List<BattleEventResponseTrigger>
             {
-                ActionTriggerWithArgument(BattleEventType.EnemyKilled,e => KillEnemy(e.Enemy)),
-                ActionTrigger(BattleEventType.StartedEnemyTurn, SetNextEnemyTurnSequence),
+                AddActionTrigger(BattleEventType.EnemyKilled,e => KillEnemy(e.Enemy)),
+                AddActionTrigger(BattleEventType.StartedEnemyTurn, SetNextEnemyTurnSequence),
             };
         }
 

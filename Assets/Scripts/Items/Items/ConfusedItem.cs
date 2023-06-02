@@ -13,8 +13,8 @@ namespace Items.Items
         {
             return new List<BattleEventResponseTrigger>
             {
-                PackageResponseTrigger(BattleEventType.StartedBattle, b=> RandomisePlanks()),
-                PackageResponseTrigger(BattleEventType.EndedEnemyTurn, b=> RandomisePlanks()),
+                AddResponseTrigger(BattleEventType.StartedBattle, b=> RandomisePlanks()),
+                AddResponseTrigger(BattleEventType.EndedEnemyTurn, b=> RandomisePlanks()),
             };
         }
 

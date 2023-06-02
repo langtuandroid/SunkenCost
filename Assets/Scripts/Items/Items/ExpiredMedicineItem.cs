@@ -13,7 +13,7 @@ namespace Items.Items
         {
             return new List<BattleEventResponseTrigger>
             {
-                PackageResponseTrigger(BattleEventType.EnemyHealed, b => DamageEnemy(b.primaryResponderID), 
+                AddResponseTrigger(BattleEventType.EnemyHealed, b => DamageEnemy(b.primaryResponderID), 
                     b => !b.Enemy.IsDestroyed)
             };
         }

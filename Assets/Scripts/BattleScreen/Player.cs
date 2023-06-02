@@ -6,7 +6,7 @@ using BattleScreen.BattleEvents;
 using Damage;
 using Enemies;
 
-public class Player : BattleEventResponder
+public class Player : BattleEventHandler
 {
     public static Player Current;
 
@@ -41,16 +41,16 @@ public class Player : BattleEventResponder
     {
         return new List<BattleEventResponseTrigger>
         {
-            EventResponseTrigger(BattleEventType.PlayerLostLife, 
+            AddResponseTrigger(BattleEventType.PlayerLostLife, 
                 e => new BattleEvent(BattleEventType.PlayerDied),
                 e => Health <= 0),
-            ActionTrigger(BattleEventType.PlayerLostLife, ResetMoves),
-            PackageResponseTrigger(BattleEventType.PlayerMovedPlank, 
+            AddActionTrigger(BattleEventType.PlayerLostLife, ResetMoves),
+            AddResponseTrigger(BattleEventType.PlayerMovedPlank, 
                 e => PlayerMovedPlank()),
-            EventResponseTrigger(BattleEventType.EnemyAttackedBoat, 
+            AddResponseTrigger(BattleEventType.EnemyAttackedBoat, 
                 e => EnemyReachedEnd(-e.modifier)),
-            EventResponseTrigger(BattleEventType.PlayerLifeModified, ModifyLife),
-            EventResponseTrigger(BattleEventType.GainedGold, TryGainGold),
+            AddResponseTrigger(BattleEventType.PlayerLifeModified, ModifyLife),
+            AddResponseTrigger(BattleEventType.GainedGold, TryGainGold),
         };
     }
 

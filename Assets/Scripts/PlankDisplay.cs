@@ -79,21 +79,21 @@ public class PlankDisplay : MonoBehaviour, IBattleEventUpdatedUI
         {
             case BattleEventType.EtchingStunned:
             {
-                var etching = BattleEventResponseSequencer.Current.GetEtchingByResponderID(battleEvent.primaryResponderID);
+                var etching = BattleEventResponseSequencer.Current.GetEtchingByResponderID(battleEvent.creatorID);
                 if (etching.PlankNum == PlankNum)
                     SetAsStunned();
                 break;
             }
             case BattleEventType.EtchingUnStunned:
             {
-                var etching = BattleEventResponseSequencer.Current.GetEtchingByResponderID(battleEvent.primaryResponderID);
+                var etching = BattleEventResponseSequencer.Current.GetEtchingByResponderID(battleEvent.creatorID);
                 if (etching.PlankNum == PlankNum)
                     SetAsUnStunned();
                 break;
             }
             case BattleEventType.EtchingActivated when battleEvent.planksToColor.Contains(PlankNum):
             {
-                var etching = BattleEventResponseSequencer.Current.GetEtchingByResponderID(battleEvent.primaryResponderID);
+                var etching = BattleEventResponseSequencer.Current.GetEtchingByResponderID(battleEvent.creatorID);
                 StopAllCoroutines();
                 StartCoroutine(ColorForAttackOnThisPlank(etching.design.Color));
                 break;

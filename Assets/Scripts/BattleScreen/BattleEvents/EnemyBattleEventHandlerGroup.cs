@@ -4,7 +4,7 @@ using UnityEngine;
 
 namespace BattleScreen.BattleEvents
 {
-    public class EnemyBattleEventResponderGroup : BattleEventResponderGroup
+    public class EnemyBattleEventHandlerGroup : BattleEventHandlerGroup
     {
         [SerializeField] private EnemySpawner _enemySpawner;
         [SerializeField] private EnemySequencer _enemySequencer;
@@ -12,8 +12,8 @@ namespace BattleScreen.BattleEvents
 
         private void Awake()
         {
-            AddResponder(_enemySpawner);
-            AddResponder(_enemySequencer);
+            CreateHandler(_enemySpawner);
+            CreateHandler(_enemySequencer);
         }
 
         public override BattleEventPackage GetNextResponse(BattleEvent previousBattleEvent)
@@ -22,14 +22,14 @@ namespace BattleScreen.BattleEvents
             {
                 // Register / Deregister enemies
                 case BattleEventType.EnemySpawned:
-                    var spawnedEnemy = BattleEventResponder.AllBattleEventRespondersByID[previousBattleEvent
-                        .primaryResponderID];
-                    if (!HasResponder(spawnedEnemy)) AddResponder(spawnedEnemy);
+                    var spawnedEnemy = BattleEventHandler.AllBattleEventRespondersByID[previousBattleEvent
+                        .creatorID];
+                    if (!HasHandler(spawnedEnemy)) CreateHandler(spawnedEnemy);
                     break;
                 case BattleEventType.EnemyKilled:
-                    var killedEnemy = BattleEventResponder.AllBattleEventRespondersByID[previousBattleEvent
-                        .primaryResponderID];
-                    if (HasResponder(killedEnemy)) RemoveResponder(killedEnemy);
+                    var killedEnemy = BattleEventHandler.AllBattleEventRespondersByID[previousBattleEvent
+                        .creatorID];
+                    if (HasHandler(killedEnemy)) RemoveHandler(killedEnemy);
                     break;
             }
             

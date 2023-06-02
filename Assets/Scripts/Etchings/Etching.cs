@@ -23,7 +23,7 @@ namespace Etchings
 
         private readonly Dictionary<BattleEventType, Func<BattleEvent, DesignResponse>> _designResponses =
             new Dictionary<BattleEventType, Func<BattleEvent, DesignResponse>>();
-
+        
         protected int UsesPerTurn => design.GetStat(StatType.UsesPerTurn);
         public int PlankNum => _plank.PlankNum;
 
@@ -45,11 +45,11 @@ namespace Etchings
             plank.SetEtching(this);
         }
 
-        public override List<BattleEventResponseTrigger> GetBattleEventResponseTriggers()
+        public sealed override List<BattleEventResponseTrigger> GetResponseTriggers()
         {
             var responseTriggers = new List<BattleEventResponseTrigger>
             {
-                PackageResponseTrigger(BattleEventType.EndedEnemyTurn, e => ResetForStartOfTurn())
+                new BattleEventResponseTrigger(BattleEventType.EndedEnemyTurn, e => ResetForStartOfTurn())
             };
 
             var designResponseTriggers = GetDesignResponseTriggers();
@@ -57,7 +57,33 @@ namespace Etchings
             foreach (var designResponseTrigger in designResponseTriggers)
             {
                 _designResponses.Add(designResponseTrigger.battleEventType, designResponseTrigger.response);
-                responseTriggers.Add(PackageResponseTrigger(designResponseTrigger.battleEventType, 
+                responseTriggers.Add(new BattleEventResponseTrigger(designResponseTrigger.battleEventType, 
+                    GetDesignResponse, designResponseTrigger.condition));
+            }
+            
+            responseTriggers.AddRange(GetDesignActionTriggers());
+            
+            return responseTriggers;
+        }
+
+        public List<ActionTrigger> GetActionTriggers()
+        {
+            throw new NotImplementedException();
+        }
+
+        public sealed override List<BattleEventResponseTrigger> GetBattleEventResponseTriggers()
+        {
+            var responseTriggers = new List<BattleEventResponseTrigger>
+            {
+                new BattleEventResponseTrigger(BattleEventType.EndedEnemyTurn, e => ResetForStartOfTurn())
+            };
+
+            var designResponseTriggers = GetDesignResponseTriggers();
+
+            foreach (var designResponseTrigger in designResponseTriggers)
+            {
+                _designResponses.Add(designResponseTrigger.battleEventType, designResponseTrigger.response);
+                responseTriggers.Add(new BattleEventResponseTrigger(designResponseTrigger.battleEventType, 
                     GetDesignResponse, designResponseTrigger.condition));
             }
             
@@ -68,19 +94,19 @@ namespace Etchings
         public BattleEvent Stun(DamageSource source)
         {
             stunned = true;
-            return new BattleEvent(BattleEventType.EtchingStunned) {source =  source, primaryResponderID = ResponderID};
+            return new BattleEvent(BattleEventType.EtchingStunned) {source =  source, creatorID = GetInstanceID()};
         }
 
         public BattleEvent AddStatModifier(StatType statType, StatModifier mod)
         {
             design.AddStatModifier(statType, mod);
-            return new BattleEvent(BattleEventType.DesignModified) {primaryResponderID = ResponderID};
+            return new BattleEvent(BattleEventType.DesignModified) {creatorID = ResponderID};
         }
         
         public BattleEvent RemoveStatModifier(StatType statType, StatModifier mod)
         {
             design.RemoveStatModifier(statType, mod);
-            return new BattleEvent(BattleEventType.DesignModified) {primaryResponderID = ResponderID};
+            return new BattleEvent(BattleEventType.DesignModified) {creatorID = ResponderID};
         }
 
         protected abstract List<DesignResponseTrigger> GetDesignResponseTriggers();
@@ -99,7 +125,7 @@ namespace Etchings
             if (planksToColor.Contains(-1)) planksToColor = new int[0];
             var etchingActivatedEvent = new BattleEvent(BattleEventType.EtchingActivated, planksToColor)
             {
-                primaryResponderID = ResponderID,
+                creatorID = ResponderID,
                 showResponse = designResponse.showResponse
             };
 
@@ -124,7 +150,7 @@ namespace Etchings
         private BattleEvent UnStun()
         {
             stunned = false;
-            return new BattleEvent(BattleEventType.EtchingUnStunned) {primaryResponderID = ResponderID};
+            return new BattleEvent(BattleEventType.EtchingUnStunned) {creatorID = ResponderID};
         }
 
         protected readonly struct DesignResponseTrigger

@@ -88,7 +88,7 @@ namespace Enemies
 
         private BattleEvent CreateEvent(BattleEventType battleEventType, int modifier = 0)
         {
-            return new BattleEvent(battleEventType) { primaryResponderID = _responderID, modifier = modifier};
+            return new BattleEvent(battleEventType) { creatorID = _responderID, modifier = modifier};
         }
     }
 }

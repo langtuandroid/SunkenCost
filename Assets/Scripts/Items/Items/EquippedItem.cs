@@ -9,7 +9,7 @@ using UnityEngine;
 
 namespace Items.Items
 {
-    public abstract class EquippedItem : BattleEventResponder
+    public abstract class EquippedItem : BattleEventHandler
     {
         public ItemInstance ItemInstance { get; private set; }
         protected int Amount => ItemInstance.modifier;
@@ -23,7 +23,7 @@ namespace Items.Items
         public override List<BattleEventResponseTrigger> GetBattleEventResponseTriggers()
         {
             return GetItemResponseTriggers().Select(r => 
-                PackageResponseTrigger(r.battleEventType, b => ActivateItem(b, r.response), r.condition)).ToList();
+                AddResponseTrigger(r.battleEventType, b => ActivateItem(b, r.response), r.condition)).ToList();
         }
 
         private BattleEventPackage ActivateItem(BattleEvent battleEvent, Func<BattleEvent, BattleEventPackage> responseFunc)

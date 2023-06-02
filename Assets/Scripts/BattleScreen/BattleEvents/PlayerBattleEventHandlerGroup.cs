@@ -2,11 +2,11 @@
 
 namespace BattleScreen.BattleEvents
 {
-    public class PlayerBattleEventResponderGroup : BattleEventResponderGroup
+    public class PlayerBattleEventHandlerGroup : BattleEventHandlerGroup
     {
         private void Start()
         {
-            AddResponder(Player.Current);
+            CreateHandler(Player.Current);
         }
     }
 }

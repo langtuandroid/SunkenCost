@@ -22,7 +22,7 @@ namespace Enemies.Enemies
         {
             var newBullCarp = EnemySpawner.Instance.SpawnEnemyDuringTurn(EnemyType.BullCarp, PlankNum);
             var newEvent = CreateEvent(BattleEventType.EnemySpawned);
-            newEvent.primaryResponderID = newBullCarp.ResponderID;
+            newEvent.creatorID = newBullCarp.ResponderID;
             newEvent.secondaryResponderID = ResponderID;
             return new BattleEventPackage(newEvent);
         }

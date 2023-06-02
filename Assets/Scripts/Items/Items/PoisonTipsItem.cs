@@ -13,7 +13,7 @@ namespace Items.Items
         {
             return new List<BattleEventResponseTrigger>
             {
-                PackageResponseTrigger(BattleEventType.EnemyDamaged, 
+                AddResponseTrigger(BattleEventType.EnemyDamaged, 
                     b => new BattleEventPackage(b.Enemy.stats.AddPoison(Amount)),
                     b => b.source == DamageSource.Etching)
             };

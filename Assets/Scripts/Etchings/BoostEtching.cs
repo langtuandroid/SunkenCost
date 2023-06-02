@@ -39,7 +39,7 @@ namespace Etchings
         {
             return new List<ActionTrigger>
             {
-                ActionTrigger(BattleEventType.EndedBattle, () => ClearModsWithoutBoosting())
+                AddActionTrigger(BattleEventType.EndedBattle, () => ClearModsWithoutBoosting())
             };
         }
 

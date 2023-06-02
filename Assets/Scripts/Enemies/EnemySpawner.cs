@@ -9,7 +9,7 @@ using Enemies;
 using Enemies.Enemies;
 using UnityEngine;
 
-public class EnemySpawner : BattleEventResponder
+public class EnemySpawner : BattleEventHandler
 {
     public static EnemySpawner Instance;
 
@@ -18,7 +18,7 @@ public class EnemySpawner : BattleEventResponder
 
     private Scenario _scenario;
 
-    private EnemyBattleEventResponderGroup _enemyBattleEventResponderGroup;
+    private EnemyBattleEventHandlerGroup _enemyBattleEventHandlerGroup;
 
     protected override void Awake()
     {
@@ -36,7 +36,7 @@ public class EnemySpawner : BattleEventResponder
     {
         return new List<BattleEventResponseTrigger>
         {
-            PackageResponseTrigger(BattleEventType.StartedNextPlayerTurn, e => SpawnNewTurn())
+            AddResponseTrigger(BattleEventType.StartedNextPlayerTurn, e => SpawnNewTurn())
         };
     }
 
@@ -47,7 +47,7 @@ public class EnemySpawner : BattleEventResponder
 
     private void OnEnable()
     {
-        _enemyBattleEventResponderGroup = FindObjectOfType<EnemyBattleEventResponderGroup>();
+        _enemyBattleEventHandlerGroup = FindObjectOfType<EnemyBattleEventHandlerGroup>();
     }
 
     public Enemy SpawnEnemyDuringTurn(EnemyType enemyType, int plankNum)
@@ -78,7 +78,7 @@ public class EnemySpawner : BattleEventResponder
                                             + RunProgress.Current.PlayerStats.EnemyMovementModifier);
             battleEvents.Add(new BattleEvent(BattleEventType.EnemySpawned)
             {
-                primaryResponderID = enemy.ResponderID, 
+                creatorID = enemy.ResponderID, 
                 showResponse =  false
             });
         }

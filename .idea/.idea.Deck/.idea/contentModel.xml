@@ -617,17 +617,19 @@
             </e>
             <e p="BattleEvents" t="Include">
               <e p="BattleEvent.cs" t="Include" />
+              <e p="BattleEventHandler.cs" t="Include" />
+              <e p="BattleEventHandlerGroup.cs" t="Include" />
               <e p="BattleEventPackage.cs" t="Include" />
               <e p="BattleEventResponder.cs" t="Include" />
-              <e p="BattleEventResponderGroup.cs" t="Include" />
               <e p="BattleEventResponseIterationTracker.cs" t="Include" />
               <e p="BattleEventResponseSequencer.cs" t="Include" />
               <e p="BattleEventResponseTrigger.cs" t="Include" />
-              <e p="EnemyBattleEventResponderGroup.cs" t="Include" />
-              <e p="EtchingBattleEventResponderGroup.cs" t="Include" />
+              <e p="EnemyBattleEventHandlerGroup.cs" t="Include" />
+              <e p="EtchingBattleEventHandlerGroup.cs" t="Include" />
+              <e p="IBattleEventListener.cs" t="Include" />
               <e p="IBattleEventUpdatedUI.cs" t="Include" />
-              <e p="ItemBattleEventResponderGroup.cs" t="Include" />
-              <e p="PlayerBattleEventResponderGroup.cs" t="Include" />
+              <e p="ItemBattleEventHandlerGroup.cs" t="Include" />
+              <e p="PlayerBattleEventHandlerGroup.cs" t="Include" />
               <e p="UnexpectedBattleEventException.cs" t="Include" />
             </e>
             <e p="BattleHUD.cs" t="Include" />
