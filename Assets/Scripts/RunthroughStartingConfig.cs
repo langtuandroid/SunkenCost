@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using Designs;
 using Items;
+using Pickups.Varnishes;
 using UnityEngine;
 
 [CreateAssetMenu(fileName = "RunthroughStartingConfig", menuName = "RunthroughStartingConfig", order = 0)]
@@ -33,13 +34,21 @@ public class RunthroughStartingConfig : ScriptableObject
     {
         [SerializeField] private DesignAsset _designAsset;
         [SerializeField] private int _level;
-
+        [SerializeField] private List<VarnishType> _varnishes = new List<VarnishType>();
+        
         public Design Instantiate()
         {
             var matchingAsset = DesignLoader.AllDesignAssets.FirstOrDefault
                 (da => da.title == _designAsset.title);
 
-            return DesignFactory.InstantiateDesign(matchingAsset, _level);
+            var design = DesignFactory.InstantiateDesign(matchingAsset, _level);
+            
+            foreach (var varnishType in _varnishes)
+            {
+                design.AddVarnish(varnishType);
+            }
+
+            return design;
         }
     }
 }

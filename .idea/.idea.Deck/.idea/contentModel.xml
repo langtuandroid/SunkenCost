@@ -594,6 +594,7 @@
             <e p="Disturbances" t="Include" />
             <e p="Enemies" t="Include" />
             <e p="Items" t="Include" />
+            <e p="Varnishes" t="Include" />
           </e>
           <e p="Sprites" t="Include">
             <e p="Enemies" t="Include" />
@@ -745,6 +746,7 @@
             <e p="ItemLoader.cs" t="Include" />
             <e p="PersistantSingletonsContainer.cs" t="Include" />
             <e p="ScenarioLoader.cs" t="Include" />
+            <e p="VarnishLoader.cs" t="Include" />
           </e>
           <e p="Log.cs" t="Include" />
           <e p="MainManager.cs" t="Include" />

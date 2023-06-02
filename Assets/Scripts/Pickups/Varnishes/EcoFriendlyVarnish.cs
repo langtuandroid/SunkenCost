@@ -2,6 +2,7 @@
 using BattleScreen;
 using BattleScreen.BattleEvents;
 using Designs;
+using Pickups.Varnishes;
 
 namespace Varnishes
 {

@@ -3,6 +3,8 @@ using System.Collections.Generic;
 using BattleScreen.BattleBoard;
 using Designs;
 using Etchings;
+using Loaders;
+using Pickups.Varnishes;
 using UnityEngine;
 
 public class EtchingFactory : MonoBehaviour
@@ -34,6 +36,12 @@ public class EtchingFactory : MonoBehaviour
         var etching = newEtching.AddComponent(DesignLoader.DesignAssetToEtchingTypeDict[design.designAsset])
             .GetComponent<Etching>();
         etching.SetDesign(design);
+
+        foreach (var varnishType in design.Varnishes)
+        {
+            var varnish = newEtching.AddComponent(VarnishLoader.GetVarnishByTypeEnum(varnishType)).GetComponent<Varnish>();
+            varnish.Init(etching);
+        }
     }
 
     public void MoveEtching(Plank plankToMoveTo, Etching etching)

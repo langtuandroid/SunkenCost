@@ -8,6 +8,7 @@ using BattleScreen.BattleEvents;
 using Damage;
 using Designs;
 using Enemies;
+using Pickups.Varnishes;
 using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
@@ -67,6 +68,12 @@ namespace Etchings
             }
             
             responseTriggers.AddRange(GetDesignActionTriggers());
+
+            var varnishes = GetComponents<Varnish>();
+            foreach (var varnish in varnishes)
+            {
+                responseTriggers.AddRange(varnish.GetBattleEventResponseTriggers());
+            }
             
             return responseTriggers;
         }

@@ -12,8 +12,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d36ed7926960459baeacc571c14fec01, type: 3}
   m_Name: EcoFriendly
   m_EditorClassIdentifier: 
-  title: 
-  description: 
-  sprite: {fileID: 0}
-  modifier: 0
-  rarity: 0
+  title: Eco-Friendly
+  description: This plank activate @ more time each turn
+  sprite: {fileID: 21300000, guid: 52e520fa07695db4f8cb2de07686da8b, type: 3}
+  modifier: 1
+  rarity: 1
+  varnishType: 0

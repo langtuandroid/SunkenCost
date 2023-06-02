@@ -23,115 +23,25 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="50470089-3e0c-4487-973b-9d375622b070" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/Assets/Resources/ScriptableObjects/Varnishes.meta" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/Resources/ScriptableObjects/Varnishes/EcoFriendly.asset" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/Resources/ScriptableObjects/Varnishes/EcoFriendly.asset.meta" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/Scripts/Pickups.meta" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/Scripts/Pickups/PickupAsset.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/Scripts/Pickups/PickupAsset.cs.meta" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/Scripts/Pickups/Rarity.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/Scripts/Pickups/Rarity.cs.meta" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/Scripts/Pickups/Varnishes/EcoFriendlyVarnish.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/Scripts/Pickups/Varnishes/EcoFriendlyVarnish.cs.meta" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/Scripts/Pickups/Varnishes/Varnish.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/Scripts/Pickups/Varnishes/VarnishAsset.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/Scripts/Pickups/Varnishes/VarnishAsset.cs.meta" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/Scripts/Pickups/Varnishes/VarnishType.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/Scripts/Pickups/Varnishes/VarnishType.cs.meta" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/Sprites/Varnishes.meta" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/Sprites/Varnishes/EcoFriendly.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/Sprites/Varnishes/EcoFriendly.png.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Scripts/Loaders/VarnishLoader.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Scripts/Loaders/VarnishLoader.cs.meta" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/.idea.Deck/.idea/contentModel.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.Deck/.idea/contentModel.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/.idea.Deck/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.Deck/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/Enemies/Enemy.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Prefabs/Enemies/Enemy.prefab" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/GoldDisplay.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Prefabs/GoldDisplay.prefab" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/AllIn1SpriteShader/Materials/EnemyImage.mat" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/AllIn1SpriteShader/Materials/EnemyImage.mat" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/Singletons.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Prefabs/Singletons.prefab" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Resources/ScriptableObjects/DefaultConfig.asset" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Resources/ScriptableObjects/DefaultConfig.asset" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/BattleScreen/BattleBoard/Board.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/BattleScreen/BattleBoard/Board.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/BattleScreen/BattleEvents/BattleEventResponder.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/BattleScreen/BattleEvents/BattleEventResponder.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/BattleScreen/Player.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/BattleScreen/Player.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Designs.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Pickups/Designs.meta" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Designs/Design.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Pickups/Designs/Design.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Designs/Design.cs.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Pickups/Designs/Design.cs.meta" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Designs/DesignAsset.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Pickups/Designs/DesignAsset.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Designs/DesignAsset.cs.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Pickups/Designs/DesignAsset.cs.meta" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Designs/DesignFactory.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Pickups/Designs/DesignFactory.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Designs/DesignFactory.cs.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Pickups/Designs/DesignFactory.cs.meta" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Designs/ListExtensions.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Pickups/Designs/ListExtensions.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Designs/ListExtensions.cs.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Pickups/Designs/ListExtensions.cs.meta" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Designs/UI.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Pickups/Designs/UI.meta" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Designs/UI/DesignCategoryDisplay.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Pickups/Designs/UI/DesignCategoryDisplay.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Designs/UI/DesignCategoryDisplay.cs.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Pickups/Designs/UI/DesignCategoryDisplay.cs.meta" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Designs/UI/DesignDamageAndRangeDisplay.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Pickups/Designs/UI/DesignDamageAndRangeDisplay.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Designs/UI/DesignDamageAndRangeDisplay.cs.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Pickups/Designs/UI/DesignDamageAndRangeDisplay.cs.meta" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Designs/UI/DesignDisplay.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Pickups/Designs/UI/DesignDisplay.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Designs/UI/DesignDisplay.cs.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Pickups/Designs/UI/DesignDisplay.cs.meta" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Designs/UI/EtchingDisplay.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Pickups/Designs/UI/EtchingDisplay.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Designs/UI/EtchingDisplay.cs.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Pickups/Designs/UI/EtchingDisplay.cs.meta" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Enemies/EnemyPlankArranger.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Enemies/EnemyPlankArranger.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Enemies/EnemySequencer.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Enemies/EnemySequencer.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Resources/ScriptableObjects/Varnishes/EcoFriendly.asset" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Resources/ScriptableObjects/Varnishes/EcoFriendly.asset" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/BattleScreen/BattleEvents/EtchingBattleEventResponderGroup.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/BattleScreen/BattleEvents/EtchingBattleEventResponderGroup.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Enemies/EnemyAnimationController.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Enemies/EnemyAnimationController.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Enemies/EnemyUI/EnemyShaderAnimation.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Enemies/EnemyUI/EnemyShaderAnimation.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Scripts/EtchingFactory.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/EtchingFactory.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Etchings/AmbushEtching.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Etchings/AmbushEtching.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Etchings/BlockEtching.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Etchings/BlockEtching.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Etchings/BoostEtching.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Etchings/BoostEtching.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Etchings/CauterizeEtching.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Etchings/CauterizeEtching.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Etchings/DamageEtching.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Etchings/DamageEtching.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Scripts/Etchings/Etching.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Etchings/Etching.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Etchings/FinaliseEtching.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Etchings/FinaliseEtching.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Etchings/FocusEtching.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Etchings/FocusEtching.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Etchings/LoneWolfEtching.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Etchings/LoneWolfEtching.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Etchings/MovementActivatedEtching.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Etchings/MovementActivatedEtching.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Etchings/PoisonEtching.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Etchings/PoisonEtching.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Etchings/RaidEtching.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Etchings/RaidEtching.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Etchings/ResearchEtching.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Etchings/ResearchEtching.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Etchings/RestEtching.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Etchings/RestEtching.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Etchings/ReverseEtching.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Etchings/ReverseEtching.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Items.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Pickups/Items.meta" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Items/ItemAsset.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Pickups/Items/ItemAsset.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Items/ItemAsset.cs.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Pickups/Items/ItemAsset.cs.meta" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Items/ItemDisplay.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Pickups/Items/ItemDisplay.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Items/ItemDisplay.cs.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Pickups/Items/ItemDisplay.cs.meta" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Items/ItemIconsDisplay.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Pickups/Items/ItemIconsDisplay.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Items/ItemIconsDisplay.cs.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Pickups/Items/ItemIconsDisplay.cs.meta" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Items/ItemInstance.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Pickups/Items/ItemInstance.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Items/ItemInstance.cs.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Pickups/Items/ItemInstance.cs.meta" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Items/ItemInventory.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Pickups/Items/ItemInventory.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Items/ItemInventory.cs.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Pickups/Items/ItemInventory.cs.meta" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Items/ItemOffer.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Pickups/Items/ItemOffer.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Items/ItemOffer.cs.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Pickups/Items/ItemOffer.cs.meta" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Items/Items.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Pickups/Items/Items.meta" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Items/Items/BellsAndWhistlesItem.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Pickups/Items/Items/BellsAndWhistlesItem.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Items/Items/BellsAndWhistlesItem.cs.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Pickups/Items/Items/BellsAndWhistlesItem.cs.meta" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Items/Items/CapitalListItem.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Pickups/Items/Items/CapitalListItem.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Items/Items/CapitalListItem.cs.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Pickups/Items/Items/CapitalListItem.cs.meta" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Items/Items/ConfusedItem.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Pickups/Items/Items/ConfusedItem.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Items/Items/ConfusedItem.cs.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Pickups/Items/Items/ConfusedItem.cs.meta" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Items/Items/EquippedItem.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Pickups/Items/Items/EquippedItem.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Items/Items/EquippedItem.cs.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Pickups/Items/Items/EquippedItem.cs.meta" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Items/Items/ExpiredMedicineItem.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Pickups/Items/Items/ExpiredMedicineItem.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Items/Items/ExpiredMedicineItem.cs.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Pickups/Items/Items/ExpiredMedicineItem.cs.meta" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Items/Items/ExtraPlankItem.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Pickups/Items/Items/ExtraPlankItem.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Items/Items/ExtraPlankItem.cs.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Pickups/Items/Items/ExtraPlankItem.cs.meta" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Items/Items/IHasPickupAction.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Pickups/Items/Items/IHasPickupAction.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Items/Items/IHasPickupAction.cs.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Pickups/Items/Items/IHasPickupAction.cs.meta" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Items/Items/InvestmentNetworkItem.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Pickups/Items/Items/InvestmentNetworkItem.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Items/Items/InvestmentNetworkItem.cs.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Pickups/Items/Items/InvestmentNetworkItem.cs.meta" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Items/Items/MeasuredTouchItem.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Pickups/Items/Items/MeasuredTouchItem.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Items/Items/MeasuredTouchItem.cs.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Pickups/Items/Items/MeasuredTouchItem.cs.meta" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Items/Items/PassiveIncomeItem.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Pickups/Items/Items/PassiveIncomeItem.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Items/Items/PassiveIncomeItem.cs.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Pickups/Items/Items/PassiveIncomeItem.cs.meta" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Items/Items/PoisonTipsItem.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Pickups/Items/Items/PoisonTipsItem.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Items/Items/PoisonTipsItem.cs.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Pickups/Items/Items/PoisonTipsItem.cs.meta" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Items/Items/ReDressItem.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Pickups/Items/Items/ReDressItem.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Items/Items/ReDressItem.cs.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Pickups/Items/Items/ReDressItem.cs.meta" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Items/Items/ShortFuseItem.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Pickups/Items/Items/ShortFuseItem.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Items/Items/ShortFuseItem.cs.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Pickups/Items/Items/ShortFuseItem.cs.meta" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Loaders/DesignLoader.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Loaders/DesignLoader.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Loaders/ItemLoader.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Loaders/ItemLoader.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/OfferScreen/PriceHandler.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/OfferScreen/PriceHandler.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/PlankDisplay.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/PlankDisplay.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Varnishes.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Pickups/Varnishes.meta" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Varnishes/Varnish.cs" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Varnishes/Varnish.cs.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Pickups/Varnishes/Varnish.cs.meta" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Pickups/Designs/Design.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Pickups/Designs/Design.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Pickups/Varnishes/EcoFriendlyVarnish.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Pickups/Varnishes/EcoFriendlyVarnish.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Pickups/Varnishes/Varnish.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Pickups/Varnishes/Varnish.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Pickups/Varnishes/VarnishAsset.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Pickups/Varnishes/VarnishAsset.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Pickups/Varnishes/VarnishType.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Pickups/Varnishes/VarnishType.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/RunthroughStartingConfig.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/RunthroughStartingConfig.cs" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -177,13 +87,6 @@
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/Assets/Scripts/Etchings/DamageEtching.cs" />
-        <option value="$PROJECT_DIR$/Assets/Scripts/Etchings/MeleeEtching.cs" />
-        <option value="$PROJECT_DIR$/Assets/Scripts/Etchings/RangedEtching.cs" />
-        <option value="$PROJECT_DIR$/Assets/Scripts/Etchings/AreaEtching.cs" />
-        <option value="$PROJECT_DIR$/Assets/Scripts/Etchings/AmbushEtching.cs" />
-        <option value="$PROJECT_DIR$/Assets/Scripts/Etchings/BlockEtching.cs" />
-        <option value="$PROJECT_DIR$/Assets/Scripts/Etchings/PlankUpdateActivatedEtching.cs" />
         <option value="$PROJECT_DIR$/Assets/Scripts/Etchings/CauterizeEtching.cs" />
         <option value="$PROJECT_DIR$/Assets/Scripts/Etchings/FinaliseEtching.cs" />
         <option value="$PROJECT_DIR$/Assets/Scripts/Etchings/FocusEtching.cs" />
@@ -203,7 +106,6 @@
         <option value="$PROJECT_DIR$/Assets/Scripts/Items/Items/PoisonTipsItem.cs" />
         <option value="$PROJECT_DIR$/Assets/Scripts/Items/Items/ReDressItem.cs" />
         <option value="$PROJECT_DIR$/Assets/Scripts/Items/Items/ShortFuseItem.cs" />
-        <option value="$PROJECT_DIR$/Assets/Scripts/BattleScreen/BattleEvents/EtchingBattleEventResponderGroup.cs" />
         <option value="$PROJECT_DIR$/Assets/Scripts/Enemies/EnemySequencer.cs" />
         <option value="$PROJECT_DIR$/Assets/Scripts/Enemies/EnemyPlankArranger.cs" />
         <option value="$PROJECT_DIR$/Assets/Scripts/BattleScreen/Player.cs" />
@@ -214,8 +116,6 @@
         <option value="$PROJECT_DIR$/Assets/Scripts/BattleScreen/BattleEvents/BattleEventResponderGroup.cs" />
         <option value="$PROJECT_DIR$/Assets/Scripts/Varnishes/Varnish.cs" />
         <option value="$PROJECT_DIR$/Assets/Scripts/Etchings/BoostEtching.cs" />
-        <option value="$PROJECT_DIR$/Assets/Scripts/Etchings/Etching.cs" />
-        <option value="$PROJECT_DIR$/Assets/Scripts/EtchingFactory.cs" />
         <option value="$PROJECT_DIR$/Assets/Scripts/Varnishes/EcoFriendlyVarnish.cs" />
         <option value="$PROJECT_DIR$/Assets/Scripts/Varnishes/VarnishType.cs" />
         <option value="$PROJECT_DIR$/Assets/Scripts/Varnishes/VarnishAsset.cs" />
@@ -228,6 +128,16 @@
         <option value="$PROJECT_DIR$/Assets/Scripts/Loaders/ItemLoader.cs" />
         <option value="$PROJECT_DIR$/Assets/Scripts/Pickups/PickupAsset.cs" />
         <option value="$PROJECT_DIR$/Assets/Scripts/Pickups/Rarity.cs" />
+        <option value="$PROJECT_DIR$/Assets/Scripts/Enemies/EnemyUI/EnemyShaderAnimation.cs" />
+        <option value="$PROJECT_DIR$/Assets/Scripts/Enemies/EnemyAnimationController.cs" />
+        <option value="$PROJECT_DIR$/Assets/Scripts/Pickups/Varnishes/VarnishType.cs" />
+        <option value="$PROJECT_DIR$/Assets/Scripts/Pickups/Varnishes/Varnish.cs" />
+        <option value="$PROJECT_DIR$/Assets/Scripts/Pickups/Designs/Design.cs" />
+        <option value="$PROJECT_DIR$/Assets/Scripts/Loaders/VarnishLoader.cs" />
+        <option value="$PROJECT_DIR$/Assets/Scripts/EtchingFactory.cs" />
+        <option value="$PROJECT_DIR$/Assets/Scripts/RunthroughStartingConfig.cs" />
+        <option value="$PROJECT_DIR$/Assets/Scripts/Etchings/Etching.cs" />
+        <option value="$PROJECT_DIR$/Assets/Scripts/BattleScreen/BattleEvents/EtchingBattleEventResponderGroup.cs" />
       </list>
     </option>
   </component>
@@ -368,7 +278,8 @@
       <workItem from="1685506049548" duration="6210000" />
       <workItem from="1685579624581" duration="11691000" />
       <workItem from="1685670239746" duration="103000" />
-      <workItem from="1685670363074" duration="6020000" />
+      <workItem from="1685670363074" duration="6635000" />
+      <workItem from="1685680343138" duration="2701000" />
     </task>
     <servers />
   </component>

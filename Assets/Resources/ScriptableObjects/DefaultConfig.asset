@@ -16,9 +16,12 @@ MonoBehaviour:
   _startingDeck:
   - _designAsset: {fileID: 11400000, guid: b6823cdbba1131f498fcdbbe423cf51f, type: 2}
     _level: 0
+    _varnishes: 
   - _designAsset: {fileID: 11400000, guid: 39ecf128e3212334397de417881e939f, type: 2}
     _level: 0
-  - _designAsset: {fileID: 11400000, guid: bd3d139b569705442b13f68a1d86eb58, type: 2}
+    _varnishes: 00000000
+  - _designAsset: {fileID: 11400000, guid: 34e824df41f7b744880f9d4c7ef9c2cc, type: 2}
     _level: 0
+    _varnishes: 00000000
   _startingItems: []
   <StartingEnemies>k__BackingField: 

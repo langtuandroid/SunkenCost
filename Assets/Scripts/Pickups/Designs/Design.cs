@@ -2,13 +2,15 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using BattleScreen.BattleEvents;
+using Pickups.Varnishes;
 using UnityEngine;
+using Varnishes;
 
 namespace Designs
 {
     public enum StatType
     {
-        Rarity,
+        SOMETHINGELSEHERE0,
         UsesPerTurn,
         Damage,
         MinRange,
@@ -31,6 +33,7 @@ namespace Designs
     {
         public readonly DesignAsset designAsset;
 
+        public int UsesUsedThisTurn { get; set; }
         public string Title => designAsset.title;
         public Sprite Sprite => designAsset.sprite;
         public DesignType Type => designAsset.designType;
@@ -41,9 +44,9 @@ namespace Designs
         public int Level { get; private set; }
         public bool Upgradeable { get; protected set; } = true;
 
-        public int UsesUsedThisTurn;
-
         public int Cost { get; private set; }
+        
+        public List<VarnishType> Varnishes { get; } = new List<VarnishType>();
 
         private readonly Dictionary<StatType, Stat> _stats = new Dictionary<StatType, Stat>();
 
@@ -112,6 +115,11 @@ namespace Designs
         public void SetCost(int cost)
         {
             Cost = cost;
+        }
+
+        public void AddVarnish(VarnishType varnishType)
+        {
+            Varnishes.Add(varnishType);
         }
 
         private void AddStat(StatType statType, int value) 

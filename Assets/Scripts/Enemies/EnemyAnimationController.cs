@@ -17,7 +17,7 @@ public class EnemyAnimationController : MonoBehaviour, IBattleEventUpdatedUI
 
     private int _responderID;
     
-    private static float AnimationSpeed => 0.5f + (1f - Battle.ActionExecutionSpeed);
+    private static float AnimationSpeed => 0.6f + (1f - Battle.ActionExecutionSpeed);
 
     private void Start()
     {
@@ -81,6 +81,7 @@ public class EnemyAnimationController : MonoBehaviour, IBattleEventUpdatedUI
 
     private void Die()
     {
+        Debug.Log("ENEMY DYING");
         _shaderAnimation.StartDeathAnimation();
     }
 }

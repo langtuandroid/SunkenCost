@@ -1,5 +1,6 @@
 ﻿using Items;
 using Pickups;
+using Pickups.Varnishes;
 using UnityEngine;
 
 namespace Varnishes

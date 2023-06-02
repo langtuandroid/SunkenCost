@@ -1,4 +1,4 @@
-﻿namespace Varnishes
+﻿namespace Pickups.Varnishes
 {
     public enum VarnishType
     {

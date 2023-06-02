@@ -1,11 +1,7 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using BattleScreen;
-using BattleScreen.BattleEvents;
-using Designs;
+﻿using BattleScreen.BattleEvents;
 using Etchings;
 
-namespace Varnishes
+namespace Pickups.Varnishes
 {
     public abstract class Varnish : BattleEventResponder
     {
