@@ -14,10 +14,10 @@ namespace Etchings
             BattleEvent battleEvent;
             if (enemy.Plank.Etching is not DamageEtching)
             {
-                var statMod = new StatModifier(design.GetStat(StatType.StatMultiplier) - 1, StatModType.PercentMult);
-                design.AddStatModifier(StatType.Damage, statMod);
+                var statMod = new StatModifier(Design.GetStat(StatType.StatMultiplier) - 1, StatModType.PercentMult);
+                Design.AddStatModifier(StatType.Damage, statMod);
                 battleEvent = base.DamageEnemy(enemyResponderID);
-                design.RemoveStatModifier(StatType.Damage, statMod);
+                Design.RemoveStatModifier(StatType.Damage, statMod);
             }
             else
             {

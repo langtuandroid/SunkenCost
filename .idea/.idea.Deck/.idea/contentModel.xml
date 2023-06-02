@@ -647,18 +647,6 @@
           <e p="Debug" t="Include">
             <e p="ScreenToWorldPoint.cs" t="Include" />
           </e>
-          <e p="Designs" t="Include">
-            <e p="Design.cs" t="Include" />
-            <e p="DesignAsset.cs" t="Include" />
-            <e p="DesignFactory.cs" t="Include" />
-            <e p="ListExtensions.cs" t="Include" />
-            <e p="UI" t="Include">
-              <e p="DesignCategoryDisplay.cs" t="Include" />
-              <e p="DesignDamageAndRangeDisplay.cs" t="Include" />
-              <e p="DesignDisplay.cs" t="Include" />
-              <e p="EtchingDisplay.cs" t="Include" />
-            </e>
-          </e>
           <e p="Disturbances" t="Include">
             <e p="CardDisturbance.cs" t="Include" />
             <e p="Disturbance.cs" t="Include" />
@@ -750,29 +738,6 @@
           </e>
           <e p="Extensions.cs" t="Include" />
           <e p="GlobalEvents.cs" t="Include" />
-          <e p="Items" t="Include">
-            <e p="ItemAsset.cs" t="Include" />
-            <e p="ItemDisplay.cs" t="Include" />
-            <e p="ItemIconsDisplay.cs" t="Include" />
-            <e p="ItemInstance.cs" t="Include" />
-            <e p="ItemInventory.cs" t="Include" />
-            <e p="ItemOffer.cs" t="Include" />
-            <e p="Items" t="Include">
-              <e p="BellsAndWhistlesItem.cs" t="Include" />
-              <e p="CapitalListItem.cs" t="Include" />
-              <e p="ConfusedItem.cs" t="Include" />
-              <e p="EquippedItem.cs" t="Include" />
-              <e p="ExpiredMedicineItem.cs" t="Include" />
-              <e p="ExtraPlankItem.cs" t="Include" />
-              <e p="IHasPickupAction.cs" t="Include" />
-              <e p="InvestmentNetworkItem.cs" t="Include" />
-              <e p="MeasuredTouchItem.cs" t="Include" />
-              <e p="PassiveIncomeItem.cs" t="Include" />
-              <e p="PoisonTipsItem.cs" t="Include" />
-              <e p="RedressItem.cs" t="Include" />
-              <e p="ShortFuseItem.cs" t="Include" />
-            </e>
-          </e>
           <e p="Loaders" t="Include">
             <e p="DesignLoader.cs" t="Include" />
             <e p="DisturbanceLoader.cs" t="Include" />
@@ -811,6 +776,51 @@
             <e p="PriceHandler.cs" t="Include" />
             <e p="ReRollButton.cs" t="Include" />
             <e p="UpgradeOffer.cs" t="Include" />
+          </e>
+          <e p="Pickups" t="Include">
+            <e p="Designs" t="Include">
+              <e p="Design.cs" t="Include" />
+              <e p="DesignAsset.cs" t="Include" />
+              <e p="DesignFactory.cs" t="Include" />
+              <e p="ListExtensions.cs" t="Include" />
+              <e p="UI" t="Include">
+                <e p="DesignCategoryDisplay.cs" t="Include" />
+                <e p="DesignDamageAndRangeDisplay.cs" t="Include" />
+                <e p="DesignDisplay.cs" t="Include" />
+                <e p="EtchingDisplay.cs" t="Include" />
+              </e>
+            </e>
+            <e p="Items" t="Include">
+              <e p="ItemAsset.cs" t="Include" />
+              <e p="ItemDisplay.cs" t="Include" />
+              <e p="ItemIconsDisplay.cs" t="Include" />
+              <e p="ItemInstance.cs" t="Include" />
+              <e p="ItemInventory.cs" t="Include" />
+              <e p="ItemOffer.cs" t="Include" />
+              <e p="Items" t="Include">
+                <e p="BellsAndWhistlesItem.cs" t="Include" />
+                <e p="CapitalListItem.cs" t="Include" />
+                <e p="ConfusedItem.cs" t="Include" />
+                <e p="EquippedItem.cs" t="Include" />
+                <e p="ExpiredMedicineItem.cs" t="Include" />
+                <e p="ExtraPlankItem.cs" t="Include" />
+                <e p="IHasPickupAction.cs" t="Include" />
+                <e p="InvestmentNetworkItem.cs" t="Include" />
+                <e p="MeasuredTouchItem.cs" t="Include" />
+                <e p="PassiveIncomeItem.cs" t="Include" />
+                <e p="PoisonTipsItem.cs" t="Include" />
+                <e p="RedressItem.cs" t="Include" />
+                <e p="ShortFuseItem.cs" t="Include" />
+              </e>
+            </e>
+            <e p="PickupAsset.cs" t="Include" />
+            <e p="Rarity.cs" t="Include" />
+            <e p="Varnishes" t="Include">
+              <e p="EcoFriendlyVarnish.cs" t="Include" />
+              <e p="Varnish.cs" t="Include" />
+              <e p="VarnishAsset.cs" t="Include" />
+              <e p="VarnishType.cs" t="Include" />
+            </e>
           </e>
           <e p="PlankDisplay.cs" t="Include" />
           <e p="PlankFactory.cs" t="Include" />
@@ -867,9 +877,6 @@
             <e p="WhosTurnText.cs" t="Include" />
           </e>
           <e p="UnexpectedStatException.cs" t="Include" />
-          <e p="Varnishes" t="Include">
-            <e p="Varnish.cs" t="Include" />
-          </e>
         </e>
         <e p="Sprites" t="Include">
           <e p="DesignLogos" t="Include">
@@ -889,6 +896,7 @@
           </e>
           <e p="Statuses" t="Include" />
           <e p="TextMeshProSprites" t="Include" />
+          <e p="Varnishes" t="Include" />
         </e>
         <e p="StreamingAssets" t="Include" />
         <e p="TextMesh Pro" t="Include">

@@ -31,7 +31,7 @@ namespace Etchings
             // Enemy reached end
             if (enemy.PlankNum > Board.Current.PlankCount) return false;
 
-            return ((design.Limitless || UsesUsedThisTurn < UsesPerTurn) && GetIfRespondingToEnemyMovement(enemy));
+            return ((Design.Limitless || UsesUsedThisTurn < UsesPerTurn) && GetIfRespondingToEnemyMovement(enemy));
         }
     }
 }

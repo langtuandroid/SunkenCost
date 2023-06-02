@@ -13,13 +13,13 @@ namespace Etchings
         public bool CanModify(EnemyDamage enemyDamage)
         {
             // Only affects etching damage on level 0
-            if (enemyDamage.source != DamageSource.Etching && design.Level < 1) return false;
+            if (enemyDamage.source != DamageSource.Etching && Design.Level < 1) return false;
             return !stunned && enemyDamage.affectedEnemy.PlankNum == PlankNum;
         }
 
         public DamageModification GetDamageMultiplier(EnemyDamage enemyDamage)
         {
-            return new DamageModification(this, design.GetStat(StatType.StatMultiplier));
+            return new DamageModification(this, Design.GetStat(StatType.StatMultiplier));
         }
 
         protected override List<DesignResponseTrigger> GetDesignResponseTriggers()

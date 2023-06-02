@@ -16,7 +16,7 @@ namespace Etchings
 
         protected override DesignResponse GetResponseToMovement(Enemy enemy)
         {
-            return new DesignResponse(PlankNum, enemy.stats.AddPoison(design.GetStat(StatType.Poison)));
+            return new DesignResponse(PlankNum, enemy.stats.AddPoison(Design.GetStat(StatType.Poison)));
         }
     }
 }

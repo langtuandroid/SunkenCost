@@ -16,27 +16,32 @@ namespace Etchings
 {
     public abstract class Etching : BattleEventResponder
     {
-        public Design design;
         protected bool stunned;
 
         private Plank _plank;
 
         private readonly Dictionary<BattleEventType, Func<BattleEvent, DesignResponse>> _designResponses =
             new Dictionary<BattleEventType, Func<BattleEvent, DesignResponse>>();
-
-        protected int UsesPerTurn => design.GetStat(StatType.UsesPerTurn);
+        
+        public Design Design { get; private set; }
+        protected int UsesPerTurn => Design.GetStat(StatType.UsesPerTurn);
         public int PlankNum => _plank.PlankNum;
 
         protected int UsesUsedThisTurn
         {
-            get => design.UsesUsedThisTurn;
-            set => design.UsesUsedThisTurn = value;
+            get => Design.UsesUsedThisTurn;
+            set => Design.UsesUsedThisTurn = value;
         }
 
         protected override void Awake()
         {
             SetPlank(GetComponentInParent<Plank>());
             base.Awake();
+        }
+
+        public void SetDesign(Design design)
+        {
+            Design = design;
         }
 
         public void SetPlank(Plank plank)
@@ -71,15 +76,17 @@ namespace Etchings
             return new BattleEvent(BattleEventType.EtchingStunned) {source =  source, primaryResponderID = ResponderID};
         }
 
+        public bool HasStat(StatType statType) => Design.HasStat(statType);
+
         public BattleEvent AddStatModifier(StatType statType, StatModifier mod)
         {
-            design.AddStatModifier(statType, mod);
+            Design.AddStatModifier(statType, mod);
             return new BattleEvent(BattleEventType.DesignModified) {primaryResponderID = ResponderID};
         }
         
         public BattleEvent RemoveStatModifier(StatType statType, StatModifier mod)
         {
-            design.RemoveStatModifier(statType, mod);
+            Design.RemoveStatModifier(statType, mod);
             return new BattleEvent(BattleEventType.DesignModified) {primaryResponderID = ResponderID};
         }
 

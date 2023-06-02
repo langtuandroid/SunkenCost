@@ -45,9 +45,9 @@ namespace Etchings
         private DesignResponse UpdateDamage()
         {
             _hadEnemyOnPlankThisTurn = false; 
-            var newStatMod = new StatModifier(design.GetStat(StatType.StatFlatModifier), StatModType.Flat);
+            var newStatMod = new StatModifier(Design.GetStat(StatType.StatFlatModifier), StatModType.Flat);
             _statModifiers.Push(newStatMod); 
-            design.AddStatModifier(StatType.Damage, newStatMod);
+            Design.AddStatModifier(StatType.Damage, newStatMod);
             var response = new BattleEvent(BattleEventType.DesignModified) {primaryResponderID = ResponderID};
             return new DesignResponse(-1, response);
         }
@@ -56,7 +56,7 @@ namespace Etchings
         {
             foreach (var statMod in _statModifiers)
             {
-                design.RemoveStatModifier(StatType.Damage, statMod);
+                Design.RemoveStatModifier(StatType.Damage, statMod);
             }
         }
     }

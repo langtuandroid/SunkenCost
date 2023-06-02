@@ -22,7 +22,7 @@ namespace Designs
             
             _etching = GetComponent<Etching>();
             _designDisplay = GetComponent<DesignDisplay>();
-            _designDisplay.design = _etching.design;
+            _designDisplay.design = _etching.Design;
             _designDisplay.MaxDescriptionHeight = 85f;
 
             _normalColor = _designDisplay.TitleText.color;

@@ -7,9 +7,9 @@ namespace Etchings
 {
     public abstract class DamageEtching : LandedOnPlankActivatedEtching
     {
-        private int Damage => design.GetStat(StatType.Damage);
-        protected int MinRange => design.GetStat(StatType.MinRange);
-        protected int MaxRange => design.GetStat(StatType.MaxRange);
+        private int Damage => Design.GetStat(StatType.Damage);
+        protected int MinRange => Design.GetStat(StatType.MinRange);
+        protected int MaxRange => Design.GetStat(StatType.MaxRange);
 
         protected virtual BattleEvent DamageEnemy(int enemyResponderID)
         {

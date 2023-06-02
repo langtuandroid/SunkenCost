@@ -1,18 +1,8 @@
 ﻿using UnityEngine;
-using UnityEngine.Serialization;
 
-namespace Items
+namespace Pickups
 {
-    public enum Rarity
-    {
-        Common = 1,
-        Uncommon = 2,
-        Rare = 3,
-        ElitePickup = 4
-    }
-    
-    [CreateAssetMenu(menuName = "Item")]
-    public class ItemAsset : ScriptableObject
+    public abstract class PickupAsset : ScriptableObject
     {
         public string title;
         [SerializeField] private string description;

@@ -1,5 +1,6 @@
 ﻿using System;
 using Items;
+using Pickups;
 using Random = UnityEngine.Random;
 
 namespace OfferScreen

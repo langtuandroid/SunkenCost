@@ -95,7 +95,7 @@ public class PlankDisplay : MonoBehaviour, IBattleEventUpdatedUI
             {
                 var etching = BattleEventResponseSequencer.Current.GetEtchingByResponderID(battleEvent.primaryResponderID);
                 StopAllCoroutines();
-                StartCoroutine(ColorForAttackOnThisPlank(etching.design.Color));
+                StartCoroutine(ColorForAttackOnThisPlank(etching.Design.Color));
                 break;
             }
         }

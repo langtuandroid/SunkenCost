@@ -6,6 +6,7 @@ using System.Reflection;
 using System.Linq;
 using Items;
 using Items.Items;
+using Pickups;
 using UnityEngine;
 using Random = UnityEngine.Random;
 

@@ -15,7 +15,7 @@ namespace Items.Items
         {
             return new List<BattleEventResponseTrigger>
             {
-                EventResponseTrigger(BattleEventType.PlayerLostLife, b =>
+                EventResponseTriggerWithArgument(BattleEventType.PlayerLostLife, b =>
                 {
                     _turnPlayerLastLostLife = Battle.Current.Turn;
                     return BattleEvent.None;

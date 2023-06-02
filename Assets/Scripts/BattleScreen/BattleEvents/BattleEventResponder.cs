@@ -23,12 +23,18 @@ namespace BattleScreen.BattleEvents
             return new BattleEventResponseTrigger(battleEventType, ResponderID, response, condition);
         }
         
-        protected BattleEventResponseTrigger EventResponseTrigger(BattleEventType battleEventType,
+        protected BattleEventResponseTrigger EventResponseTriggerWithArgument(BattleEventType battleEventType,
             Func<BattleEvent, BattleEvent> response, Func<BattleEvent, bool> condition = null)
         {
             return PackageResponseTrigger(battleEventType, b => new BattleEventPackage(response.Invoke(b)), condition);
         }
-        
+
+        protected BattleEventResponseTrigger EventResponseTrigger(BattleEventType battleEventType,
+            Func<BattleEvent> response, Func<BattleEvent, bool> condition = null)
+        {
+            return PackageResponseTrigger(battleEventType, b => new BattleEventPackage(response.Invoke()), condition);
+        }
+
         protected ActionTrigger ActionTriggerWithArgument(BattleEventType battleEventType,
             Action<BattleEvent> action, Func<BattleEvent, bool> condition = null)
         {

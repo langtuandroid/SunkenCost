@@ -36,10 +36,10 @@ namespace Etchings
         
         private DesignResponse UpdateDamage()
         {
-            var penalty = design.GetStat(StatType.StatFlatModifier) * (Board.Current.PlankCount - 1);
+            var penalty = Design.GetStat(StatType.StatFlatModifier) * (Board.Current.PlankCount - 1);
 
             _damageMod = new StatModifier(penalty, StatModType.Flat);
-            design.AddStatModifier(StatType.Damage, _damageMod);
+            Design.AddStatModifier(StatType.Damage, _damageMod);
 
             var designModificationEvent = new BattleEvent(BattleEventType.DesignModified)
             {
@@ -52,7 +52,7 @@ namespace Etchings
         private void RemoveMod()
         {
             if (_damageMod is not null)
-                design.RemoveStatModifier(StatType.Damage, _damageMod);
+                Design.RemoveStatModifier(StatType.Damage, _damageMod);
         }
     }
 }

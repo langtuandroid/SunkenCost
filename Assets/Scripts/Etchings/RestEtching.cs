@@ -21,7 +21,7 @@ namespace Etchings
         private DesignResponse HealPlayer()
         {
             var response = new BattleEvent(BattleEventType.PlayerLifeModified)
-                {modifier = design.GetStat(StatType.PlayerHealthModifier)};
+                {modifier = Design.GetStat(StatType.PlayerHealthModifier)};
             return new DesignResponse(PlankNum, response);
         }
     }

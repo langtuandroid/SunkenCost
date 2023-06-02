@@ -22,7 +22,7 @@ namespace Enemies
         private const float BoatXOffset = 15f;
         private const float BoatYOffset = -400f;
         
-        private static float TweenTime => Battle.ActionExecutionSpeed / 5f;
+        private static float TweenTime => Battle.ActionExecutionSpeed / 7f;
 
         private void Start()
         {

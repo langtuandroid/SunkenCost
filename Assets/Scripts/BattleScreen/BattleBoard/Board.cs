@@ -83,7 +83,7 @@ namespace BattleScreen.BattleBoard
         
         public Plank GetPlank(int position)
         {
-            Debug.Log("Planks: " + String.Join(", ", PlanksInOrder.Select(p => p.Etching.design.Title + " " + p.PlankNum)));
+            Debug.Log("Planks: " + String.Join(", ", PlanksInOrder.Select(p => p.Etching.Design.Title + " " + p.PlankNum)));
             return PlanksInOrder[position];
         }
 

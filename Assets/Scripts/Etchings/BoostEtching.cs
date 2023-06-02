@@ -84,13 +84,13 @@ namespace Etchings
             if (_boostedEtchings.Count == 0) 
                 return new DesignResponse(-1, responses, false);
             
-            Debug.Log("Boost etching ("+ PlankNum + ") boosting: " + String.Join(", ", 
-                _boostedEtchings.Select(b => b.design.Title + "(" + b.PlankNum + ")")));
+            Debug.Log($"Boost etching ({PlankNum}) boosting: " + String.Join(", ", 
+                _boostedEtchings.Select(b => b.Design.Title + "(" + b.PlankNum + ")")));
 
             // Boost etchings
             foreach (var etching in _boostedEtchings)
             {
-                var boostMod = new StatModifier(design.GetStat(StatType.StatFlatModifier), StatModType.Flat);
+                var boostMod = new StatModifier(Design.GetStat(StatType.StatFlatModifier), StatModType.Flat);
                 _boostMods.Add(boostMod);
                 responses.Add(etching.AddStatModifier(StatType.Damage, boostMod));
             }
@@ -108,7 +108,7 @@ namespace Etchings
                 (t, i) => t.RemoveStatModifier(StatType.Damage, _boostMods[i])).ToList();
 
             Debug.Log("Boost etching ("+ PlankNum + ") clearing: " + String.Join(", ", 
-                notDestroyedArray.Select(b => b.design.Title + "(" + b.PlankNum + ")")));
+                notDestroyedArray.Select(b => b.Design.Title + "(" + b.PlankNum + ")")));
             
             _modsActive = false;
             _boostedEtchings.Clear();

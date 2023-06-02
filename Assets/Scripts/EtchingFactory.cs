@@ -33,7 +33,7 @@ public class EtchingFactory : MonoBehaviour
         var newEtching = Instantiate(_etchingPrefab, etchingSlot);
         var etching = newEtching.AddComponent(DesignLoader.DesignAssetToEtchingTypeDict[design.designAsset])
             .GetComponent<Etching>();
-        etching.design = design;
+        etching.SetDesign(design);
     }
 
     public void MoveEtching(Plank plankToMoveTo, Etching etching)

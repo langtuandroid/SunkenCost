@@ -7,6 +7,7 @@ using System.Reflection;
 using Designs;
 using Etchings;
 using Items;
+using Pickups;
 using UnityEngine;
 
 public enum DesignType

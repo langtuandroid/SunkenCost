@@ -99,7 +99,7 @@ namespace Enemies
         {
             foreach (var e in _enemies.Where(e => e.TurnOrder > enemy.TurnOrder))
             {
-                e.SetTurnOrder(enemy.TurnOrder - 1);
+                e.SetTurnOrder(e.TurnOrder - 1);
             }
                     
             RemoveEnemy(enemy);

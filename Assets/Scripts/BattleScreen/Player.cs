@@ -41,16 +41,16 @@ public class Player : BattleEventResponder
     {
         return new List<BattleEventResponseTrigger>
         {
-            EventResponseTrigger(BattleEventType.PlayerLostLife, 
+            EventResponseTriggerWithArgument(BattleEventType.PlayerLostLife, 
                 e => new BattleEvent(BattleEventType.PlayerDied),
                 e => Health <= 0),
             ActionTrigger(BattleEventType.PlayerLostLife, ResetMoves),
             PackageResponseTrigger(BattleEventType.PlayerMovedPlank, 
                 e => PlayerMovedPlank()),
-            EventResponseTrigger(BattleEventType.EnemyAttackedBoat, 
+            EventResponseTriggerWithArgument(BattleEventType.EnemyAttackedBoat, 
                 e => EnemyReachedEnd(-e.modifier)),
-            EventResponseTrigger(BattleEventType.PlayerLifeModified, ModifyLife),
-            EventResponseTrigger(BattleEventType.GainedGold, TryGainGold),
+            EventResponseTriggerWithArgument(BattleEventType.PlayerLifeModified, ModifyLife),
+            EventResponseTriggerWithArgument(BattleEventType.TryGainedGold, TryGainGold),
         };
     }
 

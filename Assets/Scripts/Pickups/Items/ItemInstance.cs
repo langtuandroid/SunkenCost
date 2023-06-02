@@ -1,4 +1,5 @@
-﻿using UnityEngine;
+﻿using Pickups;
+using UnityEngine;
 
 namespace Items
 {

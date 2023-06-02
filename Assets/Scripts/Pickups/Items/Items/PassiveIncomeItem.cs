@@ -14,7 +14,7 @@ namespace Items.Items
         {
             return new List<BattleEventResponseTrigger>
             {
-                EventResponseTrigger(BattleEventType.EnemyKilled, b =>
+                EventResponseTriggerWithArgument(BattleEventType.EnemyKilled, b =>
                 {
                     _hasKilledEnemyThisBattle = true;
                     return BattleEvent.None;
