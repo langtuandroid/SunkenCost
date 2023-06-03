@@ -826,11 +826,12 @@
           </e>
           <e p="PlankDisplay.cs" t="Include" />
           <e p="PlankFactory.cs" t="Include" />
-          <e p="ReorderableList" t="Include">
-            <e p="ReorderableList.cs" t="Include" />
-            <e p="ReorderableListContent.cs" t="Include" />
-            <e p="ReorderableListDebug.cs" t="Include" />
-            <e p="ReorderableListElement.cs" t="Include" />
+          <e p="ReorderableContent" t="Include">
+            <e p="IMergeableReorderableEventListener.cs" t="Include" />
+            <e p="IReorderableGridEventListener.cs" t="Include" />
+            <e p="ReorderableElement.cs" t="Include" />
+            <e p="ReorderableElementEventListener.cs" t="Include" />
+            <e p="ReorderableGrid.cs" t="Include" />
           </e>
           <e p="RunProgress.cs" t="Include" />
           <e p="RunthroughStartingConfig.cs" t="Include" />
@@ -879,6 +880,7 @@
             <e p="WhosTurnText.cs" t="Include" />
           </e>
           <e p="UnexpectedStatException.cs" t="Include" />
+          <e p="Utils" t="Include" />
         </e>
         <e p="Sprites" t="Include">
           <e p="DesignLogos" t="Include">

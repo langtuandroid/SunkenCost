@@ -66,14 +66,10 @@ public class OfferManager : MonoBehaviour
         MainManager.Current.LoadMap();
     }
 
-    public void TryMerge(DesignCard cardBeingMerged, DesignCard cardBeingMergedInto)
+    public void MergeDesignCards(DesignCard beingMerged, DesignCard beingMergedInto)
     {
-        var cost = cardBeingMerged.Design.Cost;
-        if (BuyerSeller.Gold < cost) return;
-        BuyerSeller.Buy(cost);
-        
-        Destroy(cardBeingMerged.gameObject);
-        cardBeingMergedInto.Design.LevelUp();
+        beingMergedInto.Design.LevelUp();
+        beingMergedInto.Design.SetCost(beingMergedInto.Design.Cost + beingMerged.Design.Cost);
         OfferScreenEvents.Current.RefreshOffers();
     }
 

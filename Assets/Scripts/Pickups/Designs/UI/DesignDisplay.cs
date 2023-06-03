@@ -86,5 +86,15 @@ namespace Designs.UI
             if (design.Category != DesignCategory.Effect)
                 _damageAndRangeDisplay.RefreshInfo(design);
         }
+
+        public void AllowHover()
+        {
+            _categoryDisplay.EnableToolTip();
+        }
+
+        public void DisallowHover()
+        {
+            _categoryDisplay.DisableToolTip();
+        }
     }
 }

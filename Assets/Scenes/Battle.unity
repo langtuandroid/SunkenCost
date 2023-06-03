@@ -291,6 +291,7 @@ GameObject:
   - component: {fileID: 67896349}
   - component: {fileID: 67896350}
   - component: {fileID: 67896351}
+  - component: {fileID: 67896352}
   m_Layer: 5
   m_Name: Board
   m_TagString: Untagged
@@ -384,7 +385,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 98d039fef26248e7a9b2f3c465eea407, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _plankArea: {fileID: 1186376511}
   _islandTransform: {fileID: 1155358484}
   _boatTransform: {fileID: 1789173348}
 --- !u!114 &67896351
@@ -399,6 +399,24 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 835683803785d984880eb7f4ef71eb5a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &67896352
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 67896341}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9184dcb81e564ef1a547c4088134ff11, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _grid: {fileID: 1186376511}
+  <DraggingArea>k__BackingField: {fileID: 1223569416}
+  <Canvas>k__BackingField: {fileID: 1223569415}
+  <CanGrabElements>k__BackingField: 1
+  <CanDropElements>k__BackingField: 1
+  <IsMergeable>k__BackingField: 0
 --- !u!224 &109192786 stripped
 RectTransform:
   m_CorrespondingSourceObject: {fileID: 1210558848469399205, guid: 7e05e520579b24a45a28a9993e09aa39, type: 3}
@@ -3680,7 +3698,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3739874107440994272, guid: 753e431c20e8b5d45a1560f4e9ca944f, type: 3}
       propertyPath: m_Pivot.y
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 3739874107440994272, guid: 753e431c20e8b5d45a1560f4e9ca944f, type: 3}
       propertyPath: m_SizeDelta.x
@@ -3696,11 +3714,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3739874107440994272, guid: 753e431c20e8b5d45a1560f4e9ca944f, type: 3}
       propertyPath: m_AnchoredPosition.x
-      value: -766
+      value: 1077
       objectReference: {fileID: 0}
     - target: {fileID: 3739874107440994272, guid: 753e431c20e8b5d45a1560f4e9ca944f, type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: -12
+      value: 1145
       objectReference: {fileID: 0}
     - target: {fileID: 3739874107924409688, guid: 753e431c20e8b5d45a1560f4e9ca944f, type: 3}
       propertyPath: m_Pivot.x

@@ -5,29 +5,27 @@ using System.Collections.ObjectModel;
 using System.Linq;
 using UnityEngine;
 using UnityEngine.UI;
+using ReorderableContent;
 using Random = UnityEngine.Random;
 
 namespace BattleScreen.BattleBoard
 {
-    public class Board : MonoBehaviour
+    [RequireComponent(typeof(ReorderableGrid))]
+    public class Board : MonoBehaviour, IReorderableGridEventListener
     {
-        [SerializeField] private GridLayoutGroup _plankArea;
         [SerializeField] private Transform _islandTransform;
         [SerializeField] private Transform _boatTransform;
 
         public static Board Current;
         
-        private List<Transform> _cachedChildren;
-        private List<Plank> _cachedPlanks;
+        private readonly List<Plank> _cachedPlanks = new List<Plank>();
         
-        private bool _refreshing = false;
-        
-        public Canvas Canvas { get; private set; }
-        public RectTransform Content { get; private set; }
-        public RectTransform Rect { get; private set; }
+        public ReorderableGrid List { get; private set; }
 
         public Transform IslandTransform => _islandTransform;
         public Transform BoatTransform => _boatTransform;
+
+        public int BoardSize => List.Size;
         
         public bool CanMovePlanks => Battle.Current.BattleState == BattleState.PlayerActionPeriod && 
                                      (!Player.Current.HasMovesLimit || !Player.Current.IsOutOfMoves);
@@ -35,9 +33,6 @@ namespace BattleScreen.BattleBoard
         public int PlankCount => _cachedPlanks.Count;
         public List<Plank> PlanksInOrder => _cachedPlanks.OrderBy(p => p.PlankNum).ToList();
 
-        public int BoardSize =>
-            (int) ((_plankArea.cellSize.x * Content.childCount) +
-                   (_plankArea.spacing.x * Content.childCount - 1));
 
         private void Awake()
         {
@@ -47,38 +42,8 @@ namespace BattleScreen.BattleBoard
             }
 
             Current = this;
-            
-            Canvas = GetComponentInParent<Canvas>();
-            Content = _plankArea.GetComponent<RectTransform>();
-            Rect = GetComponent<RectTransform>();
-        }
-
-        private void OnEnable()
-        {
-            Refresh();
-        }
-
-        public void Refresh()
-        {
-            if (_refreshing) StopCoroutine(RefreshChildren());
-            
-            _cachedChildren = new List<Transform>();
-            _cachedPlanks = new List<Plank>();
-
-            _refreshing = true;
-            StartCoroutine(RefreshChildren());
-        }
-
-        public void RandomisePlanks()
-        {
-            _cachedChildren = _cachedChildren.OrderBy(s => Random.value).ToList();
-
-            for (var i = 0; i < _cachedChildren.Count; i++)
-            {
-                _cachedChildren[i].SetSiblingIndex(i+1);
-            }
-
-            Refresh();
+            List = GetComponent<ReorderableGrid>();
+            List.Init(this);
         }
         
         public Plank GetPlank(int position)
@@ -87,37 +52,35 @@ namespace BattleScreen.BattleBoard
             return PlanksInOrder[position];
         }
 
-        private IEnumerator RefreshChildren()
+        public void RandomisePlanks()
         {
-            // Get new children
-            for (var i = 0; i < Content.childCount; i++)
-            {
-                var childTransform = Content.GetChild(i);
-                
-                if (_cachedChildren.Contains(childTransform))
-                    continue;
+            List.RandomiseChildren();
+        }
 
-                var newPlank = childTransform.GetComponent<Plank>();
-                newPlank.Init(this);
-                
-                _cachedChildren.Add(childTransform);
-                _cachedPlanks.Add(newPlank);
+        public void ElementsOrderChangedByDrag()
+        {
+            Battle.Current.InvokeResponsesToPlayerTurnEvent(new BattleEvent(BattleEventType.PlayerMovedPlank));
+        }
+
+        public void ElementsRefreshed(List<Transform> listElements)
+        {
+            var planksInList = listElements.Select(t => t.GetComponent<Plank>()).ToList();
+
+            foreach (var plank in planksInList.Where(plank => !_cachedPlanks.Contains(plank)))
+            {
+                plank.Init(this);
+                _cachedPlanks.Add(plank);
             }
 
-            // A little hack, if we don't wait one frame we don't have the right deleted children
-            yield return 0;
-            
-            // Remove deleted child
-            for (var i = _cachedChildren.Count - 1; i >= 0; i--)
+            foreach (var plank in _cachedPlanks.Where(plank => !planksInList.Contains(plank)))
             {
-                if (_cachedChildren[i] == null)
-                {
-                    _cachedChildren.RemoveAt(i);
-                    _cachedPlanks.RemoveAt(i);
-                }
+                _cachedPlanks.Remove(plank);
             }
-            
-            _refreshing = false;
+        }
+
+        public void Refresh()
+        {
+            List.Refresh();
         }
     }
 }

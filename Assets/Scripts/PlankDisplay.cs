@@ -3,14 +3,17 @@ using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using BattleScreen;
+using BattleScreen.BattleBoard;
 using BattleScreen.BattleEvents;
 using Etchings;
+using ReorderableContent;
 using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.EventSystems;
 using UnityEngine.Serialization;
 
-public class PlankDisplay : MonoBehaviour, IBattleEventUpdatedUI
+[RequireComponent(typeof(ReorderableElement))]
+public class PlankDisplay : MonoBehaviour, IBattleEventUpdatedUI, IReorderableElementEventListener
 {
     private static Color _stunnedColor = new Color(0.65f, 0.65f, 0.65f);
 
@@ -40,17 +43,7 @@ public class PlankDisplay : MonoBehaviour, IBattleEventUpdatedUI
         if (BattleRenderer.Current)
             BattleRenderer.Current.DeregisterUIUpdater(this);
     }
-
-    public void BeginDrag()
-    {
-        _washImage.enabled = false;
-    }
-
-    public void EndDrag()
-    {
-        _washImage.enabled = true;
-    }
-
+    
     private IEnumerator ColorForAttackOnThisPlank(Color color)
     {
         _indicatorImage.color = new Color(color.r, color.g, color.b, _originalIndicatorAlpha);
@@ -99,5 +92,20 @@ public class PlankDisplay : MonoBehaviour, IBattleEventUpdatedUI
                 break;
             }
         }
+    }
+
+    public void Grabbed()
+    {
+        _washImage.enabled = false;
+    }
+
+    public void HoveringOverList(ReorderableGrid listHoveringOver)
+    {
+        return;
+    }
+
+    public void Released()
+    {
+        _washImage.enabled = true;
     }
 }

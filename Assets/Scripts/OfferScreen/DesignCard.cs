@@ -1,8 +1,10 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using Designs;
 using Designs.UI;
+using ReorderableContent;
 using UnityEngine;
 using UnityEngine.EventSystems;
 using UnityEngine.Serialization;
@@ -10,7 +12,8 @@ using UnityEngine.UI;
 
 namespace OfferScreen
 {
-    public class DesignCard : MonoBehaviour, IOffer
+    [RequireComponent(typeof(ReorderableElement))]
+    public class DesignCard : MonoBehaviour, IOffer, IMergeableReorderableEventListener
     {
         public bool isLocked = false;
 
@@ -22,13 +25,13 @@ namespace OfferScreen
         [SerializeField] private LockButton lockButton;
         
         private DesignDisplay _designDisplay;
-        private DesignCard _mergeableDesignCard;
         private IOffer _offerImplementation;
         private bool _inOfferRow = false;
         private bool _pointerInside = false;
 
+        private ReorderableGrid _listHoveringOverOrIn;
+
         public Design Design => _designDisplay.design;
-        private bool HasMergeableDesignCard => _mergeableDesignCard != null;
 
         private bool CanBuy => !_inOfferRow || Design.Cost <= OfferManager.Current.BuyerSeller.Gold;
         
@@ -40,11 +43,14 @@ namespace OfferScreen
 
         private void Start()
         {
+            _listHoveringOverOrIn = transform.parent.GetComponentInParent<ReorderableGrid>();
+            GetComponent<ReorderableElement>().Init(_listHoveringOverOrIn, this);
+            
             OfferScreenEvents.Current.OnOffersRefreshed += CardsUpdated;
-            StartCoroutine(Show());
+            StartCoroutine(Init());
         }
 
-        private IEnumerator Show()
+        private IEnumerator Init()
         {
             yield return 0;
             yield return 0;
@@ -73,13 +79,6 @@ namespace OfferScreen
             lockButton.Hide();
         }
 
-        public void HideButtons()
-        {
-            mergeButton.gameObject.SetActive(false);
-            _inOfferRow = false;
-            lockButton.Hide();
-        }
-
         public void PreventLocking()
         {
             isLocked = false;
@@ -96,43 +95,86 @@ namespace OfferScreen
             }
         }
 
-        public void Merge()
-        {
-            OfferManager.Current.TryMerge(_mergeableDesignCard, this);
-        }
-
         public void ClickedLockButton()
         {
             isLocked = !isLocked;
             OfferScreenEvents.Current.RefreshOffers();
         }
+
+        public void Grabbed()
+        {
+            HideButtons();
+            PreventLocking();
+            _designDisplay.DisallowHover();
+            OfferScreenEvents.Current.RefreshOffers();
+        }
+
+        public void HoveringOverList(ReorderableGrid listHoveringOver)
+        {
+            if (_listHoveringOverOrIn == listHoveringOver) return;
+            
+            _listHoveringOverOrIn = listHoveringOver;
+            
+            var rowDroppedInto = _listHoveringOverOrIn.GetComponent<DesignCardRow>();
+
+            if (rowDroppedInto.IsDeckRow)
+            {
+                OfferManager.Current.BuyerSeller.Buy(Design.Cost);
+            }
+            else
+            {
+                AllowLocking();
+                OfferManager.Current.BuyerSeller.Sell(Design.Cost);
+            }
+            
+            OfferScreenEvents.Current.RefreshOffers();
+        }
+
+        public void Released()
+        {
+            _canvasGroup.interactable = true;
+            _designDisplay.AllowHover();
+            OfferScreenEvents.Current.RefreshOffers();
+        }
+
+        public Func<ReorderableElement, bool> GetIfCanMerge()
+        {
+            return element => CanMerge(element.GetComponent<DesignCard>().Design);
+        }
+
+        public void StartMerge()
+        {
+            cardBackgroundImage.color = lockedColor;
+            OfferScreenEvents.Current.RefreshOffers();
+        }
+
+        public void FinaliseMerge(ReorderableElement element)
+        {
+            OfferManager.Current.MergeDesignCards( this, element.GetComponent<DesignCard>());
+        }
+
+        public void CancelMerge()
+        {
+            cardBackgroundImage.color = Color.white;
+        }
+
+        private bool CanMerge(Design design)
+        {
+            return design.Title == Design.Title && Design.Level < 2 && design.Level < 2;
+        }
+
+        private void HideButtons()
+        {
+            mergeButton.gameObject.SetActive(false);
+            _inOfferRow = false;
+            lockButton.Hide();
+        }
         
         private void CardsUpdated()
         {
-            _mergeableDesignCard = GetAnyMergeableDesignCard();
-            mergeButton.gameObject.SetActive(HasMergeableDesignCard);
-            
-            if (HasMergeableDesignCard)
-            {
-                mergeButton.Refresh(_mergeableDesignCard.Design.Cost, _mergeableDesignCard.Design.Cost <= OfferManager.Current.BuyerSeller.Gold);
-            }
-
             _designDisplay.UpdateDisplay();
-
             costDisplay.Refresh(Design.Cost, CanBuy);
-
             cardBackgroundImage.color = isLocked ? lockedColor : Color.white;
-        }
-        
-        private DesignCard GetAnyMergeableDesignCard()
-        {
-            if (!Design.Upgradeable || Design.Level >= 2) return null;
-            
-            return FindObjectsOfType<DesignCard>()
-                .Where(d => d != this)
-                .Where(d => d.Design.Title == Design.Title)
-                .Where(d => !d.HasMergeableDesignCard)
-                .FirstOrDefault(d => d.Design.Level < 2);
         }
     }
 }

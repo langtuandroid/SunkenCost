@@ -11,8 +11,6 @@ namespace OfferScreen
         
         private GridLayoutGroup _gridLayoutGroup;
 
-        private ReorderableListContent _reorderableListContent;
-
         private float _gridChildWidth;
 
         private void Awake()

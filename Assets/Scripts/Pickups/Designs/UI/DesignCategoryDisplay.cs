@@ -49,5 +49,15 @@ namespace Designs.UI
             _textMeshProUGUI.color = color;
             _tooltipTrigger.content = description;
         }
+
+        public void EnableToolTip()
+        {
+            _tooltipTrigger.enabled = true;
+        }
+
+        public void DisableToolTip()
+        {
+            _tooltipTrigger.enabled = false;
+        }
     }
 }
