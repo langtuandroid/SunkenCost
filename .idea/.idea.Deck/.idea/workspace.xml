@@ -23,47 +23,9 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="50470089-3e0c-4487-973b-9d375622b070" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/Assets/Scripts/ReorderableContent.meta" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/Scripts/ReorderableContent/IMergeableReorderableEventListener.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/Scripts/ReorderableContent/IMergeableReorderableEventListener.cs.meta" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/Scripts/ReorderableContent/IReorderableGridEventListener.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/Scripts/ReorderableContent/IReorderableGridEventListener.cs.meta" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/Scripts/ReorderableContent/ReorderableElement.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/Scripts/ReorderableContent/ReorderableElement.cs.meta" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/Scripts/ReorderableContent/ReorderableElementEventListener.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/Scripts/ReorderableContent/ReorderableElementEventListener.cs.meta" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/Scripts/ReorderableContent/ReorderableGrid.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/Scripts/ReorderableContent/ReorderableGrid.cs.meta" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/.idea.Deck/.idea/contentModel.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.Deck/.idea/contentModel.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/.idea.Deck/.idea/indexLayout.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.Deck/.idea/indexLayout.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/.idea.Deck/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.Deck/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/Design.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Prefabs/Design.prefab" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/OfferScreen/DesignCard.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Prefabs/OfferScreen/DesignCard.prefab" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scenes/Battle.unity" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scenes/Battle.unity" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scenes/Map.unity" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scenes/Map.unity" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scenes/OfferScreen.unity" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scenes/OfferScreen.unity" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/BattleScreen/BattleBoard/Board.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/BattleScreen/BattleBoard/Board.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/BattleScreen/BattleBoard/Plank.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/BattleScreen/BattleBoard/Plank.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Enemies/EnemyPlankArranger.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Enemies/EnemyPlankArranger.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/OfferScreen/CardLayout.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/OfferScreen/CardLayout.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/OfferScreen/DesignCard.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/OfferScreen/DesignCard.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/OfferScreen/DesignCardRow.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/OfferScreen/DesignCardRow.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/OfferScreen/OfferManager.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/OfferScreen/OfferManager.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Pickups/Designs/UI/DesignCategoryDisplay.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Pickups/Designs/UI/DesignCategoryDisplay.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Pickups/Designs/UI/DesignDisplay.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Pickups/Designs/UI/DesignDisplay.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/PlankDisplay.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/PlankDisplay.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/ReorderableList.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/ReorderableList/ReorderableList.cs" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/ReorderableList/ReorderableList.cs.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/ReorderableList/ReorderableListContent.cs" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/ReorderableList/ReorderableListContent.cs.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/ReorderableList/ReorderableListDebug.cs" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/ReorderableList/ReorderableListDebug.cs.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/ReorderableList/ReorderableListElement.cs" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/ReorderableList/ReorderableListElement.cs.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/UI/Tooltip/TooltipTrigger.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/UI/Tooltip/TooltipTrigger.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/com.unity.uiextensions/Editor/UIExtensionsMenuOptions.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/com.unity.uiextensions/Editor/UIExtensionsMenuOptions.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/UserSettings/EditorUserSettings.asset" beforeDir="false" afterPath="$PROJECT_DIR$/UserSettings/EditorUserSettings.asset" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/UserSettings/Layouts/CurrentMaximizeLayout.dwlt" beforeDir="false" afterPath="$PROJECT_DIR$/UserSettings/Layouts/CurrentMaximizeLayout.dwlt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/UserSettings/Layouts/default-2021.dwlt" beforeDir="false" afterPath="$PROJECT_DIR$/UserSettings/Layouts/default-2021.dwlt" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -302,7 +264,7 @@
       <workItem from="1685670239746" duration="103000" />
       <workItem from="1685670363074" duration="6635000" />
       <workItem from="1685680343138" duration="13907000" />
-      <workItem from="1685761709937" duration="8715000" />
+      <workItem from="1685761709937" duration="9312000" />
     </task>
     <servers />
   </component>
