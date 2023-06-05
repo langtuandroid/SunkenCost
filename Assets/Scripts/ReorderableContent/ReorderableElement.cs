@@ -99,7 +99,7 @@ namespace ReorderableContent
             // Create an empty space where the current plank is
             var emptySpace = new GameObject("Empty Space");
             _emptySpaceRect = emptySpace.AddComponent<RectTransform>();
-            _emptySpaceRect.SetParent(_currentReorderableGrid.Content, false);
+            _emptySpaceRect.SetParent(_currentReorderableGrid.Content, true);
             _emptySpaceRect.SetSiblingIndex(_currentSiblingIndex);
             _emptySpaceRect.sizeDelta = _rectTransform.sizeDelta;
             emptySpace.AddComponent<LayoutElement>();
@@ -177,7 +177,7 @@ namespace ReorderableContent
             if (_emptySpaceRect.parent != _listHoveringOver.Content)
             {
                 OnHoveringOverList?.Invoke(_listHoveringOver);
-                _emptySpaceRect.SetParent(_listHoveringOver.Content, false);
+                _emptySpaceRect.SetParent(_listHoveringOver.Content, true);
             }
 
             // Put the empty space in the right place
@@ -224,7 +224,7 @@ namespace ReorderableContent
                 _currentSiblingIndex = _emptySpaceRect.GetSiblingIndex();
             }
 
-            _rectTransform.SetParent(_currentReorderableGrid.Content, false);
+            _rectTransform.SetParent(_currentReorderableGrid.Content, true);
             _rectTransform.SetSiblingIndex(_currentSiblingIndex);
 
             Destroy(_emptySpaceRect.gameObject);

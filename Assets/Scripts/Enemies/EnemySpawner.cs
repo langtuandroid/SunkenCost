@@ -73,9 +73,6 @@ public class EnemySpawner : BattleEventResponder
         foreach (var enemyType in enemyTypes)
         {
             var enemy = SpawnEnemyOnIsland(enemyType);
-            enemy.MaxHealthStat.AddModifier(new StatModifier(_scenario.scaledDifficulty, StatModType.PercentMult));
-            enemy.Mover.AddMovementModifier((int) (_scenario.scaledDifficulty / 2f)
-                                            + RunProgress.Current.PlayerStats.EnemyMovementModifier);
             battleEvents.Add(new BattleEvent(BattleEventType.EnemySpawned)
             {
                 primaryResponderID = enemy.ResponderID, 
@@ -111,6 +108,11 @@ public class EnemySpawner : BattleEventResponder
         newEnemyObject.transform.localScale = new Vector3(1, 1, 1);
 
         var newEnemy = newEnemyObject.AddComponent(enemyClass).GetComponent<Enemy>();
+        
+        newEnemy.MaxHealthStat.AddModifier(new StatModifier(_scenario.scaledDifficulty, StatModType.PercentMult));
+        newEnemy.MovementModifier = (int) (_scenario.scaledDifficulty / 2f)
+                                  + RunProgress.Current.PlayerStats.EnemyMovementModifier;
+        
         EnemySequencer.Current.AddEnemy(newEnemy);
         return newEnemy;
     }

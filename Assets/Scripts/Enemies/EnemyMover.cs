@@ -116,16 +116,6 @@ namespace Enemies
             if (MovementRemainingThisTurn < -PlankNum - 1) MovementRemainingThisTurn = -PlankNum - 1;
         }
 
-        public void AddMovementModifier(int amount)
-        {
-            for (var i = 0; i < _moveSet.Count; i++)
-            {
-                var move = _moveSet.ElementAt(i);
-                if (move.MovementType == MovementType.Wait) continue;
-                move.AlterMagnitude(amount);
-            }
-        }
-
         public void EndTurn() 
         {
             SetNextMove();

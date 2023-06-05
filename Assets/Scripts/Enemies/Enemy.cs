@@ -4,6 +4,7 @@ using BattleScreen;
 using BattleScreen.BattleBoard;
 using BattleScreen.BattleEvents;
 using Damage;
+using Stats;
 using UnityEngine;
 
 namespace Enemies
@@ -17,6 +18,7 @@ namespace Enemies
         public string Name { get; private set; }
         
         public Stat MaxHealthStat { get; private set; }
+        public int MovementModifier { get; set; } = 0;
         protected int Gold { get; set; } = 1;
         public int Health { get; private set; }
         
@@ -49,7 +51,8 @@ namespace Enemies
 
         public void Initialise(int plankNum)
         {
-            Mover.Init(Asset.Moves, plankNum);
+            var moves = GetMovesWithModifier(Asset.Moves, MovementModifier);
+            Mover.Init(moves, plankNum);
         }
         
         public override List<BattleEventResponseTrigger> GetBattleEventResponseTriggers()
@@ -146,6 +149,18 @@ namespace Enemies
         {
             Speech = text;
             return CreateEvent(BattleEventType.EnemySpeaking);
+        }
+
+        private static IEnumerable<EnemyMove> GetMovesWithModifier(ICollection<EnemyMove> moveSet, int modifier)
+        {
+            for (var i = 0; i < moveSet.Count; i++)
+            {
+                var move = moveSet.ElementAt(i);
+                if (move.MovementType == MovementType.Wait) continue;
+                move.AlterMagnitude(modifier);
+            }
+
+            return moveSet;
         }
         
         private void RefreshPlankNum()
