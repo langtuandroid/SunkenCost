@@ -1010,11 +1010,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3739874107440994272, guid: 753e431c20e8b5d45a1560f4e9ca944f, type: 3}
       propertyPath: m_AnchoredPosition.x
-      value: 1077
+      value: 1075
       objectReference: {fileID: 0}
     - target: {fileID: 3739874107440994272, guid: 753e431c20e8b5d45a1560f4e9ca944f, type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: 1145
+      value: 1138
       objectReference: {fileID: 0}
     - target: {fileID: 3739874107924409688, guid: 753e431c20e8b5d45a1560f4e9ca944f, type: 3}
       propertyPath: m_Pivot.x
@@ -1819,7 +1819,6 @@ MonoBehaviour:
   _grid: {fileID: 2643005069100941206}
   <DraggingArea>k__BackingField: {fileID: 751611253}
   <Canvas>k__BackingField: {fileID: 751611252}
-  <CanGrabElements>k__BackingField: 1
   <CanDropElements>k__BackingField: 1
   <IsMergeable>k__BackingField: 1
 --- !u!1 &2643005068724583716
@@ -2227,7 +2226,6 @@ MonoBehaviour:
   _grid: {fileID: 2643005068724583722}
   <DraggingArea>k__BackingField: {fileID: 751611253}
   <Canvas>k__BackingField: {fileID: 751611252}
-  <CanGrabElements>k__BackingField: 1
   <CanDropElements>k__BackingField: 1
   <IsMergeable>k__BackingField: 1
 --- !u!1001 &4202200882349825103

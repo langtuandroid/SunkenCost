@@ -20,29 +20,26 @@ namespace OfferScreen
         public IEnumerable<DesignCard> CardsInDeckRow => deckRow.GetComponentsInChildren<DesignCard>();
         public IEnumerable<DesignCard> CardsInLeaveRow => offerRow.GetComponentsInChildren<DesignCard>();
         
-        public List<DesignCard> CreateDesignCards()
-        {
-            var allCards = new List<DesignCard>();
+        public void CreateDesignCards()
+        { 
+            CreateBatchOfDesignCards(RunProgress.Current.PlayerStats.Deck, deckRow, false);
+            CreateBatchOfDesignCards(RunProgress.Current.OfferStorage.RewardDesignOffers, offerRow);
+            CreateBatchOfDesignCards(RunProgress.Current.OfferStorage.LockedDesignOffers, offerRow, locked: true);
             
-            allCards.AddRange(CreateDeckCards());
-            allCards.AddRange(CreateLockedCards());
-            allCards.AddRange(CreateRewardCards());
-            
-            allCards.AddRange(RunProgress.Current.HasGeneratedMapEvents
-                ? CreateSavedUnlockedCards()
-                : GenerateNewUnlockedCards(RunProgress.Current.PlayerStats.NumberOfCardsToOffer - 
-                                           RunProgress.Current.OfferStorage.LockedDesignOffers.Count));
-
-            return allCards;
+            if (RunProgress.Current.HasGeneratedMapEvents) 
+                CreateBatchOfDesignCards(RunProgress.Current.OfferStorage.UnlockedDesignOffers, offerRow);
+            else 
+                GenerateNewUnlockedCards(RunProgress.Current.PlayerStats.NumberOfCardsToOffer - 
+                                           RunProgress.Current.OfferStorage.LockedDesignOffers.Count);
         }
 
-        public List<DesignCard> ReRoll()
+        public void ReRoll()
         {
             DiscardLockedCards();
 
             var amountOfLockedCards = FindObjectsOfType<DesignCard>().Count(d => d.isLocked);
             var amountToCreate = RunProgress.Current.PlayerStats.NumberOfCardsToOffer - amountOfLockedCards;
-            return GenerateNewUnlockedCards(amountToCreate);
+            GenerateNewUnlockedCards(amountToCreate);
         }
         
         private void DiscardLockedCards()
@@ -55,45 +52,25 @@ namespace OfferScreen
             }
         }
 
-        private IEnumerable<DesignCard> CreateBatchOfDesignCards(IEnumerable<Design> designs, Transform row,
+        private void CreateBatchOfDesignCards(IEnumerable<Design> designs, Transform row,
             bool lockable = true, bool locked = false)
         {
-            return designs.Select(design => CreateDesignCardFromDesign(design, row, locked, lockable));
+            foreach (var design in designs)
+            {
+                CreateDesignCardFromDesign(design, row, locked, lockable);
+            }
         }
-
-        private IEnumerable<DesignCard> CreateDeckCards()
+        
+        private void GenerateNewUnlockedCards(int amountToCreate)
         {
-            return CreateBatchOfDesignCards(RunProgress.Current.PlayerStats.Deck, deckRow, false);
-        }
-
-        private IEnumerable<DesignCard> CreateRewardCards()
-        {
-            return CreateBatchOfDesignCards(RunProgress.Current.OfferStorage.RewardDesignOffers, offerRow);
-        }
-
-        private IEnumerable<DesignCard> CreateLockedCards()
-        {
-            return CreateBatchOfDesignCards(RunProgress.Current.OfferStorage.LockedDesignOffers, offerRow, locked: true);
-        }
-
-        private IEnumerable<DesignCard> CreateSavedUnlockedCards()
-        {
-            return CreateBatchOfDesignCards(RunProgress.Current.OfferStorage.UnlockedDesignOffers, offerRow);
-        }
-
-        private List<DesignCard> GenerateNewUnlockedCards(int amountToCreate)
-        {
-            var newCards = new List<DesignCard>();
             for (var i = 0; i < amountToCreate; i++)
             {
                 var design = DesignFactory.GenerateStoreDesign();
-                newCards.Add(CreateDesignCardFromDesign(design, offerRow));
+                CreateDesignCardFromDesign(design, offerRow);
             }
-
-            return newCards;
         }
 
-        private DesignCard CreateDesignCardFromDesign(Design design, Transform row, bool locked = false, bool lockable = true)
+        private void CreateDesignCardFromDesign(Design design, Transform row, bool locked = false, bool lockable = true)
         {
             var newCardObject = Instantiate(designCardPrefab, row);
             var info = newCardObject.GetComponentInChildren<DesignDisplay>();
@@ -101,19 +78,6 @@ namespace OfferScreen
 
             var designCard = newCardObject.GetComponent<DesignCard>();
             designCard.isLocked = locked;
-
-            if (lockable)
-            {
-                designCard.AllowLocking();
-            }
-            else
-            {
-                designCard.PreventLocking();
-            }
-
-            return designCard;
         }
-
-        
     }
 }

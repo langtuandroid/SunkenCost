@@ -5,8 +5,8 @@ namespace ReorderableContent
     public interface IMergeableReorderableEventListener : IReorderableElementEventListener
     {
         public Func<ReorderableElement, bool> GetIfCanMerge();
-        public void StartMerge();
-        public void FinaliseMerge(ReorderableElement element);
+        public void OfferMerge(ReorderableElement element);
+        public void FinaliseMerge();
         public void CancelMerge();
     }
 }

@@ -26,10 +26,7 @@ namespace BattleScreen.BattleBoard
         public Transform BoatTransform => _boatTransform;
 
         public int BoardSize => List.Size;
-        
-        public bool CanMovePlanks => Battle.Current.BattleState == BattleState.PlayerActionPeriod && 
-                                     (!Player.Current.HasMovesLimit || !Player.Current.IsOutOfMoves);
-        
+
         public int PlankCount => _cachedPlanks.Count;
         public List<Plank> PlanksInOrder => _cachedPlanks.OrderBy(p => p.PlankNum).ToList();
 
@@ -57,8 +54,16 @@ namespace BattleScreen.BattleBoard
             List.RandomiseChildren();
         }
 
+        public Func<bool> CanGrabElementsFunc()
+        {
+            return () => 
+                Battle.Current.BattleState == BattleState.PlayerActionPeriod &&
+                (!Player.Current.HasMovesLimit || !Player.Current.IsOutOfMoves);
+        }
+
         public void ElementsOrderChangedByDrag()
         {
+            Debug.Log("Player Moved Plank");
             Battle.Current.InvokeResponsesToPlayerTurnEvent(new BattleEvent(BattleEventType.PlayerMovedPlank));
         }
 

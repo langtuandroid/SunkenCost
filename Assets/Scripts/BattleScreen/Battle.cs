@@ -32,7 +32,7 @@ namespace BattleScreen
     
     public class Battle : MonoBehaviour
     {
-        public static float ActionExecutionSpeed;
+        public static float ActionExecutionSpeed { get; private set; }
         
         public static Battle Current;
 

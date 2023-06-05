@@ -24,7 +24,7 @@ namespace OfferScreen
         public void RefreshOffers()
         {
             OnOffersRefreshed?.Invoke();
-            plankCount.UpdateText(OfferManager.CardsOnTopRow);
+            plankCount.UpdateText(OfferManager.Current.CardsOnTopRow);
         }
     }
 }

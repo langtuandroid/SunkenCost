@@ -33,9 +33,9 @@ namespace ReorderableContent
         private event Action<ReorderableGrid> OnHoveringOverList;
         private event Action OnEndedDrag;
 
-        private event Action OnStartMerge;
+        private event Action<ReorderableElement> OnOfferMerge;
         private event Action OnCancelMerge;
-        private event Action<ReorderableElement> OnFinaliseMerge;
+        private event Action OnFinaliseMerge;
 
         private bool _currentlyMerging;
         private Func<ReorderableElement, bool> TryMergeInto;
@@ -72,7 +72,7 @@ namespace ReorderableContent
                     if (listener is IMergeableReorderableEventListener mergeableListener)
                     {
                         TryMergeInto = mergeableListener.GetIfCanMerge();
-                        OnStartMerge += mergeableListener.StartMerge;
+                        OnOfferMerge += mergeableListener.OfferMerge;
                         OnCancelMerge += mergeableListener.CancelMerge;
                         OnFinaliseMerge += mergeableListener.FinaliseMerge;
                     }
@@ -148,7 +148,7 @@ namespace ReorderableContent
                     if (oldElement != _elementToMergeWith)
                     {
                         _currentlyMerging = true;
-                        OnStartMerge?.Invoke();
+                        OnOfferMerge?.Invoke(_elementToMergeWith);
                     }
                 }
                 else if (_currentlyMerging)
@@ -198,7 +198,6 @@ namespace ReorderableContent
             }
             
             _emptySpaceRect.SetSiblingIndex(closestPlankSiblingIndex);
-            _currentSiblingIndex = closestPlankSiblingIndex;
         }
 
         public void OnEndDrag(PointerEventData eventData)
@@ -207,7 +206,7 @@ namespace ReorderableContent
 
             if (_currentlyMerging)
             {
-                OnFinaliseMerge?.Invoke(_elementToMergeWith);
+                OnFinaliseMerge?.Invoke();
                 Destroy(_emptySpaceRect.gameObject);
                 Destroy(gameObject);
                 return;

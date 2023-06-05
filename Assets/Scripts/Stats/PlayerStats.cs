@@ -13,6 +13,8 @@ public class PlayerStats
     
     private const int INIT_NUM_OF_CARD_OFFERS = 3;
     private const int INIT_NUM_OF_ITEM_OFFERS = 2;
+
+    private const int INIT_REROLL_COST = 2;
     
     public List<Design> Deck { get; private set; }
 
@@ -32,7 +34,7 @@ public class PlayerStats
     public int NumberOfCardsToOffer { get; private set; }
     public int NumberOfItemsToOffer { get; private set; }
     public int EnemyMovementModifier { get; set; } = 0;
-    public int ReRollCost { get; private set; } = 0;
+    public int ReRollCost { get; private set; }
 
     public PlayerStats()
     {
@@ -43,6 +45,7 @@ public class PlayerStats
         NumberOfTurns = INIT_NUM_OF_TURNS;
         NumberOfCardsToOffer = INIT_NUM_OF_CARD_OFFERS;
         NumberOfItemsToOffer = INIT_NUM_OF_ITEM_OFFERS;
+        ReRollCost = INIT_REROLL_COST;
         
         Health = MaxHealth;
     }
@@ -77,10 +80,5 @@ public class PlayerStats
     {
         Health += amount;
         if (Health > MaxHealth) Health = MaxHealth;
-    }
-
-    public void UsedReRoll()
-    {
-        ReRollCost++;
     }
 }

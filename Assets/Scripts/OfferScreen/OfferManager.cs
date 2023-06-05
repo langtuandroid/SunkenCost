@@ -24,8 +24,8 @@ public class OfferManager : MonoBehaviour
 
     public BuyerSeller BuyerSeller { get; private set; }
 
-
-    public static int CardsOnTopRow => Current._designCardOfferGenerator.CardsInDeckRowCount;
+    public IEnumerable<DesignCard> AllDesignCards => FindObjectsOfType<DesignCard>();
+    public int CardsOnTopRow => _designCardOfferGenerator.CardsInDeckRowCount;
 
     private void Awake()
     {
@@ -70,7 +70,7 @@ public class OfferManager : MonoBehaviour
     {
         beingMergedInto.Design.LevelUp();
         beingMergedInto.Design.SetCost(beingMergedInto.Design.Cost + beingMerged.Design.Cost);
-        OfferScreenEvents.Current.RefreshOffers();
+        StartCoroutine(WaitForDesignCardsToInitialise());
     }
 
     public void BuyItem(ItemOffer itemOffer)
@@ -100,7 +100,6 @@ public class OfferManager : MonoBehaviour
         BuyerSeller.Buy(cost);
         _designCardOfferGenerator.ReRoll();
         _itemOfferGenerator.ReRoll();
-        RunProgress.Current.PlayerStats.UsedReRoll();
         StartCoroutine(WaitForDesignCardsToInitialise());
     }
     

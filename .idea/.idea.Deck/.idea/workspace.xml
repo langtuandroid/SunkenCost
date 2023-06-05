@@ -23,9 +23,25 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="50470089-3e0c-4487-973b-9d375622b070" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/Assets/AllIn1SpriteShader/Materials/DesignImage.mat" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/AllIn1SpriteShader/Materials/DesignImage.mat.meta" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/.idea.Deck/.idea/indexLayout.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.Deck/.idea/indexLayout.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/.idea.Deck/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.Deck/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/UserSettings/Layouts/default-2021.dwlt" beforeDir="false" afterPath="$PROJECT_DIR$/UserSettings/Layouts/default-2021.dwlt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/OfferScreen/DesignCard.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Prefabs/OfferScreen/DesignCard.prefab" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/BattleScreen/Battle.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/BattleScreen/Battle.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/BattleScreen/BattleBoard/Board.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/BattleScreen/BattleBoard/Board.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Enemies/Enemy.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Enemies/Enemy.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Enemies/EnemyPlankArranger.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Enemies/EnemyPlankArranger.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/OfferScreen/DesignCard.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/OfferScreen/DesignCard.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/OfferScreen/DesignCardOfferGenerator.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/OfferScreen/DesignCardOfferGenerator.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/OfferScreen/OfferManager.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/OfferScreen/OfferManager.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/OfferScreen/OfferScreenEvents.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/OfferScreen/OfferScreenEvents.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/ReorderableContent/IMergeableReorderableEventListener.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/ReorderableContent/IMergeableReorderableEventListener.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/ReorderableContent/IReorderableGridEventListener.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/ReorderableContent/IReorderableGridEventListener.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/ReorderableContent/ReorderableElement.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/ReorderableContent/ReorderableElement.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/ReorderableContent/ReorderableGrid.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/ReorderableContent/ReorderableGrid.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Stats/PlayerStats.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Stats/PlayerStats.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/UserSettings/EditorUserSettings.asset" beforeDir="false" afterPath="$PROJECT_DIR$/UserSettings/EditorUserSettings.asset" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -71,10 +87,6 @@
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/Assets/Scripts/Loaders/DesignLoader.cs" />
-        <option value="$PROJECT_DIR$/Assets/Scripts/Loaders/ItemLoader.cs" />
-        <option value="$PROJECT_DIR$/Assets/Scripts/Pickups/PickupAsset.cs" />
-        <option value="$PROJECT_DIR$/Assets/Scripts/Pickups/Rarity.cs" />
         <option value="$PROJECT_DIR$/Assets/Scripts/Enemies/EnemyUI/EnemyShaderAnimation.cs" />
         <option value="$PROJECT_DIR$/Assets/Scripts/Enemies/EnemyAnimationController.cs" />
         <option value="$PROJECT_DIR$/Assets/Scripts/Pickups/Varnishes/VarnishType.cs" />
@@ -83,7 +95,6 @@
         <option value="$PROJECT_DIR$/Assets/Scripts/Loaders/VarnishLoader.cs" />
         <option value="$PROJECT_DIR$/Assets/Scripts/EtchingFactory.cs" />
         <option value="$PROJECT_DIR$/Assets/Scripts/RunthroughStartingConfig.cs" />
-        <option value="$PROJECT_DIR$/Assets/Scripts/Etchings/Etching.cs" />
         <option value="$PROJECT_DIR$/Assets/Scripts/BattleScreen/BattleEvents/EtchingBattleEventResponderGroup.cs" />
         <option value="$PROJECT_DIR$/Assets/Scripts/OfferScreen/CardDesignOfferGenerator.cs" />
         <option value="$PROJECT_DIR$/Assets/Scripts/OfferScreen/Card/Row.cs" />
@@ -97,9 +108,7 @@
         <option value="$PROJECT_DIR$/Assets/Scripts/MergeableList/IMergeableListElementEventListener.cs" />
         <option value="$PROJECT_DIR$/Assets/Scripts/MergeableList/IMergeableListEventListener.cs" />
         <option value="$PROJECT_DIR$/Assets/Scripts/PlankDisplay.cs" />
-        <option value="$PROJECT_DIR$/Assets/Scripts/Enemies/EnemyPlankArranger.cs" />
         <option value="$PROJECT_DIR$/Assets/Scripts/PlankFactory.cs" />
-        <option value="$PROJECT_DIR$/Assets/Scripts/BattleScreen/BattleBoard/Board.cs" />
         <option value="$PROJECT_DIR$/Assets/Scripts/BattleScreen/BattleBoard/Plank.cs" />
         <option value="$PROJECT_DIR$/Assets/Scripts/OfferScreen/CardDesign.cs" />
         <option value="$PROJECT_DIR$/Assets/Scripts/OfferScreen/CardDesignRow.cs" />
@@ -112,16 +121,23 @@
         <option value="$PROJECT_DIR$/Assets/Scripts/MergeableList/IMyListElementEventListener.cs" />
         <option value="$PROJECT_DIR$/Assets/Scripts/MergeableList/ReorderableElementEventListener.cs" />
         <option value="$PROJECT_DIR$/Assets/Scripts/ReorderableContent/IReorderableRowEventListener.cs" />
-        <option value="$PROJECT_DIR$/Assets/Scripts/ReorderableContent/IReorderableGridEventListener.cs" />
         <option value="$PROJECT_DIR$/Assets/Scripts/ReorderableContent/ReorderableElementEventListener.cs" />
-        <option value="$PROJECT_DIR$/Assets/Scripts/ReorderableContent/ReorderableGrid.cs" />
         <option value="$PROJECT_DIR$/Assets/Scripts/OfferScreen/CardLayout.cs" />
         <option value="$PROJECT_DIR$/Assets/com.unity.uiextensions/Editor/UIExtensionsMenuOptions.cs" />
-        <option value="$PROJECT_DIR$/Assets/Scripts/OfferScreen/OfferManager.cs" />
+        <option value="$PROJECT_DIR$/Assets/Scripts/Stats/PlayerStats.cs" />
         <option value="$PROJECT_DIR$/Assets/Scripts/ReorderableContent/IMergeableReorderableEventListener.cs" />
-        <option value="$PROJECT_DIR$/Assets/Scripts/OfferScreen/DesignCard.cs" />
-        <option value="$PROJECT_DIR$/Assets/Scripts/OfferScreen/DesignCardOfferGenerator.cs" />
+        <option value="$PROJECT_DIR$/Assets/Scripts/OfferScreen/OfferScreenEvents.cs" />
+        <option value="$PROJECT_DIR$/Assets/Scripts/ReorderableContent/IReorderableGridEventListener.cs" />
+        <option value="$PROJECT_DIR$/Assets/Scripts/ReorderableContent/ReorderableGrid.cs" />
+        <option value="$PROJECT_DIR$/Assets/Scripts/BattleScreen/BattleBoard/Board.cs" />
         <option value="$PROJECT_DIR$/Assets/Scripts/ReorderableContent/ReorderableElement.cs" />
+        <option value="$PROJECT_DIR$/Assets/Scripts/Enemies/Enemy.cs" />
+        <option value="$PROJECT_DIR$/Assets/Scripts/Etchings/Etching.cs" />
+        <option value="$PROJECT_DIR$/Assets/Scripts/OfferScreen/OfferManager.cs" />
+        <option value="$PROJECT_DIR$/Assets/Scripts/OfferScreen/DesignCardOfferGenerator.cs" />
+        <option value="$PROJECT_DIR$/Assets/Scripts/OfferScreen/DesignCard.cs" />
+        <option value="$PROJECT_DIR$/Assets/Scripts/BattleScreen/Battle.cs" />
+        <option value="$PROJECT_DIR$/Assets/Scripts/Enemies/EnemyPlankArranger.cs" />
       </list>
     </option>
   </component>
@@ -265,6 +281,7 @@
       <workItem from="1685670363074" duration="6635000" />
       <workItem from="1685680343138" duration="13907000" />
       <workItem from="1685761709937" duration="9312000" />
+      <workItem from="1685921115096" duration="7524000" />
     </task>
     <servers />
   </component>

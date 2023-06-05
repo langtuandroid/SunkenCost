@@ -21,8 +21,12 @@ namespace OfferScreen
         [SerializeField] private Color lockedColor;
         [SerializeField] private Image cardBackgroundImage;
         [SerializeField] private CostDisplay costDisplay;
-        [SerializeField] private CostDisplay mergeButton;
         [SerializeField] private LockButton lockButton;
+        
+        [SerializeField] private Color _mergeableColor;
+        [SerializeField] private Color _mergingColor;
+
+        private Material _material;
         
         private DesignDisplay _designDisplay;
         private IOffer _offerImplementation;
@@ -30,6 +34,7 @@ namespace OfferScreen
         private bool _pointerInside = false;
 
         private ReorderableGrid _listHoveringOverOrIn;
+        private DesignCard _cardMergingWith;
 
         public Design Design => _designDisplay.design;
 
@@ -39,6 +44,9 @@ namespace OfferScreen
         {
             _canvasGroup.alpha = 0f;
             _designDisplay = GetComponentInChildren<DesignDisplay>();
+            
+            _material = new Material(cardBackgroundImage.material);
+            cardBackgroundImage.material = _material;
         }
 
         private void Start()
@@ -48,6 +56,9 @@ namespace OfferScreen
             
             OfferScreenEvents.Current.OnOffersRefreshed += CardsUpdated;
             StartCoroutine(Init());
+            
+            if (_listHoveringOverOrIn.GetComponent<DesignCardRow>().IsDeckRow) SetAsInDeckRow(); 
+            else SetAsInOfferRow();
         }
 
         private IEnumerator Init()
@@ -78,23 +89,7 @@ namespace OfferScreen
             _pointerInside = false;
             lockButton.Hide();
         }
-
-        public void PreventLocking()
-        {
-            isLocked = false;
-            _inOfferRow = false;
-        }
-
-        public void AllowLocking()
-        {
-            _inOfferRow = true;
-
-            if (_pointerInside)
-            {
-                lockButton.Show();
-            }
-        }
-
+        
         public void ClickedLockButton()
         {
             isLocked = !isLocked;
@@ -104,7 +99,6 @@ namespace OfferScreen
         public void Grabbed()
         {
             HideButtons();
-            PreventLocking();
             _designDisplay.DisallowHover();
             OfferScreenEvents.Current.RefreshOffers();
         }
@@ -119,11 +113,12 @@ namespace OfferScreen
 
             if (rowDroppedInto.IsDeckRow)
             {
+                SetAsInDeckRow();
                 OfferManager.Current.BuyerSeller.Buy(Design.Cost);
             }
             else
             {
-                AllowLocking();
+                SetAsInOfferRow();
                 OfferManager.Current.BuyerSeller.Sell(Design.Cost);
             }
             
@@ -141,31 +136,59 @@ namespace OfferScreen
         {
             return element => CanMerge(element.GetComponent<DesignCard>().Design);
         }
-
-        public void StartMerge()
+        
+        private void SetAsInDeckRow()
         {
-            cardBackgroundImage.color = lockedColor;
-            OfferScreenEvents.Current.RefreshOffers();
+            isLocked = false;
+            lockButton.Hide();
+            _inOfferRow = false;
         }
 
-        public void FinaliseMerge(ReorderableElement element)
+        private void SetAsInOfferRow()
         {
-            OfferManager.Current.MergeDesignCards( this, element.GetComponent<DesignCard>());
+            _inOfferRow = true;
+
+            if (_pointerInside)
+            {
+                lockButton.Show();
+            }
+        }
+
+        public void OfferMerge(ReorderableElement element)
+        {
+            _cardMergingWith = element.GetComponent<DesignCard>();
+            _material.EnableKeyword("ROUNDWAVEUV_ON");
+            _material.SetColor("_InnerOutlineColor", _mergingColor);
+        }
+
+        public void FinaliseMerge()
+        {
+            OfferManager.Current.MergeDesignCards( this, _cardMergingWith);
         }
 
         public void CancelMerge()
         {
-            cardBackgroundImage.color = Color.white;
+            _material.DisableKeyword("ROUNDWAVEUV_ON");
+            _material.SetColor("_InnerOutlineColor", _mergeableColor);
         }
 
         private bool CanMerge(Design design)
         {
             return design.Title == Design.Title && Design.Level < 2 && design.Level < 2;
         }
+        
+        private void StartMergeEffects()
+        {
+            _material.EnableKeyword("INNEROUTLINE_ON");
+        }
+        
+        private void StopMergeEffects()
+        {
+            _material.DisableKeyword("INNEROUTLINE_ON");
+        }
 
         private void HideButtons()
         {
-            mergeButton.gameObject.SetActive(false);
             _inOfferRow = false;
             lockButton.Hide();
         }
@@ -175,6 +198,15 @@ namespace OfferScreen
             _designDisplay.UpdateDisplay();
             costDisplay.Refresh(Design.Cost, CanBuy);
             cardBackgroundImage.color = isLocked ? lockedColor : Color.white;
+
+            if (OfferManager.Current.AllDesignCards.Any(dc => dc != this && CanMerge(dc.Design)))
+            {
+                StartMergeEffects();
+            }
+            else
+            {
+                StopMergeEffects();
+            }
         }
     }
 }

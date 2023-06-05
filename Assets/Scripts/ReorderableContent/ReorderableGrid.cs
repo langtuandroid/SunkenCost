@@ -14,13 +14,16 @@ namespace ReorderableContent
         
         [field: SerializeField] public RectTransform DraggingArea { get; private set; }
         [field: SerializeField] public Canvas Canvas { get; private set; }
-        [field: SerializeField] public bool CanGrabElements { get; set; } = true;
         [field: SerializeField] public bool CanDropElements { get; set; } = true;
         [field: SerializeField] public bool IsMergeable { get; set; } = true;
+        
+        public bool CanGrabElements => _canGrabElements.Invoke();
 
         private List<Transform> _cachedChildren;
 
         private bool _refreshing = false;
+
+        private Func<bool> _canGrabElements = () => true;
         
         private event Action<List<Transform>> OnRefreshedChildren;
         private event Action OnElementOrderAlteredByDrag;
@@ -41,6 +44,7 @@ namespace ReorderableContent
 
         public void Init(IReorderableGridEventListener listener)
         {
+            _canGrabElements = listener.CanGrabElementsFunc();
             OnRefreshedChildren += listener.ElementsRefreshed;
             OnElementOrderAlteredByDrag += listener.ElementsOrderChangedByDrag;
         }
