@@ -9,6 +9,7 @@ namespace BattleScreen.UI
 {
     public class BattleHUD : MonoBehaviour, IBattleEventUpdatedUI
     {
+        [SerializeField] private IslandAnimation _islandAnimation;
         [SerializeField] private BoatShaker _boatShaker;
         [SerializeField] private BoatHealthMeter _boatHealthMeter;
     
@@ -28,6 +29,11 @@ namespace BattleScreen.UI
             _whosTurnText.EndEnemyTurn();
         }
 
+        public void StartedBattle()
+        {
+            _islandAnimation.SurfaceIsland();
+        }
+
         public void UpdateMovesText()
         {
             var movesLeft = (Player.Current.MovesPerTurn - Player.Current.MovesUsedThisTurn).ToString();
@@ -36,6 +42,7 @@ namespace BattleScreen.UI
 
         private void EndedBattle()
         {
+            _islandAnimation.SinkIsland();
         }
 
         private void GainedLife()
@@ -79,6 +86,9 @@ namespace BattleScreen.UI
         {
             switch (battleEvent.type)
             {
+                case BattleEventType.StartedBattle:
+                    StartedBattle();
+                    break;
                 case BattleEventType.GainedGold:
                     UpdateGoldText();
                     break;

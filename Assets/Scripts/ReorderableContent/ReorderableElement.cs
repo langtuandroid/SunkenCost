@@ -38,13 +38,14 @@ namespace ReorderableContent
         private event Action OnFinaliseMerge;
 
         private bool _currentlyMerging;
-        private Func<ReorderableElement, bool> TryMergeInto;
+        private Func<ReorderableElement, bool> _tryMergeInto;
         
         [field: SerializeField] public bool IsMergeable { get; private set; }
 
         private void Awake()
         {
             _canvasGroup = GetComponent<CanvasGroup>();
+            
             _rectTransform = GetComponent<RectTransform>();
             _layoutElement = gameObject.AddComponent<LayoutElement>();
             
@@ -58,7 +59,6 @@ namespace ReorderableContent
             _canvas = reorderableGrid.Canvas;
             _currentReorderableGrid = reorderableGrid;
             _currentSiblingIndex = transform.GetSiblingIndex();
-
             IsMergeable = reorderableGrid.IsMergeable;
             
             if (listener != null)
@@ -71,7 +71,7 @@ namespace ReorderableContent
                 {
                     if (listener is IMergeableReorderableEventListener mergeableListener)
                     {
-                        TryMergeInto = mergeableListener.GetIfCanMerge();
+                        _tryMergeInto = mergeableListener.GetIfCanMerge();
                         OnOfferMerge += mergeableListener.OfferMerge;
                         OnCancelMerge += mergeableListener.CancelMerge;
                         OnFinaliseMerge += mergeableListener.FinaliseMerge;
@@ -96,7 +96,7 @@ namespace ReorderableContent
             _listHoveringOver = _currentReorderableGrid;
 
             
-            // Create an empty space where the current plank is
+            // Create an empty space where the current element is
             var emptySpace = new GameObject("Empty Space");
             _emptySpaceRect = emptySpace.AddComponent<RectTransform>();
             _emptySpaceRect.SetParent(_currentReorderableGrid.Content, true);
@@ -104,7 +104,7 @@ namespace ReorderableContent
             _emptySpaceRect.sizeDelta = _rectTransform.sizeDelta;
             emptySpace.AddComponent<LayoutElement>();
             
-            // Move this plank out of the content area
+            // Move this element out of the content area
             _rectTransform.SetParent(_currentReorderableGrid.DraggingArea);
             _rectTransform.SetAsLastSibling();
 
@@ -141,7 +141,7 @@ namespace ReorderableContent
                 var oldElement = _elementToMergeWith;
                 _elementToMergeWith = _raycastResults
                     .Select(r => r.gameObject.GetComponent<ReorderableElement>())
-                    .FirstOrDefault(r => r is not null && r != this && r.IsMergeable && TryMergeInto.Invoke(r));
+                    .FirstOrDefault(r => r is not null && r != this && r.IsMergeable && _tryMergeInto.Invoke(r));
 
                 if (_elementToMergeWith is not null && _listHoveringOver == _currentReorderableGrid)
                 {
@@ -182,7 +182,7 @@ namespace ReorderableContent
 
             // Put the empty space in the right place
             var distanceOfClosestElement = float.PositiveInfinity;
-            var closestPlankSiblingIndex = 0;
+            var closestSiblingIndex = 0;
 
             for (var i = 0; i < _listHoveringOver.Content.childCount; i++)
             {
@@ -193,11 +193,11 @@ namespace ReorderableContent
                 if (distance < distanceOfClosestElement)
                 {
                     distanceOfClosestElement = distance;
-                    closestPlankSiblingIndex = i;
+                    closestSiblingIndex = i;
                 }
             }
             
-            _emptySpaceRect.SetSiblingIndex(closestPlankSiblingIndex);
+            _emptySpaceRect.SetSiblingIndex(closestSiblingIndex);
         }
 
         public void OnEndDrag(PointerEventData eventData)

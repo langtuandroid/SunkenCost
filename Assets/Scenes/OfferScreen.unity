@@ -1010,11 +1010,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3739874107440994272, guid: 753e431c20e8b5d45a1560f4e9ca944f, type: 3}
       propertyPath: m_AnchoredPosition.x
-      value: 1075
+      value: 1057.9219
       objectReference: {fileID: 0}
     - target: {fileID: 3739874107440994272, guid: 753e431c20e8b5d45a1560f4e9ca944f, type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: 1138
+      value: 1622.6311
       objectReference: {fileID: 0}
     - target: {fileID: 3739874107924409688, guid: 753e431c20e8b5d45a1560f4e9ca944f, type: 3}
       propertyPath: m_Pivot.x
@@ -1816,7 +1816,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9184dcb81e564ef1a547c4088134ff11, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _grid: {fileID: 2643005069100941206}
+  _gridLayout: {fileID: 2643005069100941206}
+  <Content>k__BackingField: {fileID: 2643005069100941201}
   <DraggingArea>k__BackingField: {fileID: 751611253}
   <Canvas>k__BackingField: {fileID: 751611252}
   <CanDropElements>k__BackingField: 1
@@ -2223,7 +2224,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9184dcb81e564ef1a547c4088134ff11, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _grid: {fileID: 2643005068724583722}
+  _gridLayout: {fileID: 2643005068724583722}
+  <Content>k__BackingField: {fileID: 2643005068724583717}
   <DraggingArea>k__BackingField: {fileID: 751611253}
   <Canvas>k__BackingField: {fileID: 751611252}
   <CanDropElements>k__BackingField: 1

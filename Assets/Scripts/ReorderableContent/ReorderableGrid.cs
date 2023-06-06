@@ -10,8 +10,9 @@ namespace ReorderableContent
 {
     public class ReorderableGrid : MonoBehaviour
     {
-        [SerializeField] private GridLayoutGroup _grid;
+        [SerializeField] private GridLayoutGroup _gridLayout;
         
+        [field: SerializeField] public RectTransform Content { get; private set; }
         [field: SerializeField] public RectTransform DraggingArea { get; private set; }
         [field: SerializeField] public Canvas Canvas { get; private set; }
         [field: SerializeField] public bool CanDropElements { get; set; } = true;
@@ -28,17 +29,15 @@ namespace ReorderableContent
         private event Action<List<Transform>> OnRefreshedChildren;
         private event Action OnElementOrderAlteredByDrag;
         
-        public RectTransform Content { get; private set; }
         public RectTransform Rect { get; private set; }
         
         public int Size =>
-            (int) ((_grid.cellSize.x * Content.childCount) +
-                   (_grid.spacing.x * Content.childCount - 1));
+            (int) ((_gridLayout.cellSize.x * Content.childCount) +
+                   (_gridLayout.spacing.x * Content.childCount - 1));
         
 
         private void Awake()
         {
-            Content = _grid.GetComponent<RectTransform>();
             Rect = GetComponent<RectTransform>();
         }
 

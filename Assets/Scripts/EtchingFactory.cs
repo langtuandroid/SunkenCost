@@ -55,6 +55,6 @@ public class EtchingFactory : MonoBehaviour
 
     private Transform GetEtchingSlot(Plank plank)
     {
-        return plank.transform.GetChild(1);
+        return plank.transform.GetChild(0).GetChild(1);
     }
 }

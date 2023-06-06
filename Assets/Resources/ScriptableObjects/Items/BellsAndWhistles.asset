@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a37d5dce21df4a2e9cf1cad81cd13ca6, type: 3}
   m_Name: BellsAndWhistles
   m_EditorClassIdentifier: 
-  title: Bells & Whistles
+  title: Bell & Whistle
   description: +@ Plank, but all enemies move two extra planks each turn
   sprite: {fileID: 21300000, guid: 53a9604f8c25e9a4ca645c44150f72b9, type: 3}
   modifier: 1

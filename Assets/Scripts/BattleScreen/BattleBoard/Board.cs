@@ -69,7 +69,7 @@ namespace BattleScreen.BattleBoard
 
         public void ElementsRefreshed(List<Transform> listElements)
         {
-            var planksInList = listElements.Select(t => t.GetComponent<Plank>()).ToList();
+            var planksInList = listElements.Select(t => t.GetComponentInChildren<Plank>()).ToList();
 
             foreach (var plank in planksInList.Where(plank => !_cachedPlanks.Contains(plank)))
             {

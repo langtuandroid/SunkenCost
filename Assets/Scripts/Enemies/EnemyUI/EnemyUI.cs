@@ -3,6 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using BattleScreen;
 using BattleScreen.BattleEvents;
+using BattleScreen.UI;
 using Damage;
 using TMPro;
 using UnityEngine;
@@ -49,10 +50,17 @@ namespace Enemies.EnemyUI
 
         private IEnumerator Init()
         {
-            yield return 0;
-            _visualsGroup.alpha = 1f;
-            _visualsGroup.enabled = false;
+            yield return new WaitForSecondsRealtime(0.3f);
             UpdateUI();
+            
+            for (var progress = 0f; progress < 1; progress += IslandAnimation.Speed * 2)
+            {
+                _visualsGroup.alpha = progress;
+                
+                yield return new WaitForSecondsRealtime(0.01f);
+            }
+            
+            _visualsGroup.enabled = false;
         }
 
         private void OnDestroy()
