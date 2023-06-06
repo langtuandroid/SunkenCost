@@ -31,9 +31,9 @@ namespace Etchings
             return responses;
         }
         
-        protected override List<ActionTrigger> GetDesignActionTriggers()
+        protected override List<BattleEventActionTrigger> GetDesignActionTriggers()
         {
-            return new List<ActionTrigger>
+            return new List<BattleEventActionTrigger>
             {
                 ActionTrigger(BattleEventType.StartedNextPlayerTurn, () => _hadEnemyOnPlankThisTurn = false),
                 ActionTrigger(BattleEventType.EnemyMoved, () => _hadEnemyOnPlankThisTurn = true, 

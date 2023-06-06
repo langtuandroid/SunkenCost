@@ -32,7 +32,12 @@ namespace Enemies
 
         public override List<BattleEventResponseTrigger> GetBattleEventResponseTriggers()
         {
-            return new List<BattleEventResponseTrigger>
+            return new List<BattleEventResponseTrigger>();
+        }
+
+        public override List<BattleEventActionTrigger> GetBattleEventActionTriggers()
+        {
+            return new List<BattleEventActionTrigger>
             {
                 ActionTriggerWithArgument(BattleEventType.EnemyKilled,e => KillEnemy(e.Enemy)),
                 ActionTrigger(BattleEventType.StartedEnemyTurn, SetNextEnemyTurnSequence),

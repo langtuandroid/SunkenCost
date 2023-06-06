@@ -61,7 +61,7 @@ public class ItemLoader : MonoBehaviour
 
         var allItemAssets = ItemAssetToTypeDict.Select(kvp => kvp.Key).ToArray();
         ShopItemAssets = allItemAssets.GetReadonlyCollection
-            (ia => ia.rarity != Rarity.ElitePickup);
+            (ia => ia.rarity < Rarity.ElitePickup);
 
         EliteItemAssets  = allItemAssets.GetReadonlyCollection
             (ia => ia.rarity == Rarity.ElitePickup);

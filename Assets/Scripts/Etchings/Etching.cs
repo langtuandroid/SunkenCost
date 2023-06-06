@@ -66,8 +66,6 @@ namespace Etchings
                 responseTriggers.Add(PackageResponseTrigger(designResponseTrigger.battleEventType, 
                     GetDesignResponse, designResponseTrigger.condition));
             }
-            
-            responseTriggers.AddRange(GetDesignActionTriggers());
 
             var varnishes = GetComponents<Varnish>();
             foreach (var varnish in varnishes)
@@ -77,6 +75,12 @@ namespace Etchings
             
             return responseTriggers;
         }
+
+        public override List<BattleEventActionTrigger> GetBattleEventActionTriggers()
+        {
+            return GetDesignActionTriggers();
+        }
+
         public BattleEvent Stun(DamageSource source)
         {
             stunned = true;
@@ -99,9 +103,9 @@ namespace Etchings
 
         protected abstract List<DesignResponseTrigger> GetDesignResponseTriggers();
         
-        protected virtual List<ActionTrigger> GetDesignActionTriggers()
+        protected virtual List<BattleEventActionTrigger> GetDesignActionTriggers()
         {
-            return new List<ActionTrigger>();
+            return new List<BattleEventActionTrigger>();
         }
         
         private BattleEventPackage GetDesignResponse(BattleEvent previousBattleEvent)

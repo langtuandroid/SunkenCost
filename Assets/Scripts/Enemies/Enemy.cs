@@ -54,22 +54,29 @@ namespace Enemies
             var moves = GetMovesWithModifier(Asset.Moves, MovementModifier);
             Mover.Init(moves, plankNum);
         }
-        
+
         public override List<BattleEventResponseTrigger> GetBattleEventResponseTriggers()
         {
             var responseTriggers = new List<BattleEventResponseTrigger>
             {
                 PackageResponseTrigger(BattleEventType.EnemyAttacked, DamageOrDie, GetIfThisIsPrimaryResponder),
+            };
+            
+            responseTriggers.AddRange(GetEnemyBattleEventResponseTriggers());
+
+            return responseTriggers;
+        }
+
+        public override List<BattleEventActionTrigger> GetBattleEventActionTriggers()
+        {
+            return new List<BattleEventActionTrigger>
+            {
                 ActionTrigger(BattleEventType.EndedEnemyTurn, Mover.EndTurn),
                 ActionTrigger(BattleEventType.PlankMoved, RefreshPlankNum),
                 ActionTrigger(BattleEventType.EtchingsOrderChanged, RefreshPlankNum),
                 ActionTrigger(BattleEventType.PlankCreated, RefreshPlankNum),
                 ActionTrigger(BattleEventType.PlankDestroyed, RefreshPlankNum),
             };
-            
-            responseTriggers.AddRange(GetEnemyBattleEventResponseTriggers());
-
-            return responseTriggers;
         }
 
         public virtual int GetBoatDamage()

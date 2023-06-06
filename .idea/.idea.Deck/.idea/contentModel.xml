@@ -631,11 +631,12 @@
               <e p="PlayerBattleEventResponderGroup.cs" t="Include" />
               <e p="UnexpectedBattleEventException.cs" t="Include" />
             </e>
-            <e p="BattleHUD.cs" t="Include" />
             <e p="BattleRenderer.cs" t="Include" />
             <e p="EndOfBattlePopup.cs" t="Include" />
             <e p="Player.cs" t="Include" />
-            <e p="UI" t="Include" />
+            <e p="UI" t="Include">
+              <e p="BattleHUD.cs" t="Include" />
+            </e>
           </e>
           <e p="ChallengeLoader.cs" t="Include" />
           <e p="Damage" t="Include">

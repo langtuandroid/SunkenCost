@@ -1,36 +1,47 @@
 ﻿using System;
+using System.Collections.Generic;
 
 namespace BattleScreen.BattleEvents
 {
-    public class BattleEventResponseTrigger
+    public class BattleEventTrigger
     {
         public readonly BattleEventType battleEventType;
-        public readonly int responderID;
         public readonly Func<BattleEvent, bool> condition;
+
+        public BattleEventTrigger(BattleEventType battleEventType, 
+            Func<BattleEvent, bool> condition = null)
+        {
+            this.battleEventType = battleEventType;
+            condition ??= b => true;
+            this.condition = condition;
+        }
+    }
+    
+    public class BattleEventResponseTrigger : BattleEventTrigger
+    {
         public readonly Func<BattleEvent, BattleEventPackage> response;
 
         public BattleEventResponseTrigger(BattleEventType battleEventType, 
-            int responderID, Func<BattleEvent, BattleEventPackage> response, Func<BattleEvent, bool> condition = null)
+            Func<BattleEvent, BattleEventPackage> response, Func<BattleEvent, bool> condition = null) 
+            : base(battleEventType, condition)
         {
-            this.battleEventType = battleEventType;
-            this.responderID = responderID;
-            condition ??= b => true;
-            this.condition = condition;
             this.response = response;
         }
     }
     
-    public class ActionTrigger : BattleEventResponseTrigger
+    public class BattleEventActionTrigger : BattleEventTrigger
     {
-        public ActionTrigger(BattleEventType battleEventType, int responderID, 
-            Action<BattleEvent> action, Func<BattleEvent, bool> condition = null) : base(battleEventType, responderID, 
-            b => { action.Invoke(b); return BattleEventPackage.Empty; }, condition)
+        public readonly Action<BattleEvent> action;
+        
+        public BattleEventActionTrigger(BattleEventType battleEventType, Action<BattleEvent> action, 
+            Func<BattleEvent, bool> condition = null) : base(battleEventType, condition)
         {
+            this.action = action;
         }
         
-        public ActionTrigger(BattleEventType battleEventType, int responderID, 
-            Action action, Func<BattleEvent, bool> condition = null) : base(battleEventType, responderID, 
-            b => { action.Invoke(); return BattleEventPackage.Empty; }, condition)
+        public BattleEventActionTrigger(BattleEventType battleEventType,
+            Action action, Func<BattleEvent, bool> condition = null) : this(battleEventType,
+            b => action.Invoke(), condition)
         {
         }
     }

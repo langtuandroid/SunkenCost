@@ -1,42 +1,38 @@
-﻿using System;
-using System.Collections;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.Linq;
-using BattleScreen.BattleEvents;
 using Damage;
 using UnityEngine;
-using UnityEngine.Assertions;
 
-namespace BattleScreen
+namespace BattleScreen.BattleEvents
 { 
     public abstract class BattleEventResponderGroup : MonoBehaviour
     {
         private readonly Dictionary<BattleEvent, IEnumerator<BattleEventPackage>> _enumerators =
             new Dictionary<BattleEvent, IEnumerator<BattleEventPackage>>();
 
-        private Dictionary<BattleEventResponder, List<BattleEventResponseTrigger>> _responderAndTriggersDict =
-            new Dictionary<BattleEventResponder, List<BattleEventResponseTrigger>>();
+        private List<TriggerMap> _triggerMaps = new List<TriggerMap>();
 
         protected void AddResponder(BattleEventResponder responder)
         {
-            _responderAndTriggersDict.Add(responder, responder.GetBattleEventResponseTriggers());
+            _triggerMaps.Add(new TriggerMap
+                (responder, responder.GetBattleEventResponseTriggers(), responder.GetBattleEventActionTriggers()));
         }
 
         protected void RemoveResponder(BattleEventResponder responder)
         {
-            _responderAndTriggersDict.Remove(responder);
+            _triggerMaps.Remove(_triggerMaps.FirstOrDefault(t => t.responder == responder));
         }
 
         protected bool HasResponder(BattleEventResponder responder)
         {
-            return _responderAndTriggersDict.ContainsKey(responder);
+            return _triggerMaps.Any(t => t.responder == responder);
         }
 
         protected void RefreshResponders(List<BattleEventResponder> sortedOrder)
         {
-            var respondersToRemove = _responderAndTriggersDict.
-                Where(r => !sortedOrder.Contains(r.Key)).
-                Select(r => r.Key);
+            var respondersToRemove = _triggerMaps.
+                Where(r => !sortedOrder.Contains(r.responder)).
+                Select(r => r.responder);
             
             foreach (var responder in respondersToRemove)
             {
@@ -48,8 +44,7 @@ namespace BattleScreen
                 AddResponder(responder);
             }
 
-            _responderAndTriggersDict = new Dictionary<BattleEventResponder, List<BattleEventResponseTrigger>>(
-                _responderAndTriggersDict.OrderBy(kvp => sortedOrder.IndexOf(kvp.Key)));
+            _triggerMaps = _triggerMaps.OrderBy(t => sortedOrder.IndexOf(t.responder)).ToList();
         }
 
         public virtual BattleEventPackage GetNextResponse(BattleEvent previousBattleEvent)
@@ -65,18 +60,14 @@ namespace BattleScreen
 
         private IEnumerator<BattleEventPackage> GetNextPackage(BattleEvent previousBattleEvent)
         {
-            for (var i = 0; i < _responderAndTriggersDict.Count; i++)
+            for (var i = 0; i < _triggerMaps.Count; i++)
             {
-                // Find all the matching triggers for the event type
-                var matchingResponseTriggers = _responderAndTriggersDict.ElementAt(i).Value
-                    .Where(r => r.battleEventType == previousBattleEvent.type).ToArray();
+                // Find all the matching response triggers for the event type
+                var matchingResponseTriggers = _triggerMaps[i].responseTriggers
+                    .Where(r => r.battleEventType == previousBattleEvent.type);
 
                 foreach (var responseTrigger in matchingResponseTriggers)
                 {
-                    Assert.IsNotNull(responseTrigger);
-                    Assert.IsNotNull(previousBattleEvent);
-                    Assert.IsNotNull(responseTrigger.condition);
-                    
                     // Continue if it doesn't meet the condition
                     if (!responseTrigger.condition.Invoke(previousBattleEvent)) continue;
 
@@ -87,19 +78,29 @@ namespace BattleScreen
                     
                     // The next few lines are just for the debug.log - all that's really happening here is the
                     // returning of the responsePackage
-                    var responder = _responderAndTriggersDict.ElementAt(i).Key.GetType().Name;
+                    var responder = _triggerMaps[i].responder.GetType().Name;
                     var eventsString = string.Join(", ",
                         responsePackage.battleEvents.ConvertAll(b => $"{b.type} ({b.modifier})").ToArray());
-                    Debug.Log($"{responder.GetType().Name} responding to: {previousBattleEvent.type} with {eventsString}");
+                    Debug.Log($"{responder} responding to: {previousBattleEvent.type} with {eventsString}");
 
                     yield return responsePackage;
+                }
+                
+                // Execute all the matching action triggers
+                var matchingActionTriggers = _triggerMaps[i].actionTriggers.Where(a =>
+                    a.battleEventType == previousBattleEvent.type);
+
+                foreach (var battleEventActionTrigger in matchingActionTriggers)
+                {
+                    if (!battleEventActionTrigger.condition.Invoke(previousBattleEvent)) continue;
+                    battleEventActionTrigger.action.Invoke(previousBattleEvent);
                 }
             }
         }
 
         public DamageModificationPackage GetDamageModifiers(EnemyDamage damage)
         {
-            var battleEventResponders = _responderAndTriggersDict.Select(kvp => kvp.Key).ToArray();
+            var battleEventResponders = _triggerMaps.Select(t => t.responder).ToArray();
             
             var flatModifiers = 
                 battleEventResponders.OfType<IDamageFlatModifier>();
@@ -120,18 +121,24 @@ namespace BattleScreen
             
             return new DamageModificationPackage(flatModifications, multiModifications);
         }
-
-        /*
-        public virtual BattleEventResponder[] GetEventResponders(BattleEvent previousBattleEvent)
-        {
-            return _actionCreators.Where(t => t.GetIfRespondingToBattleEvent(previousBattleEvent)).ToArray();
-        }
-
         
-        
-        */
         public virtual void RefreshTransforms()
         {
+        }
+        
+        private class TriggerMap
+        {
+            public readonly BattleEventResponder responder;
+            public readonly List<BattleEventResponseTrigger> responseTriggers;
+            public readonly List<BattleEventActionTrigger> actionTriggers;
+
+            public TriggerMap(BattleEventResponder responder, List<BattleEventResponseTrigger> responseTriggers,
+                List<BattleEventActionTrigger> actionTriggers)
+            {
+                this.responder = responder;
+                this.responseTriggers = responseTriggers;
+                this.actionTriggers = actionTriggers;
+            }
         }
     }
 }

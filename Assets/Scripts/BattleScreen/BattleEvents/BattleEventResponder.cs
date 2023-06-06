@@ -15,12 +15,20 @@ namespace BattleScreen.BattleEvents
             AllBattleEventRespondersByID.Add(this);
         }
 
-        public abstract List<BattleEventResponseTrigger> GetBattleEventResponseTriggers();
+        public virtual List<BattleEventResponseTrigger> GetBattleEventResponseTriggers()
+        {
+            return new List<BattleEventResponseTrigger>();
+        }
+
+        public virtual List<BattleEventActionTrigger> GetBattleEventActionTriggers()
+        {
+            return new List<BattleEventActionTrigger>();
+        }
 
         protected BattleEventResponseTrigger PackageResponseTrigger(BattleEventType battleEventType,
             Func<BattleEvent, BattleEventPackage> response, Func<BattleEvent, bool> condition = null)
         {
-            return new BattleEventResponseTrigger(battleEventType, ResponderID, response, condition);
+            return new BattleEventResponseTrigger(battleEventType, response, condition);
         }
         
         protected BattleEventResponseTrigger EventResponseTriggerWithArgument(BattleEventType battleEventType,
@@ -35,16 +43,16 @@ namespace BattleScreen.BattleEvents
             return PackageResponseTrigger(battleEventType, b => new BattleEventPackage(response.Invoke()), condition);
         }
 
-        protected ActionTrigger ActionTriggerWithArgument(BattleEventType battleEventType,
+        protected BattleEventActionTrigger ActionTriggerWithArgument(BattleEventType battleEventType,
             Action<BattleEvent> action, Func<BattleEvent, bool> condition = null)
         {
-            return new ActionTrigger(battleEventType, ResponderID, action, condition);
+            return new BattleEventActionTrigger(battleEventType, action, condition);
         }
 
-        protected ActionTrigger ActionTrigger(BattleEventType battleEventType,
+        protected BattleEventActionTrigger ActionTrigger(BattleEventType battleEventType,
             Action action, Func<BattleEvent, bool> condition = null)
         {
-            return new ActionTrigger(battleEventType, ResponderID, action, condition);
+            return new BattleEventActionTrigger(battleEventType, action, condition);
         }
 
         protected bool GetIfThisIsPrimaryResponder(BattleEvent previousBattleEvent)

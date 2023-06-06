@@ -203,7 +203,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &360910137
 RectTransform:
   m_ObjectHideFlags: 0
@@ -370,7 +370,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &491567827
 RectTransform:
   m_ObjectHideFlags: 0
@@ -947,7 +947,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5321494355758286789, guid: 9b1cb6f652310c540a1ae9a4b386adad, type: 3}
       propertyPath: m_AnchoredPosition.x
-      value: -15.3
+      value: 22.2
       objectReference: {fileID: 0}
     - target: {fileID: 5321494355758286789, guid: 9b1cb6f652310c540a1ae9a4b386adad, type: 3}
       propertyPath: m_AnchoredPosition.y
@@ -1098,7 +1098,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 1, y: 0.5}
   m_AnchorMax: {x: 1, y: 0.5}
-  m_AnchoredPosition: {x: -243.65997, y: -15.98}
+  m_AnchoredPosition: {x: -422.89996, y: -15.98}
   m_SizeDelta: {x: 325, y: 300}
   m_Pivot: {x: 1, y: 0.5}
 --- !u!114 &1076881698
@@ -1617,7 +1617,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4955755214812854542, guid: 920c416e4e7219a47a85bd1cb01ebc36, type: 3}
       propertyPath: m_text
-      value: Boat
+      value: boatshed
       objectReference: {fileID: 0}
     - target: {fileID: 4955755214812854542, guid: 920c416e4e7219a47a85bd1cb01ebc36, type: 3}
       propertyPath: m_VerticalAlignment
@@ -1914,7 +1914,7 @@ GameObject:
   - component: {fileID: 1547140032157918140}
   - component: {fileID: 238130344826352396}
   m_Layer: 5
-  m_Name: Image
+  m_Name: Shipyard
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

@@ -22,7 +22,7 @@ namespace Enemies
         public EnemyType EnemyType => _enemyType;
         public string Name => _name;
         public int MaxHealth => _maxHealth;
-        public ReadOnlyCollection<EnemyMove> Moves => _moves.AsReadOnly();
+        public ReadOnlyCollection<EnemyMove> Moves => new ReadOnlyCollection<EnemyMove>(_moves.Select(m => m.GetMove).ToList());
         
         public Type Class { get; set; }
         public EnemySpritePack SpritePack { get; set; }

@@ -25,5 +25,7 @@ namespace Enemies
             if (_magnitude > 0) _magnitude += amountToIncrease;
             else _magnitude -= amountToIncrease;
         }
+        
+        public EnemyMove GetMove => new EnemyMove(_movementType, _magnitude);
     }
 }

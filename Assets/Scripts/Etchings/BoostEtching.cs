@@ -35,9 +35,9 @@ namespace Etchings
             return RefreshBoosts();
         }
 
-        protected override List<ActionTrigger> GetDesignActionTriggers()
+        protected override List<BattleEventActionTrigger> GetDesignActionTriggers()
         {
-            return new List<ActionTrigger>
+            return new List<BattleEventActionTrigger>
             {
                 ActionTrigger(BattleEventType.EndedBattle, () => ClearModsWithoutBoosting())
             };

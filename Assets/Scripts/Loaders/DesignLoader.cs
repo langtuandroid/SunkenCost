@@ -91,6 +91,8 @@ public class DesignLoader : MonoBehaviour
                 case Rarity.ElitePickup:
                     ElitePickupDesigns.Add(designAsset);
                     break;
+                case Rarity.Event:
+                    break;
                 default:
                     throw new ArgumentOutOfRangeException();
             }
