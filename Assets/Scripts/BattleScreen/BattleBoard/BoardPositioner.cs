@@ -1,4 +1,5 @@
 ﻿using System;
+using ReorderableContent;
 using UnityEngine;
 
 namespace BattleScreen.BattleBoard
@@ -8,14 +9,11 @@ namespace BattleScreen.BattleBoard
         [SerializeField] private RectTransform _island;
         [SerializeField] private RectTransform _boat;
 
+        [SerializeField] private ReorderableElementContainer _boardContent;
+        
         private void Start()
         {
-            UpdatePositions();
-        }
-
-        private void OnTransformChildrenChanged()
-        {
-            UpdatePositions();
+            _boardContent.OnChildrenChanged += UpdatePositions;
         }
 
         private void UpdatePositions()

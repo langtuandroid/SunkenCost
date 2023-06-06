@@ -60,13 +60,13 @@ namespace BattleScreen
         {
             _sfxManager = InGameSfxManager.current;
             _battleRenderer = BattleRenderer.Current;
-
+            
             foreach (var design in RunProgress.Current.PlayerStats.Deck)
             {
                 var plank = PlankFactory.Current.CreatePlank();
                 EtchingFactory.Current.CreateEtching(plank, design);
             }
-            
+
             // Give the game one frame to load etchings, enemies etc
             StartCoroutine(InitializeBattle());
         }
@@ -105,6 +105,7 @@ namespace BattleScreen
             Debug.Log("------ Starting battle ------");
             // Gives other initialisers a clear frame to initialise
             yield return 0;
+
             yield return 0;
 
             var startBattle = new BattleEvent(BattleEventType.StartedBattle);

@@ -406,6 +406,20 @@
         </e>
         <e p="Materials" t="Include" />
         <e p="Plugins" t="Include">
+          <e p="Akassets" t="Include">
+            <e p="SmoothGridLayout" t="Include">
+              <e p="Editor" t="Include">
+                <e p="SmoothLayoutEditor.cs" t="Include" />
+                <e p="SmoothLayoutEditorCreateMenu.cs" t="Include" />
+              </e>
+              <e p="Runtime" t="Include">
+                <e p="ElementsContainer.cs" t="Include" />
+                <e p="LerpToPlaceholder.cs" t="Include" />
+                <e p="SmoothGridLayoutUI.cs" t="Include" />
+              </e>
+              <e p="SmoothGridLayout.asmdef" t="Include" />
+            </e>
+          </e>
           <e p="FMOD" t="Include">
             <e p="addons" t="Include">
               <e p="ResonanceAudio" t="Include">
@@ -831,6 +845,7 @@
             <e p="IMergeableReorderableEventListener.cs" t="Include" />
             <e p="IReorderableGridEventListener.cs" t="Include" />
             <e p="ReorderableElement.cs" t="Include" />
+            <e p="ReorderableElementContainer.cs" t="Include" />
             <e p="ReorderableElementEventListener.cs" t="Include" />
             <e p="ReorderableGrid.cs" t="Include" />
           </e>
@@ -949,6 +964,7 @@
       <e p="FMODUnityResonanceEditor.csproj" t="IncludeRecursive" />
       <e p="obj" t="ExcludeRecursive" />
       <e p="Packages" t="ExcludeRecursive" />
+      <e p="SmoothGridLayout.csproj" t="IncludeRecursive" />
       <e p="Temp\Bin" t="ExcludeRecursive" />
     </e>
   </component>

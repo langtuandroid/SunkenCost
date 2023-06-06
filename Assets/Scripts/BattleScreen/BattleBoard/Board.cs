@@ -67,7 +67,7 @@ namespace BattleScreen.BattleBoard
             Battle.Current.InvokeResponsesToPlayerTurnEvent(new BattleEvent(BattleEventType.PlayerMovedPlank));
         }
 
-        public void ElementsRefreshed(List<Transform> listElements)
+        public void ElementsRefreshed(List<ReorderableElement> listElements)
         {
             var planksInList = listElements.Select(t => t.GetComponent<Plank>()).ToList();
 

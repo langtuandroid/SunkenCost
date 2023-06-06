@@ -23,6 +23,5 @@ MonoBehaviour:
   - _designAsset: {fileID: 11400000, guid: 34e824df41f7b744880f9d4c7ef9c2cc, type: 2}
     _level: 0
     _varnishes: 
-  _startingItems:
-  - {fileID: 11400000, guid: 2f86cb34abf4eb240b5fb763108a1bc0, type: 2}
+  _startingItems: []
   <StartingEnemies>k__BackingField: 

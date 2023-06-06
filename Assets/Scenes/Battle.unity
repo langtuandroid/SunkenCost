@@ -313,6 +313,7 @@ RectTransform:
   m_Children:
   - {fileID: 1155358484}
   - {fileID: 1186376510}
+  - {fileID: 1122417782}
   - {fileID: 1789173348}
   m_Father: {fileID: 1223569416}
   m_RootOrder: 1
@@ -411,10 +412,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9184dcb81e564ef1a547c4088134ff11, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _grid: {fileID: 1186376511}
+  _boardPositioner: {fileID: 0}
+  _grid: {fileID: 1186376514}
+  <Content>k__BackingField: {fileID: 1186376510}
   <DraggingArea>k__BackingField: {fileID: 1223569416}
   <Canvas>k__BackingField: {fileID: 1223569415}
-  <CanGrabElements>k__BackingField: 1
   <CanDropElements>k__BackingField: 1
   <IsMergeable>k__BackingField: 0
 --- !u!224 &109192786 stripped
@@ -2224,6 +2226,42 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &1122417781
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1122417782}
+  m_Layer: 5
+  m_Name: PlaceholderGrid
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!224 &1122417782
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1122417781}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 67896342}
+  m_RootOrder: 2
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 0.5, y: 0.5}
+  m_AnchorMax: {x: 0.5, y: 0.5}
+  m_AnchoredPosition: {x: 0, y: 0}
+  m_SizeDelta: {x: 100, y: 100}
+  m_Pivot: {x: 0.5, y: 0.5}
 --- !u!1 &1155358483
 GameObject:
   m_ObjectHideFlags: 0
@@ -2320,9 +2358,9 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1186376510}
-  - component: {fileID: 1186376511}
-  - component: {fileID: 1186376512}
   - component: {fileID: 1186376513}
+  - component: {fileID: 1186376514}
+  - component: {fileID: 1186376515}
   m_Layer: 5
   m_Name: BoardContent
   m_TagString: Untagged
@@ -2345,12 +2383,27 @@ RectTransform:
   m_Father: {fileID: 67896342}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: -80, y: 0}
-  m_SizeDelta: {x: 0, y: 0}
+  m_AnchorMin: {x: 0.5, y: 0.5}
+  m_AnchorMax: {x: 0.5, y: 0.5}
+  m_AnchoredPosition: {x: -90, y: 0}
+  m_SizeDelta: {x: 1920, y: 1080}
   m_Pivot: {x: 0.5, y: 0.5}
---- !u!114 &1186376511
+--- !u!114 &1186376513
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1186376509}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8bf97027f78949f9975d2906136690d7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _island: {fileID: 1155358484}
+  _boat: {fileID: 1789173348}
+  _boardContent: {fileID: 1186376515}
+--- !u!114 &1186376514
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -2374,7 +2427,7 @@ MonoBehaviour:
   m_Spacing: {x: 30, y: 0}
   m_Constraint: 2
   m_ConstraintCount: 1
---- !u!114 &1186376512
+--- !u!114 &1186376515
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -2383,25 +2436,9 @@ MonoBehaviour:
   m_GameObject: {fileID: 1186376509}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 3245ec927659c4140ac4f8d17403cc18, type: 3}
+  m_Script: {fileID: 11500000, guid: df29594d21a344bda6b27828fbf4ff33, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_HorizontalFit: 2
-  m_VerticalFit: 2
---- !u!114 &1186376513
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1186376509}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 8bf97027f78949f9975d2906136690d7, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _island: {fileID: 1155358484}
-  _boat: {fileID: 1789173348}
 --- !u!1 &1221819302
 GameObject:
   m_ObjectHideFlags: 0
@@ -2895,7 +2932,7 @@ RectTransform:
   m_Children:
   - {fileID: 2112074147}
   m_Father: {fileID: 67896342}
-  m_RootOrder: 2
+  m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
@@ -3714,11 +3751,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3739874107440994272, guid: 753e431c20e8b5d45a1560f4e9ca944f, type: 3}
       propertyPath: m_AnchoredPosition.x
-      value: 1077
+      value: 1048.7703
       objectReference: {fileID: 0}
     - target: {fileID: 3739874107440994272, guid: 753e431c20e8b5d45a1560f4e9ca944f, type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: 1145
+      value: 1384.6902
       objectReference: {fileID: 0}
     - target: {fileID: 3739874107924409688, guid: 753e431c20e8b5d45a1560f4e9ca944f, type: 3}
       propertyPath: m_Pivot.x

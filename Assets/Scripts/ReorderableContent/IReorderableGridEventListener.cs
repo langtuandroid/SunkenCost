@@ -8,6 +8,6 @@ namespace ReorderableContent
     {
         public Func<bool> CanGrabElementsFunc();
         public void ElementsOrderChangedByDrag();
-        public void ElementsRefreshed(List<Transform> listElements);
+        public void ElementsRefreshed(List<ReorderableElement> listElements);
     }
 }

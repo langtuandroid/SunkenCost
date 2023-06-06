@@ -2,6 +2,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
+using BattleScreen.BattleBoard;
 using UnityEngine;
 using UnityEngine.UI;
 using Random = UnityEngine.Random;
@@ -11,35 +12,37 @@ namespace ReorderableContent
     public class ReorderableGrid : MonoBehaviour
     {
         [SerializeField] private GridLayoutGroup _grid;
+        [field: SerializeField] public RectTransform Content { get; private set; }
         
         [field: SerializeField] public RectTransform DraggingArea { get; private set; }
         [field: SerializeField] public Canvas Canvas { get; private set; }
         [field: SerializeField] public bool CanDropElements { get; set; } = true;
         [field: SerializeField] public bool IsMergeable { get; set; } = true;
         
+        
         public bool CanGrabElements => _canGrabElements.Invoke();
 
-        private List<Transform> _cachedChildren;
+        private List<ReorderableElement> _cachedElements;
 
         private bool _refreshing = false;
 
         private Func<bool> _canGrabElements = () => true;
         
-        private event Action<List<Transform>> OnRefreshedChildren;
+        private event Action<List<ReorderableElement>> OnRefreshedChildren;
         private event Action OnElementOrderAlteredByDrag;
-        
-        public RectTransform Content { get; private set; }
         public RectTransform Rect { get; private set; }
         
         public int Size =>
             (int) ((_grid.cellSize.x * Content.childCount) +
                    (_grid.spacing.x * Content.childCount - 1));
+
+        public RectTransform PlaceholderContent { get; private set; }
         
 
         private void Awake()
         {
-            Content = _grid.GetComponent<RectTransform>();
             Rect = GetComponent<RectTransform>();
+            PlaceholderContent = _grid.GetComponent<RectTransform>();
         }
 
         public void Init(IReorderableGridEventListener listener)
@@ -54,11 +57,19 @@ namespace ReorderableContent
             Refresh();
         }
 
+        public void LerpElements()
+        {
+            foreach (var element in _cachedElements)
+            {
+                element.Reposition();
+            }
+        }
+
         public void Refresh()
         {
             if (_refreshing) StopCoroutine(RefreshChildren());
             
-            _cachedChildren = new List<Transform>();
+            _cachedElements = new List<ReorderableElement>();
 
             _refreshing = true;
             StartCoroutine(RefreshChildren());
@@ -71,11 +82,11 @@ namespace ReorderableContent
 
         public void RandomiseChildren()
         {
-            _cachedChildren = _cachedChildren.OrderBy(s => Random.value).ToList();
+            _cachedElements = _cachedElements.OrderBy(s => Random.value).ToList();
 
-            for (var i = 0; i < _cachedChildren.Count; i++)
+            for (var i = 0; i < _cachedElements.Count; i++)
             {
-                _cachedChildren[i].SetSiblingIndex(i+1);
+                _cachedElements[i].SetSiblingIndex(i+1);
             }
 
             Refresh();
@@ -86,28 +97,31 @@ namespace ReorderableContent
             // Get new children
             for (var i = 0; i < Content.childCount; i++)
             {
-                var childTransform = Content.GetChild(i);
+                var element = Content.GetChild(i).GetComponent<ReorderableElement>();
                 
-                if (_cachedChildren.Contains(childTransform))
+                if (_cachedElements.Contains(element))
                     continue;
                 
-                _cachedChildren.Add(childTransform);
+                _cachedElements.Add(element);
             }
 
             // A little hack, if we don't wait one frame we don't have the right deleted children
             yield return 0;
+            yield return 0;
             
             // Remove deleted child
-            for (var i = _cachedChildren.Count - 1; i >= 0; i--)
+            for (var i = _cachedElements.Count - 1; i >= 0; i--)
             {
-                if (_cachedChildren[i] == null)
+                if (_cachedElements[i] == null)
                 {
-                    _cachedChildren.RemoveAt(i);
+                    _cachedElements.RemoveAt(i);
+                    continue;
                 }
             }
-            
+            Debug.Log(_cachedElements.Count);
             _refreshing = false;
-            OnRefreshedChildren?.Invoke(_cachedChildren);
+            LerpElements();
+            OnRefreshedChildren?.Invoke(_cachedElements);
         }
     }
 }
