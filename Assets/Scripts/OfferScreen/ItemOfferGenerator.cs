@@ -59,7 +59,7 @@ namespace OfferScreen
                 Destroy(itemOfferDisplay.gameObject);
             }
 
-            var amountToOffer = RunProgress.Current.PlayerStats.NumberOfItemsToOffer - ItemOfferDisplays.Count();
+            var amountToOffer = RunProgress.Current.PlayerStats.NumberOfItemsToOffer - offeredAssets.Count();
             GenerateUnlockedItemOffers(amountToOffer, offeredAssets);
         }
 

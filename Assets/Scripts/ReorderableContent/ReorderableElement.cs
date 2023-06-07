@@ -69,6 +69,12 @@ namespace ReorderableContent
             IsMergeable = reorderableGrid.IsMergeable;
         }
 
+        private void OnDestroy()
+        {
+            if (_placeholderRect) Destroy(_placeholderRect.gameObject);
+            if (_fakeRectTransform) Destroy(_fakeRectTransform.gameObject);
+        }
+
         public void SetListener(IReorderableElementEventListener listener = null)
         {
             if (listener != null)
@@ -237,8 +243,6 @@ namespace ReorderableContent
             if (_currentlyMerging)
             {
                 OnFinaliseMerge?.Invoke();
-                Destroy(_placeholderRect.gameObject);
-                Destroy(_fakeRectTransform.gameObject);
                 Destroy(gameObject);
                 return;
             }
