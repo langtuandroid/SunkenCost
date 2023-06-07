@@ -52,7 +52,7 @@ namespace OfferScreen
         private void Start()
         {
             _listHoveringOverOrIn = transform.parent.GetComponentInParent<ReorderableGrid>();
-            GetComponent<ReorderableElement>().Init(_listHoveringOverOrIn, this);
+            GetComponent<ReorderableElement>().SetListener(this);
             
             OfferScreenEvents.Current.OnOffersRefreshed += CardsUpdated;
             StartCoroutine(Init());

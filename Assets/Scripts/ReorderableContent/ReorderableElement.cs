@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using UnityEditor;
 using UnityEngine;
 using UnityEngine.EventSystems;
 using UnityEngine.UI;
@@ -42,6 +43,7 @@ namespace ReorderableContent
         private Func<ReorderableElement, bool> TryMergeInto;
         
         [field: SerializeField] public bool IsMergeable { get; private set; }
+        public bool HasBeenInitialised { get; private set; }
 
         private void Awake()
         {
@@ -49,21 +51,26 @@ namespace ReorderableContent
             _rectTransform = GetComponent<RectTransform>();
         }
 
-        public void Init(ReorderableGrid reorderableGrid, IReorderableElementEventListener listener = null)
+        public void Init(ReorderableGrid reorderableGrid)
         {
+            HasBeenInitialised = true;
+            
             _canvas = reorderableGrid.Canvas;
             _currentReorderableGrid = reorderableGrid;
             _currentSiblingIndex = transform.GetSiblingIndex();
-
-            IsMergeable = reorderableGrid.IsMergeable;
             
             // Create an empty space where the current element is in the placeholder grid
-            var emptySpace = new GameObject("Placeholder Element");
+            var emptySpace = new GameObject($"Placeholder for {GetInstanceID()}");
             _placeholderRect = emptySpace.AddComponent<RectTransform>();
             _placeholderRect.SetParent(_currentReorderableGrid.PlaceholderContent, false);
             _placeholderRect.SetSiblingIndex(_currentSiblingIndex);
             _placeholderRect.sizeDelta = _rectTransform.sizeDelta;
 
+            IsMergeable = reorderableGrid.IsMergeable;
+        }
+
+        public void SetListener(IReorderableElementEventListener listener = null)
+        {
             if (listener != null)
             {
                 OnStartedDrag += listener.Grabbed;
@@ -85,8 +92,6 @@ namespace ReorderableContent
                     }
                 }
             }
-            
-            reorderableGrid.Refresh();
         }
 
         public void OnBeginDrag(PointerEventData eventData)
@@ -101,9 +106,9 @@ namespace ReorderableContent
             _listHoveringOver = _currentReorderableGrid;
             
             // Create an empty space where the current element is in the placeholder grid
-            var emptySpace = new GameObject("Empty Space");
+            var emptySpace = new GameObject($"Empty Space for {GetInstanceID()}");
             _fakeRectTransform = emptySpace.AddComponent<RectTransform>();
-            _fakeRectTransform.SetParent(_currentReorderableGrid.Content, false);
+            _fakeRectTransform.SetParent(_currentReorderableGrid.Content, true);
             _fakeRectTransform.SetSiblingIndex(_currentSiblingIndex);
             _fakeRectTransform.sizeDelta = _rectTransform.sizeDelta;
 
@@ -155,34 +160,41 @@ namespace ReorderableContent
                     {
                         _currentlyMerging = true;
                         OnOfferMerge?.Invoke(_elementToMergeWith);
+                        _fakeRectTransform.SetParent(_currentReorderableGrid.DraggingArea, true);
+                        _placeholderRect.SetParent(_currentReorderableGrid.DraggingArea, true);
+                        _currentReorderableGrid.Refresh();
+                        return;
                     }
+                    return;
                 }
-                else if (_currentlyMerging)
+                
+                if (_currentlyMerging)
                 {
                     _currentlyMerging = false;
                     OnCancelMerge?.Invoke();
                 }
             }
             
-            // Nothing found or not droppable - put the fake element outside
-            if (_listHoveringOver == null || !_listHoveringOver.CanDropElements)
+            if ((_listHoveringOver == null || !_listHoveringOver.CanDropElements))
             {
-                _fakeRectTransform.SetParent(_currentReorderableGrid.DraggingArea);
-                _placeholderRect.SetParent(_currentReorderableGrid.DraggingArea);
+                if (_currentReorderableGrid.CanRemoveElementsFromGrid)
+                {
+                    // Nothing found or not droppable - put the fake element outside of all lists
+                    _fakeRectTransform.SetParent(_currentReorderableGrid.DraggingArea, true);
+                    _placeholderRect.SetParent(_currentReorderableGrid.DraggingArea, true);
+                
+                    if (oldListHoveringOver)
+                        oldListHoveringOver.Refresh();    
+                }
+                
                 return;
             }
             
             _currentReorderableGrid = _listHoveringOver;
 
-            if (_currentlyMerging)
-            {
-                _fakeRectTransform.SetParent(_currentReorderableGrid.DraggingArea);
-                _placeholderRect.SetParent(_currentReorderableGrid.DraggingArea);
-                return;
-            }
             
             // Update the parent if we've changed lists
-            if (_placeholderRect.parent != _listHoveringOver.PlaceholderContent)
+            if (_fakeRectTransform.parent != _listHoveringOver.Content)
             {
                 OnHoveringOverList?.Invoke(_listHoveringOver);
                 _placeholderRect.SetParent(_listHoveringOver.PlaceholderContent, true);
@@ -192,12 +204,16 @@ namespace ReorderableContent
             // Put the empty space in the right place
             var distanceOfClosestElement = float.PositiveInfinity;
             var closestPlankSiblingIndex = 0;
+            var currentSiblingIndex = _placeholderRect.GetSiblingIndex();
 
-            for (var i = 0; i < _listHoveringOver.Content.childCount; i++)
+            for (var i = 0; i < _listHoveringOver.PlaceholderContent.childCount; i++)
             {
-                var rectPosition = _listHoveringOver.Content.GetChild(i).GetComponent<RectTransform>().position;
+                var rectTransform = _listHoveringOver.PlaceholderContent.GetChild(i).GetComponent<RectTransform>();
+                var rectPosition = rectTransform.position;
                 var distance = Mathf.Abs
                     (rectPosition.x - worldPoint.x) + Mathf.Abs(rectPosition.y - worldPoint.y);
+                
+                
 
                 if (distance < distanceOfClosestElement)
                 {
@@ -205,14 +221,13 @@ namespace ReorderableContent
                     closestPlankSiblingIndex = i;
                 }
             }
-            
+
             _placeholderRect.SetSiblingIndex(closestPlankSiblingIndex);
             _fakeRectTransform.SetSiblingIndex(closestPlankSiblingIndex);
+            _listHoveringOver.Refresh();
             
-            if (closestPlankSiblingIndex != _currentSiblingIndex || oldListHoveringOver != _listHoveringOver)
-                _listHoveringOver.LerpElements();
-
-            _currentSiblingIndex = closestPlankSiblingIndex;
+            if (oldListHoveringOver && oldListHoveringOver != _listHoveringOver)
+                oldListHoveringOver.Refresh();
         }
 
         public void OnEndDrag(PointerEventData eventData)
@@ -240,9 +255,11 @@ namespace ReorderableContent
                 _currentSiblingIndex = _placeholderRect.GetSiblingIndex();
             }
             
-            Destroy(_fakeRectTransform.gameObject);
             _rectTransform.SetParent(_currentReorderableGrid.Content, true);
+            _placeholderRect.SetParent(_currentReorderableGrid.PlaceholderContent, true);
+            _placeholderRect.SetSiblingIndex(_currentSiblingIndex);
             _rectTransform.SetSiblingIndex(_currentSiblingIndex);
+            Destroy(_fakeRectTransform.gameObject);
             
             _canvasGroup.blocksRaycasts = true;
 
@@ -250,20 +267,25 @@ namespace ReorderableContent
             {
                 _currentReorderableGrid.ElementOrderAlteredByDrag();
             }
+            
+            _currentReorderableGrid.Refresh();
+            oldList.Refresh();
+
         }
 
         public void Reposition()
         {
-            if (_isDragging) return;
+            if (_currentlyMerging) return;
             
-            LeanTween.cancel(gameObject);
-            LeanTween.moveLocal(gameObject, _placeholderRect.localPosition, 0.1f);
+            var lerpObject = _isDragging ? _fakeRectTransform.gameObject : gameObject;
+            
+            LeanTween.cancel(lerpObject);
+            LeanTween.moveLocal(lerpObject, _placeholderRect.localPosition, 0.1f);
         }
 
         public void SetSiblingIndex(int i)
         {
             _placeholderRect.SetSiblingIndex(i);
-            _rectTransform.SetSiblingIndex(i);
         }
     }
 }

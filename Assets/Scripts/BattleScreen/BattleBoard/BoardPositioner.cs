@@ -16,6 +16,11 @@ namespace BattleScreen.BattleBoard
             _boardContent.OnChildrenChanged += UpdatePositions;
         }
 
+        private void OnDestroy()
+        {
+            _boardContent.OnChildrenChanged -= UpdatePositions;
+        }
+
         private void UpdatePositions()
         {
             var islandLocalPosition = _island.localPosition;

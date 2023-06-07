@@ -25,7 +25,7 @@ namespace BattleScreen.BattleBoard
         public void Init(Board board)
         {
             var mergeableListElement = GetComponent<ReorderableElement>();
-            mergeableListElement.Init(board.List, _display);
+            mergeableListElement.SetListener(_display);
         }
 
         public void SetEtching(Etching etching)

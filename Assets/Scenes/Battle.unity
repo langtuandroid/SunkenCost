@@ -386,8 +386,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 98d039fef26248e7a9b2f3c465eea407, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _islandTransform: {fileID: 1155358484}
-  _boatTransform: {fileID: 1789173348}
+  _islandRectTransform: {fileID: 1155358484}
+  _boatRectTransform: {fileID: 1789173348}
 --- !u!114 &67896351
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -412,13 +412,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9184dcb81e564ef1a547c4088134ff11, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _boardPositioner: {fileID: 0}
-  _grid: {fileID: 1186376514}
+  _grid: {fileID: 1122417783}
   <Content>k__BackingField: {fileID: 1186376510}
   <DraggingArea>k__BackingField: {fileID: 1223569416}
   <Canvas>k__BackingField: {fileID: 1223569415}
   <CanDropElements>k__BackingField: 1
   <IsMergeable>k__BackingField: 0
+  <CanRemoveElementsFromGrid>k__BackingField: 0
 --- !u!224 &109192786 stripped
 RectTransform:
   m_CorrespondingSourceObject: {fileID: 1210558848469399205, guid: 7e05e520579b24a45a28a9993e09aa39, type: 3}
@@ -2235,6 +2235,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1122417782}
+  - component: {fileID: 1122417783}
   m_Layer: 5
   m_Name: PlaceholderGrid
   m_TagString: Untagged
@@ -2259,9 +2260,33 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 100, y: 100}
+  m_AnchoredPosition: {x: -90, y: 0}
+  m_SizeDelta: {x: 10000, y: 10000}
   m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &1122417783
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1122417781}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8a8695521f0d02e499659fee002a26c2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Padding:
+    m_Left: 200
+    m_Right: 50
+    m_Top: 0
+    m_Bottom: 0
+  m_ChildAlignment: 4
+  m_StartCorner: 0
+  m_StartAxis: 0
+  m_CellSize: {x: 270, y: 800}
+  m_Spacing: {x: 30, y: 0}
+  m_Constraint: 2
+  m_ConstraintCount: 1
 --- !u!1 &1155358483
 GameObject:
   m_ObjectHideFlags: 0
@@ -2359,7 +2384,6 @@ GameObject:
   m_Component:
   - component: {fileID: 1186376510}
   - component: {fileID: 1186376513}
-  - component: {fileID: 1186376514}
   - component: {fileID: 1186376515}
   m_Layer: 5
   m_Name: BoardContent
@@ -2386,7 +2410,7 @@ RectTransform:
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
   m_AnchoredPosition: {x: -90, y: 0}
-  m_SizeDelta: {x: 1920, y: 1080}
+  m_SizeDelta: {x: 10000, y: 10000}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1186376513
 MonoBehaviour:
@@ -2403,30 +2427,6 @@ MonoBehaviour:
   _island: {fileID: 1155358484}
   _boat: {fileID: 1789173348}
   _boardContent: {fileID: 1186376515}
---- !u!114 &1186376514
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1186376509}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 8a8695521f0d02e499659fee002a26c2, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  m_Padding:
-    m_Left: 200
-    m_Right: 50
-    m_Top: 0
-    m_Bottom: 0
-  m_ChildAlignment: 4
-  m_StartCorner: 0
-  m_StartAxis: 0
-  m_CellSize: {x: 270, y: 1000}
-  m_Spacing: {x: 30, y: 0}
-  m_Constraint: 2
-  m_ConstraintCount: 1
 --- !u!114 &1186376515
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3751,11 +3751,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3739874107440994272, guid: 753e431c20e8b5d45a1560f4e9ca944f, type: 3}
       propertyPath: m_AnchoredPosition.x
-      value: 1048.7703
+      value: 1059.7522
       objectReference: {fileID: 0}
     - target: {fileID: 3739874107440994272, guid: 753e431c20e8b5d45a1560f4e9ca944f, type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: 1384.6902
+      value: 1393.8418
       objectReference: {fileID: 0}
     - target: {fileID: 3739874107924409688, guid: 753e431c20e8b5d45a1560f4e9ca944f, type: 3}
       propertyPath: m_Pivot.x

@@ -18,11 +18,11 @@ namespace ReorderableContent
         [field: SerializeField] public Canvas Canvas { get; private set; }
         [field: SerializeField] public bool CanDropElements { get; set; } = true;
         [field: SerializeField] public bool IsMergeable { get; set; } = true;
-        
+        [field: SerializeField] public bool CanRemoveElementsFromGrid { get; private set; } = true;
         
         public bool CanGrabElements => _canGrabElements.Invoke();
 
-        private List<ReorderableElement> _cachedElements;
+        private List<ReorderableElement> _cachedElements = new List<ReorderableElement>();
 
         private bool _refreshing = false;
 
@@ -43,6 +43,7 @@ namespace ReorderableContent
         {
             Rect = GetComponent<RectTransform>();
             PlaceholderContent = _grid.GetComponent<RectTransform>();
+            Content.GetComponent<ReorderableElementContainer>().OnChildrenChanged += Refresh;
         }
 
         public void Init(IReorderableGridEventListener listener)
@@ -57,19 +58,14 @@ namespace ReorderableContent
             Refresh();
         }
 
-        public void LerpElements()
+        private void OnDestroy()
         {
-            foreach (var element in _cachedElements)
-            {
-                element.Reposition();
-            }
+            Content.GetComponent<ReorderableElementContainer>().OnChildrenChanged -= Refresh;
         }
 
         public void Refresh()
         {
             if (_refreshing) StopCoroutine(RefreshChildren());
-            
-            _cachedElements = new List<ReorderableElement>();
 
             _refreshing = true;
             StartCoroutine(RefreshChildren());
@@ -98,15 +94,16 @@ namespace ReorderableContent
             for (var i = 0; i < Content.childCount; i++)
             {
                 var element = Content.GetChild(i).GetComponent<ReorderableElement>();
-                
+                if (!element) continue;
+
                 if (_cachedElements.Contains(element))
                     continue;
                 
                 _cachedElements.Add(element);
+                if (!element.HasBeenInitialised) element.Init(this);
             }
 
             // A little hack, if we don't wait one frame we don't have the right deleted children
-            yield return 0;
             yield return 0;
             
             // Remove deleted child
@@ -117,10 +114,11 @@ namespace ReorderableContent
                     _cachedElements.RemoveAt(i);
                     continue;
                 }
+                
+                // Lerp elements
+                _cachedElements[i].Reposition();
             }
-            Debug.Log(_cachedElements.Count);
             _refreshing = false;
-            LerpElements();
             OnRefreshedChildren?.Invoke(_cachedElements);
         }
     }

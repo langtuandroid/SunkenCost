@@ -13,8 +13,8 @@ namespace BattleScreen.BattleBoard
     [RequireComponent(typeof(ReorderableGrid))]
     public class Board : MonoBehaviour, IReorderableGridEventListener
     {
-        [SerializeField] private Transform _islandTransform;
-        [SerializeField] private Transform _boatTransform;
+        [SerializeField] private RectTransform _islandRectTransform;
+        [SerializeField] private RectTransform _boatRectTransform;
 
         public static Board Current;
         
@@ -22,8 +22,8 @@ namespace BattleScreen.BattleBoard
         
         public ReorderableGrid List { get; private set; }
 
-        public Transform IslandTransform => _islandTransform;
-        public Transform BoatTransform => _boatTransform;
+        public RectTransform IslandTransform => _islandRectTransform;
+        public RectTransform BoatTransform => _boatRectTransform;
 
         public int BoardSize => List.Size;
 
