@@ -223,16 +223,19 @@ namespace BattleScreen
                     var waitTime = -1f;
                     
                     // Only add wait time to the last in a batch event
-                    if (battleEventsQueue.Count(b => b.type == battleEvent.type) == 0)
+                    if (BattleState == BattleState.EnemyTurn && battleEventsQueue.Count(b => b.type == battleEvent.type) == 0)
                         waitTime = GetAnimationTime(battleEvent);
                     else
                     {
                         Debug.Log("Multiple " + battleEvent.type);
                     }
-                    
-                    if (waitTime > 0f && BattleState == BattleState.EnemyTurn)
+
+                    if (waitTime > 0f)
+                    {
+                        Debug.Log($"Waiting {waitTime*ActionExecutionSpeed} for {battleEvent.type}");
                         yield return new WaitForSecondsRealtime(waitTime * ActionExecutionSpeed);
-                    
+                    }
+
                     var sequenceOfResponses = Tick(battleEvent);
                     while (sequenceOfResponses.MoveNext()) 
                     {
@@ -262,22 +265,20 @@ namespace BattleScreen
                 case BattleEventType.PlayerLostLife:
                     return 1.3f;
                 case BattleEventType.EtchingActivated when battleEvent.showAsOwnAction:
-                    return 0.7f;
+                    return 1.5f;
                 case BattleEventType.StartedIndividualEnemyTurn:
-                case BattleEventType.EtchingStunned:
-                case BattleEventType.EnemyHealed: 
+                case BattleEventType.EnemyEffect:
                 case BattleEventType.EnemyMaxHealthModified:
-                case BattleEventType.EnemyAttacked: 
                     return 1f;
                 case BattleEventType.EnemySpawned when battleEvent.showAsOwnAction:
-                case BattleEventType.EnemyAttackedBoat:
+                case BattleEventType.PlayerGainedLife:
                 case BattleEventType.EnemyKilled when battleEvent.source != DamageSource.Boat:
                     return 0.75f;
                 case BattleEventType.EnemyBlocked:
                 case BattleEventType.ItemActivated when battleEvent.showAsOwnAction:
                     return 0.5f;
                 case BattleEventType.EnemyMoved:
-                    return 0.3f;
+                    return 0.5f;
             }
 
             return -1f;

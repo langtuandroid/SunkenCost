@@ -15,10 +15,10 @@ MonoBehaviour:
   Path: DBTD/Build/Desktop/Master.strings.bank
   Name: Master.strings
   StudioPath: bank:/Master.strings
-  lastModified: 638218224401574729
+  lastModified: 638218357944527245
   FileSizes:
   - Name: Desktop
-    Value: 1806
+    Value: 1844
   Exists: 1
 --- !u!114 &-8436418586141196637
 MonoBehaviour:
@@ -35,11 +35,38 @@ MonoBehaviour:
   Path: DBTD/Build/Desktop/SFX.bank
   Name: SFX
   StudioPath: bank:/SFX
-  lastModified: 638218224403842765
+  lastModified: 638218357946552615
   FileSizes:
   - Name: Desktop
-    Value: 770688
+    Value: 798176
   Exists: 1
+--- !u!114 &-7574343514928955033
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
+  m_Name: event:/SFX/Impede
+  m_EditorClassIdentifier: 
+  Path: event:/SFX/Impede
+  Guid:
+    Data1: -1538586084
+    Data2: 1259014306
+    Data3: 835560607
+    Data4: -1485227903
+  Banks:
+  - {fileID: -8436418586141196637}
+  IsStream: 0
+  Is3D: 0
+  IsOneShot: 1
+  Parameters: []
+  MinDistance: 1
+  MaxDistance: 20
+  Length: 0
 --- !u!114 &-7213585234356489949
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -109,7 +136,7 @@ MonoBehaviour:
   Path: DBTD/Build/Desktop/Master.bank
   Name: Master
   StudioPath: bank:/Master
-  lastModified: 638218224401543749
+  lastModified: 638218357944487011
   FileSizes:
   - Name: Desktop
     Value: 36500672
@@ -210,7 +237,7 @@ MonoBehaviour:
   Path: DBTD/Build/Desktop/Music.bank
   Name: Music
   StudioPath: bank:/Music
-  lastModified: 638218224403591248
+  lastModified: 638218357946183787
   FileSizes:
   - Name: Desktop
     Value: 36210784
@@ -303,12 +330,13 @@ MonoBehaviour:
   - {fileID: 1641143781300921983}
   - {fileID: 276872397982635184}
   - {fileID: 6300039777241747876}
+  - {fileID: -7574343514928955033}
   EditorParameters: []
   MasterBanks:
   - {fileID: -4458939372036730478}
   StringsBanks:
   - {fileID: -9093515747799728831}
-  cacheTime: 638218224403842765
+  cacheTime: 638218357946552615
   cacheVersion: 131593
 --- !u!114 &247265127080051342
 MonoBehaviour:

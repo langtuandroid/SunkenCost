@@ -68,8 +68,6 @@ namespace BattleScreen.BattleBoard
 
         public void ElementsRefreshed(List<ReorderableElement> listElements)
         {
-            Debug.Log("Refreshing plank order...");
-            
             var planksInList = listElements.Select(t => t.GetComponent<Plank>()).ToList();
 
             foreach (var plank in planksInList.Where(plank => !_cachedPlanks.Contains(plank)))

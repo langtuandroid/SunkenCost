@@ -1085,11 +1085,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3739874107440994272, guid: 753e431c20e8b5d45a1560f4e9ca944f, type: 3}
       propertyPath: m_AnchoredPosition.x
-      value: 1057.9219
+      value: 1064.8116
       objectReference: {fileID: 0}
     - target: {fileID: 3739874107440994272, guid: 753e431c20e8b5d45a1560f4e9ca944f, type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: 1404.8237
+      value: 1673.4493
       objectReference: {fileID: 0}
     - target: {fileID: 3739874107924409688, guid: 753e431c20e8b5d45a1560f4e9ca944f, type: 3}
       propertyPath: m_Pivot.x
@@ -1973,6 +1973,7 @@ MonoBehaviour:
   <Canvas>k__BackingField: {fileID: 751611252}
   <CanDropElements>k__BackingField: 1
   <IsMergeable>k__BackingField: 1
+  <CanRemoveElementsFromGrid>k__BackingField: 1
 --- !u!1 &2643005068724583716
 GameObject:
   m_ObjectHideFlags: 0
@@ -2126,8 +2127,8 @@ GameObject:
   - component: {fileID: 2643005069100941201}
   - component: {fileID: 2643005069100941228}
   - component: {fileID: 2643005069100941229}
-  - component: {fileID: 2643005069100941231}
   - component: {fileID: 2643005069100941232}
+  - component: {fileID: 2643005069100941233}
   m_Layer: 5
   m_Name: ListContent
   m_TagString: Untagged
@@ -2193,19 +2194,6 @@ MonoBehaviour:
   m_FillOrigin: 0
   m_UseSpriteMesh: 0
   m_PixelsPerUnitMultiplier: 1
---- !u!114 &2643005069100941231
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2643005069100941200}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ca61e6974e3846f5a806dfa0400ba5b6, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  boatTransform: {fileID: 203161728}
 --- !u!114 &2643005069100941232
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2218,6 +2206,19 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: df29594d21a344bda6b27828fbf4ff33, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &2643005069100941233
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2643005069100941200}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ca61e6974e3846f5a806dfa0400ba5b6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  boatTransform: {fileID: 203161728}
 --- !u!1 &2643005069227889045
 GameObject:
   m_ObjectHideFlags: 0
@@ -2330,6 +2331,7 @@ MonoBehaviour:
   <Canvas>k__BackingField: {fileID: 751611252}
   <CanDropElements>k__BackingField: 1
   <IsMergeable>k__BackingField: 1
+  <CanRemoveElementsFromGrid>k__BackingField: 1
 --- !u!1001 &4202200882349825103
 PrefabInstance:
   m_ObjectHideFlags: 0

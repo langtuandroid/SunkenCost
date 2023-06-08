@@ -113,12 +113,12 @@ namespace ReorderableContent
             _currentSiblingIndex = _rectTransform.GetSiblingIndex();
             _listHoveringOver = _currentReorderableGrid;
             
-            // Create an empty space where the current element is in the placeholder grid
-            _fakeRectTransform = CreateEmptySpace(_currentReorderableGrid.Content, $"Empty Space for {GetInstanceID()}");
-
             // Move this plank out of the content area
             _rectTransform.SetParent(_currentReorderableGrid.DraggingArea);
             _rectTransform.SetAsLastSibling();
+            
+            // Create an empty space where the current element is in the placeholder grid
+            _fakeRectTransform = CreateEmptySpace(_currentReorderableGrid.Content, _currentSiblingIndex,$"Empty Space for {GetInstanceID()}");
 
             _justSpawnedFake = true;
             
@@ -228,10 +228,17 @@ namespace ReorderableContent
 
             _placeholderRect.SetSiblingIndex(closestPlankSiblingIndex);
             _fakeRectTransform.SetSiblingIndex(closestPlankSiblingIndex);
-            _listHoveringOver.Refresh();
-            
+
             if (oldListHoveringOver && oldListHoveringOver != _listHoveringOver)
+            {
                 oldListHoveringOver.Refresh();
+                _listHoveringOver.Refresh();
+            }
+            else
+            {
+                if (currentSiblingIndex != closestPlankSiblingIndex)
+                    _listHoveringOver.Refresh();
+            }
         }
 
         public void OnEndDrag(PointerEventData eventData)
@@ -292,16 +299,17 @@ namespace ReorderableContent
 
         private RectTransform CreatePlaceholderRect()
         {
-            return CreateEmptySpace(_currentReorderableGrid.PlaceholderContent, $"Placeholder for {GetInstanceID()}");
+            return CreateEmptySpace(_currentReorderableGrid.PlaceholderContent, _currentSiblingIndex,
+                $"Placeholder for {GetInstanceID()}");
         }
         
-        private RectTransform CreateEmptySpace(RectTransform listContent, string gameObjectName)
+        private RectTransform CreateEmptySpace(RectTransform listContent, int siblingIndex, string gameObjectName)
         {
             // Create an empty space where the current element is in the placeholder grid
             var emptySpace = new GameObject(gameObjectName);
             var emptySpaceRect = emptySpace.AddComponent<RectTransform>();
             emptySpaceRect.SetParent(listContent, false);
-            emptySpaceRect.SetSiblingIndex(_currentSiblingIndex);
+            emptySpaceRect.SetSiblingIndex(siblingIndex);
             emptySpaceRect.sizeDelta = _rectTransform.sizeDelta;
 
             return emptySpaceRect;

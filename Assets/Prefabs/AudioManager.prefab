@@ -98,6 +98,7 @@ GameObject:
   - component: {fileID: 7152567442361104063}
   - component: {fileID: 1757458216708089798}
   - component: {fileID: 9004240387660668357}
+  - component: {fileID: 1388283971894593739}
   m_Layer: 0
   m_Name: SoundFX
   m_TagString: Untagged
@@ -145,6 +146,7 @@ MonoBehaviour:
   _deathSound: {fileID: 1757458216708089798}
   _nextTurnSound: {fileID: 7787628585082376407}
   _beginTurnSound: {fileID: 9004240387660668357}
+  _blockSound: {fileID: 1388283971894593739}
 --- !u!114 &7787628585082376411
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -525,6 +527,36 @@ MonoBehaviour:
       Data3: 1615588244
       Data4: 659088570
     Path: event:/SFX/BeginTurn
+  Event: 
+  PlayEvent: 0
+  StopEvent: 0
+  AllowFadeout: 1
+  TriggerOnce: 0
+  Preload: 0
+  Params: []
+  OverrideAttenuation: 0
+  OverrideMinDistance: 1
+  OverrideMaxDistance: 20
+--- !u!114 &1388283971894593739
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7787628585082376415}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9a6610d2e704f1648819acc8d7460285, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  CollisionTag: 
+  EventReference:
+    Guid:
+      Data1: -1538586084
+      Data2: 1259014306
+      Data3: 835560607
+      Data4: -1485227903
+    Path: event:/SFX/Impede
   Event: 
   PlayEvent: 0
   StopEvent: 0

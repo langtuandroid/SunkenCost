@@ -3,6 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using BattleScreen;
 using BattleScreen.BattleEvents;
+using Damage;
 using Enemies;
 using UnityEngine;
 using Random = UnityEngine.Random;
@@ -29,7 +30,8 @@ public class InGameSfxManager : MonoBehaviour
     [SerializeField] private StudioEventEmitter _deathSound;
     [SerializeField] private StudioEventEmitter _nextTurnSound;
     [SerializeField] private StudioEventEmitter _beginTurnSound;
-    
+    [SerializeField] private StudioEventEmitter _blockSound;
+
     private void Awake()
     {
         // One instance of static objects only
@@ -49,9 +51,7 @@ public class InGameSfxManager : MonoBehaviour
         {
             switch (battleEvent.type)
             {
-                case BattleEventType.EnemyAttacked:
-                    AttackedEnemy();
-                    break;
+                
                 case BattleEventType.EtchingStunned:
                     Slimed();
                     break;
@@ -59,7 +59,11 @@ public class InGameSfxManager : MonoBehaviour
                     EnemyMoved();
                     break;
                 case BattleEventType.EnemyPoisoned:
+                case BattleEventType.EnemyAttacked when battleEvent.source == DamageSource.Poison:
                     Poisoned();
+                    break;
+                case BattleEventType.EnemyAttacked:
+                    AttackedEnemy();
                     break;
                 case BattleEventType.EnemyHealed:
                     Healed();
@@ -81,6 +85,9 @@ public class InGameSfxManager : MonoBehaviour
                     break;
                 case BattleEventType.StartedEnemyTurn:
                     StartEnemyTurn();
+                    break;
+                case BattleEventType.EnemyBlocked:
+                    Block();
                     break;
             }
         }
@@ -149,5 +156,10 @@ public class InGameSfxManager : MonoBehaviour
     private void StartPlayerTurn()
     {
         _beginTurnSound.Play();
+    }
+
+    private void Block()
+    {
+        _blockSound.Play();
     }
 }
