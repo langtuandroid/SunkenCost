@@ -58,20 +58,22 @@ namespace ReorderableContent
             _canvas = reorderableGrid.Canvas;
             _currentReorderableGrid = reorderableGrid;
             _currentSiblingIndex = transform.GetSiblingIndex();
-            
-            // Create an empty space where the current element is in the placeholder grid
-            var emptySpace = new GameObject($"Placeholder for {GetInstanceID()}");
-            _placeholderRect = emptySpace.AddComponent<RectTransform>();
-            _placeholderRect.SetParent(_currentReorderableGrid.PlaceholderContent, false);
-            _placeholderRect.SetSiblingIndex(_currentSiblingIndex);
-            _placeholderRect.sizeDelta = _rectTransform.sizeDelta;
 
+            _placeholderRect = CreatePlaceholderRect();
+            
             IsMergeable = reorderableGrid.IsMergeable;
         }
 
-        private void OnDestroy()
+        private void OnEnable()
         {
-            if (_placeholderRect) Destroy(_placeholderRect.gameObject);
+            if (_currentReorderableGrid && !_placeholderRect)
+                _placeholderRect = CreatePlaceholderRect();
+        }
+
+        private void OnDisable()
+        {
+            if (_placeholderRect)
+                Destroy(_placeholderRect.gameObject);
             if (_fakeRectTransform) Destroy(_fakeRectTransform.gameObject);
         }
 
@@ -112,11 +114,7 @@ namespace ReorderableContent
             _listHoveringOver = _currentReorderableGrid;
             
             // Create an empty space where the current element is in the placeholder grid
-            var emptySpace = new GameObject($"Empty Space for {GetInstanceID()}");
-            _fakeRectTransform = emptySpace.AddComponent<RectTransform>();
-            _fakeRectTransform.SetParent(_currentReorderableGrid.Content, true);
-            _fakeRectTransform.SetSiblingIndex(_currentSiblingIndex);
-            _fakeRectTransform.sizeDelta = _rectTransform.sizeDelta;
+            _fakeRectTransform = CreateEmptySpace(_currentReorderableGrid.Content, $"Empty Space for {GetInstanceID()}");
 
             // Move this plank out of the content area
             _rectTransform.SetParent(_currentReorderableGrid.DraggingArea);
@@ -290,6 +288,23 @@ namespace ReorderableContent
         public void SetSiblingIndex(int i)
         {
             _placeholderRect.SetSiblingIndex(i);
+        }
+
+        private RectTransform CreatePlaceholderRect()
+        {
+            return CreateEmptySpace(_currentReorderableGrid.PlaceholderContent, $"Placeholder for {GetInstanceID()}");
+        }
+        
+        private RectTransform CreateEmptySpace(RectTransform listContent, string gameObjectName)
+        {
+            // Create an empty space where the current element is in the placeholder grid
+            var emptySpace = new GameObject(gameObjectName);
+            var emptySpaceRect = emptySpace.AddComponent<RectTransform>();
+            emptySpaceRect.SetParent(listContent, false);
+            emptySpaceRect.SetSiblingIndex(_currentSiblingIndex);
+            emptySpaceRect.sizeDelta = _rectTransform.sizeDelta;
+
+            return emptySpaceRect;
         }
     }
 }

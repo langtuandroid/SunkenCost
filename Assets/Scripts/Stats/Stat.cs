@@ -125,8 +125,8 @@ public class Stat
 
                     break;
                 }
-                case StatModType.PercentMult:
-                    finalValue *= 1 + statModifier.Value;
+                case StatModType.Multiply:
+                    finalValue *= statModifier.Value;
                     break;
                 default:
                     throw new ArgumentOutOfRangeException();

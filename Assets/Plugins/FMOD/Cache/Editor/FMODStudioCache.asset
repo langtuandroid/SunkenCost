@@ -15,10 +15,10 @@ MonoBehaviour:
   Path: DBTD/Build/Desktop/Master.strings.bank
   Name: Master.strings
   StudioPath: bank:/Master.strings
-  lastModified: 638048840359592129
+  lastModified: 638218224401574729
   FileSizes:
   - Name: Desktop
-    Value: 1718
+    Value: 1806
   Exists: 1
 --- !u!114 &-8436418586141196637
 MonoBehaviour:
@@ -35,10 +35,10 @@ MonoBehaviour:
   Path: DBTD/Build/Desktop/SFX.bank
   Name: SFX
   StudioPath: bank:/SFX
-  lastModified: 638048840362395475
+  lastModified: 638218224403842765
   FileSizes:
   - Name: Desktop
-    Value: 810848
+    Value: 770688
   Exists: 1
 --- !u!114 &-7213585234356489949
 MonoBehaviour:
@@ -109,7 +109,7 @@ MonoBehaviour:
   Path: DBTD/Build/Desktop/Master.bank
   Name: Master
   StudioPath: bank:/Master
-  lastModified: 638048840359572287
+  lastModified: 638218224401543749
   FileSizes:
   - Name: Desktop
     Value: 36500672
@@ -210,10 +210,34 @@ MonoBehaviour:
   Path: DBTD/Build/Desktop/Music.bank
   Name: Music
   StudioPath: bank:/Music
-  lastModified: 638048840361052698
+  lastModified: 638218224403591248
   FileSizes:
   - Name: Desktop
-    Value: 36206816
+    Value: 36210784
+  Exists: 1
+--- !u!114 &-430000415970316221
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fecb8ef7f94ca804a8ab72049b86782e, type: 3}
+  m_Name: parameter:/NewMusicControl/Song
+  m_EditorClassIdentifier: 
+  Name: Song
+  StudioPath: 
+  Min: 0
+  Max: 1
+  Default: 0
+  ID:
+    data1: 997083262
+    data2: 64937373
+  Type: 1
+  IsGlobal: 0
+  Labels: []
   Exists: 1
 --- !u!114 &-157978208749802826
 MonoBehaviour:
@@ -278,12 +302,13 @@ MonoBehaviour:
   - {fileID: 5436649896469218413}
   - {fileID: 1641143781300921983}
   - {fileID: 276872397982635184}
+  - {fileID: 6300039777241747876}
   EditorParameters: []
   MasterBanks:
   - {fileID: -4458939372036730478}
   StringsBanks:
   - {fileID: -9093515747799728831}
-  cacheTime: 638048840362395475
+  cacheTime: 638218224403842765
   cacheVersion: 131593
 --- !u!114 &247265127080051342
 MonoBehaviour:
@@ -552,6 +577,34 @@ MonoBehaviour:
   MinDistance: 1
   MaxDistance: 20
   Length: 0
+--- !u!114 &6300039777241747876
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
+  m_Name: event:/Music/NewMusicControl
+  m_EditorClassIdentifier: 
+  Path: event:/Music/NewMusicControl
+  Guid:
+    Data1: -259860240
+    Data2: 1156838152
+    Data3: 1346672555
+    Data4: 484480709
+  Banks:
+  - {fileID: -1669205284745459124}
+  IsStream: 1
+  Is3D: 0
+  IsOneShot: 0
+  Parameters:
+  - {fileID: -430000415970316221}
+  MinDistance: 1
+  MaxDistance: 20
+  Length: 411977
 --- !u!114 &6835051985724532707
 MonoBehaviour:
   m_ObjectHideFlags: 0

@@ -76,7 +76,7 @@ public class EnemySpawner : BattleEventResponder
             battleEvents.Add(new BattleEvent(BattleEventType.EnemySpawned)
             {
                 primaryResponderID = enemy.ResponderID, 
-                showResponse =  false
+                showAsOwnAction =  false
             });
         }
 
@@ -109,7 +109,7 @@ public class EnemySpawner : BattleEventResponder
 
         var newEnemy = newEnemyObject.AddComponent(enemyClass).GetComponent<Enemy>();
         
-        newEnemy.MaxHealthStat.AddModifier(new StatModifier(_scenario.scaledDifficulty, StatModType.PercentMult));
+        newEnemy.MaxHealthStat.AddModifier(new StatModifier(_scenario.scaledDifficulty + 1, StatModType.Multiply));
         newEnemy.MovementModifier = (int) (_scenario.scaledDifficulty / 2f)
                                   + RunProgress.Current.PlayerStats.EnemyMovementModifier;
         

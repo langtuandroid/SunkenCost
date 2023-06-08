@@ -40,6 +40,7 @@ public class MainManager : MonoBehaviour
     public void LoadMenu()
     {
         ChangeScene(0);
+        Music.current.SelectSong(0);
     }
 
     public void LoadMap()
@@ -60,6 +61,7 @@ public class MainManager : MonoBehaviour
     public void StartNewRun()
     {
         RunProgress.Current.InitialiseRun();
+        Music.current.SelectSong(1);
         LoadOfferScreen();
     }
 }

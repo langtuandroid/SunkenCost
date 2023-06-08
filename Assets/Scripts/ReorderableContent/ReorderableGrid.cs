@@ -103,7 +103,7 @@ namespace ReorderableContent
                 if (!element.HasBeenInitialised) element.Init(this);
             }
 
-            // A little hack, if we don't wait one frame we don't have the right deleted children
+            // A little hack, if we don't wait two frames the placeholder will not be deleted and thus the 
             yield return 0;
             
             // Remove deleted child

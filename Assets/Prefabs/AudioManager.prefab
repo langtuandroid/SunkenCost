@@ -48,11 +48,11 @@ MonoBehaviour:
   CollisionTag: 
   EventReference:
     Guid:
-      Data1: 407009259
-      Data2: 1140646829
-      Data3: 521383565
-      Data4: 1390529881
-    Path: event:/Music/Music Control
+      Data1: -259860240
+      Data2: 1156838152
+      Data3: 1346672555
+      Data4: 484480709
+    Path: event:/Music/NewMusicControl
   Event: 
   PlayEvent: 0
   StopEvent: 0
@@ -135,7 +135,7 @@ MonoBehaviour:
   _successfulBuyPlankSound: {fileID: 7787628585082376411}
   _goodClickSound: {fileID: 7787628585082376405}
   _badClickSound: {fileID: 7787628585082376408}
-  _stickMovementSound: {fileID: 7787628585082376409}
+  _plankMovementSound: {fileID: 7787628585082376409}
   _charMovementSound: {fileID: 7787628585082376406}
   _damageSound: {fileID: 7787628585082376410}
   _slimedSound: {fileID: 7657861344854180681}

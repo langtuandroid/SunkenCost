@@ -40,6 +40,11 @@ public class RunProgress : MonoBehaviour
         BattleNumber++;
         HasGeneratedMapEvents = false;
         OfferStorage.IncreaseCostOfLockedOffers();
+
+        foreach (var design in PlayerStats.Deck)
+        {
+            design.SetCost(design.Cost - 1);
+        }
     }
 
     public void HaveGeneratedDisturbanceEvents(List<Disturbance> disturbances)

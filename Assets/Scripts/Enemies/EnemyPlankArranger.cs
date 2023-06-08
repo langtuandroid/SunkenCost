@@ -31,7 +31,7 @@ namespace Enemies
         
         public void RespondToBattleEvent(BattleEvent battleEvent)
         {
-            if (battleEvent.type == BattleEventType.EnemySpawned && !battleEvent.showResponse)
+            if (battleEvent.type == BattleEventType.EnemySpawned && !battleEvent.showAsOwnAction)
             {
                 ArrangeEnemiesOnPlank(battleEvent.Enemy.PlankNum, true);
             }

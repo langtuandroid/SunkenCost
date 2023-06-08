@@ -118,7 +118,7 @@ namespace Etchings
             var etchingActivatedEvent = new BattleEvent(BattleEventType.EtchingActivated, planksToColor)
             {
                 primaryResponderID = ResponderID,
-                showResponse = designResponse.showResponse
+                showAsOwnAction = designResponse.showResponse
             };
 
             var response = new List<BattleEvent>(designResponse.response) {etchingActivatedEvent};

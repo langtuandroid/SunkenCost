@@ -10,7 +10,7 @@ namespace Etchings
     {
         private bool _hadEnemyOnPlankThisTurn = false;
 
-        private readonly Stack<StatModifier> _statModifiers = new Stack<StatModifier>();
+        private readonly List<StatModifier> _statModifiers = new List<StatModifier>();
         
         private void OnDestroy()
         {
@@ -23,7 +23,7 @@ namespace Etchings
             {
                 new DesignResponseTrigger(BattleEventType.StartedNextPlayerTurn, 
                     b => UpdateDamage(), 
-                    b => !_hadEnemyOnPlankThisTurn),
+                    b => !_hadEnemyOnPlankThisTurn && Battle.Current.Turn > 1),
             };
 
             responses.AddRange(base.GetDesignResponseTriggers());
@@ -45,9 +45,11 @@ namespace Etchings
         private DesignResponse UpdateDamage()
         {
             _hadEnemyOnPlankThisTurn = false; 
-            var newStatMod = new StatModifier(Design.GetStat(StatType.StatFlatModifier), StatModType.Flat);
-            _statModifiers.Push(newStatMod); 
+            var newStatMod = new StatModifier(Design.GetStat(StatType.StatMultiplier), StatModType.Multiply);
+            _statModifiers.Add(newStatMod); 
+            Debug.Log($"Damage pre: {Design.GetStat(StatType.Damage)}");
             Design.AddStatModifier(StatType.Damage, newStatMod);
+            Debug.Log($"Damage post: {Design.GetStat(StatType.Damage)}");
             var response = new BattleEvent(BattleEventType.DesignModified) {primaryResponderID = ResponderID};
             return new DesignResponse(-1, response);
         }

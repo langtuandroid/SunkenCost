@@ -7,7 +7,7 @@ using UnityEngine.UI;
 public class MusicManager : MonoBehaviour
 {
     public float MusicVolume { get; private set; } = 0.5f;
-    public float SfxVolume { get; private set; } = 0f;
+    public float SfxVolume { get; private set; } = 0.5f;
 
     public static MusicManager current;
 
@@ -26,10 +26,10 @@ public class MusicManager : MonoBehaviour
 
     private void Start()
     {
-        Music.current.SelectSong(0);
         Music.current.SetMusicVolume(MusicVolume);
         Music.current.SetSfxVolume(SfxVolume);
-        Music.current.Play();
+
+        StartCoroutine(StartMusic());
     }
 
     public void MusicVolumeChange(float value)
@@ -42,5 +42,11 @@ public class MusicManager : MonoBehaviour
     {
         SfxVolume = value;
         Music.current.SetSfxVolume(SfxVolume);
+    }
+
+    private IEnumerator StartMusic()
+    {
+        yield return new WaitForSecondsRealtime(1f);
+        Music.current.Play();
     }
 }

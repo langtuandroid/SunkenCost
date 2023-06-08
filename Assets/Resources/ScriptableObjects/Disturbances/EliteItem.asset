@@ -14,6 +14,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   disturbanceType: 1000
   sprite: {fileID: 0}
-  title: <color=#F1792A>Rare Item:</color>
+  title: <color=#F1792A>Rare Booty:</color>
   description: 
   amount: 1

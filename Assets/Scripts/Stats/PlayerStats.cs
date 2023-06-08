@@ -14,7 +14,7 @@ public class PlayerStats
     private const int INIT_NUM_OF_CARD_OFFERS = 3;
     private const int INIT_NUM_OF_ITEM_OFFERS = 2;
 
-    private const int INIT_REROLL_COST = 2;
+    private const int INIT_REROLL_COST = 1;
     
     public List<Design> Deck { get; private set; }
 

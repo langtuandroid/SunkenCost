@@ -62,7 +62,7 @@ namespace BattleScreen
     {
         public readonly BattleEventType type;
         public readonly int[] planksToColor;
-        public bool showResponse = true;
+        public bool showAsOwnAction = true;
         public int modifier = 0;
         public DamageSource source;
         public DamageModificationPackage damageModificationPackage;

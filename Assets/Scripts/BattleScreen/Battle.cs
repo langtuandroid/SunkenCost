@@ -203,13 +203,14 @@ namespace BattleScreen
                 // Remove events that were only used for rendering
                 var battleEventsList = responsePackage.battleEvents.Where
                 (b => !((b.type == BattleEventType.EtchingActivated || b.type == BattleEventType.ItemActivated) 
-                    && !b.showResponse)).ToList();
+                    && !b.showAsOwnAction)).ToList();
                 
                 // Sometimes we need a frame for transforms to change parents etc.
                 if (BattleEventListContainsTransformUpdatingEvent(battleEventsList))
                 {
                     Debug.Log("Waiting for transforms...");
                     yield return 0;
+                    Debug.Log("Transforms refreshed!");
                     BattleEventResponseSequencer.Current.RefreshTransforms();
                 }
 
@@ -229,7 +230,7 @@ namespace BattleScreen
                         Debug.Log("Multiple " + battleEvent.type);
                     }
                     
-                    if (waitTime > 0f)
+                    if (waitTime > 0f && BattleState == BattleState.EnemyTurn)
                         yield return new WaitForSecondsRealtime(waitTime * ActionExecutionSpeed);
                     
                     var sequenceOfResponses = Tick(battleEvent);
@@ -260,21 +261,20 @@ namespace BattleScreen
             {
                 case BattleEventType.PlayerLostLife:
                     return 1.3f;
-                case BattleEventType.EtchingActivated when battleEvent.showResponse:
+                case BattleEventType.EtchingActivated when battleEvent.showAsOwnAction:
                     return 0.7f;
                 case BattleEventType.StartedIndividualEnemyTurn:
                 case BattleEventType.EtchingStunned:
                 case BattleEventType.EnemyHealed: 
                 case BattleEventType.EnemyMaxHealthModified:
+                case BattleEventType.EnemyAttacked: 
                     return 1f;
-                case BattleEventType.EnemySpawned when battleEvent.showResponse:
+                case BattleEventType.EnemySpawned when battleEvent.showAsOwnAction:
                 case BattleEventType.EnemyAttackedBoat:
                 case BattleEventType.EnemyKilled when battleEvent.source != DamageSource.Boat:
                     return 0.75f;
-                case BattleEventType.EnemyAttacked: 
-                case BattleEventType.EnemyDamaged: 
                 case BattleEventType.EnemyBlocked:
-                case BattleEventType.ItemActivated when battleEvent.showResponse:
+                case BattleEventType.ItemActivated when battleEvent.showAsOwnAction:
                     return 0.5f;
                 case BattleEventType.EnemyMoved:
                     return 0.3f;

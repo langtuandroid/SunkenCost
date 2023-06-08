@@ -32,7 +32,7 @@ public class Music : MonoBehaviour
 
     public void SelectSong(int song)
     {
-        _eventEmitter.SetParameter("SongSelect", song);
+        _eventEmitter.SetParameter("Song", song);
     }
 
     public void Play()

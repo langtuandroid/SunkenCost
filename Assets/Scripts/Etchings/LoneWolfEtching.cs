@@ -43,7 +43,7 @@ namespace Etchings
 
             var designModificationEvent = new BattleEvent(BattleEventType.DesignModified)
             {
-                primaryResponderID = ResponderID, showResponse = false
+                primaryResponderID = ResponderID, showAsOwnAction = false
             };
             
             return new DesignResponse(-1, designModificationEvent, showResponse: false);

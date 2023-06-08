@@ -30,7 +30,6 @@ namespace BattleScreen.BattleBoard
         public int PlankCount => _cachedPlanks.Count;
         public List<Plank> PlanksInOrder => _cachedPlanks.OrderBy(p => p.PlankNum).ToList();
 
-
         private void Awake()
         {
             if (Current)
@@ -69,6 +68,8 @@ namespace BattleScreen.BattleBoard
 
         public void ElementsRefreshed(List<ReorderableElement> listElements)
         {
+            Debug.Log("Refreshing plank order...");
+            
             var planksInList = listElements.Select(t => t.GetComponent<Plank>()).ToList();
 
             foreach (var plank in planksInList.Where(plank => !_cachedPlanks.Contains(plank)))
@@ -77,9 +78,12 @@ namespace BattleScreen.BattleBoard
                 _cachedPlanks.Add(plank);
             }
 
-            foreach (var plank in _cachedPlanks.Where(plank => !planksInList.Contains(plank)))
+            for (var i = _cachedPlanks.Count - 1; i > 0; i--)
             {
-                _cachedPlanks.Remove(plank);
+                if (_cachedPlanks[i] is null || !planksInList.Contains((_cachedPlanks[i])))
+                {
+                    _cachedPlanks.RemoveAt(i);
+                }
             }
         }
 

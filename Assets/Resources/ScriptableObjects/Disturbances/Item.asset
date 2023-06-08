@@ -14,6 +14,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   disturbanceType: 500
   sprite: {fileID: 0}
-  title: <color=#F1792A>Item:</color>
+  title: <color=#F1792A>Booty:</color>
   description: 
   amount: 0

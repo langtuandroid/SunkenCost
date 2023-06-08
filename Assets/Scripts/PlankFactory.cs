@@ -38,7 +38,6 @@ public class PlankFactory : MonoBehaviour
     {
         var newPlank = Instantiate(_plankPrefab, _plankGrid);
         var plankRectTransform = newPlank.GetComponent<RectTransform>();
-        plankRectTransform.position = new Vector3(_board.BoatTransform.position.x, _plankGrid.position.y);
         plankRectTransform.SetAsLastSibling();
         _board.Refresh();
 

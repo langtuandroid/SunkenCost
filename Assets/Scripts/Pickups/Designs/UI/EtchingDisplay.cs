@@ -42,7 +42,7 @@ namespace Designs
             }
             else if ((battleEvent.type == BattleEventType.EtchingActivated) && battleEvent.primaryResponderID == _etching.ResponderID)
             {
-                if (battleEvent.showResponse)
+                if (battleEvent.showAsOwnAction)
                     StartCoroutine(ColorForActivate());
                 
                 _designDisplay.UpdateDisplay();

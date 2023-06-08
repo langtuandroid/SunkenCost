@@ -32,7 +32,7 @@ namespace BattleScreen.BattleEvents
         {
             var respondersToRemove = _triggerMaps.
                 Where(r => !sortedOrder.Contains(r.responder)).
-                Select(r => r.responder);
+                Select(r => r.responder).ToArray();
             
             foreach (var responder in respondersToRemove)
             {
@@ -60,10 +60,13 @@ namespace BattleScreen.BattleEvents
 
         private IEnumerator<BattleEventPackage> GetNextPackage(BattleEvent previousBattleEvent)
         {
-            for (var i = 0; i < _triggerMaps.Count; i++)
+            var triggerMaps = new List<TriggerMap>(_triggerMaps);
+            for (var i = 0; i < triggerMaps.Count; i++)
             {
+                if (triggerMaps[i] is null) continue;
+
                 // Find all the matching response triggers for the event type
-                var matchingResponseTriggers = _triggerMaps[i].responseTriggers
+                var matchingResponseTriggers = triggerMaps[i].responseTriggers
                     .Where(r => r.battleEventType == previousBattleEvent.type);
 
                 foreach (var responseTrigger in matchingResponseTriggers)
@@ -87,7 +90,7 @@ namespace BattleScreen.BattleEvents
                 }
                 
                 // Execute all the matching action triggers
-                var matchingActionTriggers = _triggerMaps[i].actionTriggers.Where(a =>
+                var matchingActionTriggers = triggerMaps[i].actionTriggers.Where(a =>
                     a.battleEventType == previousBattleEvent.type);
 
                 foreach (var battleEventActionTrigger in matchingActionTriggers)

@@ -23,9 +23,84 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="50470089-3e0c-4487-973b-9d375622b070" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/Ableton/DeckSoundFX Project/Ableton Project Info/AProject.ico" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Ableton/DeckSoundFX Project/Ableton Project Info/Project8_1.cfg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Ableton/DeckSoundFX Project/Backup/DeckSoundFX [2023-06-07 143911].als" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Ableton/DeckSoundFX Project/DeckSoundFX.als" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Ableton/DeckSoundFX Project/Desktop.ini" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/DBTD/.cache/fsbcache/Desktop/38CD3C1D.fobj" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/DBTD/.cache/fsbcache/Desktop/38D39C00.fobj" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/DBTD/.cache/fsbcache/Desktop/A678008A.fobj" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/DBTD/.cache/fsbcache/Desktop/AE4AE21C.fobj" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/DBTD/.cache/fsbcache/Desktop/B2364DD3.fobj" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/DBTD/.cache/{1371b23a-acf9-4409-bce1-905814a02047}.pdc" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/DBTD/.cache/{535dc4c3-96dd-4716-9147-af8f0499f28c}.pdc" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/DBTD/.cache/{77fdafb7-5d6d-40e5-ac46-4ee488f78f8d}.pdc" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/DBTD/.cache/{a0d12342-d9eb-4952-909a-7a3d8a7bf87b}.pdc" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/DBTD/.cache/{bf2f18e0-f5db-4a7f-ad47-66f8cdf25b6d}.pdc" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/DBTD/.unsaved/Metadata/Event/{f082d8f0-f308-44f3-ab97-4450c596e01c}.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/DBTD/.unsaved/metadataFileMapping.data" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/DBTD/Assets/Hit2.wav.asd" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/DBTD/Assets/New/EnemyHit0.wav" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/DBTD/Assets/New/EnemyHit1.wav" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/DBTD/Assets/New/EnemyHit2.wav" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/DBTD/Assets/New/EnemyHit3.wav" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/DBTD/Assets/New/EnemyMove.wav" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/DBTD/Metadata/Asset/{12a21576-c546-4fd1-a2df-c73260ac82c9}.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/DBTD/Metadata/AudioFile/{1371b23a-acf9-4409-bce1-905814a02047}.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/DBTD/Metadata/AudioFile/{535dc4c3-96dd-4716-9147-af8f0499f28c}.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/DBTD/Metadata/AudioFile/{77fdafb7-5d6d-40e5-ac46-4ee488f78f8d}.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/DBTD/Metadata/AudioFile/{a0d12342-d9eb-4952-909a-7a3d8a7bf87b}.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/DBTD/Metadata/AudioFile/{bf2f18e0-f5db-4a7f-ad47-66f8cdf25b6d}.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/DBTD/Metadata/EncodingSetting/{189d463a-4746-4c44-92a3-d2cf4f40e1aa}.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/DBTD/Metadata/EncodingSetting/{3400aa46-7a05-43a8-baa1-2ddcd58ac171}.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/DBTD/Metadata/EncodingSetting/{bf2dc8ef-7d56-43cf-8bdc-feb731d57ac5}.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/DBTD/Metadata/EncodingSetting/{c636632b-a5ea-4e33-a30f-eed24bd2c74c}.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/DBTD/Metadata/EncodingSetting/{d45dee71-5f82-4133-9f65-62e2713229ec}.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/DBTD/Metadata/Event/{f082d8f0-f308-44f3-ab97-4450c596e01c}.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/DBTD/Metadata/ParameterPreset/{aaf09a89-e8c3-43fe-9502-0356cb622aac}.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/.idea.Deck/.idea/indexLayout.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.Deck/.idea/indexLayout.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/.idea.Deck/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.Deck/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/OfferScreen/ItemOfferGenerator.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/OfferScreen/ItemOfferGenerator.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Plugins/FMOD/Cache/Editor/FMODStudioCache.asset" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Plugins/FMOD/Cache/Editor/FMODStudioCache.asset" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/AudioManager.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Prefabs/AudioManager.prefab" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/Map/MapEvent.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Prefabs/Map/MapEvent.prefab" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Resources/ScriptableObjects/Designs/Ambush.asset" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Resources/ScriptableObjects/Designs/Ambush.asset" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Resources/ScriptableObjects/Disturbances/EliteItem.asset" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Resources/ScriptableObjects/Disturbances/EliteItem.asset" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Resources/ScriptableObjects/Disturbances/Item.asset" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Resources/ScriptableObjects/Disturbances/Item.asset" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scenes/Menu.unity" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scenes/Menu.unity" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Audio/Music.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Audio/Music.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Audio/MusicManager.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Audio/MusicManager.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/BattleScreen/Battle.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/BattleScreen/Battle.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/BattleScreen/BattleBoard/Board.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/BattleScreen/BattleBoard/Board.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/BattleScreen/BattleEvents/BattleEvent.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/BattleScreen/BattleEvents/BattleEvent.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/BattleScreen/BattleEvents/BattleEventResponderGroup.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/BattleScreen/BattleEvents/BattleEventResponderGroup.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Enemies/EnemyPlankArranger.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Enemies/EnemyPlankArranger.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Enemies/EnemySpawner.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Enemies/EnemySpawner.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Etchings/AmbushEtching.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Etchings/AmbushEtching.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Etchings/Etching.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Etchings/Etching.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Etchings/LoneWolfEtching.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Etchings/LoneWolfEtching.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Etchings/RaidEtching.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Etchings/RaidEtching.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/MainManager.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/MainManager.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Pickups/Designs/UI/EtchingDisplay.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Pickups/Designs/UI/EtchingDisplay.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/PlankFactory.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/PlankFactory.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Scripts/ReorderableContent/ReorderableElement.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/ReorderableContent/ReorderableElement.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/ReorderableContent/ReorderableGrid.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/ReorderableContent/ReorderableGrid.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/RunProgress.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/RunProgress.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Stats/PlayerStats.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Stats/PlayerStats.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Stats/Stat.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Stats/Stat.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Stats/StatModifier.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Stats/StatModifier.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/DBTD/.cache/{1e29da7f-0ffc-4d42-9bd7-45bb2468efdd}.pdc" beforeDir="false" afterPath="$PROJECT_DIR$/DBTD/.cache/{1e29da7f-0ffc-4d42-9bd7-45bb2468efdd}.pdc" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/DBTD/Build/Desktop/Master.strings.bank" beforeDir="false" afterPath="$PROJECT_DIR$/DBTD/Build/Desktop/Master.strings.bank" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/DBTD/Build/Desktop/Music.bank" beforeDir="false" afterPath="$PROJECT_DIR$/DBTD/Build/Desktop/Music.bank" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/DBTD/Build/Desktop/SFX.bank" beforeDir="false" afterPath="$PROJECT_DIR$/DBTD/Build/Desktop/SFX.bank" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/DBTD/Metadata/Event/{314f743c-b068-4f80-b78f-4affdca7672f}.xml" beforeDir="false" afterPath="$PROJECT_DIR$/DBTD/Metadata/Event/{314f743c-b068-4f80-b78f-4affdca7672f}.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/DBTD/Metadata/Event/{40f6cd50-bec6-4f79-b876-0ed5ef398c0f}.xml" beforeDir="false" afterPath="$PROJECT_DIR$/DBTD/Metadata/Event/{40f6cd50-bec6-4f79-b876-0ed5ef398c0f}.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/DBTD/Metadata/Event/{941b3cc0-c4db-4e43-afd5-c6cc9b420c07}.xml" beforeDir="false" afterPath="$PROJECT_DIR$/DBTD/Metadata/Event/{941b3cc0-c4db-4e43-afd5-c6cc9b420c07}.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/DBTD/Metadata/Event/{b73ba1c8-5d97-40a8-9822-db74bebce5e0}.xml" beforeDir="false" afterPath="$PROJECT_DIR$/DBTD/Metadata/Event/{b73ba1c8-5d97-40a8-9822-db74bebce5e0}.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/DBTD/Metadata/Event/{d4eead33-ec76-46b5-beec-e98a21525590}.xml" beforeDir="false" afterPath="$PROJECT_DIR$/DBTD/Metadata/Event/{d4eead33-ec76-46b5-beec-e98a21525590}.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/UserSettings/EditorUserSettings.asset" beforeDir="false" afterPath="$PROJECT_DIR$/UserSettings/EditorUserSettings.asset" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/UserSettings/Layouts/default-2021.dwlt" beforeDir="false" afterPath="$PROJECT_DIR$/UserSettings/Layouts/default-2021.dwlt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/fmod_editor.log" beforeDir="false" afterPath="$PROJECT_DIR$/fmod_editor.log" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -71,15 +146,6 @@
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/Assets/Scripts/MergeableList/MergeableListRow.cs" />
-        <option value="$PROJECT_DIR$/Assets/Scripts/MergeableList/IMergeableListElementEventListener.cs" />
-        <option value="$PROJECT_DIR$/Assets/Scripts/MergeableList/IMergeableListEventListener.cs" />
-        <option value="$PROJECT_DIR$/Assets/Scripts/OfferScreen/CardDesign.cs" />
-        <option value="$PROJECT_DIR$/Assets/Scripts/OfferScreen/CardDesignRow.cs" />
-        <option value="$PROJECT_DIR$/Assets/Scripts/OfferScreen/DesignCardRow.cs" />
-        <option value="$PROJECT_DIR$/Assets/Scripts/Pickups/Designs/UI/DesignDisplay.cs" />
-        <option value="$PROJECT_DIR$/Assets/Scripts/Pickups/Designs/UI/DesignCategoryDisplay.cs" />
-        <option value="$PROJECT_DIR$/Assets/Scripts/UI/Tooltip/TooltipTrigger.cs" />
         <option value="$PROJECT_DIR$/Assets/Scripts/MergeableList/MergeableListElement.cs" />
         <option value="$PROJECT_DIR$/Assets/Scripts/MergeableList/MergeableList.cs" />
         <option value="$PROJECT_DIR$/Assets/Scripts/MergeableList/IMyListElementEventListener.cs" />
@@ -92,7 +158,6 @@
         <option value="$PROJECT_DIR$/Assets/Scripts/OfferScreen/OfferScreenEvents.cs" />
         <option value="$PROJECT_DIR$/Assets/Scripts/OfferScreen/OfferManager.cs" />
         <option value="$PROJECT_DIR$/Assets/Scripts/OfferScreen/DesignCardOfferGenerator.cs" />
-        <option value="$PROJECT_DIR$/Assets/Scripts/Stats/PlayerStats.cs" />
         <option value="$PROJECT_DIR$/Assets/Scripts/Enemies/EnemyMover.cs" />
         <option value="$PROJECT_DIR$/Assets/Scripts/Pickups/Rarity.cs" />
         <option value="$PROJECT_DIR$/Assets/Scripts/Loaders/ItemLoader.cs" />
@@ -104,24 +169,34 @@
         <option value="$PROJECT_DIR$/Assets/Scripts/BattleScreen/BattleEvents/BattleEventResponseTrigger.cs" />
         <option value="$PROJECT_DIR$/Assets/Scripts/Enemies/Enemy.cs" />
         <option value="$PROJECT_DIR$/Assets/Scripts/Enemies/EnemySequencer.cs" />
-        <option value="$PROJECT_DIR$/Assets/Scripts/Enemies/EnemySpawner.cs" />
         <option value="$PROJECT_DIR$/Assets/Scripts/Etchings/Etching.cs" />
         <option value="$PROJECT_DIR$/Assets/Scripts/Pickups/Items/Items/EquippedItem.cs" />
         <option value="$PROJECT_DIR$/Assets/Scripts/BattleScreen/BattleEvents/BattleEventResponder.cs" />
-        <option value="$PROJECT_DIR$/Assets/Scripts/BattleScreen/BattleEvents/BattleEventResponderGroup.cs" />
         <option value="$PROJECT_DIR$/Assets/Scripts/PlankDisplay.cs" />
-        <option value="$PROJECT_DIR$/Assets/Scripts/ReorderableContent/ReorderableElementContainer.cs" />
         <option value="$PROJECT_DIR$/Assets/Scripts/ReorderableContent/IReorderableGridEventListener.cs" />
-        <option value="$PROJECT_DIR$/Assets/Scripts/BattleScreen/Battle.cs" />
         <option value="$PROJECT_DIR$/Assets/Scripts/BattleScreen/BattleBoard/Plank.cs" />
         <option value="$PROJECT_DIR$/Assets/Scripts/OfferScreen/DesignCard.cs" />
         <option value="$PROJECT_DIR$/Assets/Scripts/Enemies/EnemyPlankArranger.cs" />
-        <option value="$PROJECT_DIR$/Assets/Scripts/PlankFactory.cs" />
+        <option value="$PROJECT_DIR$/Assets/Scripts/BattleScreen/BattleBoard/BoardPositioner.cs" />
+        <option value="$PROJECT_DIR$/Assets/Scripts/OfferScreen/ItemOfferGenerator.cs" />
+        <option value="$PROJECT_DIR$/Assets/Scripts/UI/Tooltip/TooltipTrigger.cs" />
+        <option value="$PROJECT_DIR$/Assets/Scripts/Stats/PlayerStats.cs" />
+        <option value="$PROJECT_DIR$/Assets/Scripts/BattleScreen/BattleEvents/BattleEventResponderGroup.cs" />
+        <option value="$PROJECT_DIR$/Assets/Scripts/ReorderableContent/ReorderableElementContainer.cs" />
         <option value="$PROJECT_DIR$/Assets/Scripts/BattleScreen/BattleBoard/Board.cs" />
         <option value="$PROJECT_DIR$/Assets/Scripts/ReorderableContent/ReorderableGrid.cs" />
-        <option value="$PROJECT_DIR$/Assets/Scripts/BattleScreen/BattleBoard/BoardPositioner.cs" />
         <option value="$PROJECT_DIR$/Assets/Scripts/ReorderableContent/ReorderableElement.cs" />
-        <option value="$PROJECT_DIR$/Assets/Scripts/OfferScreen/ItemOfferGenerator.cs" />
+        <option value="$PROJECT_DIR$/Assets/Scripts/OfferScreen/OfferStorage.cs" />
+        <option value="$PROJECT_DIR$/Assets/Scripts/RunProgress.cs" />
+        <option value="$PROJECT_DIR$/Assets/Scripts/Etchings/AmbushEtching.cs" />
+        <option value="$PROJECT_DIR$/Assets/Scripts/Stats/Stat.cs" />
+        <option value="$PROJECT_DIR$/Assets/Scripts/Etchings/RaidEtching.cs" />
+        <option value="$PROJECT_DIR$/Assets/Scripts/Enemies/EnemySpawner.cs" />
+        <option value="$PROJECT_DIR$/Assets/Scripts/PlankFactory.cs" />
+        <option value="$PROJECT_DIR$/Assets/Scripts/BattleScreen/Battle.cs" />
+        <option value="$PROJECT_DIR$/Assets/Scripts/Audio/Music.cs" />
+        <option value="$PROJECT_DIR$/Assets/Scripts/Audio/MusicManager.cs" />
+        <option value="$PROJECT_DIR$/Assets/Scripts/MainManager.cs" />
       </list>
     </option>
   </component>
@@ -267,7 +342,7 @@
       <workItem from="1685761709937" duration="9312000" />
       <workItem from="1685921115096" duration="11820000" />
       <workItem from="1686009661764" duration="4721000" />
-      <workItem from="1686058559315" duration="15802000" />
+      <workItem from="1686058559315" duration="29151000" />
     </task>
     <servers />
   </component>
@@ -309,11 +384,11 @@
       <screen x="0" y="0" width="3840" height="2160" />
     </state>
     <state x="677" y="354" key="SettingsEditor/0.0.3840.2160@0.0.3840.2160" timestamp="1684368699084" />
-    <state x="238" y="0" width="782" height="544" key="VCS.FileHistoryDialog" timestamp="1686013796422">
+    <state x="238" y="0" width="782" height="544" key="VCS.FileHistoryDialog" timestamp="1686182315724">
       <screen x="0" y="0" width="3840" height="2160" />
     </state>
     <state x="49" y="0" width="782" height="544" key="VCS.FileHistoryDialog/0.0.1920.1080@0.0.1920.1080" timestamp="1680091451955" />
-    <state x="238" y="0" width="782" height="544" key="VCS.FileHistoryDialog/0.0.3840.2160@0.0.3840.2160" timestamp="1686013796422" />
+    <state x="238" y="0" width="782" height="544" key="VCS.FileHistoryDialog/0.0.3840.2160@0.0.3840.2160" timestamp="1686182315724" />
     <state x="328" y="757" key="com.intellij.xdebugger.impl.breakpoints.ui.BreakpointsDialogFactory$2" timestamp="1684378051361">
       <screen x="0" y="0" width="3840" height="2160" />
     </state>

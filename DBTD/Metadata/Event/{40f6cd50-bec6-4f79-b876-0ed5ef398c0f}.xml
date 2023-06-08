@@ -141,7 +141,7 @@
 	</object>
 	<object class="SingleSound" id="{381cd147-765f-4bce-bd4c-b8c52270f647}">
 		<relationship name="audioFile">
-			<destination>{2b752777-43df-470f-9882-7a0fab7ca024}</destination>
+			<destination>{7dccc0f2-6a25-4467-9c01-56c8b69a11ba}</destination>
 		</relationship>
 	</object>
 </objects>
