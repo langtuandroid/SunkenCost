@@ -145,8 +145,7 @@ namespace ReorderableContent
             
             // Check everything under the cursor to find a MergeableList
             EventSystem.current.RaycastAll(eventData, _raycastResults);
-
-            var oldListHoveringOver = _listHoveringOver;
+            
             _listHoveringOver =  _raycastResults
                 .Select(r => r.gameObject.GetComponent<ReorderableGrid>())
                 .FirstOrDefault(r => r is not null);
@@ -166,7 +165,6 @@ namespace ReorderableContent
                         OnOfferMerge?.Invoke(_elementToMergeWith);
                         _fakeRectTransform.SetParent(_currentReorderableGrid.DraggingArea, true);
                         _placeholderRect.SetParent(_currentReorderableGrid.DraggingArea, true);
-                        _currentReorderableGrid.Refresh();
                         return;
                     }
                     return;
@@ -186,9 +184,6 @@ namespace ReorderableContent
                     // Nothing found or not droppable - put the fake element outside of all lists
                     _fakeRectTransform.SetParent(_currentReorderableGrid.DraggingArea, true);
                     _placeholderRect.SetParent(_currentReorderableGrid.DraggingArea, true);
-                
-                    if (oldListHoveringOver)
-                        oldListHoveringOver.Refresh();    
                 }
                 
                 return;
@@ -208,16 +203,13 @@ namespace ReorderableContent
             // Put the empty space in the right place
             var distanceOfClosestElement = float.PositiveInfinity;
             var closestPlankSiblingIndex = 0;
-            var currentSiblingIndex = _placeholderRect.GetSiblingIndex();
-
+            
             for (var i = 0; i < _listHoveringOver.PlaceholderContent.childCount; i++)
             {
                 var rectTransform = _listHoveringOver.PlaceholderContent.GetChild(i).GetComponent<RectTransform>();
                 var rectPosition = rectTransform.position;
                 var distance = Mathf.Abs
                     (rectPosition.x - worldPoint.x) + Mathf.Abs(rectPosition.y - worldPoint.y);
-                
-                
 
                 if (distance < distanceOfClosestElement)
                 {
@@ -228,17 +220,6 @@ namespace ReorderableContent
 
             _placeholderRect.SetSiblingIndex(closestPlankSiblingIndex);
             _fakeRectTransform.SetSiblingIndex(closestPlankSiblingIndex);
-
-            if (oldListHoveringOver && oldListHoveringOver != _listHoveringOver)
-            {
-                oldListHoveringOver.Refresh();
-                _listHoveringOver.Refresh();
-            }
-            else
-            {
-                if (currentSiblingIndex != closestPlankSiblingIndex)
-                    _listHoveringOver.Refresh();
-            }
         }
 
         public void OnEndDrag(PointerEventData eventData)
@@ -276,10 +257,6 @@ namespace ReorderableContent
             {
                 _currentReorderableGrid.ElementOrderAlteredByDrag();
             }
-            
-            _currentReorderableGrid.Refresh();
-            oldList.Refresh();
-
         }
 
         public void Reposition()

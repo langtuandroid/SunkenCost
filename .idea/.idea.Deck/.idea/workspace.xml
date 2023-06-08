@@ -23,33 +23,10 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="50470089-3e0c-4487-973b-9d375622b070" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/DBTD/.cache/fsbcache/Desktop/B8EE143E.fobj" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/DBTD/.cache/{a5961e6d-e8e2-421c-a899-4e95704f31a2}.pdc" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/DBTD/Assets/Impede.wav" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/DBTD/Metadata/AudioFile/{a5961e6d-e8e2-421c-a899-4e95704f31a2}.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/DBTD/Metadata/EncodingSetting/{5363b2f4-3537-4032-bd3e-c408f9588918}.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/DBTD/Metadata/Event/{a44b0a1c-08a2-4b0b-9fa4-cd31813879a7}.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/.idea.Deck/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.Deck/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Plugins/FMOD/Cache/Editor/FMODStudioCache.asset" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Plugins/FMOD/Cache/Editor/FMODStudioCache.asset" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/AudioManager.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Prefabs/AudioManager.prefab" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scenes/Map.unity" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scenes/Map.unity" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scenes/OfferScreen.unity" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scenes/OfferScreen.unity" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Audio/InGameSfxManager.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Audio/InGameSfxManager.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/BattleScreen/Battle.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/BattleScreen/Battle.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Scripts/BattleScreen/BattleBoard/Board.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/BattleScreen/BattleBoard/Board.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/OfferScreen/BoatMover.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/OfferScreen/BoatMover.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Scripts/ReorderableContent/ReorderableElement.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/ReorderableContent/ReorderableElement.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Scripts/ReorderableContent/ReorderableGrid.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/ReorderableContent/ReorderableGrid.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/DBTD/.unsaved/Metadata/Event/{f082d8f0-f308-44f3-ab97-4450c596e01c}.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/DBTD/.unsaved/metadataFileMapping.data" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/DBTD/Build/Desktop/Master.strings.bank" beforeDir="false" afterPath="$PROJECT_DIR$/DBTD/Build/Desktop/Master.strings.bank" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/DBTD/Build/Desktop/Music.bank" beforeDir="false" afterPath="$PROJECT_DIR$/DBTD/Build/Desktop/Music.bank" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/DBTD/Build/Desktop/SFX.bank" beforeDir="false" afterPath="$PROJECT_DIR$/DBTD/Build/Desktop/SFX.bank" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/DBTD/Metadata/Event/{b73ba1c8-5d97-40a8-9822-db74bebce5e0}.xml" beforeDir="false" afterPath="$PROJECT_DIR$/DBTD/Metadata/Event/{b73ba1c8-5d97-40a8-9822-db74bebce5e0}.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/DBTD/Metadata/Event/{f082d8f0-f308-44f3-ab97-4450c596e01c}.xml" beforeDir="false" afterPath="$PROJECT_DIR$/DBTD/Metadata/Event/{f082d8f0-f308-44f3-ab97-4450c596e01c}.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/UserSettings/EditorUserSettings.asset" beforeDir="false" afterPath="$PROJECT_DIR$/UserSettings/EditorUserSettings.asset" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/UserSettings/Layouts/CurrentMaximizeLayout.dwlt" beforeDir="false" afterPath="$PROJECT_DIR$/UserSettings/Layouts/CurrentMaximizeLayout.dwlt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/fmod_editor.log" beforeDir="false" afterPath="$PROJECT_DIR$/fmod_editor.log" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -144,8 +121,8 @@
         <option value="$PROJECT_DIR$/Assets/Scripts/Audio/InGameSfxManager.cs" />
         <option value="$PROJECT_DIR$/Assets/Scripts/BattleScreen/Battle.cs" />
         <option value="$PROJECT_DIR$/Assets/Scripts/BattleScreen/BattleBoard/Board.cs" />
-        <option value="$PROJECT_DIR$/Assets/Scripts/ReorderableContent/ReorderableElement.cs" />
         <option value="$PROJECT_DIR$/Assets/Scripts/ReorderableContent/ReorderableGrid.cs" />
+        <option value="$PROJECT_DIR$/Assets/Scripts/ReorderableContent/ReorderableElement.cs" />
       </list>
     </option>
   </component>
@@ -291,7 +268,7 @@
       <workItem from="1685761709937" duration="9312000" />
       <workItem from="1685921115096" duration="11820000" />
       <workItem from="1686009661764" duration="4721000" />
-      <workItem from="1686058559315" duration="34618000" />
+      <workItem from="1686058559315" duration="35253000" />
     </task>
     <servers />
   </component>

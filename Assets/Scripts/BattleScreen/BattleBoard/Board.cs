@@ -87,7 +87,7 @@ namespace BattleScreen.BattleBoard
 
         public void Refresh()
         {
-            List.Refresh();
+            //List.Refresh();
         }
     }
 }

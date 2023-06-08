@@ -63,7 +63,7 @@ namespace ReorderableContent
             Content.GetComponent<ReorderableElementContainer>().OnChildrenChanged -= Refresh;
         }
 
-        public void Refresh()
+        private void Refresh()
         {
             Debug.Log($"Refreshing {GetInstanceID()}");
             if (_refreshing) StopCoroutine(RefreshChildren());
