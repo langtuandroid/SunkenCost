@@ -14,7 +14,7 @@ namespace Items.Items
         
         public override void OnDestroy()
         {
-            RunProgress.Current.PlayerStats.MovesPerTurn = -1;
+            RunProgress.Current.PlayerStats.MovesPerTurn = null;
             base.OnDestroy();
         }
 

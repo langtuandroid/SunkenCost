@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _enemyType: 11
   _name: Carppool
-  _maxHealth: 50
+  _maxHealth: 100
   _moves:
   - _movementType: 0
     _magnitude: 1

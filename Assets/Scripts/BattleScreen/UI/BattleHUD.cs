@@ -30,8 +30,8 @@ namespace BattleScreen.UI
 
         public void UpdateMovesText()
         {
-            var movesLeft = (Player.Current.MovesPerTurn - Player.Current.MovesUsedThisTurn).ToString();
-            _movesText.text = movesLeft + "/" + Player.Current.MovesPerTurn;
+            var movesLeft = (Player.Current.MoveLimit - Player.Current.MovesUsedThisTurn).ToString();
+            _movesText.text = movesLeft + "/" + Player.Current.MoveLimit;
         }
 
         private void EndedBattle()

@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using UnityEditor;
 using UnityEngine;
+using UnityEngine.Assertions;
 using UnityEngine.EventSystems;
 using UnityEngine.UI;
 
@@ -146,27 +147,33 @@ namespace ReorderableContent
             // Check everything under the cursor to find a MergeableList
             EventSystem.current.RaycastAll(eventData, _raycastResults);
             
-            _listHoveringOver =  _raycastResults
+            _listHoveringOver = _raycastResults
                 .Select(r => r.gameObject.GetComponent<ReorderableGrid>())
                 .FirstOrDefault(r => r is not null);
 
-            if (IsMergeable)
+            if (IsMergeable && _listHoveringOver is not null)
             {
                 var oldElement = _elementToMergeWith;
                 _elementToMergeWith = _raycastResults
                     .Select(r => r.gameObject.GetComponent<ReorderableElement>())
                     .FirstOrDefault(r => r is not null && r != this && r.IsMergeable && TryMergeInto.Invoke(r));
 
-                if (_elementToMergeWith is not null && _listHoveringOver == _currentReorderableGrid)
+                if (_elementToMergeWith is not null)
                 {
-                    if (oldElement != _elementToMergeWith)
+                    if (oldElement == _elementToMergeWith) return;
+                    
+                    // Hovered straight over mergeable item as soon as entered grid
+                    if (_listHoveringOver != _currentReorderableGrid)
                     {
-                        _currentlyMerging = true;
-                        OnOfferMerge?.Invoke(_elementToMergeWith);
-                        _fakeRectTransform.SetParent(_currentReorderableGrid.DraggingArea, true);
-                        _placeholderRect.SetParent(_currentReorderableGrid.DraggingArea, true);
-                        return;
+                        Assert.IsNotNull(_listHoveringOver);
+                        _currentReorderableGrid = _listHoveringOver;
+                        OnHoveringOverList?.Invoke(_listHoveringOver);
                     }
+                    
+                    _currentlyMerging = true;
+                    OnOfferMerge?.Invoke(_elementToMergeWith);
+                    _fakeRectTransform.SetParent(_currentReorderableGrid.DraggingArea, true);
+                    _placeholderRect.SetParent(_currentReorderableGrid.DraggingArea, true);
                     return;
                 }
                 

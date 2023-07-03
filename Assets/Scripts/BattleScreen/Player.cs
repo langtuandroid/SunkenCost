@@ -10,17 +10,16 @@ public class Player : BattleEventResponder
 {
     public static Player Current;
 
-    private int _baseMovesPerTurn;
+    private int? _baseMovesPerTurn;
     
     public int Gold { get; private set; }
 
     public int Health { get; private set; }
     private int MaxHealth { get; set; }
     public int MovesUsedThisTurn { get; private set; } = 0;
-    public int MovesPerTurn { get; set; }
-
-    public bool HasMovesLimit => MovesPerTurn > -1;
-    public bool IsOutOfMoves => MovesUsedThisTurn >= MovesPerTurn;
+    public int? MoveLimit { get; set; }
+    
+    public bool IsOutOfMoves => MoveLimit.HasValue && MovesUsedThisTurn >= MoveLimit;
 
     protected override void Awake()
     {
@@ -33,7 +32,7 @@ public class Player : BattleEventResponder
         Health = RunProgress.Current.PlayerStats.Health;
         MaxHealth = RunProgress.Current.PlayerStats.MaxHealth;
         _baseMovesPerTurn = RunProgress.Current.PlayerStats.MovesPerTurn;
-        MovesPerTurn = _baseMovesPerTurn;
+        MoveLimit = _baseMovesPerTurn;
         base.Awake();
     }
 
@@ -57,7 +56,7 @@ public class Player : BattleEventResponder
     {
         return new List<BattleEventActionTrigger>
         {
-            ActionTrigger(BattleEventType.PlayerLostLife, ResetMoves),
+            ActionTrigger(BattleEventType.StartedNextPlayerTurn, ResetMoves),
         };
     }
 
@@ -98,7 +97,7 @@ public class Player : BattleEventResponder
     
     private BattleEvent UsedMove()
     {
-        if (HasMovesLimit) MovesUsedThisTurn += 1;
+        if (MoveLimit.HasValue) MovesUsedThisTurn += 1;
         return new BattleEvent(BattleEventType.PlayerUsedMove);
     }
 

@@ -1,3 +1,4 @@
+using System;
 using Items;
 using TMPro;
 using UI;
@@ -31,7 +32,12 @@ namespace OfferScreen
             
             OfferScreenEvents.Current.OnOffersRefreshed += OffersRefreshed;
         }
-        
+
+        private void OnDestroy()
+        {
+            OfferScreenEvents.Current.OnOffersRefreshed -= OffersRefreshed;
+        }
+
         public void OnPointerEnter(PointerEventData eventData)
         {
             lockButton.Show();

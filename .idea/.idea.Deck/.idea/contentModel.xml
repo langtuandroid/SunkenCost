@@ -9,60 +9,6 @@
       <e p="Assembly-CSharp-firstpass.csproj" t="IncludeRecursive" />
       <e p="Assembly-CSharp.csproj" t="IncludeRecursive" />
       <e p="Assets" t="Include">
-        <e p="AllIn1SpriteShader" t="Include">
-          <e p="!Start_Here.txt" t="Include" />
-          <e p="2DRenderer_URP" t="Include">
-            <e p="Demo" t="Include">
-              <e p="Animations" t="Include" />
-              <e p="Materials" t="Include" />
-              <e p="Prefabs" t="Include" />
-              <e p="Scripts" t="Include">
-                <e p="All1DemoChangeScene.cs" t="Include" />
-                <e p="All1DemoClaw.cs" t="Include" />
-                <e p="All1DemoRandomZ.cs" t="Include" />
-                <e p="All1DemoUpAndDown.cs" t="Include" />
-                <e p="All1DemoUrpCamMove.cs" t="Include" />
-              </e>
-              <e p="Textures" t="Include" />
-            </e>
-            <e p="Editor" t="Include">
-              <e p="AllIn12DRendererMaterialInspector.cs" t="Include" />
-            </e>
-            <e p="PipelineSetup" t="Include" />
-            <e p="PostProcessing" t="Include" />
-            <e p="Resources" t="Include">
-              <e p="AllIn1OneShaderFunctions.cginc" t="Include" />
-              <e p="AllIn1Urp2dRenderer.shader" t="Include" />
-            </e>
-          </e>
-          <e p="AllIn1SpriteShaderAssembly.asmdef" t="Include" />
-          <e p="Editor" t="Include">
-            <e p="AllIn1ShaderGradientDrawer.cs" t="Include" />
-            <e p="AllIn1ShaderScriptEditor.cs" t="Include" />
-            <e p="AllIn1SpriteShaderMaterialInspector.cs" t="Include" />
-            <e p="AllIn1SpriteShaderUiMaskMaterialInspector.cs" t="Include" />
-          </e>
-          <e p="Materials" t="Include" />
-          <e p="Resources" t="Include">
-            <e p="AllIn1OneShaderFunctions.cginc" t="Include" />
-            <e p="AllIn1SpriteShader.shader" t="Include" />
-            <e p="AllIn1SpriteShaderScaledTime.shader" t="Include" />
-            <e p="AllIn1SpriteShaderUiMask.shader" t="Include" />
-          </e>
-          <e p="Scripts" t="Include">
-            <e p="All1CreateUnifiedOutline.cs" t="Include" />
-            <e p="AllIn1Shader.cs" t="Include" />
-            <e p="AllIn1ShaderWindow.cs" t="Include" />
-            <e p="RandomSeed.cs" t="Include" />
-            <e p="SetAtlasUvs.cs" t="Include" />
-            <e p="SetGlobalTimeNew.cs" t="Include" />
-            <e p="SetGlobalTimeUnity2018.cs" t="Include" />
-          </e>
-          <e p="Textures" t="Include">
-            <e p="GradientTextures" t="Include" />
-            <e p="NormalMaps" t="Include" />
-          </e>
-        </e>
         <e p="Animations" t="Include">
           <e p="Enemies" t="Include">
             <e p="Idle" t="Include" />
@@ -601,6 +547,60 @@
         </e>
         <e p="RenderTextures" t="Include" />
         <e p="Resources" t="Include">
+          <e p="AllIn1SpriteShader" t="Include">
+            <e p="!Start_Here.txt" t="Include" />
+            <e p="2DRenderer_URP" t="Include">
+              <e p="Demo" t="Include">
+                <e p="Animations" t="Include" />
+                <e p="Materials" t="Include" />
+                <e p="Prefabs" t="Include" />
+                <e p="Scripts" t="Include">
+                  <e p="All1DemoChangeScene.cs" t="Include" />
+                  <e p="All1DemoClaw.cs" t="Include" />
+                  <e p="All1DemoRandomZ.cs" t="Include" />
+                  <e p="All1DemoUpAndDown.cs" t="Include" />
+                  <e p="All1DemoUrpCamMove.cs" t="Include" />
+                </e>
+                <e p="Textures" t="Include" />
+              </e>
+              <e p="Editor" t="Include">
+                <e p="AllIn12DRendererMaterialInspector.cs" t="Include" />
+              </e>
+              <e p="PipelineSetup" t="Include" />
+              <e p="PostProcessing" t="Include" />
+              <e p="Resources" t="Include">
+                <e p="AllIn1OneShaderFunctions.cginc" t="Include" />
+                <e p="AllIn1Urp2dRenderer.shader" t="Include" />
+              </e>
+            </e>
+            <e p="AllIn1SpriteShaderAssembly.asmdef" t="Include" />
+            <e p="Editor" t="Include">
+              <e p="AllIn1ShaderGradientDrawer.cs" t="Include" />
+              <e p="AllIn1ShaderScriptEditor.cs" t="Include" />
+              <e p="AllIn1SpriteShaderMaterialInspector.cs" t="Include" />
+              <e p="AllIn1SpriteShaderUiMaskMaterialInspector.cs" t="Include" />
+            </e>
+            <e p="Materials" t="Include" />
+            <e p="Resources" t="Include">
+              <e p="AllIn1OneShaderFunctions.cginc" t="Include" />
+              <e p="AllIn1SpriteShader.shader" t="Include" />
+              <e p="AllIn1SpriteShaderScaledTime.shader" t="Include" />
+              <e p="AllIn1SpriteShaderUiMask.shader" t="Include" />
+            </e>
+            <e p="Scripts" t="Include">
+              <e p="All1CreateUnifiedOutline.cs" t="Include" />
+              <e p="AllIn1Shader.cs" t="Include" />
+              <e p="AllIn1ShaderWindow.cs" t="Include" />
+              <e p="RandomSeed.cs" t="Include" />
+              <e p="SetAtlasUvs.cs" t="Include" />
+              <e p="SetGlobalTimeNew.cs" t="Include" />
+              <e p="SetGlobalTimeUnity2018.cs" t="Include" />
+            </e>
+            <e p="Textures" t="Include">
+              <e p="GradientTextures" t="Include" />
+              <e p="NormalMaps" t="Include" />
+            </e>
+          </e>
           <e p="ScriptableObjects" t="Include">
             <e p="BattleScenarios" t="Include" />
             <e p="ChallengeRewards" t="Include" />
@@ -724,9 +724,6 @@
               <e p="EnemyUI.cs" t="Include" />
               <e p="EnemyUIText.cs" t="Include" />
             </e>
-            <e p="Scenarios" t="Include">
-              <e p="Scenario.cs" t="Include" />
-            </e>
           </e>
           <e p="EtchingFactory.cs" t="Include" />
           <e p="Etchings" t="Include">
@@ -785,7 +782,6 @@
             <e p="ItemOfferDisplay.cs" t="Include" />
             <e p="ItemOfferGenerator.cs" t="Include" />
             <e p="LockButton.cs" t="Include" />
-            <e p="MovesDisplay.cs" t="Include" />
             <e p="OfferManager.cs" t="Include" />
             <e p="OfferScreenEvents.cs" t="Include" />
             <e p="OfferStorage.cs" t="Include" />
@@ -851,6 +847,9 @@
           </e>
           <e p="RunProgress.cs" t="Include" />
           <e p="RunthroughStartingConfig.cs" t="Include" />
+          <e p="Scenarios" t="Include">
+            <e p="Scenario.cs" t="Include" />
+          </e>
           <e p="ScreenResolutionSetter.cs" t="Include" />
           <e p="Settings.cs" t="Include" />
           <e p="Stats" t="Include">

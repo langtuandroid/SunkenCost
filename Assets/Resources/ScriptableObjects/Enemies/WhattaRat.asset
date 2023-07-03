@@ -14,10 +14,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _enemyType: 4
   _name: Whatta Rat
-  _maxHealth: 20
+  _maxHealth: 23
   _moves:
-  - _movementType: 0
-    _magnitude: 1
   - _movementType: 0
     _magnitude: 2
   _modifierSetters: []

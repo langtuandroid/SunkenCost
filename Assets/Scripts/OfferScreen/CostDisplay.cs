@@ -12,6 +12,7 @@ namespace OfferScreen
         private static readonly Color GoodColor = new Color(1f, 0.97f, 0f);
         private static readonly Color BadColor = new Color(0.56f, 0f, 0f);
 
+        [SerializeField] private CanvasGroup _canvasGroup;
         
         public void Refresh(int cost, bool canBuy)
         {
@@ -19,6 +20,25 @@ namespace OfferScreen
             
             var color = canBuy ? GoodColor : BadColor;
             RefreshColor(color);
+
+            if (cost == 0)
+            {
+                Hide();
+            }
+            else
+            {
+                Show();
+            }
+        }
+
+        public void Hide()
+        {
+            _canvasGroup.alpha = 0;
+        }
+
+        public void Show()
+        {
+            _canvasGroup.alpha = 1;
         }
 
         private void RefreshCost(int cost)

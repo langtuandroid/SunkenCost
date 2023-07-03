@@ -69,10 +69,18 @@ public class ScenarioLoader : MonoBehaviour
         
         if (scenarioOptions?.Count > 0)
         {
-            var i = Random.Range(0, scenarioOptions.Count);
-            var scenario = scenarioOptions[i];
-            scenario.scaledDifficulty = 0;
-            return scenario;
+            for (var tries = 0; tries < 100; tries++)
+            {
+                var i = Random.Range(0, scenarioOptions.Count);
+                var scenario = scenarioOptions[i];
+                
+                if (RunProgress.Current.Scenarios.Contains(scenario)) continue;
+                scenario.scaledDifficulty = 0;
+                RunProgress.Current.Scenarios.Add(scenario);
+                return scenario;
+            }
+            
+            throw new Exception($"Couldn't find a scenario that hasn't been used for difficulty {scenarioType}");
         }  
         
         //TODO: Get rid of this once all battles have been implemented

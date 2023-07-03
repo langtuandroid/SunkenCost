@@ -65,7 +65,7 @@ namespace ReorderableContent
 
         private void Refresh()
         {
-            Debug.Log($"Refreshing {GetInstanceID()}");
+            //Debug.Log($"Refreshing {GetInstanceID()}");
             if (_refreshing) StopCoroutine(RefreshChildren());
 
             _refreshing = true;

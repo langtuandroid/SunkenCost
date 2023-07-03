@@ -32,6 +32,7 @@ namespace OfferScreen
         private IOffer _offerImplementation;
         private bool _inOfferRow = false;
         private bool _pointerInside = false;
+        private bool _currentlyDragging = false;
 
         private ReorderableGrid _listHoveringOverOrIn;
         private DesignCard _cardMergingWith;
@@ -76,6 +77,8 @@ namespace OfferScreen
         
         public void OnPointerEnter(PointerEventData eventData)
         {
+            if (_currentlyDragging) return;
+            
             _pointerInside = true;
             
             if (_inOfferRow)
@@ -86,6 +89,8 @@ namespace OfferScreen
 
         public void OnPointerExit(PointerEventData eventData)
         {
+            if (_currentlyDragging) return;
+            
             _pointerInside = false;
             lockButton.Hide();
         }
@@ -98,6 +103,8 @@ namespace OfferScreen
 
         public void Grabbed()
         {
+            _currentlyDragging = true;
+            
             HideButtons();
             _designDisplay.DisallowHover();
             OfferScreenEvents.Current.RefreshOffers();
@@ -127,8 +134,13 @@ namespace OfferScreen
 
         public void Released()
         {
+            _currentlyDragging = false;
             _canvasGroup.interactable = true;
             _designDisplay.AllowHover();
+
+            if (_inOfferRow)
+                lockButton.Show();
+            
             OfferScreenEvents.Current.RefreshOffers();
         }
 
@@ -174,7 +186,7 @@ namespace OfferScreen
 
         private bool CanMerge(Design design)
         {
-            return design.Title == Design.Title && Design.Level < 2 && design.Level < 2;
+            return design.Level < 2 && design.designAsset == Design.designAsset && Design.Level == design.Level;
         }
         
         private void StartMergeEffects()
@@ -189,7 +201,6 @@ namespace OfferScreen
 
         private void HideButtons()
         {
-            _inOfferRow = false;
             lockButton.Hide();
         }
         

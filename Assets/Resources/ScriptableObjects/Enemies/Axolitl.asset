@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _enemyType: 2
   _name: Axolitl
-  _maxHealth: 25
+  _maxHealth: 28
   _moves:
   - _movementType: 0
     _magnitude: 1

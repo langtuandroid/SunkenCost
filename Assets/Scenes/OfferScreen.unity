@@ -395,7 +395,7 @@ RectTransform:
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
   m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 900, y: 420}
+  m_SizeDelta: {x: 1000, y: 420}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &174514658
 MonoBehaviour:
@@ -738,7 +738,7 @@ RectTransform:
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
   m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 900, y: 400}
+  m_SizeDelta: {x: 1000, y: 400}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &353037399
 MonoBehaviour:
@@ -752,7 +752,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f47264be3cab45fbb6770afdaea98ae3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  childrenBeforeSpacing: 3
+  childrenBeforeSpacing: 5
 --- !u!114 &353037400
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1085,11 +1085,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3739874107440994272, guid: 753e431c20e8b5d45a1560f4e9ca944f, type: 3}
       propertyPath: m_AnchoredPosition.x
-      value: 1064.8116
+      value: 1084.3523
       objectReference: {fileID: 0}
     - target: {fileID: 3739874107440994272, guid: 753e431c20e8b5d45a1560f4e9ca944f, type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: 1673.4493
+      value: 1137.0776
       objectReference: {fileID: 0}
     - target: {fileID: 3739874107924409688, guid: 753e431c20e8b5d45a1560f4e9ca944f, type: 3}
       propertyPath: m_Pivot.x
@@ -1554,7 +1554,7 @@ MonoBehaviour:
     m_Right: 0
     m_Top: 0
     m_Bottom: 0
-  m_ChildAlignment: 4
+  m_ChildAlignment: 3
   m_StartCorner: 0
   m_StartAxis: 0
   m_CellSize: {x: 175, y: 250}
@@ -2009,7 +2009,7 @@ RectTransform:
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
   m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 900, y: 400}
+  m_SizeDelta: {x: 1000, y: 400}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &2643005068724583718
 MonoBehaviour:
@@ -2219,6 +2219,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   boatTransform: {fileID: 203161728}
+  _reorderableGrid: {fileID: 2643005068036625308}
 --- !u!1 &2643005069227889045
 GameObject:
   m_ObjectHideFlags: 0
@@ -2267,7 +2268,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 200, y: -280}
+  m_AnchoredPosition: {x: 100, y: -280}
   m_SizeDelta: {x: 900, y: 400}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &2643005069227889051
@@ -2426,6 +2427,10 @@ PrefabInstance:
     - target: {fileID: 4202200881963271180, guid: caf43998dc516d54bb25c2ecac156361, type: 3}
       propertyPath: m_Name
       value: ExtraPlankButton
+      objectReference: {fileID: 0}
+    - target: {fileID: 4202200881963271180, guid: caf43998dc516d54bb25c2ecac156361, type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: caf43998dc516d54bb25c2ecac156361, type: 3}

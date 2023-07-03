@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using BattleScreen;
+using BattleScreen.BattleBoard;
 using BattleScreen.BattleEvents;
 using UnityEngine;
 
@@ -15,7 +16,7 @@ namespace Enemies.Enemies
 
         public bool GetIfUsingStartOfTurnAbility()
         {
-            return true;
+            return EnemySequencer.Current.GetIfPlankCanBeLandedOn(PlankNum);
         }
 
         public BattleEventPackage GetStartOfTurnAbility()

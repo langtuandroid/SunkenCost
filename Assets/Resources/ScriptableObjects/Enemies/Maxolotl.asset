@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _enemyType: 10
   _name: Maxolotl
-  _maxHealth: 40
+  _maxHealth: 70
   _moves:
   - _movementType: 0
     _magnitude: 2

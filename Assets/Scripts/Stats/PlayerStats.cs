@@ -5,17 +5,6 @@ using OfferScreen;
 
 public class PlayerStats
 {
-    private const int INIT_MAX_PLANKS = 3;
-    private const int INIT_MAX_HEALTH = 5;
-    private const int INIT_GOLD = 5;
-    private const int INIT_MOVES_PER_TURN = -1;
-    private const int INIT_NUM_OF_TURNS = 5;
-    
-    private const int INIT_NUM_OF_CARD_OFFERS = 3;
-    private const int INIT_NUM_OF_ITEM_OFFERS = 2;
-
-    private const int INIT_REROLL_COST = 1;
-    
     public List<Design> Deck { get; private set; }
 
     public readonly PriceHandler PriceHandler = new PriceHandler();
@@ -29,23 +18,23 @@ public class PlayerStats
     public int Health { get; set; }
     public int MaxHealth { get; set; }
     public int Gold { get; set; }
-    public int MovesPerTurn { get; set; }
+    public int? MovesPerTurn { get; set; }
     public int NumberOfTurns { get; private set; }
     public int NumberOfCardsToOffer { get; private set; }
     public int NumberOfItemsToOffer { get; private set; }
     public int EnemyMovementModifier { get; set; } = 0;
     public int ReRollCost { get; private set; }
 
-    public PlayerStats()
+    public PlayerStats(RunthroughStartingConfig config)
     {
-        maxPlanks = new Stat(INIT_MAX_PLANKS);
-        MaxHealth = INIT_MAX_HEALTH;
-        Gold = INIT_GOLD;
-        MovesPerTurn = INIT_MOVES_PER_TURN;
-        NumberOfTurns = INIT_NUM_OF_TURNS;
-        NumberOfCardsToOffer = INIT_NUM_OF_CARD_OFFERS;
-        NumberOfItemsToOffer = INIT_NUM_OF_ITEM_OFFERS;
-        ReRollCost = INIT_REROLL_COST;
+        maxPlanks = new Stat(config.MaxPlanks);
+        MaxHealth = config.MaxHealth;
+        Gold = config.StartingGold;
+        MovesPerTurn = config.MovesPerTurn;
+        NumberOfTurns = config.TurnsPerBattle;
+        NumberOfCardsToOffer = config.DesignOffersPerBattle;
+        NumberOfItemsToOffer = config.ItemOffersPerBattle;
+        ReRollCost = config.ReRollCost;
         
         Health = MaxHealth;
     }
@@ -53,6 +42,7 @@ public class PlayerStats
     public void InitialiseDeck(List<Design> startingDeck)
     {
         Deck = startingDeck;
+        SetDeckCostToAmount(0);
     }
 
     public void SaveDeck(IEnumerable<Design> newDeck)
@@ -80,5 +70,13 @@ public class PlayerStats
     {
         Health += amount;
         if (Health > MaxHealth) Health = MaxHealth;
+    }
+
+    public void SetDeckCostToAmount(int amount)
+    {
+        foreach (var design in Deck)
+        {
+            design.SetCost(amount);
+        }
     }
 }

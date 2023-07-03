@@ -99,6 +99,14 @@ namespace Designs
             Debug.Log("Stat " + statType + " not found on design " + Title);
             throw new UnexpectedStatException(statType);
         }
+        
+        public int GetStatBase(StatType statType)
+        {
+            if (_stats.TryGetValue(statType, out var stat)) return (int)stat.BaseValue;
+        
+            Debug.Log("Stat " + statType + " not found on design " + Title);
+            throw new UnexpectedStatException(statType);
+        }
 
         public void AddStatModifier(StatType statType, StatModifier statMod)
         {

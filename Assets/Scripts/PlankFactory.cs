@@ -39,7 +39,6 @@ public class PlankFactory : MonoBehaviour
         var newPlank = Instantiate(_plankPrefab, _plankGrid);
         var plankRectTransform = newPlank.GetComponent<RectTransform>();
         plankRectTransform.SetAsLastSibling();
-        _board.Refresh();
 
         return newPlank.GetComponent<Plank>();
     }
@@ -54,7 +53,6 @@ public class PlankFactory : MonoBehaviour
             throw new Exception("Trying to destroy plank that isn't there!");
         }
         
-        _board.Refresh();
         return plank.Destroy(source);
     }
 }

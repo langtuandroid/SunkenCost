@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _enemyType: 14
   _name: Bull Carp
-  _maxHealth: 20
+  _maxHealth: 30
   _moves:
   - _movementType: 0
     _magnitude: 2

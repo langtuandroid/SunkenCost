@@ -31,7 +31,7 @@ MonoBehaviour:
     _magnitude: 1
   firstLevelUpStatMods:
   - _statType: 2
-    _magnitude: 3
+    _magnitude: 6
   secondLevelUpStatMods:
   - _statType: 2
-    _magnitude: 5
+    _magnitude: 7

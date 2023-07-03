@@ -9,6 +9,8 @@ namespace Enemies
 {
     public class EnemySequencer : BattleEventResponder
     {
+        public const int MaxEnemiesPerPlank = 3;
+        
         public static EnemySequencer Current;
         
         private List<Enemy> _enemies = new List<Enemy>();
@@ -92,7 +94,7 @@ namespace Enemies
                 if (landingStopper.GetIfStoppingEnemyLandingOnPlank(plankNum)) return false;
             }
 
-            return AllEnemies.Count(e => e.PlankNum == plankNum) < 3;
+            return AllEnemies.Count(e => e.PlankNum == plankNum) < MaxEnemiesPerPlank;
         }
 
         public Enemy SelectNextEnemy()

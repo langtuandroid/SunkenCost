@@ -36,4 +36,4 @@ MonoBehaviour:
     _magnitude: 2
   secondLevelUpStatMods:
   - _statType: 2
-    _magnitude: 2
+    _magnitude: 3

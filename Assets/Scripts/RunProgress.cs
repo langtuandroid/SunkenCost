@@ -23,6 +23,8 @@ public class RunProgress : MonoBehaviour
     public bool HasGeneratedMapEvents { get; private set; }
     public List<Disturbance> GeneratedMapDisturbances { get; private set; }
 
+    public List<Scenario> Scenarios { get; private set; }
+
     private void Awake()
     {
         if (Current)
@@ -39,12 +41,7 @@ public class RunProgress : MonoBehaviour
         CurrentDisturbance = disturbance;
         BattleNumber++;
         HasGeneratedMapEvents = false;
-        OfferStorage.IncreaseCostOfLockedOffers();
-
-        foreach (var design in PlayerStats.Deck)
-        {
-            design.SetCost(design.Cost - 1);
-        }
+        PlayerStats.SetDeckCostToAmount(0);
     }
 
     public void HaveGeneratedDisturbanceEvents(List<Disturbance> disturbances)
@@ -57,13 +54,15 @@ public class RunProgress : MonoBehaviour
     {
         DisturbanceLoader.LoadDisturbanceAssets();
 
-        PlayerStats = new PlayerStats();
+        PlayerStats = new PlayerStats(RunthroughStartingConfig);
         PlayerStats.InitialiseDeck(RunthroughStartingConfig.GetStartingDesigns());
         
         OfferStorage = new OfferStorage();
         
         ItemInventory = transform.GetChild(0).gameObject.AddComponent<ItemInventory>();
         foreach (var itemInstance in RunthroughStartingConfig.GetStartingItems()) ItemInventory.AddItem(itemInstance);
+        
+        Scenarios = new List<Scenario>();
 
         BattleNumber = 0;
         CurrentDisturbance = null;

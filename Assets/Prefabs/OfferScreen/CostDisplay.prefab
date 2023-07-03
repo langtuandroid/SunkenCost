@@ -222,6 +222,7 @@ GameObject:
   - component: {fileID: 3269283191360557977}
   - component: {fileID: 5539398762622086674}
   - component: {fileID: 6377243822379931247}
+  - component: {fileID: 3877296550026186125}
   m_Layer: 0
   m_Name: CostDisplay
   m_TagString: Untagged
@@ -272,3 +273,16 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _costText: {fileID: 8895990806632426760}
+  _canvasGroup: {fileID: 3877296550026186125}
+--- !u!225 &3877296550026186125
+CanvasGroup:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8858658495368507951}
+  m_Enabled: 1
+  m_Alpha: 1
+  m_Interactable: 0
+  m_BlocksRaycasts: 0
+  m_IgnoreParentGroups: 0

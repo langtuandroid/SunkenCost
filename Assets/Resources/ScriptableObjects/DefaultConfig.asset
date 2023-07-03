@@ -13,6 +13,13 @@ MonoBehaviour:
   m_Name: DefaultConfig
   m_EditorClassIdentifier: 
   <IsActive>k__BackingField: 1
+  <MaxPlanks>k__BackingField: 3
+  <MaxHealth>k__BackingField: 3
+  <StartingGold>k__BackingField: 10
+  <TurnsPerBattle>k__BackingField: 5
+  <DesignOffersPerBattle>k__BackingField: 4
+  <ItemOffersPerBattle>k__BackingField: 1
+  <ReRollCost>k__BackingField: 1
   _startingDeck:
   - _designAsset: {fileID: 11400000, guid: b6823cdbba1131f498fcdbbe423cf51f, type: 2}
     _level: 0

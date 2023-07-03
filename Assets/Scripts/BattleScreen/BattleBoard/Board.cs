@@ -28,7 +28,7 @@ namespace BattleScreen.BattleBoard
         public int BoardSize => List.Size;
 
         public int PlankCount => _cachedPlanks.Count;
-        public List<Plank> PlanksInOrder => _cachedPlanks.OrderBy(p => p.PlankNum).ToList();
+        public List<Plank> PlanksInOrder => _cachedPlanks.Where(p => p).OrderBy(p => p.PlankNum).ToList();
 
         private void Awake()
         {
@@ -57,7 +57,7 @@ namespace BattleScreen.BattleBoard
         {
             return () => 
                 Battle.Current.BattleState == BattleState.PlayerActionPeriod &&
-                (!Player.Current.HasMovesLimit || !Player.Current.IsOutOfMoves);
+                (!Player.Current.MoveLimit.HasValue || !Player.Current.IsOutOfMoves);
         }
 
         public void ElementsOrderChangedByDrag()
@@ -83,11 +83,6 @@ namespace BattleScreen.BattleBoard
                     _cachedPlanks.RemoveAt(i);
                 }
             }
-        }
-
-        public void Refresh()
-        {
-            //List.Refresh();
         }
     }
 }

@@ -10,6 +10,18 @@ using UnityEngine;
 public class RunthroughStartingConfig : ScriptableObject
 {
     [field: SerializeField] public bool IsActive { get; private set; }
+
+    [field: Header("Starting Player Stats")]
+    [field: SerializeField] public int MaxPlanks { get; private set; } = 3;
+    [field: SerializeField] public int MaxHealth { get; private set; } = 3;
+    [field: SerializeField] public int StartingGold { get; private set; } = 10;
+    [field: SerializeField] public int? MovesPerTurn { get; private set; } = null;
+    [field: SerializeField] public int TurnsPerBattle { get; private set; } = 5;
+    [field: SerializeField] public int DesignOffersPerBattle { get; private set; } = 3;
+    [field: SerializeField] public int ItemOffersPerBattle { get; private set; } = 0;
+    [field: SerializeField] public int ReRollCost { get; private set; } = 1;
+    
+    [Space(25)]
     
     [SerializeField] private StartingDesign[] _startingDeck;
     [SerializeField] private ItemAsset[] _startingItems;

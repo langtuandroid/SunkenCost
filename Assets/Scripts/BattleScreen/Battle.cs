@@ -205,10 +205,11 @@ namespace BattleScreen
                 (b => !((b.type == BattleEventType.EtchingActivated || b.type == BattleEventType.ItemActivated) 
                     && !b.showAsOwnAction)).ToList();
                 
-                // Sometimes we need a frame for transforms to change parents etc.
+                // Sometimes we need a f rame for transforms to change parents etc.
                 if (BattleEventListContainsTransformUpdatingEvent(battleEventsList))
                 {
                     Debug.Log("Waiting for transforms...");
+                    yield return 0;
                     yield return 0;
                     Debug.Log("Transforms refreshed!");
                     BattleEventResponseSequencer.Current.RefreshTransforms();
@@ -291,7 +292,7 @@ namespace BattleScreen
                 _winPopup.gameObject.SetActive(true);
                 return;
             }
-            
+
             _endOfBattlePopup.gameObject.SetActive(true);
             var disturbance = RunProgress.Current.CurrentDisturbance;
             _endOfBattlePopup.SetReward(disturbance);
@@ -301,7 +302,6 @@ namespace BattleScreen
 
         private void LeaveBattle()
         {
-            RunProgress.Current.PlayerStats.Gold = Player.Current.Gold;
             RunProgress.Current.PlayerStats.Health = Player.Current.Health;
             DisturbanceLoader.ExecuteEndOfBattleDisturbanceAction(RunProgress.Current.CurrentDisturbance);
             MainManager.Current.LoadOfferScreen();
