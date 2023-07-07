@@ -6,6 +6,7 @@ using BattleScreen;
 using BattleScreen.BattleBoard;
 using BattleScreen.BattleEvents;
 using Damage;
+using Enemies;
 using Etchings;
 using UnityEngine;
 using UnityEngine.Serialization;
@@ -41,18 +42,5 @@ public class PlankFactory : MonoBehaviour
         plankRectTransform.SetAsLastSibling();
 
         return newPlank.GetComponent<Plank>();
-    }
-
-    public BattleEvent DestroyPlank(DamageSource source, int plankPosition = -1, Plank plank = null)
-    {
-        if (plankPosition != -1)
-            plank = _board.GetPlank(plankPosition);
-
-        if (plank is null)
-        {
-            throw new Exception("Trying to destroy plank that isn't there!");
-        }
-        
-        return plank.Destroy(source);
     }
 }

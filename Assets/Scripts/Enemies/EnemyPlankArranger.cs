@@ -48,7 +48,7 @@ namespace Enemies
             {
                 ArrangeAllEnemies();
             }
-            else if (battleEvent.type == BattleEventType.EnemyKilled && battleEvent.source != DamageSource.Boat)
+            else if (battleEvent.type == BattleEventType.EnemyKilled && battleEvent.source != DamageSource.PlankDestruction)
             {
                 StartCoroutine(WaitForEnemyDeath(battleEvent));
             }
@@ -97,7 +97,8 @@ namespace Enemies
             var waitTime = Battle.ActionExecutionSpeed * Battle.GetAnimationTime(battleEvent) - 0.01f;
             
             yield return new WaitForSecondsRealtime(waitTime);
-            ArrangeEnemiesOnPlank(plankNum, false);
+            if (Board.Current.PlankCount >= plankNum)
+                ArrangeEnemiesOnPlank(plankNum, false);
         }
 
         private void MoveTransform(Transform plankTransform, Enemy enemy, Vector2 aimPosition)

@@ -1,6 +1,8 @@
-﻿using System.Collections.Generic;
+﻿using System.Collections;
+using System.Collections.Generic;
 using BattleScreen.BattleEvents;
 using Damage;
+using Enemies;
 using Etchings;
 using ReorderableContent;
 using UnityEngine;
@@ -33,10 +35,18 @@ namespace BattleScreen.BattleBoard
             Etching = etching;
         }
 
-        public BattleEvent Destroy(DamageSource source)
+        public List<BattleEvent> Destroy(DamageSource source)
         {
+            var response = new List<BattleEvent>();
+
+            foreach (var enemy in EnemySequencer.Current.GetEnemiesOnPlank(PlankNum))
+            {
+                response.AddRange(enemy.KillImmediately(DamageSource.PlankDestruction).battleEvents);
+            }
+            
+            response.Add(new BattleEvent(BattleEventType.PlankDestroyed) {modifier = PlankNum, source = source});
             Destroy(gameObject);
-            return new BattleEvent(BattleEventType.PlankDestroyed);
+            return response;
         }
     }
 }

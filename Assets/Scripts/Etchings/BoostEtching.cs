@@ -100,15 +100,20 @@ namespace Etchings
 
         private List<BattleEvent> ClearMods()
         {
-            var notDestroyedEtchings =
-                _boostedEtchings.Where(e => e.gameObject != null);
+            var notDestroyedDamageEtchings = new List<DamageEtching>();
+            var boostMods = new List<StatModifier>();
+            for (var i = _boostedEtchings.Count - 1; i >= 0; i--)
+            {
+                if (!_boostedEtchings[i]) continue;
+                notDestroyedDamageEtchings.Add(_boostedEtchings[i]);
+                boostMods.Add(_boostMods[i]);
+            }
             
-            var notDestroyedArray = notDestroyedEtchings as DamageEtching[] ?? notDestroyedEtchings.ToArray();
-            var responses = notDestroyedArray.Select(
-                (t, i) => t.RemoveStatModifier(StatType.Damage, _boostMods[i])).ToList();
+            var responses = notDestroyedDamageEtchings.Select(
+                (t, i) => t.RemoveStatModifier(StatType.Damage, boostMods[i])).ToList();
 
             Debug.Log("Boost etching ("+ PlankNum + ") clearing: " + String.Join(", ", 
-                notDestroyedArray.Select(b => b.Design.Title + "(" + b.PlankNum + ")")));
+                notDestroyedDamageEtchings.Select(b => b.Design.Title + "(" + b.PlankNum + ")")));
             
             _modsActive = false;
             _boostedEtchings.Clear();

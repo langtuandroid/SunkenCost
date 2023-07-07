@@ -650,6 +650,7 @@
             <e p="Player.cs" t="Include" />
             <e p="UI" t="Include">
               <e p="BattleHUD.cs" t="Include" />
+              <e p="IslandAnimator.cs" t="Include" />
             </e>
           </e>
           <e p="ChallengeLoader.cs" t="Include" />

@@ -20,6 +20,7 @@ namespace Damage
         Self,
         EnemyAbility,
         Boat,
+        PlankDestruction
     }
 
     public interface IDamageFlatModifier

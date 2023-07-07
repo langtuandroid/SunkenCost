@@ -110,7 +110,8 @@ namespace Enemies
             }
                     
             RemoveEnemy(enemy);
-            Destroy(enemy.gameObject);
+            if (enemy)
+                Destroy(enemy.gameObject);
         }
 
         private void SetNextEnemyTurnSequence()

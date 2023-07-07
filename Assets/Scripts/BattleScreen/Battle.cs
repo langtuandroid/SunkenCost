@@ -37,6 +37,7 @@ namespace BattleScreen
         
         public static Battle Current;
 
+        [SerializeField] private IslandAnimator _islandAnimator;
         [SerializeField] private EndOfBattlePopup _endOfBattlePopup;
         [SerializeField] private PlayerDeathPopup _playerDeathPopup;
         [SerializeField] private PlayerDeathPopup _winPopup;
@@ -157,6 +158,7 @@ namespace BattleScreen
         private IEnumerator EndBattle()
         {
             Debug.Log("------ Ending Battle ------");
+            _islandAnimator.SinkIsland();
             yield return StartCoroutine(StartChainOfEvents(new BattleEvent(BattleEventType.EndedBattle)));
             BattleState = BattleState.Rewards;
             yield return new WaitForSecondsRealtime(ActionExecutionSpeed / 3f);
@@ -302,6 +304,7 @@ namespace BattleScreen
 
         private void LeaveBattle()
         {
+            RunProgress.Current.PlayerStats.Gold = Player.Current.Gold;
             RunProgress.Current.PlayerStats.Health = Player.Current.Health;
             DisturbanceLoader.ExecuteEndOfBattleDisturbanceAction(RunProgress.Current.CurrentDisturbance);
             MainManager.Current.LoadOfferScreen();

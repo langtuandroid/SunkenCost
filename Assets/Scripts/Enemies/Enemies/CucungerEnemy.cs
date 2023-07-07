@@ -30,7 +30,7 @@ namespace Enemies.Enemies
                     break;
             }
         
-            return "Destroys the furthest plank to the right " + turnText;
+            return "Destroys the furthest plank to it's right " + turnText;
         }
 
         public bool GetIfUsingStartOfTurnAbility()
@@ -52,11 +52,12 @@ namespace Enemies.Enemies
 
             response.Add(Speak(speech));
         
-            if (_cooldownCounter >= abilityCooldown && PlankNum != Board.Current.PlankCount - 1)
+            if (_cooldownCounter >= abilityCooldown)
             {
                 _cooldownCounter = 0;
-                response.Add(PlankFactory.Current.DestroyPlank
-                    (DamageSource.EnemyAbility, Board.Current.PlankCount - 1));
+                
+                if (PlankNum != Board.Current.PlankCount - 1)
+                    response.AddRange(Board.Current.GetPlank(Board.Current.PlankCount - 1).Destroy(DamageSource.EnemyAbility));
             }
             else
             {

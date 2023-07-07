@@ -60,6 +60,9 @@ namespace Enemies
             var responseTriggers = new List<BattleEventResponseTrigger>
             {
                 PackageResponseTrigger(BattleEventType.EnemyAttacked, DamageOrDie, GetIfThisIsPrimaryResponder),
+                PackageResponseTrigger(BattleEventType.PlankDestroyed, 
+                    e => KillImmediately(DamageSource.PlankDestruction), 
+                    e => e.modifier == PlankNum)
             };
             
             responseTriggers.AddRange(GetEnemyBattleEventResponseTriggers());
@@ -139,6 +142,12 @@ namespace Enemies
         }
 
         public abstract string GetDescription();
+
+        public BattleEventPackage KillImmediately(DamageSource source)
+        {
+            Health = 0;
+            return Die(source);
+        }
 
         protected virtual List<BattleEventResponseTrigger> GetEnemyBattleEventResponseTriggers()
         {
