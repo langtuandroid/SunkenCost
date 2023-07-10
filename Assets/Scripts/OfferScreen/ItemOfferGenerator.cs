@@ -40,7 +40,7 @@ namespace OfferScreen
             else
             {
                 var amountOfUnlockedOffers = RunProgress.Current.OfferStorage.LockedItemOffers.Count;
-                var amountToOffer = RunProgress.Current.PlayerStats.NumberOfItemsToOffer - amountOfUnlockedOffers;
+                var amountToOffer = RunProgress.Current.PlayerStats.ItemOffersPerBattle - amountOfUnlockedOffers;
                 GenerateUnlockedItemOffers(amountToOffer, offeredItemAssets);
             }
         }
@@ -59,7 +59,7 @@ namespace OfferScreen
                 Destroy(itemOfferDisplay.gameObject);
             }
 
-            var amountToOffer = RunProgress.Current.PlayerStats.NumberOfItemsToOffer - offeredAssets.Count();
+            var amountToOffer = RunProgress.Current.PlayerStats.ItemOffersPerBattle - offeredAssets.Count();
             GenerateUnlockedItemOffers(amountToOffer, offeredAssets);
         }
 

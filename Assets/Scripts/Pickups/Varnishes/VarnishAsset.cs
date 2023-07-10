@@ -6,7 +6,7 @@ using UnityEngine;
 namespace Varnishes
 {
     [CreateAssetMenu(menuName = "Varnish")]
-    public class VarnishAsset: PickupAsset
+    public class VarnishAsset: RarityPickupAsset
     {
         public VarnishType varnishType;
     }

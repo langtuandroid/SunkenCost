@@ -3,6 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Linq;
+using Damage;
 using UnityEngine;
 using UnityEngine.UI;
 using ReorderableContent;
@@ -82,6 +83,14 @@ namespace BattleScreen.BattleBoard
                 {
                     _cachedPlanks.RemoveAt(i);
                 }
+            }
+        }
+        
+        public void DestroyAllPlanks()
+        {
+            foreach (var plank in PlanksInOrder)
+            {
+                plank.Destroy(DamageSource.PlankDestruction);
             }
         }
     }

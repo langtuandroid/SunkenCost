@@ -2598,6 +2598,67 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: df29594d21a344bda6b27828fbf4ff33, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!1 &1211265503
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1211265504}
+  - component: {fileID: 1211265505}
+  m_Layer: 5
+  m_Name: RewardGrid
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!224 &1211265504
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1211265503}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 1668536691}
+  m_RootOrder: 2
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 0, y: 0}
+  m_AnchorMax: {x: 1, y: 1}
+  m_AnchoredPosition: {x: 0, y: 0}
+  m_SizeDelta: {x: 0, y: 0}
+  m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &1211265505
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1211265503}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8a8695521f0d02e499659fee002a26c2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Padding:
+    m_Left: 0
+    m_Right: 0
+    m_Top: 0
+    m_Bottom: 0
+  m_ChildAlignment: 4
+  m_StartCorner: 0
+  m_StartAxis: 0
+  m_CellSize: {x: 250, y: 250}
+  m_Spacing: {x: 0, y: 0}
+  m_Constraint: 0
+  m_ConstraintCount: 2
 --- !u!1 &1221819302
 GameObject:
   m_ObjectHideFlags: 0
@@ -2816,6 +2877,7 @@ GameObject:
   - component: {fileID: 1647991294}
   - component: {fileID: 1647991298}
   - component: {fileID: 1647991299}
+  - component: {fileID: 1647991300}
   m_Layer: 0
   m_Name: Battle
   m_TagString: Untagged
@@ -2944,6 +3006,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _islandAnimator: {fileID: 1155358485}
   _endOfBattlePopup: {fileID: 1007367073}
+  _rewardGenerator: {fileID: 1647991300}
   _playerDeathPopup: {fileID: 1856162411}
   _winPopup: {fileID: 1159420669}
   hud: {fileID: 513419359}
@@ -3025,6 +3088,20 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9c30ef1fbaef4178a3ca96922f0000bf, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &1647991300
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1647991287}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f8fdb7b2959a0814b947ccf769d34111, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _rewardOfferPrefab: {fileID: 708649762428848517, guid: 73f635c835cf91947841ff1a4cccd442, type: 3}
+  _rewardOfferGrid: {fileID: 1211265504}
 --- !u!1 &1668536690
 GameObject:
   m_ObjectHideFlags: 0
@@ -3055,6 +3132,7 @@ RectTransform:
   m_Children:
   - {fileID: 1161592908}
   - {fileID: 921617805}
+  - {fileID: 1211265504}
   m_Father: {fileID: 1155358484}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -3912,7 +3990,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3739874107440994272, guid: 753e431c20e8b5d45a1560f4e9ca944f, type: 3}
       propertyPath: m_AnchoredPosition.x
-      value: 1093
+      value: 1077
       objectReference: {fileID: 0}
     - target: {fileID: 3739874107440994272, guid: 753e431c20e8b5d45a1560f4e9ca944f, type: 3}
       propertyPath: m_AnchoredPosition.y

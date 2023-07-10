@@ -1,4 +1,5 @@
 using Disturbances;
+using Pickups.Rewards;
 using TMPro;
 using UnityEngine;
 using UnityEngine.Serialization;
@@ -19,27 +20,26 @@ namespace MapScreen
         [SerializeField] private Image backgroundImage;
         [SerializeField] private Image foregroundImage;
 
-        public Disturbance Disturbance { get; private set; }
+        public Reward Reward { get; private set; }
 
-        public void Init(Disturbance disturbance)
+        public void Init(Reward reward)
         {
-            Disturbance = disturbance;
+            Reward = reward;
         }
         
         private void Start()
         {
-            backgroundImage.enabled = Disturbance.DisturbanceType == DisturbanceType.Card 
-                                      || Disturbance.DisturbanceType == DisturbanceType.EliteCard;
-            foregroundImage.sprite = Disturbance.GetSprite();
-            titleText.text = Disturbance.GetTitle();
-            descriptionText.text = Disturbance.GetDescription();
+            backgroundImage.enabled = Reward.RewardType == RewardType.Card 
+                                      || Reward.RewardType == RewardType.EliteCard;
+            foregroundImage.sprite = Reward.GetSprite();
+            titleText.text = Reward.GetTitle();
+            descriptionText.text = Reward.GetDescription();
 
-            innerWash.sprite = Disturbance.IsElite ? redInnerWash : blueInnerWash;
+            innerWash.sprite = Reward.IsElite ? redInnerWash : blueInnerWash;
         }
         
         public void NextBattle()
         {
-            RunProgress.Current.SelectNextBattle(Disturbance);
             MainManager.Current.LoadNextBattle();
         }
 

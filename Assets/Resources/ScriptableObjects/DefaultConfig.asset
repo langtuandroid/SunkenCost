@@ -14,12 +14,13 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   <IsActive>k__BackingField: 1
   <MaxPlanks>k__BackingField: 3
-  <MaxHealth>k__BackingField: 3
-  <StartingGold>k__BackingField: 15
+  <MaxHealth>k__BackingField: 5
+  <StartingGold>k__BackingField: 20
   <TurnsPerBattle>k__BackingField: 5
   <DesignOffersPerBattle>k__BackingField: 4
   <ItemOffersPerBattle>k__BackingField: 1
+  <RewardOffersPerBattle>k__BackingField: 3
   <ReRollCost>k__BackingField: 1
   _startingDeck: []
   _startingItems: []
-  <StartingEnemies>k__BackingField: 03000000
+  <StartingEnemies>k__BackingField: 

@@ -5,16 +5,15 @@ using BattleScreen;
 using BattleScreen.BattleEvents;
 using Damage;
 using TMPro;
+using UI.Tooltip;
 using UnityEngine;
 using UnityEngine.UI;
 
 namespace Enemies.EnemyUI
 {
-    public class EnemyUI : MonoBehaviour, IBattleEventUpdatedUI
+    public class EnemyUI : MonoBehaviour, IBattleEventUpdatedUI, IDynamicTooltipTriggerListener
     {
         [SerializeField] private CanvasGroup _visualsGroup;
-        
-        [SerializeField] private TooltipTrigger _tooltipTrigger;
 
         [SerializeField] private EnemyAnimator _enemyAnimator;
         
@@ -43,8 +42,6 @@ namespace Enemies.EnemyUI
             _enemy = transform.parent.GetComponent<Enemy>();
             _enemyAnimator.Init(_enemy.Asset.SpritePack);
             _mover = _enemy.Mover;
-            
-            _tooltipTrigger.header = _enemy.Name;
         }
 
         private IEnumerator Init()
@@ -82,12 +79,21 @@ namespace Enemies.EnemyUI
 
         private void UpdateUI()
         {
-            _tooltipTrigger.content = _enemy.GetDescription();
             _turnOrderText.SetTurnOrder(_enemy.TurnOrder);
             _movementText.UpdateMovementText(_mover.CurrentMove.MovementType, _mover.MovementRemainingThisTurn);
             _healthText.AlterHealth(_enemy.Health, _enemy.MaxHealth);
             _healthSlider.fillAmount = (float)_enemy.Health / _enemy.MaxHealth;
             _poisonDisplay.UpdateDisplay(_enemy.stats.Poison);
+        }
+
+        public string GetTitle()
+        {
+            return _enemy.Asset.Name;
+        }
+
+        public string GetDescription()
+        {
+            return _enemy.GetDescription();
         }
     }
 }

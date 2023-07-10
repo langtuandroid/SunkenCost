@@ -43,4 +43,10 @@ public class WhosTurnText : MonoBehaviour
         
         _textMeshProUGUI.colorGradientPreset = yourColor;
     }
+
+    public void EndBattle()
+    {
+        _textMeshProUGUI.colorGradientPreset = yourColor;
+        _textMeshProUGUI.text = "Select reward!";
+    }
 }

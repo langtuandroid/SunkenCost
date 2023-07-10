@@ -1,6 +1,8 @@
 ﻿using BattleScreen;
 using BattleScreen.BattleEvents;
 using Disturbances;
+using Loaders;
+using Pickups.Rewards;
 
 namespace Items.Items
 {
@@ -8,7 +10,7 @@ namespace Items.Items
     {
         public void OnPickup()
         {
-            DisturbanceLoader.ModifyDisturbanceAsset(DisturbanceType.GoldRush, Amount);
+            RewardLoader.ModifyRewardAsset(RewardType.GoldRush, Amount);
         }
     }
 }

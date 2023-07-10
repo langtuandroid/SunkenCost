@@ -36,6 +36,7 @@ namespace BattleScreen.UI
 
         private void EndedBattle()
         {
+            _whosTurnText.EndBattle();
         }
 
         private void GainedLife()

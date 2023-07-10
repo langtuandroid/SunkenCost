@@ -19,6 +19,7 @@ public class RunthroughStartingConfig : ScriptableObject
     [field: SerializeField] public int TurnsPerBattle { get; private set; } = 5;
     [field: SerializeField] public int DesignOffersPerBattle { get; private set; } = 3;
     [field: SerializeField] public int ItemOffersPerBattle { get; private set; } = 0;
+    [field: SerializeField] public int RewardOffersPerBattle { get; set; } = 3;
     [field: SerializeField] public int ReRollCost { get; private set; } = 1;
     
     [Space(25)]

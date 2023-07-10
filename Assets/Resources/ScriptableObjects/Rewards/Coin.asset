@@ -10,10 +10,10 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: df20449da52bf174cb531673cb4069a9, type: 3}
-  m_Name: Heart
+  m_Name: Coin
   m_EditorClassIdentifier: 
-  disturbanceType: 200
-  sprite: {fileID: 21300000, guid: f196bdbfb18ad1e4aae6c35468f3c340, type: 3}
-  title: Medical Research
-  description: Recover @ life
-  amount: 1
+  title: Gold Rush
+  description: +@ gold
+  sprite: {fileID: 21300000, guid: 881f505dcc63b1f45b7f7eed9588956e, type: 3}
+  modifier: 5
+  rewardType: 100

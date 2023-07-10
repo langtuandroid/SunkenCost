@@ -5,8 +5,10 @@ using System.Linq;
 using Disturbances;
 using Items;
 using Items.Items;
+using Loaders;
 using MapScreen;
 using OfferScreen;
+using Pickups.Rewards;
 using UnityEngine;
 
 public class RunProgress : MonoBehaviour
@@ -19,9 +21,8 @@ public class RunProgress : MonoBehaviour
     public OfferStorage OfferStorage { get; private set; }
     public ItemInventory ItemInventory { get; private set; }
     public int BattleNumber { get; private set; }
-    public Disturbance CurrentDisturbance { get; private set; }
     public bool HasGeneratedMapEvents { get; private set; }
-    public List<Disturbance> GeneratedMapDisturbances { get; private set; }
+    public List<Reward> GeneratedMapDisturbances { get; private set; }
 
     public List<Scenario> Scenarios { get; private set; }
 
@@ -36,15 +37,14 @@ public class RunProgress : MonoBehaviour
         Current = this;
     }
     
-    public void SelectNextBattle(Disturbance disturbance)
+    public void SelectNextBattle()
     {
-        CurrentDisturbance = disturbance;
         BattleNumber++;
         HasGeneratedMapEvents = false;
         PlayerStats.SetDeckCostToAmount(0);
     }
 
-    public void HaveGeneratedDisturbanceEvents(List<Disturbance> disturbances)
+    public void HaveGeneratedMapEvents(List<Reward> disturbances)
     {
         HasGeneratedMapEvents = true;
         GeneratedMapDisturbances = disturbances;
@@ -52,7 +52,7 @@ public class RunProgress : MonoBehaviour
     
     public void InitialiseRun()
     {
-        DisturbanceLoader.LoadDisturbanceAssets();
+        RewardLoader.LoadRewardAssets();
 
         PlayerStats = new PlayerStats(RunthroughStartingConfig);
         PlayerStats.InitialiseDeck(RunthroughStartingConfig.GetStartingDesigns());
@@ -65,6 +65,42 @@ public class RunProgress : MonoBehaviour
         Scenarios = new List<Scenario>();
 
         BattleNumber = 0;
-        CurrentDisturbance = null;
+    }
+
+    public void AcceptReward(Reward reward)
+    {
+        //TODO: FIX THIS
+
+        switch (reward.RewardType)
+        {
+            case RewardType.GoldRush:
+                PlayerStats.Gold += reward.Modifier;
+                break;
+            case RewardType.Heart:
+                PlayerStats.Heal(reward.Modifier);
+                break;
+            case RewardType.None:
+                break;
+            case RewardType.UpgradeCard:
+                break;
+            case RewardType.Card:
+            case RewardType.EliteCard:
+                if (!(reward is CardReward cardDisturbance)) throw new Exception();
+                var rewardCard = cardDisturbance.Design;
+                rewardCard.SetCost(0);
+                OfferStorage.RewardDesignOffers.Add(cardDisturbance.Design);
+                break;
+            case RewardType.Item:
+            case RewardType.EliteItem:
+                if (!(reward is ItemReward itemDisturbance)) throw new Exception();
+                ItemInventory.AddItem(itemDisturbance.ItemInstance);
+                break;
+            case RewardType.MaxHealth:
+                PlayerStats.MaxHealth += reward.Modifier;
+                PlayerStats.Heal(PlayerStats.MaxHealth);
+                break;
+            default:
+                throw new ArgumentOutOfRangeException();
+        }
     }
 }

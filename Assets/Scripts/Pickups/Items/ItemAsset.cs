@@ -4,10 +4,8 @@ using UnityEngine.Serialization;
 
 namespace Items
 {
-    
-    
     [CreateAssetMenu(menuName = "Item")]
-    public class ItemAsset : PickupAsset
+    public class ItemAsset : RarityPickupAsset
     {
         
     }

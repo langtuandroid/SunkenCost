@@ -20,9 +20,11 @@ public class PlayerStats
     public int Gold { get; set; }
     public int? MovesPerTurn { get; set; }
     public int NumberOfTurns { get; private set; }
-    public int NumberOfCardsToOffer { get; private set; }
-    public int NumberOfItemsToOffer { get; private set; }
+    public int DesignOffersPerBattle { get; private set; }
+    public int ItemOffersPerBattle { get; private set; }
+    public int RewardOffersPerBattle { get; set; }
     public int EnemyMovementModifier { get; set; } = 0;
+
     public int ReRollCost { get; private set; }
 
     public PlayerStats(RunthroughStartingConfig config)
@@ -32,10 +34,11 @@ public class PlayerStats
         Gold = config.StartingGold;
         MovesPerTurn = config.MovesPerTurn;
         NumberOfTurns = config.TurnsPerBattle;
-        NumberOfCardsToOffer = config.DesignOffersPerBattle;
-        NumberOfItemsToOffer = config.ItemOffersPerBattle;
+        DesignOffersPerBattle = config.DesignOffersPerBattle;
+        ItemOffersPerBattle = config.ItemOffersPerBattle;
+        RewardOffersPerBattle = config.RewardOffersPerBattle;
         ReRollCost = config.ReRollCost;
-        
+
         Health = MaxHealth;
     }
 

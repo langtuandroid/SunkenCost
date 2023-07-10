@@ -8,7 +8,6 @@ namespace Pickups
         [SerializeField] private string description;
         public Sprite sprite;
         public int modifier;
-        public Rarity rarity;
 
         public string GetDescription(int amount)
         {

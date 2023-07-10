@@ -1,20 +1,20 @@
 ﻿using Designs;
-using Items;
+using Disturbances;
 using UnityEngine;
 
-namespace Disturbances
+namespace Pickups.Rewards
 {
-    public class CardDisturbance : Disturbance
+    public class CardReward : Reward
     {
         public Design Design { get; private set; }
         
-        public CardDisturbance(DisturbanceAsset disturbanceAsset, int modifier, Design design) 
-            : base(disturbanceAsset, modifier)
+        public CardReward(RewardAsset rewardAsset, int modifier, Design design) 
+            : base(rewardAsset, modifier)
         {
             Design = design;
         }
         
-        public override string GetAdditionalTitle()
+        protected override string GetAdditionalTitle()
         {
             return base.GetDescription() + Design.Title;
         }

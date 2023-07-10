@@ -63,7 +63,8 @@ public class OfferManager : MonoBehaviour
         
         RunProgress.Current.OfferStorage.StoreOffers(deckRow, offerRow, itemOfferDisplays);
         RunProgress.Current.PlayerStats.Gold = BuyerSeller.Gold;
-        MainManager.Current.LoadMap();
+        RunProgress.Current.SelectNextBattle();
+        MainManager.Current.LoadNextBattle();
     }
 
     public void MergeDesignCards(DesignCard beingMerged, DesignCard beingMergedInto)

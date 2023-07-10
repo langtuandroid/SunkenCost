@@ -29,7 +29,7 @@ namespace OfferScreen
             if (RunProgress.Current.HasGeneratedMapEvents) 
                 CreateBatchOfDesignCards(RunProgress.Current.OfferStorage.UnlockedDesignOffers, offerRow);
             else 
-                GenerateNewUnlockedCards(RunProgress.Current.PlayerStats.NumberOfCardsToOffer - 
+                GenerateNewUnlockedCards(RunProgress.Current.PlayerStats.DesignOffersPerBattle - 
                                            RunProgress.Current.OfferStorage.LockedDesignOffers.Count);
         }
 
@@ -38,7 +38,7 @@ namespace OfferScreen
             DiscardLockedCards();
 
             var amountOfLockedCards = FindObjectsOfType<DesignCard>().Count(d => d.isLocked);
-            var amountToCreate = RunProgress.Current.PlayerStats.NumberOfCardsToOffer - amountOfLockedCards;
+            var amountToCreate = RunProgress.Current.PlayerStats.DesignOffersPerBattle - amountOfLockedCards;
             GenerateNewUnlockedCards(amountToCreate);
         }
         

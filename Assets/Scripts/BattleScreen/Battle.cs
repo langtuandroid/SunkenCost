@@ -3,10 +3,13 @@ using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using BattleScene;
+using BattleScreen.BattleBoard;
 using BattleScreen.BattleEvents;
 using BattleScreen.UI;
 using Damage;
 using Disturbances;
+using Loaders;
+using Pickups.Rewards;
 using UI;
 using UnityEngine;
 using UnityEngine.Serialization;
@@ -39,6 +42,7 @@ namespace BattleScreen
 
         [SerializeField] private IslandAnimator _islandAnimator;
         [SerializeField] private EndOfBattlePopup _endOfBattlePopup;
+        [SerializeField] private RewardGenerator _rewardGenerator;
         [SerializeField] private PlayerDeathPopup _playerDeathPopup;
         [SerializeField] private PlayerDeathPopup _winPopup;
         [FormerlySerializedAs("_hudManager")] [SerializeField] private BattleHUD hud;
@@ -294,19 +298,30 @@ namespace BattleScreen
                 _winPopup.gameObject.SetActive(true);
                 return;
             }
+            
+            _islandAnimator.SinkIsland();
+            Board.Current.DestroyAllPlanks();
+            var boardTransform = Board.Current.gameObject.transform;
+            var localPosition = boardTransform.localPosition;
+            boardTransform.localPosition = new Vector3(localPosition.x + 300, localPosition.y);
 
+            
+            _rewardGenerator.GenerateRewards();
+            
+            /*
             _endOfBattlePopup.gameObject.SetActive(true);
             var disturbance = RunProgress.Current.CurrentDisturbance;
             _endOfBattlePopup.SetReward(disturbance);
             _endOfBattlePopup.SetButtonAction(LeaveBattle);
+            
+            */
         
         }
 
-        private void LeaveBattle()
+        public void LeaveBattle()
         {
             RunProgress.Current.PlayerStats.Gold = Player.Current.Gold;
             RunProgress.Current.PlayerStats.Health = Player.Current.Health;
-            DisturbanceLoader.ExecuteEndOfBattleDisturbanceAction(RunProgress.Current.CurrentDisturbance);
             MainManager.Current.LoadOfferScreen();
             Destroy(gameObject);
         }

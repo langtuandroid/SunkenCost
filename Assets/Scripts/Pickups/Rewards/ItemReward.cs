@@ -1,19 +1,20 @@
-﻿using Items;
+﻿using Disturbances;
+using Items;
 using UnityEngine;
 
-namespace Disturbances
+namespace Pickups.Rewards
 {
-    public class ItemDisturbance : Disturbance
+    public class ItemReward : Reward
     {
         public ItemInstance ItemInstance { get; private set; }
 
-        public ItemDisturbance(DisturbanceAsset disturbanceAsset, int modifier, ItemInstance itemInstance)
-            : base(disturbanceAsset, modifier)
+        public ItemReward(RewardAsset rewardAsset, int modifier, ItemInstance itemInstance)
+            : base(rewardAsset, modifier)
         {
             ItemInstance = itemInstance;
         }
 
-        public override string GetAdditionalTitle()
+        protected override string GetAdditionalTitle()
         {
             return base.GetDescription() + ItemInstance.Title;
         }

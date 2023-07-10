@@ -1,5 +1,6 @@
 using Designs.UI;
 using Disturbances;
+using Pickups.Rewards;
 using TMPro;
 using UnityEngine;
 using UnityEngine.Events;
@@ -20,18 +21,18 @@ namespace BattleScene
         
         [SerializeField] private Button _button;
 
-        public void SetReward(Disturbance disturbance)
+        public void SetReward(Reward reward)
         {
-            _rewardImage.sprite = disturbance.GetSprite();
-            _rewardTitle.text = disturbance.GetTitle();
-            _rewardText.text = disturbance.GetDescription();
+            _rewardImage.sprite = reward.GetSprite();
+            _rewardTitle.text = reward.GetTitle();
+            _rewardText.text = reward.GetDescription();
             
-            if (disturbance.DisturbanceType == DisturbanceType.Card ||
-                disturbance.DisturbanceType == DisturbanceType.EliteCard)
+            if (reward.RewardType == RewardType.Card ||
+                reward.RewardType == RewardType.EliteCard)
             {
                 _reward.SetActive(false);
                 _designDisplay.SetActive(true);
-                _designDisplay.GetComponent<DesignDisplay>().design = (disturbance as CardDisturbance)?.Design;
+                _designDisplay.GetComponent<DesignDisplay>().design = (reward as CardReward)?.Design;
             }
         }
 

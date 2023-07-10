@@ -605,9 +605,9 @@
             <e p="BattleScenarios" t="Include" />
             <e p="ChallengeRewards" t="Include" />
             <e p="Designs" t="Include" />
-            <e p="Disturbances" t="Include" />
             <e p="Enemies" t="Include" />
             <e p="Items" t="Include" />
+            <e p="Rewards" t="Include" />
             <e p="Varnishes" t="Include" />
           </e>
           <e p="Sprites" t="Include">
@@ -646,6 +646,13 @@
               <e p="UnexpectedBattleEventException.cs" t="Include" />
             </e>
             <e p="BattleRenderer.cs" t="Include" />
+            <e p="Damage" t="Include">
+              <e p="DamageHandler.cs" t="Include" />
+              <e p="DamageModification.cs" t="Include" />
+              <e p="DamageModificationPackage.cs" t="Include" />
+              <e p="DamageText.cs" t="Include" />
+              <e p="DamageVisualiser.cs" t="Include" />
+            </e>
             <e p="EndOfBattlePopup.cs" t="Include" />
             <e p="Player.cs" t="Include" />
             <e p="UI" t="Include">
@@ -654,21 +661,8 @@
             </e>
           </e>
           <e p="ChallengeLoader.cs" t="Include" />
-          <e p="Damage" t="Include">
-            <e p="DamageHandler.cs" t="Include" />
-            <e p="DamageModification.cs" t="Include" />
-            <e p="DamageModificationPackage.cs" t="Include" />
-            <e p="DamageText.cs" t="Include" />
-            <e p="DamageVisualiser.cs" t="Include" />
-          </e>
           <e p="Debug" t="Include">
             <e p="ScreenToWorldPoint.cs" t="Include" />
-          </e>
-          <e p="Disturbances" t="Include">
-            <e p="CardDisturbance.cs" t="Include" />
-            <e p="Disturbance.cs" t="Include" />
-            <e p="DisturbanceAsset.cs" t="Include" />
-            <e p="ItemDisturbance.cs" t="Include" />
           </e>
           <e p="Editor" t="Include">
             <e p="TMP_FontChanger.cs" t="Include" />
@@ -720,7 +714,6 @@
               <e p="EnemyPoisonDisplay.cs" t="Include" />
               <e p="EnemyShaderAnimation.cs" t="Include" />
               <e p="EnemySpeechBubble.cs" t="Include" />
-              <e p="EnemyTooltipTrigger.cs" t="Include" />
               <e p="EnemyTurnOrderText.cs" t="Include" />
               <e p="EnemyUI.cs" t="Include" />
               <e p="EnemyUIText.cs" t="Include" />
@@ -754,10 +747,10 @@
           <e p="GlobalEvents.cs" t="Include" />
           <e p="Loaders" t="Include">
             <e p="DesignLoader.cs" t="Include" />
-            <e p="DisturbanceLoader.cs" t="Include" />
             <e p="EnemyLoader.cs" t="Include" />
             <e p="ItemLoader.cs" t="Include" />
             <e p="PersistantSingletonsContainer.cs" t="Include" />
+            <e p="RewardLoader.cs" t="Include" />
             <e p="ScenarioLoader.cs" t="Include" />
             <e p="VarnishLoader.cs" t="Include" />
           </e>
@@ -765,7 +758,6 @@
           <e p="MainManager.cs" t="Include" />
           <e p="MapScreen" t="Include">
             <e p="DisturbanceEvent.cs" t="Include" />
-            <e p="DisturbanceGenerator.cs" t="Include" />
             <e p="ShipyardButton.cs" t="Include" />
           </e>
           <e p="OfferScreen" t="Include">
@@ -829,6 +821,16 @@
             </e>
             <e p="PickupAsset.cs" t="Include" />
             <e p="Rarity.cs" t="Include" />
+            <e p="RarityPickupAsset.cs" t="Include" />
+            <e p="RewardAsset.cs" t="Include" />
+            <e p="Rewards" t="Include">
+              <e p="CardReward.cs" t="Include" />
+              <e p="ItemReward.cs" t="Include" />
+              <e p="Reward.cs" t="Include" />
+              <e p="RewardGenerator.cs" t="Include" />
+              <e p="RewardOffer.cs" t="Include" />
+              <e p="RewardType.cs" t="Include" />
+            </e>
             <e p="Varnishes" t="Include">
               <e p="EcoFriendlyVarnish.cs" t="Include" />
               <e p="Varnish.cs" t="Include" />
@@ -881,6 +883,7 @@
             <e p="QuitButtonFilm.cs" t="Include" />
             <e p="ScaleWithScreen.cs" t="Include" />
             <e p="Tooltip" t="Include">
+              <e p="DynamicTooltipTrigger.cs" t="Include" />
               <e p="ToolTip.cs" t="Include" />
               <e p="TooltipSystem.cs" t="Include" />
               <e p="TooltipTrigger.cs" t="Include" />
