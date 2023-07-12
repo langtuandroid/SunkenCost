@@ -17,7 +17,7 @@ MonoBehaviour:
   title: Finalise
   sprite: {fileID: 21300000, guid: 08871885d88539a4b946dd558635b26f, type: 3}
   _color: {r: 0, g: 1, b: 1, a: 1}
-  rarity: 2
+  rarity: 3
   description: When an enemy lands on this plank, attack all enemies. If any survive,
     lose @ life
   notUpgradedText: 

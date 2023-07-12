@@ -58,7 +58,12 @@ namespace Designs
         {
             return InstantiateDesign(DesignLoader.RareDesigns.GetRandomElement());
         }
-        
+
+        public static Design GenerateRandomEliteDesign()
+        {
+            return InstantiateDesign(DesignLoader.ElitePickupDesigns.GetRandomElement());
+        }
+
         public static Design InstantiateDesign(DesignAsset designAsset, int level = 0)
         {
             var design = new Design(designAsset);

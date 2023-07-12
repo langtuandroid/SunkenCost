@@ -18,7 +18,11 @@ namespace BattleScreen.UI
 
         public void SinkIsland()
         {
-            StartCoroutine(SinkIslandAnimation());
+            _disturbanceCanvasGroup.gameObject.SetActive(true);
+            _islandCanvasGroup.gameObject.SetActive(false);
+            _disturbanceCanvasGroup.alpha = 1f;
+
+            //StartCoroutine(SinkIslandAnimation());
         }
 
         private IEnumerator SurfaceIslandAnimation()
@@ -46,15 +50,15 @@ namespace BattleScreen.UI
         {
             _disturbanceCanvasGroup.gameObject.SetActive(true);
             
-            for (var progress = 0f; progress < 1; progress += Speed)
+            for (var progress = 0f; progress < 1; progress += 0.01f)
             {
                 _islandCanvasGroup.alpha = 1f - progress;
                 _disturbanceCanvasGroup.alpha = progress;
                 
-                yield return new WaitForSecondsRealtime(0.01f);
+                yield return new WaitForSecondsRealtime(Speed);
             }
             
             _islandCanvasGroup.gameObject.SetActive(false);
         }
-    }
+    }  
 }

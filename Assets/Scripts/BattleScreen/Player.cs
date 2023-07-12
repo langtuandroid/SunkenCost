@@ -11,9 +11,7 @@ public class Player : BattleEventResponder
     public static Player Current;
 
     private int? _baseMovesPerTurn;
-    
-    public int Gold { get; private set; }
-
+    public int Gold => RunProgress.Current.PlayerStats.Gold;
     public int Health { get; private set; }
     private int MaxHealth { get; set; }
     public int MovesUsedThisTurn { get; private set; } = 0;
@@ -27,8 +25,7 @@ public class Player : BattleEventResponder
             Destroy(Current.gameObject);
 
         Current = this;
-
-        Gold = RunProgress.Current.PlayerStats.Gold;
+        
         Health = RunProgress.Current.PlayerStats.Health;
         MaxHealth = RunProgress.Current.PlayerStats.MaxHealth;
         _baseMovesPerTurn = RunProgress.Current.PlayerStats.MovesPerTurn;
@@ -103,7 +100,7 @@ public class Player : BattleEventResponder
 
     private BattleEvent TryGainGold(BattleEvent battleEvent)
     {
-        Gold += battleEvent.modifier;
+        RunProgress.Current.PlayerStats.Gold += battleEvent.modifier;
         return new BattleEvent(BattleEventType.GainedGold);
     }
 }

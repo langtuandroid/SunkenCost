@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Linq;
 using BattleScreen;
@@ -100,6 +101,14 @@ namespace Enemies
         public Enemy SelectNextEnemy()
         {
             return _enemyCurrentTurnMoveQueue.Dequeue();
+        }
+        
+        public void DestroyAllEnemies()
+        {
+            foreach (var enemy in _enemies)
+            {
+                Destroy(enemy.gameObject);
+            }
         }
 
         private void KillEnemy(Enemy enemy)

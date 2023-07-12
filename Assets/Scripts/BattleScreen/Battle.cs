@@ -8,6 +8,7 @@ using BattleScreen.BattleEvents;
 using BattleScreen.UI;
 using Damage;
 using Disturbances;
+using Enemies;
 using Loaders;
 using Pickups.Rewards;
 using UI;
@@ -98,9 +99,9 @@ namespace BattleScreen
             
             ActionExecutionSpeed = battleSpeed switch
             {
-                BattleSpeed.Normal => 0.8f,
-                BattleSpeed.Fast => 0.6f,
-                BattleSpeed.Ultra => 0.3f,
+                BattleSpeed.Normal => 0.7f,
+                BattleSpeed.Fast => 0.4f,
+                BattleSpeed.Ultra => 0.1f,
                 _ => throw new ArgumentOutOfRangeException(nameof(battleSpeed), battleSpeed, null)
             };
         }
@@ -301,6 +302,7 @@ namespace BattleScreen
             
             _islandAnimator.SinkIsland();
             Board.Current.DestroyAllPlanks();
+            EnemySequencer.Current.DestroyAllEnemies();
             var boardTransform = Board.Current.gameObject.transform;
             var localPosition = boardTransform.localPosition;
             boardTransform.localPosition = new Vector3(localPosition.x + 300, localPosition.y);
@@ -320,7 +322,6 @@ namespace BattleScreen
 
         public void LeaveBattle()
         {
-            RunProgress.Current.PlayerStats.Gold = Player.Current.Gold;
             RunProgress.Current.PlayerStats.Health = Player.Current.Health;
             MainManager.Current.LoadOfferScreen();
             Destroy(gameObject);

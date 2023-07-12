@@ -17,10 +17,10 @@ namespace Pickups.Rewards
     
         private static readonly Dictionary<RewardType, float> NormalWeightings = new Dictionary<RewardType, float>()
         {
-            {RewardType.GoldRush, 0.35f},
-            {RewardType.Heart, 0.25f},
-            {RewardType.Card, 0.2f},
-            {RewardType.Item, 0.2f}
+            {RewardType.GoldRush, 0.5f},
+            {RewardType.Heart, 0.2f},
+            {RewardType.Card, 0.15f},
+            {RewardType.Item, 0.15f}
         };
     
         private static readonly Dictionary<RewardType, float> EliteWeightings = new Dictionary<RewardType, float>()
@@ -32,8 +32,8 @@ namespace Pickups.Rewards
 
         public void GenerateRewards()
         {
-            var isEliteRound = RunProgress.Current.BattleNumber % ScenarioLoader.BattlesPerDifficulty 
-                               == ScenarioLoader.BattlesPerDifficulty;
+            var isEliteRound = RunProgress.Current.BattleNumber != 0 && 
+                               RunProgress.Current.BattleNumber % ScenarioLoader.BattlesPerDifficulty == 0;
         
             var weightings = isEliteRound
                 ? EliteWeightings
@@ -107,7 +107,7 @@ namespace Pickups.Rewards
         private static CardReward GenerateNewCardReward(RewardAsset rewardAsset)
         {
             var design = rewardAsset.rewardType == RewardType.EliteCard 
-                ? DesignFactory.GenerateRandomRareDesign() : DesignFactory.GenerateStoreDesign();
+                ? DesignFactory.GenerateRandomEliteDesign() : DesignFactory.GenerateStoreDesign();
 
             return new CardReward(rewardAsset, rewardAsset.modifier, design);
         }

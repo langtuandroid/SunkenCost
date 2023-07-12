@@ -18,4 +18,6 @@ MonoBehaviour:
   _moves:
   - _movementType: 0
     _magnitude: 2
+  - _movementType: 0
+    _magnitude: 1
   _modifierSetters: []

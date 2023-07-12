@@ -107,7 +107,7 @@ public class OfferManager : MonoBehaviour
     private void UpdateBuyPlankCost()
     {
         buyPlankOffer.UpdateCost((RunProgress.Current.PlayerStats.PlanksBought + 1)
-            * 25);
+            * 30);
     }
 
     private IEnumerator WaitForDesignCardsToInitialise()

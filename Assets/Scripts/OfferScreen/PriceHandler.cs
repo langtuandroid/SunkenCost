@@ -9,7 +9,7 @@ namespace OfferScreen
     {
         private const int BASE_CARD_COST_VARIATION = 2;
         private const int BASE_ITEM_COST_VARIATION = 4;
-        private const int BASE_CARD_COST_MULTIPLIER = 4;
+        private const int BASE_CARD_COST_MULTIPLIER = 3;
         private const int BASE_ITEM_COST_MULTIPLIER = 10;
 
         private readonly Stat _cardCostMultiplier;
