@@ -20,7 +20,7 @@ MonoBehaviour:
   <DesignOffersPerBattle>k__BackingField: 4
   <ItemOffersPerBattle>k__BackingField: 1
   <RewardOffersPerBattle>k__BackingField: 3
-  <ReRollCost>k__BackingField: 1
+  <ReRollCost>k__BackingField: 2
   _startingDeck: []
   _startingItems: []
   <StartingEnemies>k__BackingField: 
