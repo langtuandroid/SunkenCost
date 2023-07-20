@@ -163,7 +163,6 @@ namespace BattleScreen
         private IEnumerator EndBattle()
         {
             Debug.Log("------ Ending Battle ------");
-            _islandAnimator.SinkIsland();
             yield return StartCoroutine(StartChainOfEvents(new BattleEvent(BattleEventType.EndedBattle)));
             BattleState = BattleState.Rewards;
             yield return new WaitForSecondsRealtime(ActionExecutionSpeed / 3f);

@@ -22,7 +22,12 @@
     <select />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="50470089-3e0c-4487-973b-9d375622b070" name="Default Changelist" comment="" />
+    <list default="true" id="50470089-3e0c-4487-973b-9d375622b070" name="Default Changelist" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/.idea.Deck/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.Deck/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scenes/OfferScreen.unity" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scenes/OfferScreen.unity" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/BattleScreen/Battle.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/BattleScreen/Battle.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/UserSettings/Layouts/default-2021.dwlt" beforeDir="false" afterPath="$PROJECT_DIR$/UserSettings/Layouts/default-2021.dwlt" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -67,7 +72,6 @@
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/Assets/Scripts/Enemies/CurrentEnemy.cs" />
         <option value="$PROJECT_DIR$/Assets/Scripts/BattleScreen/BattleEvents/BattleEventPackage.cs" />
         <option value="$PROJECT_DIR$/Assets/Scripts/Pickups/Items/ItemInstance.cs" />
         <option value="$PROJECT_DIR$/Assets/Scripts/Pickups/Items/Items/MeasuredTouchItem.cs" />
@@ -104,7 +108,6 @@
         <option value="$PROJECT_DIR$/Assets/Scripts/Pickups/Rewards/RewardCollector.cs" />
         <option value="$PROJECT_DIR$/Assets/Scripts/Pickups/Rewards/DisturbanceGenerator.cs" />
         <option value="$PROJECT_DIR$/Assets/Scripts/RunthroughStartingConfig.cs" />
-        <option value="$PROJECT_DIR$/Assets/Scripts/OfferScreen/ItemOfferGenerator.cs" />
         <option value="$PROJECT_DIR$/Assets/Scripts/MapScreen/DisturbanceEvent.cs" />
         <option value="$PROJECT_DIR$/Assets/Scripts/Loaders/RewardLoader.cs" />
         <option value="$PROJECT_DIR$/Assets/Scripts/RunProgress.cs" />
@@ -113,11 +116,13 @@
         <option value="$PROJECT_DIR$/Assets/Scripts/BattleScreen/Player.cs" />
         <option value="$PROJECT_DIR$/Assets/Scripts/OfferScreen/OfferManager.cs" />
         <option value="$PROJECT_DIR$/Assets/Scripts/BattleScreen/UI/IslandAnimator.cs" />
-        <option value="$PROJECT_DIR$/Assets/Scripts/BattleScreen/Battle.cs" />
         <option value="$PROJECT_DIR$/Assets/Scripts/Enemies/EnemySequencer.cs" />
         <option value="$PROJECT_DIR$/Assets/Scripts/Pickups/Designs/DesignFactory.cs" />
         <option value="$PROJECT_DIR$/Assets/Scripts/Pickups/Rewards/RewardGenerator.cs" />
         <option value="$PROJECT_DIR$/Assets/Scripts/OfferScreen/PriceHandler.cs" />
+        <option value="$PROJECT_DIR$/Assets/Scripts/OfferScreen/VarnishOfferGenerator.cs" />
+        <option value="$PROJECT_DIR$/Assets/Scripts/OfferScreen/ItemOfferGenerator.cs" />
+        <option value="$PROJECT_DIR$/Assets/Scripts/BattleScreen/Battle.cs" />
       </list>
     </option>
   </component>
@@ -273,6 +278,8 @@
       <workItem from="1688707526666" duration="1954000" />
       <workItem from="1688777193472" duration="11983000" />
       <workItem from="1689118118191" duration="2442000" />
+      <workItem from="1689377160766" duration="679000" />
+      <workItem from="1689719418902" duration="38000" />
     </task>
     <servers />
   </component>
