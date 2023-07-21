@@ -628,7 +628,10 @@
               <e p="Board.cs" t="Include" />
               <e p="BoardPositioner.cs" t="Include" />
               <e p="BoardScaler.cs" t="Include" />
+              <e p="Deck.cs" t="Include" />
               <e p="Plank.cs" t="Include" />
+              <e p="PlankDisplay.cs" t="Include" />
+              <e p="PlankFactory.cs" t="Include" />
             </e>
             <e p="BattleEvents" t="Include">
               <e p="BattleEvent.cs" t="Include" />
@@ -838,8 +841,6 @@
               <e p="VarnishType.cs" t="Include" />
             </e>
           </e>
-          <e p="PlankDisplay.cs" t="Include" />
-          <e p="PlankFactory.cs" t="Include" />
           <e p="ReorderableContent" t="Include">
             <e p="IMergeableReorderableEventListener.cs" t="Include" />
             <e p="IReorderableGridEventListener.cs" t="Include" />

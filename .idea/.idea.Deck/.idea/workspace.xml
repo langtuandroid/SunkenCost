@@ -23,9 +23,23 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="50470089-3e0c-4487-973b-9d375622b070" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/Assets/Scripts/BattleScreen/BattleBoard/Deck.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Scripts/BattleScreen/BattleBoard/Deck.cs.meta" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/.idea.Deck/.idea/contentModel.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.Deck/.idea/contentModel.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/.idea.Deck/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.Deck/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scenes/OfferScreen.unity" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scenes/OfferScreen.unity" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/UI/TooltipCanvas.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Prefabs/UI/TooltipCanvas.prefab" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Resources/ScriptableObjects/DefaultConfig.asset" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Resources/ScriptableObjects/DefaultConfig.asset" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Resources/ScriptableObjects/Designs/Impede.asset" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Resources/ScriptableObjects/Designs/Impede.asset" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Scripts/BattleScreen/Battle.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/BattleScreen/Battle.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/BattleScreen/BattleBoard/BoardScaler.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/BattleScreen/BattleBoard/BoardScaler.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Loaders/ScenarioLoader.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Loaders/ScenarioLoader.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/MainManager.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/MainManager.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Pickups/Rewards/RewardGenerator.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Pickups/Rewards/RewardGenerator.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/PlankDisplay.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/BattleScreen/BattleBoard/PlankDisplay.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/PlankDisplay.cs.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/BattleScreen/BattleBoard/PlankDisplay.cs.meta" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/PlankFactory.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/BattleScreen/BattleBoard/PlankFactory.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/PlankFactory.cs.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/BattleScreen/BattleBoard/PlankFactory.cs.meta" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/RunProgress.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/RunProgress.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/UserSettings/Layouts/default-2021.dwlt" beforeDir="false" afterPath="$PROJECT_DIR$/UserSettings/Layouts/default-2021.dwlt" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -72,10 +86,6 @@
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/Assets/Scripts/BattleScreen/BattleEvents/BattleEventPackage.cs" />
-        <option value="$PROJECT_DIR$/Assets/Scripts/Pickups/Items/ItemInstance.cs" />
-        <option value="$PROJECT_DIR$/Assets/Scripts/Pickups/Items/Items/MeasuredTouchItem.cs" />
-        <option value="$PROJECT_DIR$/Assets/Scripts/OfferScreen/ItemOfferDisplay.cs" />
         <option value="$PROJECT_DIR$/Assets/Scripts/Enemies/Enemies/CarppoolEnemy.cs" />
         <option value="$PROJECT_DIR$/Assets/Scripts/BattleScreen/UI/IslandAnimation.cs" />
         <option value="$PROJECT_DIR$/Assets/Scripts/Enemies/EnemyPlankArranger.cs" />
@@ -110,7 +120,6 @@
         <option value="$PROJECT_DIR$/Assets/Scripts/RunthroughStartingConfig.cs" />
         <option value="$PROJECT_DIR$/Assets/Scripts/MapScreen/DisturbanceEvent.cs" />
         <option value="$PROJECT_DIR$/Assets/Scripts/Loaders/RewardLoader.cs" />
-        <option value="$PROJECT_DIR$/Assets/Scripts/RunProgress.cs" />
         <option value="$PROJECT_DIR$/Assets/Scripts/Pickups/Rewards/RewardOffer.cs" />
         <option value="$PROJECT_DIR$/Assets/Scripts/Stats/PlayerStats.cs" />
         <option value="$PROJECT_DIR$/Assets/Scripts/BattleScreen/Player.cs" />
@@ -118,11 +127,16 @@
         <option value="$PROJECT_DIR$/Assets/Scripts/BattleScreen/UI/IslandAnimator.cs" />
         <option value="$PROJECT_DIR$/Assets/Scripts/Enemies/EnemySequencer.cs" />
         <option value="$PROJECT_DIR$/Assets/Scripts/Pickups/Designs/DesignFactory.cs" />
-        <option value="$PROJECT_DIR$/Assets/Scripts/Pickups/Rewards/RewardGenerator.cs" />
         <option value="$PROJECT_DIR$/Assets/Scripts/OfferScreen/PriceHandler.cs" />
         <option value="$PROJECT_DIR$/Assets/Scripts/OfferScreen/VarnishOfferGenerator.cs" />
         <option value="$PROJECT_DIR$/Assets/Scripts/OfferScreen/ItemOfferGenerator.cs" />
+        <option value="$PROJECT_DIR$/Assets/Scripts/Pickups/Rewards/RewardGenerator.cs" />
+        <option value="$PROJECT_DIR$/Assets/Scripts/BattleScreen/BattleBoard/BoardScaler.cs" />
+        <option value="$PROJECT_DIR$/Assets/Scripts/MainManager.cs" />
+        <option value="$PROJECT_DIR$/Assets/Scripts/RunProgress.cs" />
+        <option value="$PROJECT_DIR$/Assets/Scripts/Loaders/ScenarioLoader.cs" />
         <option value="$PROJECT_DIR$/Assets/Scripts/BattleScreen/Battle.cs" />
+        <option value="$PROJECT_DIR$/Assets/Scripts/BattleScreen/BattleBoard/Deck.cs" />
       </list>
     </option>
   </component>
@@ -279,7 +293,7 @@
       <workItem from="1688777193472" duration="11983000" />
       <workItem from="1689118118191" duration="2442000" />
       <workItem from="1689377160766" duration="679000" />
-      <workItem from="1689719418902" duration="38000" />
+      <workItem from="1689719418902" duration="4861000" />
     </task>
     <servers />
   </component>

@@ -15,12 +15,30 @@ MonoBehaviour:
   <IsActive>k__BackingField: 1
   <MaxPlanks>k__BackingField: 3
   <MaxHealth>k__BackingField: 5
-  <StartingGold>k__BackingField: 20
+  <StartingGold>k__BackingField: 5
   <TurnsPerBattle>k__BackingField: 5
   <DesignOffersPerBattle>k__BackingField: 4
   <ItemOffersPerBattle>k__BackingField: 1
   <RewardOffersPerBattle>k__BackingField: 3
   <ReRollCost>k__BackingField: 2
-  _startingDeck: []
+  _startingDeck:
+  - _designAsset: {fileID: 11400000, guid: b6823cdbba1131f498fcdbbe423cf51f, type: 2}
+    _level: 0
+    _varnishes: 
+  - _designAsset: {fileID: 11400000, guid: b6823cdbba1131f498fcdbbe423cf51f, type: 2}
+    _level: 0
+    _varnishes: 
+  - _designAsset: {fileID: 11400000, guid: 39ecf128e3212334397de417881e939f, type: 2}
+    _level: 0
+    _varnishes: 
+  - _designAsset: {fileID: 11400000, guid: 39ecf128e3212334397de417881e939f, type: 2}
+    _level: 0
+    _varnishes: 
+  - _designAsset: {fileID: 11400000, guid: 34e824df41f7b744880f9d4c7ef9c2cc, type: 2}
+    _level: 0
+    _varnishes: 
+  - _designAsset: {fileID: 11400000, guid: 34e824df41f7b744880f9d4c7ef9c2cc, type: 2}
+    _level: 0
+    _varnishes: 
   _startingItems: []
   <StartingEnemies>k__BackingField: 

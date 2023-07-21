@@ -51,6 +51,8 @@ namespace BattleScreen
         private InGameSfxManager _sfxManager;
         private BattleRenderer _battleRenderer;
 
+        private Deck _deck = new Deck();
+
         public int Turn { get; private set; } = 0;
         public BattleState BattleState { get; private set; } = BattleState.Loading;
         
@@ -67,11 +69,7 @@ namespace BattleScreen
             _sfxManager = InGameSfxManager.current;
             _battleRenderer = BattleRenderer.Current;
             
-            foreach (var design in RunProgress.Current.PlayerStats.Deck)
-            {
-                var plank = PlankFactory.Current.CreatePlank();
-                EtchingFactory.Current.CreateEtching(plank, design);
-            }
+            _deck.SpawnDeck();
 
             // Give the game one frame to load etchings, enemies etc
             StartCoroutine(InitializeBattle());
@@ -299,6 +297,7 @@ namespace BattleScreen
                 return;
             }
             
+            
             _islandAnimator.SinkIsland();
             Board.Current.DestroyAllPlanks();
             EnemySequencer.Current.DestroyAllEnemies();
@@ -322,7 +321,8 @@ namespace BattleScreen
         public void LeaveBattle()
         {
             RunProgress.Current.PlayerStats.Health = Player.Current.Health;
-            MainManager.Current.LoadOfferScreen();
+            RunProgress.Current.SelectNextBattle();
+            MainManager.Current.LoadNextBattle();
             Destroy(gameObject);
         }
 

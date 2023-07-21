@@ -62,6 +62,6 @@ public class MainManager : MonoBehaviour
     {
         RunProgress.Current.InitialiseRun();
         Music.current.SelectSong(1);
-        LoadOfferScreen();
+        LoadNextBattle();
     }
 }

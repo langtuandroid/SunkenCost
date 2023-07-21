@@ -64,7 +64,7 @@ public class RunProgress : MonoBehaviour
         
         Scenarios = new List<Scenario>();
 
-        BattleNumber = 0;
+        BattleNumber = 1;
     }
 
     public void AcceptReward(Reward reward)
@@ -88,7 +88,7 @@ public class RunProgress : MonoBehaviour
                 if (!(reward is CardReward cardDisturbance)) throw new Exception();
                 var rewardCard = cardDisturbance.Design;
                 rewardCard.SetCost(0);
-                OfferStorage.RewardDesignOffers.Add(cardDisturbance.Design);
+                PlayerStats.Deck.Add(cardDisturbance.Design);
                 break;
             case RewardType.Item:
             case RewardType.EliteItem:

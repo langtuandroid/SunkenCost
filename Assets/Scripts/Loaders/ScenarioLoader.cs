@@ -79,13 +79,8 @@ public class ScenarioLoader : MonoBehaviour
                 RunProgress.Current.Scenarios.Add(scenario);
                 return scenario;
             }
-            
-            throw new Exception($"Couldn't find a scenario that hasn't been used for difficulty {scenarioType}");
-        }  
+        }
         
-        //TODO: Get rid of this once all battles have been implemented
-        var scaledScenario = GetScenario(0);
-        scaledScenario.scaledDifficulty = (int)Math.Floor(battle / 3f);
-        return scaledScenario;
+        throw new Exception($"Couldn't find a scenario that hasn't been used for difficulty {scenarioType}");
     }
 }

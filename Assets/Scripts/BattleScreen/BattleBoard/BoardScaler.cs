@@ -1,38 +1,35 @@
-﻿using System;
-using System.Collections;
-using System.Collections.Generic;
-using BattleScreen.BattleBoard;
-using UnityEngine;
-using UnityEngine.UI;
-using UnityEngine.UI.Extensions;
+﻿using UnityEngine;
 
-public class BoardScaler : MonoBehaviour
+namespace BattleScreen.BattleBoard
 {
-    public static BoardScaler current;
-
-    private float _plankScale = 1f;
-    private Vector3 _targetScale;
-
-    private void Awake()
+    public class BoardScaler : MonoBehaviour
     {
-        // One instance of static objects only
-        if (current)
+        public static BoardScaler current;
+
+        private float _plankScale = 1f;
+        private Vector3 _targetScale;
+
+        private void Awake()
         {
-            Destroy(gameObject);
-            return;
-        }
+            // One instance of static objects only
+            if (current)
+            {
+                Destroy(gameObject);
+                return;
+            }
         
-        current = this;
-    }
+            current = this;
+        }
 
-    private void Start()
-    {
-        SetBoardScale(RunProgress.Current.PlayerStats.Deck.Count);
-    }
+        private void Start()
+        {
+            SetBoardScale(RunProgress.Current.PlayerStats.MaxPlanks);
+        }
 
-    public void SetBoardScale(int plankCount)
-    {
-        _plankScale = plankCount <= 3 ? 1 : 1.025f - (plankCount - 3) * 0.1f;
-        transform.localScale =  new Vector3(_plankScale, _plankScale, 1);
+        public void SetBoardScale(int plankCount)
+        {
+            _plankScale = plankCount <= 3 ? 1 : 1.025f - (plankCount - 3) * 0.1f;
+            transform.localScale =  new Vector3(_plankScale, _plankScale, 1);
+        }
     }
 }
