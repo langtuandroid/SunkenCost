@@ -31,12 +31,6 @@ MonoBehaviour:
   - _designAsset: {fileID: 11400000, guid: 39ecf128e3212334397de417881e939f, type: 2}
     _level: 0
     _varnishes: 
-  - _designAsset: {fileID: 11400000, guid: 39ecf128e3212334397de417881e939f, type: 2}
-    _level: 0
-    _varnishes: 
-  - _designAsset: {fileID: 11400000, guid: 34e824df41f7b744880f9d4c7ef9c2cc, type: 2}
-    _level: 0
-    _varnishes: 
   - _designAsset: {fileID: 11400000, guid: 34e824df41f7b744880f9d4c7ef9c2cc, type: 2}
     _level: 0
     _varnishes: 

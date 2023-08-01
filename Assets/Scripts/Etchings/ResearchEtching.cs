@@ -29,7 +29,7 @@ namespace Etchings
             
             var amountOfGoldToGive = timesMetRequirement * goldAmount;
             
-            responses.Add(new BattleEvent(BattleEventType.TryGainedGold) {modifier = amountOfGoldToGive});
+            responses.Add(new BattleEvent(BattleEventType.TriedAlterGold) {modifier = amountOfGoldToGive});
 
             return new DesignResponse(PlankNum, responses);
         }

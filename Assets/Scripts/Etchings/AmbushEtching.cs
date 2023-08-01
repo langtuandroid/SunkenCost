@@ -14,9 +14,10 @@ namespace Etchings
 
         private StatModifier _currentStatMod;
         
-        private void OnDestroy()
+        protected override void OnDestroy()
         {
             ClearStatMod();
+            base.OnDestroy();
         }
 
         protected override List<DesignResponseTrigger> GetDesignResponseTriggers()
@@ -59,7 +60,7 @@ namespace Etchings
             _currentStatMod = new StatModifier(Design.GetStat(StatType.StatMultiplier) * currentBase - statBase, StatModType.Flat);
             Debug.Log(_currentStatMod.Value);
             
-            Design.AddStatModifier(StatType.Damage, _currentStatMod);
+            Design.AddTempStatModifier(StatType.Damage, _currentStatMod);
             Debug.Log($"Damage post: {Design.GetStat(StatType.Damage)}");
             var response = new BattleEvent(BattleEventType.DesignModified) {primaryResponderID = ResponderID};
             return new DesignResponse(-1, response);
@@ -69,7 +70,7 @@ namespace Etchings
         {
             if (_currentStatMod is not null)
             {
-                Design.RemoveStatModifier(StatType.Damage, _currentStatMod);
+                Design.RemoveTempStatModifier(StatType.Damage, _currentStatMod);
             }
         }
     }

@@ -26,7 +26,7 @@ namespace Items.Items
 
         private BattleEventPackage GainGold()
         {
-            return new BattleEventPackage(new BattleEvent(BattleEventType.TryGainedGold) {modifier = Amount});
+            return new BattleEventPackage(new BattleEvent(BattleEventType.TriedAlterGold) {modifier = Amount});
         }
     }
 }

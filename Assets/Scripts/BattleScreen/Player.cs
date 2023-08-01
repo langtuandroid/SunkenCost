@@ -45,7 +45,7 @@ public class Player : BattleEventResponder
             EventResponseTriggerWithArgument(BattleEventType.EnemyAttackedBoat, 
                 e => EnemyReachedEnd(-e.modifier)),
             EventResponseTriggerWithArgument(BattleEventType.PlayerLifeModified, ModifyLife),
-            EventResponseTriggerWithArgument(BattleEventType.TryGainedGold, TryGainGold),
+            EventResponseTriggerWithArgument(BattleEventType.TriedAlterGold, TryGainGold),
         };
     }
 
@@ -101,6 +101,6 @@ public class Player : BattleEventResponder
     private BattleEvent TryGainGold(BattleEvent battleEvent)
     {
         RunProgress.Current.PlayerStats.Gold += battleEvent.modifier;
-        return new BattleEvent(BattleEventType.GainedGold);
+        return new BattleEvent(BattleEventType.AlteredGold);
     }
 }

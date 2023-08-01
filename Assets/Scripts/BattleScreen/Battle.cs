@@ -47,6 +47,8 @@ namespace BattleScreen
         [SerializeField] private PlayerDeathPopup _playerDeathPopup;
         [SerializeField] private PlayerDeathPopup _winPopup;
         [FormerlySerializedAs("_hudManager")] [SerializeField] private BattleHUD hud;
+
+        [SerializeField] private ReDrawButton _reDrawButton;
         
         private InGameSfxManager _sfxManager;
         private BattleRenderer _battleRenderer;
@@ -69,6 +71,7 @@ namespace BattleScreen
             _sfxManager = InGameSfxManager.current;
             _battleRenderer = BattleRenderer.Current;
             
+            _reDrawButton.SetListener(_deck.SpawnDeck);
             _deck.SpawnDeck();
 
             // Give the game one frame to load etchings, enemies etc
@@ -141,6 +144,11 @@ namespace BattleScreen
             if (battleEvent.type == BattleEventType.PlayerMovedPlank)
             {
                 yield return 0;
+            }
+            else if (battleEvent.type == BattleEventType.ReDrewPlanks)
+            {
+                yield return 0;
+                BattleEventResponseSequencer.Current.RefreshTransforms();
             }
 
             yield return StartCoroutine(StartChainOfEvents(battleEvent));
@@ -330,6 +338,7 @@ namespace BattleScreen
         {
             return battleEvents.Any(b => 
                 b.type == BattleEventType.StartedBattle ||
+                b.type == BattleEventType.ReDrewPlanks ||
                 b.type == BattleEventType.StartedNextPlayerTurn ||
                 b.type == BattleEventType.EtchingsOrderChanged ||
                 b.type == BattleEventType.PlankCreated ||

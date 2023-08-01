@@ -11,6 +11,12 @@ namespace Etchings
     public class LoneWolfEtching : MeleeEtching
     {
         private StatModifier _damageMod;
+        
+        protected override void OnDestroy()
+        {
+            RemoveMod();
+            base.OnDestroy();
+        }
 
         protected override List<DesignResponseTrigger> GetDesignResponseTriggers()
         {
@@ -26,20 +32,12 @@ namespace Etchings
             return response;
         }
 
-        protected override List<BattleEventActionTrigger> GetDesignActionTriggers()
-        {
-            return new List<BattleEventActionTrigger>
-            {
-                ActionTrigger(BattleEventType.EndedBattle, RemoveMod)
-            };
-        }
-        
         private DesignResponse UpdateDamage()
         {
             var penalty = Design.GetStat(StatType.StatFlatModifier) * (Board.Current.PlankCount - 1);
 
             _damageMod = new StatModifier(penalty, StatModType.Flat);
-            Design.AddStatModifier(StatType.Damage, _damageMod);
+            Design.AddTempStatModifier(StatType.Damage, _damageMod);
 
             var designModificationEvent = new BattleEvent(BattleEventType.DesignModified)
             {
@@ -52,7 +50,7 @@ namespace Etchings
         private void RemoveMod()
         {
             if (_damageMod is not null)
-                Design.RemoveStatModifier(StatType.Damage, _damageMod);
+                Design.RemoveTempStatModifier(StatType.Damage, _damageMod);
         }
     }
 }

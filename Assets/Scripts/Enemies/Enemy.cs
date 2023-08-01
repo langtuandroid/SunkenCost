@@ -212,7 +212,7 @@ namespace Enemies
             var eventList = new List<BattleEvent>();
             
             eventList.Add(CreateEvent(BattleEventType.EnemyKilled, damageSource: source));
-            eventList.Add(CreateEvent(BattleEventType.TryGainedGold, Gold, source));
+            eventList.Add(CreateEvent(BattleEventType.TriedAlterGold, Gold, source));
             return new BattleEventPackage(eventList);
         }
     }

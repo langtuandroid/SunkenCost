@@ -40,6 +40,11 @@ namespace Etchings
             base.Awake();
         }
 
+        protected virtual void OnDestroy()
+        {
+            Design.RemoveAllTempStatModifiers();
+        }
+
         public void SetDesign(Design design)
         {
             Design = design;
@@ -91,13 +96,13 @@ namespace Etchings
 
         public BattleEvent AddStatModifier(StatType statType, StatModifier mod)
         {
-            Design.AddStatModifier(statType, mod);
+            Design.AddTempStatModifier(statType, mod);
             return new BattleEvent(BattleEventType.DesignModified) {primaryResponderID = ResponderID};
         }
         
         public BattleEvent RemoveStatModifier(StatType statType, StatModifier mod)
         {
-            Design.RemoveStatModifier(statType, mod);
+            Design.RemoveTempStatModifier(statType, mod);
             return new BattleEvent(BattleEventType.DesignModified) {primaryResponderID = ResponderID};
         }
 
@@ -105,7 +110,9 @@ namespace Etchings
         
         protected virtual List<BattleEventActionTrigger> GetDesignActionTriggers()
         {
-            return new List<BattleEventActionTrigger>();
+            return new List<BattleEventActionTrigger>()
+            {
+            };
         }
         
         private BattleEventPackage GetDesignResponse(BattleEvent previousBattleEvent)

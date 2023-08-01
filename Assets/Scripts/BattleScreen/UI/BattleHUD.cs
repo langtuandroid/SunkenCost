@@ -19,6 +19,8 @@ namespace BattleScreen.UI
         [SerializeField] private NextTurnButton _nextTurnButton;
         [SerializeField] private WhosTurnText _whosTurnText;
 
+        [SerializeField] private ReDrawButton _reDrawButton;
+
         private void Start()
         {
             BattleRenderer.Current.RegisterUIUpdater(this);
@@ -80,7 +82,8 @@ namespace BattleScreen.UI
         {
             switch (battleEvent.type)
             {
-                case BattleEventType.GainedGold:
+                case BattleEventType.ReDrewPlanks:
+                case BattleEventType.AlteredGold:
                     UpdateGoldText();
                     break;
                 case BattleEventType.PlayerGainedLife:

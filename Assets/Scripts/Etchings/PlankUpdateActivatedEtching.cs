@@ -12,6 +12,7 @@ namespace Etchings
             return new List<DesignResponseTrigger>
             {
                 new DesignResponseTrigger(BattleEventType.StartedNextPlayerTurn, GetPlankUpdateResponse),
+                new DesignResponseTrigger(BattleEventType.ReDrewPlanks, GetPlankUpdateResponse),
                 new DesignResponseTrigger(BattleEventType.EndedBattle, GetPlankUpdateResponse),
                 new DesignResponseTrigger(BattleEventType.PlankDestroyed, GetPlankUpdateResponse),
                 new DesignResponseTrigger(BattleEventType.PlankMoved, GetPlankUpdateResponse),

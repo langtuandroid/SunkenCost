@@ -5,6 +5,7 @@
     <e p="C:\Users\bensa\AppData\Local\JetBrains\Rider2020.2\resharper-host\Local\Transient\Rider\v202\SolutionCaches\_Deck.-115101769.00" t="ExcludeRecursive" />
     <e p="C:\Users\bensa\Documents\GitHub\Deck" t="IncludeRecursive">
       <e p="AllIn1SpriteShaderAssembly.csproj" t="IncludeRecursive" />
+      <e p="Assembly-CSharp-Editor-firstpass.csproj" t="IncludeRecursive" />
       <e p="Assembly-CSharp-Editor.csproj" t="IncludeRecursive" />
       <e p="Assembly-CSharp-firstpass.csproj" t="IncludeRecursive" />
       <e p="Assembly-CSharp.csproj" t="IncludeRecursive" />
@@ -351,6 +352,146 @@
           <e p="ReadMe.txt" t="Include" />
         </e>
         <e p="Materials" t="Include" />
+        <e p="OneLine" t="Include">
+          <e p="OneLine" t="Include">
+            <e p="Attributes" t="Include">
+              <e p="ArrayLengthAttribute.cs" t="Include" />
+              <e p="ExpandableAttribute.cs" t="Include" />
+              <e p="HideButtonsAttribute.cs" t="Include" />
+              <e p="HideLabelAttribute.cs" t="Include" />
+              <e p="HighlightAttribute.cs" t="Include" />
+              <e p="OneLineAttribute.cs" t="Include" />
+              <e p="SeparatorAttribute.cs" t="Include" />
+              <e p="WeightAttribute.cs" t="Include" />
+              <e p="WidthAttribute.cs" t="Include" />
+            </e>
+            <e p="Editor" t="Include">
+              <e p="Drawers" t="Include">
+                <e p="Array" t="Include">
+                  <e p="ArrayButtonsDrawer.cs" t="Include" />
+                  <e p="DynamicArrayDrawer.cs" t="Include" />
+                  <e p="FixedArrayDrawer.cs" t="Include" />
+                </e>
+                <e p="ComplexFieldDrawer.cs" t="Include" />
+                <e p="CustomDrawer" t="Include">
+                  <e p="CustomPropertyDrawers.cs" t="Include" />
+                  <e p="CustomPropertyTypesCache.cs" t="Include" />
+                  <e p="TypeForDrawing.cs" t="Include" />
+                </e>
+                <e p="CustomDrawer.cs" t="Include" />
+                <e p="Decorators" t="Include">
+                  <e p="HeaderDrawer.cs" t="Include" />
+                  <e p="HighlightDrawer.cs" t="Include" />
+                  <e p="SeparatorDrawer.cs" t="Include" />
+                  <e p="SpaceDrawer.cs" t="Include" />
+                  <e p="TooltipDrawer.cs" t="Include" />
+                </e>
+                <e p="Directory" t="Include">
+                  <e p="DirectoryDrawer.cs" t="Include" />
+                  <e p="RootDirectoryDrawer.cs" t="Include" />
+                </e>
+                <e p="Drawer.cs" t="Include" />
+                <e p="SimpleFieldDrawer.cs" t="Include" />
+              </e>
+              <e p="ExpandableAttributeDrawer.cs" t="Include" />
+              <e p="OneLinePropertyDrawer.cs" t="Include" />
+              <e p="SeparatorAttributeDrawer.cs" t="Include" />
+              <e p="Settings" t="Include">
+                <e p="DefaultSettingsLayer.cs" t="Include" />
+                <e p="GlobalSettingsLayer.cs" t="Include" />
+                <e p="ISettings.cs" t="Include" />
+                <e p="LocalSettingsLayer.cs" t="Include" />
+                <e p="Primitives" t="Include">
+                  <e p="TernaryBoolean.cs" t="Include" />
+                </e>
+                <e p="Settings.cs" t="Include" />
+                <e p="SettingsEditor.cs" t="Include" />
+                <e p="Tools" t="Include">
+                  <e p="PreprocessorDirectives" t="Include">
+                    <e p="PreprocessorDirectives.cs" t="Include" />
+                  </e>
+                  <e p="SettingsMenu.cs" t="Include" />
+                </e>
+              </e>
+              <e p="Slices" t="Include">
+                <e p="Drawable.cs" t="Include" />
+                <e p="Slice.cs" t="Include" />
+                <e p="Slices.cs" t="Include" />
+                <e p="SlicesCache.cs" t="Include" />
+              </e>
+              <e p="Utils" t="Include">
+                <e p="ArraysSizeObserver.cs" t="Include" />
+                <e p="CustomPropertyDrawerExtension.cs" t="Include" />
+                <e p="GuiUtil.cs" t="Include" />
+                <e p="IEnumerableExtension.cs" t="Include" />
+                <e p="InspectorUtil.cs" t="Include" />
+                <e p="NullableObjectExtension.cs" t="Include" />
+                <e p="SerializedPropertyExtension.cs" t="Include" />
+                <e p="SerializedPropertyReflectionExtension.cs" t="Include" />
+              </e>
+            </e>
+            <e p="Example" t="Include">
+              <e p="Benchmark" t="Include">
+                <e p="Scripts" t="Include">
+                  <e p="ArrayBenchmark.cs" t="Include" />
+                  <e p="SeparateFieldsBenchmark.cs" t="Include" />
+                </e>
+              </e>
+              <e p="Details" t="Include">
+                <e p="Nested" t="Include" />
+                <e p="Scripts" t="Include">
+                  <e p="ArrayOfArraysExample.cs" t="Include" />
+                  <e p="CustomPropertyDrawerExample.cs" t="Include" />
+                  <e p="Editor" t="Include">
+                    <e p="OneLineDrawerExampleEditor.cs" t="Include" />
+                  </e>
+                  <e p="ExpandableExample.cs" t="Include" />
+                  <e p="FixedLengthExample.cs" t="Include" />
+                  <e p="HideButtonsExample.cs" t="Include" />
+                  <e p="HideLabelExample.cs" t="Include" />
+                  <e p="HighlightExample.cs" t="Include" />
+                  <e p="Nested" t="Include">
+                    <e p="NestedArrayExample.cs" t="Include" />
+                    <e p="NestedSimpleExample.cs" t="Include" />
+                  </e>
+                  <e p="NestedArrayExample.cs" t="Include" />
+                  <e p="OneLineDrawerExample.cs" t="Include" />
+                  <e p="OneLineExample.cs" t="Include" />
+                  <e p="RootArrayExample.cs" t="Include" />
+                  <e p="SeparatorExample.cs" t="Include" />
+                  <e p="WeightExample.cs" t="Include" />
+                  <e p="WidthExample.cs" t="Include" />
+                </e>
+              </e>
+              <e p="Overview" t="Include">
+                <e p="Scripts" t="Include">
+                  <e p="ComplexExample.cs" t="Include" />
+                  <e p="Overview.cs" t="Include" />
+                  <e p="StandartTypesOverview.cs" t="Include" />
+                </e>
+              </e>
+              <e p="Tests" t="Include">
+                <e p="Scripts" t="Include">
+                  <e p="ExtendedClassTest.cs" t="Include" />
+                  <e p="ExtendedGenericTest.cs" t="Include" />
+                  <e p="SlicesTest.cs" t="Include" />
+                </e>
+              </e>
+            </e>
+            <e p="ReadMe.txt" t="Include" />
+          </e>
+          <e p="RectEx" t="Include">
+            <e p="ColumnExtensions.cs" t="Include" />
+            <e p="CutFromExtensions.cs" t="Include" />
+            <e p="GridExtensions.cs" t="Include" />
+            <e p="Internal" t="Include">
+              <e p="IEnumerableExtension.cs" t="Include" />
+            </e>
+            <e p="MiscellaniousExtensions.cs" t="Include" />
+            <e p="MoveToExtensions.cs" t="Include" />
+            <e p="RowExtensions.cs" t="Include" />
+          </e>
+        </e>
         <e p="Plugins" t="Include">
           <e p="Akassets" t="Include">
             <e p="SmoothGridLayout" t="Include">
@@ -364,6 +505,24 @@
                 <e p="SmoothGridLayoutUI.cs" t="Include" />
               </e>
               <e p="SmoothGridLayout.asmdef" t="Include" />
+            </e>
+          </e>
+          <e p="Demigiant" t="Include">
+            <e p="DOTween" t="Include">
+              <e p="Editor" t="Include">
+                <e p="Imgs" t="Include" />
+              </e>
+              <e p="Modules" t="Include">
+                <e p="DOTweenModuleAudio.cs" t="Include" />
+                <e p="DOTweenModuleEPOOutline.cs" t="Include" />
+                <e p="DOTweenModulePhysics.cs" t="Include" />
+                <e p="DOTweenModulePhysics2D.cs" t="Include" />
+                <e p="DOTweenModuleSprite.cs" t="Include" />
+                <e p="DOTweenModuleUI.cs" t="Include" />
+                <e p="DOTweenModuleUnityVersion.cs" t="Include" />
+                <e p="DOTweenModuleUtils.cs" t="Include" />
+              </e>
+              <e p="ReadMe.txt" t="Include" />
             </e>
           </e>
           <e p="FMOD" t="Include">
@@ -661,6 +820,7 @@
             <e p="UI" t="Include">
               <e p="BattleHUD.cs" t="Include" />
               <e p="IslandAnimator.cs" t="Include" />
+              <e p="ReDrawButton.cs" t="Include" />
             </e>
           </e>
           <e p="ChallengeLoader.cs" t="Include" />
@@ -761,7 +921,53 @@
           <e p="MainManager.cs" t="Include" />
           <e p="MapScreen" t="Include">
             <e p="DisturbanceEvent.cs" t="Include" />
+            <e p="DottedLineRenderer.cs" t="Include" />
+            <e p="Editor" t="Include">
+              <e p="MapManagerInspector.cs" t="Include" />
+            </e>
+            <e p="LineConnection.cs" t="Include" />
+            <e p="Map.cs" t="Include" />
+            <e p="MapConfig.cs" t="Include" />
+            <e p="MapGenerator.cs" t="Include" />
+            <e p="MapLayer.cs" t="Include" />
+            <e p="MapManager.cs" t="Include" />
+            <e p="MapNode.cs" t="Include" />
+            <e p="MapPlayerTracker.cs" t="Include" />
+            <e p="MapView.cs" t="Include" />
+            <e p="MinMax.cs" t="Include" />
+            <e p="Node.cs" t="Include" />
+            <e p="NodeBlueprint.cs" t="Include" />
+            <e p="Point.cs" t="Include" />
+            <e p="ReorderableList" t="Include">
+              <e p="Example" t="Include">
+                <e p="Editor" t="Include">
+                  <e p="ExampleEditor.cs" t="Include" />
+                  <e p="GameObjectEditor.cs" t="Include" />
+                  <e p="NameOverrideEditor.cs" t="Include" />
+                  <e p="NestedChildDrawer.cs" t="Include" />
+                  <e p="SurrogateTestEditor.cs" t="Include" />
+                </e>
+                <e p="Example.cs" t="Include" />
+                <e p="GameObjectExample.cs" t="Include" />
+                <e p="NameOverride.cs" t="Include" />
+                <e p="NestedExample.cs" t="Include" />
+                <e p="RecursionTest.cs" t="Include" />
+                <e p="SurrogateTest.cs" t="Include" />
+              </e>
+              <e p="List" t="Include">
+                <e p="Attributes" t="Include">
+                  <e p="ReorderableAttribute.cs" t="Include" />
+                </e>
+                <e p="Editor" t="Include">
+                  <e p="ReorderableDrawer.cs" t="Include" />
+                  <e p="ReorderableList.cs" t="Include" />
+                </e>
+                <e p="ReorderableArray.cs" t="Include" />
+              </e>
+            </e>
+            <e p="ScrollNonUI.cs" t="Include" />
             <e p="ShipyardButton.cs" t="Include" />
+            <e p="ShufflingExtension.cs" t="Include" />
           </e>
           <e p="OfferScreen" t="Include">
             <e p="BoatMover.cs" t="Include" />

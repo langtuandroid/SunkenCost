@@ -23,23 +23,349 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="50470089-3e0c-4487-973b-9d375622b070" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/Assets/Scripts/BattleScreen/BattleBoard/Deck.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/Scripts/BattleScreen/BattleBoard/Deck.cs.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/OneLine.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/OneLine/OneLine.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/OneLine/OneLine/Attributes.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/OneLine/OneLine/Attributes/ArrayLengthAttribute.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/OneLine/OneLine/Attributes/ArrayLengthAttribute.cs.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/OneLine/OneLine/Attributes/ExpandableAttribute.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/OneLine/OneLine/Attributes/ExpandableAttribute.cs.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/OneLine/OneLine/Attributes/HideButtonsAttribute.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/OneLine/OneLine/Attributes/HideButtonsAttribute.cs.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/OneLine/OneLine/Attributes/HideLabelAttribute.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/OneLine/OneLine/Attributes/HideLabelAttribute.cs.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/OneLine/OneLine/Attributes/HighlightAttribute.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/OneLine/OneLine/Attributes/HighlightAttribute.cs.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/OneLine/OneLine/Attributes/OneLineAttribute.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/OneLine/OneLine/Attributes/OneLineAttribute.cs.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/OneLine/OneLine/Attributes/SeparatorAttribute.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/OneLine/OneLine/Attributes/SeparatorAttribute.cs.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/OneLine/OneLine/Attributes/WeightAttribute.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/OneLine/OneLine/Attributes/WeightAttribute.cs.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/OneLine/OneLine/Attributes/WidthAttribute.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/OneLine/OneLine/Attributes/WidthAttribute.cs.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/OneLine/OneLine/Editor.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/OneLine/OneLine/Editor/Drawers.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/OneLine/OneLine/Editor/Drawers/Array.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/OneLine/OneLine/Editor/Drawers/Array/ArrayButtonsDrawer.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/OneLine/OneLine/Editor/Drawers/Array/ArrayButtonsDrawer.cs.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/OneLine/OneLine/Editor/Drawers/Array/DynamicArrayDrawer.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/OneLine/OneLine/Editor/Drawers/Array/DynamicArrayDrawer.cs.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/OneLine/OneLine/Editor/Drawers/Array/FixedArrayDrawer.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/OneLine/OneLine/Editor/Drawers/Array/FixedArrayDrawer.cs.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/OneLine/OneLine/Editor/Drawers/ComplexFieldDrawer.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/OneLine/OneLine/Editor/Drawers/ComplexFieldDrawer.cs.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/OneLine/OneLine/Editor/Drawers/CustomDrawer.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/OneLine/OneLine/Editor/Drawers/CustomDrawer.cs.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/OneLine/OneLine/Editor/Drawers/CustomDrawer.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/OneLine/OneLine/Editor/Drawers/CustomDrawer/CustomPropertyDrawers.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/OneLine/OneLine/Editor/Drawers/CustomDrawer/CustomPropertyDrawers.cs.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/OneLine/OneLine/Editor/Drawers/CustomDrawer/CustomPropertyTypesCache.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/OneLine/OneLine/Editor/Drawers/CustomDrawer/CustomPropertyTypesCache.cs.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/OneLine/OneLine/Editor/Drawers/CustomDrawer/TypeForDrawing.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/OneLine/OneLine/Editor/Drawers/CustomDrawer/TypeForDrawing.cs.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/OneLine/OneLine/Editor/Drawers/Decorators.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/OneLine/OneLine/Editor/Drawers/Decorators/HeaderDrawer.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/OneLine/OneLine/Editor/Drawers/Decorators/HeaderDrawer.cs.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/OneLine/OneLine/Editor/Drawers/Decorators/HighlightDrawer.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/OneLine/OneLine/Editor/Drawers/Decorators/HighlightDrawer.cs.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/OneLine/OneLine/Editor/Drawers/Decorators/SeparatorDrawer.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/OneLine/OneLine/Editor/Drawers/Decorators/SeparatorDrawer.cs.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/OneLine/OneLine/Editor/Drawers/Decorators/SpaceDrawer.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/OneLine/OneLine/Editor/Drawers/Decorators/SpaceDrawer.cs.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/OneLine/OneLine/Editor/Drawers/Decorators/TooltipDrawer.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/OneLine/OneLine/Editor/Drawers/Decorators/TooltipDrawer.cs.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/OneLine/OneLine/Editor/Drawers/Directory.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/OneLine/OneLine/Editor/Drawers/Directory/DirectoryDrawer.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/OneLine/OneLine/Editor/Drawers/Directory/DirectoryDrawer.cs.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/OneLine/OneLine/Editor/Drawers/Directory/RootDirectoryDrawer.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/OneLine/OneLine/Editor/Drawers/Directory/RootDirectoryDrawer.cs.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/OneLine/OneLine/Editor/Drawers/Drawer.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/OneLine/OneLine/Editor/Drawers/Drawer.cs.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/OneLine/OneLine/Editor/Drawers/SimpleFieldDrawer.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/OneLine/OneLine/Editor/Drawers/SimpleFieldDrawer.cs.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/OneLine/OneLine/Editor/ExpandableAttributeDrawer.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/OneLine/OneLine/Editor/ExpandableAttributeDrawer.cs.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/OneLine/OneLine/Editor/OneLinePropertyDrawer.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/OneLine/OneLine/Editor/OneLinePropertyDrawer.cs.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/OneLine/OneLine/Editor/SeparatorAttributeDrawer.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/OneLine/OneLine/Editor/SeparatorAttributeDrawer.cs.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/OneLine/OneLine/Editor/Settings.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/OneLine/OneLine/Editor/Settings/DefaultSettingsLayer.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/OneLine/OneLine/Editor/Settings/DefaultSettingsLayer.cs.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/OneLine/OneLine/Editor/Settings/GlobalSettingsLayer.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/OneLine/OneLine/Editor/Settings/GlobalSettingsLayer.cs.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/OneLine/OneLine/Editor/Settings/ISettings.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/OneLine/OneLine/Editor/Settings/ISettings.cs.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/OneLine/OneLine/Editor/Settings/LocalSettingsLayer.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/OneLine/OneLine/Editor/Settings/LocalSettingsLayer.cs.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/OneLine/OneLine/Editor/Settings/Primitives.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/OneLine/OneLine/Editor/Settings/Primitives/TernaryBoolean.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/OneLine/OneLine/Editor/Settings/Primitives/TernaryBoolean.cs.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/OneLine/OneLine/Editor/Settings/Settings.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/OneLine/OneLine/Editor/Settings/Settings.cs.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/OneLine/OneLine/Editor/Settings/SettingsEditor.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/OneLine/OneLine/Editor/Settings/SettingsEditor.cs.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/OneLine/OneLine/Editor/Settings/Tools.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/OneLine/OneLine/Editor/Settings/Tools/PreprocessorDirectives.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/OneLine/OneLine/Editor/Settings/Tools/PreprocessorDirectives/PreprocessorDirectives.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/OneLine/OneLine/Editor/Settings/Tools/PreprocessorDirectives/PreprocessorDirectives.cs.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/OneLine/OneLine/Editor/Settings/Tools/SettingsMenu.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/OneLine/OneLine/Editor/Settings/Tools/SettingsMenu.cs.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/OneLine/OneLine/Editor/Slices.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/OneLine/OneLine/Editor/Slices/Drawable.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/OneLine/OneLine/Editor/Slices/Drawable.cs.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/OneLine/OneLine/Editor/Slices/Slice.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/OneLine/OneLine/Editor/Slices/Slice.cs.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/OneLine/OneLine/Editor/Slices/Slices.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/OneLine/OneLine/Editor/Slices/Slices.cs.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/OneLine/OneLine/Editor/Slices/SlicesCache.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/OneLine/OneLine/Editor/Slices/SlicesCache.cs.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/OneLine/OneLine/Editor/Utils.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/OneLine/OneLine/Editor/Utils/ArraysSizeObserver.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/OneLine/OneLine/Editor/Utils/ArraysSizeObserver.cs.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/OneLine/OneLine/Editor/Utils/CustomPropertyDrawerExtension.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/OneLine/OneLine/Editor/Utils/CustomPropertyDrawerExtension.cs.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/OneLine/OneLine/Editor/Utils/GuiUtil.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/OneLine/OneLine/Editor/Utils/GuiUtil.cs.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/OneLine/OneLine/Editor/Utils/IEnumerableExtension.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/OneLine/OneLine/Editor/Utils/IEnumerableExtension.cs.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/OneLine/OneLine/Editor/Utils/InspectorUtil.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/OneLine/OneLine/Editor/Utils/InspectorUtil.cs.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/OneLine/OneLine/Editor/Utils/NullableObjectExtension.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/OneLine/OneLine/Editor/Utils/NullableObjectExtension.cs.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/OneLine/OneLine/Editor/Utils/SerializedPropertyExtension.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/OneLine/OneLine/Editor/Utils/SerializedPropertyExtension.cs.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/OneLine/OneLine/Editor/Utils/SerializedPropertyReflectionExtension.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/OneLine/OneLine/Editor/Utils/SerializedPropertyReflectionExtension.cs.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/OneLine/OneLine/Example.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/OneLine/OneLine/Example/Benchmark.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/OneLine/OneLine/Example/Benchmark/Array Benchmark.asset" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/OneLine/OneLine/Example/Benchmark/Array Benchmark.asset.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/OneLine/OneLine/Example/Benchmark/Scripts.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/OneLine/OneLine/Example/Benchmark/Scripts/ArrayBenchmark.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/OneLine/OneLine/Example/Benchmark/Scripts/ArrayBenchmark.cs.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/OneLine/OneLine/Example/Benchmark/Scripts/SeparateFieldsBenchmark.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/OneLine/OneLine/Example/Benchmark/Scripts/SeparateFieldsBenchmark.cs.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/OneLine/OneLine/Example/Benchmark/Separate Fields Benchmark.asset" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/OneLine/OneLine/Example/Benchmark/Separate Fields Benchmark.asset.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/OneLine/OneLine/Example/Details.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/OneLine/OneLine/Example/Details/Array Of Arrays Example.asset" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/OneLine/OneLine/Example/Details/Array Of Arrays Example.asset.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/OneLine/OneLine/Example/Details/Custom Property Drawer Example.asset" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/OneLine/OneLine/Example/Details/Custom Property Drawer Example.asset.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/OneLine/OneLine/Example/Details/Expandable Example.asset" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/OneLine/OneLine/Example/Details/Expandable Example.asset.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/OneLine/OneLine/Example/Details/Fixed Length Example.asset" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/OneLine/OneLine/Example/Details/Fixed Length Example.asset.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/OneLine/OneLine/Example/Details/Hide Buttons Example.asset" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/OneLine/OneLine/Example/Details/Hide Buttons Example.asset.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/OneLine/OneLine/Example/Details/Hide Label Example.asset" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/OneLine/OneLine/Example/Details/Hide Label Example.asset.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/OneLine/OneLine/Example/Details/Highlight Example.asset" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/OneLine/OneLine/Example/Details/Highlight Example.asset.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/OneLine/OneLine/Example/Details/Nested Array Example.asset" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/OneLine/OneLine/Example/Details/Nested Array Example.asset.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/OneLine/OneLine/Example/Details/Nested.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/OneLine/OneLine/Example/Details/Nested/Nested Array Example.asset" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/OneLine/OneLine/Example/Details/Nested/Nested Array Example.asset.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/OneLine/OneLine/Example/Details/Nested/Nested Simple Example.asset" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/OneLine/OneLine/Example/Details/Nested/Nested Simple Example.asset.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/OneLine/OneLine/Example/Details/One Line Drawer Example.asset" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/OneLine/OneLine/Example/Details/One Line Drawer Example.asset.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/OneLine/OneLine/Example/Details/One Line Example.asset" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/OneLine/OneLine/Example/Details/One Line Example.asset.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/OneLine/OneLine/Example/Details/Root Array Example.asset" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/OneLine/OneLine/Example/Details/Root Array Example.asset.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/OneLine/OneLine/Example/Details/Scripts.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/OneLine/OneLine/Example/Details/Scripts/ArrayOfArraysExample.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/OneLine/OneLine/Example/Details/Scripts/ArrayOfArraysExample.cs.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/OneLine/OneLine/Example/Details/Scripts/CustomPropertyDrawerExample.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/OneLine/OneLine/Example/Details/Scripts/CustomPropertyDrawerExample.cs.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/OneLine/OneLine/Example/Details/Scripts/Editor.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/OneLine/OneLine/Example/Details/Scripts/Editor/OneLineDrawerExampleEditor.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/OneLine/OneLine/Example/Details/Scripts/Editor/OneLineDrawerExampleEditor.cs.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/OneLine/OneLine/Example/Details/Scripts/ExpandableExample.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/OneLine/OneLine/Example/Details/Scripts/ExpandableExample.cs.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/OneLine/OneLine/Example/Details/Scripts/FixedLengthExample.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/OneLine/OneLine/Example/Details/Scripts/FixedLengthExample.cs.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/OneLine/OneLine/Example/Details/Scripts/HideButtonsExample.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/OneLine/OneLine/Example/Details/Scripts/HideButtonsExample.cs.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/OneLine/OneLine/Example/Details/Scripts/HideLabelExample.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/OneLine/OneLine/Example/Details/Scripts/HideLabelExample.cs.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/OneLine/OneLine/Example/Details/Scripts/HighlightExample.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/OneLine/OneLine/Example/Details/Scripts/HighlightExample.cs.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/OneLine/OneLine/Example/Details/Scripts/Nested.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/OneLine/OneLine/Example/Details/Scripts/Nested/NestedArrayExample.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/OneLine/OneLine/Example/Details/Scripts/Nested/NestedArrayExample.cs.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/OneLine/OneLine/Example/Details/Scripts/Nested/NestedSimpleExample.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/OneLine/OneLine/Example/Details/Scripts/Nested/NestedSimpleExample.cs.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/OneLine/OneLine/Example/Details/Scripts/NestedArrayExample.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/OneLine/OneLine/Example/Details/Scripts/NestedArrayExample.cs.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/OneLine/OneLine/Example/Details/Scripts/OneLineDrawerExample.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/OneLine/OneLine/Example/Details/Scripts/OneLineDrawerExample.cs.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/OneLine/OneLine/Example/Details/Scripts/OneLineExample.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/OneLine/OneLine/Example/Details/Scripts/OneLineExample.cs.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/OneLine/OneLine/Example/Details/Scripts/RootArrayExample.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/OneLine/OneLine/Example/Details/Scripts/RootArrayExample.cs.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/OneLine/OneLine/Example/Details/Scripts/SeparatorExample.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/OneLine/OneLine/Example/Details/Scripts/SeparatorExample.cs.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/OneLine/OneLine/Example/Details/Scripts/WeightExample.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/OneLine/OneLine/Example/Details/Scripts/WeightExample.cs.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/OneLine/OneLine/Example/Details/Scripts/WidthExample.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/OneLine/OneLine/Example/Details/Scripts/WidthExample.cs.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/OneLine/OneLine/Example/Details/Separator Example.asset" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/OneLine/OneLine/Example/Details/Separator Example.asset.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/OneLine/OneLine/Example/Details/Weight Example.asset" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/OneLine/OneLine/Example/Details/Weight Example.asset.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/OneLine/OneLine/Example/Details/Width Example.asset" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/OneLine/OneLine/Example/Details/Width Example.asset.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/OneLine/OneLine/Example/Overview.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/OneLine/OneLine/Example/Overview/ComplexExample.asset" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/OneLine/OneLine/Example/Overview/ComplexExample.asset.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/OneLine/OneLine/Example/Overview/Overview.asset" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/OneLine/OneLine/Example/Overview/Overview.asset.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/OneLine/OneLine/Example/Overview/Scripts.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/OneLine/OneLine/Example/Overview/Scripts/ComplexExample.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/OneLine/OneLine/Example/Overview/Scripts/ComplexExample.cs.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/OneLine/OneLine/Example/Overview/Scripts/Overview.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/OneLine/OneLine/Example/Overview/Scripts/Overview.cs.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/OneLine/OneLine/Example/Overview/Scripts/StandartTypesOverview.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/OneLine/OneLine/Example/Overview/Scripts/StandartTypesOverview.cs.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/OneLine/OneLine/Example/Overview/Standart Types Overview.asset" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/OneLine/OneLine/Example/Overview/Standart Types Overview.asset.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/OneLine/OneLine/Example/Tests.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/OneLine/OneLine/Example/Tests/New Extended Class Test.asset" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/OneLine/OneLine/Example/Tests/New Extended Class Test.asset.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/OneLine/OneLine/Example/Tests/New Extended Generic Test.asset" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/OneLine/OneLine/Example/Tests/New Extended Generic Test.asset.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/OneLine/OneLine/Example/Tests/New Slices Test.asset" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/OneLine/OneLine/Example/Tests/New Slices Test.asset.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/OneLine/OneLine/Example/Tests/Scripts.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/OneLine/OneLine/Example/Tests/Scripts/ExtendedClassTest.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/OneLine/OneLine/Example/Tests/Scripts/ExtendedClassTest.cs.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/OneLine/OneLine/Example/Tests/Scripts/ExtendedGenericTest.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/OneLine/OneLine/Example/Tests/Scripts/ExtendedGenericTest.cs.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/OneLine/OneLine/Example/Tests/Scripts/SlicesTest.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/OneLine/OneLine/Example/Tests/Scripts/SlicesTest.cs.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/OneLine/OneLine/Screenshot_1.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/OneLine/OneLine/Screenshot_1.png.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/OneLine/OneLine/Screenshot_2.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/OneLine/OneLine/Screenshot_2.png.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/OneLine/OneLine/Screenshot_3.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/OneLine/OneLine/Screenshot_3.png.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/OneLine/OneLine/readme.txt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/OneLine/OneLine/readme.txt.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/OneLine/RectEx.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/OneLine/RectEx/ColumnExtensions.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/OneLine/RectEx/ColumnExtensions.cs.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/OneLine/RectEx/CutFromExtensions.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/OneLine/RectEx/CutFromExtensions.cs.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/OneLine/RectEx/GridExtensions.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/OneLine/RectEx/GridExtensions.cs.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/OneLine/RectEx/Internal.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/OneLine/RectEx/Internal/IEnumerableExtension.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/OneLine/RectEx/Internal/IEnumerableExtension.cs.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/OneLine/RectEx/MiscellaniousExtensions.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/OneLine/RectEx/MiscellaniousExtensions.cs.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/OneLine/RectEx/MoveToExtensions.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/OneLine/RectEx/MoveToExtensions.cs.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/OneLine/RectEx/RowExtensions.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/OneLine/RectEx/RowExtensions.cs.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Plugins/Demigiant.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Plugins/Demigiant/DOTween.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Plugins/Demigiant/DOTween/DOTween.XML" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Plugins/Demigiant/DOTween/DOTween.XML.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Plugins/Demigiant/DOTween/DOTween.dll" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Plugins/Demigiant/DOTween/DOTween.dll.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Plugins/Demigiant/DOTween/Editor.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Plugins/Demigiant/DOTween/Editor/DOTweenEditor.XML" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Plugins/Demigiant/DOTween/Editor/DOTweenEditor.XML.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Plugins/Demigiant/DOTween/Editor/DOTweenEditor.dll" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Plugins/Demigiant/DOTween/Editor/DOTweenEditor.dll.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Plugins/Demigiant/DOTween/Editor/Imgs.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Plugins/Demigiant/DOTween/Editor/Imgs/DOTweenIcon.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Plugins/Demigiant/DOTween/Editor/Imgs/DOTweenIcon.png.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Plugins/Demigiant/DOTween/Editor/Imgs/DOTweenMiniIcon.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Plugins/Demigiant/DOTween/Editor/Imgs/DOTweenMiniIcon.png.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Plugins/Demigiant/DOTween/Editor/Imgs/Footer.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Plugins/Demigiant/DOTween/Editor/Imgs/Footer.png.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Plugins/Demigiant/DOTween/Editor/Imgs/Footer_dark.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Plugins/Demigiant/DOTween/Editor/Imgs/Footer_dark.png.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Plugins/Demigiant/DOTween/Editor/Imgs/Header.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Plugins/Demigiant/DOTween/Editor/Imgs/Header.jpg.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Plugins/Demigiant/DOTween/Modules.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Plugins/Demigiant/DOTween/Modules/DOTweenModuleAudio.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Plugins/Demigiant/DOTween/Modules/DOTweenModuleAudio.cs.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Plugins/Demigiant/DOTween/Modules/DOTweenModuleEPOOutline.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Plugins/Demigiant/DOTween/Modules/DOTweenModuleEPOOutline.cs.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Plugins/Demigiant/DOTween/Modules/DOTweenModulePhysics.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Plugins/Demigiant/DOTween/Modules/DOTweenModulePhysics.cs.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Plugins/Demigiant/DOTween/Modules/DOTweenModulePhysics2D.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Plugins/Demigiant/DOTween/Modules/DOTweenModulePhysics2D.cs.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Plugins/Demigiant/DOTween/Modules/DOTweenModuleSprite.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Plugins/Demigiant/DOTween/Modules/DOTweenModuleSprite.cs.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Plugins/Demigiant/DOTween/Modules/DOTweenModuleUI.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Plugins/Demigiant/DOTween/Modules/DOTweenModuleUI.cs.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Plugins/Demigiant/DOTween/Modules/DOTweenModuleUnityVersion.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Plugins/Demigiant/DOTween/Modules/DOTweenModuleUnityVersion.cs.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Plugins/Demigiant/DOTween/Modules/DOTweenModuleUtils.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Plugins/Demigiant/DOTween/Modules/DOTweenModuleUtils.cs.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Plugins/Demigiant/DOTween/readme.txt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Plugins/Demigiant/DOTween/readme.txt.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Prefabs/BattleScene/PlayerPlank.prefab" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Prefabs/BattleScene/PlayerPlank.prefab.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Prefabs/Map/Node.prefab" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Prefabs/Map/Node.prefab.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Prefabs/PlankDisplay.prefab" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Prefabs/PlankDisplay.prefab.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Prefabs/UI/ReRoll.prefab" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Prefabs/UI/ReRoll.prefab.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Resources/DOTweenSettings.asset" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Resources/DOTweenSettings.asset.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Scenes/BattleScreen.unity" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Scenes/BattleScreen.unity.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Scenes/MapScreen.unity" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Scenes/MapScreen.unity.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Scripts/BattleScreen/UI/ReDrawButton.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Scripts/BattleScreen/UI/ReDrawButton.cs.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Scripts/MapScreen/ScrollNonUI.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/.idea.Deck/.idea/contentModel.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.Deck/.idea/contentModel.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/.idea.Deck/.idea/indexLayout.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.Deck/.idea/indexLayout.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/.idea.Deck/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.Deck/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/UI/TooltipCanvas.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Prefabs/UI/TooltipCanvas.prefab" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Editor/Resources/OneLine/OneLineSettings.asset" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Editor/Resources/OneLine/OneLineSettings.asset" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/OfferScreen/DesignCard.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Prefabs/OfferScreen/DesignCard.prefab" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/Plank.prefab" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/Plank.prefab.meta" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Resources/ScriptableObjects/DefaultConfig.asset" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Resources/ScriptableObjects/DefaultConfig.asset" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Resources/ScriptableObjects/Designs/Impede.asset" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Resources/ScriptableObjects/Designs/Impede.asset" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scenes/Battle.unity" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scenes/Battle.unity.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scenes/OfferScreen.unity" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scenes/OfferScreen.unity" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Scripts/BattleScreen/Battle.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/BattleScreen/Battle.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/BattleScreen/BattleBoard/BoardScaler.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/BattleScreen/BattleBoard/BoardScaler.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Loaders/ScenarioLoader.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Loaders/ScenarioLoader.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/MainManager.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/MainManager.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/BattleScreen/BattleBoard/Board.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/BattleScreen/BattleBoard/Board.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/BattleScreen/BattleBoard/Deck.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/BattleScreen/BattleBoard/Deck.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/BattleScreen/BattleBoard/PlankDisplay.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/BattleScreen/BattleBoard/PlankDisplay.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/BattleScreen/BattleEvents/BattleEvent.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/BattleScreen/BattleEvents/BattleEvent.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/BattleScreen/BattleEvents/EtchingBattleEventResponderGroup.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/BattleScreen/BattleEvents/EtchingBattleEventResponderGroup.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/BattleScreen/Player.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/BattleScreen/Player.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/BattleScreen/UI/BattleHUD.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/BattleScreen/UI/BattleHUD.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Enemies/Enemy.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Enemies/Enemy.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Enemies/EnemyPlankArranger.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Enemies/EnemyPlankArranger.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Etchings/AmbushEtching.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Etchings/AmbushEtching.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Etchings/BoostEtching.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Etchings/BoostEtching.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Etchings/Etching.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Etchings/Etching.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Etchings/LoneWolfEtching.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Etchings/LoneWolfEtching.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Etchings/PlankUpdateActivatedEtching.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Etchings/PlankUpdateActivatedEtching.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Etchings/RaidEtching.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Etchings/RaidEtching.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Etchings/ResearchEtching.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Etchings/ResearchEtching.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Pickups/Designs/Design.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Pickups/Designs/Design.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Pickups/Items/Items/CapitalListItem.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Pickups/Items/Items/CapitalListItem.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Pickups/Items/Items/PassiveIncomeItem.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Pickups/Items/Items/PassiveIncomeItem.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Scripts/Pickups/Rewards/RewardGenerator.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Pickups/Rewards/RewardGenerator.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/PlankDisplay.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/BattleScreen/BattleBoard/PlankDisplay.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/PlankDisplay.cs.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/BattleScreen/BattleBoard/PlankDisplay.cs.meta" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/PlankFactory.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/BattleScreen/BattleBoard/PlankFactory.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/PlankFactory.cs.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/BattleScreen/BattleBoard/PlankFactory.cs.meta" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/RunProgress.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/RunProgress.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Bugs.docx" beforeDir="false" afterPath="$PROJECT_DIR$/Bugs.docx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ProjectSettings/EditorBuildSettings.asset" beforeDir="false" afterPath="$PROJECT_DIR$/ProjectSettings/EditorBuildSettings.asset" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/UserSettings/EditorUserSettings.asset" beforeDir="false" afterPath="$PROJECT_DIR$/UserSettings/EditorUserSettings.asset" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/UserSettings/Layouts/CurrentMaximizeLayout.dwlt" beforeDir="false" afterPath="$PROJECT_DIR$/UserSettings/Layouts/CurrentMaximizeLayout.dwlt" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/UserSettings/Layouts/default-2021.dwlt" beforeDir="false" afterPath="$PROJECT_DIR$/UserSettings/Layouts/default-2021.dwlt" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -57,6 +383,7 @@
     <setting file="file://$PROJECT_DIR$/Assets/Scripts/Loaders/PersistantSingletonsContainer.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/SourcesCache/5A41D6B7-1898-42EC-A409-FD0B1C3E3DCF/0/System.Linq.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Scripts/OfferScreen/DesignCardRow.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$USER_HOME$/Downloads/slay-the-spire-map-in-unity-master/slay-the-spire-map-in-unity-master/Assets/Scripts/DottedLineRenderer.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Library/PackageCache/com.unity.textmeshpro@3.0.6/Scripts/Runtime/TMP_Text.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Scripts/Etchings/RestEtching.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Scripts/BattleScreen/BattleEvents/BattleEventResponseSequencer.cs" root0="FORCE_HIGHLIGHTING" />
@@ -81,26 +408,12 @@
     <setting file="file://$PROJECT_DIR$/Assets/Scripts/BattleScreen/BattleEvents/BattleEventResponseTrigger.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Library/PackageCache/com.unity.ugui@1.0.0/Runtime/EventSystem/EventSystem.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Scripts/Etchings/FinaliseEtching.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/Scripts/MapScreen/ScrollNonUI.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Scripts/Pickups/Rewards/RewardGenerator.cs" root0="FORCE_HIGHLIGHTING" />
   </component>
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/Assets/Scripts/Enemies/Enemies/CarppoolEnemy.cs" />
-        <option value="$PROJECT_DIR$/Assets/Scripts/BattleScreen/UI/IslandAnimation.cs" />
-        <option value="$PROJECT_DIR$/Assets/Scripts/Enemies/EnemyPlankArranger.cs" />
-        <option value="$PROJECT_DIR$/Assets/Scripts/Damage/DamageHandler.cs" />
-        <option value="$PROJECT_DIR$/Assets/Scripts/Enemies/Enemy.cs" />
-        <option value="$PROJECT_DIR$/Assets/Scripts/BattleScreen/BattleBoard/Plank.cs" />
-        <option value="$PROJECT_DIR$/Assets/Scripts/Etchings/BoostEtching.cs" />
-        <option value="$PROJECT_DIR$/Assets/Scripts/Enemies/Enemies/CucungerEnemy.cs" />
-        <option value="$PROJECT_DIR$/Assets/Scripts/PlankFactory.cs" />
-        <option value="$PROJECT_DIR$/Assets/Scripts/BattleScreen/BattleBoard/Board.cs" />
-        <option value="$PROJECT_DIR$/Assets/Scripts/BattleScreen/UI/BattleHUD.cs" />
-        <option value="$PROJECT_DIR$/Assets/Scripts/UI/WhosTurnText.cs" />
-        <option value="$PROJECT_DIR$/Assets/Scripts/Disturbances/RewardAsset.cs" />
-        <option value="$PROJECT_DIR$/Assets/Scripts/Disturbances/Disturbance.cs" />
-        <option value="$PROJECT_DIR$/Assets/Scripts/MapScreen/DisturbanceGenerator.cs" />
         <option value="$PROJECT_DIR$/Assets/Scripts/Pickups/RarityAsset.cs" />
         <option value="$PROJECT_DIR$/Assets/Scripts/Pickups/PickupAsset.cs" />
         <option value="$PROJECT_DIR$/Assets/Scripts/Pickups/RarityPickupAsset.cs" />
@@ -130,13 +443,28 @@
         <option value="$PROJECT_DIR$/Assets/Scripts/OfferScreen/PriceHandler.cs" />
         <option value="$PROJECT_DIR$/Assets/Scripts/OfferScreen/VarnishOfferGenerator.cs" />
         <option value="$PROJECT_DIR$/Assets/Scripts/OfferScreen/ItemOfferGenerator.cs" />
-        <option value="$PROJECT_DIR$/Assets/Scripts/Pickups/Rewards/RewardGenerator.cs" />
         <option value="$PROJECT_DIR$/Assets/Scripts/BattleScreen/BattleBoard/BoardScaler.cs" />
         <option value="$PROJECT_DIR$/Assets/Scripts/MainManager.cs" />
         <option value="$PROJECT_DIR$/Assets/Scripts/RunProgress.cs" />
         <option value="$PROJECT_DIR$/Assets/Scripts/Loaders/ScenarioLoader.cs" />
-        <option value="$PROJECT_DIR$/Assets/Scripts/BattleScreen/Battle.cs" />
+        <option value="$PROJECT_DIR$/Assets/Scripts/BattleScreen/UI/RerollButton.cs" />
+        <option value="$PROJECT_DIR$/Assets/Scripts/BattleScreen/UI/ReRollButton.cs" />
+        <option value="$PROJECT_DIR$/Assets/Scripts/BattleScreen/BattleEvents/BattleEvent.cs" />
+        <option value="$PROJECT_DIR$/Assets/Scripts/BattleScreen/BattleEvents/EtchingBattleEventResponderGroup.cs" />
+        <option value="$PROJECT_DIR$/Assets/Scripts/BattleScreen/UI/BattleHUD.cs" />
         <option value="$PROJECT_DIR$/Assets/Scripts/BattleScreen/BattleBoard/Deck.cs" />
+        <option value="$PROJECT_DIR$/Assets/Scripts/BattleScreen/UI/ReDrawButton.cs" />
+        <option value="$PROJECT_DIR$/Assets/Scripts/Enemies/EnemyPlankArranger.cs" />
+        <option value="$PROJECT_DIR$/Assets/Scripts/BattleScreen/BattleBoard/Board.cs" />
+        <option value="$PROJECT_DIR$/Assets/Scripts/BattleScreen/Battle.cs" />
+        <option value="$PROJECT_DIR$/Assets/Scripts/Etchings/PlankUpdateActivatedEtching.cs" />
+        <option value="$PROJECT_DIR$/Assets/Scripts/Pickups/Designs/Design.cs" />
+        <option value="$PROJECT_DIR$/Assets/Scripts/Etchings/Etching.cs" />
+        <option value="$PROJECT_DIR$/Assets/Scripts/Etchings/AmbushEtching.cs" />
+        <option value="$PROJECT_DIR$/Assets/Scripts/Etchings/LoneWolfEtching.cs" />
+        <option value="$PROJECT_DIR$/Assets/Scripts/Etchings/BoostEtching.cs" />
+        <option value="$PROJECT_DIR$/Assets/Scripts/Pickups/Rewards/RewardGenerator.cs" />
+        <option value="$PROJECT_DIR$/Assets/Scripts/BattleScreen/BattleBoard/PlankDisplay.cs" />
       </list>
     </option>
   </component>
@@ -294,6 +622,10 @@
       <workItem from="1689118118191" duration="2442000" />
       <workItem from="1689377160766" duration="679000" />
       <workItem from="1689719418902" duration="4861000" />
+      <workItem from="1689919346203" duration="6184000" />
+      <workItem from="1690013180971" duration="2052000" />
+      <workItem from="1690152052770" duration="2761000" />
+      <workItem from="1690527087199" duration="1436000" />
     </task>
     <servers />
   </component>

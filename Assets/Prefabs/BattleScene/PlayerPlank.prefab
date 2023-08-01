@@ -63,7 +63,7 @@ GameObject:
   - component: {fileID: 8401635382843068101}
   - component: {fileID: 3066288066200457075}
   m_Layer: 5
-  m_Name: Plank
+  m_Name: PlayerPlank
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

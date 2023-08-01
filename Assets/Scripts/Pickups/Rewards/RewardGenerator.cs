@@ -17,7 +17,7 @@ namespace Pickups.Rewards
     
         private static readonly Dictionary<RewardType, float> NormalWeightings = new Dictionary<RewardType, float>()
         {
-            {RewardType.Card, 0.5f},
+            {RewardType.Card, 1f},
             {RewardType.GoldRush, 0.2f},
             {RewardType.Heart, 0.15f},
             {RewardType.Item, 0.15f}

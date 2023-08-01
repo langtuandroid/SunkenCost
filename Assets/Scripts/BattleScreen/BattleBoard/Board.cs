@@ -77,21 +77,27 @@ namespace BattleScreen.BattleBoard
                 _cachedPlanks.Add(plank);
             }
 
-            for (var i = _cachedPlanks.Count - 1; i > 0; i--)
+            for (var i = _cachedPlanks.Count - 1; i >= 0; i--)
             {
                 if (_cachedPlanks[i] is null || !planksInList.Contains((_cachedPlanks[i])))
                 {
                     _cachedPlanks.RemoveAt(i);
                 }
             }
+            
+            Debug.Log($"Refreshed with {string.Join(", ",_cachedPlanks.Select(c => c.Etching.Design.Title))}");
         }
         
-        public void DestroyAllPlanks()
+        public List<BattleEvent> DestroyAllPlanks()
         {
-            foreach (var plank in PlanksInOrder)
+            var response = new List<BattleEvent>();
+
+            for (var i = PlanksInOrder.Count - 1; i >= 0; i--)
             {
-                plank.Destroy(DamageSource.PlankDestruction);
+                response.AddRange(PlanksInOrder[i].Destroy(DamageSource.PlankDestruction));
             }
+            
+            return response;
         }
     }
 }

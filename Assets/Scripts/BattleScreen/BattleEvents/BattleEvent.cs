@@ -15,6 +15,7 @@ namespace BattleScreen
     {
         None,
         StartedBattle,
+        ReDrewPlanks,
         StartedEnemyTurn,
         StartedEnemyMovementPeriod,
         EndedEnemyTurn,
@@ -41,8 +42,8 @@ namespace BattleScreen
         EtchingStunned,
         EtchingUnStunned,
         ItemActivated,
-        TryGainedGold,
-        GainedGold,
+        TriedAlterGold,
+        AlteredGold,
         PlayerMovedPlank,
         PlayerUsedMove,
         EtchingsOrderChanged,

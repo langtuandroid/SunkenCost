@@ -44,28 +44,6 @@ public class PlankDisplay : MonoBehaviour, IBattleEventUpdatedUI, IReorderableEl
             BattleRenderer.Current.DeregisterUIUpdater(this);
     }
     
-    private IEnumerator ColorForAttackOnThisPlank(Color color)
-    {
-        _indicatorImage.color = new Color(color.r, color.g, color.b, _originalIndicatorAlpha);
-        yield return new WaitForSecondsRealtime(Battle.ActionExecutionSpeed);
-        _indicatorImage.color = _isStunned? new Color(0, 0, 0, 0) : _originalIndicatorColor;
-        
-    }
-
-    private void SetAsStunned()
-    {
-        _isStunned = true;
-        _plankImage.color = _stunnedColor;
-        _indicatorImage.color = new Color(0, 0, 0, 0);
-    }
-
-    private void SetAsUnStunned()
-    {
-        _isStunned = false;
-        _plankImage.color = _originalPlankColor;
-        _indicatorImage.color = _originalIndicatorColor;
-    }
-
     public void RespondToBattleEvent(BattleEvent battleEvent)
     {
         switch (battleEvent.type)
@@ -107,5 +85,27 @@ public class PlankDisplay : MonoBehaviour, IBattleEventUpdatedUI, IReorderableEl
     public void Released()
     {
         _washImage.enabled = true;
+    }
+    
+    private IEnumerator ColorForAttackOnThisPlank(Color color)
+    {
+        _indicatorImage.color = new Color(color.r, color.g, color.b, _originalIndicatorAlpha);
+        yield return new WaitForSecondsRealtime(Battle.ActionExecutionSpeed);
+        _indicatorImage.color = _isStunned? new Color(0, 0, 0, 0) : _originalIndicatorColor;
+        
+    }
+
+    private void SetAsStunned()
+    {
+        _isStunned = true;
+        _plankImage.color = _stunnedColor;
+        _indicatorImage.color = new Color(0, 0, 0, 0);
+    }
+
+    private void SetAsUnStunned()
+    {
+        _isStunned = false;
+        _plankImage.color = _originalPlankColor;
+        _indicatorImage.color = _originalIndicatorColor;
     }
 }

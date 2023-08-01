@@ -21,6 +21,7 @@ namespace BattleScreen.BattleBoard
                 var plank = PlankFactory.Current.CreatePlank();
                 EtchingFactory.Current.CreateEtching(plank, deck[i]);
             }
+            
         }
     }
 }

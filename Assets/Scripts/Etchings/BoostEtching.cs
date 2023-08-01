@@ -17,6 +17,12 @@ namespace Etchings
         private readonly List<StatModifier> _boostMods = new List<StatModifier>();
         private bool _modsActive = false;
         
+        protected override void OnDestroy()
+        {
+            ClearModsWithoutBoosting();
+            base.OnDestroy();
+        }
+        
         protected override List<DesignResponseTrigger> GetDesignResponseTriggers()
         {
             var response = new List<DesignResponseTrigger>()
@@ -33,14 +39,6 @@ namespace Etchings
         protected override DesignResponse GetPlankUpdateResponse(BattleEvent b)
         {
             return RefreshBoosts();
-        }
-
-        protected override List<BattleEventActionTrigger> GetDesignActionTriggers()
-        {
-            return new List<BattleEventActionTrigger>
-            {
-                ActionTrigger(BattleEventType.EndedBattle, () => ClearModsWithoutBoosting())
-            };
         }
 
         private DesignResponse ClearModsWithoutBoosting()

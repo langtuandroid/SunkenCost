@@ -57,11 +57,13 @@ namespace Enemies
 
         private void ArrangeAllEnemies()
         {
+            Debug.Log(Board.Current.PlankCount);
             for (var i = -1; i < Board.Current.PlankCount; i++) ArrangeEnemiesOnPlank(i, false);
         }
 
         private void ArrangeEnemiesOnPlank(int plankNum, bool doImmediately)
         {
+            Debug.Log(plankNum);
             var isOnIsland = plankNum == -1;
 
             var enemiesOnPlank = EnemySequencer.Current.AllEnemies

@@ -50,6 +50,9 @@ namespace Designs
 
         private readonly Dictionary<StatType, Stat> _stats = new Dictionary<StatType, Stat>();
 
+        private readonly Dictionary<StatModifier, StatType> _temporaryStatMods =
+            new Dictionary<StatModifier, StatType>();
+
         public Design(DesignAsset designAsset)
         {
             this.designAsset = designAsset;
@@ -108,16 +111,28 @@ namespace Designs
             throw new UnexpectedStatException(statType);
         }
 
-        public void AddStatModifier(StatType statType, StatModifier statMod)
+        public void AddTempStatModifier(StatType statType, StatModifier statMod)
         {
             if (!HasStat(statType)) throw new UnexpectedStatException(statType);
             _stats[statType].AddModifier(statMod);
+            
+            _temporaryStatMods.Add(statMod, statType);
         }
         
-        public void RemoveStatModifier(StatType statType, StatModifier statMod)
+        public void RemoveTempStatModifier(StatType statType, StatModifier statMod)
         {
             if (!HasStat(statType)) throw new UnexpectedStatException(statType);
             _stats[statType].RemoveModifier(statMod);
+            
+            _temporaryStatMods.Remove(statMod);
+        }
+
+        public void RemoveAllTempStatModifiers()
+        {
+            foreach (var (statMod, statType) in _temporaryStatMods)
+            {
+                _stats[statType].RemoveModifier(statMod);
+            }
         }
 
         public void SetCost(int cost)
