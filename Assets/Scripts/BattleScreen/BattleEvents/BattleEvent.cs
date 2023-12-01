@@ -55,6 +55,8 @@ namespace BattleScreen
         PlankDestroyed,
         PlankMoved,
         DesignModified,
+        PlayerRolled,
+        Rolled
     }
     
     

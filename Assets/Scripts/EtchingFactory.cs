@@ -21,7 +21,7 @@ public class EtchingFactory : MonoBehaviour
         Current = this;
     }
 
-    public void CreateEtching(Plank plank, Design design)
+    public Etching CreateEtching(Plank plank, Design design)
     {
         var etchingSlot = GetEtchingSlot(plank);
         
@@ -42,6 +42,8 @@ public class EtchingFactory : MonoBehaviour
             var varnish = newEtching.AddComponent(VarnishLoader.GetVarnishByTypeEnum(varnishType)).GetComponent<Varnish>();
             varnish.Init(etching);
         }
+
+        return etching;
     }
 
     public void MoveEtching(Plank plankToMoveTo, Etching etching)

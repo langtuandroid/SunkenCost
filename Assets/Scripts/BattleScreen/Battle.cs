@@ -53,8 +53,6 @@ namespace BattleScreen
         private InGameSfxManager _sfxManager;
         private BattleRenderer _battleRenderer;
 
-        private Deck _deck = new Deck();
-
         public int Turn { get; private set; } = 0;
         public BattleState BattleState { get; private set; } = BattleState.Loading;
         
@@ -70,9 +68,7 @@ namespace BattleScreen
         {
             _sfxManager = InGameSfxManager.current;
             _battleRenderer = BattleRenderer.Current;
-            
-            _reDrawButton.SetListener(_deck.SpawnDeck);
-            _deck.SpawnDeck();
+            Player.Current.SpawnDeck();
 
             // Give the game one frame to load etchings, enemies etc
             StartCoroutine(InitializeBattle());
@@ -218,7 +214,7 @@ namespace BattleScreen
                     && !b.showAsOwnAction)).ToList();
                 
                 // Sometimes we need a f rame for transforms to change parents etc.
-                if (BattleEventListContainsTransformUpdatingEvent(battleEventsList))
+                if (GetIfBattleEventListRequiresTransformRefresh(battleEventsList))
                 {
                     Debug.Log("Waiting for transforms...");
                     yield return 0;
@@ -315,15 +311,6 @@ namespace BattleScreen
 
             
             _rewardGenerator.GenerateRewards();
-            
-            /*
-            _endOfBattlePopup.gameObject.SetActive(true);
-            var disturbance = RunProgress.Current.CurrentDisturbance;
-            _endOfBattlePopup.SetReward(disturbance);
-            _endOfBattlePopup.SetButtonAction(LeaveBattle);
-            
-            */
-        
         }
 
         public void LeaveBattle()
@@ -334,16 +321,13 @@ namespace BattleScreen
             Destroy(gameObject);
         }
 
-        private static bool BattleEventListContainsTransformUpdatingEvent(List<BattleEvent> battleEvents)
+        private static bool GetIfBattleEventListRequiresTransformRefresh(List<BattleEvent> battleEvents)
         {
             return battleEvents.Any(b => 
-                b.type == BattleEventType.StartedBattle ||
-                b.type == BattleEventType.ReDrewPlanks ||
-                b.type == BattleEventType.StartedNextPlayerTurn ||
-                b.type == BattleEventType.EtchingsOrderChanged ||
-                b.type == BattleEventType.PlankCreated ||
-                b.type == BattleEventType.PlankMoved ||
-                b.type == BattleEventType.PlankDestroyed);
+                b.type is BattleEventType.StartedBattle or BattleEventType.ReDrewPlanks or 
+                    BattleEventType.StartedNextPlayerTurn or BattleEventType.EtchingsOrderChanged or 
+                    BattleEventType.PlankCreated or BattleEventType.PlankMoved or BattleEventType.PlankDestroyed or 
+                    BattleEventType.Rolled);
         }
     }
 }

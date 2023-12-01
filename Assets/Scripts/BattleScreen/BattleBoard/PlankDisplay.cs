@@ -5,6 +5,7 @@ using System.Linq;
 using BattleScreen;
 using BattleScreen.BattleBoard;
 using BattleScreen.BattleEvents;
+using BattleScreen.UI;
 using Etchings;
 using ReorderableContent;
 using UnityEngine;
@@ -20,6 +21,7 @@ public class PlankDisplay : MonoBehaviour, IBattleEventUpdatedUI, IReorderableEl
     [SerializeField] private Image _plankImage;
     [SerializeField] private Image _washImage;
     [SerializeField] private Image _indicatorImage;
+    [SerializeField] private ReDrawButton _reDrawButton;
 
     private Color _originalPlankColor;
     private Color _originalIndicatorColor;
@@ -75,6 +77,7 @@ public class PlankDisplay : MonoBehaviour, IBattleEventUpdatedUI, IReorderableEl
     public void Grabbed()
     {
         _washImage.enabled = false;
+        _reDrawButton.Hide();
     }
 
     public void HoveringOverList(ReorderableGrid listHoveringOver)
@@ -85,6 +88,7 @@ public class PlankDisplay : MonoBehaviour, IBattleEventUpdatedUI, IReorderableEl
     public void Released()
     {
         _washImage.enabled = true;
+        _reDrawButton.Show();
     }
     
     private IEnumerator ColorForAttackOnThisPlank(Color color)

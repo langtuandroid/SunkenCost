@@ -97,34 +97,33 @@ namespace BattleScreen.BattleEvents
             return new DamageModificationPackage(flatTotal, multiTotal);
         }
 
-        public Enemy GetEnemyByResponderID(int id)
-        {
-            var responder = BattleEventResponder.AllBattleEventRespondersByID[id];
-            if (responder is Enemy enemy)
-            {
-                return enemy;
-            }
-            
-            throw new Exception("Battle responder is not enemy! Instead it's " + responder.GetType().Name);
-        }
-        
-        public Etching GetEtchingByResponderID(int id)
-        {
-            var responder = BattleEventResponder.AllBattleEventRespondersByID[id];
-            if (responder is Etching etching)
-            {
-                return etching;
-            }
-            
-            throw new Exception("Battle responder is not etching!");
-        }
-
         public void RefreshTransforms()
         {
             foreach (var battleEventResponderGroup in _responderGroupOrder)
             {
                 battleEventResponderGroup.RefreshTransforms();
             }
+        }
+        
+        public Enemy GetEnemyByResponderID(int id)
+        {
+            return GetTypeByResponderID<Enemy>(id);
+        }
+        
+        public Etching GetEtchingByResponderID(int id)
+        {
+            return GetTypeByResponderID<Etching>(id);
+        }
+        
+        private T GetTypeByResponderID<T>(int id) where T : BattleEventResponder
+        {
+            var responder = BattleEventResponder.AllBattleEventRespondersByID[id];
+            if (responder is T t)
+            {
+                return t;
+            }
+            
+            throw new Exception("Battle responder is not " + typeof(T).Name + "! Instead it's " + responder.GetType().Name);
         }
     }
 }

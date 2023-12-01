@@ -2,14 +2,18 @@
 using System.Collections;
 using System.Collections.Generic;
 using BattleScreen;
+using BattleScreen.BattleBoard;
 using BattleScreen.BattleEvents;
 using Damage;
 using Enemies;
+using UnityEngine;
 
 public class Player : BattleEventResponder
 {
     public static Player Current;
 
+    private Deck _deck;
+    
     private int? _baseMovesPerTurn;
     public int Gold => RunProgress.Current.PlayerStats.Gold;
     public int Health { get; private set; }
@@ -30,7 +34,13 @@ public class Player : BattleEventResponder
         MaxHealth = RunProgress.Current.PlayerStats.MaxHealth;
         _baseMovesPerTurn = RunProgress.Current.PlayerStats.MovesPerTurn;
         MoveLimit = _baseMovesPerTurn;
+        
         base.Awake();
+    }
+
+    public void SpawnDeck()
+    {
+        _deck = new Deck(RunProgress.Current.PlayerStats.Deck);
     }
 
     public override List<BattleEventResponseTrigger> GetBattleEventResponseTriggers()
@@ -45,7 +55,8 @@ public class Player : BattleEventResponder
             EventResponseTriggerWithArgument(BattleEventType.EnemyAttackedBoat, 
                 e => EnemyReachedEnd(-e.modifier)),
             EventResponseTriggerWithArgument(BattleEventType.PlayerLifeModified, ModifyLife),
-            EventResponseTriggerWithArgument(BattleEventType.TriedAlterGold, TryGainGold),
+            EventResponseTriggerWithArgument(BattleEventType.TriedAlterGold, TryAlterGold),
+            EventResponseTriggerWithArgument(BattleEventType.PlayerRolled, e => _deck.ReRoll(e.primaryResponderID))
         };
     }
 
@@ -98,7 +109,7 @@ public class Player : BattleEventResponder
         return new BattleEvent(BattleEventType.PlayerUsedMove);
     }
 
-    private BattleEvent TryGainGold(BattleEvent battleEvent)
+    private BattleEvent TryAlterGold(BattleEvent battleEvent)
     {
         RunProgress.Current.PlayerStats.Gold += battleEvent.modifier;
         return new BattleEvent(BattleEventType.AlteredGold);
