@@ -19,3 +19,6 @@ position. The button that looks like a play button is actually to fast forward
 (sorry, bad ux design).
 
 Good luck!
+
+## Latest Build
+https://www.dropbox.com/scl/fi/vj41wblmr9kecgk5ojdrl/README.txt?rlkey=bb6wn9n6200g9w0c5yjtwon0l&st=ftb292mt&dl=0
