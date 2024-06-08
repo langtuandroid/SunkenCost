@@ -1,10 +1,21 @@
 # Sunken Cost
 
 ## Introduction
-This is the game I'm currently working on in Unity. It's a micro deck-building roguelike where the player rearranges planks that form the enemies' traversal path. 
-The player drafts new designs for planks at the end of each combat, which are then drawn randomly to form the path for the next combat.
+Stop the enemies from reaching your boat! Rearrange your planks to keep them
+away.
 
-## [Latest build (Windows only)](https://github.com/bensalter29/SunkenCost/tree/PullRandomPlanksFromDeck/Builds)
-***Does not include tutorial***
+Selection screen:
+Drag the cards from the market (bottom row) to your deck (top row). You can do
+this after every battle. You can also remove cards from your deck by dragging
+them back to the market. These cards become your planks in battle. You can
+upgrade your cards by dragging an identical card on top of it. Cards can be
+upgraded twice - but to upgrade the second time you need two upgraded versions.
+You can lock cards in the market to save them for later.
 
-NB: Does not include new design-drafting system
+Battle screen:
+Hover over enemies with your mouse to see what they do (very important).
+Each turn you can rearrange your planks by dragging them to a different
+position. The button that looks like a play button is actually to fast forward
+(sorry, bad ux design).
+
+Good luck!

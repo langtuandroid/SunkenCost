@@ -302,6 +302,7 @@ namespace BattleScreen
             _islandAnimator.SinkIsland();
             Board.Current.DestroyAllPlanks();
             EnemySequencer.Current.DestroyAllEnemies();
+            RunProgress.Current.PlayerStats.Health = Player.Current.Health;
             var boardTransform = Board.Current.gameObject.transform;
             var localPosition = boardTransform.localPosition;
             boardTransform.localPosition = new Vector3(localPosition.x + 300, localPosition.y);
@@ -321,7 +322,6 @@ namespace BattleScreen
 
         public void LeaveBattle()
         {
-            RunProgress.Current.PlayerStats.Health = Player.Current.Health;
             MainManager.Current.LoadOfferScreen();
             Destroy(gameObject);
         }
